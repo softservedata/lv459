@@ -11,7 +11,7 @@ public class CalcTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		System.out.println("@BeforeClass done");
+		System.out.println("@BeforeClass done for task1");
 	}
 
 	@AfterClass
