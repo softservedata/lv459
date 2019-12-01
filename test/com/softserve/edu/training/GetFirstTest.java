@@ -34,6 +34,14 @@ public class GetFirstTest {
 
     /**
      * This method tests firstAmount method.
+     * Test Design Techniques: dynamic techniques
+     * (error guessing, exploratory testing).
+     * Equivalence Partitioning(BVA):
+     * {Integer.MIN_VALUE - 1}
+     * {Integer.MIN_VALUE; 0} {1} {2; Iteger.MAX_VALUE}
+     * {Integer.MAX_VALUE + 1}
+     * Boundary Values: Integer.MIN_VALUE,(Integer.MIN_VALUE - 1),0, 1, 2,
+     * Iteger.MAX_VALUE, (Iteger.MAX_VALUE + 1).
      */
     @Test
     public void testFirstAmount0() {
