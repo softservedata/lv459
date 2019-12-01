@@ -19,14 +19,6 @@ public class NumberOperations {
      * With this number we can separate integer number into digits.
      */
     private static final int DIGIT_SEPARATOR = 10;
-    /**
-     * Maximum number with four digits.
-     */
-    private static final int MAX_FOUR_DIGIT_NUMBER = 9999;
-    /**
-     * Minimum number with two digits.
-     */
-    private static final int MIN_TWO_DIGIT_NUMBER = 10;
 
     /**
      * Returns the {@code Integer} digits count of number.
@@ -34,7 +26,8 @@ public class NumberOperations {
      * @return the {@code int} digits count of {@code value}.
      */
     public int getDigitsCount(final Integer value) {
-        return value == 0 ? 1 : getAllDigits(value).size();
+        // return String.valueOf(value).toCharArray().length;
+        return value == 0 ? 1 : getAllDigits(getABS(value)).size();
     };
 
     /**
@@ -68,27 +61,13 @@ public class NumberOperations {
     }
 
     /**
-     * Calculate Armstrong numbers with 2-4 digits.
-     * @return List of Armstrong numbers.
-     */
-    public List<Integer> getArmstrongNumbers() {
-        List<Integer> arr = new ArrayList<Integer>();
-        for (int i = MIN_TWO_DIGIT_NUMBER; i < MAX_FOUR_DIGIT_NUMBER; i++) {
-            if (getNumberByDegree(i) == i) {
-                arr.add(i);
-            }
-        }
-        return arr;
-    }
-
-    /**
      * Calculate sum of integers if the remainder of the division equals zero.
      * @param value calculate integer divisors for a given number.
      * @return the {@code int} sum of digits.
      */
-    private int getSumOfIntegersDivisors(final long value) {
+    private int getSumOfIntegersDivisors(final Integer value) {
         int res = 0;
-        for (int j = 1; j < value - 1; j++) {
+        for (int j = 1; j < value; j++) {
             if (checkReminderOfDivision(value, j)) {
                 res += j;
             }
@@ -102,7 +81,7 @@ public class NumberOperations {
      * @param divisor divisor of specified value.
      * @return {@code true} if remainder equals zero.
      */
-    private boolean checkReminderOfDivision(final long value,
+    private boolean checkReminderOfDivision(final Integer value,
             final int divisor) {
         return (value % divisor) == 0;
     }
@@ -129,35 +108,5 @@ public class NumberOperations {
      */
     private Integer getABS(final Integer value) {
         return Math.abs(value);
-    }
-
-    /**
-     * Raise each digit of specified number into degree which is equal count of
-     * digits of this number and calculate their sum.
-     * @param number Array of value you want to raise.
-     * @return the {@code Integer} sum of degree each digit.
-     */
-    private Integer getNumberByDegree(final Integer number) {
-        int res = 0;
-        List<Integer> numberArr = getAllDigits(number);
-        for (int i : numberArr) {
-            res = res + raiseNumberByDegree(i, getDigitsCount(number));
-        }
-        return res;
-    }
-
-    /**
-     * Raise number into degree.
-     * @param number value you want to raise.
-     * @param degree to what degree you want to raise the number.
-     * @return the {@code Integer} degree of number
-     */
-    private Integer raiseNumberByDegree(final Integer number,
-            final Integer degree) {
-        int res = 1;
-        for (int i = 0; i < degree; i++) {
-            res = res * number;
-        }
-        return res;
     }
 }

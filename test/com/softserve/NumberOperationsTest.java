@@ -18,52 +18,54 @@ public class NumberOperationsTest {
     private NumberOperations numberOperations = new NumberOperations();
 
     /**
-     * Testing digits count from number.
+     * Testing digits count from number. Here i decide to use equivalence
+     * partitioning with boundary value testing. I had identified the following
+     * sets of inputs {-2147483647 - 0}, {All natural numbers}, {10 -
+     * 2147483647}
      */
     @Test
     public void testGetDigitsCount() {
-        final int expect = 5;
-        final int actual = numberOperations.getDigitsCount(12403);
-        assertEquals(actual, expect);
-        assertEquals(numberOperations.getDigitsCount(7), 1);
+        assertEquals(numberOperations.getDigitsCount(-2147483647), 10);
+        assertEquals(numberOperations.getDigitsCount(-1), 1);
         assertEquals(numberOperations.getDigitsCount(0), 1);
+        assertEquals(numberOperations.getDigitsCount(1), 1);
+        assertEquals(numberOperations.getDigitsCount(2147483647), 10);
     }
 
     /**
-     * Testing sum of each integer digit.
+     * Testing sum of each integer digit. Here i decide to use equivalence
+     * partitioning with boundary value testing. I had identified the following
+     * sets of inputs {-2147483647 - -1}, {0}, {1 - 2147483647}
      */
     @Test
     public void testGetSumOfDigits() {
-        assertEquals(numberOperations.getSumOfDigits(-1230), 6);
+        assertEquals(numberOperations.getSumOfDigits(-2147483647), 46);
+        assertEquals(numberOperations.getSumOfDigits(-1), 1);
+        assertEquals(numberOperations.getSumOfDigits(0), 0);
+        assertEquals(numberOperations.getSumOfDigits(1), 1);
+        assertEquals(numberOperations.getSumOfDigits(2147483647), 46);
     }
 
     /**
-     * Testing calculating all perfect numbers less than specified value.
+     * Testing calculating all perfect numbers less than specified value. Here i
+     * decide to use equivalence partitioning testing. I had identified the
+     * following sets of inputs {0 - 6}, {7- 28}, {28 - 496}, {497 - 8128},
+     * {8129 - 33550337}
      */
     @Test
     public void testGetAllPerfectNumbers() {
         List<Integer> arr = new ArrayList<Integer>();
+        assertEquals(numberOperations.getAllPerfectNumbers(0), arr);
         arr.add(6);
+        assertEquals(numberOperations.getAllPerfectNumbers(8), arr);
         arr.add(28);
+        assertEquals(numberOperations.getAllPerfectNumbers(30), arr);
         arr.add(496);
+        assertEquals(numberOperations.getAllPerfectNumbers(500), arr);
         arr.add(8128);
-        assertEquals(numberOperations.getAllPerfectNumbers(10000), arr);
-    }
-
-    /**
-     * Testing calculating all Armstrong numbers with 2-4 digits.
-     */
-    @Test
-    public void testGetArmstrongNumbers() {
-        List<Integer> arr = new ArrayList<Integer>();
-        arr.add(153);
-        arr.add(370);
-        arr.add(371);
-        arr.add(407);
-        arr.add(1634);
-        arr.add(8208);
-        arr.add(9474);
-        assertEquals(numberOperations.getArmstrongNumbers(), arr);
+        assertEquals(numberOperations.getAllPerfectNumbers(9000), arr);
+//        arr.add(33550336);
+//        assertEquals(numberOperations.getAllPerfectNumbers(33550339), arr);
     }
 
 }
