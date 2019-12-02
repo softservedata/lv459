@@ -24,7 +24,7 @@ public class NumberOperationsTest {
      */
     @Test
     public void testGetDigitsCount() {
-        assertEquals(1, numberOperations.getDigitsCount(-1));
+        assertEquals(10, numberOperations.getDigitsCount(-2147483647));
         assertEquals(1, numberOperations.getDigitsCount(0));
         assertEquals(1, numberOperations.getDigitsCount(3));
         assertEquals(10, numberOperations.getDigitsCount(Integer.MAX_VALUE));
@@ -41,13 +41,13 @@ public class NumberOperationsTest {
     /**
      * Testing sum of each integer digit. Here i decide to use equivalence
      * partitioning with boundary value testing. I had identified the following
-     * sets of inputs {-2147483647 - -1}, {0}, {1 - 2147483647}
+     * sets of inputs {-2147483648 - -1}, {0}, {1 - 2147483647}
      */
     @Test
     public void testGetSumOfDigits() {
-        assertEquals(1, numberOperations.getSumOfDigits(-1));
+        assertEquals(46, numberOperations.getSumOfDigits(-2147483647));
         assertEquals(0, numberOperations.getSumOfDigits(0));
-        assertEquals(1, numberOperations.getSumOfDigits(1));
+        assertEquals(7, numberOperations.getSumOfDigits(7));
         assertEquals(46, numberOperations.getSumOfDigits(2147483647));
     }
 

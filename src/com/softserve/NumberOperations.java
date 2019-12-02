@@ -25,9 +25,15 @@ public class NumberOperations {
      * @return the {@code int} digits count of {@code value}.
      */
     public int getDigitsCount(final Integer value) {
-        // return String.valueOf(value).toCharArray().length;
         return value == 0 ? 1 : getAllDigits(getABS(value)).size();
     };
+//
+//    private boolean check(final  int value) {
+//        if (value > 0) {
+//            return true;
+//        }
+//        throw new IllegalArgumentException("Number can’t be less than zero");
+//    }
 
     /**
      * Calculate sum of digits from specified value.
@@ -92,10 +98,10 @@ public class NumberOperations {
      */
     private List<Integer> getAllDigits(final Integer value) {
         List<Integer> res = new ArrayList<>();
-        Integer arg0 = getABS(value);
-        while (arg0 > 0) {
-            res.add(0, arg0 % DIGIT_SEPARATOR);
-            arg0 /= DIGIT_SEPARATOR;
+        Integer absValue = getABS(value);
+        while (absValue > 0) {
+            res.add(0, absValue % DIGIT_SEPARATOR);
+            absValue /= DIGIT_SEPARATOR;
         }
         return res;
     }
@@ -118,6 +124,7 @@ public class NumberOperations {
      * @return true or false depending on whether we can get absolute value.
      */
     private boolean checkBounds(final int value) {
-        return value <= Integer.MIN_VALUE ? false : true;
+        return (value <= Integer.MIN_VALUE || value > Integer.MAX_VALUE) ? false
+                : true;
     }
 }
