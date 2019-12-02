@@ -13,7 +13,6 @@ import java.util.List;
  * @version 1.1, 21.11.2019
  */
 
-// 86 à) á) 330, 562. - tasks.
 public class NumberOperations {
     /**
      * With this number we can separate integer number into digits.
@@ -107,6 +106,18 @@ public class NumberOperations {
      * @return Absolute value of an Integer.
      */
     private Integer getABS(final Integer value) {
-        return Math.abs(value);
+        if (checkBounds(value) && value != null) {
+            return Math.abs(value);
+        }
+        throw new IllegalArgumentException("Invalid input value");
+    }
+
+    /**
+     * Check can we get absolute value of input data.
+     * @param value int value you want to check.
+     * @return true or false depending on whether we can get absolute value.
+     */
+    private boolean checkBounds(final int value) {
+        return value <= Integer.MIN_VALUE ? false : true;
     }
 }

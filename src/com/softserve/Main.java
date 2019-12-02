@@ -13,9 +13,9 @@ public final class Main {
         NumberOperations nop = new NumberOperations();
         ConsoleOperations consOp = new ConsoleOperations();
 
-        // consOp.consolePrint(nop.getDigitsCount(consOp.readInt()));
+         consOp.consolePrint(nop.getDigitsCount(consOp.readInt()));
         // consOp.consolePrint(nop.getSumOfDigits(consOp.readInt()));
-        consOp.consolePrint(nop.getAllPerfectNumbers(consOp.readInt()));
+        //consOp.consolePrint(nop.getAllPerfectNumbers(consOp.readInt()));
         ConsoleOperations.close();
     }
 }
