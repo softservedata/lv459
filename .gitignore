@@ -52,7 +52,7 @@ hs_err_pid*
 /.checkstyle
 /reports/
 /.idea/
-/.out/
+/out/
 *.iml
 *.ucls
 
