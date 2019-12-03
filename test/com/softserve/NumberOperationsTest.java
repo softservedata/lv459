@@ -24,7 +24,8 @@ public class NumberOperationsTest {
      */
     @Test
     public void testGetDigitsCountboundary() {
-        assertEquals(1, numberOperations.getDigitsCount(0));
+        assertEquals("Error in testGetDigitsCountboundary method", 1,
+                numberOperations.getDigitsCount(0));
     }
 
     /**
@@ -32,7 +33,26 @@ public class NumberOperationsTest {
      */
     @Test
     public void testGetDigitsCountBoundaryOne() {
-        assertEquals(1, numberOperations.getDigitsCount(1));
+        assertEquals("Error in testGetDigitsCountBoundaryOne method", 1,
+                numberOperations.getDigitsCount(1));
+    }
+
+    /**
+     * Testing digits count from number.
+     */
+    @Test
+    public void testGetDigitsCountBoundaryNine() {
+        assertEquals("Error in testGetDigitsCountBoundaryNine method", 1,
+                numberOperations.getDigitsCount(9));
+    }
+
+    /**
+     * Testing digits count from number.
+     */
+    @Test
+    public void testGetDigitsCountBoundaryTen() {
+        assertEquals("Error in testGetDigitsCountBoundaryTen method", 2,
+                numberOperations.getDigitsCount(10));
     }
 
     /**
@@ -40,7 +60,8 @@ public class NumberOperationsTest {
      */
     @Test
     public void testGetDigitsCount() {
-        assertEquals(10, numberOperations.getDigitsCount(Integer.MAX_VALUE));
+        assertEquals("Error in testGetDigitsCount method", 10,
+                numberOperations.getDigitsCount(Integer.MAX_VALUE));
     }
 
     /**
@@ -48,25 +69,46 @@ public class NumberOperationsTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testGetDigitsCountExpection() {
-        assertEquals(10, numberOperations.getDigitsCount(-2147483648));
+        assertEquals("Error in testGetDigitsCountExpection method", 10,
+                numberOperations.getDigitsCount(Integer.MIN_VALUE));
     }
 
     /**
      * Testing sum of each integer digit. Here i decide to use equivalence
      * partitioning with boundary value testing. I had identified the following
-     * sets of inputs {-2147483648 - -1}, {0}, {1 - 2147483647}
+     * sets of inputs {-2147483648 - 0}, {1-9}, {10 - 2147483647}
      */
     @Test
     public void testGetSumOfDigitsBoundary() {
-        assertEquals(0, numberOperations.getSumOfDigits(0));
+        assertEquals("Error in testGetSumOfDigitsBoundary method", 0,
+                numberOperations.getSumOfDigits(0));
     }
 
     /**
      * Testing sum of digits count from number.
      */
     @Test
-    public void testGetSumOfDigitsBoundaryZero() {
-        assertEquals(0, numberOperations.getSumOfDigits(0));
+    public void testGetSumOfDigitsBoundaryOne() {
+        assertEquals("Error in testGetSumOfDigitsBoundaryOne method", 1,
+                numberOperations.getSumOfDigits(1));
+    }
+
+    /**
+     * Testing sum of digits count from number.
+     */
+    @Test
+    public void testGetSumOfDigitsBoundaryNine() {
+        assertEquals("Error in testGetSumOfDigitsBoundaryNine method", 9,
+                numberOperations.getSumOfDigits(9));
+    }
+
+    /**
+     * Testing sum of digits count from number.
+     */
+    @Test
+    public void testGetSumOfDigitsBoundaryTen() {
+        assertEquals("Error in testGetSumOfDigitsBoundaryTen method", 1,
+                numberOperations.getSumOfDigits(10));
     }
 
     /**
@@ -74,7 +116,8 @@ public class NumberOperationsTest {
      */
     @Test
     public void testGetSumOfDigitsMax() {
-        assertEquals(46, numberOperations.getSumOfDigits(2147483647));
+        assertEquals("Error in testGetSumOfDigitsMax method", 46,
+                numberOperations.getSumOfDigits(Integer.MAX_VALUE));
     }
 
     /**
@@ -82,7 +125,8 @@ public class NumberOperationsTest {
      */
     @Test
     public void testGetSumOfDigits() {
-        assertEquals(9, numberOperations.getSumOfDigits(9));
+        assertEquals("Error in testGetSumOfDigits method", 9,
+                numberOperations.getSumOfDigits(9));
     }
 
     /**
@@ -90,20 +134,22 @@ public class NumberOperationsTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testGetSumOfDigitsForException() {
-        assertEquals(46, numberOperations.getSumOfDigits(-2147483648));
+        assertEquals("Error in testGetSumOfDigitsForException method", 46,
+                numberOperations.getSumOfDigits(Integer.MIN_VALUE));
     }
 
     /**
      * Testing calculating all perfect numbers less than specified value. Here i
      * decide to use equivalence partitioning testing. I had identified the
-     * following sets of inputs {0 - 6}, {7- 28}, {28 - 496}, --{497 - 8128},
-     * {8129 - 33550337}
+     * following sets of inputs {-2147483648 - -1}, {0 - 6} {7 - 28}, {28 -
+     * 496}.
      */
     @Test
     public void testGetAllPerfectNumbersOne() {
         List<Integer> arr = new ArrayList<Integer>();
         arr.add(6);
-        assertEquals(arr, numberOperations.getAllPerfectNumbers(8));
+        assertEquals("Error in testGetAllPerfectNumbersOne method", arr,
+                numberOperations.getAllPerfectNumbers(8));
     }
 
     /**
@@ -112,11 +158,10 @@ public class NumberOperationsTest {
     @Test
     public void testGetAllPerfectNumbersTwo() {
         List<Integer> arr = new ArrayList<Integer>();
-        assertEquals(arr, numberOperations.getAllPerfectNumbers(0));
         arr.add(6);
-        assertEquals(arr, numberOperations.getAllPerfectNumbers(8));
         arr.add(28);
-        assertEquals(arr, numberOperations.getAllPerfectNumbers(30));
+        assertEquals("Error in testGetAllPerfectNumbersTwo method", arr,
+                numberOperations.getAllPerfectNumbers(30));
     }
 
     /**
@@ -125,7 +170,8 @@ public class NumberOperationsTest {
     @Test(expected = IllegalArgumentException.class)
     public void testGetAllPerfectNumbersForException() {
         List<Integer> arr = new ArrayList<Integer>();
-        assertEquals(arr, numberOperations.getAllPerfectNumbers(-1));
+        assertEquals("Error in testGetAllPerfectNumbersForException method",
+                arr, numberOperations.getAllPerfectNumbers(-1));
 
     }
 }
