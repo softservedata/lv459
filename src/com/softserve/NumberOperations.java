@@ -25,7 +25,7 @@ public class NumberOperations {
      * @return the {@code int} digits count of {@code value}.
      */
     public int getDigitsCount(final Integer value) {
-        return value == 0 ? 1 : getAllDigits(getABS(value)).size();
+        return value == 0 ? 1 : getAllDigits(value).size();
     };
 //
 //    private boolean check(final  int value) {
@@ -57,12 +57,14 @@ public class NumberOperations {
      */
     public List<Integer> getAllPerfectNumbers(final Integer value) {
         List<Integer> arr = new ArrayList<Integer>();
-        for (int i = 1; i < getABS(value); i++) {
+        checkNegative(value);
+        for (int i = 1; i < value; i++) {
             if (getSumOfIntegersDivisors(i) == i) {
                 arr.add(i);
             }
         }
         return arr;
+
     }
 
     /**
@@ -98,7 +100,8 @@ public class NumberOperations {
      */
     private List<Integer> getAllDigits(final Integer value) {
         List<Integer> res = new ArrayList<>();
-        Integer absValue = getABS(value);
+        checkNegative(value);
+        Integer absValue = value;
         while (absValue > 0) {
             res.add(0, absValue % DIGIT_SEPARATOR);
             absValue /= DIGIT_SEPARATOR;
@@ -107,24 +110,13 @@ public class NumberOperations {
     }
 
     /**
-     * Get the absolute value of an Integer value.
-     * @param value Integer value from which you want to get an absolute value
-     * @return Absolute value of an Integer.
-     */
-    private Integer getABS(final Integer value) {
-        if (checkBounds(value) && value != null) {
-            return Math.abs(value);
-        }
-        throw new IllegalArgumentException("Invalid input value");
-    }
-
-    /**
      * Check can we get absolute value of input data.
      * @param value int value you want to check.
-     * @return true or false depending on whether we can get absolute value.
+     * @throw IllegalArgumentException if input value is less than zero.
      */
-    private boolean checkBounds(final int value) {
-        return (value <= Integer.MIN_VALUE || value > Integer.MAX_VALUE) ? false
-                : true;
+    private void checkNegative(final int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("Illegal argument");
+        }
     }
 }

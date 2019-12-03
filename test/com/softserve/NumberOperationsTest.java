@@ -20,13 +20,26 @@ public class NumberOperationsTest {
     /**
      * Testing digits count from number. Here i decide to use equivalence
      * partitioning with boundary value testing. I had identified the following
-     * sets of inputs {-2147483648 - 0}, {1 - 9}, {10 - 2147483647}
+     * sets of inputs {-2147483648 - 0}, {1 - 9}, {10 - 2147483647} 0 1 9 10
+     */
+    @Test
+    public void testGetDigitsCountboundary() {
+        assertEquals(1, numberOperations.getDigitsCount(0));
+    }
+
+    /**
+     * Testing digits count from number.
+     */
+    @Test
+    public void testGetDigitsCountBoundaryOne() {
+        assertEquals(1, numberOperations.getDigitsCount(1));
+    }
+
+    /**
+     * Testing digits count from number.
      */
     @Test
     public void testGetDigitsCount() {
-        assertEquals(10, numberOperations.getDigitsCount(-2147483647));
-        assertEquals(1, numberOperations.getDigitsCount(0));
-        assertEquals(1, numberOperations.getDigitsCount(3));
         assertEquals(10, numberOperations.getDigitsCount(Integer.MAX_VALUE));
     }
 
@@ -44,11 +57,32 @@ public class NumberOperationsTest {
      * sets of inputs {-2147483648 - -1}, {0}, {1 - 2147483647}
      */
     @Test
-    public void testGetSumOfDigits() {
-        assertEquals(46, numberOperations.getSumOfDigits(-2147483647));
+    public void testGetSumOfDigitsBoundary() {
         assertEquals(0, numberOperations.getSumOfDigits(0));
-        assertEquals(7, numberOperations.getSumOfDigits(7));
+    }
+
+    /**
+     * Testing sum of digits count from number.
+     */
+    @Test
+    public void testGetSumOfDigitsBoundaryZero() {
+        assertEquals(0, numberOperations.getSumOfDigits(0));
+    }
+
+    /**
+     * Testing sum of digits count from number.
+     */
+    @Test
+    public void testGetSumOfDigitsMax() {
         assertEquals(46, numberOperations.getSumOfDigits(2147483647));
+    }
+
+    /**
+     * Testing sum of digits count from number.
+     */
+    @Test
+    public void testGetSumOfDigits() {
+        assertEquals(9, numberOperations.getSumOfDigits(9));
     }
 
     /**
@@ -62,23 +96,36 @@ public class NumberOperationsTest {
     /**
      * Testing calculating all perfect numbers less than specified value. Here i
      * decide to use equivalence partitioning testing. I had identified the
-     * following sets of inputs {0 - 6}, {7- 28}, {28 - 496}, {497 - 8128},
+     * following sets of inputs {0 - 6}, {7- 28}, {28 - 496}, --{497 - 8128},
      * {8129 - 33550337}
      */
     @Test
-    public void testGetAllPerfectNumbers() {
+    public void testGetAllPerfectNumbersOne() {
+        List<Integer> arr = new ArrayList<Integer>();
+        arr.add(6);
+        assertEquals(arr, numberOperations.getAllPerfectNumbers(8));
+    }
+
+    /**
+     * Testing method with two output values.
+     */
+    @Test
+    public void testGetAllPerfectNumbersTwo() {
         List<Integer> arr = new ArrayList<Integer>();
         assertEquals(arr, numberOperations.getAllPerfectNumbers(0));
         arr.add(6);
-        assertEquals(arr, numberOperations.getAllPerfectNumbers(-8));
+        assertEquals(arr, numberOperations.getAllPerfectNumbers(8));
         arr.add(28);
         assertEquals(arr, numberOperations.getAllPerfectNumbers(30));
-        arr.add(496);
-        assertEquals(arr, numberOperations.getAllPerfectNumbers(500));
-        arr.add(8128);
-        assertEquals(arr, numberOperations.getAllPerfectNumbers(-9000));
-//        arr.add(33550336);
-//        assertEquals(numberOperations.getAllPerfectNumbers(33550339), arr);
     }
 
+    /**
+     * Testing method for IllegalArgument exception.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetAllPerfectNumbersForException() {
+        List<Integer> arr = new ArrayList<Integer>();
+        assertEquals(arr, numberOperations.getAllPerfectNumbers(-1));
+
+    }
 }
