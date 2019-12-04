@@ -21,7 +21,7 @@ public class Input {
             String number = br.readLine();
             result = Integer.parseInt(number);
             return result;
-        } catch (IOException e) {
+        } catch (RuntimeException | IOException e) {
             output.out(e.getMessage());
         }
         return result;

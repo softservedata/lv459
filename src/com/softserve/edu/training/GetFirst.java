@@ -1,6 +1,7 @@
 package com.softserve.edu.training;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class GetFirst was designed to get answers of 2 tasks.
@@ -10,7 +11,7 @@ public class GetFirst {
      * @param myArray is the array, user enters.
      * @return the amount of numbers, satisfying the first task.
      */
-    int firstAmount(final ArrayList<Integer> myArray) {
+    int firstAmount(final List<Integer> myArray) {
         Output output = new Output();
         double result = 0.0;
         int index = 0;
@@ -28,7 +29,7 @@ public class GetFirst {
      * @param myArray is the array, user enters.
      * @return the amount of numbers, satisfying the second task.
      */
-    int secondAmount(final ArrayList<Integer> myArray) {
+    int secondAmount(final List<Integer> myArray) {
         Output output = new Output();
         int index = 0;
         double res1 = 0.0;
@@ -48,11 +49,16 @@ public class GetFirst {
      * @param number is a variable, user prints to
      *               get the factorial of the number.
      * @return factorial of the number.
+     * @throws RuntimeException (Wrong input number).
      */
     double getFactorial(final int number) {
         double fact = 1;
-        for (int i = 2; i <= number; i++) {
-            fact = fact * i;
+        if (number >= 0) {
+            for (int i = 2; i <= number; i++) {
+                fact = fact * i;
+            }
+        } else {
+            throw new RuntimeException("Wrong input number");
         }
         return fact;
     }
@@ -61,15 +67,19 @@ public class GetFirst {
      * @param number is the user's input
      * @return the array, user prints.
      */
-    ArrayList<Integer> fillArray(final int number) {
-        Output output = new Output();
-        Input scan = new Input();
-        ArrayList<Integer> myArray = new ArrayList<>();
-        output.out("Enter your elements: ");
-        for (int i = 0; i < number; i++) {
-            myArray.add(i, scan.input());
+    List<Integer> fillArray(final int number) {
+        List<Integer> myArray = new ArrayList<>();
+        if (number <= 0) {
+            throw new RuntimeException("Wrong input number");
+        } else {
+            Output output = new Output();
+            Input scan = new Input();
+            output.out("Enter your elements: ");
+            for (int i = 0; i < number; i++) {
+                myArray.add(i, scan.input());
+            }
+            output.out("Your array is: " + myArray);
         }
-        output.out("Your array is: " + myArray);
         return myArray;
     }
 }

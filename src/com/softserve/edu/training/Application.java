@@ -22,9 +22,9 @@ public final class Application {
         GetFirst first = new GetFirst();
         Pascal pscl = new Pascal();
 
-        output.out(first.firstAmount(first.fillArray(br.input())));
+/*        output.out(first.firstAmount(first.fillArray(br.input())));*/
         output.out(first.secondAmount(first.fillArray(br.input())));
-        output.out(pscl.generatePascal(br.input()));
+/*        output.out(pscl.generatePascal(br.input()));*/
 
         br.closeBR();
     }

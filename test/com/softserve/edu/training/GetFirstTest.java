@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class was implemented to create tests of GetFirst class' methods.
@@ -34,14 +35,6 @@ public class GetFirstTest {
 
     /**
      * This method tests firstAmount method.
-     * Test Design Techniques: dynamic techniques
-     * (error guessing, exploratory testing).
-     * Equivalence Partitioning(BVA):
-     * {Integer.MIN_VALUE - 1}
-     * {Integer.MIN_VALUE; 0} {1} {2; Iteger.MAX_VALUE}
-     * {Integer.MAX_VALUE + 1}
-     * Boundary Values: Integer.MIN_VALUE,(Integer.MIN_VALUE - 1),0, 1, 2,
-     * Iteger.MAX_VALUE, (Iteger.MAX_VALUE + 1).
      */
     @Test
     public void testFirstAmount0() {
@@ -49,7 +42,7 @@ public class GetFirstTest {
         GetFirst obj = new GetFirst();
         double actual;
         double expected;
-        ArrayList<Integer> integers = new ArrayList<>();
+        List<Integer> integers = new ArrayList<>();
         integers.add(58);
         integers.add(96);
         integers.add(54);
@@ -69,7 +62,7 @@ public class GetFirstTest {
         GetFirst obj = new GetFirst();
         double actual;
         double expected;
-        ArrayList<Integer> integers = new ArrayList<>();
+        List<Integer> integers = new ArrayList<>();
         integers.add(85);
         integers.add(96);
         integers.add(25);
@@ -89,7 +82,7 @@ public class GetFirstTest {
         GetFirst obj = new GetFirst();
         double actual;
         double expected;
-        ArrayList<Integer> integers = new ArrayList<>();
+        List<Integer> integers = new ArrayList<>();
         integers.add(58);
         integers.add(74);
         integers.add(65);
@@ -109,7 +102,7 @@ public class GetFirstTest {
         GetFirst obj = new GetFirst();
         double actual;
         double expected;
-        ArrayList<Integer> integers = new ArrayList<>();
+        List<Integer> integers = new ArrayList<>();
         integers.add(96);
         integers.add(45);
         integers.add(12);
@@ -121,21 +114,39 @@ public class GetFirstTest {
     }
 
     /**
-     * This method tests getFactorial method.
+     * This method tests firstAmount method.
+     * Test Design Techniques: dynamic techniques
+     * (error guessing, exploratory testing).
+     * Equivalence Partitioning(BVA):
+     * {Integer.MIN_VALUE - 1}
+     * {Integer.MIN_VALUE; 0} {1} {2; Iteger.MAX_VALUE}
+     * {Integer.MAX_VALUE + 1}
+     * Boundary Values: Integer.MIN_VALUE,(Integer.MIN_VALUE - 1),0, 1, 2,
+     * Iteger.MAX_VALUE, (Iteger.MAX_VALUE + 1).
+     * ===========================================================.
+     * This method tests firstAmount method.
+     * Test Design Techniques: dynamic techniques
+     * (error guessing, exploratory testing).
+     * Equivalence Partitioning(BVA):
+     * {Integer.MIN_VALUE; -1}.
+     * Boundary Values:-1.
+     *
+     * @throws RuntimeException (Wrong input number).
      */
-    @Test
-    public void testGetFactorial0() {
+    @Test(expected = RuntimeException.class)
+    public void testGetFactorial0() throws RuntimeException {
         System.out.println("@testGetFactorial0 start");
         GetFirst obj = new GetFirst();
-        double actual;
-        double expected;
-        actual = obj.getFactorial(5);
-        expected = 120;
-        Assert.assertEquals("Comparison error", expected, actual, delta);
+        obj.getFactorial(-1);
     }
 
     /**
-     * This method tests getFactorial method.
+     * This method tests firstAmount method.
+     * Test Design Techniques: dynamic techniques
+     * (error guessing, exploratory testing).
+     * Equivalence Partitioning(BVA):
+     * {1}.
+     * Boundary Values:1.
      */
     @Test
     public void testGetFactorial1() {
@@ -143,8 +154,27 @@ public class GetFirstTest {
         GetFirst obj = new GetFirst();
         double actual;
         double expected;
-        actual = obj.getFactorial(6);
-        expected = 720;
+        actual = obj.getFactorial(1);
+        expected = 1;
+        Assert.assertEquals("Comparison error", expected, actual, delta);
+    }
+
+    /**
+     * This method tests firstAmount method.
+     * Test Design Techniques: dynamic techniques
+     * (error guessing, exploratory testing).
+     * Equivalence Partitioning(BVA):
+     * {2}.
+     * Boundary Values:2.
+     */
+    @Test
+    public void testGetFactorial2() {
+        System.out.println("@testGetFactorial2 start");
+        GetFirst obj = new GetFirst();
+        double actual;
+        double expected;
+        actual = obj.getFactorial(2);
+        expected = 2;
         Assert.assertEquals("Comparison error", expected, actual, delta);
     }
 }
