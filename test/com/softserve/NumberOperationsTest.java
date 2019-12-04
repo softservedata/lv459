@@ -20,7 +20,7 @@ public class NumberOperationsTest {
     /**
      * Testing digits count from number. Here i decide to use equivalence
      * partitioning with boundary value testing. I had identified the following
-     * sets of inputs {-2147483648 - 0}, {1 - 9}, {10 - 2147483647} 0 1 9 10
+     * sets of inputs {-2147483648 - 0}, {1 - 9}, {10 - 2147483647}.
      */
     @Test
     public void testGetDigitsCountboundary() {
@@ -76,7 +76,7 @@ public class NumberOperationsTest {
     /**
      * Testing sum of each integer digit. Here i decide to use equivalence
      * partitioning with boundary value testing. I had identified the following
-     * sets of inputs {-2147483648 - 0}, {1-9}, {10 - 2147483647}
+     * sets of inputs {-2147483648 - 0}, {1 - 9}, {10 - 2147483647}
      */
     @Test
     public void testGetSumOfDigitsBoundary() {

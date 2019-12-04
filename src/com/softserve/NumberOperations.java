@@ -5,8 +5,8 @@ import java.util.List;
 
 /**
  * The {@code NumberOperations} class can calculate digits count of your number,
- * sum of each digit of your number, find perfect numbers less than specified
- * number and calculate Armstrong numbers.
+ * sum of each digit of your number and find perfect numbers less than specified
+ * number.
  *
  * @see java.util.ArrayList;
  * @see java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class NumberOperations {
     /**
-     * With this number we can separate integer number into digits.
+     * With this number we can separate integer numbers into digits.
      */
     private static final int DIGIT_SEPARATOR = 10;
 
@@ -27,13 +27,6 @@ public class NumberOperations {
     public int getDigitsCount(final Integer value) {
         return value == 0 ? 1 : getAllDigits(value).size();
     };
-//
-//    private boolean check(final  int value) {
-//        if (value > 0) {
-//            return true;
-//        }
-//        throw new IllegalArgumentException("Number can’t be less than zero");
-//    }
 
     /**
      * Calculate sum of digits from specified value.
@@ -110,7 +103,7 @@ public class NumberOperations {
     }
 
     /**
-     * Check can we get absolute value of input data.
+     * Check is input value less then zero.
      * @param value int value you want to check.
      * @throw IllegalArgumentException if input value is less than zero.
      */
