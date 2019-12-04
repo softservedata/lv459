@@ -15,7 +15,7 @@ public class App2 {
      * This is the main method which implements program.
      * @param args is unused.
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         GetNumbers gn = new GetNumbers();
         List<Integer> myArrayList = gn.getNumbersFromUser();
 

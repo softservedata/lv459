@@ -29,7 +29,7 @@ public class ConsoleOperation {
      * @param list is  that is printed.
      * @return list of Mersenne numbers that are smaller than number.
      */
-     List<Integer> printMersenneNumbers(int number, List<Integer> list) {
+     List<Integer> printMersenneNumbers(final int number, final List<Integer> list) {
        System.out.println("The Mersenne numbers smaller than " + number + " are: " + list);
         return list;
     }

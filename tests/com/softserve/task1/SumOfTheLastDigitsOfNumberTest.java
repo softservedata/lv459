@@ -10,7 +10,7 @@ public class SumOfTheLastDigitsOfNumberTest {
      * <h3>This method tests calculateSum method.</h3>
      * Test Design Techniques: dynamic techniques:
      * Parameter list:
-     * Decision Tables: {<0, 0} {0, <0} {<0, >0} {0, <0} {0,0} {0, >0} {>0, <0} {>0 0} {>0, >0}
+     * Decision Tables:{<0, 0} {0, <0} {<0, >0} {0, <0} {0, 0} {0, >0} {>0, <0} {>0, 0} {>0, >0}
      */
     @Test
     public void testcalculateSum1() {
@@ -18,6 +18,28 @@ public class SumOfTheLastDigitsOfNumberTest {
         List<Integer> list = Arrays.asList(50, 2);
         SumOfTheLastDigitsOfNumber sum = new SumOfTheLastDigitsOfNumber();
         int actual = sum.calculateSum(list);
-        assertEquals(expected, actual);
+        assertEquals("Error in calculateSum method", expected, actual);
+    }
+
+    /**
+     * <h3>This method tests calculateSum method.</h3>
+     * This is negative test for NullPointerException where list is null.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testcalculateSum2() {
+        List<Integer> list = null;
+        SumOfTheLastDigitsOfNumber sum = new SumOfTheLastDigitsOfNumber();
+        sum.calculateSum(list);
+    }
+
+    /**
+     * <h3>This method tests calculateSum method.</h3>
+     * This is negative test for NullPointerException where list is null.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testcalculateSum3() {
+        List<Integer> list = Arrays.asList(-50, 2);
+        SumOfTheLastDigitsOfNumber sum = new SumOfTheLastDigitsOfNumber();
+        sum.calculateSum(list);
     }
 }

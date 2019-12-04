@@ -14,7 +14,7 @@ public class App3 {
      * This is the main method which implements program.
      * @param args is unused.
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         ConsoleOperation co = new ConsoleOperation();
         int number = co.getNaturalNumberFromUser();
 

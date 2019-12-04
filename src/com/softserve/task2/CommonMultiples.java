@@ -7,8 +7,7 @@ import java.util.ArrayList;
  * <h1>CommonMultiples</h1>
  * <p>The  class  contains all method that finds all common
  * multiples of two numbers that are smaller than their multiplication.</p>
- * Date      15.09.2019
- *
+ * Date       15.09.2019
  */
 
 public class CommonMultiples {
@@ -27,7 +26,7 @@ public class CommonMultiples {
      * @param list is used for checking.
      * @return true if number is common multiple.
      */
-    boolean isCommonMultiple(int number, List<Integer> list) {
+    boolean isCommonMultiple(final int number, final List<Integer> list) {
         return (number % list.get(0) == 0) && (number % list.get(1) == 0);
     }
 
@@ -38,13 +37,17 @@ public class CommonMultiples {
      * @param list contains two user numbers.
      * @return list of common multiple numbers.
      */
-    List<Integer> findCommonMultipleSmallerThanMultiplication(int multiplication,  List<Integer> list) {
+    List<Integer> findCommonMultipleSmallerThanMultiplication(final int multiplication, final List<Integer> list) {
         List<Integer> list1 = new ArrayList<>();
-        for (int i = 1; i < multiplication; i++) {
+        if (multiplication > 0 && list != null) {
+          for (int i = 1; i < multiplication; i++) {
             if (isCommonMultiple(i, list)) {
                 list1.add(i);
             }
-        }
+          }
+        } else {
+            throw new IllegalArgumentException("Not correct arguments");
+          }
         return list1;
     }
 }

@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * <p>The class contains all method that finds
  * all Mersenne numbers that are smaller than natural number n.</p>
  * Date      15.09.2019
- *
  */
 public class MersenneNumbers {
     /**
@@ -16,16 +15,16 @@ public class MersenneNumbers {
      * @param num is number that is checked.
      * @return true if number is natural, and false if not.
      */
-    boolean isNatural(int num) {
+    boolean isNatural(final int num) {
         return num > 0;
     }
 
     /**
      * <h3>This method defines a mersenne number.</h3>
-     * @param i is used for definition mersenne numbers.
+     * @param i is used for definition of mersenne numbers.
      * @return mersenne number.
      */
-    int mersenne(int i) {
+    int mersenne(final int i) {
         return ((int) Math.pow(2, i) - 1);
     }
 
@@ -35,7 +34,7 @@ public class MersenneNumbers {
      * @param mersenne is mersenne number.
      * @return true if smaller and false if not.
      */
-   boolean isSmallerThanNumber(int number, int mersenne) {
+   boolean isSmallerThanNumber(final int number, final int mersenne) {
        return mersenne < number;
     }
 
@@ -44,7 +43,7 @@ public class MersenneNumbers {
      * @param number is the number entered by user.
      * @return list of all mersenne numbers that are smaller than number.
      */
-   public List<Integer> findSmallerThanNumberMersenneNumbers(int number) {
+   public List<Integer> findSmallerThanNumberMersenneNumbers(final int number) {
        List<Integer> list = new ArrayList<>();
         if (isNatural(number)) {
             for (int i = 1; i < number; i++) {
@@ -52,7 +51,9 @@ public class MersenneNumbers {
                     list.add(mersenne(i));
                 }
             }
-        }
+        } else {
+             throw new IllegalArgumentException("Number is not correct");
+          }
         return list;
     }
 }

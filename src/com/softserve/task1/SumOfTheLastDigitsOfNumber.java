@@ -10,14 +10,30 @@ import java.util.List;
  */
 public class SumOfTheLastDigitsOfNumber {
     /**
+     * <h3>This method .</h3>
+     * @param list - the values of list is checked.
+     * @return true is values is natural and false if not.
+     */
+   boolean isNatural(final List<Integer> list) {
+       if((list.get(0) > 0) && (list.get(1) > 0)) {
+            return true;
+       } else {
+           return false;
+       }
+   }
+    /**
      * <h3>This method calculates sum.</h3>
      * @param list - calculation of sum of list items is made.
      * @return result of sum.
      */
-    int calculateSum(List<Integer> list) {
+    int calculateSum(final List<Integer> list) {
         int result = 0;
-        for (int i = list.get(0); i > list.get(0) - list.get(1); i--) {
-            result += i - 1;
+        if((list != null) && isNatural(list)) {
+            for (int i = list.get(0); i > list.get(0) - list.get(1); i--) {
+                 result += i - 1;
+            }
+        } else {
+            throw new IllegalArgumentException("Argument is not correct");
         }
         return result;
     }

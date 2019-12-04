@@ -3,6 +3,7 @@ package com.softserve.task3;
 import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 import static junit.framework.TestCase.assertEquals;
 
 public class MersenneNumbersTest {
@@ -15,7 +16,7 @@ public class MersenneNumbersTest {
         boolean expected = true;
         MersenneNumbers mn = new MersenneNumbers();
         boolean actual = mn.isNatural(5);
-        assertEquals(expected, actual);
+        assertEquals("Error in isNatural method", expected, actual);
     }
 
     /**
@@ -27,7 +28,7 @@ public class MersenneNumbersTest {
         boolean expected = false;
         MersenneNumbers mn = new MersenneNumbers();
         boolean actual = mn.isNatural(-25);
-        assertEquals(expected, actual);
+        assertEquals("Error in isNatural method", expected, actual);
     }
 
     /**
@@ -39,7 +40,7 @@ public class MersenneNumbersTest {
         int expected = 3;
         MersenneNumbers mn = new MersenneNumbers();
         int actual = mn.mersenne(2);
-        assertEquals(expected, actual);
+        assertEquals("Error in mersenne method", expected, actual);
     }
 
     /**
@@ -51,7 +52,7 @@ public class MersenneNumbersTest {
         int expected = 15;
         MersenneNumbers mn = new MersenneNumbers();
         int actual = mn.mersenne(4);
-        assertEquals(expected, actual);
+        assertEquals("Error in mersenne method", expected, actual);
     }
 
     /**
@@ -63,7 +64,7 @@ public class MersenneNumbersTest {
         boolean expected = false;
         MersenneNumbers mn = new MersenneNumbers();
         boolean actual = mn.isSmallerThanNumber(10, 31);
-        assertEquals(expected, actual);
+        assertEquals("Error in isSmallerThanNumber method", expected, actual);
     }
 
     /**
@@ -75,7 +76,7 @@ public class MersenneNumbersTest {
         boolean expected = true;
         MersenneNumbers mn = new MersenneNumbers();
         boolean actual = mn.isSmallerThanNumber(50, 31);
-        assertEquals(expected, actual);
+        assertEquals("Error in isSmallerThanNumber method", expected, actual);
     }
 
     /**
@@ -87,11 +88,60 @@ public class MersenneNumbersTest {
      * Boundary Values: 0, 1, 2.
      */
     @Test
-    public void testfindSmallerThanNumberMersenneNumbers() {
+    public void testfindSmallerThanNumberMersenneNumbers1() {
         List<Integer> actual;
         List<Integer> expected = Arrays.asList(1, 3, 7, 15, 31);
         MersenneNumbers mersenneNumbers = new MersenneNumbers();
         actual = mersenneNumbers.findSmallerThanNumberMersenneNumbers(50);
-        assertEquals(expected, actual);
+        assertEquals("Error in findSmallerThanNumberMersenneNumbers", expected, actual);
+    }
+
+    /**
+     * This method tests findSmallerThanNumberMersenneNumbers method.
+     * The method finds all mersenne numbers that are smaller than some number.
+     * In this case the boundary value 2 is checked.
+     */
+    @Test
+    public void testfindSmallerThanNumberMersenneNumbers2() {
+        List<Integer> actual;
+        List<Integer> expected = Arrays.asList(1);
+        MersenneNumbers mersenneNumbers = new MersenneNumbers();
+        actual = mersenneNumbers.findSmallerThanNumberMersenneNumbers(2);
+        assertEquals("Error in findSmallerThanNumberMersenneNumbers", expected, actual);
+    }
+
+    /**
+     * This method tests findSmallerThanNumberMersenneNumbers method.
+     * The method finds all mersenne numbers that are smaller than some number.
+     * In this case the boundary value 1 is checked.
+     */
+    @Test
+    public void testfindSmallerThanNumberMersenneNumbers3() {
+        List<Integer> actual;
+        List<Integer> expected = new ArrayList<>();
+        MersenneNumbers mersenneNumbers = new MersenneNumbers();
+        actual = mersenneNumbers.findSmallerThanNumberMersenneNumbers(1);
+        assertEquals("Error in findSmallerThanNumberMersenneNumbers", expected, actual);
+    }
+
+    /**
+     * This method tests findSmallerThanNumberMersenneNumbers method.
+     * The method finds all mersenne numbers that are smaller than some number.
+     * This is the negative test in which the boundary value 0 is checked.
+     */
+    @Test (expected = IllegalArgumentException.class)
+    public void testfindSmallerThanNumberMersenneNumbers4() {
+        MersenneNumbers mersenneNumbers = new MersenneNumbers();
+        mersenneNumbers.findSmallerThanNumberMersenneNumbers(0);
+    }
+
+    /**
+     * This method tests findSmallerThanNumberMersenneNumbers method.
+     * This is negative test where number is negative.
+     */
+    @Test (expected = IllegalArgumentException.class)
+    public void testfindSmallerThanNumberMersenneNumbers5() {
+        MersenneNumbers mersenneNumbers = new MersenneNumbers();
+        mersenneNumbers.findSmallerThanNumberMersenneNumbers(-50);
     }
 }
