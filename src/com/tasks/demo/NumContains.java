@@ -7,6 +7,7 @@ package com.tasks.demo;
  */
 
 public class NumContains {
+	
 	/* This constant contains digit we're looking */
 	private static final int DIGIT_FOR_LOOKING = 3;
 	
@@ -23,6 +24,5 @@ public class NumContains {
 			n = n / 10;
 		}
 		return isContains;
-	}
-	
+	}	
 }

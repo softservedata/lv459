@@ -26,6 +26,5 @@ public class Dividers {
 			}
 		}
 		return result;
-	}
-	
+	}	
 }

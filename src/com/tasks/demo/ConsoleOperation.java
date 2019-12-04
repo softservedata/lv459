@@ -3,7 +3,7 @@ package com.tasks.demo;
 import java.util.Scanner;
 
 /**
- * This class contains Scanner for Input/Output.
+ * The {@code ConsoleOperation} class read data from user.
  * 
  * @see java.util.Scanner;
  * 
@@ -12,22 +12,24 @@ import java.util.Scanner;
 
 public class ConsoleOperation {
 	
-	public static int readNumber() {
+	public static int readNaturalNumber() {
 		
 		int number;
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter any number = ");
+		System.out.print("Enter any natural number = ");
+		
 		
 		try {
 			String s = scan.nextLine();
 			number = Integer.parseInt(s);
-			//result = Double.parseDouble(br.readLine());
 		} catch (NumberFormatException e) {
-			// e.printStackTrace();
 			throw new RuntimeException("Read Error", e);
 		} finally {
 			scan.close();
 		}
+		if (number <= 0) {
+			throw new IllegalArgumentException("Number must be natural!");
+        }
 		return number;
 	}
 }

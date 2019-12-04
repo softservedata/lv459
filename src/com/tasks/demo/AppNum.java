@@ -1,7 +1,7 @@
 package com.tasks.demo;
 
 /*
- * Running application NumContains
+ * Running application NumContains.
  */
 
 public class AppNum {
@@ -11,8 +11,8 @@ public class AppNum {
 		SquaredNum sn = new SquaredNum();
 		NumContains nc = new NumContains();
 		
-		int n = ConsoleOperation.readNumber();	
-		int squared = sn.getSquared(n);	
-		System.out.println(nc.isConsist(squared));
+		int n = ConsoleOperation.readNaturalNumber();	
+		int squared = sn.getSquared(n);
+		nc.isConsist(squared);
 	}
 }

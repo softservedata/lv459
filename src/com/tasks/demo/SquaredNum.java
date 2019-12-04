@@ -1,7 +1,7 @@
 package com.tasks.demo;
 
 /**
- * The {@code SquaredNum} class calculates the square of given number.
+ * The {@code SquaredNum} class calculates the square of the given number.
  * 
  * @version 13.0.1 15 Oct 2019
  */
@@ -12,7 +12,6 @@ public class SquaredNum {
 	public int getSquared(int n) {
 		
 		int result = n * n;
-		return result;
+		return result;		
 	}
-
 }

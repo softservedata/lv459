@@ -26,6 +26,5 @@ public class Maximum {
 		}
 		return numberWithBiggestDividersSum;
 	}
-	
 }
 

@@ -22,5 +22,4 @@ public class NumReverse {
 		}
 		return Integer.parseInt(result);
 	}
-
 }

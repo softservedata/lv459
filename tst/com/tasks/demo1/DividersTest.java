@@ -8,7 +8,12 @@ import org.junit.Test;
 /**
  * Test case for Dividers class method.
  * 
- * Test Design Techniques: Equivalence Partitioning
+ * Test Design Techniques: Equivalence Partitioning and Boundary Values.
+ * 
+ * Equivalence Partitioning is checking next values {negative, 0}; {1}; 
+ * {2, 3, 5 (simple numbers with two dividers)}; {4, 6 (numbers with more than 2 dividers)}.
+ * 
+ * Boundary Values is checking values {0}, {1}, {2}.
  * 
  * @version 13.0.1 15 Oct 2019
  */
@@ -25,7 +30,7 @@ public class DividersTest {
 		
 		List<Integer> expected = Arrays.asList(1, 2, 4);
 		List<Integer> actual = div.getDividers(4);
-		Assert.assertEquals("error_1", expected, actual); 
+		Assert.assertEquals(expected, actual); 
 		
 	}
 	
@@ -37,7 +42,7 @@ public class DividersTest {
 		
 		List<Integer> expected = Arrays.asList(1, 2);
 		List<Integer> actual = div.getDividers(2);
-		Assert.assertEquals("error_2", expected, actual); 
+		Assert.assertEquals(expected, actual); 
 		
 	}
 	
@@ -49,7 +54,7 @@ public class DividersTest {
 		
 		List<Integer> expected = Arrays.asList(1);
 		List<Integer> actual = div.getDividers(1);
-		Assert.assertEquals("error_3", expected, actual);
+		Assert.assertEquals(expected, actual);
 		
 	}
 	
@@ -61,7 +66,7 @@ public class DividersTest {
 		
 		List<Integer> expected = Arrays.asList();
 		List<Integer> actual = div.getDividers(0);
-		Assert.assertEquals("error_4", expected, actual);
+		Assert.assertEquals(expected, actual);
 		
 	}
 	
@@ -73,7 +78,7 @@ public class DividersTest {
 		
 		List<Integer> expected = Arrays.asList();
 		List<Integer> actual = div.getDividers(-1);
-		Assert.assertEquals("error_5", expected, actual);
+		Assert.assertEquals(expected, actual);
 		
 	}
 }
