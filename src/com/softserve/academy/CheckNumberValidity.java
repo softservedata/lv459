@@ -32,11 +32,9 @@ public class CheckNumberValidity {
         return true;
     }
 
-    public boolean isNumberNatural(NumberDTO numberDTO) {
-        if (numberDTO.getInputNumber() > 0
-            && numberDTO.getInputNumber() % 1 == 0) {
-            return true;
+    public void isNumberNatural(NumberDTO numberDTO) {
+        if (numberDTO.getInputNumber() <= 0) {
+            throw new RuntimeException("Error: Number is not natural!!!");
         }
-        return false;
     }
 }

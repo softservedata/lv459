@@ -15,15 +15,17 @@ public class Task332 {
      */
     public NumberDTO calculateLergange(final NumberDTO numberDTO) {
 
-        if ((numberDTO == null)
-            && new CheckNumberValidity().isNumberNatural(numberDTO)) {
+        if (numberDTO == null) {
+            throw new RuntimeException("Something went wrong in calculate"
+                                       + "Legrange method");
+        }
+            new CheckNumberValidity().isNumberNatural(numberDTO);
 
             int a;
             int b;
             int c;
             int d;
             int input = numberDTO.getInputNumber();
-            boolean control = false;
 
             a = getSqrtFromNumber(input);
             for (; a > 0; a--) {
@@ -44,8 +46,7 @@ public class Task332 {
                     }
                 }
             }
-        } else throw new RuntimeException(
-                "Something went wrong in calculate" + "Legrange method");
+
         return numberDTO;
     }
 
