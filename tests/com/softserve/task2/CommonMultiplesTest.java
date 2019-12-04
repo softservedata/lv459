@@ -101,10 +101,22 @@ public class CommonMultiplesTest {
 
     /**
      * This method tests the findMultipleSmallerThanMultiplication method.
-     * This is negative test for IllegalArgumentException when multiplication is negative.
+     * This test checks how the method works when there are numbers without common multiples
+     * that are smaller than their multiplication.
      */
     @Test(expected = IllegalArgumentException.class)
     public void findMultipleSmallerThanMultiplication5() {
+        List<Integer> list = Arrays.asList(-10, 22);
+        int multiplication = -10 * 22;
+        CommonMultiples cm = new CommonMultiples();
+        List<Integer> actual = cm.findCommonMultipleSmallerThanMultiplication(multiplication, list);
+    }
+    /**
+     * This method tests the findMultipleSmallerThanMultiplication method.
+     * This is negative test for IllegalArgumentException when multiplication is negative.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void findMultipleSmallerThanMultiplication6() {
         CommonMultiples cm = new CommonMultiples();
         cm.findCommonMultipleSmallerThanMultiplication(-20, Arrays.asList(10, 2));
     }
@@ -114,7 +126,7 @@ public class CommonMultiplesTest {
      * This is negative test for IllegalArgumentException when list is null.
      */
     @Test(expected = IllegalArgumentException.class)
-    public void findMultipleSmallerThanMultiplication6() {
+    public void findMultipleSmallerThanMultiplication7() {
         List<Integer> list = null;
         CommonMultiples cm = new CommonMultiples();
         cm.findCommonMultipleSmallerThanMultiplication(200, list);

@@ -1,6 +1,5 @@
 package com.softserve.task2;
 
-import com.softserve.task1.GetNumbers;
 import java.util.List;
 
 /**

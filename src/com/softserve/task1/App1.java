@@ -1,7 +1,9 @@
 package com.softserve.task1;
 
+import com.softserve.task2.GetNumbers;
+
 import java.util.List;
-import java.util.ArrayList;
+
 /**
  * <h1>App1</h1>
  * <p>The class implements program than finds

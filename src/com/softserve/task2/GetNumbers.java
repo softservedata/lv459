@@ -1,4 +1,4 @@
-package com.softserve.task1;
+package com.softserve.task2;
 
 import java.util.List;
 import java.util.ArrayList;
