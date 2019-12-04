@@ -101,8 +101,7 @@ public class CommonMultiplesTest {
 
     /**
      * This method tests the findMultipleSmallerThanMultiplication method.
-     * This test checks how the method works when there are numbers without common multiples
-     * that are smaller than their multiplication.
+     * This is a negative test when it is not a natural number.
      */
     @Test(expected = IllegalArgumentException.class)
     public void findMultipleSmallerThanMultiplication5() {
