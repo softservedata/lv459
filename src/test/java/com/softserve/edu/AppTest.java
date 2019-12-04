@@ -12,9 +12,15 @@ public class AppTest {
      * Test.
      */
     @Test
-    public void chackApp() {
-        System.out.println("chackApp()");
+    public void checkApp() {
+        System.out.println("AppTest: checkApp()");
         Assert.assertTrue(true);
     }
     
+    @Test
+    public void checkApp2() {
+        System.out.println("***surefire.application.password = " + System.getProperty("surefire.application.password"));
+        System.out.println("***System.getenv().MY_PASSWORD = " + System.getenv().get("MY_PASSWORD"));
+        Assert.assertTrue(true);
+    }
 }
