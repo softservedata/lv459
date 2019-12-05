@@ -26,13 +26,24 @@ public class SquaresOfEvenNumbersAppl {
     }
 
     /**
+     * Check if a number is natural.
+     *
+     * @param number Number to check.
+     * @return true or false.
+     */
+    public boolean checkIfNaturalNumber(final int number) {
+        return number > 0 ? true : false;
+    }
+
+    /**
      * Check if square root of a number is even.
      *
      * @param number Number to check.
      * @return this number if true.
      */
     public boolean checkSqrt(final int number) {
-        return ((Math.sqrt(number) % 2)) == 0 ? true : false;
+        return ((checkIfNaturalNumber(number)
+                && (Math.sqrt(number) % 2) == 0)) ? true : false;
     }
 
     /**

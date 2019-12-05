@@ -73,6 +73,7 @@ hs_err_pid*
 /**/reports
 /**/af.reporting
 /**/.idea/
+/**/out/
 /**/*.iml
 /**/*.ucls
 

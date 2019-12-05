@@ -36,6 +36,16 @@ public class MultiplesOfThreeAppl {
     }
 
     /**
+     * Check if a number is natural.
+     *
+     * @param number Number to check.
+     * @return true or false.
+     */
+    public boolean checkIfNaturalNumber(final int number) {
+        return number > 0 ? true : false;
+    }
+
+    /**
      * Check if a number is multiple of 3.
      *
      * @param number Number to check.
@@ -43,7 +53,8 @@ public class MultiplesOfThreeAppl {
      */
     public boolean checkForMultiplesOfThree(final int number) {
 
-        return ((number % MULTIPLES_OF_THREE) == 0) ? true : false;
+        return ((checkIfNaturalNumber(number)
+                && (number % MULTIPLES_OF_THREE) == 0)) ? true : false;
     }
 
     /**
@@ -53,7 +64,8 @@ public class MultiplesOfThreeAppl {
      * @return true or false.
      */
     public boolean checkForNotMultiplesOfFive(final int number) {
-        return ((number % MULTIPLES_OF_FIVE)) != 0 ? true : false;
+        return ((checkIfNaturalNumber(number)
+                && (number % MULTIPLES_OF_FIVE) != 0)) ? true : false;
     }
 
     /**
