@@ -24,10 +24,20 @@
 		<jdk.compiler.version>1.8</jdk.compiler.version>
 		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<!-- - - - - - Test - - - - - -->
+		<org.junit.version>4.12</org.junit.version>
+		<!-- <org.junit.version>4.13-rc-2</org.junit.version> -->
 		<!-- <org.testng.version>6.9.10</org.testng.version> -->
 		<org.testng.version>7.0.0</org.testng.version>
 		<testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
 		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
+		<!-- - - - - - Automation - - - - - -->
+		<org.seleniumhq.selenium.version>3.141.59</org.seleniumhq.selenium.version>
+		<org.seleniumhq.selenium.htmlunit-driver>2.36.0</org.seleniumhq.selenium.htmlunit-driver>
+		<com.codeborne.phantomjsdriver.version>1.4.4</com.codeborne.phantomjsdriver.version>
+		<maven.os-maven-plugin.version>1.6.2</maven.os-maven-plugin.version>
+		<maven.webdriverextensions-maven-plugin.version>3.2.0</maven.webdriverextensions-maven-plugin.version>
+		<!-- - - - - - Reports - - - - - -->
+		<testng.reports.directory>target/surefire-reports/test-output</testng.reports.directory>
 	</properties>
 
 	<dependencies>
@@ -35,19 +45,28 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13-rc-2</version>
+			<version>${org.junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
-			<version>3.141.59</version>
+			<version>${org.seleniumhq.selenium.version}</version>
 		</dependency>
 
 	</dependencies>
 
 	<build>
+
+		<extensions>
+			<extension>
+				<groupId>kr.motd.maven</groupId>
+				<artifactId>os-maven-plugin</artifactId>
+				<version>${maven.os-maven-plugin.version}</version>
+			</extension>
+		</extensions>
+
 		<plugins>
 
 			<plugin>
@@ -71,6 +90,45 @@
 			</plugin>
 
 			<plugin>
+				<groupId>com.github.webdriverextensions</groupId>
+				<artifactId>webdriverextensions-maven-plugin</artifactId>
+				<version>${maven.webdriverextensions-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>pre-test</id>
+						<goals>
+							<goal>install-drivers</goal>
+						</goals>
+						<!-- Uncomment for download automatically -->
+						<phase>test-compile</phase>
+						<!-- <phase>process-test-classes</phase> -->
+						<!-- <phase>test</phase> -->
+					</execution>
+				</executions>
+				<configuration>
+					<installationDirectory>${project.build.directory}/test-classes</installationDirectory>
+					<!-- <installationDirectory>${project.basedir}/src/test/resources</installationDirectory> -->
+					<keepDownloadedWebdrivers>true</keepDownloadedWebdrivers>
+					<drivers>
+						<driver>
+							<name>chromedriver</name>
+							<!--suppress UnresolvedMavenProperty -->
+							<platform>${os.detected.name}</platform>
+							<!-- <platform>windows</platform> -->
+							<bit>32</bit>
+							<!-- <version>74.0.3729.6</version> -->
+							<!-- <url>https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip</url> -->
+							<!-- <version>76.0.3809.126</version> -->
+							<!-- <url>https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip</url> -->
+							<url>https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip</url>
+							<!-- <version>79.0.3945.36</version> -->
+							<!-- <version>78.0.3904.105</version> -->
+						</driver>
+					</drivers>
+				</configuration>
+			</plugin>
+
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven.surefire.plugin.version}</version>
@@ -82,10 +140,11 @@
 							${application.password}
 						</surefire.application.password>
 					</systemPropertyVariables>
-					<!-- <includes> -->
-					<!-- <include>**/*.java</include> -->
-					<!-- <include>**/MyData.java</include> -->
-					<!-- </includes> -->
+					<includes>
+						<!-- <include>**/*.java</include> -->
+						<!-- <include>**/MyData.java</include> -->
+						<include>**/SimpleTest.java</include>
+					</includes>
 					<!-- <excludes> -->
 					<!-- <exclude>**/AppTest.java</exclude> -->
 					<!-- </excludes> -->
