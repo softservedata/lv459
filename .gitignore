@@ -72,7 +72,8 @@ hs_err_pid*
 /**/reports
 /**/af.reporting
 /**/.idea/
-/**/*.iml
+/**/out/
+*.iml
 /**/*.ucls
 
 # Ignore binary
