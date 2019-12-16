@@ -6,10 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class IncorrectPasswordTest {
@@ -25,11 +23,9 @@ public class IncorrectPasswordTest {
         driver.get("http://192.168.214.128/opencart/upload/");
         Thread.sleep(1000); // For Presentation Only
         //
-        WebElement login = driver
-                .findElement(By.xpath("//a[contains(text(), 'Login')]"));
+        driver.findElement(By.xpath("//i[@class = 'fa fa-user']")).click();
         //
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();",
-                login);
+        driver.findElement(By.partialLinkText("Login")).click();
         //
         Thread.sleep(1000); // For Presentation Only
         for (int i = 0; i < 6; i++) {

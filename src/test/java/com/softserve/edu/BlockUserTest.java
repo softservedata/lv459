@@ -1,7 +1,6 @@
 package com.softserve.edu;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.concurrent.TimeUnit;
 
@@ -62,7 +61,7 @@ public class BlockUserTest {
         Thread.sleep(1000); // For Presentation Only
         //
         action.moveToElement(driver.findElement(By.className("fa-save")))
-                .perform(); // 2 класи!!!
+                .perform();
         driver.findElement(By.className("fa-save")).click();
         Thread.sleep(1000); // For Presentation Only
         //
@@ -141,8 +140,15 @@ public class BlockUserTest {
         driver.findElement(By.id("input-password")).submit();
         Thread.sleep(1000); // For Presentation Only
         //
-        assertNotNull(driver
-                .findElement(By.xpath("//a[contains(text(), 'Logout')]")));//edit first last name
+        driver.findElement(By
+                .xpath("//*[contains(text(),'Edit your account information')]"))
+                .click();
+        Thread.sleep(1000); // For Presentation Only
+        //
+        assertEquals("Andry", driver.findElement(By.id("input-firstname"))
+                .getAttribute("value"));
+        assertEquals("Lastname", driver.findElement(By.id("input-lastname"))
+                .getAttribute("value"));
         Thread.sleep(4000); // For Presentation Only
         driver.quit();
     }
