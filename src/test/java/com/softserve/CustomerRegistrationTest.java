@@ -14,13 +14,11 @@ import java.util.concurrent.TimeUnit;
 public class CustomerRegistrationTest {
 
   private static WebDriver driver;
+  public static int delay = 10;
 
   @BeforeClass
   public static void startDriver() throws Exception {
     System.out.println("@BeforeClass-Start Driver");
-
-   //    System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-    System.setProperty("webdriver.chrome.driver", this.getClass().getResource("chromedriver*").getPath());
 
     driver = new ChromeDriver();
     driver.manage().window().maximize();
@@ -30,14 +28,20 @@ public class CustomerRegistrationTest {
   @AfterClass
   public static void stopDriver() throws Exception {
     System.out.println("@AfterClass - Stop Driver");
-    Thread.sleep(2000);
+    Thread.sleep(delay);
     driver.quit();
   }
 
   @Before
-  public void pageLoad(){
+  public void pageLoad() {
     System.out.println("@Before method - Loading Page");
     driver.get("http://172.16.0.128/opencart/upload/");
+    driver.findElement(By.className("dropdown")).click();
+    if (driver.findElements(By.cssSelector("ul.dropdown-menu.dropdown-menu-right > li")).size()
+        > 2) {
+      System.out.println("Clicking logout");
+      driver.findElement(By.cssSelector("ul.dropdown-menu.dropdown-menu-right > li > a[href*='logout']")).click();
+    } else driver.findElement(By.className("dropdown")).click();
   }
 
   @After
@@ -45,16 +49,38 @@ public class CustomerRegistrationTest {
     System.out.println("@After method - Stop Page");
   }
 
+//  @Test
+  public void testing() throws Exception{
+    driver.findElement(By.cssSelector("a[title='My Account']")).click();
+    Thread.sleep(delay); // For Presentation Only
+    // Click login Button
+    driver.findElement(By.cssSelector("#top-links a[href*='account/login']")).click();
+    Thread.sleep(delay); // For Presentation Only
+    //
+    // Steps
+    // Type Login Email
+    driver.findElement(By.cssSelector("#input-email")).click();
+    driver.findElement(By.cssSelector("#input-email")).clear();
+    driver.findElement(By.cssSelector("#input-email")).sendKeys(System.getenv("USER_EMAIL"));
+    Thread.sleep(delay); // For Presentation Only
+    //
+    // Type Password
+    //driver.findElement(By.id("input-password")).click();
+    driver.findElement(By.cssSelector("#input-password")).click();
+    driver.findElement(By.cssSelector("#input-password")).clear();
+    driver.findElement(By.cssSelector("#input-password")).sendKeys(System.getenv("USER_PASSWORD"));
+    Thread.sleep(delay); // For Presentation Only
+    //
+    // Click Login Button
+    driver.findElement(By.cssSelector("input.btn.btn-primary")).click();
+
+  }
 
   @Test
-  public void getEnvironment(){
-    System.out.println(System.getenv("USER_EMAIL"));
-  }
-  @Test
-  public void newCustomerRegistrationTest() throws Exception {
+  public void customerRegistrationTest() throws Exception {
 
     driver.findElement(By.className("dropdown")).click();
-    //    Thread.sleep(1000);
+        Thread.sleep(delay);
     driver.findElement(By.linkText("Register")).click(); // a[href*=]
 
     // Filling section "Your personal details"
@@ -72,7 +98,7 @@ public class CustomerRegistrationTest {
 
     driver.findElement(By.id("input-fax")).clear();
     driver.findElement(By.id("input-fax")).sendKeys("456");
-    //    Thread.sleep(1000);
+        Thread.sleep(delay);
 
     // Filling section "Your address"
     driver.findElement(By.id("input-company")).clear();
@@ -95,18 +121,19 @@ public class CustomerRegistrationTest {
 
     Select dropDownRegion = new Select(((ChromeDriver) driver).findElementById("input-zone"));
     dropDownRegion.selectByValue("3493");
-    //    Thread.sleep(1000);
+        Thread.sleep(delay);
 
     // Filling section "Your Password"
     driver.findElement(By.id("input-password")).clear();
-    driver.findElement(By.id("input-password")).sendKeys(System.getenv("PWD"));
+    driver.findElement(By.id("input-password")).sendKeys(System.getenv("USER_PASSWORD"));
 
     driver.findElement(By.id("input-confirm")).clear();
-    driver.findElement(By.id("input-confirm")).sendKeys(System.getenv("PWD"));
+    driver.findElement(By.id("input-confirm")).sendKeys(System.getenv("USER_PASSWORD"));
 
     driver.findElement(By.name("agree")).click();
 
-    //    Thread.sleep(1000);
+        Thread.sleep(delay);
+        Thread.sleep(delay);
 
     driver.findElement(By.name("agree")).sendKeys(Keys.ENTER);
 
@@ -115,12 +142,16 @@ public class CustomerRegistrationTest {
             .getText();
     System.out.println(created);
     Assert.assertEquals(created, "Your Account Has Been Created!");
-    Thread.sleep(2000);
+    Thread.sleep(delay);
+    Thread.sleep(delay);
+
+    Thread.sleep(delay*2);
   }
 
   @Test
   public void deleteCustomerTest() throws Exception {
 
+    driver.get("http://172.16.0.128/opencart/upload/admin/");
     driver.findElement(By.id("input-username")).click();
     driver.findElement(By.id("input-username")).clear();
     driver.findElement(By.id("input-username")).sendKeys("admin");
@@ -131,7 +162,7 @@ public class CustomerRegistrationTest {
 
     driver.findElement(By.id("input-password")).sendKeys(Keys.ENTER);
 
-    Thread.sleep(1000);
+    Thread.sleep(delay);
 
     driver.findElement(By.id("menu-customer")).click();
 
@@ -146,24 +177,21 @@ public class CustomerRegistrationTest {
     driver.findElement(By.name("selected[]")).click();
     driver.findElement(By.className("btn-danger")).click();
 
-    Thread.sleep(1000);
+    Thread.sleep(delay);
 
     driver.switchTo().alert().accept();
 
-    String text =driver.findElement(By.xpath(
+    Assert.assertTrue(driver.findElement(By.xpath(
             "//*[contains(text(),'Success: You have modified customers!')]"))
-            .getText();
-
-    System.out.println(text);
-
-    Assert.assertEquals("You have modified customers!", text);
+                              .getText().contains("You have modified customers!"));
+    Thread.sleep(5000);
   }
 
   @Test
-  public void customerRegistrationOnefieldInvalidTest() throws Exception {
+  public void customerRegistrationOneFieldInvalidTest() throws Exception {
 
     driver.findElement(By.className("dropdown")).click();
-    //    Thread.sleep(1000);
+        Thread.sleep(delay);
     driver.findElement(By.linkText("Register")).click();
 
     // Filling section "Your personal details"
@@ -181,7 +209,7 @@ public class CustomerRegistrationTest {
 
     driver.findElement(By.id("input-fax")).clear();
     driver.findElement(By.id("input-fax")).sendKeys("456");
-    //    Thread.sleep(1000);
+        Thread.sleep(delay);
 
     // Filling section "Your address"
 
@@ -205,18 +233,18 @@ public class CustomerRegistrationTest {
 
     Select dropDownRegion = new Select(((ChromeDriver) driver).findElementById("input-zone"));
     dropDownRegion.selectByValue("3493");
-    //    Thread.sleep(1000);
+        Thread.sleep(delay);
 
     // Filling section "Your Password"
     driver.findElement(By.id("input-password")).clear();
-    driver.findElement(By.id("input-password")).sendKeys(System.getenv("PWD"));
+    driver.findElement(By.id("input-password")).sendKeys(System.getenv("USER_PASSWORD"));
 
     driver.findElement(By.id("input-confirm")).clear();
-    driver.findElement(By.id("input-confirm")).sendKeys(System.getenv("PWD"));
+    driver.findElement(By.id("input-confirm")).sendKeys(System.getenv("USER_PASSWORD"));
 
     driver.findElement(By.name("agree")).click();
 
-    //    Thread.sleep(1000);
+        Thread.sleep(delay);
 
     driver.findElement(By.name("agree")).sendKeys(Keys.ENTER);
 
@@ -229,12 +257,12 @@ public class CustomerRegistrationTest {
   public void customerRegistrationAllFieldsInvalidTest() throws Exception {
 
     driver.findElement(By.className("dropdown")).click();
-    //    Thread.sleep(1000);
+        Thread.sleep(delay);
     driver.findElement(By.linkText("Register")).click();
 
     driver.findElement(By.name("agree")).click();
 
-    //    Thread.sleep(1000);
+        Thread.sleep(delay);
 
     driver.findElement(By.name("agree")).sendKeys(Keys.ENTER);
 

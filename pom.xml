@@ -113,9 +113,9 @@
                         <driver>
                             <name>chromedriver</name>
                             <!--suppress UnresolvedMavenProperty -->
-                            <!-- >platform>${os.detected.name}</platform-->
-                            <!-- <platform>windows</platform> -->
-                            <!--  >bit>32</bit> -->
+                            <!--<platform>${os.detected.name}</platform>-->
+                            <!--<platform>windows</platform>-->
+                            <!--<bit>32</bit>-->
                             <!-- <version>74.0.3729.6</version> -->
                             <!-- <url>https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip</url> -->
                             <!-- <version>76.0.3809.126</version> -->
