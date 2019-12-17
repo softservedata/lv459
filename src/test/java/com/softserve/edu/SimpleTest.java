@@ -29,11 +29,11 @@ public class SimpleTest {
 		WebElement linkProject = driver.findElement(By.cssSelector(".button-container a"));
 		//
 		// Scrolling by Action class
-		Actions action = new Actions(driver);		
-		action.moveToElement(linkProject).perform();
-		Thread.sleep(1000); // For Presentation Only
+//		Actions action = new Actions(driver);		
+//		action.moveToElement(linkProject).perform();
+//		Thread.sleep(1000); // For Presentation Only
 		//
-		// Scrolling by JavaScript
+		// Scrolling by JavaScript injection
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", linkProject);
 		Thread.sleep(10000); // For Presentation Only
 		//
