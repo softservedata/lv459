@@ -39,7 +39,7 @@ public final class FindTest {
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("\t@Before method");
-		driver.get("http://10.26.34.47/opencart/upload/");
+		driver.get("http://10.26.34.200/opencart/upload/");
 		Thread.sleep(1000); // For Presentation Only
 		driver.manage().window().maximize();
 		Thread.sleep(1000); // For Presentation Only
@@ -101,7 +101,7 @@ public final class FindTest {
 		Thread.sleep(1000); // For Presentation Only
 	}
 
-	@Test
+	// @Test
 	public void loginByCss() throws Exception {
 		// Precondition
 		// Click My Account Button
@@ -135,11 +135,11 @@ public final class FindTest {
 		//
 		// Read Email WebElement
 		//WebElement price = driver.findElement(By.id("input-email"));
-		WebElement price = driver.findElement(By.cssSelector("#input-email"));
+		WebElement email = driver.findElement(By.cssSelector("#input-email"));
 		Thread.sleep(1000); // For Presentation Only
 		//
 		// Check
-		Assert.assertEquals("hahaha@gmail.com", price.getAttribute("value"));
+		Assert.assertEquals("hahaha@gmail.com", email.getAttribute("value"));
 		//
 		// Return to Previous State
 		// Click My Account Button
@@ -150,6 +150,87 @@ public final class FindTest {
 		Thread.sleep(1000); // For Presentation Only
 		// Click Continue Button
 		driver.findElement(By.cssSelector("#content a[href*='common/home']")).click();
+		Thread.sleep(1000); // For Presentation Only
+	}
+
+	//@Test
+	public void findByXPath() throws Exception {
+		// Precondition
+		// Choose Curency
+		driver.findElement(By.xpath("//button[@class='btn btn-link dropdown-toggle']")).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.xpath("//button[@name='EUR']")).click();
+		Thread.sleep(1000); // For Presentation Only
+		//
+		// Steps
+		// Type Search Field
+		driver.findElement(By.xpath("//input[@name='search']")).click();
+		driver.findElement(By.xpath("//input[@name='search']")).clear();
+		driver.findElement(By.xpath("//input[@name='search']")).sendKeys("mac");
+		Thread.sleep(1000); // For Presentation Only
+		//
+		// Click Search Button
+		driver.findElement(By.xpath("//button[@class='btn btn-default btn-lg']")).click();
+		Thread.sleep(1000); // For Presentation Only
+		//
+		// Check
+		WebElement price = driver.findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
+		Assert.assertTrue(price.getText().contains("472.33"));
+		//
+		// Return to Previous State
+		driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
+		Thread.sleep(1000); // For Presentation Only
+	}
+
+	@Test
+	public void loginByXPath() throws Exception {
+		// Precondition
+		// Click My Account Button
+		driver.findElement(By.xpath("//a[@title='My Account']")).click();
+		Thread.sleep(1000); // For Presentation Only
+		// Click login Button
+		driver.findElement(By.xpath("//a[contains(@href, 'account/login')]")).click();
+		Thread.sleep(1000); // For Presentation Only
+		//
+		// Steps
+		// Type Login Email
+		driver.findElement(By.xpath("//input[@id='input-email']")).click();
+		driver.findElement(By.xpath("//input[@id='input-email']")).clear();
+		driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("hahaha@gmail.com");
+		Thread.sleep(1000); // For Presentation Only
+		//
+		// Type Password
+		//driver.findElement(By.id("input-password")).click();
+		driver.findElement(By.xpath("//input[@id='input-password']")).click();
+		driver.findElement(By.xpath("//input[@id='input-password']")).clear();
+		driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("qwerty");
+		Thread.sleep(1000); // For Presentation Only
+		//
+		// Click Login Button
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		Thread.sleep(1000); // For Presentation Only
+		//
+		// Goto Edit Account
+		driver.findElement(By.xpath("//aside//a[contains(@href, 'account/edit')]")).click();
+		Thread.sleep(1000); // For Presentation Only
+		//
+		// Read Email WebElement
+		//WebElement price = driver.findElement(By.id("input-email"));
+		WebElement email = driver.findElement(By.xpath("//input[@type='email']"));
+		Thread.sleep(1000); // For Presentation Only
+		//
+		// Check
+		Assert.assertEquals("hahaha@gmail.com", email.getAttribute("value"));
+		//
+		// Return to Previous State
+		// Click My Account Button
+		driver.findElement(By.xpath("//a[@title='My Account']")).click();
+		Thread.sleep(1000); // For Presentation Only
+		// Click Logout Button
+		driver.findElement(By.xpath("//a[contains(@href, 'account/logout')]")).click();
+		Thread.sleep(1000); // For Presentation Only
+		// Click Continue Button
+		driver.findElement(By.xpath("//div[@id='content']//a[contains(@href, 'common/home')]")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
 
