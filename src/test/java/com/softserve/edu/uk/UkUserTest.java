@@ -1,0 +1,48 @@
+package com.softserve.edu.uk;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+
+public class UkUserTest extends LocalTestRunnerUk {
+    //@Test
+    public void checkUsWithTaxCurrency() throws Exception {
+        WebElement price = driver.findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
+        Assert.assertTrue(price.getText().contains("602.00"));
+    }
+
+    //@Test
+    public void checkUsNoTaxCurrency() throws Exception {
+        WebElement price = driver.findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']/span"));
+        Assert.assertTrue(price.getText().contains("500.00"));
+    }
+
+    //@Test
+    public void checkEuWithTaxCurrency() throws Exception {
+        driver.findElement(By.xpath("//div[@class='pull-left']")).click();
+        Thread.sleep(1000); // For Presentation Only
+        driver.findElement(By.xpath("//ul[@class='dropdown-menu']/li/button[@name='EUR']")).click();
+        Thread.sleep(1000); // For Presentation Only
+        WebElement element = driver.findElement(By.id("carousel0"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(1000); // For Presentation Only
+        WebElement price = driver.findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
+        Assert.assertTrue(price.getText().contains("472.33"));
+    }
+
+    //@Test
+    public void checkEuNoTaxCurrency() throws Exception {
+        driver.findElement(By.xpath("//div[@class='pull-left']")).click();
+        Thread.sleep(1000); // For Presentation Only
+        driver.findElement(By.xpath("//ul[@class='dropdown-menu']/li/button[@name='EUR']")).click();
+        Thread.sleep(1000); // For Presentation Only
+        WebElement element = driver.findElement(By.id("carousel0"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(1000); // For Presentation Only
+        WebElement price = driver.findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
+        Assert.assertTrue(price.getText().contains("392.30"));
+    }
+
+}
