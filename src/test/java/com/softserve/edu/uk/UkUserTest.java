@@ -45,4 +45,27 @@ public class UkUserTest extends LocalTestRunnerUk {
         Assert.assertTrue(price.getText().contains("392.30"));
     }
 
+    //@Test
+    public void checkUsWithTaxCurrencyCart() throws Exception {
+        WebElement element = driver.findElement(By.id("carousel0"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(1000); // For Presentation Only
+        driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//button[contains(@onclick, 'cart')]"));
+        Thread.sleep(1000); // For Presentation Only
+        WebElement price = driver.findElement(By.xpath("//*[@id='cart']//span"));
+        Assert.assertTrue(price.getText().contains("602.00"));
+    }
+
+    @Test
+    public void checkUsTaxCart() throws Exception {
+        WebElement element = driver.findElement(By.id("carousel0"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(1000); // For Presentation Only
+        driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//button[contains(@onclick, 'cart')]")).click();
+        Thread.sleep(1000); // For Presentation Only
+        driver.findElement(By.xpath("//*[@id='cart']")).click();
+        WebElement taxPrice = driver.findElement(By.xpath("//ul[@class='dropdown-menu pull-right']/li/div//tbody//strong[contains(text(), 'VAT')]/../following-sibling::td"));
+        Thread.sleep(1000); // For Presentation Only
+        Assert.assertTrue(taxPrice.getText().contains("100.00"));
+    }
 }
