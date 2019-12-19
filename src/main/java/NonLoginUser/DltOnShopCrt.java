@@ -19,6 +19,5 @@ public class DltOnShopCrt {
         driver.findElement(By.xpath("//*[@id='content']/div[2]/div[1]/div/div[3]/button[1]/i")).click();
         driver.findElement(By.xpath("//*[@id='top-links']/ul/li[4]/a")).click();
         driver.findElement(By.xpath("//*[@id='content']/form/div/table/tbody/tr/td[4]/div/span/button[2]")).click();
-
     }
 }

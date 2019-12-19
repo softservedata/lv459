@@ -52,7 +52,7 @@ public class AddWithOptionsL {
 
         Alert alert_box = driver.switchTo().alert();
         alert_box.accept();
-        driver.findElement(By.xpath("//*[@id='button-cart']")).click();
+        driver.findElement(By.id("button-cart")).click();
 
     }
     public void loginUser() throws InterruptedException {
