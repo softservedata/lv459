@@ -47,7 +47,7 @@ public class CustomerDeleteTest extends LocalTestRunnerAdminPanel {
     private void prerequisitesCreateCustomer (){
         WebDriver webdriver = new ChromeDriver();
         webdriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        webdriver.get("http://172.16.0.128/opencart/upload/");
+        webdriver.get(String.format("http://%s/opencart/upload/", IP));
         webdriver.findElement(By.className("dropdown")).click();
         webdriver.findElement(By.cssSelector("a[href*='account/register']")).click();
 

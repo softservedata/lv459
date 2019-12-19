@@ -6,16 +6,12 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
-public abstract class LocalTestRunnerMainPage {
-
-    protected static WebDriver driver;
-    public static final int DELAY = 1000;
+public abstract class LocalTestRunnerMainPage extends LocalTestRunnerSetIp {
 
     @BeforeClass
     public static void startDriver() throws Exception {
@@ -43,7 +39,7 @@ public abstract class LocalTestRunnerMainPage {
     @Before
     public void pageLoad() {
         System.out.println("@Before method - Loading Page");
-        driver.get("http://172.16.0.128/opencart/upload/");
+        driver.get(String.format("http://%s/opencart/upload/", IP));
     }
 
     @After

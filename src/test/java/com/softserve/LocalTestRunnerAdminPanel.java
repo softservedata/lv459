@@ -7,15 +7,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
-public abstract class LocalTestRunnerAdminPanel {
-    protected static WebDriver driver;
-    public static final int DELAY = 1000;
+public abstract class LocalTestRunnerAdminPanel extends LocalTestRunnerSetIp{
 
     @BeforeClass
     public static void startDriver() throws Exception {
@@ -44,7 +41,7 @@ public abstract class LocalTestRunnerAdminPanel {
     @Before
     public void pageLoad() throws Exception{
         System.out.println("@Before method - Loading Page");
-        driver.get("http://172.16.0.128/opencart/upload/admin/");
+        driver.get(String.format("http://%s/opencart/upload/admin/", IP));
 
         // Login as admin
         driver.findElement(By.id("input-username")).click();
