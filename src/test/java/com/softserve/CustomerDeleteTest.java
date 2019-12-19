@@ -28,7 +28,7 @@ public class CustomerDeleteTest extends LocalTestRunnerAdminPanel {
 
         driver.findElement(By.id("input-email")).click();
         driver.findElement(By.id("input-email")).clear();
-        driver.findElement(By.id("input-email")).sendKeys(System.getenv("USER_EMAIL"));
+        driver.findElement(By.id("input-email")).sendKeys(USER_EMAIL);
         driver.findElement(By.id("button-filter")).click();
         driver.findElement(By.name("selected[]")).click();
         driver.findElement(By.className("btn-danger")).click();
@@ -59,7 +59,7 @@ public class CustomerDeleteTest extends LocalTestRunnerAdminPanel {
         webdriver.findElement(By.id("input-lastname")).sendKeys("Pe");
 
         webdriver.findElement(By.id("input-email")).clear();
-        webdriver.findElement(By.id("input-email")).sendKeys(System.getenv("USER_EMAIL"));
+        webdriver.findElement(By.id("input-email")).sendKeys(USER_EMAIL);
 
         webdriver.findElement(By.id("input-telephone")).clear();
         webdriver.findElement(By.id("input-telephone")).sendKeys("123");
@@ -91,9 +91,9 @@ public class CustomerDeleteTest extends LocalTestRunnerAdminPanel {
 
         // Filling section "Your Password"
         webdriver.findElement(By.id("input-password")).clear();
-        webdriver.findElement(By.id("input-password")).sendKeys(System.getenv("USER_PASSWORD"));
+        webdriver.findElement(By.id("input-password")).sendKeys(USER_PASSWORD);
         webdriver.findElement(By.id("input-confirm")).clear();
-        webdriver.findElement(By.id("input-confirm")).sendKeys(System.getenv("USER_PASSWORD"));
+        webdriver.findElement(By.id("input-confirm")).sendKeys(USER_PASSWORD);
         webdriver.findElement(By.name("agree")).click();
         webdriver.findElement(By.name("agree")).sendKeys(Keys.ENTER);
         webdriver.quit();

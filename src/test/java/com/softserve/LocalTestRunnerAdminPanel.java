@@ -50,7 +50,7 @@ public abstract class LocalTestRunnerAdminPanel extends LocalTestRunnerSetIp{
 
         driver.findElement(By.id("input-password")).click();
         driver.findElement(By.id("input-password")).clear();
-        driver.findElement(By.id("input-password")).sendKeys(System.getenv("DB_PASSWORD"));
+        driver.findElement(By.id("input-password")).sendKeys(DB_PASSWORD);
 
         Thread.sleep(DELAY);
 

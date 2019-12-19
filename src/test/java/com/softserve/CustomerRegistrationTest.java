@@ -32,7 +32,7 @@ public class CustomerRegistrationTest extends LocalTestRunnerMainPage {
 
         driver.findElement(By.id("input-email")).clear();
         driver.findElement(By.id("input-email"))
-                .sendKeys(System.getenv("USER_EMAIL"));
+                .sendKeys(USER_EMAIL);
 
         driver.findElement(By.id("input-telephone")).clear();
         driver.findElement(By.id("input-telephone")).sendKeys("123");
@@ -69,11 +69,11 @@ public class CustomerRegistrationTest extends LocalTestRunnerMainPage {
         // Filling section "Your Password"
         driver.findElement(By.id("input-password")).clear();
         driver.findElement(By.id("input-password"))
-                .sendKeys(System.getenv("USER_PASSWORD"));
+                .sendKeys(USER_PASSWORD);
 
         driver.findElement(By.id("input-confirm")).clear();
         driver.findElement(By.id("input-confirm"))
-                .sendKeys(System.getenv("USER_PASSWORD"));
+                .sendKeys(USER_PASSWORD);
 
         driver.findElement(By.name("agree")).click();
 
@@ -108,7 +108,7 @@ public class CustomerRegistrationTest extends LocalTestRunnerMainPage {
         driver.findElement(By.cssSelector("#input-email")).click();
         driver.findElement(By.cssSelector("#input-email")).clear();
         driver.findElement(By.cssSelector("#input-email"))
-                .sendKeys(System.getenv("USER_EMAIL"));
+                .sendKeys(USER_EMAIL);
         Thread.sleep(DELAY); // For Presentation Only
 
         // Type Password
@@ -116,7 +116,7 @@ public class CustomerRegistrationTest extends LocalTestRunnerMainPage {
         driver.findElement(By.cssSelector("#input-password")).click();
         driver.findElement(By.cssSelector("#input-password")).clear();
         driver.findElement(By.cssSelector("#input-password"))
-                .sendKeys(System.getenv("USER_PASSWORD"));
+                .sendKeys(USER_PASSWORD);
         Thread.sleep(DELAY); // For Presentation Only
         //
         // Click Login Button
@@ -144,7 +144,7 @@ public class CustomerRegistrationTest extends LocalTestRunnerMainPage {
 
         driver.findElement(By.id("input-email")).clear();
         driver.findElement(By.id("input-email"))
-                .sendKeys(System.getenv("USER_EMAIL"));
+                .sendKeys(USER_EMAIL);
 
         driver.findElement(By.id("input-telephone")).clear();
         driver.findElement(By.id("input-telephone")).sendKeys("123");
@@ -181,11 +181,11 @@ public class CustomerRegistrationTest extends LocalTestRunnerMainPage {
         // Filling section "Your Password"
         driver.findElement(By.id("input-password")).clear();
         driver.findElement(By.id("input-password"))
-                .sendKeys(System.getenv("USER_PASSWORD"));
+                .sendKeys(USER_PASSWORD);
 
         driver.findElement(By.id("input-confirm")).clear();
         driver.findElement(By.id("input-confirm"))
-                .sendKeys(System.getenv("USER_PASSWORD"));
+                .sendKeys(USER_PASSWORD);
 
         // Checkbox "Privacy policy"
         driver.findElement(By.name("agree")).click();
