@@ -14,7 +14,7 @@ public class WishListIsEmptyByDefaultTest {
      * Precondition: user user is logged in, Wish List is empty
      */
     @Test
-    public void testWishListIsEmptyByDefault() throws InterruptedException {
+    public void checkWishListIsEmptyByDefault() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver",
                 this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
         WebDriver driver = new ChromeDriver();
