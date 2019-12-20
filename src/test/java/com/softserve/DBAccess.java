@@ -16,6 +16,7 @@ public class DBAccess {
                     "lv459",
                     DB_PASSWORD);
 
+            System.out.println("Trying JDBC");
             Statement statement = connection.prepareStatement(
                     "select * from opencart.oc_customer");
             ResultSet rs = ((PreparedStatement) statement).executeQuery();
@@ -26,10 +27,6 @@ public class DBAccess {
                         rs.getMetaData(); // отримує метадані таблиці, тип
                 // даних і т.д.
 
-
-                System.out.println(meta.getColumnCount());
-                System.out.println(meta.getColumnName(1)); //
-                System.out.println(meta.getColumnType(1));
             }
         } catch (Exception e) {
             System.out.println("Error" + e.getMessage());

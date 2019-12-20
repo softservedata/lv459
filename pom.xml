@@ -75,105 +75,111 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.25</version>
         </dependency>
+        <!--Jdbc driver-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.39</version>
+        </dependency>
 
-    </dependencies>
+</dependencies>
 
-    <build>
+<build>
 
-        <extensions>
-            <extension>
-                <groupId>kr.motd.maven</groupId>
-                <artifactId>os-maven-plugin</artifactId>
-                <version>${maven.os-maven-plugin.version}</version>
-            </extension>
-        </extensions>
+<extensions>
+    <extension>
+        <groupId>kr.motd.maven</groupId>
+        <artifactId>os-maven-plugin</artifactId>
+        <version>${maven.os-maven-plugin.version}</version>
+    </extension>
+</extensions>
 
-        <plugins>
+<plugins>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven.resources.plugin.version}</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>${maven.resources.plugin.version}</version>
+        <configuration>
+            <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+    </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
-                <configuration>
-                    <source>${jdk.source.version}</source>
-                    <target>${jdk.compiler.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.plugin.version}</version>
+        <configuration>
+            <source>${jdk.source.version}</source>
+            <target>${jdk.compiler.version}</target>
+            <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+    </plugin>
 
-            <plugin>
-                <groupId>com.github.webdriverextensions</groupId>
-                <artifactId>webdriverextensions-maven-plugin</artifactId>
-                <version>${maven.webdriverextensions-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>pre-test</id>
-                        <goals>
-                            <goal>install-drivers</goal>
-                        </goals>
-                        <!-- Uncomment for download automatically -->
-                        <phase>test-compile</phase>
-                        <!-- <phase>process-test-classes</phase> -->
-                        <!-- <phase>test</phase> -->
-                    </execution>
-                </executions>
-                <configuration>
-                    <installationDirectory>${project.build.directory}/test-classes</installationDirectory>
-                    <!-- <installationDirectory>${project.basedir}/src/test/resources</installationDirectory> -->
-                    <keepDownloadedWebdrivers>true</keepDownloadedWebdrivers>
-                    <drivers>
-                        <driver>
-                            <name>chromedriver</name>
-                            <!--suppress UnresolvedMavenProperty -->
-                            <!--<platform>${os.detected.name}</platform>-->
-                            <!--<platform>windows</platform>-->
-                            <!--<bit>32</bit>-->
-                            <!-- <version>74.0.3729.6</version> -->
-                            <!-- <url>https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip</url> -->
-                            <!-- <version>76.0.3809.126</version> -->
-                            <!-- <url>https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip</url> -->
-                            <!--<url>https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip</url>-->
-                            <!-- <version>79.0.3945.36</version> -->
-                            <!-- <version>78.0.3904.105</version> -->
-                        </driver>
-                    </drivers>
-                </configuration>
-            </plugin>
+    <plugin>
+        <groupId>com.github.webdriverextensions</groupId>
+        <artifactId>webdriverextensions-maven-plugin</artifactId>
+        <version>${maven.webdriverextensions-maven-plugin.version}</version>
+        <executions>
+            <execution>
+                <id>pre-test</id>
+                <goals>
+                    <goal>install-drivers</goal>
+                </goals>
+                <!-- Uncomment for download automatically -->
+                <phase>test-compile</phase>
+                <!-- <phase>process-test-classes</phase> -->
+                <!-- <phase>test</phase> -->
+            </execution>
+        </executions>
+        <configuration>
+            <installationDirectory>${project.build.directory}/test-classes</installationDirectory>
+            <!-- <installationDirectory>${project.basedir}/src/test/resources</installationDirectory> -->
+            <keepDownloadedWebdrivers>true</keepDownloadedWebdrivers>
+            <drivers>
+                <driver>
+                    <name>chromedriver</name>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <!--<platform>${os.detected.name}</platform>-->
+                    <!--<platform>windows</platform>-->
+                    <!--<bit>32</bit>-->
+                    <!-- <version>74.0.3729.6</version> -->
+                    <!-- <url>https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip</url> -->
+                    <!-- <version>76.0.3809.126</version> -->
+                    <!-- <url>https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip</url> -->
+                    <!--<url>https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip</url>-->
+                    <!-- <version>79.0.3945.36</version> -->
+                    <!-- <version>78.0.3904.105</version> -->
+                </driver>
+            </drivers>
+        </configuration>
+    </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.plugin.version}</version>
-                <configuration>
-                    <argLine>-Xms512m -Xmx1024m</argLine>
-                    <skipTests>false</skipTests>
-                    <systemPropertyVariables>
-                        <surefire.application.password>
-                            ${application.password}
-                        </surefire.application.password>
-                    </systemPropertyVariables>
-                    <includes>
-                        <!-- <include>**/*.java</include> -->
-                        <!-- <include>**/MyData.java</include> -->
-                        <include>**/*Test.java</include>
-                    </includes>
-                    <!-- <excludes> -->
-                    <!-- <exclude>**/AppTest.java</exclude> -->
-                    <!-- </excludes> -->
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.plugin.version}</version>
+        <configuration>
+            <argLine>-Xms512m -Xmx1024m</argLine>
+            <skipTests>false</skipTests>
+            <systemPropertyVariables>
+                <surefire.application.password>
+                    ${application.password}
+                </surefire.application.password>
+            </systemPropertyVariables>
+            <includes>
+                <!-- <include>**/*.java</include> -->
+                <!-- <include>**/MyData.java</include> -->
+                <include>**/*Test.java</include>
+            </includes>
+            <!-- <excludes> -->
+            <!-- <exclude>**/AppTest.java</exclude> -->
+            <!-- </excludes> -->
 
-                </configuration>
-            </plugin>
+        </configuration>
+    </plugin>
 
-        </plugins>
-    </build>
+</plugins>
+</build>
 
-</project>
+        </project>

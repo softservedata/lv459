@@ -10,7 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class CustomerRegistrationTest extends LocalTestRunnerOpenCart {
+public class CustomerRegistrationTestRegister extends
+                                              LocalTestRunnerCustomerRegister {
 
     //
     @Test

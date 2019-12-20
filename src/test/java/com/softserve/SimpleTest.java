@@ -17,6 +17,10 @@ public class SimpleTest {
         //  });
         System.out.println(System.getenv("USER_PASSWORD"));
 
+        Integer t= 4;
+        String d = t.toString();
+        System.out.println(d);
+
         //    System.out.println(System.getenv("DB_PASSWORD"));
         //    System.out.println(System.getenv("DB_LOGIN"));
         //    System.out.println(System.getenv("USER_EMAIL"));

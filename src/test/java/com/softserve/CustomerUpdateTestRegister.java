@@ -7,7 +7,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class CustomerUpdateTest extends LocalTestRunnerOpenCart {
+public class CustomerUpdateTestRegister
+        extends LocalTestRunnerCustomerRegister {
 
     /*
     Prerequisites - Customer with USER_EMAIL and USER_PASSWORD is present in DB.

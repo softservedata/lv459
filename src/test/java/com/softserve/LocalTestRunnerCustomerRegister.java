@@ -9,7 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public abstract class LocalTestRunnerOpenCart extends LocalTestRunnerSetIP {
+public abstract class LocalTestRunnerCustomerRegister
+        extends LocalTestRunnerSetIP {
 
     @Before
     public void pageLoad() {
@@ -22,6 +23,7 @@ public abstract class LocalTestRunnerOpenCart extends LocalTestRunnerSetIP {
         System.out.println("@After method - Stop Page");
         if (isCustomerLogined()) logOutCustomer();
     }
+
 
     public boolean isCustomerLogined() {
         driver.findElement(By.cssSelector("a[title='My Account']")).click();

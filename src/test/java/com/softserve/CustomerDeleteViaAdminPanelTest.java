@@ -110,5 +110,4 @@ public class CustomerDeleteViaAdminPanelTest extends LocalTestRunnerAdminPanel {
         webdriver.quit();
     }
 
-
 }
