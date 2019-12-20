@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
@@ -20,6 +19,8 @@ public class AddWithOptionsL extends LocalTestRunner {
     private final String INPUT_DATE = "//div[@class='input-group date']/input";
     private final String INPUT_TIME = "//div[@class='input-group time']/input";
     private final String INPUT_DATETIME = "//div[@class='input-group datetime']/input";
+    private final String DROP_DOWN_CART_BUTTON = "//span[@id='cart-total']";
+    private final String DELETE_ON_DROPDOWN_MENU = "//table[@class='table table-striped']//tbody//tr//a[contains(.,'%s')]/../following-sibling::td//i[@class='fa fa-times']";
 
 
     /**
@@ -141,6 +142,22 @@ public class AddWithOptionsL extends LocalTestRunner {
         //Check by message does product successfully are added to Cart.
         WebElement alertMessage = driver.findElement(By.xpath("//div[@class='alert alert-success']"));
         Assert.assertTrue(alertMessage.getText().contains("Success: You have added"));
+        Thread.sleep(1000);
+
+        //Open Cart by Drop Down Menu
+        driver.findElement(By.xpath(DROP_DOWN_CART_BUTTON)).click();
+        Thread.sleep(1000);
+        //Delete product
+        driver.findElement(By.xpath(String.format(DELETE_ON_DROPDOWN_MENU,"MacBook"))).click();
+        Thread.sleep(1000);
+
+        //Open Cart by Drop Down Menu again to check is it empty
+        driver.findElement(By.xpath(DROP_DOWN_CART_BUTTON)).click();
+        Thread.sleep(1000);
+
+        //Check is Cart empty
+        WebElement alertMessage1 = driver.findElement(By.xpath("//ul[@class='dropdown-menu pull-right']//p"));
+        Assert.assertTrue(alertMessage1.getText().contains("Your shopping cart is empty!"));
         Thread.sleep(1000);
 
     }

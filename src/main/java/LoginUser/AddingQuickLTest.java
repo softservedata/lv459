@@ -11,6 +11,15 @@ public class AddingQuickLTest extends LocalTestRunner{
             "//a[text()='%s']/../../following-sibling::div/button[contains(@onclick, 'cart.add')]";
     private final String Search_Field = "//input[@name='search']";
     private final String Search_Button = "//button[@class='btn btn-default btn-lg']";
+    private final String DROP_DOWN_CART_BUTTON = "//span[@id='cart-total']";
+    private final String DELETE_ON_DROPDOWN_MENU = "//table[@class='table table-striped']//tbody//tr//a[contains(.,'%s')]/../following-sibling::td//i[@class='fa fa-times']";
+
+    /**
+     * Method add product to Cart from Home Page
+     *
+     * Positive test
+     * @throws InterruptedException
+     */
     @Test
     public void addingQuickL() throws InterruptedException {
 
@@ -33,6 +42,22 @@ public class AddingQuickLTest extends LocalTestRunner{
         //Check by message does product successfully are added to Cart.
         WebElement alertMessage = driver.findElement(By.xpath("//div[@class='alert alert-success']"));
         Assert.assertTrue(alertMessage.getText().contains("Success: You have added"));
+        Thread.sleep(1000);
+
+        //Open Cart by Drop Down Menu
+        driver.findElement(By.xpath(DROP_DOWN_CART_BUTTON)).click();
+        Thread.sleep(1000);
+        //Delete product
+        driver.findElement(By.xpath(String.format(DELETE_ON_DROPDOWN_MENU,"MacBook"))).click();
+        Thread.sleep(1000);
+
+        //Open Cart by Drop Down Menu again to check is it empty
+        driver.findElement(By.xpath(DROP_DOWN_CART_BUTTON)).click();
+        Thread.sleep(1000);
+
+        //Check is Cart empty
+        WebElement alertMessage1 = driver.findElement(By.xpath("//ul[@class='dropdown-menu pull-right']//p"));
+        Assert.assertTrue(alertMessage1.getText().contains("Your shopping cart is empty!"));
         Thread.sleep(1000);
 
     }
