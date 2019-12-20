@@ -25,6 +25,8 @@ public class DBAccess {
                 ResultSetMetaData meta =
                         rs.getMetaData(); // отримує метадані таблиці, тип
                 // даних і т.д.
+
+
                 System.out.println(meta.getColumnCount());
                 System.out.println(meta.getColumnName(1)); //
                 System.out.println(meta.getColumnType(1));
