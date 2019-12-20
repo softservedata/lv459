@@ -2,30 +2,17 @@ package com.softserve.edu;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
-public class BlockUserTest {
+public class BlockUserTest extends BlockUserTestRunner {
 
     @Test
     public void blockUserTest() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", this.getClass()
-                .getResource("/chromedriver-windows-32bit.exe").getPath());
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //
-        driver.get("http://192.168.214.128/opencart/upload/admin/");
-        //
-        Thread.sleep(1000); // For Presentation Only
-        //
         driver.findElement(By.id("input-username")).click();
         driver.findElement(By.id("input-username")).clear();
         driver.findElement(By.id("input-username")).sendKeys(
@@ -40,8 +27,8 @@ public class BlockUserTest {
         driver.findElement(By.id("input-password")).submit();
         Thread.sleep(1000); // For Presentation Only
         //
-        driver.findElement(By.xpath(
-                "//i[@class='fa fa-user'] /.. /..  /div[@class='tile-footer'] /a"))
+        driver.findElement(
+                By.cssSelector(".tile-footer a[href*='route=customer']"))
                 .click();
         //
         Thread.sleep(1000); // For Presentation Only
@@ -68,12 +55,7 @@ public class BlockUserTest {
         ((JavascriptExecutor) driver).executeScript(
                 "window.open('http://192.168.214.128/opencart/upload/index.php?route=account/login','_blank');");
 
-        for (String tab : driver.getWindowHandles()) {
-            if (!tab.equals(driver.getWindowHandle())) {
-                driver.switchTo().window(tab);
-                break;
-            }
-        }
+        changeTab();
         Thread.sleep(1000); // For Presentation Only
         //
         driver.findElement(By.id("input-email")).click();
@@ -93,12 +75,7 @@ public class BlockUserTest {
                 driver.findElement(By.className("alert-danger")).getText());
         Thread.sleep(1000); // For Presentation Only
         //
-        for (String tab : driver.getWindowHandles()) {
-            if (!tab.equals(driver.getWindowHandle())) {
-                driver.switchTo().window(tab);
-                break;
-            }
-        }
+        changeTab();
         Thread.sleep(1000); // For Presentation Only
         //
         driver.findElement(By.xpath(String.format(
@@ -110,21 +87,19 @@ public class BlockUserTest {
                 .perform();
         Thread.sleep(2000); // For Presentation Only
         //
+        driver.findElement(By.xpath("//select[@id = 'input-status']")).click();
+        Thread.sleep(1000);
         select = new Select(driver.findElement(By.id("input-status")));
         select.selectByValue("1");
+        //
         Thread.sleep(1000); // For Presentation Only
         //
         action.moveToElement(driver.findElement(By.className("fa-save")))
-                .perform(); // 2 класи!!!
+                .perform();
         driver.findElement(By.className("fa-save")).click();
         Thread.sleep(1000); // For Presentation Only
         //
-        for (String tab : driver.getWindowHandles()) {
-            if (!tab.equals(driver.getWindowHandle())) {
-                driver.switchTo().window(tab);
-                break;
-            }
-        }
+        changeTab();
         Thread.sleep(1000); // For Presentation Only
         //
         driver.findElement(By.id("input-email")).click();
@@ -140,16 +115,13 @@ public class BlockUserTest {
         driver.findElement(By.id("input-password")).submit();
         Thread.sleep(1000); // For Presentation Only
         //
-        driver.findElement(By
-                .xpath("//*[contains(text(),'Edit your account information')]"))
+        driver.findElement(
+                By.cssSelector(".list-unstyled a[href*='account/edit']"))
                 .click();
         Thread.sleep(1000); // For Presentation Only
         //
-        assertEquals("Andry", driver.findElement(By.id("input-firstname"))
-                .getAttribute("value"));
-        assertEquals("Lastname", driver.findElement(By.id("input-lastname"))
-                .getAttribute("value"));
+        assertEquals(System.getenv().get("OPENCART_LOGIN_TWO"),
+                driver.findElement(By.id("input-email")).getAttribute("value"));
         Thread.sleep(4000); // For Presentation Only
-        driver.quit();
     }
 }
