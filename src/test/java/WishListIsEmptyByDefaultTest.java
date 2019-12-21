@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class WishListIsEmptyByDefaultTest {
-
     By wishListField = By.id("wishlist-total");
     By iputEmail = By.id("input-email");
     By iputPassword = By.id("input-password");

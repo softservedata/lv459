@@ -1,12 +1,12 @@
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 public class SaveAfterLogoutTest  extends LocalTestRunner{
 
     By wishListField = By.id("wishlist-total");
-    By iputEmail = By.id("input-email");
-    By iputPassword = By.id("input-password");
     By openCartField = By.xpath("//*[@id=\"logo\"]/a/img");
     By myAccount = By.xpath("//div[@class='container']//div[@id='top-links']//span[@class='caret']");
     By logOut = By.linkText("Logout");
@@ -14,16 +14,9 @@ public class SaveAfterLogoutTest  extends LocalTestRunner{
 
     @Test
     public void clickDirectlyOnWishList() throws InterruptedException {
-        driver.findElement(iputEmail).click();
-        driver.findElement(iputEmail).clear();
-        driver.findElement(iputEmail).sendKeys("bohdanadobushovska@gmail.com");
-        Thread.sleep(500);
 
-        driver.findElement(iputPassword).click();
-        driver.findElement(iputPassword).clear();
-        driver.findElement(iputPassword).sendKeys(System.getenv().get("PASSWORD"));
-        driver.findElement(iputPassword).submit();
-        Thread.sleep(500);
+        SaveAfterLogoutTest saveAfterLogoutTest = new SaveAfterLogoutTest();
+        saveAfterLogoutTest.logIn();
 
         driver.findElement(openCartField).click();
         Thread.sleep(500);
@@ -52,19 +45,12 @@ public class SaveAfterLogoutTest  extends LocalTestRunner{
         driver.findElement(logIn).click();
         Thread.sleep(500);
 
-        driver.findElement(iputEmail).click();
-        driver.findElement(iputEmail).clear();
-        driver.findElement(iputEmail).sendKeys("bohdanadobushovska@gmail.com");
-        Thread.sleep(500);
-
-        driver.findElement(iputPassword).click();
-        driver.findElement(iputPassword).clear();
-        driver.findElement(iputPassword).sendKeys(System.getenv().get("PASSWORD"));
-        driver.findElement(iputPassword).submit();
-        Thread.sleep(500);
+        saveAfterLogoutTest.logIn();
 
         driver.findElement(wishListField).click();
         Thread.sleep(500);
 
+        WebElement actual = driver.findElement(By.xpath("//div[@id='top-links']//li/a[@id='wishlist-total']//span"));
+        Assert.assertTrue(actual.getText().contains("2"));
     }
 }
