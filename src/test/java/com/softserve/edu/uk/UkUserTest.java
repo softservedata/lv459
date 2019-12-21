@@ -7,19 +7,19 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 public class UkUserTest extends LocalTestRunnerUk {
-    //@Test
+    @Test
     public void checkUsWithTaxCurrency() throws Exception {
         WebElement price = driver.findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
         Assert.assertTrue(price.getText().contains("602.00"));
     }
 
-    //@Test
+    @Test
     public void checkUsNoTaxCurrency() throws Exception {
         WebElement price = driver.findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']/span"));
         Assert.assertTrue(price.getText().contains("500.00"));
     }
 
-    //@Test
+    @Test
     public void checkEuWithTaxCurrency() throws Exception {
         driver.findElement(By.xpath("//div[@class='pull-left']")).click();
         Thread.sleep(1000); // For Presentation Only
@@ -32,7 +32,7 @@ public class UkUserTest extends LocalTestRunnerUk {
         Assert.assertTrue(price.getText().contains("472.33"));
     }
 
-    //@Test
+    @Test
     public void checkEuNoTaxCurrency() throws Exception {
         driver.findElement(By.xpath("//div[@class='pull-left']")).click();
         Thread.sleep(1000); // For Presentation Only
@@ -45,12 +45,12 @@ public class UkUserTest extends LocalTestRunnerUk {
         Assert.assertTrue(price.getText().contains("392.30"));
     }
 
-    //@Test
+    @Test
     public void checkUsWithTaxCurrencyCart() throws Exception {
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         Thread.sleep(1000); // For Presentation Only
-        driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//button[contains(@onclick, 'cart')]"));
+        driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//button[contains(@onclick, 'cart')]")).click();
         Thread.sleep(1000); // For Presentation Only
         WebElement price = driver.findElement(By.xpath("//*[@id='cart']//span"));
         Assert.assertTrue(price.getText().contains("602.00"));
@@ -63,7 +63,7 @@ public class UkUserTest extends LocalTestRunnerUk {
         Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//button[contains(@onclick, 'cart')]")).click();
         Thread.sleep(1000); // For Presentation Only
-        driver.findElement(By.xpath("//*[@id='cart']")).click();
+        driver.findElement(By.xpath("//*[@id='cart']/button")).click();
         WebElement taxPrice = driver.findElement(By.xpath("//ul[@class='dropdown-menu pull-right']/li/div//tbody//strong[contains(text(), 'VAT')]/../following-sibling::td"));
         Thread.sleep(1000); // For Presentation Only
         Assert.assertTrue(taxPrice.getText().contains("100.00"));
