@@ -26,7 +26,7 @@ public abstract class LocalTestRunner {
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         System.out.println("@AfterClass");
-        Thread.sleep(1000); // For Presentation Only
+        //Thread.sleep(1000); // For Presentation Only
         driver.quit();
     }
 
@@ -35,9 +35,9 @@ public abstract class LocalTestRunner {
         System.out.println("\t@Before method");
         //driver.get("http://192.168.216.128/opencart/upload/");
         driver.get("http://taqc-opencart.epizy.com/index.php?route=common/home");
-        Thread.sleep(1000); // For Presentation Only
+        //Thread.sleep(1000); // For Presentation Only
         //driver.manage().window().maximize();
-        Thread.sleep(1000); // For Presentation Only
+        //Thread.sleep(1000); // For Presentation Only
     }
 
     @After

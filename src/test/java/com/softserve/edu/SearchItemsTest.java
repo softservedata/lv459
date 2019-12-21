@@ -1,5 +1,9 @@
 package com.softserve.edu;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -12,8 +16,30 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SearchItemsTest extends LocalTestRunner {
 
+    //Using lower/upper case letters, numbers and symbol
     //@Test
-    public void findMacBook() throws Exception {
+    public void findItemCaseOne() throws Exception {
+        // Steps
+        // Typing in the "Search field"
+        driver.findElement(By.name("search")).click();
+        driver.findElement(By.name("search")).clear();
+        driver.findElement(By.name("search")).sendKeys("Apple Cinema 30\"");
+        //
+        // Clicking on the "Search Button"
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        Thread.sleep(1000); // For Presentation Only
+        //
+        // Checking
+        WebElement macBook = driver.findElement(By.xpath("//a[text()='Apple Cinema 30\"']"));
+        Assert.assertTrue(macBook.getText().contains("Apple Cinema 30\""));
+        // Return to Previous State
+        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+        Thread.sleep(1000); // For Presentation Only
+    }
+
+    //Using lower/upper case letters
+    //@Test
+    public void findItemCaseTwo() throws Exception {
         // Steps
         // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
@@ -40,107 +66,120 @@ public class SearchItemsTest extends LocalTestRunner {
         driver.findElement(By.cssSelector("#logo .img-responsive")).click();
         Thread.sleep(1000); // For Presentation Only
     }
+
+    //Using lower case letters and number
     //@Test
-    public void testAsterisk() throws Exception {
-        System.setProperty("webdriver.chrome.driver",
-                this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
-        WebDriver driver = new ChromeDriver();
-        //
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //driver.get("http://taqc-opencart.epizy.com/index.php?route=common/home");
-        driver.get("http://192.168.216.128/opencart/upload/");
-        //
+    public void findItemCaseThree() throws Exception {
+        // Steps
+        // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
         driver.findElement(By.name("search")).clear();
-        driver.findElement(By.name("search")).sendKeys("*" + Keys.ENTER);
-
-        WebElement actual = driver.findElement(By.xpath("//*[@id='content']/label"));
-        Assert.assertEquals("Search Criteria", actual.getText());
-        Thread.sleep(1000);// For Presentation Only
-        driver.quit();
+        driver.findElement(By.name("search")).sendKeys("te9");
+        //
+        // Clicking on the "Search Button"
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        Thread.sleep(1000); // For Presentation Only
+        //
+        // Checking
+        WebElement item = driver.findElement(By.xpath("//a[text()='Samsung - Galaxy Note9']"));
+        Assert.assertTrue(item.getText().contains("Samsung - Galaxy Note9"));
+        //
+        // Return to Previous State
+        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+        Thread.sleep(1000); // For Presentation Only
     }
 
+    //Using lower case letters and symbol
     //@Test
-    public void testEmptyField() throws Exception {
-        System.setProperty("webdriver.chrome.driver",
-                this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
-        WebDriver driver = new ChromeDriver();
-        //
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //driver.get("http://taqc-opencart.epizy.com/index.php?route=common/home");
-        driver.get("http://192.168.216.128/opencart/upload/");
-        //
+    public void findItemCaseFour() throws Exception {
+        // Steps
+        // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
         driver.findElement(By.name("search")).clear();
-        driver.findElement(By.name("search")).sendKeys("" + Keys.ENTER);
-
-        WebElement actual = driver.findElement(By.xpath("//*[@id='content']/label"));
-        Assert.assertEquals("Search Criteria", actual.getText());
-        Thread.sleep(1000);// For Presentation Only
-        driver.quit();
+        driver.findElement(By.name("search")).sendKeys("pp \"");
+        //
+        // Clicking on the "Search Button"
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        //Thread.sleep(1000); // For Presentation Only
+        //
+        // Checking
+        WebElement item = driver.findElement(By.xpath("//a[text()='Apple Cinema 30\"']"));
+        Assert.assertTrue(item.getText().contains("Apple Cinema 30\""));
+        //
+        // Return to Previous State
+        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+       // Thread.sleep(1000); // For Presentation Only
     }
 
+    //Using upper case letters and numbers
     //@Test
-    public void testNumberThree() throws Exception {
-        System.setProperty("webdriver.chrome.driver",
-                this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
-        WebDriver driver = new ChromeDriver();
-        //
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //driver.get("http://taqc-opencart.epizy.com/index.php?route=common/home");
-        //
+    public void findItemCaseFive() throws Exception {
+        // Steps
+        // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
         driver.findElement(By.name("search")).clear();
-        driver.findElement(By.name("search")).sendKeys("3" + Keys.ENTER);
-
-        WebElement actual = driver.findElement(By.xpath("//*[@id='content']/label"));
-        Assert.assertEquals("Search Criteria", actual.getText());
-        Thread.sleep(1000);// For Presentation Only
-        driver.quit();
+        driver.findElement(By.name("search")).sendKeys("V600");
+        //
+        // Clicking on the "Search Button"
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        //Thread.sleep(1000); // For Presentation Only
+        //
+        // Checking
+        WebElement item = driver.findElement(By.xpath("//a[text()='Epson - Perfection V600']"));
+        Assert.assertTrue(item.getText().contains("Epson - Perfection V600"));
+        //
+        // Return to Previous State
+        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+        // Thread.sleep(1000); // For Presentation Only
     }
 
+    //Using upper case letters and symbol
     //@Test
-    public void testSemicolon() throws Exception {
-        System.setProperty("webdriver.chrome.driver",
-                this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
-        WebDriver driver = new ChromeDriver();
-        //
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //driver.get("http://taqc-opencart.epizy.com/index.php?route=common/home");
-        driver.get("http://192.168.216.128/opencart/upload/");
-        //
+    public void findItemCaseSix() throws Exception {
+        // Steps
+        // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
         driver.findElement(By.name("search")).clear();
-        driver.findElement(By.name("search")).sendKeys(";" + Keys.ENTER);
-
-        WebElement actual = driver.findElement(By.xpath("//*[@id='content']/label"));
-        Assert.assertEquals("Search Criteria", actual.getText());
-        Thread.sleep(1000);// For Presentation Only
-        driver.quit();
+        driver.findElement(By.name("search")).sendKeys("A \"");
+        //
+        // Clicking on the "Search Button"
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        //Thread.sleep(1000); // For Presentation Only
+        //
+        // Checking
+        WebElement item = driver.findElement(By.xpath("//a[text()='Apple Cinema 30\"']"));
+        Assert.assertTrue(item.getText().contains("Apple Cinema 30\""));
+        //
+        // Return to Previous State
+        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+        // Thread.sleep(1000); // For Presentation Only
     }
 
-    //@Test
-    public void testMacBook() throws Exception {
-        System.setProperty("webdriver.chrome.driver",
-                this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
-        WebDriver driver = new ChromeDriver();
-        //
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("http://192.168.216.128/opencart/upload/");
-        //driver.get("http://taqc-opencart.epizy.com/index.php?route=common/home");
-        //
+    //Using numbers and symbol
+    @Test
+    public void findItemCaseSeven() throws Exception {
+        // Steps
+        // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
         driver.findElement(By.name("search")).clear();
-        driver.findElement(By.name("search")).sendKeys("MacBook" + Keys.ENTER);
-
-        WebElement actual = driver.findElement(By.xpath("//*[@id='content']/label"));
-        Assert.assertEquals("Search Criteria", actual.getText());
-        Thread.sleep(2000);// For Presentation Only
-        driver.quit();
+        driver.findElement(By.name("search")).sendKeys("30\"");
+        //
+        // Clicking on the "Search Button"
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        //Thread.sleep(1000); // For Presentation Only
+        //
+        // Checking
+        WebElement item = driver.findElement(By.xpath("//a[text()='Apple Cinema 30\"']"));
+        Assert.assertTrue(item.getText().contains("Apple Cinema 30\""));
+        //
+        // Return to Previous State
+        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+        // Thread.sleep(1000); // For Presentation Only
     }
 
+    //Empty field
     //@Test
-    public void fieldLengthCaseOne() throws Exception {
+    public void findItemCaseEight() throws Exception {
         // Steps
         // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
@@ -159,24 +198,74 @@ public class SearchItemsTest extends LocalTestRunner {
         driver.findElement(By.cssSelector("#logo .img-responsive")).click();
         Thread.sleep(1000); // For Presentation Only
     }
+
+    //One letter in "Search field"
     //@Test
-    public void fieldLengthCaseTwo() throws Exception {
+    public void fieldLengthCaseOne() throws Exception {
         // Steps
         // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
         driver.findElement(By.name("search")).clear();
-        driver.findElement(By.name("search")).sendKeys("z");
+        driver.findElement(By.name("search")).sendKeys("q");
         //
         // Clicking on the "Search Button"
         driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
         Thread.sleep(1000); // For Presentation Only
         //
         // Checking
-        WebElement zeroLength = driver.findElement(By.xpath("//input[@id='button-search']/following-sibling::p"));
-        Assert.assertTrue(zeroLength.getText().contains("There is no product that matches the search criteria."));
+        WebElement item = driver.findElement(By.xpath("//a[text()='Apple Cinema 30\"']"));
+        Assert.assertTrue(item.getText().contains("Apple Cinema 30\""));
         //
         // Return to Previous State
         driver.findElement(By.cssSelector("#logo .img-responsive")).click();
         Thread.sleep(1000); // For Presentation Only
+    }
+
+    //255 letters in "Search field"
+   // @Test
+    public void fieldLengthCaseTwo() throws Exception {
+
+
+        File file = new File("D:\\All\\IT\\Lv-459\\lv459-selenium\\255.txt");
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        // Steps
+        // Typing in the "Search field"
+        driver.findElement(By.name("search")).click();
+        driver.findElement(By.name("search")).clear();
+        driver.findElement(By.name("search")).sendKeys(br.readLine());
+        //
+        // Clicking on the "Search Button"
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        Thread.sleep(3000); // For Presentation Only
+
+        //
+        // Return to Previous State
+        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+        //Thread.sleep(1000); // For Presentation Only
+    }
+
+    //65536 letters in "Search field"
+     @Test
+    public void fieldLengthCaseThree() throws Exception {
+
+
+        File file = new File("D:\\All\\IT\\Lv-459\\lv459-selenium\\65536.txt");
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        // Steps
+        // Typing in the "Search field"
+        driver.findElement(By.name("search")).click();
+        driver.findElement(By.name("search")).clear();
+        driver.findElement(By.name("search")).sendKeys(br.readLine());
+        //
+        // Clicking on the "Search Button"
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        Thread.sleep(3000); // For Presentation Only
+
+        //
+        // Return to Previous State
+        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+        //Thread.sleep(1000); // For Presentation Only
     }
 }
