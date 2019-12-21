@@ -10,12 +10,15 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public abstract class LocalTestRunner {
+
     protected static WebDriver driver;
     protected final String ADD_TO_WISH_LIST_XPATH = "//a[text()='%s']/../../following-sibling::div/button[contains(@onclick, 'wishlist.add')]";
+    protected final String REMOVE_FROM_WISH_LIST_BTN = "//td//a[contains(.,'%s')]/../following-sibling::td//i[@class='fa fa-times']";
+    protected final String ADD_TO_SHOPPING_CART_BTN = "//td//a[contains(.,'%s')]/../following-sibling::td//i[@class='fa fa-shopping-cart']";
 
+    protected By wishListField = By.id("wishlist-total");
     By inputEmail = By.id("input-email");
     By inputPassword = By.id("input-password");
-    By removeButton = By.xpath("//table[@class='table table-bordered table-hover']//a//i");
 
     protected void logIn() throws InterruptedException {
         driver.findElement(inputEmail).click();
@@ -67,7 +70,7 @@ public abstract class LocalTestRunner {
         public void tearDown() throws Exception {
             System.out.println("\t@After method");
             if (isLoggined()) {
-                driver.get("http://10.26.34.200/opencart/upload/index.php?route=account/logout");
+                driver.get("http://192.168.159.134/opencart/upload/index.php?route=account/logout");
             }
         }
 
