@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Regex {
     public static void main(String args[]) {
 
-        String pattern = "^[\\d\\.\\d]";
+        /*String pattern = "^[\\d\\.\\d]";
         String text = "1 item(s) - $0.00";
 
         Pattern p = Pattern.compile(pattern);
@@ -17,10 +17,10 @@ public class Regex {
 
             System.out.print(text.substring(m.start(), m.end()));
         }
-    }
+    }*/
 
-       /* String pattern = "\\d\\.\\d+";
-        String text = "1 item(s) - $0.00";
+        String pattern = "\\d+\\.\\d+";
+        String text = "1 item(s) - $500.00";
 
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(text);
@@ -30,6 +30,6 @@ public class Regex {
 
             System.out.print(text.substring(m.start(), m.end()));
         }
-    }*/
+    }
 
 }
