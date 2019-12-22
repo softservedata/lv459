@@ -5,10 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 public class VerifyButtonsInWishListTest extends LocalTestRunner {
-
-    By openCartField = By.xpath("//*[@id=\"logo\"]/a/img");
-    By shoppingCartBtn = By.xpath("//div[@id='cart']//button[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']");
-
     @Test
     public void addElementToShoppingCart() throws InterruptedException {
 
@@ -16,20 +12,18 @@ public class VerifyButtonsInWishListTest extends LocalTestRunner {
         addElement.logIn();
 
         driver.findElement(openCartField).click();
-
         Thread.sleep(500);
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0, 500)", "");
-
         Thread.sleep(500);
 
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "iPhone"))).click();
         Thread.sleep(500);
 
         jse.executeScript("window.scrollBy(0, -500)", "");
-
         Thread.sleep(500);
+
         driver.findElement(wishListField).click();
         Thread.sleep(500);
 
@@ -42,10 +36,8 @@ public class VerifyButtonsInWishListTest extends LocalTestRunner {
 
         String expected = "iPhone";
         WebElement actual = driver.findElement(By.xpath("//ul[@class='dropdown-menu pull-right']"));
-
         Assert.assertTrue(actual.getText().contains(expected));
         Thread.sleep(500);
-
     }
 
     @Test
@@ -71,8 +63,9 @@ public class VerifyButtonsInWishListTest extends LocalTestRunner {
 
         WebElement actual = driver.findElement(By.xpath("//div[contains(text(), ' Success: You have modified your wish list!')]"));
         String expected = "Success: You have modified your wish list!";
-
         Assert.assertTrue(actual.getText().contains(expected));
         Thread.sleep(500);
+
+
     }
 }

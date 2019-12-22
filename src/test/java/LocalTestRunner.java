@@ -10,15 +10,25 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public abstract class LocalTestRunner {
-
+/////////////////////////////////////DONT FORGET TO REMOVE ELEMENTS AFTER TEST PASSED
     protected static WebDriver driver;
     protected final String ADD_TO_WISH_LIST_XPATH = "//a[text()='%s']/../../following-sibling::div/button[contains(@onclick, 'wishlist.add')]";
     protected final String REMOVE_FROM_WISH_LIST_BTN = "//td//a[contains(.,'%s')]/../following-sibling::td//i[@class='fa fa-times']";
     protected final String ADD_TO_SHOPPING_CART_BTN = "//td//a[contains(.,'%s')]/../following-sibling::td//i[@class='fa fa-shopping-cart']";
 
-    protected By wishListField = By.id("wishlist-total");
+    By wishListField = By.id("wishlist-total");
     By inputEmail = By.id("input-email");
     By inputPassword = By.id("input-password");
+    By myAccount = By.xpath("//div[@class='container']//div[@id='top-links']//span[@class='caret']");
+    By logOut = By.linkText("Logout");
+    By logIn = By.linkText("Login");
+    By openCartField = By.xpath("//*[@id=\"logo\"]/a/img");
+    By footerWishList = By.linkText("Wish List");
+    By searchField = By.name("search");
+    By productAppleCinema = By.linkText("Apple Cinema 30\"");
+    By heartButton = By.xpath("//div[@id='content']//div[@class='col-sm-4']//button[contains(@onclick, 'wishlist.add')]");
+    By shoppingCartBtn = By.xpath("//div[@id='cart']//button[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']");
+
 
     protected void logIn() throws InterruptedException {
         driver.findElement(inputEmail).click();
@@ -33,13 +43,19 @@ public abstract class LocalTestRunner {
         Thread.sleep(500);
     }
 
-//CREATE METHOD FOR REMOVING ITEMS FROM WISH LIST
+    protected void logOut() throws InterruptedException {
+        driver.findElement(myAccount).click();
+        Thread.sleep(500);
 
-    /*protected void removeAllItems() {
-        List<WebElement> removeProductBtnList = driver.findElements(removeButton);
-        for (WebElement webElement : removeProductBtnList)
-            driver.findElement(removeButton).click();
-    }*/
+        driver.findElement(logOut).click();
+        Thread.sleep(500);
+
+        driver.findElement(myAccount).click();
+        Thread.sleep(500);
+
+        driver.findElement(logIn).click();
+        Thread.sleep(500);
+    }
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -50,6 +66,7 @@ public abstract class LocalTestRunner {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+
     @AfterClass
         public static void tearDownAfterClass() throws Exception {
             System.out.println("@AfterClass");
@@ -69,26 +86,31 @@ public abstract class LocalTestRunner {
         @After
         public void tearDown() throws Exception {
             System.out.println("\t@After method");
+            //CREATE METHOD FOR REMOVING ITEMS FROM WISH LIST
+            // removeAllItems
+//            driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "Apple Cinema 30\""))).click();
+//            driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "MacBook"))).click();
+//            driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "iPhone"))).click();
+//            driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "Canon EOS 5D"))).click();
+
+//            }
             if (isLoggined()) {
                 driver.get("http://192.168.159.134/opencart/upload/index.php?route=account/logout");
             }
         }
-
     private boolean isLoggined() throws Exception {
+
         List<WebElement> items = null;
-        //
-        // Click My Account Button
         driver.findElement(By.xpath("//a[@title='My Account']")).click();
         Thread.sleep(1000); // For Presentation Only
-        //
-        // Search Items
+
         items = driver.findElements(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']/li"));
-        //
-        // Close All Drop-down Menus
+
         driver.findElement(By.xpath("//input[@name='search']")).click();
         Thread.sleep(1000); // For Presentation Only
-        //
+
         return items.size() > 2;
     }
+
 }
 

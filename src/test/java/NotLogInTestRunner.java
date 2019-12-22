@@ -2,19 +2,14 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public abstract class NotLogInTestRunner {
 
     protected static WebDriver driver;
     protected final String ADD_TO_WISH_LIST_XPATH = "//a[text()='%s']/../../following-sibling::div/button[contains(@onclick, 'wishlist.add')]";
-
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -39,31 +34,6 @@ public abstract class NotLogInTestRunner {
         Thread.sleep(1000); // For Presentation Only
         driver.manage().window().maximize();
         Thread.sleep(1000); // For Presentation Only
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        System.out.println("\t@After method");
-        if (isLoggined()) {
-            driver.get("http://192.168.159.134/opencart/upload/index.php?route=account/logout");
-        }
-    }
-
-    private boolean isLoggined() throws Exception {
-        List<WebElement> items = null;
-        //
-        // Click My Account Button
-        driver.findElement(By.xpath("//a[@title='My Account']")).click();
-        Thread.sleep(1000); // For Presentation Only
-        //
-        // Search Items
-        items = driver.findElements(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']/li"));
-        //
-        // Close All Drop-down Menus
-        driver.findElement(By.xpath("//input[@name='search']")).click();
-        Thread.sleep(1000); // For Presentation Only
-        //
-        return items.size() > 2;
     }
 }
 

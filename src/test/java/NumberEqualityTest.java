@@ -6,10 +6,7 @@ import org.openqa.selenium.WebElement;
 
 
 public class NumberEqualityTest extends LocalTestRunner {
-
-    By openCartField = By.xpath("//*[@id=\"logo\"]/a/img");
-
-    @Test
+    @Test 
     public void testNumberEquality() throws InterruptedException {
 
        NumberEqualityTest equality = new NumberEqualityTest();
@@ -22,6 +19,10 @@ public class NumberEqualityTest extends LocalTestRunner {
 
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "MacBook"))).click();
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "iPhone"))).click();
+
+        Thread.sleep(500);
+        driver.findElement(wishListField).click();
+        Thread.sleep(500);
 
         WebElement actual = driver.findElement(By.xpath("//div[@id='top-links']//li/a[@id='wishlist-total']//span"));
         Assert.assertTrue(actual.getText().contains("2"));
