@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class LocalTestRunner {
     public static WebDriver driver;
-    protected static String IP = "192.168.234.129";
+    protected static String IP = "192.168.234.131";
 
     /**
      * Before all tests we should
