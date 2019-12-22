@@ -1,23 +1,16 @@
 package com.softserve.edu;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 
 public class SearchItemsTest extends LocalTestRunner {
 
     //Using lower/upper case letters, numbers and symbol
-    //@Test
+    @Test
     public void findItemCaseOne() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -222,23 +215,29 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //255 letters in "Search field"
-   // @Test
+    @Test
     public void fieldLengthCaseTwo() throws Exception {
 
+        String strCharacter = "a";
+        StringBuffer stringBuffer = new StringBuffer();
 
-        File file = new File("D:\\All\\IT\\Lv-459\\lv459-selenium\\255.txt");
+        for(int i=0; i < 255; i++){
+            stringBuffer.append(strCharacter);
+        }
 
-        BufferedReader br = new BufferedReader(new FileReader(file));
         // Steps
         // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
         driver.findElement(By.name("search")).clear();
-        driver.findElement(By.name("search")).sendKeys(br.readLine());
+        driver.findElement(By.name("search")).sendKeys(stringBuffer.toString());
         //
         // Clicking on the "Search Button"
         driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
-        Thread.sleep(3000); // For Presentation Only
-
+        Thread.sleep(2000); // For Presentation Only
+        //
+        // Checking
+        WebElement zeroLength = driver.findElement(By.xpath("//input[@id='button-search']/following-sibling::p"));
+        Assert.assertTrue(zeroLength.getText().contains("There is no product that matches the search criteria."));
         //
         // Return to Previous State
         driver.findElement(By.cssSelector("#logo .img-responsive")).click();
@@ -246,23 +245,31 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //65536 letters in "Search field"
-     @Test
+    // @Test
     public void fieldLengthCaseThree() throws Exception {
 
+       String strCharacter = "abcdefghijklmnopqrstuvwxyz_" +
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZ_" +
+                "0123456789";
+        StringBuffer stringBuffer = new StringBuffer();
 
-        File file = new File("D:\\All\\IT\\Lv-459\\lv459-selenium\\65536.txt");
+        for(int i=0; i < 1024; i++){
+            stringBuffer.append(strCharacter);
+        }
 
-        BufferedReader br = new BufferedReader(new FileReader(file));
         // Steps
         // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
         driver.findElement(By.name("search")).clear();
-        driver.findElement(By.name("search")).sendKeys(br.readLine());
+        driver.findElement(By.name("search")).sendKeys(stringBuffer.toString());
         //
         // Clicking on the "Search Button"
         driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
-        Thread.sleep(3000); // For Presentation Only
-
+        Thread.sleep(1000); // For Presentation Only
+         //
+         // Checking
+         WebElement item = driver.findElement(By.xpath("//h1[contains(text(), 'Request-URI Too Long')]"));
+         Assert.assertTrue(item.getText().contains("Request-URI Too Long"));
         //
         // Return to Previous State
         driver.findElement(By.cssSelector("#logo .img-responsive")).click();
