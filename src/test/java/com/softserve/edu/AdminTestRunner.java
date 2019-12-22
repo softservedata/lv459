@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public abstract class LocalTestRunner {
+public abstract class AdminTestRunner {
 	protected static WebDriver driver;
 	
 	@BeforeClass
@@ -22,8 +22,17 @@ public abstract class LocalTestRunner {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		Thread.sleep(1000); // For Presentation Only
-		driver.get("http://192.168.43.135/opencart/upload/");
+		driver.get("http://192.168.43.135//opencart/upload/admin/");
 		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.id("input-username")).click();
+		driver.findElement(By.id("input-username")).clear();
+		driver.findElement(By.id("input-username")).sendKeys("admin");
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.id("input-password")).click();
+		driver.findElement(By.id("input-password")).clear();
+		driver.findElement(By.id("input-password")).sendKeys("Lv459_Taqc");
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.className("btn")).click();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
@@ -31,19 +40,24 @@ public abstract class LocalTestRunner {
 	public static void tearDownAfterClass() throws Exception {
 		System.out.println("@AfterClass");
 		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.className("hidden-xs")).click();
+	    Thread.sleep(1000); // For Presentation Only
 		driver.quit();
 	}
 	
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("\t@Before method");
+		driver.findElement(By.xpath("//li[@id='menu-catalog']//i[contains(@class, 'fa fa-tags fw')]")).click();
+		Thread.sleep(2000); // For Presentation Only
+		driver.findElement(By.cssSelector("#menu-catalog > :nth-child(2) > :nth-child(1) > a")).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
+		Thread.sleep(1000); // For Presentation Only
 	}
 	
 	@After
 	public void tearDown() throws Exception {
 		System.out.println("\t@After method");
-		driver.findElement(By.cssSelector("#logo .img-responsive")).click();
-	    Thread.sleep(1000); // For Presentation Only
 	}
-	
 }

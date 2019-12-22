@@ -26,43 +26,10 @@ import org.openqa.selenium.interactions.Actions;
  */
 public class ContentEqualsTest extends LocalTestRunner {
 	/*
-	 * This test method checks if there are certain tabs.
-	 */
-	//@Test
-	public void checkTabs() throws Exception {
-		
-		WebElement desktops = driver.findElement(By.xpath("//li/a[contains(text(), 'Desktops')]"));
-		Assert.assertEquals("Desktops", desktops.getText());
-		
-		WebElement laptops = driver.findElement(By.xpath("//li/a[contains(text(), 'Laptops & Notebooks')]"));
-		Assert.assertEquals("Laptops & Notebooks", laptops.getText());
-		
-		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'Components')]"));
-		Assert.assertEquals("Components", components.getText());
-		
-		WebElement tablets = driver.findElement(By.xpath("//li/a[contains(text(), 'Tablets')]"));
-		Assert.assertEquals("Tablets", tablets.getText());
-		
-		WebElement software = driver.findElement(By.xpath("//li/a[contains(text(), 'Software')]"));
-		Assert.assertEquals("Software", software.getText());
-		
-		WebElement phones = driver.findElement(By.xpath("//li/a[contains(text(), 'Phones & PDAs')]"));
-		Assert.assertEquals("Phones & PDAs", phones.getText());
-		
-		WebElement cameras = driver.findElement(By.cssSelector(":nth-child(7) > a"));
-		Assert.assertEquals("Cameras", cameras.getText());
-		
-		WebElement mp3 = driver.findElement(By.xpath("//li/a[contains(text(), 'MP3 Players')]"));
-		Assert.assertEquals("MP3 Players", mp3.getText());
-		Thread.sleep(5000); // For Presentation Only
-		
-	}
-	
-	/*
-	 * This test method checks availability items on Desktops tab
+	 * This test method checks availability PC items on Desktops tab
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
-	//@Test
+	@Test
 	public void CheckPC() throws Exception {
 		
 		String expectedPC = "PC (0)";
@@ -76,7 +43,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedPC, pc.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(1) > .dropdown-menu > .see-all")).click();
-		WebElement pcVertical = driver.findElement(By.cssSelector(".list-group > :nth-child(2)"));
+		WebElement pcVertical = driver.findElement(By.xpath("//div/a[contains(@href,'20_26')]"));
 		Assert.assertTrue(pcVertical.getText().contains(expectedPC));
 		
 		WebElement pcRefine = driver.findElement(By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(1) > a"));
@@ -84,7 +51,11 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Thread.sleep(5000); // For Presentation Only
 	}
 	
-	//@Test
+	/*
+	 * This test method checks availability Mac items on Desktops tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
 	public void CheckMac() throws Exception {
 	
 		String expectedMac = "Mac (1)";
@@ -98,7 +69,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedMac, mac.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(1) > .dropdown-menu > .see-all")).click();
-		WebElement macVertical = driver.findElement(By.cssSelector(".list-group > :nth-child(3)"));
+		WebElement macVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '20_27')]"));
 		Assert.assertTrue(macVertical.getText().contains(expectedMac));
 		
 		WebElement macRefine = driver.findElement(By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(2) > a"));
@@ -108,10 +79,10 @@ public class ContentEqualsTest extends LocalTestRunner {
 	}
 	
 	/*
-	 * This test method checks availability items on Laptops $ Notebooks tab
+	 * This test method checks availability Macs items on Laptops & Notebooks tab
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
-	//@Test
+	@Test
 	public void CheckMacs() throws Exception {
 		
 		String expectedMacs = "Macs (0)";
@@ -124,7 +95,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedMacs, macs.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(2) > .dropdown-menu > .see-all")).click();
-		WebElement macsVertical = driver.findElement(By.cssSelector(".list-group > :nth-child(3)"));
+		WebElement macsVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '18_46')]"));
 		Assert.assertTrue(macsVertical.getText().contains(expectedMacs));
 		
 		WebElement macsRefine = driver.findElement(By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(1) > a"));
@@ -132,7 +103,11 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Thread.sleep(5000); // For Presentation Only
 	}
 	
-	//@Test
+	/*
+	 * This test method checks availability Windows items on Laptops & Notebooks tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
 	public void CheckWindows() throws Exception {
 		
 		String expectedWindows = "Windows (0)";
@@ -145,7 +120,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedWindows, windows.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(2) > .dropdown-menu > .see-all")).click();
-		WebElement windowsVertical = driver.findElement(By.cssSelector(".list-group > :nth-child(4)"));
+		WebElement windowsVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '18_45')]"));
 		Assert.assertTrue(windowsVertical.getText().contains(expectedWindows));
 		
 		WebElement windowsRefine = driver.findElement(By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(2) > a"));
@@ -153,7 +128,11 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Thread.sleep(5000); // For Presentation Only
 	}
 	
-	//@Test
+	/*
+	 * This test method checks availability Mice items on Components tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
 	public void CheckMice() throws Exception {
 		
 		String expectedMice = "Mice and Trackballs (0)";
@@ -166,7 +145,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedMice, mice.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(3) > .dropdown-menu > .see-all")).click();
-		WebElement miceVertical = driver.findElement(By.cssSelector(".list-group > :nth-child(4)"));
+		WebElement miceVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '25_29')]"));
 		Assert.assertTrue(miceVertical.getText().contains(expectedMice));
 		
 		WebElement miceRefine = driver.findElement(By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(1) > a"));
@@ -174,7 +153,11 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Thread.sleep(5000); // For Presentation Only
 	}
 	
-	//@Test
+	/*
+	 * This test method checks availability Monitors items on Components tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
 	public void CheckMonitors() throws Exception {
 		
 		String expectedMonitors = "Monitors (2)";
@@ -187,7 +170,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedMonitors, monitors.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(3) > .dropdown-menu > .see-all")).click();
-		WebElement monitorsVertical = driver.findElement(By.cssSelector(".list-group > :nth-child(5)"));
+		WebElement monitorsVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '25_28')]"));
 		Assert.assertTrue(monitorsVertical.getText().contains(expectedMonitors));
 		
 		WebElement monitorRefine = driver.findElement(By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(2) > a"));
@@ -195,7 +178,11 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Thread.sleep(5000); // For Presentation Only
 	}
 	
-	//@Test
+	/*
+	 * This test method checks availability Printers items on Components tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
 	public void CheckPrinters() throws Exception {
 		
 		String expectedPrinters = "Printers (0)";
@@ -208,7 +195,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedPrinters, printers.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(3) > .dropdown-menu > .see-all")).click();
-		WebElement printersVertical = driver.findElement(By.cssSelector(".list-group > :nth-child(6)"));
+		WebElement printersVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '25_30')]"));
 		Assert.assertTrue(printersVertical.getText().contains(expectedPrinters));
 		
 		WebElement printersRefine = driver.findElement(By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(3) > a"));
@@ -216,7 +203,11 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Thread.sleep(5000); // For Presentation Only
 	}
 	
-	//@Test
+	/*
+	 * This test method checks availability Scanners items on Components tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
 	public void CheckScanners() throws Exception {
 		
 		String expectedScanners = "Scanners (0)";
@@ -229,14 +220,18 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedScanners, scanners.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(3) > .dropdown-menu > .see-all")).click();
-		WebElement scannersVertical = driver.findElement(By.cssSelector(".list-group > :nth-child(7)"));
+		WebElement scannersVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '25_31')]"));
 		Assert.assertTrue(scannersVertical.getText().contains(expectedScanners));
 		
-		WebElement pcRefine = driver.findElement(By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(4) > a"));
-		Assert.assertEquals(expectedScanners, pcRefine.getText());
+		WebElement scannerRefine = driver.findElement(By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(4) > a"));
+		Assert.assertEquals(expectedScanners, scannerRefine.getText());
 		Thread.sleep(5000); // For Presentation Only
 	}
 	
+	/*
+	 * This test method checks availability Web Cameras items on Components tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
 	@Test
 	public void CheckWebCams() throws Exception {
 		
@@ -250,7 +245,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedWebCams, webcams.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(3) > .dropdown-menu > .see-all")).click();
-		WebElement webcamsVertical = driver.findElement(By.cssSelector(".list-group > :nth-child(8)"));
+		WebElement webcamsVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '25_32')]"));
 		Assert.assertTrue(webcamsVertical.getText().contains(expectedWebCams));
 		
 		WebElement webcamsRefine = driver.findElement(By.cssSelector(".col-sm-3 > ul > :nth-child(5) > a"));
