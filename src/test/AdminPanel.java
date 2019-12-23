@@ -77,7 +77,7 @@ public class AdminPanel extends LocalTestRunnerSetIP {
         webDriver.quit();
     }
 
-    public void loginAdmin (WebDriver webDriver) throws Exception{
+    private void loginAdmin (WebDriver webDriver) throws Exception{
         System.out.println("@Before method - Loading Page");
         webDriver.get(String.format("http://%s/opencart/upload/admin/", IP));
 
@@ -96,20 +96,20 @@ public class AdminPanel extends LocalTestRunnerSetIP {
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
     }
 
-    public void logoutAdmin (WebDriver webDriver) throws Exception{
+    private void logoutAdmin (WebDriver webDriver) throws Exception{
         // Click 'Logout' button
         webDriver.findElement(By.cssSelector("a[href*='common/logout']")).click();
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
     }
 
-    public void findCustomerByEmail (WebDriver webDriver, String email)
+    private void findCustomerByEmail (WebDriver webDriver, String email)
             throws Exception {
 
         webDriver.findElement(By.xpath("//img[@title='OpenCart']")).click();
         // Goto 'Customer' section
         webDriver.findElement(By.id("button-menu")).click();
         webDriver.findElement(By.id("menu-customer")).click();
-        webDriver.findElement(By.xpath("//a[.='Customers']")).click();
+        webDriver.findElement(By.xpath("//li[@id='menu-customer']//a[contains (@href,'customer/customer&')]")).click();
 
         // Filter customer by email
         webDriver.findElement(By.id("input-email")).click();
@@ -120,7 +120,7 @@ public class AdminPanel extends LocalTestRunnerSetIP {
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
     }
 
-    public void dropCustomer(WebDriver webDriver, String email) throws Exception {
+    private void dropCustomer(WebDriver webDriver, String email) throws Exception {
 
         System.out.println("Trying to check this checkbutton");
         // Delete customer

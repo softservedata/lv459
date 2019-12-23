@@ -183,7 +183,6 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
     @Test
     public void tc03customerRegistrationAllFieldValidNoCheckBoxTest() throws Exception {
 
-
         driver.findElement(By.className("dropdown")).click();
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
         driver.findElement(By.cssSelector("a[href*='account/register']")).click();
@@ -292,14 +291,7 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
         Assert.assertEquals(driver.findElement(By.xpath(
                 "//*[contains(text(),'Password must be between 4')]")).getText(),
                 "Password must be between 4 and 20 characters!");
-
-        List<WebElement> list =
-                driver.findElements(By.className("text-danger"));
-        for (WebElement current : list) {
-            System.out.println(current.getText());
-        }
     }
-
 
     /**
     Testing one field (email) by decision table technics.
@@ -364,7 +356,6 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
         String xpathRequest = "//input[@value='%s']/following-sibling::div[contains(text(),'E-Mail Address does not appear to be valid!')]";
 
         /* following tests skipped due to HTML browser email check.
-
         driver.findElement(By.id("input-email")).clear();
         driver.findElement(By.id("input-email")).sendKeys("a");
         if (!driver.findElement(By.name("agree")).isSelected()) {
@@ -422,9 +413,12 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
                 By.xpath("//h1[contains (text(), 'Been Created!')]")).getText(),
                             "Your Account Has Been Created!");
 */
-
     }
 
+    /**
+     * Test for correct work of DB. Trying to drop test table by incorrect fisrtname.
+     * @throws Exception
+     */
     @Test
     public void tc06customerRegistrationTest() throws Exception {
 
