@@ -48,12 +48,6 @@ public abstract class AdminTestRunner {
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("\t@Before method");
-		driver.findElement(By.xpath("//li[@id='menu-catalog']//i[contains(@class, 'fa fa-tags fw')]")).click();
-		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.cssSelector("#menu-catalog > :nth-child(2) > :nth-child(1) > a")).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
-		Thread.sleep(1000); // For Presentation Only
 	}
 	
 	@After
