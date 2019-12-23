@@ -23,7 +23,7 @@ import org.openqa.selenium.By;
  */
 public class AdminAddContentTest extends AdminTestRunner {
 	private final String POINT_ON_CATALOG_TAB = "//li[@id='menu-catalog']//i[contains(@class, 'fa fa-tags fw')]";
-	private final String GET_CATEGORIES_TAB = "#menu-catalog > :nth-child(2) > :nth-child(2) > a";
+	private final String GET_CATEGORIES_TAB = "#menu-catalog > :nth-child(2) > :nth-child(1) > a";
 	private final String ADD_NEW_ITEM = ".pull-right > .btn-primary";
 	/*
 	 * This test method adds items to Tablets tab.

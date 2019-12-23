@@ -27,7 +27,7 @@ public class ProductsAddingTest extends AdminTestRunner {
 	/*
 	 * This test method adds items to Tablets tab.
 	 */
-	@Test
+	//@Test
 	public void addSamsungToTablets() throws Exception {
 		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
 		Thread.sleep(2000); // For Presentation Only
@@ -53,7 +53,7 @@ public class ProductsAddingTest extends AdminTestRunner {
 		Thread.sleep(1000); // For Presentation Only
 	}
 	
-	@Test
+	//@Test
 	public void addHTCtoSmartphones() throws Exception {
 		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
 		Thread.sleep(2000); // For Presentation Only
@@ -74,7 +74,7 @@ public class ProductsAddingTest extends AdminTestRunner {
 		Thread.sleep(1000); // For Presentation Only
 	}
 	
-	@Test
+	//@Test
 	public void addiPhoneToSmartphones() throws Exception {
 		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
 		Thread.sleep(2000); // For Presentation Only
@@ -95,7 +95,7 @@ public class ProductsAddingTest extends AdminTestRunner {
 		Thread.sleep(1000); // For Presentation Only
 	}
 	
-	@Test
+	//@Test
 	public void addPalmToSmartphones() throws Exception {
 		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
 		Thread.sleep(2000); // For Presentation Only
@@ -112,6 +112,53 @@ public class ProductsAddingTest extends AdminTestRunner {
 		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.cssSelector(".col-sm-10 > .dropdown-menu > li > a")).click();
+		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
+		Thread.sleep(1000); // For Presentation Only
+	}
+	
+	//@Test
+	public void addCanonToCameras() throws Exception {
+		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
+		Thread.sleep(2000); // For Presentation Only
+		driver.findElement(By.cssSelector(GET_PRODUCTS_TAB)).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.xpath("//a[contains(@href,'id=30')]")).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.xpath("//a[contains(@href,'links')]")).click();
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id("input-category")).click();
+		driver.findElement(By.id("input-category")).clear();
+		driver.findElement(By.id("input-category")).sendKeys("Cameras");
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.cssSelector(".col-sm-10 > .dropdown-menu > :nth-child(2) > a")).click();
+		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
+		Thread.sleep(1000); // For Presentation Only
+	}
+	
+	@Test
+	public void addNikinToCameras() throws Exception {
+		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
+		Thread.sleep(2000); // For Presentation Only
+		driver.findElement(By.cssSelector(GET_PRODUCTS_TAB)).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.xpath("//a[contains(@href,'id=31')]")).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.xpath("//a[contains(@href,'links')]")).click();
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id("input-manufacturer")).click();
+		driver.findElement(By.id("input-manufacturer")).clear();
+		driver.findElement(By.id("input-manufacturer")).sendKeys("Nikon");
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id("input-category")).click();
+		driver.findElement(By.id("input-category")).clear();
+		driver.findElement(By.id("input-category")).sendKeys("Cameras");
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.cssSelector(".col-sm-10 > .dropdown-menu > :nth-child(2) > a")).click();
 		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
