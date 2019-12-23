@@ -10,14 +10,17 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class CustomerRegistrationTestRegister extends
-                                              LocalTestRunnerCustomerRegister {
+public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
 
     //
     @Test
     public void tc01customerRegistrationTest() throws Exception {
 
         // prerequisites - Customer with given email is not in database.
+        //Check in admin menu if Customer with given email is present:
+        //        if yes- delete
+        //        if no  go on with customer creation
+
 
         //Click dropdown list
         driver.findElement(By.className("dropdown")).click();
@@ -93,7 +96,7 @@ public class CustomerRegistrationTestRegister extends
 
         Assert.assertTrue(isCustomerLogined());
 
-        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY * 2);
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
 
         // Logout
         logOutCustomer();
@@ -106,6 +109,8 @@ public class CustomerRegistrationTestRegister extends
 
     @Test
     public void tc02customerRegistrationOneFieldInvalidTest() throws Exception {
+
+        // Here we will check if user is in DB and delete it.
 
         driver.findElement(By.className("dropdown")).click();
 
@@ -177,6 +182,8 @@ public class CustomerRegistrationTestRegister extends
         Assert.assertEquals("First Name must be between 1 and 32 characters!" ,
                             driver.findElement(By.xpath(
                 "//*[contains(text(),'First Name must be')]")).getText());
+
+        admin.deleteCustomer(USER_EMAIL);
     }
 
     // TODO - later

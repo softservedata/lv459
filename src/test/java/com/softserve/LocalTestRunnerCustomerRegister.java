@@ -13,15 +13,18 @@ public abstract class LocalTestRunnerCustomerRegister
         extends LocalTestRunnerSetIP {
 
     @Before
-    public void pageLoad() {
+    public void pageLoad() throws Exception {
         System.out.println("@Before method - Loading Page");
         driver.get(String.format("http://%s/opencart/upload/", IP));
+        admin.deleteCustomer(USER_EMAIL);
     }
 
     @After
-    public void stopPage() {
+    public void stopPage() throws  Exception {
         System.out.println("@After method - Stop Page");
         if (isCustomerLogined()) logOutCustomer();
+        admin.deleteCustomer(USER_EMAIL);
+
     }
 
 
@@ -43,6 +46,7 @@ public abstract class LocalTestRunnerCustomerRegister
             "ul.dropdown-menu.dropdown-menu-right > li > a[href*='account/logout']"))
                 .click();
         driver.findElement(By.cssSelector("a.btn.btn-primary")).click();
+        driver.findElement(By.xpath("//input[@class='form-control input-lg']")).click();
     }
 
     protected void loginCustomer (String email, String pwd) throws Exception {
@@ -53,7 +57,7 @@ public abstract class LocalTestRunnerCustomerRegister
         driver.findElement(By.cssSelector("a[title='My Account']")).click();
 
         // Click loginCustomer Button
-        driver.findElement(By.cssSelector("a[href*='account/loginCustomer']")).click();
+        driver.findElement(By.cssSelector("a[href*='account/login']")).click();
 
         // Steps
         // Type Login Email
@@ -79,7 +83,7 @@ public abstract class LocalTestRunnerCustomerRegister
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
     }
 
-    public boolean checkIfCustomerRegistered (String customerEmail, String customerPassword) throws Exception {
+    public boolean checkIfCustomerIsRegistered(String customerEmail, String customerPassword) throws Exception {
 
         WebDriver webdriver = new ChromeDriver();
         webdriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

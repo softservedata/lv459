@@ -10,13 +10,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
 
 public abstract class LocalTestRunnerSetIP {
-    protected static final String IP = "172.16.0.128";
+    protected static final String IP = "172.16.0.129";
     protected static final int DELAY_FOR_PRESENTATION_ONLY = 1000;
     protected static WebDriver driver;
     protected static final String ADMIN_PANEL_USER = "admin";
     protected static final String DB_PASSWORD = System.getenv("DB_PASSWORD");
     protected static final String USER_EMAIL = System.getenv("USER_EMAIL");
     protected static final String USER_PASSWORD = System.getenv("USER_PASSWORD");
+    protected static AdminPanel admin = new AdminPanel();
 
     @BeforeClass
     public static void startDriver() throws Exception {

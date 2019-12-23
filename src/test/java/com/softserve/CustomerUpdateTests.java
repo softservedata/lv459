@@ -7,7 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class CustomerUpdateTestRegister
+public class CustomerUpdateTests
         extends LocalTestRunnerCustomerRegister {
 
     /*
@@ -19,7 +19,7 @@ public class CustomerUpdateTestRegister
 
         // prerequisites - Customer with given email is not in database.
 
-        if (super.checkIfCustomerRegistered(USER_EMAIL , USER_PASSWORD)) {
+        if (super.checkIfCustomerIsRegistered(USER_EMAIL , USER_PASSWORD)) {
             return;
         } else {
 

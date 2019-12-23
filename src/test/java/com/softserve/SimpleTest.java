@@ -1,35 +1,15 @@
 package com.softserve;
 
-public class SimpleTest {
+import org.junit.Test;
 
-    //@Test
+public class SimpleTest extends LocalTestRunnerCustomerRegister{
+
+    @Test
     public void myProbas() throws Exception {
-        //    System.setProperty("webdriver.chrome.driver",
-      //    "/usr/bin/chromedriver");
-        //    System.setProperty("webdriver.chrome.driver",
-        //                       this.getClass().getResource(Reg
-        //                                                   "chromedriver*")
-      //                                                   .getPath());
-        //
+//
+        AdminPanel admin = new AdminPanel();
+        admin.deleteCustomer(USER_EMAIL);
 
-        //  System.getenv().forEach((k, v) -> {
-        //    System.out.println(k + ":" + v);
-        //  });
-        System.out.println(System.getenv("USER_PASSWORD"));
-
-        Integer t= 4;
-        String d = t.toString();
-        System.out.println(d);
-
-        //    System.out.println(System.getenv("DB_PASSWORD"));
-        //    System.out.println(System.getenv("DB_LOGIN"));
-        //    System.out.println(System.getenv("USER_EMAIL"));
-        //
-        //    System.out.println(this.getClass().getResource("chromedriver*")
-      //    .getPath());
-
-        //  System.setProperty("webdriver.chrome.driver" , this.getClass()
-      //  .getResource("chromedriver").getPath());
-        //    System.out.println(System.getProperty("webdriver.chrome.driver"));
+        System.out.println(String.format("//td[contains(text(), '%s')]/./preceding-sibling::td[@class='text-center']/./input[@name='selected[]']", "lv459"));
     }
 }
