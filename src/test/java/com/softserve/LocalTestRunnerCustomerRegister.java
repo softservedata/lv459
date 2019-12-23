@@ -27,14 +27,16 @@ public abstract class LocalTestRunnerCustomerRegister
 
     }
 
-
-    public boolean isCustomerLogined() {
+    public boolean isCustomerLogined() throws Exception {
         driver.findElement(By.cssSelector("a[title='My Account']")).click();
         if (driver.findElements(By.cssSelector("ul.dropdown-menu.dropdown-menu-right > li"))
                     .size() > 2) {
+            Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
             driver.findElement(By.cssSelector("input[name='search']")).click();
             return true;
         } else {
+            Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
             driver.findElement(By.cssSelector("input[name='search']")).click();
             return false;
         }
@@ -83,7 +85,7 @@ public abstract class LocalTestRunnerCustomerRegister
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
     }
 
-    public boolean checkIfCustomerIsRegistered(String customerEmail, String customerPassword) throws Exception {
+    public boolean checkIfCustomerIsRegistered (String customerEmail, String customerPassword) throws Exception {
 
         WebDriver webdriver = new ChromeDriver();
         webdriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

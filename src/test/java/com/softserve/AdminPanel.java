@@ -87,7 +87,7 @@ public class AdminPanel extends LocalTestRunnerSetIP {
         webDriver.quit();
     }
 
-    public void loginAdmin (WebDriver webDriver) {
+    public void loginAdmin (WebDriver webDriver) throws Exception{
         System.out.println("@Before method - Loading Page");
         webDriver.get(String.format("http://%s/opencart/upload/admin/", IP));
 
@@ -103,11 +103,15 @@ public class AdminPanel extends LocalTestRunnerSetIP {
 
         // CLick 'Login' button
         webDriver.findElement(By.id("input-password")).sendKeys(Keys.ENTER);
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
     }
 
-    public void logoutAdmin (WebDriver webDriver) {
+    public void logoutAdmin (WebDriver webDriver) throws Exception{
         // Click 'Logout' button
         webDriver.findElement(By.cssSelector("a[href*='common/logout']")).click();
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
     }
 
     public void findCustomerByEmail (WebDriver webDriver, String email)
@@ -150,6 +154,7 @@ public class AdminPanel extends LocalTestRunnerSetIP {
 
         // confirm delete customer
         webDriver.switchTo().alert().accept();
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
     }
 
     private void createCustomer (WebDriver webDriver, String email , String password) {
