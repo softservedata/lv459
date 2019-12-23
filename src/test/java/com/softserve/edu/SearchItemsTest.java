@@ -149,7 +149,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //Using numbers and symbol
-    @Test
+    //@Test
     public void findItemCaseSeven() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -192,6 +192,28 @@ public class SearchItemsTest extends LocalTestRunner {
         Thread.sleep(1000); // For Presentation Only
     }
 
+    //SQL command
+    //@Test
+    public void findItemCaseNine() throws Exception {
+        // Steps
+        // Typing in the "Search field"
+        driver.findElement(By.name("search")).click();
+        driver.findElement(By.name("search")).clear();
+        driver.findElement(By.name("search")).sendKeys("; DROP DATABASE *;");
+        //
+        // Clicking on the "Search Button"
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        Thread.sleep(1000); // For Presentation Only
+        //
+        // Checking
+        WebElement zeroLength = driver.findElement(By.xpath("//input[@id='button-search']/following-sibling::p"));
+        Assert.assertTrue(zeroLength.getText().contains("There is no product that matches the search criteria."));
+        //
+        // Return to Previous State
+        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+        Thread.sleep(1000); // For Presentation Only
+    }
+
     //One letter in "Search field"
     //@Test
     public void fieldLengthCaseOne() throws Exception {
@@ -215,7 +237,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //255 letters in "Search field"
-    @Test
+    //@Test
     public void fieldLengthCaseTwo() throws Exception {
 
         String strCharacter = "a";

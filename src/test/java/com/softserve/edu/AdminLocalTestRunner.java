@@ -4,13 +4,14 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
 
-public abstract class LocalTestRunner {
+public abstract class AdminLocalTestRunner {
     protected static WebDriver driver;
 
     @BeforeClass
@@ -21,6 +22,7 @@ public abstract class LocalTestRunner {
         System.out.println("PATH: " + LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
     }
 
     @AfterClass
@@ -33,7 +35,7 @@ public abstract class LocalTestRunner {
     @Before
     public void setUp() throws Exception {
         System.out.println("\t@Before method");
-        driver.get("http://192.168.216.128/opencart/upload/");
+        driver.get("http://192.168.216.128/opencart/upload/admin/");
         //driver.get("http://taqc-opencart.epizy.com/index.php?route=common/home");
         //Thread.sleep(1000); // For Presentation Only
         //driver.manage().window().maximize();
