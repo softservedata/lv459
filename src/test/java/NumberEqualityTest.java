@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 
 public class NumberEqualityTest extends LocalTestRunner {
-    @Test 
+    @Test
     public void testNumberEquality() throws InterruptedException {
 
        NumberEqualityTest equality = new NumberEqualityTest();
@@ -18,14 +18,20 @@ public class NumberEqualityTest extends LocalTestRunner {
         jse.executeScript("window.scrollBy(0, 500)", "");
 
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "MacBook"))).click();
+        Thread.sleep(1000);
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "iPhone"))).click();
 
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(wishListField).click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         WebElement actual = driver.findElement(By.xpath("//div[@id='top-links']//li/a[@id='wishlist-total']//span"));
         Assert.assertTrue(actual.getText().contains("2"));
-        Thread.sleep(500);
+        Thread.sleep(1000);
+
+        driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "MacBook"))).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "iPhone"))).click();
+
     }
 }

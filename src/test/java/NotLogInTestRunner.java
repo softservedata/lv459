@@ -30,7 +30,7 @@ public abstract class NotLogInTestRunner {
     @Before
     public void setUp() throws Exception {
         System.out.println("\t@Before method");
-        driver.get("http://192.168.159.134/opencart/upload/index.php?route=common/home");
+        driver.get("http://192.168.159.135/opencart/upload/index.php?route=common/home");
         Thread.sleep(1000); // For Presentation Only
         driver.manage().window().maximize();
         Thread.sleep(1000); // For Presentation Only

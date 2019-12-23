@@ -38,10 +38,12 @@ public class VerifyButtonsInWishListTest extends LocalTestRunner {
         WebElement actual = driver.findElement(By.xpath("//ul[@class='dropdown-menu pull-right']"));
         Assert.assertTrue(actual.getText().contains(expected));
         Thread.sleep(500);
+
+        driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "iPhone"))).click();
     }
 
     @Test
-    public void removeElementFromWishList() throws InterruptedException {
+    public void removeElementFromWishList() throws InterruptedException { //ПРАЦЮЄ ЧЕРЕЗ РАЗ!!!!????????
 
         VerifyButtonsInWishListTest removeElement = new VerifyButtonsInWishListTest();
         removeElement.logIn();
@@ -63,9 +65,9 @@ public class VerifyButtonsInWishListTest extends LocalTestRunner {
 
         WebElement actual = driver.findElement(By.xpath("//div[contains(text(), ' Success: You have modified your wish list!')]"));
         String expected = "Success: You have modified your wish list!";
+
         Assert.assertTrue(actual.getText().contains(expected));
         Thread.sleep(500);
-
 
     }
 }

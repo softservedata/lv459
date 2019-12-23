@@ -11,7 +11,7 @@ public class WishListIsEmptyByDefaultTest  extends LocalTestRunner{
 
         driver.findElement(wishListField).click();
 
-        WebElement actual = driver.findElement(By.xpath("//*[@id=\"content\"]/p"));
+        WebElement actual = driver.findElement(By.xpath("//*[@id='content']/p"));
         String expected = "Your wish list is empty.";
 
         Assert.assertEquals(expected, actual.getText());

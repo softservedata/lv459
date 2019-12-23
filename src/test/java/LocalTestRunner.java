@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public abstract class LocalTestRunner {
-/////////////////////////////////////DONT FORGET TO REMOVE ELEMENTS AFTER TEST PASSED
+
     protected static WebDriver driver;
     protected final String ADD_TO_WISH_LIST_XPATH = "//a[text()='%s']/../../following-sibling::div/button[contains(@onclick, 'wishlist.add')]";
-    protected final String REMOVE_FROM_WISH_LIST_BTN = "//td//a[contains(.,'%s')]/../following-sibling::td//i[@class='fa fa-times']";
+    protected final String REMOVE_FROM_WISH_LIST_BTN = "//td//a[contains(.,'%s')]/../following-sibling::td//a[@class='btn btn-danger']/i[@class='fa fa-times']";
     protected final String ADD_TO_SHOPPING_CART_BTN = "//td//a[contains(.,'%s')]/../following-sibling::td//i[@class='fa fa-shopping-cart']";
 
     By wishListField = By.id("wishlist-total");
@@ -77,7 +77,7 @@ public abstract class LocalTestRunner {
       @Before
         public void setUp() throws Exception {
             System.out.println("\t@Before method");
-            driver.get("http://192.168.159.134/opencart/upload/index.php?route=account/login");
+            driver.get("http://192.168.159.135/opencart/upload/index.php?route=account/login");
             Thread.sleep(1000); // For Presentation Only
             driver.manage().window().maximize();
             Thread.sleep(1000); // For Presentation Only
@@ -87,15 +87,8 @@ public abstract class LocalTestRunner {
         public void tearDown() throws Exception {
             System.out.println("\t@After method");
             //CREATE METHOD FOR REMOVING ITEMS FROM WISH LIST
-            // removeAllItems
-//            driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "Apple Cinema 30\""))).click();
-//            driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "MacBook"))).click();
-//            driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "iPhone"))).click();
-//            driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "Canon EOS 5D"))).click();
-
-//            }
             if (isLoggined()) {
-                driver.get("http://192.168.159.134/opencart/upload/index.php?route=account/logout");
+                driver.get("http://192.168.159.135/opencart/upload/index.php?route=account/logout");
             }
         }
     private boolean isLoggined() throws Exception {

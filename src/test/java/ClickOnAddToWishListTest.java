@@ -28,6 +28,8 @@ public class ClickOnAddToWishListTest extends LocalTestRunner {
 
         Assert.assertTrue(actual.getText().contains("MacBook"));
         Thread.sleep(300);
+
+        driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "MacBook"))).click();
     }
 
     @Test
@@ -55,6 +57,9 @@ public class ClickOnAddToWishListTest extends LocalTestRunner {
 
         Assert.assertTrue(actual.getText().contains("Apple Cinema 30\""));
         Thread.sleep(300);
+
+        driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "Apple Cinema 30\""))).click();
+
     }
 
     @Test

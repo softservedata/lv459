@@ -29,7 +29,6 @@ public class SaveAfterLogoutTest  extends LocalTestRunner{
         driver.findElement(wishListField).click();
         Thread.sleep(500);
 
-
         saveAfterLogoutTest.logOut();
 
         saveAfterLogoutTest.logIn();
@@ -39,5 +38,8 @@ public class SaveAfterLogoutTest  extends LocalTestRunner{
 
         WebElement actual = driver.findElement(By.xpath("//div[@id='top-links']//li/a[@id='wishlist-total']//span"));
         Assert.assertTrue(actual.getText().contains("2"));
+
+        driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "Canon EOS 5D"))).click();
+        driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "iPhone"))).click();
     }
 }
