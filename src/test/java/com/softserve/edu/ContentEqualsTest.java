@@ -253,4 +253,128 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Thread.sleep(5000); // For Presentation Only
 	}
 	
+	/*
+	 * This test method checks availability Tablets items on Tablets tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
+	public void CheckTablets() throws Exception {
+		
+		String expectedTablets = "Tablets (1)";
+		
+		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'Tablets')]"));
+		Actions action = new Actions(driver);		
+		action.moveToElement(components).perform();
+		
+		WebElement tablets = driver.findElement(By.cssSelector("#menu a[href*='57_75']"));
+		Assert.assertEquals(expectedTablets, tablets.getText());
+
+		driver.findElement(By.cssSelector(":nth-child(4) > .dropdown-menu > .see-all")).click();
+		WebElement tabletsVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '57_75')]"));
+		Assert.assertTrue(tabletsVertical.getText().contains(expectedTablets));
+		
+		WebElement tabletsRefine = driver.findElement(By.xpath("//div[@id='content']//li/a[contains(@href,'path=57_75')]"));
+		Assert.assertEquals(expectedTablets, tabletsRefine.getText());
+		Thread.sleep(5000); // For Presentation Only
+	}
+	
+	/*
+	 * This test method checks availability Software items on Software tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
+	public void CheckSoftware() throws Exception {
+		
+		String expectedSoftware = "Software (0)";
+		
+		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'Software')]"));
+		Actions action = new Actions(driver);		
+		action.moveToElement(components).perform();
+		
+		WebElement software = driver.findElement(By.cssSelector("#menu a[href*='17_76']"));
+		Assert.assertEquals(expectedSoftware, software.getText());
+
+		driver.findElement(By.cssSelector(":nth-child(5) > .dropdown-menu > .see-all")).click();
+		WebElement softwareVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '17_76')]"));
+		Assert.assertTrue(softwareVertical.getText().contains(expectedSoftware));
+		
+		WebElement softwareRefine = driver.findElement(By.xpath("//div[@id='content']//li/a[contains(@href,'path=17_76')]"));
+		Assert.assertEquals(expectedSoftware, softwareRefine.getText());
+		Thread.sleep(5000); // For Presentation Only
+	}
+	
+	/*
+	 * This test method checks availability Smartphones items on Phones & PDAs tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
+	public void CheckSmartphones() throws Exception {
+		
+		String expectedSmartphones = "Smartphones (3)";
+		
+		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'Phones & PDAs')]"));
+		Actions action = new Actions(driver);		
+		action.moveToElement(components).perform();
+		
+		WebElement smartphones = driver.findElement(By.cssSelector("#menu a[href*='24_73']"));
+		Assert.assertEquals(expectedSmartphones, smartphones.getText());
+
+		driver.findElement(By.cssSelector(":nth-child(6) > .dropdown-menu > .see-all")).click();
+		WebElement smartphonesVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '24_73')]"));
+		Assert.assertTrue(smartphonesVertical.getText().contains(expectedSmartphones));
+		
+		WebElement smartphonesRefine = driver.findElement(By.xpath("//div[@id='content']//li/a[contains(@href,'path=24_73')]"));
+		Assert.assertEquals(expectedSmartphones, smartphonesRefine.getText());
+		Thread.sleep(5000); // For Presentation Only
+	}
+	
+	/*
+	 * This test method checks availability Cameras items on Cameras tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
+	public void CheckCameras() throws Exception {
+		
+		String expectedCameras = "Cameras (2)";
+		
+		WebElement components = driver.findElement(By.cssSelector(":nth-child(7) > a"));
+		Actions action = new Actions(driver);		
+		action.moveToElement(components).perform();
+		
+		WebElement cameras = driver.findElement(By.cssSelector("#menu a[href*='33_74']"));
+		Assert.assertEquals(expectedCameras, cameras.getText());
+
+		driver.findElement(By.cssSelector(":nth-child(7) > .dropdown-menu > .see-all")).click();
+		WebElement camerasVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '33_74')]"));
+		Assert.assertTrue(camerasVertical.getText().contains(expectedCameras));
+		
+		WebElement camerasRefine = driver.findElement(By.xpath("//div[@id='content']//li/a[contains(@href,'path=33_74')]"));
+		Assert.assertEquals(expectedCameras, camerasRefine.getText());
+		Thread.sleep(5000); // For Presentation Only
+	}
+	
+	/*
+	 * This test method checks availability MP3 Players items on MP3 Players tab
+	 * on horizontal menu such as on vertical and “Refine Search” menus.
+	 */
+	@Test
+	public void CheckMP3() throws Exception {
+		
+		String expectedMP3 = "MP3 Players (0)";
+		
+		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'MP3 Players')]"));
+		Actions action = new Actions(driver);		
+		action.moveToElement(components).perform();
+		
+		WebElement mp3 = driver.findElement(By.cssSelector("#menu a[href*='34_78']"));
+		Assert.assertEquals(expectedMP3, mp3.getText());
+
+		driver.findElement(By.cssSelector(":nth-child(8) > .dropdown-menu > .see-all")).click();
+		WebElement mp3Vertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '34_78')]"));
+		Assert.assertTrue(mp3Vertical.getText().contains(expectedMP3));
+		
+		WebElement mp3Refine = driver.findElement(By.xpath("//div[@id='content']//li/a[contains(@href,'path=34_78')]"));
+		Assert.assertEquals(expectedMP3, mp3Refine.getText());
+		Thread.sleep(5000); // For Presentation Only
+	}
 }

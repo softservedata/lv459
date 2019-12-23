@@ -153,7 +153,7 @@ public class ProductsAddingTest extends AdminTestRunner {
 	 * This test method adds items to Cameras tab.
 	 */
 	@Test
-	public void addNikinToCameras() throws Exception {
+	public void addNikonToCameras() throws Exception {
 		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
 		Thread.sleep(2000); // For Presentation Only
 		driver.findElement(By.cssSelector(GET_PRODUCTS_TAB)).click();
@@ -177,4 +177,5 @@ public class ProductsAddingTest extends AdminTestRunner {
 		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
+	
 }

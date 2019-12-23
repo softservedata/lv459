@@ -152,4 +152,36 @@ public class AdminAddContentTest extends AdminTestRunner {
 		driver.findElement(By.cssSelector(".btn-primary > .fa")).click();
 	
 	}
+	
+	/*
+	 * This test method adds items to MP3 Players tab.
+	 */
+	@Test
+	public void addMP3() throws Exception {
+		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
+		Thread.sleep(2000); // For Presentation Only
+		driver.findElement(By.cssSelector(GET_CATEGORIES_TAB)).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.cssSelector(ADD_NEW_ITEM)).click();
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id("input-name1")).click();
+		driver.findElement(By.id("input-name1")).clear();
+		driver.findElement(By.id("input-name1")).sendKeys("MP3 Players");
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id("input-meta-title1")).click();
+		driver.findElement(By.id("input-meta-title1")).clear();
+		driver.findElement(By.id("input-meta-title1")).sendKeys("MP3 Players");
+		driver.findElement(By.xpath("//a[@href='#tab-data']")).click();
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id("input-parent")).click();
+		driver.findElement(By.id("input-parent")).clear();
+		driver.findElement(By.id("input-parent")).sendKeys("MP3 Players");
+		driver.findElement(By.cssSelector(".col-sm-10 > .dropdown-menu > :nth-child(2) > a")).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.cssSelector(".btn-primary > .fa")).click();
+	
+	}
 }
