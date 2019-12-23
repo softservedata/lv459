@@ -10,30 +10,9 @@ public class LoginTest extends LoginationTestRunner {
 
     @Test
     public void loginTest() throws InterruptedException {
-        
-        driver.findElement(By.cssSelector(".fa.fa-user")).click();
-        //
-        driver.findElement(By.cssSelector(
-                ".dropdown-menu.dropdown-menu-right a[href*='account/login']"))
-                .click();
-        //
-        Thread.sleep(1000); // For Presentation Only
-        //
-        driver.findElement(By.id("input-email")).click();
-        driver.findElement(By.id("input-email")).clear();
-        driver.findElement(By.id("input-email")).sendKeys(
-                System.getenv().get("OPENCART_LOGIN_TWO"), Keys.ARROW_LEFT);
-        //
-        Thread.sleep(1000); // For Presentation Only
-        //
-        driver.findElement(By.id("input-password")).click();
-        driver.findElement(By.id("input-password")).clear();
-        driver.findElement(By.id("input-password")).sendKeys(
-                System.getenv().get("OPENCART_PASSWORD"), Keys.ARROW_LEFT);
-        driver.findElement(By.id("input-password")).submit();
-        //
-        Thread.sleep(1000); // For Presentation Only
-        //
+
+        login(System.getenv().get("OPENCART_LOGIN_TWO"),
+                System.getenv().get("OPENCART_PASSWORD"));
         driver.findElement(
                 By.cssSelector(".list-unstyled a[href*='account/edit']"))
                 .click();
@@ -53,17 +32,8 @@ public class LoginTest extends LoginationTestRunner {
                 .click();
         Thread.sleep(1000); // For Presentation Only
         for (int i = 0; i < 6; i++) {
-            driver.findElement(By.id("input-email")).click();
-            driver.findElement(By.id("input-email")).clear();
-            driver.findElement(By.id("input-email")).sendKeys(
-                    System.getenv().get("OPENCART_LOGIN_ONE"), Keys.ARROW_LEFT);
-            //
-
-            driver.findElement(By.id("input-password")).click();
-            driver.findElement(By.id("input-password")).clear();
-            driver.findElement(By.id("input-password"))
-                    .sendKeys("SuperStrongPassword", Keys.ARROW_LEFT);
-            driver.findElement(By.id("input-password")).submit();
+            login(System.getenv().get("OPENCART_LOGIN_TWO"),
+                    System.getenv().get("OPENCART_PASSWORD"));
         }
         //
         Thread.sleep(1000); // For Presentation Only

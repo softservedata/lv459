@@ -7,6 +7,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -50,6 +51,33 @@ public abstract class LoginationTestRunner {
                     .click();
             driver.findElement(By.name("search")).click();
         }
+        //
+        Thread.sleep(1000); // For Presentation Only
+        //
+    }
+
+    protected void login(String login, String password)
+            throws InterruptedException {
+        driver.findElement(By.cssSelector(".fa.fa-user")).click();
+        //
+        driver.findElement(By.cssSelector(
+                ".dropdown-menu.dropdown-menu-right a[href*='account/login']"))
+                .click();
+        //
+        Thread.sleep(1000); // For Presentation Only
+        //
+        driver.findElement(By.id("input-email")).click();
+        driver.findElement(By.id("input-email")).clear();
+        driver.findElement(By.id("input-email")).sendKeys(login,
+                Keys.ARROW_LEFT);
+        //
+        Thread.sleep(1000); // For Presentation Only
+        //
+        driver.findElement(By.id("input-password")).click();
+        driver.findElement(By.id("input-password")).clear();
+        driver.findElement(By.id("input-password")).sendKeys(password,
+                Keys.ARROW_LEFT);
+        driver.findElement(By.id("input-password")).submit();
         //
         Thread.sleep(1000); // For Presentation Only
         //
