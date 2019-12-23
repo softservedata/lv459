@@ -110,12 +110,8 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
     @Test
     public void tc02customerRegistrationOneFieldInvalidTest() throws Exception {
 
-        // Here we will check if user is in DB and delete it.
-
         driver.findElement(By.className("dropdown")).click();
-
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
-
         driver.findElement(By.cssSelector("a[href*='account/register']")).click();
 
         // Filling section "Your personal details"
