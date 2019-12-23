@@ -23,7 +23,7 @@ public abstract class LocalTestRunner {
     @BeforeClass
     public static void setUpBeforeClass() throws Exception{
         System.setProperty("webdriver.chrome.driver",
-                AddingQuickLTest.class.getResource("/chromedriver-windows-32bit.exe").getPath());
+                LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
