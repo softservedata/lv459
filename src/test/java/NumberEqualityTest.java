@@ -2,7 +2,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  *<h3> This class contains test which verify whether the number
@@ -30,7 +35,12 @@ public class NumberEqualityTest extends LocalTestRunner {
         Thread.sleep(1000);// For Presentation Only
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "iPhone"))).click();
 
-        Thread.sleep(1000);// For Presentation Only
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+
+        //wait until element wrapper is invisible
+        new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='slideshow0']//div[@class='owl-wrapper']")));
+
         driver.findElement(wishListField).click();
         Thread.sleep(1000);// For Presentation Only
 
