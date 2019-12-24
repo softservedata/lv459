@@ -1,16 +1,20 @@
 package com.softserve.edu;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CartTest extends LocalTestRunner {
 	private final String ADD_TO_CART_BUTTON_XPATH = "//a[text()='%s']/../../following-sibling::div/button[contains(@onclick, 'cart.add')]";
 	private final String ADD_TO_CART_BY_STARTS_WITH = "//a[starts-with(.,'%s')]/../../following-sibling::div/button[contains(@onclick, 'cart.add')]";
 
-	//@Test
+	@Test
 	public void modifyCartByXPath() throws Exception {
 		// Precondition
 		//
@@ -25,6 +29,8 @@ public class CartTest extends LocalTestRunner {
 		driver.findElement(By.xpath("//button[@class='btn btn-default btn-lg']")).click();
 		Thread.sleep(1000); // For Presentation Only
 		//
+		//WebElement spanButton = driver.findElement(By.id("cart-total"));
+//		String spantext = driver.findElement(By.id("cart-total")).getText();
 		// Add to cart MacBook
 		driver.findElement(By.xpath(String.format(ADD_TO_CART_BUTTON_XPATH, "MacBook"))).click();
 		// BUG! Refresh Div, but driver used cached
@@ -32,6 +38,21 @@ public class CartTest extends LocalTestRunner {
 		//
 		//driver.navigate().refresh();
 		Thread.sleep(1000); // For Presentation Only
+		//
+		//
+//		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+//        (new WebDriverWait(driver, 10)).until(
+//        		ExpectedConditions.stalenessOf(spanButton));
+//        (new WebDriverWait(driver, 10))
+//        	.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='cart']//span[text()='" + spantext + "']")));
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//
+//		WebElement alert = driver.findElement(By.cssSelector("div.alert.alert-success button"));
+//		alert.click();
+//		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+//        (new WebDriverWait(driver, 10)).until(
+//        		ExpectedConditions.stalenessOf(alert));
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//
 		// Add to cart MacBook
 		driver.findElement(By.xpath(String.format(ADD_TO_CART_BUTTON_XPATH, "MacBook Air"))).click();
@@ -46,13 +67,14 @@ public class CartTest extends LocalTestRunner {
 		// Check
 		WebElement quantity = driver.findElement(By.xpath("//div[@id='content']//a[text()='MacBook']/../following-sibling::td//input"));
 		Assert.assertEquals("2", quantity.getAttribute("value"));
+		Thread.sleep(4000); // For Presentation Only
 		//
 		// Return to Previous State
 		driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
 
-	@Test
+	//@Test
 	public void addToCartAppleCinema() throws Exception {
 		// Precondition
 		//

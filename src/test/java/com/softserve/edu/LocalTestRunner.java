@@ -35,7 +35,7 @@ public abstract class LocalTestRunner {
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("\t@Before method");
-		driver.get("http://10.26.34.200/opencart/upload/");
+		driver.get("http://10.26.34.156/opencart/upload/");
 		Thread.sleep(1000); // For Presentation Only
 		driver.manage().window().maximize();
 		Thread.sleep(1000); // For Presentation Only
