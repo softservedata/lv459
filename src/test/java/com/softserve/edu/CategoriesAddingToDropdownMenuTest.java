@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 /**
- * The {@code} class AddingCategoriesToDropdownMenuTest
+ * The {@code} class CategoriesAddingToDropdownMenuTest
  * 
  * @version 13.0.1 15 Oct 2019
  */
@@ -13,7 +13,6 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 	private final String ADD_META_TAG_TITLE = "input-meta-title1";
 	private final String SWITCH_TO_DATA_TAB = "//a[@href='#tab-data']";
 	private final String ADD_PARENT = "input-parent";
-	private final String CHOOSE_PARENT_FROM_DROPDOWN = "//li[@data-value='57']";
 	private final String CLICK_SAVE_BUTTON = ".btn-primary > .fa";
 	/*
 	 * This test method adds Tablets category to drop-down menu.
@@ -34,8 +33,8 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 		driver.findElement(By.id(ADD_PARENT)).click();
 		driver.findElement(By.id(ADD_PARENT)).clear();
 		driver.findElement(By.id(ADD_PARENT)).sendKeys("Tablets");
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath(CHOOSE_PARENT_FROM_DROPDOWN)).click();
+		Thread.sleep(2000); // For Presentation Only
+		driver.findElement(By.xpath("//li[@data-value='57']")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.cssSelector(CLICK_SAVE_BUTTON)).click();
 	
@@ -60,7 +59,8 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 		driver.findElement(By.id(ADD_PARENT)).click();
 		driver.findElement(By.id(ADD_PARENT)).clear();
 		driver.findElement(By.id(ADD_PARENT)).sendKeys("Software");
-		driver.findElement(By.cssSelector(CHOOSE_PARENT_FROM_DROPDOWN)).click();
+		Thread.sleep(2000); // For Presentation Only
+		driver.findElement(By.xpath("//li[@data-value='17']")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.cssSelector(CLICK_SAVE_BUTTON)).click();
 	
@@ -85,7 +85,8 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 		driver.findElement(By.id(ADD_PARENT)).click();
 		driver.findElement(By.id(ADD_PARENT)).clear();
 		driver.findElement(By.id(ADD_PARENT)).sendKeys("Phones & PDAs");
-		driver.findElement(By.cssSelector(CHOOSE_PARENT_FROM_DROPDOWN)).click();
+		Thread.sleep(2000); // For Presentation Only
+		driver.findElement(By.xpath("//li[@data-value='24']")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.cssSelector(CLICK_SAVE_BUTTON)).click();
 	
@@ -110,7 +111,8 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 		driver.findElement(By.id(ADD_PARENT)).click();
 		driver.findElement(By.id(ADD_PARENT)).clear();
 		driver.findElement(By.id(ADD_PARENT)).sendKeys("Cameras");
-		driver.findElement(By.cssSelector(CHOOSE_PARENT_FROM_DROPDOWN)).click();
+		Thread.sleep(2000); // For Presentation Only
+		driver.findElement(By.xpath("//li[@data-value='33']")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.cssSelector(CLICK_SAVE_BUTTON)).click();
 	
@@ -135,7 +137,8 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 		driver.findElement(By.id(ADD_PARENT)).click();
 		driver.findElement(By.id(ADD_PARENT)).clear();
 		driver.findElement(By.id(ADD_PARENT)).sendKeys("MP3 Players");
-		driver.findElement(By.cssSelector(CHOOSE_PARENT_FROM_DROPDOWN)).click();
+		Thread.sleep(2000); // For Presentation Only
+		driver.findElement(By.xpath("//li[@data-value='34']")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.cssSelector(CLICK_SAVE_BUTTON)).click();
 	
