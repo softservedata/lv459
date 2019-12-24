@@ -1,11 +1,21 @@
 package com.softserve.edu;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Test;
+import org.openqa.selenium.By;
+
+/**
+ * Restore password from email tests.
+ */
 public class RestorePasswordTest extends RestorePasswordRunner {
 
+    /**
+     * Change password and try to login with new credentials.
+     * @throws InterruptedException
+     */
     @Test
-    public void restorePasswordTest() throws Exception {
+    public void changePasswordTest() throws InterruptedException {
         changePassword(System.getenv("OPENCART_PASSWORD_RESTORE_NEW"));
         //
         Thread.sleep(1000);
@@ -13,9 +23,19 @@ public class RestorePasswordTest extends RestorePasswordRunner {
         login(System.getenv("OPENCART_LOGIN_RESTORE"),
                 System.getenv("OPENCART_PASSWORD_RESTORE_NEW"));
         //
-        Thread.sleep(1000);
+        assertEquals("Wrong account logged",
+                System.getenv().get("OPENCART_LOGIN_RESTORE"),
+                driver.findElement(By.id("input-email")).getAttribute("value"));
+        Thread.sleep(4000);
+    }
+
+    /**
+     * Restore old password.
+     * @throws InterruptedException
+     */
+    @Test
+    public void restorePasswordTest() throws InterruptedException {
         //
-        logout();
         Thread.sleep(1000);
         //
         changePassword(System.getenv("OPENCART_PASSWORD_RESTORE"));
@@ -24,6 +44,10 @@ public class RestorePasswordTest extends RestorePasswordRunner {
         //
         login(System.getenv("OPENCART_LOGIN_RESTORE"),
                 System.getenv("OPENCART_PASSWORD_RESTORE"));
+        //
+        assertEquals("Wrong account logged",
+                System.getenv().get("OPENCART_LOGIN_RESTORE"),
+                driver.findElement(By.id("input-email")).getAttribute("value"));
         Thread.sleep(4000);
     }
 }

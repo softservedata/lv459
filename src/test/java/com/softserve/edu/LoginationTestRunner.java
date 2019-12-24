@@ -11,10 +11,16 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+/**
+ * Contains necessary methods and fields for logination tests.
+ */
 public abstract class LoginationTestRunner {
 
     protected static WebDriver driver;
 
+    /**
+     * Starting up and configure ChromeDriver before tests.
+     */
     @BeforeClass
     public static void setUpBeforeClass() {
         System.setProperty("webdriver.chrome.driver", LoginationTestRunner.class
@@ -23,24 +29,34 @@ public abstract class LoginationTestRunner {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+    /**
+     * Close ChromeDriver after all tests.
+     * @throws InterruptedException
+     */
     @AfterClass
-    public static void tearDownAfterClass() throws Exception {
+    public static void tearDownAfterClass() throws InterruptedException {
         Thread.sleep(1000); // For Presentation Only
         driver.quit();
     }
 
+    /**
+     * Open main page before each test.
+     * @throws InterruptedException
+     */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() throws InterruptedException {
         driver.get("http://192.168.214.128/opencart/upload/");
         Thread.sleep(1000); // For Presentation Only
         driver.manage().window().maximize();
     }
 
+    /**
+     * Logout, if necessary, after each test.
+     * @throws InterruptedException
+     */
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() throws InterruptedException {
         driver.findElement(By.cssSelector(".fa.fa-user")).click();
-        //
-        Thread.sleep(1000); // For Presentation Only
         //
         if (driver
                 .findElements(
@@ -53,9 +69,14 @@ public abstract class LoginationTestRunner {
         }
         //
         Thread.sleep(1000); // For Presentation Only
-        //
     }
 
+    /**
+     * Login with specefied credentials.
+     * @param login    - email to login with.
+     * @param password - password to login with.
+     * @throws InterruptedException
+     */
     protected void login(String login, String password)
             throws InterruptedException {
         driver.findElement(By.cssSelector(".fa.fa-user")).click();
@@ -80,6 +101,5 @@ public abstract class LoginationTestRunner {
         driver.findElement(By.id("input-password")).submit();
         //
         Thread.sleep(1000); // For Presentation Only
-        //
     }
 }

@@ -4,18 +4,25 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 
+/**
+ * Opencart logination tests.
+ *
+ */
 public class LoginTest extends LoginationTestRunner {
 
+    /**
+     * This method testing logination with correct credentials.
+     * @throws InterruptedException
+     */
     @Test
     public void loginTest() throws InterruptedException {
-
         login(System.getenv().get("OPENCART_LOGIN_TWO"),
                 System.getenv().get("OPENCART_PASSWORD"));
         driver.findElement(
                 By.cssSelector(".list-unstyled a[href*='account/edit']"))
                 .click();
+        //
         Thread.sleep(1000); // For Presentation Only
         //
         assertEquals(System.getenv().get("OPENCART_LOGIN_TWO"),
@@ -23,6 +30,10 @@ public class LoginTest extends LoginationTestRunner {
         Thread.sleep(4000); // For Presentation Only
     }
 
+    /**
+     * This method testing logination with wrong credentials.
+     * @throws InterruptedException
+     */
     @Test
     public void incorrectPasswordLoginTest() throws InterruptedException {
         driver.findElement(By.xpath("//i[@class = 'fa fa-user']")).click();
@@ -32,8 +43,7 @@ public class LoginTest extends LoginationTestRunner {
                 .click();
         Thread.sleep(1000); // For Presentation Only
         for (int i = 0; i < 6; i++) {
-            login(System.getenv().get("OPENCART_LOGIN_TWO"),
-                    System.getenv().get("OPENCART_PASSWORD"));
+            login(System.getenv().get("OPENCART_LOGIN_TWO"), "wrongpassword");
         }
         //
         Thread.sleep(1000); // For Presentation Only
