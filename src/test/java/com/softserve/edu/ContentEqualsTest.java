@@ -46,9 +46,10 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement pcVertical = driver.findElement(By.xpath("//div/a[contains(@href,'20_26')]"));
 		Assert.assertTrue(pcVertical.getText().contains(expectedPC));
 		
-		WebElement pcRefine = driver.findElement(By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(1) > a"));
+		WebElement pcRefine = driver.findElement(
+				By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(1) > a"));
 		Assert.assertEquals(expectedPC, pcRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -69,12 +70,14 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedMac, mac.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(1) > .dropdown-menu > .see-all")).click();
-		WebElement macVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '20_27')]"));
+		WebElement macVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '20_27')]"));
 		Assert.assertTrue(macVertical.getText().contains(expectedMac));
 		
-		WebElement macRefine = driver.findElement(By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(2) > a"));
+		WebElement macRefine = driver.findElement(
+				By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(2) > a"));
 		Assert.assertEquals(expectedMac, macRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	
 	}
 	
@@ -87,7 +90,8 @@ public class ContentEqualsTest extends LocalTestRunner {
 		
 		String expectedMacs = "Macs (0)";
 		
-		WebElement laptops = driver.findElement(By.xpath("//li/a[contains(text(), 'Laptops & Notebooks')]"));
+		WebElement laptops = driver.findElement(
+				By.xpath("//li/a[contains(text(), 'Laptops & Notebooks')]"));
 		Actions action = new Actions(driver);		
 		action.moveToElement(laptops).perform();
 		
@@ -95,12 +99,14 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedMacs, macs.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(2) > .dropdown-menu > .see-all")).click();
-		WebElement macsVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '18_46')]"));
+		WebElement macsVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '18_46')]"));
 		Assert.assertTrue(macsVertical.getText().contains(expectedMacs));
 		
-		WebElement macsRefine = driver.findElement(By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(1) > a"));
+		WebElement macsRefine = driver.findElement(
+				By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(1) > a"));
 		Assert.assertEquals(expectedMacs, macsRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -112,7 +118,8 @@ public class ContentEqualsTest extends LocalTestRunner {
 		
 		String expectedWindows = "Windows (0)";
 		
-		WebElement laptops = driver.findElement(By.xpath("//li/a[contains(text(), 'Laptops & Notebooks')]"));
+		WebElement laptops = driver.findElement(
+				By.xpath("//li/a[contains(text(), 'Laptops & Notebooks')]"));
 		Actions action = new Actions(driver);		
 		action.moveToElement(laptops).perform();
 		
@@ -120,12 +127,13 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedWindows, windows.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(2) > .dropdown-menu > .see-all")).click();
-		WebElement windowsVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '18_45')]"));
+		WebElement windowsVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '18_45')]"));
 		Assert.assertTrue(windowsVertical.getText().contains(expectedWindows));
 		
 		WebElement windowsRefine = driver.findElement(By.cssSelector(":nth-child(5) > .col-sm-3 > ul > :nth-child(2) > a"));
 		Assert.assertEquals(expectedWindows, windowsRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -137,7 +145,8 @@ public class ContentEqualsTest extends LocalTestRunner {
 		
 		String expectedMice = "Mice and Trackballs (0)";
 		
-		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'Components')]"));
+		WebElement components = driver.findElement(
+				By.xpath("//li/a[contains(text(), 'Components')]"));
 		Actions action = new Actions(driver);		
 		action.moveToElement(components).perform();
 		
@@ -145,12 +154,14 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedMice, mice.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(3) > .dropdown-menu > .see-all")).click();
-		WebElement miceVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '25_29')]"));
+		WebElement miceVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '25_29')]"));
 		Assert.assertTrue(miceVertical.getText().contains(expectedMice));
 		
-		WebElement miceRefine = driver.findElement(By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(1) > a"));
+		WebElement miceRefine = driver.findElement(
+				By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(1) > a"));
 		Assert.assertEquals(expectedMice, miceRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -162,7 +173,8 @@ public class ContentEqualsTest extends LocalTestRunner {
 		
 		String expectedMonitors = "Monitors (2)";
 		
-		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'Components')]"));
+		WebElement components = driver.findElement(
+				By.xpath("//li/a[contains(text(), 'Components')]"));
 		Actions action = new Actions(driver);		
 		action.moveToElement(components).perform();
 		
@@ -170,12 +182,14 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedMonitors, monitors.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(3) > .dropdown-menu > .see-all")).click();
-		WebElement monitorsVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '25_28')]"));
+		WebElement monitorsVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '25_28')]"));
 		Assert.assertTrue(monitorsVertical.getText().contains(expectedMonitors));
 		
-		WebElement monitorRefine = driver.findElement(By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(2) > a"));
+		WebElement monitorRefine = driver.findElement(
+				By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(2) > a"));
 		Assert.assertEquals(expectedMonitors, monitorRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -187,7 +201,8 @@ public class ContentEqualsTest extends LocalTestRunner {
 		
 		String expectedPrinters = "Printers (0)";
 		
-		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'Components')]"));
+		WebElement components = driver.findElement(
+				By.xpath("//li/a[contains(text(), 'Components')]"));
 		Actions action = new Actions(driver);		
 		action.moveToElement(components).perform();
 		
@@ -195,12 +210,14 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedPrinters, printers.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(3) > .dropdown-menu > .see-all")).click();
-		WebElement printersVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '25_30')]"));
+		WebElement printersVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '25_30')]"));
 		Assert.assertTrue(printersVertical.getText().contains(expectedPrinters));
 		
-		WebElement printersRefine = driver.findElement(By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(3) > a"));
+		WebElement printersRefine = driver.findElement(
+				By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(3) > a"));
 		Assert.assertEquals(expectedPrinters, printersRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -212,7 +229,8 @@ public class ContentEqualsTest extends LocalTestRunner {
 		
 		String expectedScanners = "Scanners (0)";
 		
-		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'Components')]"));
+		WebElement components = driver.findElement(
+				By.xpath("//li/a[contains(text(), 'Components')]"));
 		Actions action = new Actions(driver);		
 		action.moveToElement(components).perform();
 		
@@ -220,12 +238,14 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedScanners, scanners.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(3) > .dropdown-menu > .see-all")).click();
-		WebElement scannersVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '25_31')]"));
+		WebElement scannersVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '25_31')]"));
 		Assert.assertTrue(scannersVertical.getText().contains(expectedScanners));
 		
-		WebElement scannerRefine = driver.findElement(By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(4) > a"));
+		WebElement scannerRefine = driver.findElement(
+				By.cssSelector("#content > .row > .col-sm-3 > ul > :nth-child(4) > a"));
 		Assert.assertEquals(expectedScanners, scannerRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -237,7 +257,8 @@ public class ContentEqualsTest extends LocalTestRunner {
 		
 		String expectedWebCams = "Web Cameras (0)";
 		
-		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'Components')]"));
+		WebElement components = driver.findElement(
+				By.xpath("//li/a[contains(text(), 'Components')]"));
 		Actions action = new Actions(driver);		
 		action.moveToElement(components).perform();
 		
@@ -245,12 +266,14 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedWebCams, webcams.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(3) > .dropdown-menu > .see-all")).click();
-		WebElement webcamsVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '25_32')]"));
+		WebElement webcamsVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '25_32')]"));
 		Assert.assertTrue(webcamsVertical.getText().contains(expectedWebCams));
 		
-		WebElement webcamsRefine = driver.findElement(By.cssSelector(".col-sm-3 > ul > :nth-child(5) > a"));
+		WebElement webcamsRefine = driver.findElement(
+				By.cssSelector(".col-sm-3 > ul > :nth-child(5) > a"));
 		Assert.assertEquals(expectedWebCams, webcamsRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -270,12 +293,14 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedTablets, tablets.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(4) > .dropdown-menu > .see-all")).click();
-		WebElement tabletsVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '57_75')]"));
+		WebElement tabletsVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '57_75')]"));
 		Assert.assertTrue(tabletsVertical.getText().contains(expectedTablets));
 		
-		WebElement tabletsRefine = driver.findElement(By.xpath("//div[@id='content']//li/a[contains(@href,'path=57_75')]"));
+		WebElement tabletsRefine = driver.findElement(
+				By.xpath("//div[@id='content']//li/a[contains(@href,'path=57_75')]"));
 		Assert.assertEquals(expectedTablets, tabletsRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -295,12 +320,14 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedSoftware, software.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(5) > .dropdown-menu > .see-all")).click();
-		WebElement softwareVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '17_76')]"));
+		WebElement softwareVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '17_76')]"));
 		Assert.assertTrue(softwareVertical.getText().contains(expectedSoftware));
 		
-		WebElement softwareRefine = driver.findElement(By.xpath("//div[@id='content']//li/a[contains(@href,'path=17_76')]"));
+		WebElement softwareRefine = driver.findElement(
+				By.xpath("//div[@id='content']//li/a[contains(@href,'path=17_76')]"));
 		Assert.assertEquals(expectedSoftware, softwareRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -312,7 +339,8 @@ public class ContentEqualsTest extends LocalTestRunner {
 		
 		String expectedSmartphones = "Smartphones (3)";
 		
-		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'Phones & PDAs')]"));
+		WebElement components = driver.findElement(
+				By.xpath("//li/a[contains(text(), 'Phones & PDAs')]"));
 		Actions action = new Actions(driver);		
 		action.moveToElement(components).perform();
 		
@@ -320,12 +348,14 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedSmartphones, smartphones.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(6) > .dropdown-menu > .see-all")).click();
-		WebElement smartphonesVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '24_73')]"));
+		WebElement smartphonesVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '24_73')]"));
 		Assert.assertTrue(smartphonesVertical.getText().contains(expectedSmartphones));
 		
-		WebElement smartphonesRefine = driver.findElement(By.xpath("//div[@id='content']//li/a[contains(@href,'path=24_73')]"));
+		WebElement smartphonesRefine = driver.findElement(
+				By.xpath("//div[@id='content']//li/a[contains(@href,'path=24_73')]"));
 		Assert.assertEquals(expectedSmartphones, smartphonesRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -344,13 +374,17 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement cameras = driver.findElement(By.cssSelector("#menu a[href*='33_74']"));
 		Assert.assertEquals(expectedCameras, cameras.getText());
 
-		driver.findElement(By.cssSelector(":nth-child(7) > .dropdown-menu > .see-all")).click();
-		WebElement camerasVertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '33_74')]"));
+		driver.findElement(
+				By.xpath("//div[@class='dropdown-menu']//a[contains(text(),'Show All Cameras')]"))
+				.click();
+		WebElement camerasVertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '33_74')]"));
 		Assert.assertTrue(camerasVertical.getText().contains(expectedCameras));
 		
-		WebElement camerasRefine = driver.findElement(By.xpath("//div[@id='content']//li/a[contains(@href,'path=33_74')]"));
+		WebElement camerasRefine = driver.findElement(
+				By.xpath("//div[@id='content']//li/a[contains(@href,'path=33_74')]"));
 		Assert.assertEquals(expectedCameras, camerasRefine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -362,7 +396,8 @@ public class ContentEqualsTest extends LocalTestRunner {
 		
 		String expectedMP3 = "MP3 Players (0)";
 		
-		WebElement components = driver.findElement(By.xpath("//li/a[contains(text(), 'MP3 Players')]"));
+		WebElement components = driver.findElement(
+				By.xpath("//li/a[contains(text(), 'MP3 Players')]"));
 		Actions action = new Actions(driver);		
 		action.moveToElement(components).perform();
 		
@@ -370,11 +405,13 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedMP3, mp3.getText());
 
 		driver.findElement(By.cssSelector(":nth-child(8) > .dropdown-menu > .see-all")).click();
-		WebElement mp3Vertical = driver.findElement(By.xpath("//aside[@id='column-left']//a[contains(@href, '34_78')]"));
+		WebElement mp3Vertical = driver.findElement(
+				By.xpath("//aside[@id='column-left']//a[contains(@href, '34_78')]"));
 		Assert.assertTrue(mp3Vertical.getText().contains(expectedMP3));
 		
-		WebElement mp3Refine = driver.findElement(By.xpath("//div[@id='content']//li/a[contains(@href,'path=34_78')]"));
+		WebElement mp3Refine = driver.findElement(
+				By.xpath("//div[@id='content']//li/a[contains(@href,'path=34_78')]"));
 		Assert.assertEquals(expectedMP3, mp3Refine.getText());
-		Thread.sleep(5000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 	}
 }
