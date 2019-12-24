@@ -5,12 +5,18 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
-
+/**
+ * <h3> This class contains all necessary method and fields to run test when user are not logged in the system.</h3>
+ */
 public abstract class NotLogInTestRunner {
-
     protected static WebDriver driver;
     protected final String ADD_TO_WISH_LIST_XPATH = "//a[text()='%s']/../../following-sibling::div/button[contains(@onclick, 'wishlist.add')]";
 
+    /**
+     * <h3>This is BeforeClass method in which the webdriver is ran and new ChromeDriver is made for all tests.</h3>
+     *
+     * @throws InterruptedException
+     */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         System.out.println("@BeforeClass");
@@ -20,13 +26,23 @@ public abstract class NotLogInTestRunner {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+
+    /**
+     *
+     * <h3>This is AfterClass method which close the browser for all methods.</h3>
+     *
+     * @throws InterruptedException
+     */
     @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-        System.out.println("@AfterClass");
-        Thread.sleep(1000); // For Presentation Only
+    public static void tearDownAfterClass() {
         driver.quit();
     }
 
+    /**
+     * <h3>This is Before method in  which the login page is opening.</h3>
+     *
+     * @throws InterruptedException
+     */
     @Before
     public void setUp() throws Exception {
         System.out.println("\t@Before method");

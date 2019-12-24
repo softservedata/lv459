@@ -9,6 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * <h3> This class contains all necessary method and fields to run tests.</h3>
+ */
 public abstract class LocalTestRunner {
 
     protected static WebDriver driver;
@@ -29,36 +32,51 @@ public abstract class LocalTestRunner {
     By heartButton = By.xpath("//div[@id='content']//div[@class='col-sm-4']//button[contains(@onclick, 'wishlist.add')]");
     By shoppingCartBtn = By.xpath("//div[@id='cart']//button[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']");
 
-
+    /**
+     * <h3>This method is made to login in the system.</h3>
+     *
+     * @throws InterruptedException
+     */
     protected void logIn() throws InterruptedException {
         driver.findElement(inputEmail).click();
         driver.findElement(inputEmail).clear();
         driver.findElement(inputEmail).sendKeys("bohdanadobushovska@gmail.com");
-        Thread.sleep(500);
+        Thread.sleep(500);// For Presentation Only
 
         driver.findElement(inputPassword).click();
         driver.findElement(inputPassword).clear();
         driver.findElement(inputPassword).sendKeys(System.getenv().get("PASSWORD"));
         driver.findElement(inputPassword).submit();
-        Thread.sleep(500);
+        Thread.sleep(500);// For Presentation Only
     }
+
+    /**
+     * <h3>This method is made to logout from the system.</h3>
+     *
+     * @throws InterruptedException
+     */
 
     protected void logOut() throws InterruptedException {
         driver.findElement(myAccount).click();
-        Thread.sleep(500);
+        Thread.sleep(500);// For Presentation Only
 
         driver.findElement(logOut).click();
-        Thread.sleep(500);
+        Thread.sleep(500);// For Presentation Only
 
         driver.findElement(myAccount).click();
-        Thread.sleep(500);
+        Thread.sleep(500);// For Presentation Only
 
         driver.findElement(logIn).click();
-        Thread.sleep(500);
+        Thread.sleep(500);// For Presentation Only
     }
+    /**
+     * <h3>This is BeforeClass method in which the webdriver is ran and new ChromeDriver is made for all tests.</h3>
+     *
+     * @throws InterruptedException
+     */
 
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+    public static void setUpBeforeClass() {
         System.out.println("@BeforeClass");
         System.setProperty("webdriver.chrome.driver",
                 LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
@@ -67,30 +85,46 @@ public abstract class LocalTestRunner {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+    /**
+     * <h3>This is AfterClass method which close the browser for all methods.</h3>
+     *
+     * @throws InterruptedException
+     */
     @AfterClass
         public static void tearDownAfterClass() throws Exception {
-            System.out.println("@AfterClass");
-            Thread.sleep(1000); // For Presentation Only
             driver.quit();
      }
 
+    /**
+     * <h3>This is Before method in  which the login page is opening.</h3>
+     *
+     * @throws InterruptedException
+     */
       @Before
         public void setUp() throws Exception {
-            System.out.println("\t@Before method");
             driver.get("http://192.168.159.135/opencart/upload/index.php?route=account/login");
             Thread.sleep(1000); // For Presentation Only
             driver.manage().window().maximize();
             Thread.sleep(1000); // For Presentation Only
       }
 
+    /**
+     * <h3>This is After method  which logout user.</h3>
+     *
+     * @throws InterruptedException
+     */
         @After
         public void tearDown() throws Exception {
-            System.out.println("\t@After method");
-            //CREATE METHOD FOR REMOVING ITEMS FROM WISH LIST
             if (isLoggined()) {
                 driver.get("http://192.168.159.135/opencart/upload/index.php?route=account/logout");
             }
         }
+
+    /**
+     * <h3>This is method which verify is user is logged in.</h3>
+     *
+     * @throws InterruptedException
+     */
     private boolean isLoggined() throws Exception {
 
         List<WebElement> items = null;
@@ -104,6 +138,5 @@ public abstract class LocalTestRunner {
 
         return items.size() > 2;
     }
-
 }
 

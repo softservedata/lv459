@@ -2,7 +2,18 @@ import org.junit.Test;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 
-public class WishListIsEmptyByDefaultTest  extends LocalTestRunner{
+/**
+ * <h3> This class contains  test which verify if if Wish List is empty by default.</h3>
+ *
+ * @throws InterruptedException
+ */
+
+public class WishListIsEmptyByDefaultTest extends LocalTestRunner {
+    /**
+     * <h3>This method check if Wish List is empty by default.</h3>
+     *
+     * @throws InterruptedException
+     */
     @Test
     public void checkWishListIsEmptyByDefault() throws InterruptedException {
 
