@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 public class ListAndGridTest extends LocalTestRunner {
 
     //Grid button
-    //@Test
+    @Test
     public void caseOne() throws Exception {
         // Steps
         // Typing in the "Search field"

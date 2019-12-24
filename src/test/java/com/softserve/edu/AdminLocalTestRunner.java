@@ -18,8 +18,8 @@ public abstract class AdminLocalTestRunner {
     public static void setUpBeforeClass() throws Exception {
         System.out.println("@BeforeClass");
         System.setProperty("webdriver.chrome.driver",
-                LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
-        System.out.println("PATH: " + LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
+                AdminLocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
+        System.out.println("PATH: " + AdminLocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 

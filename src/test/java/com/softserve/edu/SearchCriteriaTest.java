@@ -51,10 +51,12 @@ public class SearchCriteriaTest extends LocalTestRunner {
         WebElement item = driver.findElement(By.xpath("//div[@class='col-sm-3']//a[contains(text(), 'Monitors')]"));
         Assert.assertTrue(item.getText().contains("Monitors"));
         //
+        Thread.sleep(1000);// For Presentation Only
         driver.findElement(By.xpath("//div[@class='col-sm-3']//a[contains(text(), 'Monitors')]")).click();
         //In subcategory
         WebElement subcategory = driver.findElement(By.xpath("//a[text()='Samsung SyncMaster 941BW']"));
         Assert.assertTrue(subcategory.getText().contains("Samsung SyncMaster 941BW"));
+        Thread.sleep(1000);// For Presentation Only
         //
         // Return to Previous State
         driver.findElement(By.cssSelector("#logo .img-responsive")).click();

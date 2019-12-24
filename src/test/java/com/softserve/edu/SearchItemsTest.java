@@ -6,6 +6,13 @@ import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebElement;
 
+import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.time.Duration;
+import java.time.Instant;
+
+
 
 public class SearchItemsTest extends LocalTestRunner {
 
@@ -31,7 +38,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //Using lower/upper case letters
-    //@Test
+    @Test
     public void findItemCaseTwo() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -61,7 +68,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //Using lower case letters and number
-    //@Test
+    @Test
     public void findItemCaseThree() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -83,7 +90,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //Using lower case letters and symbol
-    //@Test
+    @Test
     public void findItemCaseFour() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -105,7 +112,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //Using upper case letters and numbers
-    //@Test
+    @Test
     public void findItemCaseFive() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -127,7 +134,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //Using upper case letters and symbol
-    //@Test
+    @Test
     public void findItemCaseSix() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -149,7 +156,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //Using numbers and symbol
-    //@Test
+    @Test
     public void findItemCaseSeven() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -171,7 +178,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //Empty field
-    //@Test
+    @Test
     public void findItemCaseEight() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -193,7 +200,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //SQL command
-    //@Test
+    @Test
     public void findItemCaseNine() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -215,7 +222,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //One letter in "Search field"
-    //@Test
+    @Test
     public void fieldLengthCaseOne() throws Exception {
         // Steps
         // Typing in the "Search field"
@@ -237,37 +244,55 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     //255 letters in "Search field"
-    //@Test
+    @Test
     public void fieldLengthCaseTwo() throws Exception {
+        //Read with FileChannel
 
-        String strCharacter = "a";
-        StringBuffer stringBuffer = new StringBuffer();
+        String file = "D:\\All\\IT\\Lv-459\\4097.txt";
+        RandomAccessFile reader = new RandomAccessFile(file, "r");
+        FileChannel channel = reader.getChannel();
 
-        for(int i=0; i < 255; i++){
-            stringBuffer.append(strCharacter);
+        int bufferSize = 1024;
+        if (bufferSize > channel.size()) {
+            bufferSize = (int) channel.size();
         }
+        ByteBuffer buff = ByteBuffer.allocate(bufferSize);
+        channel.read(buff);
+        buff.flip();
+
 
         // Steps
         // Typing in the "Search field"
         driver.findElement(By.name("search")).click();
         driver.findElement(By.name("search")).clear();
-        driver.findElement(By.name("search")).sendKeys(stringBuffer.toString());
+        Instant start = Instant.now();
+        driver.findElement(By.name("search")).sendKeys(new String(buff.array()));
+
+        channel.close();
+        reader.close();
+
+
+        Instant end = Instant.now();
+        Duration interval = Duration.between(start, end);
+
+        System.out.println("Execution time in seconds: " +
+                interval.getSeconds());
         //
         // Clicking on the "Search Button"
         driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
-        Thread.sleep(2000); // For Presentation Only
+        Thread.sleep(1000); // For Presentation Only
         //
         // Checking
-        WebElement zeroLength = driver.findElement(By.xpath("//input[@id='button-search']/following-sibling::p"));
-        Assert.assertTrue(zeroLength.getText().contains("There is no product that matches the search criteria."));
+ //       WebElement zeroLength = driver.findElement(By.xpath("//input[@id='button-search']/following-sibling::p"));
+ //       Assert.assertTrue(zeroLength.getText().contains("There is no product that matches the search criteria."));
         //
         // Return to Previous State
-        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+//        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
         //Thread.sleep(1000); // For Presentation Only
     }
 
     //65536 letters in "Search field"
-    // @Test
+     @Test
     public void fieldLengthCaseThree() throws Exception {
 
        String strCharacter = "abcdefghijklmnopqrstuvwxyz_" +
