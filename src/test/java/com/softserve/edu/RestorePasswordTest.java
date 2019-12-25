@@ -35,9 +35,6 @@ public class RestorePasswordTest extends RestorePasswordRunner {
      */
     @Test
     public void restorePasswordTest() throws InterruptedException {
-        //
-        Thread.sleep(1000);
-        //
         changePassword(System.getenv("OPENCART_PASSWORD_RESTORE"));
         //
         Thread.sleep(1000);

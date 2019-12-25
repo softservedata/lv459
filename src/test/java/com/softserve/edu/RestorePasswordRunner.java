@@ -100,11 +100,10 @@ public abstract class RestorePasswordRunner {
         driver.get("https://www.ukr.net/");
         //
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        WebElement frame = driver.findElement(By.name("mail widget"));
-
         (new WebDriverWait(driver, 10)).until(ExpectedConditions
                 .presenceOfElementLocated(By.name("mail widget")));
-        // Thread.sleep(1000); // For Presentation Only
+
+        WebElement frame = driver.findElement(By.name("mail widget"));
         driver.switchTo().frame(frame);
         if (driver
                 .findElements(
@@ -135,6 +134,7 @@ public abstract class RestorePasswordRunner {
                     By.cssSelector(".service__entry.service__entry_mail"))
                     .click();
         }
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Thread.sleep(1000); // For Presentation Only
         //
         switchTabByPartialName("вхідні");

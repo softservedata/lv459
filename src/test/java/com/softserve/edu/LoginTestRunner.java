@@ -12,9 +12,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
- * Contains necessary methods and fields for logination tests.
+ * Contains necessary methods and fields for login tests.
  */
-public abstract class LoginationTestRunner {
+public abstract class LoginTestRunner {
 
     protected static WebDriver driver;
 
@@ -23,9 +23,10 @@ public abstract class LoginationTestRunner {
      */
     @BeforeClass
     public static void setUpBeforeClass() {
-        System.setProperty("webdriver.chrome.driver", LoginationTestRunner.class
+        System.setProperty("webdriver.chrome.driver", LoginTestRunner.class
                 .getResource("/chromedriver-windows-32bit.exe").getPath());
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
@@ -47,7 +48,6 @@ public abstract class LoginationTestRunner {
     public void setUp() throws InterruptedException {
         driver.get("http://192.168.214.128/opencart/upload/");
         Thread.sleep(1000); // For Presentation Only
-        driver.manage().window().maximize();
     }
 
     /**
@@ -72,7 +72,7 @@ public abstract class LoginationTestRunner {
     }
 
     /**
-     * Login with specefied credentials.
+     * Login with specified credentials.
      * @param login    - email to login with.
      * @param password - password to login with.
      * @throws InterruptedException

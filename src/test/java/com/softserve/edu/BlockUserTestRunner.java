@@ -126,7 +126,7 @@ public abstract class BlockUserTestRunner {
     }
 
     /**
-     * Switch to tab if tab title contains @param login .
+     * Switch to tab if tab title contains @param login.
      * @param tabName
      */
     protected void switchTabByPartialName(String tabName) {
