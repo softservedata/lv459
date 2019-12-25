@@ -16,9 +16,10 @@ public abstract class CategoriesTestRunner {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("@BeforeClass");
-		System.setProperty("webdriver.chrome.driver",
+		System.setProperty("webdriver.chrome.driver", 
 				LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
-		System.out.println("PATH: " + LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
+		System.out.println("PATH: " + LocalTestRunner.class.getResource(
+				"/chromedriver-windows-32bit.exe").getPath());
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		Thread.sleep(1000); // For Presentation Only
@@ -39,18 +40,18 @@ public abstract class CategoriesTestRunner {
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		System.out.println("@AfterClass");
-		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.className("hidden-xs")).click();
-	    Thread.sleep(1000); // For Presentation Only
+	    Thread.sleep(2000); // For Presentation Only
 		driver.quit();
 	}
 	
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("\t@Before method");
-		driver.findElement(By.xpath("//li[@id='menu-catalog']//i[contains(@class, 'fa fa-tags fw')]")).click();
+		driver.findElement(By.xpath("//i[contains(@class, 'fa fa-tags fw')]")).click();
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.cssSelector("#menu-catalog > :nth-child(2) > :nth-child(1) > a")).click();
+		driver.findElement(
+				By.xpath("//li[@id='menu-catalog']//a[contains(text(),'Categories')]")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
 		Thread.sleep(1000); // For Presentation Only
@@ -59,5 +60,7 @@ public abstract class CategoriesTestRunner {
 	@After
 	public void tearDown() throws Exception {
 		System.out.println("\t@After method");
+		driver.findElement(By.cssSelector(".btn-primary > .fa")).click();
+		Thread.sleep(1000); // For Presentation Only
 	}
 }

@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public abstract class AdminTestRunner {
+public abstract class ProductsTestRunner {
 	protected static WebDriver driver;
 	
 	@BeforeClass
@@ -41,23 +41,24 @@ public abstract class AdminTestRunner {
 		System.out.println("@AfterClass");
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.className("hidden-xs")).click();
-	    Thread.sleep(1000); // For Presentation Only
+	    Thread.sleep(2000); // For Presentation Only
 		driver.quit();
 	}
 	
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("\t@Before method");
-		driver.findElement(By.xpath("//li[@id='menu-catalog']//i[contains(@class, 'fa fa-tags fw')]")).click();
+		driver.findElement(By.xpath("//i[contains(@class, 'fa fa-tags fw')]")).click();
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.cssSelector("#menu-catalog > :nth-child(2) > :nth-child(1) > a")).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
+		driver.findElement(
+				By.xpath("//li[@id='menu-catalog']//a[contains(text(),'Products')]")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
 	
 	@After
 	public void tearDown() throws Exception {
 		System.out.println("\t@After method");
+		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
+		Thread.sleep(1000); // For Presentation Only
 	}
 }

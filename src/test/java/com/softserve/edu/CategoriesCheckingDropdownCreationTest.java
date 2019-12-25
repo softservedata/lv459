@@ -7,8 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 /**
- * The {@code} class CategoriesCheckingDropdownCreationTest checks if the new elements has been added
- * to drop-down menu by the {@code} class CategoriesAddingToDropdownMenuTest.
+ * The {@code} class CategoriesCheckingDropdownCreationTest checks if the new elements
+ * has been added to drop-down menu of next tabs: “Tablets”, “Software”, “Phones & PDAs”,
+ * “Cameras”, “MP3 Players”.
  * 
  * @version 13.0.1 15 Oct 2019
  */

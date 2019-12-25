@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 /**
  * The {@code} class ContentEqualsSmokeTest checks availability of those tabs:
  * “Desktops”, “Laptops & Notebooks”, “Components”, “Tablets”, “Software”,
- * “Phones & PDAs”, “Cameras”, “MP3 Players”
+ * “Phones & PDAs”, “Cameras”, “MP3 Players”.
  *
  * @version 13.0.1 15 Oct 2019
  */

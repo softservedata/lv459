@@ -4,52 +4,35 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 /**
- * Test object: horizontal and vertical menu on Opencart (content equals).
- * Test design technique: state transition diagram.
- * Test items: 
- * -tab “Desktops”,
- * -tab “Laptops & Notebooks”,
- * -tab “Components”,
- * -tab “Tablets”,
- * -tab “Software”,
- * -tab “Phones & PDAs”,
- * -tab “Cameras”,
- * -tab “MP3 Players”,
- * -menus which are visible after clicking on some tab,
- * -changes after adding new tab,
- * -menus of each tab.
+ * The {@code} class ProductsAddingTest
  * 
  * @version 13.0.1 15 Oct 2019
  */
-public class ProductsAddingTest extends AdminTestRunner {
-	private final String POINT_ON_CATALOG_TAB = "//li[@id='menu-catalog']//i[contains(@class, 'fa fa-tags fw')]";
-	private final String GET_PRODUCTS_TAB = "#menu-catalog > :nth-child(2) > :nth-child(2) > a";
+public class ProductsAddingTest extends ProductsTestRunner {
+	private final String SWITCH_TO_LINKS_TAB = "//li/a[text()='Links']";
+	private final String INPUT_MANUFACTURER = "input-manufacturer";
+	private final String INPUT_CATEGORY = "input-category";
 	/*
 	 * This test method adds items to Tablets tab.
 	 */
 	@Test
 	public void addSamsungToTablets() throws Exception {
-		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
+		driver.findElement(By.xpath(
+				"//td[text()='Samsung Galaxy Tab 10.1']/following-sibling::td[*]/a")).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id(INPUT_MANUFACTURER)).click();
+		driver.findElement(By.id(INPUT_MANUFACTURER)).clear();
+		driver.findElement(By.id(INPUT_MANUFACTURER)).sendKeys("Samsung");
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id(INPUT_CATEGORY)).click();
+		driver.findElement(By.id(INPUT_CATEGORY)).clear();
+		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Tablets");
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.cssSelector(GET_PRODUCTS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'id=49')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'links')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		
-		driver.findElement(By.id("input-manufacturer")).click();
-		driver.findElement(By.id("input-manufacturer")).clear();
-		driver.findElement(By.id("input-manufacturer")).sendKeys("Samsung");
-		Thread.sleep(1000); // For Presentation Only
-		
-		driver.findElement(By.id("input-category")).click();
-		driver.findElement(By.id("input-category")).clear();
-		driver.findElement(By.id("input-category")).sendKeys("Tablets");
-		Thread.sleep(1000); // For Presentation Only
-		
 		driver.findElement(By.cssSelector(":nth-child(2) > .col-sm-10 > .dropdown-menu > :nth-child(2) > a")).click();
-		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
 	
@@ -58,22 +41,17 @@ public class ProductsAddingTest extends AdminTestRunner {
 	 */
 	@Test
 	public void addHTCtoSmartphones() throws Exception {
-		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
+		driver.findElement(
+				By.xpath("//td[text()='HTC Touch HD']/following-sibling::td[*]/a")).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id(INPUT_CATEGORY)).click();
+		driver.findElement(By.id(INPUT_CATEGORY)).clear();
+		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Smartphones");
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.cssSelector(GET_PRODUCTS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'id=28')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'links')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		
-		driver.findElement(By.id("input-category")).click();
-		driver.findElement(By.id("input-category")).clear();
-		driver.findElement(By.id("input-category")).sendKeys("Smartphones");
-		Thread.sleep(1000); // For Presentation Only
-		
 		driver.findElement(By.cssSelector(".col-sm-10 > .dropdown-menu > li > a")).click();
-		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
 	
@@ -82,22 +60,16 @@ public class ProductsAddingTest extends AdminTestRunner {
 	 */
 	@Test
 	public void addiPhoneToSmartphones() throws Exception {
-		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
-		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.cssSelector(GET_PRODUCTS_TAB)).click();
+		driver.findElement(By.xpath("//td[text()='iPhone']/following-sibling::td[*]/a")).click();
 		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'id=40')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'links')]")).click();
+		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
 		Thread.sleep(1000); // For Presentation Only
 		
-		driver.findElement(By.id("input-category")).click();
-		driver.findElement(By.id("input-category")).clear();
-		driver.findElement(By.id("input-category")).sendKeys("Smartphones");
-		Thread.sleep(1000); // For Presentation Only
-		
+		driver.findElement(By.id(INPUT_CATEGORY)).click();
+		driver.findElement(By.id(INPUT_CATEGORY)).clear();
+		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Smartphones");
+		Thread.sleep(2000); // For Presentation Only	
 		driver.findElement(By.cssSelector(".col-sm-10 > .dropdown-menu > li > a")).click();
-		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
 	
@@ -106,22 +78,17 @@ public class ProductsAddingTest extends AdminTestRunner {
 	 */
 	@Test
 	public void addPalmToSmartphones() throws Exception {
-		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
+		driver.findElement(
+				By.xpath("//td[text()='Palm Treo Pro']/following-sibling::td[*]/a")).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id(INPUT_CATEGORY)).click();
+		driver.findElement(By.id(INPUT_CATEGORY)).clear();
+		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Smartphones");
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.cssSelector(GET_PRODUCTS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'id=29')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'links')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		
-		driver.findElement(By.id("input-category")).click();
-		driver.findElement(By.id("input-category")).clear();
-		driver.findElement(By.id("input-category")).sendKeys("Smartphones");
-		Thread.sleep(1000); // For Presentation Only
-		
 		driver.findElement(By.cssSelector(".col-sm-10 > .dropdown-menu > li > a")).click();
-		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
 	
@@ -130,22 +97,17 @@ public class ProductsAddingTest extends AdminTestRunner {
 	 */
 	@Test
 	public void addCanonToCameras() throws Exception {
-		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
+		driver.findElement(
+				By.xpath("//td[text()='Canon EOS 5D']/following-sibling::td[*]/a")).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id(INPUT_CATEGORY)).click();
+		driver.findElement(By.id(INPUT_CATEGORY)).clear();
+		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Cameras");
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.cssSelector(GET_PRODUCTS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'id=30')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'links')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		
-		driver.findElement(By.id("input-category")).click();
-		driver.findElement(By.id("input-category")).clear();
-		driver.findElement(By.id("input-category")).sendKeys("Cameras");
-		Thread.sleep(1000); // For Presentation Only
-		
 		driver.findElement(By.cssSelector(".col-sm-10 > .dropdown-menu > :nth-child(2) > a")).click();
-		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
 	
@@ -154,27 +116,21 @@ public class ProductsAddingTest extends AdminTestRunner {
 	 */
 	@Test
 	public void addNikonToCameras() throws Exception {
-		driver.findElement(By.xpath(POINT_ON_CATALOG_TAB)).click();
+		driver.findElement(By.xpath("//td[text()='Nikon D300']/following-sibling::td[*]/a")).click();
+		Thread.sleep(1000); // For Presentation Only
+		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id(INPUT_MANUFACTURER)).click();
+		driver.findElement(By.id(INPUT_MANUFACTURER)).clear();
+		driver.findElement(By.id(INPUT_MANUFACTURER)).sendKeys("Nikon");
+		Thread.sleep(1000); // For Presentation Only
+		
+		driver.findElement(By.id(INPUT_CATEGORY)).click();
+		driver.findElement(By.id(INPUT_CATEGORY)).clear();
+		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Cameras");
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.cssSelector(GET_PRODUCTS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'id=31')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		driver.findElement(By.xpath("//a[contains(@href,'links')]")).click();
-		Thread.sleep(1000); // For Presentation Only
-		
-		driver.findElement(By.id("input-manufacturer")).click();
-		driver.findElement(By.id("input-manufacturer")).clear();
-		driver.findElement(By.id("input-manufacturer")).sendKeys("Nikon");
-		Thread.sleep(1000); // For Presentation Only
-		
-		driver.findElement(By.id("input-category")).click();
-		driver.findElement(By.id("input-category")).clear();
-		driver.findElement(By.id("input-category")).sendKeys("Cameras");
-		Thread.sleep(1000); // For Presentation Only
-		
 		driver.findElement(By.cssSelector(".col-sm-10 > .dropdown-menu > :nth-child(2) > a")).click();
-		driver.findElement(By.cssSelector(".pull-right > .btn-primary")).click();
 		Thread.sleep(1000); // For Presentation Only
 	}
 	

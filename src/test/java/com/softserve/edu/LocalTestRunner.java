@@ -18,7 +18,8 @@ public abstract class LocalTestRunner {
 		System.out.println("@BeforeClass");
 		System.setProperty("webdriver.chrome.driver",
 				LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
-		System.out.println("PATH: " + LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
+		System.out.println("PATH: " + LocalTestRunner.class.getResource(
+				"/chromedriver-windows-32bit.exe").getPath());
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		Thread.sleep(1000); // For Presentation Only
@@ -30,19 +31,20 @@ public abstract class LocalTestRunner {
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		System.out.println("@AfterClass");
-		Thread.sleep(1000); // For Presentation Only
+		Thread.sleep(2000); // For Presentation Only
 		driver.quit();
 	}
 	
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("\t@Before method");
+		Thread.sleep(1000); // For Presentation Only
 	}
 	
 	@After
 	public void tearDown() throws Exception {
 		System.out.println("\t@After method");
-		driver.findElement(By.cssSelector("#logo .img-responsive")).click();
+		driver.findElement(By.id("logo")).click();
 	    Thread.sleep(1000); // For Presentation Only
 	}
 	
