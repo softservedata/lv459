@@ -4,7 +4,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 /**
- * The {@code} class ProductsAddingTest
+ * The {@code} class ProductsAddingTest adds products into the next categories:
+ * “Tablets”, “Software”, “Phones & PDAs”, “Cameras”, “MP3 Players”.
  * 
  * @version 13.0.1 15 Oct 2019
  */
