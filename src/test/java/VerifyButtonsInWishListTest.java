@@ -19,32 +19,32 @@ public class VerifyButtonsInWishListTest extends LocalTestRunner { /**
         addElement.logIn();
 
         driver.findElement(openCartField).click();
-        Thread.sleep(500);// For Presentation Only
+        Thread.sleep(1000);// For Presentation Only
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0, 500)", "");
-        Thread.sleep(500);// For Presentation Only
+        Thread.sleep(1000);// For Presentation Only
 
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "iPhone"))).click();
-        Thread.sleep(500);// For Presentation Only
+        Thread.sleep(1000);// For Presentation Only
 
         jse.executeScript("window.scrollBy(0, -500)", "");
-        Thread.sleep(500);// For Presentation Only
+        Thread.sleep(1000);// For Presentation Only
 
         driver.findElement(wishListField).click();
-        Thread.sleep(500);// For Presentation Only
-
+        Thread.sleep(1000);// For Presentation Only
 
         driver.findElement(By.xpath(String.format(ADD_TO_SHOPPING_CART_BTN, "iPhone"))).click();
-        Thread.sleep(500);// For Presentation Only
+        Thread.sleep(1000);// For Presentation Only
 
         driver.findElement(shoppingCartBtn).click();
-         Thread.sleep(500);// For Presentation Only
+         Thread.sleep(1000);// For Presentation Only
 
         String expected = "iPhone";
         WebElement actual = driver.findElement(By.xpath("//ul[@class='dropdown-menu pull-right']"));
+
         Assert.assertTrue(actual.getText().contains(expected));
-        Thread.sleep(500);// For Presentation Only
+        Thread.sleep(1000);// For Presentation Only
 
         driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "iPhone"))).click();
     }
@@ -66,12 +66,12 @@ public class VerifyButtonsInWishListTest extends LocalTestRunner { /**
         jse.executeScript("window.scrollBy(0, 500)", "");
 
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "Apple Cinema 30\""))).click();
-        Thread.sleep(500);// For Presentation Only
+        Thread.sleep(1000);// For Presentation Only
 
         jse.executeScript("window.scrollBy(0, -500)", "");
 
         driver.findElement(wishListField).click();
-        Thread.sleep(500);// For Presentation Only
+        Thread.sleep(1000);// For Presentation Only
 
         driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "Apple Cinema 30\""))).click();
 
@@ -79,6 +79,6 @@ public class VerifyButtonsInWishListTest extends LocalTestRunner { /**
         String expected = "Success: You have modified your wish list!";
 
         Assert.assertTrue(actual.getText().contains(expected));
-        Thread.sleep(500);// For Presentation Only
+        Thread.sleep(1000);// For Presentation Only
     }
 }

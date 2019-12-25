@@ -69,14 +69,14 @@ public abstract class LocalTestRunner {
         driver.findElement(logIn).click();
         Thread.sleep(500);// For Presentation Only
     }
+
     /**
      * <h3>This is BeforeClass method in which the webdriver is ran and new ChromeDriver is made for all tests.</h3>
      *
-     * @throws InterruptedException
+     * @throws Exception
      */
-
     @BeforeClass
-    public static void setUpBeforeClass() {
+    public static void setUpBeforeClass() throws Exception{
         System.out.println("@BeforeClass");
         System.setProperty("webdriver.chrome.driver",
                 LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
@@ -88,21 +88,22 @@ public abstract class LocalTestRunner {
     /**
      * <h3>This is AfterClass method which close the browser for all methods.</h3>
      *
-     * @throws InterruptedException
+     * @throws Exception
      */
     @AfterClass
         public static void tearDownAfterClass() throws Exception {
-            driver.quit();
+        Thread.sleep(1000);
+        driver.quit();
      }
 
     /**
      * <h3>This is Before method in  which the login page is opening.</h3>
      *
-     * @throws InterruptedException
+     * @throws Exception
      */
       @Before
         public void setUp() throws Exception {
-            driver.get("http://192.168.159.135/opencart/upload/index.php?route=account/login");
+            driver.get("http://192.168.159.136/opencart/upload/index.php?route=account/login");
             Thread.sleep(1000); // For Presentation Only
             driver.manage().window().maximize();
             Thread.sleep(1000); // For Presentation Only
@@ -111,19 +112,19 @@ public abstract class LocalTestRunner {
     /**
      * <h3>This is After method  which logout user.</h3>
      *
-     * @throws InterruptedException
+     * @throws Exception
      */
         @After
         public void tearDown() throws Exception {
             if (isLoggined()) {
-                driver.get("http://192.168.159.135/opencart/upload/index.php?route=account/logout");
+                driver.get("http://192.168.159.136/opencart/upload/index.php?route=account/logout");
             }
         }
 
     /**
      * <h3>This is method which verify is user is logged in.</h3>
      *
-     * @throws InterruptedException
+     * @throws Exception
      */
     private boolean isLoggined() throws Exception {
 

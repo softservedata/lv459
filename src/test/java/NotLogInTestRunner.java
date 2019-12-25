@@ -14,11 +14,9 @@ public abstract class NotLogInTestRunner {
 
     /**
      * <h3>This is BeforeClass method in which the webdriver is ran and new ChromeDriver is made for all tests.</h3>
-     *
-     * @throws InterruptedException
      */
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+    public static void setUpBeforeClass()  {
         System.out.println("@BeforeClass");
         System.setProperty("webdriver.chrome.driver",
                 LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
@@ -28,11 +26,8 @@ public abstract class NotLogInTestRunner {
     }
 
     /**
-     *
      * <h3>This is AfterClass method which close the browser for all methods.</h3>
-     *
-     * @throws InterruptedException
-     */
+     **/
     @AfterClass
     public static void tearDownAfterClass() {
         driver.quit();
@@ -41,7 +36,7 @@ public abstract class NotLogInTestRunner {
     /**
      * <h3>This is Before method in  which the login page is opening.</h3>
      *
-     * @throws InterruptedException
+     * @throws Exception
      */
     @Before
     public void setUp() throws Exception {

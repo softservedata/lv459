@@ -17,30 +17,30 @@ public class ClickOnAddToWishListTest extends LocalTestRunner {
         clickOnAddToWishList.logIn();
 
         driver.findElement(openCartField).click();
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0, 500)", "");
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
 
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "MacBook"))).click();
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
 
         jse.executeScript("window.scrollBy(0, -500)", "");
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
         driver.findElement(wishListField).click();
 
         WebElement actual = driver.findElement(By.xpath("//div[@id='content']//table[@class='table table-bordered table-hover']//td[@class='text-left']/a"));
 
         Assert.assertTrue(actual.getText().contains("MacBook"));
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
 
         driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "MacBook"))).click();
     }
 
     /**
-     *
      * <h3>This method checks when user click on a product and then on 'Add to Wish List' button.</h3>
+     *
      * @throws InterruptedException
      */
     @Test
@@ -52,22 +52,22 @@ public class ClickOnAddToWishListTest extends LocalTestRunner {
         driver.findElement(searchField).click();
         driver.findElement(searchField).clear();
         driver.findElement(searchField).sendKeys("%" + Keys.ENTER);
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0, 500)", "");
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
 
         driver.findElement(productAppleCinema).click();
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
         driver.findElement(heartButton).click();
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
 
         driver.findElement(wishListField).click();
         WebElement actual = driver.findElement(By.xpath("//div[@id='content']//table[@class='table table-bordered table-hover']//td[@class='text-left']/a"));
 
         Assert.assertTrue(actual.getText().contains("Apple Cinema 30\""));
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
 
         driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "Apple Cinema 30\""))).click();
     }
@@ -88,6 +88,6 @@ public class ClickOnAddToWishListTest extends LocalTestRunner {
         jse.executeScript("window.scrollBy(0, 130)", "");
 
         driver.findElement(footerWishList).click();
-        Thread.sleep(300);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
     }
 }

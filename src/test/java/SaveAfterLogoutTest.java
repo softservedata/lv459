@@ -30,16 +30,16 @@ public class SaveAfterLogoutTest  extends LocalTestRunner{
         Thread.sleep(500);// For Presentation Only
 
         jse.executeScript("window.scrollBy(0, -500)", "");
-        Thread.sleep(500);// For Presentation Only
+       Thread.sleep(500);// For Presentation Only
 
         driver.findElement(wishListField).click();
-        Thread.sleep(500);// For Presentation Only//
+        Thread.sleep(500);// For Presentation Only
 
         saveAfterLogoutTest.logOut();
         saveAfterLogoutTest.logIn();
 
         driver.findElement(wishListField).click();
-        Thread.sleep(500);// For Presentation Only
+       Thread.sleep(500);// For Presentation Only
 
         WebElement actual = driver.findElement(By.xpath("//div[@id='top-links']//li/a[@id='wishlist-total']//span"));
         Assert.assertTrue(actual.getText().contains("2"));
