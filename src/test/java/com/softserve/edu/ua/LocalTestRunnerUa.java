@@ -35,7 +35,7 @@ public abstract class LocalTestRunnerUa {
     @Before
     public void setUp() throws Exception {
         System.out.println("\t@Before method");
-        driver.get("http://192.168.5.128/opencart/upload/");
+        driver.get("http://192.168.5.129/opencart/upload/");
         driver.manage().window().maximize();
         Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//a[@title='My Account']")).click();
@@ -69,7 +69,7 @@ public abstract class LocalTestRunnerUa {
     public void tearDown() throws Exception {
         System.out.println("\t@After method");
         if (isLoggined()) {
-            driver.get("http://192.168.5.128/opencart/upload/index.php?route=account/logout");
+            driver.get("http://192.168.5.129/opencart/upload/index.php?route=account/logout");
         }
     }
 

@@ -68,4 +68,18 @@ public class UkUserTest extends LocalTestRunnerUk {
         Thread.sleep(1000); // For Presentation Only
         Assert.assertTrue(taxPrice.getText().contains("100.00"));
     }
+
+    @Test
+    public void checkUsWithTaxWish() throws Exception {
+        WebElement element = driver.findElement(By.id("carousel0"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(1000); // For Presentation Only
+        driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//button[@data-original-title='Add to Wish List']")).click();
+        Thread.sleep(1000); // For Presentation Only
+        driver.findElement(By.xpath("//*[@id='wishlist-total']")).click();
+        Thread.sleep(1000); // For Presentation Only
+        WebElement price;
+        price = driver.findElement(By.xpath("//table[@class='table table-bordered table-hover']//td/div[contains(text(), '$602.00')]"));
+        Assert.assertTrue(price.getText().contains("602.00"));
+    }
 }

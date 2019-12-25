@@ -35,7 +35,7 @@ public abstract class LocalTestRunnerUk {
     @Before
     public void setUp() throws Exception {
         System.out.println("\t@Before method");
-        driver.get("http://192.168.5.128/opencart/upload/");
+        driver.get("http://192.168.5.129/opencart/upload/");
         driver.manage().window().maximize();
         Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//a[@title='My Account']")).click();
@@ -71,9 +71,14 @@ public abstract class LocalTestRunnerUk {
         driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
         Thread.sleep(1000); // For Presentation Only
         checkCart();
+        driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
+        Thread.sleep(1000); // For Presentation Only
+        checkWishList();
+        driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
         if (isLoggined()) {
-            driver.get("http://192.168.5.128/opencart/upload/index.php?route=account/logout");
+            driver.get("http://192.168.5.129/opencart/upload/index.php?route=account/logout");
         }
+        driver.manage().deleteAllCookies();
     }
 
     private boolean isLoggined() throws Exception {
@@ -105,6 +110,25 @@ public abstract class LocalTestRunnerUk {
             }
         }
 
+    }
+
+    private void checkWishList() throws Exception {
+        driver.findElement(By.xpath("//*[@id='wishlist-total']")).click();
+        WebElement empty_wish = driver.findElement(By.xpath("//*[@id='content']/h2/following-sibling::p"));
+        if (!empty_wish.getText().contains("Your wish list is empty.")) {
+            driver.findElement(By.xpath("//td/a[@class='btn btn-danger']")).click();
+        } else {
+            driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
+        }
+/*        if (!empty_wish.getText().contains("Your wish list is empty.")) {
+            List<WebElement> closeButtons = driver.findElements(By.xpath("//td/a[@class='btn btn-danger']"));
+            for (WebElement current : closeButtons) {
+                current.click();
+                Thread.sleep(1000); // For Presentation Only
+            }
+        } else {
+            driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
+        }*/
     }
 
 }
