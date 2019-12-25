@@ -1,24 +1,23 @@
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 
 /**
- * Testing function to update Customers details via main site page.
+ * Testing function to update Customers details via main site Opencart page.
+ * Prerequisites: Customer with USER_EMAIL and USER_PASSWORD is present in DB.
+ *     Prerequisites are made by AdminPanel class methods.
  */
 public class CustomerUpdateTests
         extends LocalTestRunnerCustomerUpdate {
 
-    /*
-    Prerequisites - Customer with USER_EMAIL and USER_PASSWORD is present in DB.
-    Prerequisites are made by AdminPanel class methods.
-     */
     public String newPass = "password";
 
+    /**
+     * Updating Last Name of Customer
+     * @throws Exception
+     */
     @Test
-    public void tc11updateFirstNameFieldTest () throws Exception{
+    public void tc11updateLastNameFieldTest() throws Exception{
 
         String newLastName = "New Last Name";
         // Log in as Customer
@@ -35,12 +34,14 @@ public class CustomerUpdateTests
         // Click "Continue" button
         driver.findElement(By.cssSelector("input[type='submit']")).click();
 
-////         Search message element
-//        Assert.assertEquals("Success: Your account has been successfully updated." ,
-//                            driver.findElement(By.cssSelector("i.fa.fa-check-circle")).getText());
+        // Search and assert message element
+        Assert.assertEquals("Success: Your account has been successfully updated." ,
+                            driver.findElement(By.cssSelector("i.fa.fa-check-circle")).getText());
 
+        //Log out customer
         super.logOutCustomer();
 
+        //Log in customer
         super.loginCustomer(USER_EMAIL, USER_PASSWORD);
 
         // Click Edit Your Account Information
@@ -51,8 +52,13 @@ public class CustomerUpdateTests
             driver.findElement(By.cssSelector("input[name='lastname']")).getAttribute("value"));
     }
 
+    /**
+     * Updating Customer's password
+     * @throws Exception
+     */
     @Test
     public void tc12updatePasswordFieldTest () throws Exception{
+
         // Login as Customer
         super.loginCustomer(USER_EMAIL , USER_PASSWORD);
 
@@ -77,6 +83,7 @@ public class CustomerUpdateTests
         //        Assert.assertEquals("Success: Your account has been successfully updated." ,
         //                            driver.findElement(By.cssSelector("i.fa.fa-check-circle")).getText());
 
+        //Log out customer
         super.logOutCustomer();
 
         // Trying to log in with new password
@@ -85,6 +92,4 @@ public class CustomerUpdateTests
         // Assert if Customer can login
         Assert.assertTrue(isCustomerLogined());
     }
-
- // TODO other tests
 }

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class LocalTestRunnerSetIP {
     protected static final String IP = "172.16.0.129";
-    protected static final int DELAY_FOR_PRESENTATION_ONLY = 1;
+    protected static final int DELAY_FOR_PRESENTATION_ONLY = 0;
     protected static WebDriver driver;
     protected static final String ADMIN_PANEL_USER = "admin";
     protected static final String DB_PASSWORD = System.getenv("DB_PASSWORD");

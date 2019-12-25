@@ -2,29 +2,27 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-
 public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
 
-    //
+    /**
+     * Customer registration function test. Filling mandatory and not-mandatory
+     * fields with valid valid credentials.
+     * Prerequisites: customer with given email and password is not is DB.
+     * email and password are taken from System environment, while other
+     * data are hardcoded temporarily.
+     * @throws Exception
+     */
     @Test
     public void tc01customerRegistrationTest() throws Exception {
 
-        // prerequisites - Customer with given email is not in database.
-        //Check in admin menu if Customer with given email is present:
-        //        if yes- delete
-        //        if no  go on with customer creation
-
-
-        //Click dropdown list
+        //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
-        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
-        driver.findElement(By.cssSelector("a[href*='account/register']"))
-                .click();
+
+        //Click "Register" button
+        driver.findElement(By.cssSelector("a[href*='account/register']")).click();
 
         // Filling section "Your personal details"
         driver.findElement(By.id("input-firstname")).clear();
@@ -77,11 +75,13 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
         driver.findElement(By.id("input-confirm"))
                 .sendKeys(USER_PASSWORD);
 
+        // Checkbox "Privacy policy"
         driver.findElement(By.name("agree")).click();
 
-        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY*2);
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
 
-        driver.findElement(By.name("agree")).sendKeys(Keys.ENTER);
+        // Click Continue button
+        driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY*2);
 
@@ -92,6 +92,7 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
         // Checking if account is created
         Assert.assertEquals("Your Account Has Been Created!", created);
 
+        // Log in with recently created customer's credentials
         Assert.assertTrue(isCustomerLogined());
 
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
@@ -105,11 +106,19 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
         logOutCustomer();
     }
 
+    /**
+     * Customer registration function test. Trying to create customer with one
+     * mandatory field filled with invalid credentails (First name more than
+     * 32 symbols).
+     * @throws Exception
+     */
     @Test
     public void tc02customerRegistrationOneFieldInvalidTest() throws Exception {
 
+        //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
-        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
+        //Click "Register" button
         driver.findElement(By.cssSelector("a[href*='account/register']")).click();
 
         // Filling section "Your personal details"
@@ -166,25 +175,32 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
         // Checkbox "Privacy policy"
         driver.findElement(By.name("agree")).click();
 
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
+        // Click Continue button
+        driver.findElement(By.xpath("//input[@value='Continue']")).click();
+
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY * 2);
 
-        // Clicking "Continue" button
-        driver.findElement(By.name("agree")).sendKeys(Keys.ENTER);
-
-        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY * 2);
-
+        //Checking Error message next to field 'First name'
         Assert.assertEquals("First Name must be between 1 and 32 characters!" ,
                             driver.findElement(By.xpath(
                 "//*[contains(text(),'First Name must be')]")).getText());
 
     }
 
-    // TODO - later
+    /**
+     * Customer registration function test. Testing checkbox - 'Accept Privacy
+     * policy' mandatory filed.
+     * @throws Exception
+     */
     @Test
     public void tc03customerRegistrationAllFieldValidNoCheckBoxTest() throws Exception {
 
+        //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
-        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
+        //Click "Register" button
         driver.findElement(By.cssSelector("a[href*='account/register']")).click();
 
         // Filling section "Your personal details"
@@ -240,8 +256,8 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
 
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY * 2);
 
-        // Clicking "Continue" button
-        driver.findElement(By.name("agree")).sendKeys(Keys.ENTER);
+        // Click Continue button
+        driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY * 2);
 
@@ -250,19 +266,27 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
                 "Warning: You must agree to the Privacy Policy!");
     }
 
+    /**
+     * Customer registration function test. Privacy policy - checked, while all
+     * other mandatory and not-mandatory fields - empty.
+     * @throws Exception
+     */
     @Test
     public void tc04customerRegistrationOnlyRulesCheckbox() throws Exception {
 
+        //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
 
-        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
-
+        //Click "Register" button
         driver.findElement(By.cssSelector("a[href*='account/register']")).click();
+
+        // Checkbox "Privacy policy"
         driver.findElement(By.name("agree")).click();
 
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
 
-        driver.findElement(By.name("agree")).sendKeys(Keys.ENTER);
+        // Click Continue button
+        driver.findElement(By.xpath("//input[@value='Continue']")).click();
 
         Assert.assertEquals(driver.findElement(By.xpath(
                 "//*[contains(text(),'First Name must be')]")).getText(),
@@ -294,12 +318,15 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
     }
 
     /**
-    Testing one field (email) by decision table technics.
+    Testing one field (email) by decision table technique.
      **/
     @Test
     public void tc05customerCreateEmailFieldTest() throws Exception {
 
+        //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
+
+        //Click "Register" button
         driver.findElement(By.cssSelector("a[href*='account/register']")).click();
 
         // Filling section "Your personal details"
@@ -350,10 +377,12 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
         driver.findElement(By.id("input-confirm"))
                 .sendKeys(USER_PASSWORD);
 
+        // Checkbox "Privacy policy"
         driver.findElement(By.name("agree")).click();
 
         String testEmail;
-        String xpathRequest = "//input[@value='%s']/following-sibling::div[contains(text(),'E-Mail Address does not appear to be valid!')]";
+        String xpathRequest = "//input[@value='%s']/following-sibling::" +
+              "div[contains(text(),'E-Mail Address does not appear to be valid!')]";
 
         /* following tests skipped due to HTML browser email check.
         driver.findElement(By.id("input-email")).clear();
@@ -420,13 +449,13 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
      * @throws Exception
      */
     @Test
-    public void tc06customerRegistrationTest() throws Exception {
+    public void tc06customerRegistrationDropSecurityTest() throws Exception {
 
-        //Click dropdown list
+        //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
-        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
-        driver.findElement(By.cssSelector("a[href*='account/register']"))
-                .click();
+
+        //Click "Register" button
+        driver.findElement(By.cssSelector("a[href*='account/register']")).click();
 
         // Filling section "Your personal details"
         driver.findElement(By.id("input-firstname")).clear();
@@ -479,13 +508,17 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
         driver.findElement(By.id("input-confirm"))
                 .sendKeys(USER_PASSWORD);
 
+        // Checkbox "Privacy policy"
         driver.findElement(By.name("agree")).click();
 
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
+        // Click Continue button
+        driver.findElement(By.xpath("//input[@value='Continue']")).click();
+
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY*2);
 
-        driver.findElement(By.name("agree")).sendKeys(Keys.ENTER);
-
-        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY*2);
+        Assert.assertFalse(isCustomerLogined());
 
         //TODO - assert in database
 

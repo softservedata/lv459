@@ -1,5 +1,4 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,24 +9,19 @@ import java.util.concurrent.TimeUnit;
 
 public class AdminPanel extends LocalTestRunnerSetIP {
 
+    WebDriver webDriver;
+
     public void deleteCustomer (String email) throws Exception {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        options.addArguments("enable-automation");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-infobars");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-browser-side-navigation");
-        options.addArguments("--disable-gpu");
-        WebDriver webDriver = new ChromeDriver(options);
+
+        //Create new WebDriver for Admin panel
+        createAdminPanelWebDriver();
 
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         // log in as Admin
         loginAdmin(webDriver);
 
-        //find customer by email
+        // find customer by email
         findCustomerByEmail(webDriver , email);
 
         if (webDriver.findElements(By.xpath("//td[contains(text(),'No results!')]")).size() > 0) {
@@ -42,18 +36,10 @@ public class AdminPanel extends LocalTestRunnerSetIP {
         webDriver.quit();
     }
 
-    public void createCustomer (String email, String password)
-            throws Exception {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        options.addArguments("enable-automation");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-infobars");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-browser-side-navigation");
-        options.addArguments("--disable-gpu");
-        WebDriver webDriver = new ChromeDriver(options);
+    public void createCustomer (String email, String password) throws Exception {
+
+        //Create new WebDriver for Admin panel
+        createAdminPanelWebDriver();
 
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -65,16 +51,32 @@ public class AdminPanel extends LocalTestRunnerSetIP {
 
         if (webDriver.findElements(By.xpath("//td[contains(text(),'No results!')]")).size() > 0) {
 
-            // create customer
+        // create customer
             createNewCustomer(webDriver , email , password);
         } else {
 
-            // do nothing
+        // do nothing
             System.out.println("Customer is already in DB!");
         }
+
         //logout admin
         logoutAdmin(webDriver);
         webDriver.quit();
+    }
+
+    private WebDriver createAdminPanelWebDriver () {
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+        options.addArguments("enable-automation");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-infobars");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-browser-side-navigation");
+        options.addArguments("--disable-gpu");
+        webDriver = new ChromeDriver(options);
+
+        return webDriver;
     }
 
     private void loginAdmin (WebDriver webDriver) throws Exception{
@@ -106,6 +108,7 @@ public class AdminPanel extends LocalTestRunnerSetIP {
             throws Exception {
 
         webDriver.findElement(By.xpath("//img[@title='OpenCart']")).click();
+
         // Goto 'Customer' section
         webDriver.findElement(By.id("button-menu")).click();
         webDriver.findElement(By.id("menu-customer")).click();
@@ -113,9 +116,9 @@ public class AdminPanel extends LocalTestRunnerSetIP {
 
         // Filter customer by email
         webDriver.findElement(By.id("input-email")).click();
-
         webDriver.findElement(By.id("input-email")).clear();
         webDriver.findElement(By.id("input-email")).sendKeys(email);
+
         webDriver.findElement(By.id("button-filter")).click();
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
     }
