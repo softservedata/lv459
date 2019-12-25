@@ -73,7 +73,7 @@ public abstract class LocalTestRunnerUk {
         checkCart();
         driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
         Thread.sleep(1000); // For Presentation Only
-        checkWishList();
+        //checkWishList();
         driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
         if (isLoggined()) {
             driver.get("http://192.168.5.129/opencart/upload/index.php?route=account/logout");
@@ -112,23 +112,15 @@ public abstract class LocalTestRunnerUk {
 
     }
 
-    private void checkWishList() throws Exception {
+/*    private void checkWishList() throws Exception {
         driver.findElement(By.xpath("//*[@id='wishlist-total']")).click();
+        Thread.sleep(2000); // For Presentation Only
         WebElement empty_wish = driver.findElement(By.xpath("//*[@id='content']/h2/following-sibling::p"));
         if (!empty_wish.getText().contains("Your wish list is empty.")) {
-            driver.findElement(By.xpath("//td/a[@class='btn btn-danger']")).click();
+            driver.findElement(By.xpath("//td/a[@data-original-title='Remove']")).click();
         } else {
             driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
         }
-/*        if (!empty_wish.getText().contains("Your wish list is empty.")) {
-            List<WebElement> closeButtons = driver.findElements(By.xpath("//td/a[@class='btn btn-danger']"));
-            for (WebElement current : closeButtons) {
-                current.click();
-                Thread.sleep(1000); // For Presentation Only
-            }
-        } else {
-            driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
-        }*/
-    }
+    }*/
 
 }
