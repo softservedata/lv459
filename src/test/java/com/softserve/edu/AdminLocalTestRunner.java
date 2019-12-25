@@ -28,7 +28,6 @@ public abstract class AdminLocalTestRunner {
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         System.out.println("@AfterClass");
-        //Thread.sleep(1000); // For Presentation Only
         driver.quit();
     }
 
@@ -37,9 +36,7 @@ public abstract class AdminLocalTestRunner {
         System.out.println("\t@Before method");
         driver.get("http://192.168.216.128/opencart/upload/admin/");
         //driver.get("http://taqc-opencart.epizy.com/index.php?route=common/home");
-        //Thread.sleep(1000); // For Presentation Only
-        //driver.manage().window().maximize();
-        //Thread.sleep(1000); // For Presentation Only
+        driver.manage().window().maximize();
     }
 
     @After
