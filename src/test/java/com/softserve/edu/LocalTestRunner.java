@@ -14,11 +14,22 @@ import java.util.concurrent.TimeUnit;
 public abstract class LocalTestRunner {
     protected static WebDriver driver;
     protected final int TWO_SECONDS = 2000;
+    protected final int THREE_SECONDS = 3000;
     protected final int FOUR_SECONDS = 4000;
     protected final String SEARCH_FIELD = "search";
+    protected final String SEARCH_CRITERIA_FIELD = "input-search";
     protected final String SEARCH_BUTTON = "button.btn.btn-default.btn-lg";
     protected final String HOME_PAGE = "#logo .img-responsive";
     protected final String NUMBERS_AND_LETTERS = "0123456789abcdefghijklmnopqrstuvwxyz";
+    protected final String CATEGORY_DROP_DOWN_LIST = "category_id";
+    protected final String SEARCH_IN_SUBCATEGORIES_CHECKBOX = "checkbox-inline";
+    protected final String SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX = "description";
+    protected final String SEARCH_CRITERIA_BUTTON = "button-search";
+    protected final String COMPONENTS_TAB_ON_THE_NAVIGATION_BAR = "//nav[@id='menu']//li[@class='dropdown']/a[contains(.,'Components')]";
+    protected final int TWO_HUNDRED_AND_FIFTY_FIVE = 255;
+    protected final int SIXTY_FIVE_THOUSANDS_FIVE_HUNDRED_AND_THIRTY_SIX = 65536;
+
+
 
 
 

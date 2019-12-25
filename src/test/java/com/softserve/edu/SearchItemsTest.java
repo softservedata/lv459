@@ -7,8 +7,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.Random;
 
 
@@ -17,6 +15,7 @@ public class SearchItemsTest extends LocalTestRunner {
     /**
      * Typing lower/upper case letters, numbers and symbol
      * in "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -40,6 +39,7 @@ public class SearchItemsTest extends LocalTestRunner {
 
     /**
      * Typing lower/upper case letters in "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -72,6 +72,7 @@ public class SearchItemsTest extends LocalTestRunner {
 
     /**
      * Typing lower case letters and number in "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -94,6 +95,7 @@ public class SearchItemsTest extends LocalTestRunner {
 
     /**
      * Typing lower case letters and symbol in "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -116,6 +118,7 @@ public class SearchItemsTest extends LocalTestRunner {
 
     /**
      * Typing upper case letters and numbers in "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -138,6 +141,7 @@ public class SearchItemsTest extends LocalTestRunner {
 
     /**
      * Typing upper case letters and symbol in "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -160,6 +164,7 @@ public class SearchItemsTest extends LocalTestRunner {
 
     /**
      * Typing numbers and symbol in "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -182,6 +187,7 @@ public class SearchItemsTest extends LocalTestRunner {
 
     /**
      * Empty "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -205,6 +211,7 @@ public class SearchItemsTest extends LocalTestRunner {
 
     /**
      * Typing SQL command in "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -229,6 +236,7 @@ public class SearchItemsTest extends LocalTestRunner {
 
     /**
      * Typing one letter in "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -251,6 +259,7 @@ public class SearchItemsTest extends LocalTestRunner {
 
     /**
      * Typing 255 letters in "Search" field.
+     *
      * @throws Exception exception
      */
     @Test
@@ -258,9 +267,9 @@ public class SearchItemsTest extends LocalTestRunner {
 
         Random r = new Random();
         char[] subset = NUMBERS_AND_LETTERS.toCharArray();
-        int length = 255;
+        int length = TWO_HUNDRED_AND_FIFTY_FIVE;
         char[] buf = new char[length];
-        for (int i=0;i<buf.length;i++) {
+        for (int i = 0; i < buf.length; i++) {
             int index = r.nextInt(subset.length);
             buf[i] = subset[index];
         }
@@ -269,57 +278,51 @@ public class SearchItemsTest extends LocalTestRunner {
         // Typing in the "Search" field
         driver.findElement(By.name(SEARCH_FIELD)).click();
         driver.findElement(By.name(SEARCH_FIELD)).clear();
-        Instant start = Instant.now();;
         driver.findElement(By.name(SEARCH_FIELD)).sendKeys(new String(buf));
-
-        Instant end = Instant.now();
-        Duration interval = Duration.between(start, end);
-
-        System.out.println("Execution time in seconds: " +
-                interval.getSeconds());
+        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(1000); // For Presentation Only
+        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
- //       WebElement zeroLength = driver.findElement(By.xpath("//input[@id='button-search']/following-sibling::p"));
- //       Assert.assertTrue(zeroLength.getText().contains("There is no product that matches the search criteria."));
-        //
-        // Return to Previous State
-//        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
-        //Thread.sleep(1000); // For Presentation Only
+        WebElement zeroLength = driver.findElement(By.
+                xpath("//input[@id='button-search']/following-sibling::p"));
+        Assert.assertTrue(zeroLength.getText().contains(
+                "There is no product that matches the search criteria."));
+
     }
 
-    //65536 letters in "Search" field
-     @Test
+    /**
+     * Typing 65536 letters in "Search" field.
+     *
+     * @throws Exception exception
+     */
+    @Test
     public void fieldLengthCaseThree() throws Exception {
 
-       String strCharacter = "abcdefghijklmnopqrstuvwxyz_" +
-                "ABCDEFGHIJKLMNOPQRSTUVWXYZ_" +
-                "0123456789";
-        StringBuffer stringBuffer = new StringBuffer();
-
-        for(int i=0; i < 1024; i++){
-            stringBuffer.append(strCharacter);
+        Random r = new Random();
+        char[] subset = NUMBERS_AND_LETTERS.toCharArray();
+        int length = SIXTY_FIVE_THOUSANDS_FIVE_HUNDRED_AND_THIRTY_SIX;
+        char[] buf = new char[length];
+        for (int i = 0; i < buf.length; i++) {
+            int index = r.nextInt(subset.length);
+            buf[i] = subset[index];
         }
 
         // Steps
         // Typing in the "Search" field
         driver.findElement(By.name(SEARCH_FIELD)).click();
         driver.findElement(By.name(SEARCH_FIELD)).clear();
-        driver.findElement(By.name(SEARCH_FIELD)).sendKeys(stringBuffer.toString());
+        driver.findElement(By.name(SEARCH_FIELD)).sendKeys(new String(buf));
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(1000); // For Presentation Only
-         //
-         // Checking
-         WebElement item = driver.findElement(By.xpath("//h1[contains(text(), 'Request-URI Too Long')]"));
-         Assert.assertTrue(item.getText().contains("Request-URI Too Long"));
+        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
-        // Return to Previous State
-        driver.findElement(By.cssSelector("#logo .img-responsive")).click();
-        //Thread.sleep(1000); // For Presentation Only
+        // Checking
+        WebElement item = driver.findElement(By.
+                xpath("//h1[contains(text(), 'Request-URI Too Long')]"));
+        Assert.assertTrue(item.getText().contains("Request-URI Too Long"));
     }
 }
