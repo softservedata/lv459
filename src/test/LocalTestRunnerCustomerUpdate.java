@@ -15,7 +15,7 @@ public abstract class LocalTestRunnerCustomerUpdate extends LocalTestRunnerSetIP
     @After
     public void stopPage() throws  Exception {
 
-// After method : delete test customer
+        // After method : delete test customer
         System.out.println("@After method - Stop Page");
         admin.deleteCustomer(USER_EMAIL);
     }

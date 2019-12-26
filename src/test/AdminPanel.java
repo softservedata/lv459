@@ -4,65 +4,13 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
 
 public class AdminPanel extends LocalTestRunnerSetIP {
 
     WebDriver webDriver;
-
-    public void deleteCustomer (String email) throws Exception {
-
-        //Create new WebDriver for Admin panel
-        createAdminPanelWebDriver();
-
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        // log in as Admin
-        loginAdmin(webDriver);
-
-        // find customer by email
-        findCustomerByEmail(webDriver , email);
-
-        if (webDriver.findElements(By.xpath("//td[contains(text(),'No results!')]")).size() > 0) {
-            //do nothing
-        } else {
-            findCustomerByEmail(webDriver , email);
-            dropCustomer(webDriver , email);
-        }
-        //logout admin
-        logoutAdmin(webDriver);
-
-        webDriver.quit();
-    }
-
-    public void createCustomer (String email, String password) throws Exception {
-
-        //Create new WebDriver for Admin panel
-        createAdminPanelWebDriver();
-
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        // log in as Admin
-        loginAdmin(webDriver);
-
-        //find customer by email
-        findCustomerByEmail (webDriver , email);
-
-        if (webDriver.findElements(By.xpath("//td[contains(text(),'No results!')]")).size() > 0) {
-
-        // create customer
-            createNewCustomer(webDriver , email , password);
-        } else {
-
-        // do nothing
-            System.out.println("Customer is already in DB!");
-        }
-
-        //logout admin
-        logoutAdmin(webDriver);
-        webDriver.quit();
-    }
 
     private WebDriver createAdminPanelWebDriver () {
         WebDriverManager.chromedriver().setup();
@@ -77,6 +25,68 @@ public class AdminPanel extends LocalTestRunnerSetIP {
         webDriver = new ChromeDriver(options);
 
         return webDriver;
+    }
+
+    public void createCustomer (String email, String password) throws Exception {
+
+        //Create new WebDriver for Admin panel
+        createAdminPanelWebDriver();
+
+        webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+        // log in as Admin
+        loginAdmin(webDriver);
+
+        //find customer by email
+        findCustomerByEmail (webDriver , email);
+
+        webDriver.manage().timeouts().implicitlyWait(100, TimeUnit.MILLISECONDS);
+
+        if (webDriver.findElements(By.xpath("//td[contains(text(),'No results!')]")).size() == 1) {
+
+            // create customer
+            createNewCustomer(webDriver , email , password);
+
+        } else {
+
+            // do nothing
+            System.out.println("Customer is already in DB!");
+        }
+        webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+        //logout admin
+        logoutAdmin(webDriver);
+        webDriver.quit();
+    }
+
+    public void deleteCustomer (String email) throws Exception {
+
+        //Create new WebDriver for Admin panel
+        createAdminPanelWebDriver();
+
+        webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+        // log in as Admin
+        loginAdmin(webDriver);
+
+        // find customer by email
+        findCustomerByEmail(webDriver , email);
+
+        webDriver.manage().timeouts().implicitlyWait(100, TimeUnit.MILLISECONDS);
+
+        if (webDriver.findElements(By.xpath("//td[contains(text(),'No results!')]")).size() > 0) {
+            //do nothing
+        } else {
+//            findCustomerByEmail(webDriver , email);
+            dropCustomer(webDriver , email);
+        }
+
+        webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+        //logout admin
+        logoutAdmin(webDriver);
+
+        webDriver.quit();
     }
 
     private void loginAdmin (WebDriver webDriver) throws Exception{
@@ -144,7 +154,9 @@ public class AdminPanel extends LocalTestRunnerSetIP {
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
     }
 
-    private void createNewCustomer (WebDriver webDriver, String email , String password) {
+    private void createNewCustomer (WebDriver webDriver, String email , String password)
+            throws Exception {
+        //Click add new customer button
         webDriver.findElement(By.xpath("//a[@class='btn btn-primary']")).click();
 
         webDriver.findElement(By.id("input-firstname")).click();
@@ -171,6 +183,46 @@ public class AdminPanel extends LocalTestRunnerSetIP {
         webDriver.findElement(By.id("input-confirm")).clear();
         webDriver.findElement(By.id("input-confirm")).sendKeys(password);
 
+        //Click add address
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+        webDriver.findElement(By.xpath("//li[@id='address-add']/a[@onclick='addAddress();']")).click();
+
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
+        webDriver.findElement(By.id("input-firstname1")).click();
+        webDriver.findElement(By.id("input-firstname1")).clear();
+        webDriver.findElement(By.id("input-firstname1")).sendKeys("Se");
+
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+        webDriver.findElement(By.id("input-lastname1")).click();
+        webDriver.findElement(By.id("input-lastname1")).clear();
+        webDriver.findElement(By.id("input-lastname1")).sendKeys("Pe");
+
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+        webDriver.findElement(By.id("input-address-11")).click();
+        webDriver.findElement(By.id("input-address-11")).clear();
+        webDriver.findElement(By.id("input-address-11")).sendKeys("Sadova str.");
+
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+        webDriver.findElement(By.id("input-city1")).click();
+        webDriver.findElement(By.id("input-city1")).clear();
+        webDriver.findElement(By.id("input-city1")).sendKeys("Lemberg");
+
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+        Select dropDownCountry = new Select(
+                ((ChromeDriver) webDriver).findElementById("input-country1"));
+        dropDownCountry.selectByValue("220");
+
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+        Select dropDownRegion = new Select(
+                ((ChromeDriver) webDriver).findElementById("input-zone1"));
+        dropDownRegion.selectByValue("3493");
+
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
         webDriver.findElement(By.xpath("//button[@data-original-title='Save']")).click();
+        //Click save new customer button
+        webDriver.findElement(By.xpath("//a[@class='btn btn-primary']")).click();
+
     }
 }

@@ -18,6 +18,7 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
     @Test
     public void tc01customerRegistrationTest() throws Exception {
 
+        System.out.println("Demonstration : Test Case 01...");
         //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
 
@@ -115,6 +116,8 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
     @Test
     public void tc02customerRegistrationOneFieldInvalidTest() throws Exception {
 
+        System.out.println("Demonstration : Test Case 02...");
+
         //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
 
@@ -197,6 +200,8 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
     @Test
     public void tc03customerRegistrationAllFieldValidNoCheckBoxTest() throws Exception {
 
+        System.out.println("Demonstration : Test Case 03...");
+
         //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
 
@@ -274,6 +279,8 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
     @Test
     public void tc04customerRegistrationOnlyRulesCheckbox() throws Exception {
 
+        System.out.println("Demonstration : Test Case 04...");
+
         //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
 
@@ -322,6 +329,8 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
      **/
     @Test
     public void tc05customerCreateEmailFieldTest() throws Exception {
+
+        System.out.println("Demonstration : Test Case 05...");
 
         //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
@@ -451,6 +460,8 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
     @Test
     public void tc06customerRegistrationDropSecurityTest() throws Exception {
 
+        System.out.println("Demonstration : Test Case 06...");
+
         //Click "My account" dropdown list
         driver.findElement(By.className("dropdown")).click();
 
@@ -518,6 +529,7 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
 
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY*2);
 
+        // TODO - check this assert once more
         Assert.assertFalse(isCustomerLogined());
 
         //TODO - assert in database

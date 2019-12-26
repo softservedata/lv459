@@ -175,7 +175,7 @@
             <!-- <excludes> -->
             <!-- <exclude>**/AppTest.java</exclude> -->
             <!-- </excludes> -->
-
+            <runOrder>alphabetical</runOrder>
         </configuration>
     </plugin>
 

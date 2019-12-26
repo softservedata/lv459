@@ -19,6 +19,8 @@ public class CustomerUpdateTests
     @Test
     public void tc11updateLastNameFieldTest() throws Exception{
 
+        System.out.println("Demonstration : Test Case 11...");
+
         String newLastName = "New Last Name";
         // Log in as Customer
         super.loginCustomer(USER_EMAIL , USER_PASSWORD);
@@ -36,7 +38,7 @@ public class CustomerUpdateTests
 
         // Search and assert message element
         Assert.assertEquals("Success: Your account has been successfully updated." ,
-                            driver.findElement(By.cssSelector("i.fa.fa-check-circle")).getText());
+                            driver.findElement(By.cssSelector("div.alert.alert-success")).getText());
 
         //Log out customer
         super.logOutCustomer();
@@ -58,6 +60,8 @@ public class CustomerUpdateTests
      */
     @Test
     public void tc12updatePasswordFieldTest () throws Exception{
+
+        System.out.println("Demonstration : Test Case 12...");
 
         // Login as Customer
         super.loginCustomer(USER_EMAIL , USER_PASSWORD);
@@ -91,5 +95,87 @@ public class CustomerUpdateTests
 
         // Assert if Customer can login
         Assert.assertTrue(isCustomerLogined());
+    }
+
+    /**
+     * Updating Customer's address
+     * @throws Exception
+     */
+    @Test
+    public void tc13updateAddressFieldTest () throws Exception{
+
+        System.out.println("Demonstration : Test Case 13...");
+
+        // Login as Customer
+        super.loginCustomer(USER_EMAIL , USER_PASSWORD);
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
+        // Click your address book entries link
+        driver.findElement(By.cssSelector("#content a[href*='account/address']")).click();
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
+        // Click Change your address book entries link
+        driver.findElement(By.cssSelector("#content a[href*='account/address/edit']")).click();
+
+        // Edit City Field
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+        driver.findElement(By.cssSelector("input#input-city.form-control")).click();
+        driver.findElement(By.cssSelector("input#input-city.form-control")).clear();
+        driver.findElement(By.cssSelector("input#input-city.form-control")).sendKeys("New Lemberg");
+
+        //Edit Address 1 field
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+        driver.findElement(By.cssSelector("input#input-address-1.form-control")).click();
+        driver.findElement(By.cssSelector("input#input-address-1.form-control")).clear();
+        driver.findElement(By.cssSelector("input#input-address-1.form-control")).sendKeys("New Street");
+
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+        // Click "Continue" button
+        driver.findElement(By.cssSelector("input.btn.btn-primary")).click();
+
+//        ("//div[@id='content']//input[@class='btn btn-primary']" by xpath
+
+        Assert.assertEquals("Your address has been successfully updated" ,
+                    driver.findElement(By.cssSelector("div.alert.alert-success")).getText());
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
+
+        // Log out customer
+        super.logOutCustomer();
+
+        // Log in customer
+        super.loginCustomer(USER_EMAIL, USER_PASSWORD);
+
+        // Click your address book entries link
+//        driver.findElement(By.cssSelector("#content a[href*='account/account']")).click();
+        driver.findElement(By.cssSelector("#content a[href*='account/address']")).click();
+
+        // Assert if address book amended.
+        String address = driver.findElement(By.xpath(
+            "//div[@id ='content']//td[@class ='text-left']")).getAttribute("innerText");
+
+        System.out.println(address);
+
+        String amendedAddress = driver.findElement(By.xpath(
+                "//div[@id ='content']//td[@class ='text-left']")).getText();
+
+        // Getting text with break lines. Converting to line and assertion.
+        String[] trimmedText = amendedAddress.split("\n");
+        boolean newCity = false;
+        boolean newStreet = false;
+
+        System.out.println(trimmedText);
+        for (String str : trimmedText) {
+            System.out.println("str = " + str);
+            if (str.equals("New Lemberg")) {
+               newCity = true;
+            }
+            if (str.equals("New Street")) {
+                newStreet = true;
+            }
+        }
+        Assert.assertTrue(newCity);
+        Assert.assertTrue(newStreet);
+
+        Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
     }
 }
