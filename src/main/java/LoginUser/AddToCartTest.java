@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -58,10 +60,11 @@ public class AddToCartTest extends LocalTestRunner{
 
         //Open Cart by Drop Down Menu
         driver.findElement(By.xpath(DROP_DOWN_CART_BUTTON)).click();
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
         //Delete product
-        driver.findElement(By.xpath(String.format(DELETE_ON_DROPDOWN_MENU,"MacBook"))).click();
-        Thread.sleep(1000);
+        WebDriverWait wait = new WebDriverWait(driver,20);
+        WebElement delete = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(DELETE_ON_DROPDOWN_MENU, "MacBook"))));
+        delete.click();
 
     }
 
