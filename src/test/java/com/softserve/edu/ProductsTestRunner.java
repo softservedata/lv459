@@ -26,11 +26,11 @@ public abstract class ProductsTestRunner {
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.id("input-username")).click();
 		driver.findElement(By.id("input-username")).clear();
-		driver.findElement(By.id("input-username")).sendKeys("admin");
+		driver.findElement(By.id("input-username")).sendKeys(System.getenv().get("OPENCART_LOGIN"));
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.id("input-password")).click();
 		driver.findElement(By.id("input-password")).clear();
-		driver.findElement(By.id("input-password")).sendKeys("Lv459_Taqc");
+		driver.findElement(By.id("input-password")).sendKeys(System.getenv().get("OPENCART_PASSWORD"));
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.className("btn")).click();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

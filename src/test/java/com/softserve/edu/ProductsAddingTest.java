@@ -46,7 +46,6 @@ public class ProductsAddingTest extends ProductsTestRunner {
 			}
 		}
 		Thread.sleep(1000); // For Presentation Only
-		
 	}
 	
 	/*
@@ -55,7 +54,7 @@ public class ProductsAddingTest extends ProductsTestRunner {
 	@Test
 	public void addHTCtoSmartphones() throws Exception {
 		driver.findElement(
-				By.xpath("//td[text()='HTC Touch HD']/following-sibling::td[*]/a")).click();
+				By.xpath("//td[text()='HTC Touch HD']/following-sibling::td/a")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
 		Thread.sleep(1000); // For Presentation Only
@@ -73,7 +72,6 @@ public class ProductsAddingTest extends ProductsTestRunner {
 			}
 		}
 		Thread.sleep(1000); // For Presentation Only
-		
 	}
 	
 	/*
@@ -81,7 +79,7 @@ public class ProductsAddingTest extends ProductsTestRunner {
 	 */
 	@Test
 	public void addiPhoneToSmartphones() throws Exception {
-		driver.findElement(By.xpath("//td[text()='iPhone']/following-sibling::td[*]/a")).click();
+		driver.findElement(By.xpath("//td[text()='iPhone']/following-sibling::td/a")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
 		Thread.sleep(1000); // For Presentation Only
@@ -99,7 +97,6 @@ public class ProductsAddingTest extends ProductsTestRunner {
 			}
 		}
 		Thread.sleep(1000); // For Presentation Only
-		
 	}
 	
 	/*
@@ -108,7 +105,7 @@ public class ProductsAddingTest extends ProductsTestRunner {
 	@Test
 	public void addPalmToSmartphones() throws Exception {
 		driver.findElement(
-				By.xpath("//td[text()='Palm Treo Pro']/following-sibling::td[*]/a")).click();
+				By.xpath("//td[text()='Palm Treo Pro']/following-sibling::td/a")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
 		Thread.sleep(1000); // For Presentation Only
@@ -126,7 +123,6 @@ public class ProductsAddingTest extends ProductsTestRunner {
 			}
 		}
 		Thread.sleep(1000); // For Presentation Only
-		
 	}
 	
 	/*
@@ -135,7 +131,7 @@ public class ProductsAddingTest extends ProductsTestRunner {
 	@Test
 	public void addCanonToCameras() throws Exception {
 		driver.findElement(
-				By.xpath("//td[text()='Canon EOS 5D']/following-sibling::td[*]/a")).click();
+				By.xpath("//td[text()='Canon EOS 5D']/following-sibling::td/a")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
 		Thread.sleep(1000); // For Presentation Only
@@ -153,7 +149,6 @@ public class ProductsAddingTest extends ProductsTestRunner {
 			}
 		}
 		Thread.sleep(1000); // For Presentation Only	
-
 	}
 	
 	/*
@@ -161,7 +156,7 @@ public class ProductsAddingTest extends ProductsTestRunner {
 	 */
 	@Test
 	public void addNikonToCameras() throws Exception {
-		driver.findElement(By.xpath("//td[text()='Nikon D300']/following-sibling::td[*]/a")).click();
+		driver.findElement(By.xpath("//td[text()='Nikon D300']/following-sibling::td/a")).click();
 		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
 		Thread.sleep(1000); // For Presentation Only
@@ -184,7 +179,6 @@ public class ProductsAddingTest extends ProductsTestRunner {
 			}
 		}
 		Thread.sleep(1000); // For Presentation Only	
-		
 	}
 	
 }

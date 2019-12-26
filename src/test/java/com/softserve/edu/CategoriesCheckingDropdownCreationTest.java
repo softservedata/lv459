@@ -53,6 +53,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 				By.xpath("//ul[@class='list-unstyled']//a[contains(text(),'Software (0)')]"));
 		Assert.assertEquals(expectedSoftware, software.getText());
 		Thread.sleep(1000); // For Presentation Only
+		
 	}
 	
 	/*
@@ -72,7 +73,8 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 		WebElement smartphones = driver.findElement(
 				By.xpath("//ul[@class='list-unstyled']//a[contains(text(),'Smartphones (0)')]"));
 		Assert.assertEquals(expectedSmartphones, smartphones.getText());
-		Thread.sleep(1000); // For Presentation Only
+		Thread.sleep(1000); // For Presentation Only	
+		
 	}
 	
 	/*
@@ -93,6 +95,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 				By.xpath("//ul[@class='list-unstyled']//a[text()='Cameras (0)']"));
 		Assert.assertEquals(expectedCameras, cameras.getText());
 		Thread.sleep(1000); // For Presentation Only
+		
 	}
 	
 	/*
@@ -113,5 +116,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 				By.xpath("//ul[@class='list-unstyled']//a[contains(text(),'MP3 Players (0)')]"));
 		Assert.assertEquals(expectedMP3, mp3.getText());
 		Thread.sleep(1000); // For Presentation Only
+		
 	}
+	
 }

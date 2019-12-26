@@ -274,7 +274,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	public void checkWebCams() throws Exception {
 		
 		String expectedWebCams = "Web Cameras (0)";
-		
+		//"//ul[@class='nav navbar-nav']/li/a[contains(text(), 'Components')]"
 		WebElement components = driver.findElement(
 				By.xpath("//li/a[contains(text(), 'Components')]"));
 		Actions action = new Actions(driver);		
