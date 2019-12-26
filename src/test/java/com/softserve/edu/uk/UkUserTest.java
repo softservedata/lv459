@@ -9,16 +9,26 @@ import org.openqa.selenium.WebElement;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class was implemented to run test for user with NO taxes.
+ */
 public class UkUserTest extends LocalTestRunnerUk {
+
+    /**
+     * This test checks the price of the item(with taxes).
+     */
     @Test
-    public void checkUsWithTaxCurrency() throws Exception {
+    public void checkUsWithTaxCurrency() {
         WebElement price = driver.findElement(By.xpath("//a[text()='MacBook']/../" +
                 "following-sibling::p[@class='price']"));
         Assert.assertTrue(price.getText().contains("602.00"));
     }
 
+    /**
+     * This method was implemented to check the price of the item with no taxes.
+     */
     @Test
-    public void checkUsNoTaxCurrency() throws Exception {
+    public void checkUsNoTaxCurrency() {
         String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
         String price = driver.findElement(By.xpath("//a[text()='MacBook']/../" +
                 "following-sibling::p[@class='price']/span")).getText();
@@ -30,6 +40,11 @@ public class UkUserTest extends LocalTestRunnerUk {
         }
     }
 
+    /**
+     * This test was implemented to check another currency with taxes.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
     public void checkEuWithTaxCurrency() throws Exception {
         driver.findElement(By.xpath("//div[@class='pull-left']")).click();
@@ -44,6 +59,11 @@ public class UkUserTest extends LocalTestRunnerUk {
         Assert.assertTrue(price.getText().contains("472.33"));
     }
 
+    /**
+     * This test was implemented to check another currency with NO taxes.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
     public void checkEuNoTaxCurrency() throws Exception {
         driver.findElement(By.xpath("//div[@class='pull-left']")).click();
@@ -64,6 +84,11 @@ public class UkUserTest extends LocalTestRunnerUk {
         }
     }
 
+    /**
+     * This test was implemented to check currency with taxes inside of the cart.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
     public void checkUsWithTaxCurrencyCart() throws Exception {
         WebElement element = driver.findElement(By.id("carousel0"));
@@ -82,6 +107,11 @@ public class UkUserTest extends LocalTestRunnerUk {
         }
     }
 
+    /**
+     * This test was implemented to check the tax inside of the cart.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
     public void checkUsTaxCart() throws Exception {
         WebElement element = driver.findElement(By.id("carousel0"));
@@ -103,6 +133,11 @@ public class UkUserTest extends LocalTestRunnerUk {
         }
     }
 
+    /**
+     * This test was implemented to check the price with the tax inside of the wish list.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
     public void checkUsWithTaxWish() throws Exception {
         WebElement element = driver.findElement(By.id("carousel0"));

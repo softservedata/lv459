@@ -9,10 +9,16 @@ import org.openqa.selenium.WebElement;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class was implemented to run test for user with NO taxes.
+ */
 public class UaUserTest extends LocalTestRunnerUa {
 
+    /**
+     * This test checks the price of the item.
+     */
     @Test
-    public void checkUsCurrency() throws Exception {
+    public void checkUsCurrency() {
         String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
         String price = driver.findElement(By.xpath("//a[text()='MacBook']/../" +
                 "following-sibling::p[@class='price']/span")).getText();
@@ -24,8 +30,13 @@ public class UaUserTest extends LocalTestRunnerUa {
         }
     }
 
+    /**
+     * This method was implemented to check if another currency works as intended.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
-    public void checkEuNoTaxCurrency() throws Exception {
+    public void checkEuCurrency() throws Exception {
         driver.findElement(By.xpath("//div[@class='pull-left']")).click();
         Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//ul[@class='dropdown-menu']/li/button[@name='EUR']")).click();
@@ -44,8 +55,13 @@ public class UaUserTest extends LocalTestRunnerUa {
         }
     }
 
+    /**
+     * Check the cart if the price inside is correct.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
-    public void checkUsWithTaxCurrencyCart() throws Exception {
+    public void checkUsCart() throws Exception {
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         Thread.sleep(1000); // For Presentation Only
@@ -62,6 +78,11 @@ public class UaUserTest extends LocalTestRunnerUa {
         }
     }
 
+    /**
+     * Check the wish list if the price inside is correct.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
     public void checkUsWish() throws Exception {
         WebElement element = driver.findElement(By.id("carousel0"));

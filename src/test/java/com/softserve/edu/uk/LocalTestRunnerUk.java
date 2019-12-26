@@ -13,11 +13,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This class was implemented to create prerequisites for user with taxes tests.
+ */
 public abstract class LocalTestRunnerUk {
-    protected static WebDriver driver;
+    /**
+     * Driver.
+     */
+    static WebDriver driver;
 
+    /**
+     * Get environment and set implicit waits.
+     */
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+    public static void setUpBeforeClass() {
         System.out.println("@BeforeClass");
         System.setProperty("webdriver.chrome.driver",
                 "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
@@ -25,6 +34,11 @@ public abstract class LocalTestRunnerUk {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+    /**
+     * Quit driver after the class.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         System.out.println("@AfterClass");
@@ -32,6 +46,11 @@ public abstract class LocalTestRunnerUk {
         driver.quit();
     }
 
+    /**
+     * Log in as user before the tests.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Before
     public void setUp() throws Exception {
         System.out.println("\t@Before method");
@@ -66,6 +85,11 @@ public abstract class LocalTestRunnerUk {
         Thread.sleep(1000); // For Presentation Only
     }
 
+    /**
+     * Delete used items during tests.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @After
     public void tearDown() throws Exception {
         System.out.println("\t@After method");
@@ -82,6 +106,12 @@ public abstract class LocalTestRunnerUk {
         driver.manage().deleteAllCookies();
     }
 
+    /**
+     * This method was implemented in order to check if the user is logged out.
+     *
+     * @return the amount of div containers to decide if we have to log out.
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     private boolean isLoggined() throws Exception {
         List<WebElement> items = null;
         //
@@ -99,9 +129,14 @@ public abstract class LocalTestRunnerUk {
         return items.size() > 2;
     }
 
+    /**
+     * This method was implemented to clear the cart after the test.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     private void checkCart() throws Exception {
-        WebElement items_amount = driver.findElement(By.xpath("//*[@id='cart']//span"));
-        if (!items_amount.getText().contains("0 item(s)")) {
+        WebElement itemsAmount = driver.findElement(By.xpath("//*[@id='cart']//span"));
+        if (!itemsAmount.getText().contains("0 item(s)")) {
             driver.findElement(By.xpath("//*[@id='cart']/button")).click();
             List<WebElement> closeButtons = driver.findElements(By.xpath("//*[@id='cart']//" +
                     "table[@class='table table-striped']/tbody/tr/td[@class='text-center']/button"));

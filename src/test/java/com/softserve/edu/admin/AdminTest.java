@@ -9,18 +9,34 @@ import org.openqa.selenium.WebElement;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class was implemented to run tests via admin panel.
+ */
 public class AdminTest extends LocalTestRunner {
+    /**
+     * This test was created to check if the new currency was created.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
     public void addNewCurrency() throws Exception {
-        driver.findElement(By.xpath("//*[@data-original-title='Add New']")).click();
+        driver.findElement(By.xpath("//*[@data-original-title='Add New']"))
+                .click();
+        //Sends the required fields to create a new currency.
         sendsNewCurrencyValues();
-        driver.findElement(By.xpath("//*[@data-original-title='Save']")).click();
+        driver.findElement(By.xpath("//*[@data-original-title='Save']"))
+                .click();
         Thread.sleep(1000);
         WebElement new_title = driver.findElement(By.xpath("//table[@class='table " +
                 "table-bordered table-hover']//tbody//td[contains(text(), 'Grivnya')]"));
         Assert.assertEquals("Grivnya", new_title.getText());
     }
 
+    /**
+     * This test was created to check if the new currency was created properly (Taxes are included in the price).
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
     public void checkNewCurrencyExAsUserTax() throws Exception {
         //WITH TAXES
@@ -40,6 +56,11 @@ public class AdminTest extends LocalTestRunner {
         Assert.assertTrue(price.contains("15,050.00"));
     }
 
+    /**
+     * This test was created to check if the new currency was created properly(no taxes included in the price).
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Test
     public void checkNewCurrencyExAsUser() throws Exception {
         //NO TAXES
@@ -65,7 +86,12 @@ public class AdminTest extends LocalTestRunner {
         }
     }
 
-    private void sendsNewCurrencyValues() {
+    /**
+     * This private method sends required fields to create a new currency.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
+    private void sendsNewCurrencyValues() throws Exception {
         driver.findElement(By.id("input-title")).click();
         driver.findElement(By.id("input-title")).clear();
         driver.findElement(By.id("input-title")).sendKeys("Grivnya");
@@ -88,5 +114,6 @@ public class AdminTest extends LocalTestRunner {
 
         driver.findElement(By.id("input-status")).click();
         driver.findElement(By.xpath("//*[@id='input-status']/option[contains(text(), 'Enabled')]")).click();
+        Thread.sleep(3000); // for presentation only
     }
 }

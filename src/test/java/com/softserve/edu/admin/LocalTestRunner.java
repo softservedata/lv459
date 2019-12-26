@@ -7,17 +7,24 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This class was implemented to create prerequisites for admin tests.
+ */
 public abstract class LocalTestRunner {
-    protected static WebDriver driver;
+    /**
+     * Driver.
+     */
+    static WebDriver driver;
 
+    /**
+     * Get environment and set implicit waits.
+     */
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+    public static void setUpBeforeClass() {
         System.out.println("@BeforeClass");
         System.setProperty("webdriver.chrome.driver",
                 "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
@@ -25,6 +32,11 @@ public abstract class LocalTestRunner {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+    /**
+     * Quit driver after the class.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         System.out.println("@AfterClass");
@@ -32,6 +44,11 @@ public abstract class LocalTestRunner {
         driver.quit();
     }
 
+    /**
+     * Log in as admin before the tests.
+     *
+     * @throws Exception (To use 'sleep' for presentation).
+     */
     @Before
     public void setUp() throws Exception {
         System.out.println("\t@Before method");
@@ -67,8 +84,11 @@ public abstract class LocalTestRunner {
         Thread.sleep(1000); //For Presenatation only
     }
 
+    /**
+     * Delete all cookies.
+     */
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         driver.manage().deleteAllCookies();
     }
 }
