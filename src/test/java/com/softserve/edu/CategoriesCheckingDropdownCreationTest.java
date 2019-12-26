@@ -19,7 +19,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 	 * of Tablets Tab
 	 */
 	@Test
-	public void CheckTablets() throws Exception {
+	public void checkTablets() throws Exception {
 		
 		String expectedTablets = "Tablets (0)";
 		
@@ -40,7 +40,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 	 * of Software Tab
 	 */
 	@Test
-	public void CheckSoftware() throws Exception {
+	public void checkSoftware() throws Exception {
 		
 		String expectedSoftware = "Software (0)";
 		
@@ -60,7 +60,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 	 * of Phones & PDAs Tab
 	 */
 	@Test
-	public void CheckSmartphones() throws Exception {
+	public void checkSmartphones() throws Exception {
 		
 		String expectedSmartphones = "Smartphones (0)";
 		
@@ -80,7 +80,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 	 * of Cameras Tab
 	 */
 	@Test
-	public void CheckCameras() throws Exception {
+	public void checkCameras() throws Exception {
 		
 		String expectedCameras = "Cameras (0)";
 		
@@ -90,7 +90,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 		action.moveToElement(components).perform();
 		
 		WebElement cameras = driver.findElement(
-				By.xpath("//ul[@class='list-unstyled']//a[contains(text(),'Cameras (0)')]"));
+				By.xpath("//ul[@class='list-unstyled']//a[text()='Cameras (0)']"));
 		Assert.assertEquals(expectedCameras, cameras.getText());
 		Thread.sleep(1000); // For Presentation Only
 	}
@@ -100,7 +100,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 	 * of MP3 Players Tab
 	 */
 	@Test
-	public void CheckMP3() throws Exception {
+	public void checkMP3() throws Exception {
 		
 		String expectedMP3 = "MP3 Players (0)";
 		

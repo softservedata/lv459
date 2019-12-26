@@ -34,7 +34,7 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 		driver.findElement(By.id(INPUT_PARENT)).clear();
 		driver.findElement(By.id(INPUT_PARENT)).sendKeys("Tablets");
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.xpath("//li[@data-value='57']")).click();
+		driver.findElement(By.xpath("//ul[@class='dropdown-menu']//a[text()='Tablets']")).click();
 		Thread.sleep(1000); // For Presentation Only
 	
 	}
@@ -59,7 +59,7 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 		driver.findElement(By.id(INPUT_PARENT)).clear();
 		driver.findElement(By.id(INPUT_PARENT)).sendKeys("Software");
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.xpath("//li[@data-value='17']")).click();
+		driver.findElement(By.xpath("//ul[@class='dropdown-menu']//a[text()='Software']")).click();
 		Thread.sleep(1000); // For Presentation Only
 	
 	}
@@ -84,7 +84,7 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 		driver.findElement(By.id(INPUT_PARENT)).clear();
 		driver.findElement(By.id(INPUT_PARENT)).sendKeys("Phones & PDAs");
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.xpath("//li[@data-value='24']")).click();
+		driver.findElement(By.xpath("//ul[@class='dropdown-menu']//a[text()='Phones & PDAs']")).click();
 		Thread.sleep(1000); // For Presentation Only
 	
 	}
@@ -109,7 +109,7 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 		driver.findElement(By.id(INPUT_PARENT)).clear();
 		driver.findElement(By.id(INPUT_PARENT)).sendKeys("Cameras");
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.xpath("//li[@data-value='33']")).click();
+		driver.findElement(By.xpath("//ul[@class='dropdown-menu']//a[text()='Cameras']")).click();
 		Thread.sleep(1000); // For Presentation Only
 	
 	}
@@ -134,7 +134,7 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 		driver.findElement(By.id(INPUT_PARENT)).clear();
 		driver.findElement(By.id(INPUT_PARENT)).sendKeys("MP3 Players");
 		Thread.sleep(2000); // For Presentation Only
-		driver.findElement(By.xpath("//li[@data-value='34']")).click();
+		driver.findElement(By.xpath("//ul[@class='dropdown-menu']//a[text()='MP3 Players']")).click();
 		Thread.sleep(1000); // For Presentation Only
 	
 	}

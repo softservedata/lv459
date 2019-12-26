@@ -39,8 +39,7 @@ public class ContentEqualsSmokeTest extends LocalTestRunner {
 		WebElement phones = driver.findElement(By.xpath("//li/a[contains(text(), 'Phones & PDAs')]"));
 		Assert.assertEquals("Phones & PDAs", phones.getText());
 		
-		WebElement cameras = driver.findElement(
-				By.xpath("//li[@class='dropdown']/a[contains(text(),'Cameras')]"));
+		WebElement cameras = driver.findElement(By.xpath("//li/a[text()='Cameras']"));
 		Assert.assertEquals("Cameras", cameras.getText());
 		
 		WebElement mp3 = driver.findElement(By.xpath("//li/a[contains(text(), 'MP3 Players')]"));

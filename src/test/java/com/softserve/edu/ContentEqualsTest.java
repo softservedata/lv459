@@ -20,7 +20,7 @@ import org.openqa.selenium.interactions.Actions;
  * -tab “MP3 Players”,
  * -menus which are visible after clicking on some tab,
  * -changes after adding new tab,
- * -menus of each tab.
+ * -menus of each tab. 
  * 
  * @version 13.0.1 15 Oct 2019
  */
@@ -30,7 +30,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckPC() throws Exception {
+	public void checkPC() throws Exception {
 		
 		String expectedPC = "PC (0)";
 		
@@ -59,7 +59,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckMac() throws Exception {
+	public void checkMac() throws Exception {
 	
 		String expectedMac = "Mac (1)";
 		
@@ -89,7 +89,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckMacs() throws Exception {
+	public void checkMacs() throws Exception {
 		
 		String expectedMacs = "Macs (0)";
 		
@@ -120,7 +120,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckWindows() throws Exception {
+	public void checkWindows() throws Exception {
 		
 		String expectedWindows = "Windows (0)";
 		
@@ -151,7 +151,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckMice() throws Exception {
+	public void checkMice() throws Exception {
 		
 		String expectedMice = "Mice and Trackballs (0)";
 		
@@ -181,7 +181,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckMonitors() throws Exception {
+	public void checkMonitors() throws Exception {
 		
 		String expectedMonitors = "Monitors (2)";
 		
@@ -211,7 +211,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckPrinters() throws Exception {
+	public void checkPrinters() throws Exception {
 		
 		String expectedPrinters = "Printers (0)";
 		
@@ -241,7 +241,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckScanners() throws Exception {
+	public void checkScanners() throws Exception {
 		
 		String expectedScanners = "Scanners (0)";
 		
@@ -271,7 +271,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckWebCams() throws Exception {
+	public void checkWebCams() throws Exception {
 		
 		String expectedWebCams = "Web Cameras (0)";
 		
@@ -301,7 +301,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckTablets() throws Exception {
+	public void checkTablets() throws Exception {
 		
 		String expectedTablets = "Tablets (1)";
 		
@@ -330,7 +330,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckSoftware() throws Exception {
+	public void checkSoftware() throws Exception {
 		
 		String expectedSoftware = "Software (0)";
 		
@@ -343,13 +343,13 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedSoftware, software.getText());
 
 		driver.findElement(By.xpath(
-				"//div[@class='dropdown-menu']//a[contains(text(),'Show All Software')]")).click();
+				"//div[@class='dropdown-menu']//a[text()='Show All Software']")).click();
 		WebElement softwareVertical = driver.findElement(
 				By.xpath("//div[@class='list-group']//a[contains(text(),'Software (0)')]"));
 		Assert.assertTrue(softwareVertical.getText().contains(expectedSoftware));
 		
 		WebElement softwareRefine = driver.findElement(
-				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Smartphones (3)')]"));
+				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Software (0)')]"));
 		Assert.assertEquals(expectedSoftware, softwareRefine.getText());
 		Thread.sleep(2000); // For Presentation Only
 	}
@@ -359,7 +359,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckSmartphones() throws Exception {
+	public void checkSmartphones() throws Exception {
 		
 		String expectedSmartphones = "Smartphones (3)";
 		
@@ -389,7 +389,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckCameras() throws Exception {
+	public void checkCameras() throws Exception {
 		
 		String expectedCameras = "Cameras (2)";
 		
@@ -399,7 +399,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 		action.moveToElement(components).perform();
 		
 		WebElement cameras = driver.findElement(
-				By.xpath("//div[@class='dropdown-menu']//a[contains(text(),'Cameras (2)')]"));
+				By.xpath("//div[@class='dropdown-menu']//a[text()='Cameras (2)']"));
 		Assert.assertEquals(expectedCameras, cameras.getText());
 
 		driver.findElement(
@@ -420,7 +420,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void CheckMP3() throws Exception {
+	public void checkMP3() throws Exception {
 		
 		String expectedMP3 = "MP3 Players (0)";
 		
@@ -434,7 +434,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 		Assert.assertEquals(expectedMP3, mp3.getText());
 
 		driver.findElement(By.xpath(
-				"//div[@class='dropdown-menu']//a[contains(text(),'Show all MP3 Players')]")).click();
+				"//div[@class='dropdown-menu']//a[text()='Show All MP3 Players']")).click();
 		WebElement mp3Vertical = driver.findElement(
 				By.xpath("//div[@class='list-group']//a[contains(text(),'MP3 Players (0)')]"));
 		Assert.assertTrue(mp3Vertical.getText().contains(expectedMP3));
