@@ -163,9 +163,7 @@ public class CustomerUpdateTests
         boolean newCity = false;
         boolean newStreet = false;
 
-        System.out.println(trimmedText);
         for (String str : trimmedText) {
-            System.out.println("str = " + str);
             if (str.equals("New Lemberg")) {
                newCity = true;
             }

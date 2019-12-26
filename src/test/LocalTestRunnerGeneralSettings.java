@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
-public abstract class LocalTestRunnerSetIP {
+public abstract class LocalTestRunnerGeneralSettings {
     protected static final String IP = "172.16.0.129";
     protected static final int DELAY_FOR_PRESENTATION_ONLY = 0;
     protected static WebDriver driver;

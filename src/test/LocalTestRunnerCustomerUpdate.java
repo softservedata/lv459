@@ -1,7 +1,8 @@
 import org.junit.After;
 import org.junit.Before;
 
-public abstract class LocalTestRunnerCustomerUpdate extends LocalTestRunnerSetIP {
+public abstract class LocalTestRunnerCustomerUpdate extends
+                                                    LocalTestRunnerGeneralSettings {
 
     @Before
     public void pageLoad() throws Exception {

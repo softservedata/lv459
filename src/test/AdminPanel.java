@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
 
-public class AdminPanel extends LocalTestRunnerSetIP {
+public class AdminPanel extends LocalTestRunnerGeneralSettings {
 
     WebDriver webDriver;
 
@@ -137,12 +137,10 @@ public class AdminPanel extends LocalTestRunnerSetIP {
 
         System.out.println("Trying to check this checkbutton");
         // Delete customer
-        String checkbutton = "//td[contains(text(), '%s')]/./preceding-sibling::td[@class='text-center']/./input[@name='selected[]']";
-//        String checkbutton = "//td[contains(text(), '%s')]/preceding-sibling::td/input";
+//        String checkbutton = "//td[contains(text(), '%s')]/./preceding-sibling::td[@class='text-center']/./input[@name='selected[]']";
+        String checkbutton = "//td[contains(text(), '%s')]/preceding-sibling::td/input";
 
-        System.out.println("email used : " + email);
         String request = String.format(checkbutton, email);
-        System.out.println(request);
         webDriver.findElement(By.xpath(request)).click();
 
         // click delete button
