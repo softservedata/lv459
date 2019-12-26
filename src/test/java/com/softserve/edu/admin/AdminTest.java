@@ -35,17 +35,13 @@ public class AdminTest extends LocalTestRunner {
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         Thread.sleep(1000); // For Presentation Only
-        String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
-        String price = driver.findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']")).getText();
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(price);
-        m.reset();
-        while (m.find()) {
-            Assert.assertEquals("15,050.00", price.substring(m.start(), m.end()));
-        }
+        String price = driver.findElement(By.xpath("//a[text()='MacBook']/../" +
+                "following-sibling::p[@class='price']")).getText();
+        Assert.assertTrue(price.contains("15,050.00"));
     }
+
     @Test
-    public void checkNewCurrencyExAsUser() throws Exception{
+    public void checkNewCurrencyExAsUser() throws Exception {
         //NO TAXES
         System.out.println("\t@Before method");
         driver.get("http://192.168.5.129/opencart/upload/");
@@ -59,7 +55,8 @@ public class AdminTest extends LocalTestRunner {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         Thread.sleep(1000); // For Presentation Only
         String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
-        String price = driver.findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']")).getText();
+        String price = driver.findElement(By.xpath("//a[text()='MacBook']/../" +
+                "following-sibling::p[@class='price']/span")).getText();
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(price);
         m.reset();

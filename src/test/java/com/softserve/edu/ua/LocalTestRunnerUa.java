@@ -55,7 +55,8 @@ public abstract class LocalTestRunnerUa {
         //driver.findElement(By.id("input-password")).click();
         driver.findElement(By.xpath("//input[@id='input-password']")).click();
         driver.findElement(By.xpath("//input[@id='input-password']")).clear();
-        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(System.getenv().get("OPENCART_PASSWORD"));
+        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys
+                (System.getenv().get("OPENCART_PASSWORD"));
         Thread.sleep(1000); // For Presentation Only
         //
         // Click Login Button
@@ -68,9 +69,17 @@ public abstract class LocalTestRunnerUa {
     @After
     public void tearDown() throws Exception {
         System.out.println("\t@After method");
+        driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
+        Thread.sleep(1000); // For Presentation Only
+        checkCart();
+        driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
+        Thread.sleep(1000); // For Presentation Only
+        //checkWishList();
+        driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
         if (isLoggined()) {
             driver.get("http://192.168.5.129/opencart/upload/index.php?route=account/logout");
         }
+        driver.manage().deleteAllCookies();
     }
 
     private boolean isLoggined() throws Exception {
@@ -88,5 +97,20 @@ public abstract class LocalTestRunnerUa {
         Thread.sleep(1000); // For Presentation Only
         //
         return items.size() > 2;
+    }
+
+    private void checkCart() throws Exception {
+        WebElement items_amount = driver.findElement(By.xpath("//*[@id='cart']//span"));
+        if (!items_amount.getText().contains("0 item(s)")) {
+            driver.findElement(By.xpath("//*[@id='cart']/button")).click();
+            List<WebElement> closeButtons = driver.findElements(By.xpath("//*[@id='cart']//" +
+                    "table[@class='table table-striped']/tbody/tr/td[@class='text-center']/button"));
+            for (WebElement current : closeButtons) {
+                current.click();
+                driver.findElement(By.xpath("//*[@id='cart']/button")).click();
+                Thread.sleep(1000); // For Presentation Only
+            }
+        }
+
     }
 }

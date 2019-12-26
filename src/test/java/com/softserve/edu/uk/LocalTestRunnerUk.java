@@ -55,7 +55,8 @@ public abstract class LocalTestRunnerUk {
         //driver.findElement(By.id("input-password")).click();
         driver.findElement(By.xpath("//input[@id='input-password']")).click();
         driver.findElement(By.xpath("//input[@id='input-password']")).clear();
-        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(System.getenv().get("OPENCART_PASSWORD"));
+        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys
+                (System.getenv().get("OPENCART_PASSWORD"));
         Thread.sleep(1000); // For Presentation Only
         //
         // Click Login Button
@@ -102,7 +103,8 @@ public abstract class LocalTestRunnerUk {
         WebElement items_amount = driver.findElement(By.xpath("//*[@id='cart']//span"));
         if (!items_amount.getText().contains("0 item(s)")) {
             driver.findElement(By.xpath("//*[@id='cart']/button")).click();
-            List<WebElement> closeButtons = driver.findElements(By.xpath("//*[@id='cart']//table[@class='table table-striped']/tbody/tr/td[@class='text-center']/button"));
+            List<WebElement> closeButtons = driver.findElements(By.xpath("//*[@id='cart']//" +
+                    "table[@class='table table-striped']/tbody/tr/td[@class='text-center']/button"));
             for (WebElement current : closeButtons) {
                 current.click();
                 driver.findElement(By.xpath("//*[@id='cart']/button")).click();
@@ -111,16 +113,4 @@ public abstract class LocalTestRunnerUk {
         }
 
     }
-
-/*    private void checkWishList() throws Exception {
-        driver.findElement(By.xpath("//*[@id='wishlist-total']")).click();
-        Thread.sleep(2000); // For Presentation Only
-        WebElement empty_wish = driver.findElement(By.xpath("//*[@id='content']/h2/following-sibling::p"));
-        if (!empty_wish.getText().contains("Your wish list is empty.")) {
-            driver.findElement(By.xpath("//td/a[@data-original-title='Remove']")).click();
-        } else {
-            driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
-        }
-    }*/
-
 }
