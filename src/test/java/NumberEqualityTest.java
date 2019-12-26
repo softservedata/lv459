@@ -33,12 +33,14 @@ public class NumberEqualityTest extends LocalTestRunner {
         Thread.sleep(1000);// For Presentation Only
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "iPhone"))).click();
 
-// (Як це можливо, що вона раз працює - раз ні?)
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 
-        //wait until element wrapper is invisible
+         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+
         new WebDriverWait(driver, 10)
-               .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='slideshow0']//div[@class='owl-wrapper']")));
+               .until(ExpectedConditions.textToBe(By.xpath("//div[@id='top-links']//li/a[@id='wishlist-total']//span"), "Wish List (2)"));
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 
         driver.findElement(wishListField).click();
         Thread.sleep(1000);// For Presentation Only
