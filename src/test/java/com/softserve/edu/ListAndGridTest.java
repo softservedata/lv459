@@ -19,9 +19,9 @@ public class ListAndGridTest extends LocalTestRunner {
     public void caseOne() throws Exception {
         // Steps
         // Typing in the "Search" field
-        driver.findElement(By.name(SEARCH_BUTTON)).click();
-        driver.findElement(By.name(SEARCH_BUTTON)).clear();
-        driver.findElement(By.name(SEARCH_BUTTON)).sendKeys("iPhone");
+        driver.findElement(By.name(SEARCH_FIELD)).click();
+        driver.findElement(By.name(SEARCH_FIELD)).clear();
+        driver.findElement(By.name(SEARCH_FIELD)).sendKeys("iPhone");
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
@@ -42,9 +42,9 @@ public class ListAndGridTest extends LocalTestRunner {
     public void caseTwo() throws Exception {
         // Steps
         // Typing in the "Search" field
-        driver.findElement(By.name(SEARCH_BUTTON)).click();
-        driver.findElement(By.name(SEARCH_BUTTON)).clear();
-        driver.findElement(By.name(SEARCH_BUTTON)).sendKeys("iPhone");
+        driver.findElement(By.name(SEARCH_FIELD)).click();
+        driver.findElement(By.name(SEARCH_FIELD)).clear();
+        driver.findElement(By.name(SEARCH_FIELD)).sendKeys("iPhone");
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
@@ -53,7 +53,7 @@ public class ListAndGridTest extends LocalTestRunner {
         driver.findElement(By.id("list-view")).click();
         Assert.assertTrue(driver.findElement(By.id("list-view")).
                 getAttribute("class").equals("btn btn-default active"));
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
+        Thread.sleep(FOUR_SECONDS); // For Presentation Only
     }
 
 }

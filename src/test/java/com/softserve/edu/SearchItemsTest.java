@@ -62,12 +62,12 @@ public class SearchItemsTest extends LocalTestRunner {
         // Checking
         WebElement macBookAir = driver.findElement(By.
                 xpath("//a[text()='MacBook Air']"));
-        Assert.assertTrue(macBookAir.getText().contains("MacBook Air"));
+        Assert.assertTrue(macBookAir.getText().contains("MacBook"));
         //
         // Checking
         WebElement macBookPro = driver.findElement(By.
                 xpath("//a[text()='MacBook Pro']"));
-        Assert.assertTrue(macBookPro.getText().contains("MacBook Pro"));
+        Assert.assertTrue(macBookPro.getText().contains("MacBook"));
     }
 
     /**
@@ -200,7 +200,7 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
+        Thread.sleep(FOUR_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement zeroLength = driver.findElement(By.
@@ -225,7 +225,7 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
+        Thread.sleep(FOUR_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement zeroLength = driver.findElement(By.
@@ -283,7 +283,7 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
+        Thread.sleep(FOUR_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement zeroLength = driver.findElement(By.

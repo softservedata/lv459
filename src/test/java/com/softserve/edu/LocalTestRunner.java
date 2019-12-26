@@ -20,37 +20,48 @@ public abstract class LocalTestRunner {
     protected final String SEARCH_CRITERIA_FIELD = "input-search";
     protected final String SEARCH_BUTTON = "button.btn.btn-default.btn-lg";
     protected final String HOME_PAGE = "#logo .img-responsive";
-    protected final String NUMBERS_AND_LETTERS = "0123456789abcdefghijklmnopqrstuvwxyz";
+    protected final String NUMBERS_AND_LETTERS = "0123456789abcdefghijklmnopqrstuvwxyz\\*;.,%$#\\\\'{}()\",";
     protected final String CATEGORY_DROP_DOWN_LIST = "category_id";
-    protected final String SEARCH_IN_SUBCATEGORIES_CHECKBOX = "checkbox-inline";
-    protected final String SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX = "description";
+    protected final String SEARCH_IN_SUBCATEGORIES_CHECKBOX = "//input[@name='sub_category']";
+    protected final String SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX = "//input[@name='description']";
     protected final String SEARCH_CRITERIA_BUTTON = "button-search";
     protected final String COMPONENTS_TAB_ON_THE_NAVIGATION_BAR = "//nav[@id='menu']//li[@class='dropdown']/a[contains(.,'Components')]";
     protected final int TWO_HUNDRED_AND_FIFTY_FIVE = 255;
     protected final int SIXTY_FIVE_THOUSANDS_FIVE_HUNDRED_AND_THIRTY_SIX = 65536;
 
-
-
-
-
+    /**
+     * Before class.
+     *
+     * @throws Exception exception
+     */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         System.out.println("@BeforeClass");
-        System.setProperty("webdriver.chrome.driver",
-                LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
-        System.out.println("PATH: " + LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
+        System.setProperty("webdriver.chrome.driver", LocalTestRunner.class
+                .getResource("/chromedriver-windows-32bit.exe").getPath());
+        System.out.println("PATH: " + LocalTestRunner.class
+                .getResource("/chromedriver-windows-32bit.exe").getPath());
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+    /**
+     * Before method.
+     *
+     * @throws Exception exception
+     */
     @Before
     public void setUp() throws Exception {
         System.out.println("\t@Before method");
         driver.get("http://192.168.216.128/opencart/upload/");
-        //driver.get("http://taqc-opencart.epizy.com/index.php?route=common/home");
         driver.manage().window().maximize();
     }
 
+    /**
+     * After method.
+     *
+     * @throws Exception exception
+     */
     @After
     public void tearDown() throws Exception {
         System.out.println("\t@After method");
@@ -59,6 +70,11 @@ public abstract class LocalTestRunner {
         Thread.sleep(TWO_SECONDS); // For Presentation Only
     }
 
+    /**
+     * After class.
+     *
+     * @throws Exception exception
+     */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         System.out.println("@AfterClass");

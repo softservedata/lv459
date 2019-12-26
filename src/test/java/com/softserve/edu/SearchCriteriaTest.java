@@ -58,11 +58,11 @@ public class SearchCriteriaTest extends LocalTestRunner {
         Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         //Clicking on the "Search in subcategories" checkbox
-        driver.findElement(By.id(SEARCH_IN_SUBCATEGORIES_CHECKBOX)).click();
+        driver.findElement(By.xpath(SEARCH_IN_SUBCATEGORIES_CHECKBOX)).click();
         Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         //Clicking on the "Search in product descriptions" checkbox
-        driver.findElement(By.className(
+        driver.findElement(By.xpath(
                 SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX)).click();
         Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
@@ -148,7 +148,7 @@ public class SearchCriteriaTest extends LocalTestRunner {
         //
         //Clicking on the "Search in product descriptions" checkbox
         driver.findElement(By.
-                id(SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX)).click();
+                xpath(SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX)).click();
         // Clicking on the "Search" button
         driver.findElement(By.id(SEARCH_CRITERIA_BUTTON)).click();
         Thread.sleep(FOUR_SECONDS); // For Presentation Only
@@ -237,7 +237,7 @@ public class SearchCriteriaTest extends LocalTestRunner {
                 xpath("//a[text()='HP LP3065']"));
         Assert.assertTrue(macbook.getText().contains("HP LP3065"));
         //Clicking on the "Search in product descriptions" checkbox
-        driver.findElement(By.className(
+        driver.findElement(By.xpath(
                 SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX)).click();
         Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
