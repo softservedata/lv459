@@ -18,8 +18,8 @@ public class NumberEqualityTest extends LocalTestRunner {
     @Test
     public void testNumberEquality() throws InterruptedException {
 
-       NumberEqualityTest equality = new NumberEqualityTest();
-       equality.logIn();
+        NumberEqualityTest equality = new NumberEqualityTest();
+        equality.logIn();
 
         driver.findElement(openCartField).click();
 
@@ -38,9 +38,5 @@ public class NumberEqualityTest extends LocalTestRunner {
         WebElement actual = driver.findElement(By.xpath("//div[@id='top-links']//li/a[@id='wishlist-total']//span"));
         Assert.assertTrue(actual.getText().contains("2"));
         Thread.sleep(1000);// For Presentation Only
-
-        driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "MacBook"))).click();
-        Thread.sleep(1000);// For Presentation Only
-        driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "iPhone"))).click();
     }
 }

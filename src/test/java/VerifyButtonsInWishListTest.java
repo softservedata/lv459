@@ -46,7 +46,7 @@ public class VerifyButtonsInWishListTest extends LocalTestRunner { /**
         Assert.assertTrue(actual.getText().contains(expected));
         Thread.sleep(1000);// For Presentation Only
 
-        driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "iPhone"))).click();
+      //  driver.findElement(By.xpath(String.format(REMOVE_FROM_WISH_LIST_BTN, "iPhone"))).click();
     }
 
     /**
