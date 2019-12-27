@@ -454,7 +454,8 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
     }
 
     /**
-     * Test for correct work of DB. Trying to drop test table by incorrect fisrtname.
+     * Test for correct work of Java+DB. Trying to drop test table by incorrect
+     * first name.
      * @throws Exception
      */
     @Test

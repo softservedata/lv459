@@ -32,7 +32,7 @@ public abstract class LocalTestRunnerGeneralSettings {
         options.addArguments("--disable-browser-side-navigation");
         options.addArguments("--disable-gpu");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
     @AfterClass

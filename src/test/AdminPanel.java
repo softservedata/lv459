@@ -96,7 +96,7 @@ public class AdminPanel extends LocalTestRunnerGeneralSettings {
         // Fill username
         webDriver.findElement(By.id("input-username")).click();
         webDriver.findElement(By.id("input-username")).clear();
-        webDriver.findElement(By.id("input-username")).sendKeys("admin");
+        webDriver.findElement(By.id("input-username")).sendKeys(ADMIN_PANEL_USER);
 
         // Fill password
         webDriver.findElement(By.id("input-password")).click();
