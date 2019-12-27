@@ -19,6 +19,8 @@ public class ProductsAddingTest extends ProductsTestRunner {
 	private final String CHOOSE_CATEGORY_FROM_MENU ="//input[@id='input-category'] /.. //ul[@class='dropdown-menu'] /li";
 	/*
 	 * This test method adds items to Tablets tab.
+	 * 
+	 * Additional comment for demo
 	 */
 	@Test
 	public void addSamsungToTablets() throws Exception {
