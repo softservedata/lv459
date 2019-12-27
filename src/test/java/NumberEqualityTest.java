@@ -27,16 +27,16 @@ public class NumberEqualityTest extends LocalTestRunner {
         jse.executeScript("window.scrollBy(0, 500)", "");
 
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "MacBook"))).click();
-        Thread.sleep(1000);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "iPhone"))).click();
 
-        Thread.sleep(1000);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
         driver.findElement(wishListField).click();
 
-        Thread.sleep(1000);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
 
         WebElement actual = driver.findElement(By.xpath("//div[@id='top-links']//li/a[@id='wishlist-total']//span"));
         Assert.assertTrue(actual.getText().contains("2"));
-        Thread.sleep(1000);// For Presentation Only
+        Thread.sleep(2000);// For Presentation Only
     }
 }
