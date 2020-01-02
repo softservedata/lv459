@@ -9,7 +9,7 @@ com.softserve.edu.opencart.pages
 				.user.account	//+
 				.user.shop	//+
 //com.softserve.edu.opencart.services
-com.softserve.edu.opencart.test
+com.softserve.edu.opencart.tests
 com.softserve.edu.opencart.engine
 com.softserve.edu.opencart.tools
 -----------------------------------------------------
