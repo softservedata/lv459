@@ -48,21 +48,15 @@ public abstract class RestorePasswordRunner {
         driver.findElement(By.id("input-email")).sendKeys(username,
                 Keys.ARROW_LEFT);
         //
-        Thread.sleep(1000); // For Presentation Only
-        //
         driver.findElement(By.id("input-password")).click();
         driver.findElement(By.id("input-password")).clear();
         driver.findElement(By.id("input-password")).sendKeys(password,
                 Keys.ARROW_LEFT);
         driver.findElement(By.id("input-password")).submit();
         //
-        Thread.sleep(1000); // For Presentation Only
-        //
         driver.findElement(
                 By.cssSelector(".list-unstyled a[href*='account/edit']"))
                 .click();
-        Thread.sleep(1000); // For Presentation Only
-        //
     }
 
     /**
@@ -77,20 +71,14 @@ public abstract class RestorePasswordRunner {
                 ".dropdown-menu.dropdown-menu-right a[href*='account/login']"))
                 .click();
         //
-        Thread.sleep(1000); // For Presentation Only
-        //
         driver.findElement(By.cssSelector(".form-group a[href*='forgotten']"))
                 .click();
-        //
-        Thread.sleep(1000); // For Presentation Only
         //
         driver.findElement(By.id("input-email")).click();
         driver.findElement(By.id("input-email")).clear();
         driver.findElement(By.id("input-email")).sendKeys(
                 System.getenv("OPENCART_LOGIN_RESTORE"), Keys.ARROW_LEFT);
         driver.findElement(By.id("input-email")).submit();
-        //
-        Thread.sleep(1000); // For Presentation Only
         //
         ((JavascriptExecutor) driver)
                 .executeScript("window.open('about:blank','_blank');");
@@ -109,13 +97,11 @@ public abstract class RestorePasswordRunner {
                 .findElements(
                         By.cssSelector(".service__entry.service__entry_mail"))
                 .size() == 0) {
-
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             driver.findElement(By.id("id-input-login")).click();
             driver.findElement(By.id("id-input-login")).clear();
             driver.findElement(By.id("id-input-login")).sendKeys(
                     System.getenv("OPENCART_LOGIN_RESTORE"), Keys.ARROW_LEFT);
-            //
-            Thread.sleep(1000); // For Presentation Only
             //
             driver.findElement(By.id("id-input-password")).click();
             driver.findElement(By.id("id-input-password")).clear();
@@ -123,32 +109,23 @@ public abstract class RestorePasswordRunner {
                     System.getenv("OPENCART_ADMIN_PASSWORD"), Keys.ARROW_LEFT);
             driver.findElement(By.id("id-input-password")).submit();
             //
-            Thread.sleep(1000); // For Presentation Only
-            //
             driver.findElement(
                     By.cssSelector(".service__entry.service__entry_mail"))
                     .click();
-            //
         } else {
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             driver.findElement(
                     By.cssSelector(".service__entry.service__entry_mail"))
                     .click();
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Thread.sleep(1000); // For Presentation Only
-        //
         switchTabByPartialName("вхідні");
         driver.findElement(By.xpath(
                 "//td[@class = 'msglist__row-subject'] /a[contains(text(), 'Password reset')]"))
                 .click();
         //
-        Thread.sleep(1000); // For Presentation Only
-        //
         driver.findElement(By.cssSelector("#readmsg .readmsg__body a")).click();
 
         switchTabByPartialName("reset your");
-        //
-        Thread.sleep(1000); // For Presentation Only
         //
         driver.findElement(By.id("input-password")).click();
         driver.findElement(By.id("input-password")).clear();
@@ -159,8 +136,6 @@ public abstract class RestorePasswordRunner {
         driver.findElement(By.id("input-confirm")).clear();
         driver.findElement(By.id("input-confirm")).sendKeys(password,
                 Keys.ARROW_LEFT);
-        //
-        Thread.sleep(1000); // For Presentation Only
         //
         driver.findElement(By.cssSelector(".fa.fa-save")).click();
         //
@@ -178,9 +153,7 @@ public abstract class RestorePasswordRunner {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        Thread.sleep(1000);
-        driver.get("http://192.168.214.128/opencart/upload/");
-        Thread.sleep(1000); // For Presentation Only
+        driver.get("http://192.168.214.130/opencart/upload/");
     }
 
     /**
@@ -189,7 +162,6 @@ public abstract class RestorePasswordRunner {
      */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
-        Thread.sleep(4000); // For Presentation Only
         driver.quit();
     }
 
@@ -201,8 +173,6 @@ public abstract class RestorePasswordRunner {
     public void tearDown() throws InterruptedException {
         driver.findElement(By.cssSelector(".fa.fa-user")).click();
         //
-        Thread.sleep(1000); // For Presentation Only
-        //
         if (driver
                 .findElements(
                         By.cssSelector(".dropdown-menu.dropdown-menu-right li"))
@@ -212,8 +182,6 @@ public abstract class RestorePasswordRunner {
                     .click();
             driver.findElement(By.name("search")).click();
         }
-        //
-        Thread.sleep(1000); // For Presentation Only
     }
 
 }

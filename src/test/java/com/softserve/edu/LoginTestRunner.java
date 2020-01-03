@@ -36,7 +36,6 @@ public abstract class LoginTestRunner {
      */
     @AfterClass
     public static void tearDownAfterClass() throws InterruptedException {
-        Thread.sleep(1000); // For Presentation Only
         driver.quit();
     }
 
@@ -46,8 +45,7 @@ public abstract class LoginTestRunner {
      */
     @Before
     public void setUp() throws InterruptedException {
-        driver.get("http://192.168.214.128/opencart/upload/");
-        Thread.sleep(1000); // For Presentation Only
+        driver.get("http://192.168.214.130/opencart/upload/");
     }
 
     /**
@@ -67,8 +65,6 @@ public abstract class LoginTestRunner {
                     .click();
             driver.findElement(By.name("search")).click();
         }
-        //
-        Thread.sleep(1000); // For Presentation Only
     }
 
     /**
@@ -85,21 +81,15 @@ public abstract class LoginTestRunner {
                 ".dropdown-menu.dropdown-menu-right a[href*='account/login']"))
                 .click();
         //
-        Thread.sleep(1000); // For Presentation Only
-        //
         driver.findElement(By.id("input-email")).click();
         driver.findElement(By.id("input-email")).clear();
         driver.findElement(By.id("input-email")).sendKeys(login,
                 Keys.ARROW_LEFT);
-        //
-        Thread.sleep(1000); // For Presentation Only
         //
         driver.findElement(By.id("input-password")).click();
         driver.findElement(By.id("input-password")).clear();
         driver.findElement(By.id("input-password")).sendKeys(password,
                 Keys.ARROW_LEFT);
         driver.findElement(By.id("input-password")).submit();
-        //
-        Thread.sleep(1000); // For Presentation Only
     }
 }

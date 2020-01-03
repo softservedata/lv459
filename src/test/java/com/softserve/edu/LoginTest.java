@@ -17,20 +17,15 @@ public class LoginTest extends LoginTestRunner {
      */
     @Test
     public void loginTest() throws InterruptedException {
-        login(System.getenv().get("OPENCART_LOGIN_TWO"),
-                System.getenv().get("OPENCART_PASSWORD"));
-        //
-        Thread.sleep(1000); // For Presentation Only
+        login(System.getenv("OPENCART_LOGIN_TWO"),
+                System.getenv("OPENCART_PASSWORD"));
         //
         driver.findElement(
                 By.cssSelector(".list-unstyled a[href*='account/edit']"))
                 .click();
         //
-        Thread.sleep(1000); // For Presentation Only
-        //
         assertEquals(System.getenv().get("OPENCART_LOGIN_TWO"),
                 driver.findElement(By.id("input-email")).getAttribute("value"));
-        Thread.sleep(4000); // For Presentation Only
     }
 
     /**
@@ -40,13 +35,11 @@ public class LoginTest extends LoginTestRunner {
     @Test
     public void incorrectPasswordLoginTest() throws InterruptedException {
         for (int i = 0; i < 6; i++) {
-            login(System.getenv().get("OPENCART_LOGIN_TWO"), "wrongpassword");
+            login(System.getenv("OPENCART_LOGIN_TWO"), "wrongpassword");
         }
         //
-        Thread.sleep(1000); // For Presentation Only
         assertEquals(
                 "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.",
                 driver.findElement(By.className("alert-danger")).getText());
-        Thread.sleep(4000); // For Presentation Only
     }
 }

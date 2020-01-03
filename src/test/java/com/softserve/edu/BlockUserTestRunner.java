@@ -29,15 +29,12 @@ public abstract class BlockUserTestRunner {
                 .getResource("/chromedriver-windows-32bit.exe").getPath());
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("http://192.168.214.128/opencart/upload/admin/");
-        Thread.sleep(1000); // For Presentation Only
+        driver.get("http://192.168.214.130/opencart/upload/admin/");
         driver.manage().window().maximize();
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.id("input-username")).click();
         driver.findElement(By.id("input-username")).clear();
         driver.findElement(By.id("input-username")).sendKeys(
                 System.getenv().get("OPENCART_ADMIN_LOGIN"), Keys.ARROW_LEFT);
-        Thread.sleep(1000); // For Presentation Only
         //
         driver.findElement(By.id("input-password")).click();
         driver.findElement(By.id("input-password")).clear();
@@ -45,13 +42,10 @@ public abstract class BlockUserTestRunner {
                 System.getenv().get("OPENCART_ADMIN_PASSWORD"),
                 Keys.ARROW_LEFT);
         driver.findElement(By.id("input-password")).submit();
-        Thread.sleep(1000); // For Presentation Only
         //
         driver.findElement(
                 By.cssSelector(".tile-footer a[href*='route=customer']"))
                 .click();
-        //
-        Thread.sleep(1000); // For Presentation Only
     }
 
     /**
@@ -60,7 +54,6 @@ public abstract class BlockUserTestRunner {
      */
     @AfterClass
     public static void tearDownAfterClass() throws InterruptedException {
-        Thread.sleep(1000); // For Presentation Only
         driver.quit();
     }
 
@@ -73,8 +66,6 @@ public abstract class BlockUserTestRunner {
         switchTabByPartialName("login");
         driver.findElement(By.cssSelector(".fa.fa-user")).click();
         //
-        Thread.sleep(1000); // For Presentation Only
-        //
         if (driver
                 .findElements(
                         By.cssSelector(".dropdown-menu.dropdown-menu-right li"))
@@ -83,10 +74,7 @@ public abstract class BlockUserTestRunner {
                     ".dropdown-menu.dropdown-menu-right a[href*='account/logout']"))
                     .click();
             driver.findElement(By.name("search")).click();
-            Thread.sleep(1000); // For Presentation Only
         }
-        //
-        Thread.sleep(1000); // For Presentation Only
     }
 
     /**
@@ -97,9 +85,7 @@ public abstract class BlockUserTestRunner {
      */
     protected void login(String login, String password)
             throws InterruptedException {
-        driver.get("http://192.168.214.128/opencart/upload");
-        //
-        Thread.sleep(1000); // For Presentation Only
+        driver.get("http://192.168.214.130/opencart/upload");
         //
         driver.findElement(By.cssSelector(".fa.fa-user")).click();
         //
@@ -107,22 +93,16 @@ public abstract class BlockUserTestRunner {
                 ".dropdown-menu.dropdown-menu-right a[href*='account/login']"))
                 .click();
         //
-        Thread.sleep(1000); // For Presentation Only
-        //
         driver.findElement(By.id("input-email")).click();
         driver.findElement(By.id("input-email")).clear();
         driver.findElement(By.id("input-email")).sendKeys(login,
                 Keys.ARROW_LEFT);
-        //
-        Thread.sleep(1000); // For Presentation Only
         //
         driver.findElement(By.id("input-password")).click();
         driver.findElement(By.id("input-password")).clear();
         driver.findElement(By.id("input-password")).sendKeys(password,
                 Keys.ARROW_LEFT);
         driver.findElement(By.id("input-password")).submit();
-        //
-        Thread.sleep(1000); // For Presentation Only
     }
 
     /**
@@ -148,20 +128,16 @@ public abstract class BlockUserTestRunner {
         driver.findElement(By.xpath(String.format(
                 "//td[contains(text(), '%s')] /.. /td[@class='text-right'] /a",
                 System.getenv().get("OPENCART_LOGIN_TWO")))).click();
-        Thread.sleep(2000); // For Presentation Only
         //
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(By.id("input-status")))
                 .perform();
-        Thread.sleep(2000); // For Presentation Only
         //
         Select select = new Select(driver.findElement(By.id("input-status")));
         select.selectByValue(status);
-        Thread.sleep(1000); // For Presentation Only
         //
         action.moveToElement(driver.findElement(By.className("fa-save")))
                 .perform();
         driver.findElement(By.className("fa-save")).click();
-        Thread.sleep(1000); // For Presentation Only
     }
 }
