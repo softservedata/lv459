@@ -94,6 +94,8 @@ public class CustomerRegistrationTests extends LocalTestRunnerCustomerRegister {
         Assert.assertEquals("Your Account Has Been Created!", created);
 
         // Log in with recently created customer's credentials
+
+        //Assert if customer is logined.
         Assert.assertTrue(isCustomerLogined());
 
         Thread.sleep(DELAY_FOR_PRESENTATION_ONLY);
