@@ -37,48 +37,39 @@ public abstract class LocalTestRunner {
     /**
      * <h3>This method is made to login in the system.</h3>
      *
-     * @throws InterruptedException
-     */
-    protected void logIn() throws InterruptedException {
+     * */
+    protected void logIn()  {
         driver.findElement(inputEmail).click();
         driver.findElement(inputEmail).clear();
         driver.findElement(inputEmail).sendKeys("bohdanadobushovska@gmail.com");
-        Thread.sleep(500);// For Presentation Only
 
         driver.findElement(inputPassword).click();
         driver.findElement(inputPassword).clear();
         driver.findElement(inputPassword).sendKeys(System.getenv().get("PASSWORD"));
         driver.findElement(inputPassword).submit();
-        Thread.sleep(500);// For Presentation Only
     }
 
     /**
      * <h3>This method is made to logout from the system.</h3>
      *
-     * @throws InterruptedException
      */
 
-    protected void logOut() throws InterruptedException {
+    protected void logOut() {
         driver.findElement(myAccount).click();
-        Thread.sleep(500);// For Presentation Only
 
         driver.findElement(logOut).click();
-        Thread.sleep(500);// For Presentation Only
 
         driver.findElement(myAccount).click();
-        Thread.sleep(500);// For Presentation Only
 
         driver.findElement(logIn).click();
-        Thread.sleep(500);// For Presentation Only
     }
 
     /**
      * <h3>This is BeforeClass method in which the webdriver is ran and new ChromeDriver is made for all tests.</h3>
      *
-     * @throws Exception
-     */
+     * */
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception{
+    public static void setUpBeforeClass() {
         System.out.println("@BeforeClass");
         System.setProperty("webdriver.chrome.driver",
                 LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
@@ -90,34 +81,28 @@ public abstract class LocalTestRunner {
     /**
      * <h3>This is AfterClass method which close the browser for all methods.</h3>
      *
-     * @throws Exception
-     */
+     * */
     @AfterClass
-        public static void tearDownAfterClass() throws Exception {
-        Thread.sleep(1000);
+        public static void tearDownAfterClass()  {
         driver.quit();
      }
 
     /**
      * <h3>This is Before method in  which the login page is opening.</h3>
      *
-     * @throws Exception
      */
       @Before
-        public void setUp() throws Exception {
-            driver.get("http://192.168.159.136/opencart/upload/index.php?route=account/login");
-            Thread.sleep(1000); // For Presentation Only
+        public void setUp() {
+           driver.get("http://192.168.159.136/opencart/upload/index.php?route=account/login");
             driver.manage().window().maximize();
-            Thread.sleep(1000); // For Presentation Only
       }
 
     /**
      * <h3>This is After method  which logout user.</h3>
      *
-     * @throws Exception
      */
         @After
-        public void tearDown() throws Exception {
+        public void tearDown() {
 
             driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
             List<WebElement> closeButtons = driver.findElements(By.cssSelector(".fa.fa-times"));
@@ -131,25 +116,22 @@ public abstract class LocalTestRunner {
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
             if (isLoggined()) {
-                driver.get("http://192.168.159.136/opencart/upload/index.php?route=account/logout");
+               driver.get("http://192.168.159.136/opencart/upload/index.php?route=account/logout");
             }
         }
 
     /**
      * <h3>This is method which verify is user is logged in.</h3>
      *
-     * @throws Exception
      */
-    private boolean isLoggined() throws Exception {
+    private boolean isLoggined()  {
 
         List<WebElement> items = null;
         driver.findElement(By.xpath("//a[@title='My Account']")).click();
-        Thread.sleep(1000); // For Presentation Only
 
         items = driver.findElements(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']/li"));
 
         driver.findElement(By.xpath("//input[@name='search']")).click();
-        Thread.sleep(1000); // For Presentation Only
 
         return items.size() > 2;
     }

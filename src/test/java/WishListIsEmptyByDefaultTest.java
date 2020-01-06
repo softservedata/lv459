@@ -15,7 +15,7 @@ public class WishListIsEmptyByDefaultTest extends LocalTestRunner {
      * @throws InterruptedException
      */
     @Test
-    public void checkWishListIsEmptyByDefault() throws InterruptedException {
+    public void checkWishListIsEmptyByDefault() {
 
         WishListIsEmptyByDefaultTest empty = new WishListIsEmptyByDefaultTest();
         empty.logIn();
@@ -26,6 +26,5 @@ public class WishListIsEmptyByDefaultTest extends LocalTestRunner {
         String expected = "Your wish list is empty.";
 
         Assert.assertEquals(expected, actual.getText());
-        Thread.sleep(500);
     }
 }

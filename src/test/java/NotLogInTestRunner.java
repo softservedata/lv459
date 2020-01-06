@@ -14,6 +14,7 @@ public abstract class NotLogInTestRunner {
 
     /**
      * <h3>This is BeforeClass method in which the webdriver is ran and new ChromeDriver is made for all tests.</h3>
+     *
      */
     @BeforeClass
     public static void setUpBeforeClass()  {
@@ -27,6 +28,7 @@ public abstract class NotLogInTestRunner {
 
     /**
      * <h3>This is AfterClass method which close the browser for all methods.</h3>
+     *
      **/
     @AfterClass
     public static void tearDownAfterClass() {
@@ -36,15 +38,12 @@ public abstract class NotLogInTestRunner {
     /**
      * <h3>This is Before method in  which the login page is opening.</h3>
      *
-     * @throws Exception
      */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         System.out.println("\t@Before method");
         driver.get("http://192.168.159.135/opencart/upload/index.php?route=common/home");
-        Thread.sleep(1000); // For Presentation Only
         driver.manage().window().maximize();
-        Thread.sleep(1000); // For Presentation Only
     }
 }
 

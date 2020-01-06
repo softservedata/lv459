@@ -8,14 +8,12 @@ public class NotLoggedInUserClickAddToWishListTest extends NotLogInTestRunner {
     /**
      * <h3>This verify what is going on when user is not logged in
      * system and try to add product to Wish List.</h3>
-     * @throws InterruptedException
      */
     @Test
-    public void verifyNotLoggedInUserClickAddToWishList() throws InterruptedException {
+    public void verifyNotLoggedInUserClickAddToWishList() {
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0, 700)", "");
-        Thread.sleep(500);// For Presentation Only
 
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "MacBook"))).click();
 
@@ -23,6 +21,5 @@ public class NotLoggedInUserClickAddToWishListTest extends NotLogInTestRunner {
         String expected = "You must login or create an account to save MacBook to your wish list!";
 
         Assert.assertTrue(expected, actual.getText().contains(expected));
-        Thread.sleep(500);// For Presentation Only
     }
 }

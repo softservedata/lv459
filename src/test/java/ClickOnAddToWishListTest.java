@@ -12,29 +12,25 @@ public class ClickOnAddToWishListTest extends LocalTestRunner {
      * @throws InterruptedException
      */
     @Test
-    public void clickDirectlyOnWishList() throws InterruptedException {
+    public void clickDirectlyOnWishList() {
 
         ClickOnAddToWishListTest clickOnAddToWishList = new ClickOnAddToWishListTest();
         clickOnAddToWishList.logIn();
 
         driver.findElement(openCartField).click();
-        Thread.sleep(2000);// For Presentation Only
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0, 500)", "");
-        Thread.sleep(2000);// For Presentation Only
 
         driver.findElement(By.xpath(String.format(ADD_TO_WISH_LIST_XPATH, "MacBook"))).click();
-        Thread.sleep(2000);// For Presentation Only
 
         jse.executeScript("window.scrollBy(0, -500)", "");
-        Thread.sleep(2000);// For Presentation Only
         driver.findElement(wishListField).click();
 
         WebElement actual = driver.findElement(By.xpath("//div[@id='content']//table[@class='table table-bordered table-hover']//td[@class='text-left']/a"));
 
         Assert.assertTrue(actual.getText().contains("MacBook"));
-        Thread.sleep(2000);// For Presentation Only
+
 
     }
 
@@ -44,7 +40,7 @@ public class ClickOnAddToWishListTest extends LocalTestRunner {
      * @throws InterruptedException
      */
     @Test
-    public void clickOnProductThenWishList() throws InterruptedException {
+    public void clickOnProductThenWishList() {
 
         ClickOnAddToWishListTest clickOnAddToWishList = new ClickOnAddToWishListTest();
         clickOnAddToWishList.logIn();
@@ -52,22 +48,18 @@ public class ClickOnAddToWishListTest extends LocalTestRunner {
         driver.findElement(searchField).click();
         driver.findElement(searchField).clear();
         driver.findElement(searchField).sendKeys("%" + Keys.ENTER);
-        Thread.sleep(2000);// For Presentation Only
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0, 500)", "");
-        Thread.sleep(2000);// For Presentation Only
 
         driver.findElement(productAppleCinema).click();
-        Thread.sleep(2000);// For Presentation Only
         driver.findElement(heartButton).click();
-        Thread.sleep(2000);// For Presentation Only
 
         driver.findElement(wishListField).click();
         WebElement actual = driver.findElement(By.xpath("//div[@id='content']//table[@class='table table-bordered table-hover']//td[@class='text-left']/a"));
 
         Assert.assertTrue(actual.getText().contains("Apple Cinema 30\""));
-        Thread.sleep(2000);// For Presentation Only
+
     }
 
     /**
@@ -77,7 +69,7 @@ public class ClickOnAddToWishListTest extends LocalTestRunner {
      * @throws InterruptedException
      */
     @Test
-    public void clickOnFooterWishList() throws InterruptedException {
+    public void clickOnFooterWishList() {
 
         ClickOnAddToWishListTest clickOnAddToWishList = new ClickOnAddToWishListTest();
         clickOnAddToWishList.logIn();
@@ -86,6 +78,6 @@ public class ClickOnAddToWishListTest extends LocalTestRunner {
         jse.executeScript("window.scrollBy(0, 130)", "");
 
         driver.findElement(footerWishList).click();
-        Thread.sleep(2000);// For Presentation Only
+
     }
 }
