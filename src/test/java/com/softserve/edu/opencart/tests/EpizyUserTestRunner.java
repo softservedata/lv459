@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import com.softserve.edu.opencart.pages.user.HomePage;
 
 public abstract class EpizyUserTestRunner {
+	private final Long ONE_SECOND_DELAY = 1000L;
 	private final String SERVER_URL = "http://taqc-opencart.epizy.com";
 	private static WebDriver driver;
 
@@ -41,8 +42,22 @@ public abstract class EpizyUserTestRunner {
 		// TODO Logout
 		// driver.get(SERVER_URL);
 	}
-	
+
 	public HomePage loadApplication() {
 		return new HomePage(driver);
 	}
+
+	public void presentationSleep() {
+		presentationSleep(1);
+	}
+
+	public void presentationSleep(Integer seconds) {
+		try {
+			Thread.sleep(seconds * ONE_SECOND_DELAY); // For Presentation ONLY
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

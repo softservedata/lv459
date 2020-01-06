@@ -7,6 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.pages.user.HomePage;
+import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
+import com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage;
 
 public abstract class TopPart {
     protected final String OPTION_NULL_MESSAGE = "DropdownComponent is null";
@@ -33,8 +37,9 @@ public abstract class TopPart {
     //
     // private MainMenuComponent MainMenuComponent; 
     private DropdownComponent dropdownComponent;
-    //private DropdownGuest dropdownGuest;
-    //private DropdownLogged dropdownLogged;
+    //ButtonCartContainerComponent
+    private DropdownGuest dropdownGuest;
+    private DropdownLogged dropdownLogged;
 
 	public TopPart(WebDriver driver) {
 		this.driver = driver;
@@ -220,6 +225,81 @@ public abstract class TopPart {
         dropdownComponent = null;
     }
 
+    // dropdownGuest
+    protected DropdownGuest getDropdownGuest() {
+    	if (dropdownGuest == null)
+        {
+            // TODO Develop Custom Exception 
+            throw new RuntimeException(OPTION_NULL_MESSAGE);
+        }
+        return dropdownGuest;
+    }
+
+    private DropdownGuest createDropdownGuest() {
+        dropdownGuest = new DropdownGuest(driver);
+        return getDropdownGuest();
+    }
+
+    private void clickDropdownGuestRegister() {
+    	getDropdownGuest().clickRegister();
+    	dropdownGuest = null;
+    }
+    
+    private void clickDropdownGuestLogin() {
+    	getDropdownGuest().clickLogin();
+    	dropdownGuest = null;
+    }
+
+    private void closeDropdownGuest() {
+        clickSearchTopField();
+        dropdownGuest = null;
+    }
+    
+    // dropdownLogged
+    protected DropdownLogged getDropdownLogged() {
+    	if (dropdownLogged == null)
+        {
+            // TODO Develop Custom Exception 
+            throw new RuntimeException(OPTION_NULL_MESSAGE);
+        }
+        return dropdownLogged;
+    }
+
+    private DropdownLogged createDropdownLogged() {
+        dropdownLogged = new DropdownLogged(driver);
+        return getDropdownLogged();
+    }
+
+    private void clickDropdownLoggedMyAccount() {
+    	getDropdownLogged().clickMyAccount();
+    	dropdownLogged= null;
+    }
+
+    private void clickDropdownLoggedOrderHistory() {
+    	getDropdownLogged().clickOrderHistory();
+    	dropdownLogged= null;
+    }
+
+    private void clickDropdownLoggedTransactions() {
+    	getDropdownLogged().clickTransactions();
+    	dropdownLogged= null;
+    }
+
+    private void clickDropdownLoggedDownloads() {
+    	getDropdownLogged().clickDownloads();
+    	dropdownLogged= null;
+    }
+
+    private void clickDropdownLoggedLogout() {
+    	getDropdownLogged().clickLogout();
+    	dropdownLogged= null;
+    }
+
+    private void closeDropdownLogged() {
+        clickSearchTopField();
+        dropdownLogged= null;
+    }
+    
 	// Functional
 
     // currency
@@ -244,5 +324,43 @@ public abstract class TopPart {
         return result;
     }
     
+    // myAccount
+    protected void openMyAccountDropdown() {
+		clickSearchTopField();
+		clickMyAccount();
+	}
+    
+    // TODO myAccount
+    
+    // searchTopField
+    private void fillSearchTopField(String searchText) {
+        clickSearchTopField();
+        clearSearchTopField();
+        setSearchTopField(searchText);
+    }
+    
 	// Business Logic
+    
+    public HomePage gotoHomePage() {
+        clickLogo();
+        return new HomePage(driver);
+    }
+    
+	//public SearchSuccessPage successfulSearch(String searchText) {
+    public SearchSuccessPage successfulSearch(Product product) {
+		//fillSearchTopField(searchText);
+		fillSearchTopField(product.getName());
+		clickSearchTopButton();
+		return new SearchSuccessPage(driver);
+	}
+	
+    public SearchUnsuccessPage unsuccessfulSearch(String searchText){
+    //public SearchUnsuccessPage unsuccessfulSearch(Product product){
+    	fillSearchTopField(searchText);
+        //fillSearchTopField(product.getName());
+        clickSearchTopButton();
+        return new SearchUnsuccessPage(driver);
+    }
+
+
 }

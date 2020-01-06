@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.Product;
+
 public class ProductsContainerComponent {
     public final String PRODUCT_NOT_FOUND = "There is no product that matches the search criteria.";
     private final String PRODUCT_COMPONENT_CSSSELECTOR = ".product-layout";
@@ -54,8 +56,7 @@ public class ProductsContainerComponent {
         return productComponentNames;
     }
 
-    // TODO Change to Product
-    public ProductComponent getProductComponentByName(String productName)
+    protected ProductComponent getProductComponentByName(String productName)
     {
         ProductComponent result = null;
         for (ProductComponent current : getProductComponents())
@@ -100,22 +101,21 @@ public class ProductsContainerComponent {
         getProductComponentByName(productName).clickAddToWishButton();
     }
 
-    //public String getProductComponentPriceByProduct(Product product)
-    //{
-    //    return getProductComponentPriceByName(product.getName());
-    //}
+    public String getProductComponentPriceByProduct(Product product)
+    {
+        return getProductComponentPriceByName(product.getName());
+    }
 
-    //public String getProductComponentDescriptionByProduct(Product product)
-    //{
-    //    return getProductComponentDescriptionByName(product.getName());
-    //}
+    public String getProductComponentDescriptionByProduct(Product product)
+    {
+        return getProductComponentDescriptionByName(product.getName());
+    }
 
     // Business Logic
 
-    // TODO
-//    public ProductComponent getProductComponentByName(Product product) 
-//    {
-//    	return getProductComponentByName(product);
-//    }
+    public ProductComponent getProductComponentByName(Product product) 
+    {
+    	return getProductComponentByName(product.getName());
+    }
 
 }
