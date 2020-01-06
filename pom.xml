@@ -144,7 +144,7 @@
                         <!-- <include>**/*.java</include> -->
                         <!-- <include>**/MyData.java</include> -->
                         <!-- 						<include>**/SimpleTest.java</include> -->
-                        <!--<include>**/FindTest.java</include>-->
+                        <!--<include>**/*Test.java</include>-->
                     </includes>
                     <!-- <excludes> -->
                     <!-- <exclude>**/AppTest.java</exclude> -->

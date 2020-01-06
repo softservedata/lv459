@@ -32,18 +32,13 @@ public class UaUserTest extends LocalTestRunnerUa {
 
     /**
      * This method was implemented to check if another currency works as intended.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @Test
-    public void checkEuCurrency() throws Exception {
+    public void checkEuCurrency() {
         driver.findElement(By.xpath("//div[@class='pull-left']")).click();
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//ul[@class='dropdown-menu']/li/button[@name='EUR']")).click();
-        Thread.sleep(1000); // For Presentation Only
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        Thread.sleep(1000); // For Presentation Only
         String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
         String price = driver.findElement(By.xpath("//a[text()='MacBook']/../" +
                 "following-sibling::p[@class='price']/span")).getText();
@@ -57,17 +52,13 @@ public class UaUserTest extends LocalTestRunnerUa {
 
     /**
      * Check the cart if the price inside is correct.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @Test
-    public void checkUsCart() throws Exception {
+    public void checkUsCart() {
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//" +
                 "button[contains(@onclick, 'cart')]")).click();
-        Thread.sleep(1000); // For Presentation Only
         String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
         String price = driver.findElement(By.xpath("//*[@id='cart']//span")).getText();
         Pattern p = Pattern.compile(pattern);
@@ -80,19 +71,14 @@ public class UaUserTest extends LocalTestRunnerUa {
 
     /**
      * Check the wish list if the price inside is correct.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @Test
-    public void checkUsWish() throws Exception {
+    public void checkUsWish() {
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//" +
                 "button[@data-original-title='Add to Wish List']")).click();
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//*[@id='wishlist-total']")).click();
-        Thread.sleep(1000); // For Presentation Only
         String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
         String price = driver.findElement(By.xpath("//table[@class='table table-bordered table-hover']//" +
                 "td/div[contains(text(), '$500.00')]")).getText();

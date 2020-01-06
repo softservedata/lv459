@@ -34,34 +34,27 @@ public abstract class LocalTestRunner {
 
     /**
      * Quit driver after the class.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @AfterClass
-    public static void tearDownAfterClass() throws Exception {
+    public static void tearDownAfterClass() {
         System.out.println("@AfterClass");
-        Thread.sleep(1000); // For Presentation Only
         driver.quit();
     }
 
     /**
      * Log in as admin before the tests.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         System.out.println("\t@Before method");
         driver.get("http://192.168.5.129/opencart/upload/admin");
         driver.manage().window().maximize();
-        Thread.sleep(500); // For Presentation Only
         //
         // Steps
         // Type Login Username
         driver.findElement(By.xpath("//input[@id='input-username']")).click();
         driver.findElement(By.xpath("//input[@id='input-username']")).clear();
         driver.findElement(By.xpath("//input[@id='input-username']")).sendKeys("admin");
-        Thread.sleep(500); // For Presentation Only
         //
         // Type Password
         //driver.findElement(By.id("input-password")).click();
@@ -69,19 +62,13 @@ public abstract class LocalTestRunner {
         driver.findElement(By.xpath("//input[@id='input-password']")).clear();
         driver.findElement(By.xpath("//input[@id='input-password']")).
                 sendKeys(System.getenv().get("OPENCART_ADMIN_PASSWORD"));
-        Thread.sleep(1000); // For Presentation Only
         //
         // Click Login Button
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Thread.sleep(500); // For Presentation Only
         driver.findElement(By.id("button-menu")).click();
-        Thread.sleep(500); // For Presentation Only
         driver.findElement(By.id("menu-system")).click();
-        Thread.sleep(1000); //For Presenatation only
         driver.findElement(By.xpath("//*[@id='menu-system']//a[contains(text(), 'Localisation')]")).click();
-        Thread.sleep(1000); //For Presenatation only
         driver.findElement(By.xpath("//*[@id='menu-system']//li/a[contains(text(), 'Currencies')]")).click();
-        Thread.sleep(1000); //For Presenatation only
     }
 
     /**

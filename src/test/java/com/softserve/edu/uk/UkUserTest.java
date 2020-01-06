@@ -42,18 +42,13 @@ public class UkUserTest extends LocalTestRunnerUk {
 
     /**
      * This test was implemented to check another currency with taxes.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @Test
-    public void checkEuWithTaxCurrency() throws Exception {
+    public void checkEuWithTaxCurrency() {
         driver.findElement(By.xpath("//div[@class='pull-left']")).click();
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//ul[@class='dropdown-menu']/li/button[@name='EUR']")).click();
-        Thread.sleep(1000); // For Presentation Only
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        Thread.sleep(1000); // For Presentation Only
         WebElement price = driver.findElement(By.xpath("//a[text()='MacBook']/../" +
                 "following-sibling::p[@class='price']"));
         Assert.assertTrue(price.getText().contains("472.33"));
@@ -61,18 +56,13 @@ public class UkUserTest extends LocalTestRunnerUk {
 
     /**
      * This test was implemented to check another currency with NO taxes.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @Test
-    public void checkEuNoTaxCurrency() throws Exception {
+    public void checkEuNoTaxCurrency() {
         driver.findElement(By.xpath("//div[@class='pull-left']")).click();
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//ul[@class='dropdown-menu']/li/button[@name='EUR']")).click();
-        Thread.sleep(1000); // For Presentation Only
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        Thread.sleep(1000); // For Presentation Only
         String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
         String price = driver.findElement(By.xpath("//a[text()='MacBook']/../" +
                 "following-sibling::p[@class='price']/span")).getText();
@@ -86,17 +76,13 @@ public class UkUserTest extends LocalTestRunnerUk {
 
     /**
      * This test was implemented to check currency with taxes inside of the cart.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @Test
-    public void checkUsWithTaxCurrencyCart() throws Exception {
+    public void checkUsWithTaxCurrencyCart() {
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//" +
                 "button[contains(@onclick, 'cart')]")).click();
-        Thread.sleep(1000); // For Presentation Only
         String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
         String price = driver.findElement(By.xpath("//*[@id='cart']//span")).getText();
         Pattern p = Pattern.compile(pattern);
@@ -109,19 +95,14 @@ public class UkUserTest extends LocalTestRunnerUk {
 
     /**
      * This test was implemented to check the tax inside of the cart.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @Test
-    public void checkUsTaxCart() throws Exception {
+    public void checkUsTaxCart() {
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//" +
                 "button[contains(@onclick, 'cart')]")).click();
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//*[@id='cart']/button")).click();
-        Thread.sleep(1000); // For Presentation Only
         String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
         String taxprice = driver.findElement(By.xpath("//ul[@class='dropdown-menu pull-right']/li/div//" +
                 "tbody//strong[contains(text(), 'VAT')]/../following-sibling::td")).getText();
@@ -135,19 +116,14 @@ public class UkUserTest extends LocalTestRunnerUk {
 
     /**
      * This test was implemented to check the price with the tax inside of the wish list.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @Test
-    public void checkUsWithTaxWish() throws Exception {
+    public void checkUsWithTaxWish() {
         WebElement element = driver.findElement(By.id("carousel0"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//div[@class='row']//img[@title='MacBook']/../../..//" +
                 "button[@data-original-title='Add to Wish List']")).click();
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//*[@id='wishlist-total']")).click();
-        Thread.sleep(1000); // For Presentation Only
         String pattern = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
         String price = driver.findElement(By.xpath("//table[@class='table table-bordered table-hover']//" +
                 "td/div[contains(text(), '$602.00')]")).getText();

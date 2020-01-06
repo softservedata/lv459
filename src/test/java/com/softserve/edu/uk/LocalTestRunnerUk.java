@@ -36,39 +36,30 @@ public abstract class LocalTestRunnerUk {
 
     /**
      * Quit driver after the class.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @AfterClass
-    public static void tearDownAfterClass() throws Exception {
+    public static void tearDownAfterClass() {
         System.out.println("@AfterClass");
-        Thread.sleep(1000); // For Presentation Only
         driver.quit();
     }
 
     /**
      * Log in as user before the tests.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         System.out.println("\t@Before method");
         driver.get("http://192.168.5.129/opencart/upload/");
         driver.manage().window().maximize();
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//a[@title='My Account']")).click();
-        Thread.sleep(1000); // For Presentation Only
         // Click login Button
         driver.findElement(By.xpath("//a[contains(@href, 'account/login')]")).click();
-        Thread.sleep(1000); // For Presentation Only
         //
         // Steps
         // Type Login Email
         driver.findElement(By.xpath("//input[@id='input-email']")).click();
         driver.findElement(By.xpath("//input[@id='input-email']")).clear();
         driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("spirnyak2010@gmail.com");
-        Thread.sleep(1000); // For Presentation Only
         //
         // Type Password
         //driver.findElement(By.id("input-password")).click();
@@ -76,28 +67,21 @@ public abstract class LocalTestRunnerUk {
         driver.findElement(By.xpath("//input[@id='input-password']")).clear();
         driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys
                 (System.getenv().get("OPENCART_PASSWORD"));
-        Thread.sleep(1000); // For Presentation Only
         //
         // Click Login Button
         driver.findElement(By.xpath("//input[@type='submit']")).click();
-        Thread.sleep(1000); // For Presentation Only
         driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
-        Thread.sleep(1000); // For Presentation Only
     }
 
     /**
      * Delete used items during tests.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         System.out.println("\t@After method");
         driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
-        Thread.sleep(1000); // For Presentation Only
         checkCart();
         driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
-        Thread.sleep(1000); // For Presentation Only
         //checkWishList();
         driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]")).click();
         if (isLoggined()) {
@@ -110,31 +94,26 @@ public abstract class LocalTestRunnerUk {
      * This method was implemented in order to check if the user is logged out.
      *
      * @return the amount of div containers to decide if we have to log out.
-     * @throws Exception (To use 'sleep' for presentation).
      */
-    private boolean isLoggined() throws Exception {
+    private boolean isLoggined() {
         List<WebElement> items = null;
         //
         // Click My Account Button
         driver.findElement(By.xpath("//a[@title='My Account']")).click();
-        Thread.sleep(1000); // For Presentation Only
         //
         // Search Items
         items = driver.findElements(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']/li"));
         //
         // Close All Drop-down Menus
         driver.findElement(By.xpath("//input[@name='search']")).click();
-        Thread.sleep(1000); // For Presentation Only
         //
         return items.size() > 2;
     }
 
     /**
      * This method was implemented to clear the cart after the test.
-     *
-     * @throws Exception (To use 'sleep' for presentation).
      */
-    private void checkCart() throws Exception {
+    private void checkCart() {
         WebElement itemsAmount = driver.findElement(By.xpath("//*[@id='cart']//span"));
         if (!itemsAmount.getText().contains("0 item(s)")) {
             driver.findElement(By.xpath("//*[@id='cart']/button")).click();
@@ -143,7 +122,6 @@ public abstract class LocalTestRunnerUk {
             for (WebElement current : closeButtons) {
                 current.click();
                 driver.findElement(By.xpath("//*[@id='cart']/button")).click();
-                Thread.sleep(1000); // For Presentation Only
             }
         }
 
