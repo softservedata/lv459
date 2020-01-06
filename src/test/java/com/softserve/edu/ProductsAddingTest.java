@@ -23,22 +23,18 @@ public class ProductsAddingTest extends ProductsTestRunner {
 	 * Additional comment for demo
 	 */
 	@Test
-	public void addSamsungToTablets() throws Exception {
+	public void addSamsungToTablets() {
 		driver.findElement(By.xpath(
 				"//td[text()='Samsung Galaxy Tab 10.1']/following-sibling::td/a")).click();
-		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_MANUFACTURER)).click();
 		driver.findElement(By.id(INPUT_MANUFACTURER)).clear();
 		driver.findElement(By.id(INPUT_MANUFACTURER)).sendKeys("Samsung");
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_CATEGORY)).click();
 		driver.findElement(By.id(INPUT_CATEGORY)).clear();
 		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Tablets");
-		Thread.sleep(2000); // For Presentation Only
 
 		Pattern p = Pattern.compile("Tablets.* >.*");
 		for(WebElement e : driver.findElements(
@@ -47,24 +43,20 @@ public class ProductsAddingTest extends ProductsTestRunner {
 				e.click();
 			}
 		}
-		Thread.sleep(1000); // For Presentation Only
 	}
 	
 	/*
 	 * This test method adds items to Smartphones tab.
 	 */
 	@Test
-	public void addHTCtoSmartphones() throws Exception {
+	public void addHTCtoSmartphones() {
 		driver.findElement(
 				By.xpath("//td[text()='HTC Touch HD']/following-sibling::td/a")).click();
-		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_CATEGORY)).click();
 		driver.findElement(By.id(INPUT_CATEGORY)).clear();
 		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Smartphones");
-		Thread.sleep(2000); // For Presentation Only
 		
 		Pattern p = Pattern.compile("Phones & PDAs.* >.*");
 		for(WebElement e : driver.findElements(
@@ -73,23 +65,19 @@ public class ProductsAddingTest extends ProductsTestRunner {
 				e.click();
 			}
 		}
-		Thread.sleep(1000); // For Presentation Only
 	}
 	
 	/*
 	 * This test method adds items to Smartphones tab.
 	 */
 	@Test
-	public void addiPhoneToSmartphones() throws Exception {
+	public void addiPhoneToSmartphones() {
 		driver.findElement(By.xpath("//td[text()='iPhone']/following-sibling::td/a")).click();
-		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_CATEGORY)).click();
 		driver.findElement(By.id(INPUT_CATEGORY)).clear();
-		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Smartphones");
-		Thread.sleep(2000); // For Presentation Only	
+		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Smartphones");	
 
 		Pattern p = Pattern.compile("Phones & PDAs.* >.*");
 		for(WebElement e : driver.findElements(
@@ -98,24 +86,20 @@ public class ProductsAddingTest extends ProductsTestRunner {
 				e.click();
 			}
 		}
-		Thread.sleep(1000); // For Presentation Only
 	}
 	
 	/*
 	 * This test method adds items to Smartphones tab.
 	 */
 	@Test
-	public void addPalmToSmartphones() throws Exception {
+	public void addPalmToSmartphones() {
 		driver.findElement(
 				By.xpath("//td[text()='Palm Treo Pro']/following-sibling::td/a")).click();
-		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_CATEGORY)).click();
 		driver.findElement(By.id(INPUT_CATEGORY)).clear();
 		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Smartphones");
-		Thread.sleep(2000); // For Presentation Only
 
 		Pattern p = Pattern.compile("Phones & PDAs.* >.*");
 		for(WebElement e : driver.findElements(
@@ -124,24 +108,20 @@ public class ProductsAddingTest extends ProductsTestRunner {
 				e.click();
 			}
 		}
-		Thread.sleep(1000); // For Presentation Only
 	}
 	
 	/*
 	 * This test method adds items to Cameras tab.
 	 */
 	@Test
-	public void addCanonToCameras() throws Exception {
+	public void addCanonToCameras() {
 		driver.findElement(
 				By.xpath("//td[text()='Canon EOS 5D']/following-sibling::td/a")).click();
-		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_CATEGORY)).click();
 		driver.findElement(By.id(INPUT_CATEGORY)).clear();
 		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Cameras");
-		Thread.sleep(2000); // For Presentation Only
 		
 		Pattern p = Pattern.compile("Cameras.* >.*");
 		for(WebElement e : driver.findElements(
@@ -149,29 +129,24 @@ public class ProductsAddingTest extends ProductsTestRunner {
 			if (p.matcher(e.getText()).matches()) {
 				e.click();
 			}
-		}
-		Thread.sleep(1000); // For Presentation Only	
+		}	
 	}
 	
 	/*
 	 * This test method adds items to Cameras tab.
 	 */
 	@Test
-	public void addNikonToCameras() throws Exception {
+	public void addNikonToCameras() {
 		driver.findElement(By.xpath("//td[text()='Nikon D300']/following-sibling::td/a")).click();
-		Thread.sleep(1000); // For Presentation Only
 		driver.findElement(By.xpath(SWITCH_TO_LINKS_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_MANUFACTURER)).click();
 		driver.findElement(By.id(INPUT_MANUFACTURER)).clear();
 		driver.findElement(By.id(INPUT_MANUFACTURER)).sendKeys("Nikon");
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_CATEGORY)).click();
 		driver.findElement(By.id(INPUT_CATEGORY)).clear();
 		driver.findElement(By.id(INPUT_CATEGORY)).sendKeys("Cameras");
-		Thread.sleep(2000); // For Presentation Only
 
 		Pattern p = Pattern.compile("Cameras.* >.*");
 		for(WebElement e : driver.findElements(
@@ -179,8 +154,7 @@ public class ProductsAddingTest extends ProductsTestRunner {
 			if (p.matcher(e.getText()).matches()) {
 				e.click();
 			}
-		}
-		Thread.sleep(1000); // For Presentation Only	
+		}	
 	}
 	
 }

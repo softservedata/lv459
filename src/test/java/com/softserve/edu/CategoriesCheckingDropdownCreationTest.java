@@ -19,7 +19,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 	 * of Tablets Tab
 	 */
 	@Test
-	public void checkTablets() throws Exception {
+	public void checkTablets() {
 		
 		String expectedTablets = "Tablets (0)";
 		
@@ -31,7 +31,6 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 		WebElement tablets = driver.findElement(
 				By.xpath("//ul[@class='list-unstyled']//a[contains(text(),'Tablets (0)')]"));
 		Assert.assertEquals(expectedTablets, tablets.getText());
-		Thread.sleep(1000); // For Presentation Only
 		
 	}
 	
@@ -40,7 +39,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 	 * of Software Tab
 	 */
 	@Test
-	public void checkSoftware() throws Exception {
+	public void checkSoftware() {
 		
 		String expectedSoftware = "Software (0)";
 		
@@ -52,7 +51,6 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 		WebElement software = driver.findElement(
 				By.xpath("//ul[@class='list-unstyled']//a[contains(text(),'Software (0)')]"));
 		Assert.assertEquals(expectedSoftware, software.getText());
-		Thread.sleep(1000); // For Presentation Only
 		
 	}
 	
@@ -61,7 +59,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 	 * of Phones & PDAs Tab
 	 */
 	@Test
-	public void checkSmartphones() throws Exception {
+	public void checkSmartphones() {
 		
 		String expectedSmartphones = "Smartphones (0)";
 		
@@ -73,7 +71,6 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 		WebElement smartphones = driver.findElement(
 				By.xpath("//ul[@class='list-unstyled']//a[contains(text(),'Smartphones (0)')]"));
 		Assert.assertEquals(expectedSmartphones, smartphones.getText());
-		Thread.sleep(1000); // For Presentation Only	
 		
 	}
 	
@@ -82,7 +79,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 	 * of Cameras Tab
 	 */
 	@Test
-	public void checkCameras() throws Exception {
+	public void checkCameras() {
 		
 		String expectedCameras = "Cameras (0)";
 		
@@ -94,7 +91,6 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 		WebElement cameras = driver.findElement(
 				By.xpath("//ul[@class='list-unstyled']//a[text()='Cameras (0)']"));
 		Assert.assertEquals(expectedCameras, cameras.getText());
-		Thread.sleep(1000); // For Presentation Only
 		
 	}
 	
@@ -103,7 +99,7 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 	 * of MP3 Players Tab
 	 */
 	@Test
-	public void checkMP3() throws Exception {
+	public void checkMP3() {
 		
 		String expectedMP3 = "MP3 Players (0)";
 		
@@ -115,7 +111,6 @@ public class CategoriesCheckingDropdownCreationTest extends LocalTestRunner {
 		WebElement mp3 = driver.findElement(
 				By.xpath("//ul[@class='list-unstyled']//a[contains(text(),'MP3 Players (0)')]"));
 		Assert.assertEquals(expectedMP3, mp3.getText());
-		Thread.sleep(1000); // For Presentation Only
 		
 	}
 	

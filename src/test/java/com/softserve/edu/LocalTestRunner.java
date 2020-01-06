@@ -14,7 +14,7 @@ public abstract class LocalTestRunner {
 	protected static WebDriver driver;
 	
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() {
 		System.out.println("@BeforeClass");
 		System.setProperty("webdriver.chrome.driver",
 				LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
@@ -22,30 +22,25 @@ public abstract class LocalTestRunner {
 				"/chromedriver-windows-32bit.exe").getPath());
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		Thread.sleep(1000); // For Presentation Only
 		driver.get("http://192.168.43.135/opencart/upload/");
-		Thread.sleep(1000); // For Presentation Only
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
 	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
+	public static void tearDownAfterClass() {
 		System.out.println("@AfterClass");
-		Thread.sleep(2000); // For Presentation Only
 		driver.quit();
 	}
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		System.out.println("\t@Before method");
-		Thread.sleep(1000); // For Presentation Only
 	}
 	
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		System.out.println("\t@After method");
 		driver.findElement(By.id("logo")).click();
-	    Thread.sleep(1000); // For Presentation Only
 	}
 	
 }

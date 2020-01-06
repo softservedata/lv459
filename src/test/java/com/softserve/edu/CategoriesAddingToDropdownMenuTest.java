@@ -18,24 +18,20 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 	 * This test method adds Tablets category to drop-down menu.
 	 */
 	@Test
-	public void addTablets() throws Exception {
+	public void addTablets() {
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).click();
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).clear();
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).sendKeys("Tablets");
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).click();
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).clear();
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).sendKeys("Tablets");
 		driver.findElement(By.xpath(SWITCH_TO_DATA_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_PARENT)).click();
 		driver.findElement(By.id(INPUT_PARENT)).clear();
 		driver.findElement(By.id(INPUT_PARENT)).sendKeys("Tablets");
-		Thread.sleep(2000); // For Presentation Only
 		driver.findElement(By.xpath("//ul[@class='dropdown-menu']//a[text()='Tablets']")).click();
-		Thread.sleep(1000); // For Presentation Only
 	
 	}
 	
@@ -43,24 +39,20 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 	 * This test method adds Software category to drop-down menu.
 	 */
 	@Test
-	public void addSoftware() throws Exception {
+	public void addSoftware() {
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).click();
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).clear();
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).sendKeys("Software");
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).click();
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).clear();
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).sendKeys("Software");
 		driver.findElement(By.xpath(SWITCH_TO_DATA_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_PARENT)).click();
 		driver.findElement(By.id(INPUT_PARENT)).clear();
 		driver.findElement(By.id(INPUT_PARENT)).sendKeys("Software");
-		Thread.sleep(2000); // For Presentation Only
 		driver.findElement(By.xpath("//ul[@class='dropdown-menu']//a[text()='Software']")).click();
-		Thread.sleep(1000); // For Presentation Only
 	
 	}
 	
@@ -68,24 +60,20 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 	 * This test method adds Smartphones category to drop-down menu.
 	 */
 	@Test
-	public void addSmartphones() throws Exception {
+	public void addSmartphones() {
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).click();
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).clear();
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).sendKeys("Smartphones");
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).click();
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).clear();
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).sendKeys("Smartphones");
 		driver.findElement(By.xpath(SWITCH_TO_DATA_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_PARENT)).click();
 		driver.findElement(By.id(INPUT_PARENT)).clear();
 		driver.findElement(By.id(INPUT_PARENT)).sendKeys("Phones & PDAs");
-		Thread.sleep(2000); // For Presentation Only
 		driver.findElement(By.xpath("//ul[@class='dropdown-menu']//a[text()='Phones & PDAs']")).click();
-		Thread.sleep(1000); // For Presentation Only
 	
 	}
 	
@@ -93,24 +81,20 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 	 * This test method adds Cameras category to drop-down menu.
 	 */
 	@Test
-	public void addCameras() throws Exception {
+	public void addCameras() {
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).click();
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).clear();
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).sendKeys("Cameras");
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).click();
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).clear();
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).sendKeys("Cameras");
 		driver.findElement(By.xpath(SWITCH_TO_DATA_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_PARENT)).click();
 		driver.findElement(By.id(INPUT_PARENT)).clear();
 		driver.findElement(By.id(INPUT_PARENT)).sendKeys("Cameras");
-		Thread.sleep(2000); // For Presentation Only
 		driver.findElement(By.xpath("//ul[@class='dropdown-menu']//a[text()='Cameras']")).click();
-		Thread.sleep(1000); // For Presentation Only
 	
 	}
 	
@@ -118,24 +102,20 @@ public class CategoriesAddingToDropdownMenuTest extends CategoriesTestRunner {
 	 * This test method adds MP3 Players category to drop-down menu.
 	 */
 	@Test
-	public void addMP3s() throws Exception {
+	public void addMP3s() {
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).click();
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).clear();
 		driver.findElement(By.id(ADD_CATEGORY_NAME)).sendKeys("MP3 Players");
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).click();
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).clear();
 		driver.findElement(By.id(ADD_META_TAG_TITLE)).sendKeys("MP3 Players");
 		driver.findElement(By.xpath(SWITCH_TO_DATA_TAB)).click();
-		Thread.sleep(1000); // For Presentation Only
 		
 		driver.findElement(By.id(INPUT_PARENT)).click();
 		driver.findElement(By.id(INPUT_PARENT)).clear();
 		driver.findElement(By.id(INPUT_PARENT)).sendKeys("MP3 Players");
-		Thread.sleep(2000); // For Presentation Only
 		driver.findElement(By.xpath("//ul[@class='dropdown-menu']//a[text()='MP3 Players']")).click();
-		Thread.sleep(1000); // For Presentation Only
-	
+
 	}
 }

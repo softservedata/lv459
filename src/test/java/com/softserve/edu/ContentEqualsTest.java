@@ -30,7 +30,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkPC() throws Exception {
+	public void checkPC() {
 		
 		String expectedPC = "PC (0)";
 		
@@ -51,7 +51,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement pcRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'PC (0)')]"));
 		Assert.assertEquals(expectedPC, pcRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -59,7 +58,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkMac() throws Exception {
+	public void checkMac() {
 	
 		String expectedMac = "Mac (1)";
 		
@@ -80,7 +79,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement macRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Mac (1)')]"));
 		Assert.assertEquals(expectedMac, macRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	
 	}
 	
@@ -89,7 +87,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkMacs() throws Exception {
+	public void checkMacs() {
 		
 		String expectedMacs = "Macs (0)";
 		
@@ -112,7 +110,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement macsRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Macs (0)')]"));
 		Assert.assertEquals(expectedMacs, macsRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -120,7 +117,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkWindows() throws Exception {
+	public void checkWindows() {
 		
 		String expectedWindows = "Windows (0)";
 		
@@ -143,7 +140,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement windowsRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Windows (0)')]"));
 		Assert.assertEquals(expectedWindows, windowsRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -151,7 +147,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkMice() throws Exception {
+	public void checkMice() {
 		
 		String expectedMice = "Mice and Trackballs (0)";
 		
@@ -173,7 +169,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement miceRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Mice and Trackballs (0)')]"));
 		Assert.assertEquals(expectedMice, miceRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -181,7 +176,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkMonitors() throws Exception {
+	public void checkMonitors() {
 		
 		String expectedMonitors = "Monitors (2)";
 		
@@ -203,7 +198,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement monitorRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Monitors (2)')]"));
 		Assert.assertEquals(expectedMonitors, monitorRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -211,7 +205,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkPrinters() throws Exception {
+	public void checkPrinters() {
 		
 		String expectedPrinters = "Printers (0)";
 		
@@ -233,7 +227,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement printersRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Printers (0)')]"));
 		Assert.assertEquals(expectedPrinters, printersRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -241,7 +234,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkScanners() throws Exception {
+	public void checkScanners() {
 		
 		String expectedScanners = "Scanners (0)";
 		
@@ -263,7 +256,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement scannerRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Scanners (0)')]"));
 		Assert.assertEquals(expectedScanners, scannerRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -271,7 +263,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkWebCams() throws Exception {
+	public void checkWebCams() {
 		
 		String expectedWebCams = "Web Cameras (0)";
 		//"//ul[@class='nav navbar-nav']/li/a[contains(text(), 'Components')]"
@@ -293,7 +285,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement webcamsRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Web Cameras (0)')]"));
 		Assert.assertEquals(expectedWebCams, webcamsRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -301,7 +292,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkTablets() throws Exception {
+	public void checkTablets() {
 		
 		String expectedTablets = "Tablets (1)";
 		
@@ -322,7 +313,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement tabletsRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Tablets (1)')]"));
 		Assert.assertEquals(expectedTablets, tabletsRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -330,7 +320,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkSoftware() throws Exception {
+	public void checkSoftware() {
 		
 		String expectedSoftware = "Software (0)";
 		
@@ -351,7 +341,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement softwareRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Software (0)')]"));
 		Assert.assertEquals(expectedSoftware, softwareRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -359,7 +348,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkSmartphones() throws Exception {
+	public void checkSmartphones() {
 		
 		String expectedSmartphones = "Smartphones (3)";
 		
@@ -381,7 +370,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement smartphonesRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Smartphones (3)')]"));
 		Assert.assertEquals(expectedSmartphones, smartphonesRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -389,7 +377,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkCameras() throws Exception {
+	public void checkCameras() {
 		
 		String expectedCameras = "Cameras (2)";
 		
@@ -412,7 +400,6 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement camerasRefine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'Cameras (2)')]"));
 		Assert.assertEquals(expectedCameras, camerasRefine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 	
 	/*
@@ -420,7 +407,7 @@ public class ContentEqualsTest extends LocalTestRunner {
 	 * on horizontal menu such as on vertical and “Refine Search” menus.
 	 */
 	@Test
-	public void checkMP3() throws Exception {
+	public void checkMP3() {
 		
 		String expectedMP3 = "MP3 Players (0)";
 		
@@ -442,6 +429,5 @@ public class ContentEqualsTest extends LocalTestRunner {
 		WebElement mp3Refine = driver.findElement(
 				By.xpath("//div[@class='col-sm-3']//a[contains(text(),'MP3 Players (0)')]"));
 		Assert.assertEquals(expectedMP3, mp3Refine.getText());
-		Thread.sleep(2000); // For Presentation Only
 	}
 }

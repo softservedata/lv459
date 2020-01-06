@@ -18,7 +18,7 @@ public class ContentEqualsSmokeTest extends LocalTestRunner {
 	 * This test method checks if there are certain tabs.
 	 */
 	@Test
-	public void checkTabs() throws Exception {
+	public void checkTabs() {
 		
 		WebElement desktops = driver.findElement(By.xpath("//li/a[contains(text(), 'Desktops')]"));
 		Assert.assertEquals("Desktops", desktops.getText());
@@ -44,7 +44,6 @@ public class ContentEqualsSmokeTest extends LocalTestRunner {
 		
 		WebElement mp3 = driver.findElement(By.xpath("//li/a[contains(text(), 'MP3 Players')]"));
 		Assert.assertEquals("MP3 Players", mp3.getText());
-		Thread.sleep(2000); // For Presentation Only
 		
 	}
 }
