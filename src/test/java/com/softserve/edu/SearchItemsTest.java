@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.Random;
 
-
 public class SearchItemsTest extends LocalTestRunner {
 
     /**
@@ -29,7 +28,6 @@ public class SearchItemsTest extends LocalTestRunner {
         // Clicking on the "Search" button
         driver.findElement(By.
                 cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement macBook = driver.findElement(By.
@@ -52,7 +50,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(FOUR_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement macBook = driver.findElement(By.
@@ -85,7 +82,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement item = driver.findElement(By.
@@ -108,7 +104,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement item = driver.findElement(By.
@@ -131,7 +126,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement item = driver.findElement(By.
@@ -154,7 +148,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement item = driver.findElement(By.
@@ -177,7 +170,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement item = driver.findElement(By.
@@ -200,7 +192,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(FOUR_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement zeroLength = driver.findElement(By.
@@ -225,7 +216,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(FOUR_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement zeroLength = driver.findElement(By.
@@ -249,7 +239,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement item = driver.findElement(By.
@@ -279,11 +268,9 @@ public class SearchItemsTest extends LocalTestRunner {
         driver.findElement(By.name(SEARCH_FIELD)).click();
         driver.findElement(By.name(SEARCH_FIELD)).clear();
         driver.findElement(By.name(SEARCH_FIELD)).sendKeys(new String(buf));
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(FOUR_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement zeroLength = driver.findElement(By.
@@ -318,7 +305,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement item = driver.findElement(By.

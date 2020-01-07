@@ -67,7 +67,6 @@ public abstract class LocalTestRunner {
         System.out.println("\t@After method");
         // Returning to the previous state
         driver.findElement(By.cssSelector(HOME_PAGE)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
     }
 
     /**
@@ -78,7 +77,6 @@ public abstract class LocalTestRunner {
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         System.out.println("@AfterClass");
-        //Thread.sleep(1000); // For Presentation Only
         driver.quit();
     }
 }

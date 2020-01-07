@@ -28,7 +28,6 @@ public class SearchCriteriaTest extends LocalTestRunner {
         //
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(THREE_SECONDS); // For Presentation Only
         //
         // Typing in the "Search Criteria" field
         driver.findElement(By.id(SEARCH_CRITERIA_FIELD)).click();
@@ -38,15 +37,12 @@ public class SearchCriteriaTest extends LocalTestRunner {
         //
         // Clicking on the "Category" drop-down list
         driver.findElement(By.name(CATEGORY_DROP_DOWN_LIST)).click();
-        Thread.sleep(THREE_SECONDS); // For Presentation Only
         // Choosing from the "Category" drop-down list
         driver.findElement(By.name(CATEGORY_DROP_DOWN_LIST)).
                 sendKeys("Components" + Keys.ENTER);
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Clicking on the "Search" button
         driver.findElement(By.id(SEARCH_CRITERIA_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking that the is no "Samsung SyncMaster 941BW"
         // in category "Components"
@@ -55,27 +51,22 @@ public class SearchCriteriaTest extends LocalTestRunner {
         Assert.assertTrue(notFound.getText().
                 contains("There is no product"
                         + " that matches the search criteria."));
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         //Clicking on the "Search in subcategories" checkbox
         driver.findElement(By.xpath(SEARCH_IN_SUBCATEGORIES_CHECKBOX)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
-        //
-        //Clicking on the "Search in product descriptions" checkbox
-        driver.findElement(By.xpath(
-                SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Clicking on the "Search" button
         driver.findElement(By.id(SEARCH_CRITERIA_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement samsung = driver.findElement(By.
                 xpath("//a[text()='Samsung SyncMaster 941BW']"));
         Assert.assertTrue(samsung.getText().
                 contains("Samsung SyncMaster 941BW"));
-
+        //
+        //Clicking on the "Search in product descriptions" checkbox
+        driver.findElement(By.xpath(
+                SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX)).click();
         //
         // Clicking on item
         driver.findElement(By.
@@ -85,18 +76,15 @@ public class SearchCriteriaTest extends LocalTestRunner {
                 xpath("//h1[contains(text(), 'Samsung SyncMaster 941BW')]"));
         Assert.assertTrue(description.getText().
                 contains("Samsung SyncMaster 941BW"));
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Clicking "Components" tab on the navigation bar
         driver.findElement(By.
                 xpath(COMPONENTS_TAB_ON_THE_NAVIGATION_BAR)).click();
-        Thread.sleep(THREE_SECONDS); // For Presentation Only
         // Clicking "Show All Components" on the drop-down menu
         driver.findElement(By.
                 xpath("//nav[@id='menu']//div[@class='dropdown-inner']/"
                         + "following-sibling::a[contains(text(),"
                         + " 'Show All Components')]")).click();
-        Thread.sleep(THREE_SECONDS); // For Presentation Only
         // Checking if there is "Monitors" in the "Components" category
         WebElement item = driver.findElement(By.xpath("//div[@class='col-sm-3']"
                 + "//a[contains(text(), 'Monitors')]"));
@@ -110,7 +98,6 @@ public class SearchCriteriaTest extends LocalTestRunner {
                 xpath("//a[text()='Samsung SyncMaster 941BW']"));
         Assert.assertTrue(subcategory.getText().
                 contains("Samsung SyncMaster 941BW"));
-        Thread.sleep(THREE_SECONDS); // For Presentation Only
     }
 
     /**
@@ -129,7 +116,6 @@ public class SearchCriteriaTest extends LocalTestRunner {
         driver.findElement(By.name(SEARCH_FIELD)).sendKeys("");
         // Clicking on the "Search" button
         driver.findElement(By.cssSelector(SEARCH_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Typing in the "Search Criteria" field
         driver.findElement(By.id(SEARCH_CRITERIA_FIELD)).click();
@@ -138,20 +124,17 @@ public class SearchCriteriaTest extends LocalTestRunner {
         //
         // Clicking on the "Category" drop-down list
         driver.findElement(By.name(CATEGORY_DROP_DOWN_LIST)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         // Choosing from the "Category" drop-down list
         driver.findElement(By.name(CATEGORY_DROP_DOWN_LIST)).
                 sendKeys("All Categories" + Keys.ENTER);
         // Clicking on the "Search" button
         driver.findElement(By.id(SEARCH_CRITERIA_BUTTON)).click();
-        Thread.sleep(FOUR_SECONDS); // For Presentation Only
         //
         //Clicking on the "Search in product descriptions" checkbox
         driver.findElement(By.
                 xpath(SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX)).click();
         // Clicking on the "Search" button
         driver.findElement(By.id(SEARCH_CRITERIA_BUTTON)).click();
-        Thread.sleep(FOUR_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement apple = driver.findElement(By.
@@ -169,19 +152,16 @@ public class SearchCriteriaTest extends LocalTestRunner {
         WebElement paragraph = driver.findElement(By.
                 xpath("//p[contains(text(), 'Apple')]"));
         Assert.assertTrue(paragraph.getText().contains("Apple"));
-        Thread.sleep(FOUR_SECONDS); // For Presentation Only
         //
         // Clicking "Components" tab on the navigation bar
         driver.findElement(By.
                 xpath(COMPONENTS_TAB_ON_THE_NAVIGATION_BAR)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         // Clicking "Monitors" on the drop-down menu
         driver.findElement(By.xpath("//nav[@id='menu']"
                 + "//div[@class='dropdown-inner']"
                 + "//a[contains(text(), 'Monitors')]")).click();
-        Thread.sleep(THREE_SECONDS); // For Presentation Only
         //
-        // Clicking if there is "Apple Cinema 30" in "Monitors" subcategory
+        // Checking if there is "Apple Cinema 30" in "Monitors" subcategory
         WebElement applecinema = driver.findElement(By.
                 xpath("//a[text()='Apple Cinema 30\"']"));
         Assert.assertTrue(applecinema.getText().contains("Apple Cinema 30\""));
@@ -194,7 +174,6 @@ public class SearchCriteriaTest extends LocalTestRunner {
                 + "//div[@class='dropdown-inner']/following-sibling::a"
                 + "[contains(text(), 'Show All Laptops & Notebooks')]"))
                 .click();
-        Thread.sleep(THREE_SECONDS); // For Presentation Only
         // Checking
         WebElement macbook = driver.findElement(By.
                 xpath("//a[text()='MacBook Pro']"));
@@ -232,18 +211,15 @@ public class SearchCriteriaTest extends LocalTestRunner {
                 + "//div[@class='dropdown-inner']/following-sibling::a"
                 + "[contains(text(), 'Show All Laptops & Notebooks')]"))
                 .click();
-        Thread.sleep(THREE_SECONDS); // For Presentation Only
         WebElement macbook = driver.findElement(By.
                 xpath("//a[text()='HP LP3065']"));
         Assert.assertTrue(macbook.getText().contains("HP LP3065"));
         //Clicking on the "Search in product descriptions" checkbox
         driver.findElement(By.xpath(
                 SEARCH_IN_PRODUCT_DESCRIPTIONS_CHECKBOX)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Clicking on the "Search" button
         driver.findElement(By.id(SEARCH_CRITERIA_BUTTON)).click();
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
         //
         // Checking
         WebElement samsung = driver.findElement(By.
@@ -260,7 +236,6 @@ public class SearchCriteriaTest extends LocalTestRunner {
                 xpath("//h1[contains(text(), 'HP LP3065')]"));
         Assert.assertTrue(description.getText().
                 contains("HP LP3065"));
-        Thread.sleep(TWO_SECONDS); // For Presentation Only
     }
 
     /**
