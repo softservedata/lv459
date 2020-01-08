@@ -1,18 +1,22 @@
-package LoginUser;
+package com.LoginUser;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class AddToCartTest extends LocalTestRunner{
+
+public class AddToCartTest extends LocalTestRunner {
 
     private final String Add_To_Cart_From_Home_Page =
             "//a[text()='%s']/../../following-sibling::div/button[contains(@onclick, 'cart.add')]";
@@ -29,7 +33,7 @@ public class AddToCartTest extends LocalTestRunner{
     private final String ADD_TO_CART_BY_STARTS_WITH = "//a[starts-with(.,'%s')]/../../following-sibling::div/button[contains(@onclick, 'cart.add')]";
 
     /**
-     * Method add product to Cart from Home Page
+     * Test add product to Cart from Home Page
      *
      * Positive test
      * @throws InterruptedException
@@ -44,11 +48,11 @@ public class AddToCartTest extends LocalTestRunner{
         driver.findElement(By.xpath(Search_Field)).click();
         driver.findElement(By.xpath(Search_Field)).clear();
         driver.findElement(By.xpath(Search_Field)).sendKeys("mac");
-        Thread.sleep(1000);
+
 
         // Click Search Button
         driver.findElement(By.xpath(Search_Button)).click();
-        Thread.sleep(1000);
+
 
         //Add to Cart MacBook
         driver.findElement(By.xpath(String.format(Add_To_Cart_From_Home_Page, "MacBook"))).click();
@@ -56,15 +60,7 @@ public class AddToCartTest extends LocalTestRunner{
         //Check by message does product successfully are added to Cart.
         WebElement alertMessage = driver.findElement(By.xpath("//div[@class='alert alert-success']"));
         Assert.assertTrue(alertMessage.getText().contains("Success: You have added"));
-        Thread.sleep(1000);
 
-        //Open Cart by Drop Down Menu
-        driver.findElement(By.xpath(DROP_DOWN_CART_BUTTON)).click();
-        //Thread.sleep(1000);
-        //Delete product
-        WebDriverWait wait = new WebDriverWait(driver,20);
-        WebElement delete = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(DELETE_ON_DROPDOWN_MENU, "MacBook"))));
-        delete.click();
 
     }
 
@@ -82,32 +78,25 @@ public class AddToCartTest extends LocalTestRunner{
         driver.findElement(By.xpath(Search_Field)).click();
         driver.findElement(By.xpath(Search_Field)).clear();
         driver.findElement(By.xpath(Search_Field)).sendKeys("mac");
-        Thread.sleep(1000);
+
 
         // Click Search Button
         driver.findElement(By.xpath(Search_Button)).click();
-        Thread.sleep(1000);
+
 
         driver.findElement(By.xpath("//div[contains(@class,'caption')]//a[text()='MacBook']")).click();
         driver.findElement(By.id("button-cart")).click();
-        //driver.findElement(By.className("img-responsive")).click();
+
 
         WebElement alertMessage = driver.findElement(By.xpath("//div[@class='alert alert-success']"));
         Assert.assertTrue(alertMessage.getText().contains("Success: You have added"));
-        Thread.sleep(1000);
 
-        //Open Cart by Drop Down Menu
-        driver.findElement(By.xpath(DROP_DOWN_CART_BUTTON)).click();
-        Thread.sleep(1000);
-        //Delete product
-        driver.findElement(By.xpath(String.format(DELETE_ON_DROPDOWN_MENU,"MacBook"))).click();
-        Thread.sleep(1000);
 
     }
 
 
     /**
-     * Method where we add Apple Cinema - the product which we can add to cart chosen the special
+     * Test where we add Apple Cinema - the product which we can add to cart chosen the special
      * options previously.
      *
      *Positive test
@@ -118,22 +107,22 @@ public class AddToCartTest extends LocalTestRunner{
     public void addWithOptionsL() throws InterruptedException, AWTException {
 
         driver.findElement(By.xpath("//img[contains(@class,'img-responsive')]")).click();
-        Thread.sleep(2000);
+
 
         // Find product by typing 'mac' in search field
         driver.findElement(By.xpath(Search_Field)).click();
         driver.findElement(By.xpath(Search_Field)).clear();
         driver.findElement(By.xpath(Search_Field)).sendKeys("Apple Cinema");
-        Thread.sleep(1000);
+
 
         // Click Search Button
         driver.findElement(By.xpath(Search_Button)).click();
-        Thread.sleep(1000);
+
 
 
         //Add Apple Cinema to Cart
         driver.findElement(By.xpath(String.format(ADD_TO_CART_BY_STARTS_WITH, "Apple Cinema"))).click();
-        Thread.sleep(1000);
+
         //Choose radio button which contains text "Large"
         driver.findElement(By.xpath(String.format(CHOOSE_RADIO_BUTTON, "Large"))).click();
 
@@ -148,11 +137,10 @@ public class AddToCartTest extends LocalTestRunner{
 
         //Open Select
         driver.findElement(By.xpath("//select")).click();
-        Thread.sleep(1000);
+
 
         // Select options
         driver.findElement(By.xpath(String.format(SELECT_OPTIONS, "Yellow"))).click();
-        Thread.sleep(1000);
 
         //Type text in TextArea
         driver.findElement(By.xpath("//textarea[@placeholder='Textarea']")).click();
@@ -183,7 +171,7 @@ public class AddToCartTest extends LocalTestRunner{
 
         Alert alert_box = driver.switchTo().alert();
         alert_box.accept();
-        Thread.sleep(1000);
+
 
         /*
             I can use this way to upload file. If I know that Upload button work correctly
@@ -198,46 +186,47 @@ public class AddToCartTest extends LocalTestRunner{
         driver.findElement(By.xpath(INPUT_DATE)).click();
         driver.findElement(By.xpath(INPUT_DATE)).clear();
         driver.findElement(By.xpath(INPUT_DATE)).sendKeys("2019-12-27");
-        Thread.sleep(1000);
+
 
         // Type Time
         driver.findElement(By.xpath(INPUT_TIME)).click();
         driver.findElement(By.xpath(INPUT_TIME)).clear();
         driver.findElement(By.xpath(INPUT_TIME)).sendKeys("10:50");
-        Thread.sleep(1000);
+
 
         // Type Date-Time
         driver.findElement(By.xpath(INPUT_DATETIME)).click();
         driver.findElement(By.xpath(INPUT_DATETIME)).clear();
         driver.findElement(By.xpath(INPUT_DATETIME)).sendKeys("2019-12-27 10:50");
-        Thread.sleep(1000);
+
 
         // Type quantity
         driver.findElement(By.id("input-quantity")).click();
         driver.findElement(By.id("input-quantity")).clear();
         driver.findElement(By.id("input-quantity")).sendKeys("3");
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         // Click Add to Cart Button
         driver.findElement(By.id("button-cart")).click();
-        Thread.sleep(10000);
+
 
         //Check by message does product successfully are added to Cart.
-        WebElement alertMessage = driver.findElement(By.xpath("//div[@class='alert alert-success']"));
-        Assert.assertTrue(alertMessage.getText().contains("Success: You have added"));
-        Thread.sleep(1000);
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 
-        //Open Cart by Drop Down Menu
-        driver.findElement(By.xpath(DROP_DOWN_CART_BUTTON)).click();
-        Thread.sleep(1000);
-        //Delete product
-        driver.findElement(By.xpath(String.format(DELETE_ON_DROPDOWN_MENU,"Apple Cinema"))).click();
-        Thread.sleep(1000);
+            (new WebDriverWait(driver,10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.alert.alert-success")));
+
+
+        WebElement alertMessage = driver.findElement(By.cssSelector("div.alert.alert-success"));
+
+        Assert.assertTrue(alertMessage.getText().contains("Success: You have added"));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
 
     }
 
     /**
-     * Method should check that product are not added to cart
+     * Test should check that product are not added to cart
      * cause not all necessary options was chosen.
      *
      * Negative test
@@ -247,22 +236,22 @@ public class AddToCartTest extends LocalTestRunner{
     @Test
     public void wrongAddWithOptionsL() throws InterruptedException, AWTException {
         driver.findElement(By.xpath("//img[contains(@class,'img-responsive')]")).click();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         // Find product by typing 'mac' in search field
         driver.findElement(By.xpath(Search_Field)).click();
         driver.findElement(By.xpath(Search_Field)).clear();
         driver.findElement(By.xpath(Search_Field)).sendKeys("Apple Cinema");
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         // Click Search Button
         driver.findElement(By.xpath(Search_Button)).click();
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
 
         //Add Apple Cinema to Cart
         driver.findElement(By.xpath(String.format(ADD_TO_CART_BY_STARTS_WITH, "Apple Cinema"))).click();
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
         //Choose radio button which contains text "Large"
         driver.findElement(By.xpath(String.format(CHOOSE_RADIO_BUTTON, "Large"))).click();
 
@@ -277,11 +266,11 @@ public class AddToCartTest extends LocalTestRunner{
 
         //Open Select
         driver.findElement(By.xpath("//select")).click();
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         // Select options
         driver.findElement(By.xpath(String.format(SELECT_OPTIONS, "Yellow"))).click();
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         //Type text in TextArea
         driver.findElement(By.xpath("//textarea[@placeholder='Textarea']")).click();
@@ -292,34 +281,34 @@ public class AddToCartTest extends LocalTestRunner{
         driver.findElement(By.xpath(INPUT_DATE)).click();
         driver.findElement(By.xpath(INPUT_DATE)).clear();
         driver.findElement(By.xpath(INPUT_DATE)).sendKeys("2019-12-27");
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         // Type Time
         driver.findElement(By.xpath(INPUT_TIME)).click();
         driver.findElement(By.xpath(INPUT_TIME)).clear();
         driver.findElement(By.xpath(INPUT_TIME)).sendKeys("10:50");
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         // Type Date-Time
         driver.findElement(By.xpath(INPUT_DATETIME)).click();
         driver.findElement(By.xpath(INPUT_DATETIME)).clear();
         driver.findElement(By.xpath(INPUT_DATETIME)).sendKeys("2019-12-27 10:50");
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         // Type quantity
         driver.findElement(By.id("input-quantity")).click();
         driver.findElement(By.id("input-quantity")).clear();
         driver.findElement(By.id("input-quantity")).sendKeys("3");
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         // Click Add to Cart Button
         driver.findElement(By.id("button-cart")).click();
-        Thread.sleep(10000);
+        //Thread.sleep(10000);
 
         //Check by message does product are not added to Cart cause we didn't select all options.
         WebElement alertMessage = driver.findElement(By.xpath("//input[contains(@id,'input-option222')]/./following-sibling::div"));
         org.junit.Assert.assertTrue(alertMessage.getText().contains("File required!"));
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
     }
 
 
