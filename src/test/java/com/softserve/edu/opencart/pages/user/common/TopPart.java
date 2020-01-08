@@ -6,9 +6,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.ApplicationStatus;
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.pages.user.HomePage;
+import com.softserve.edu.opencart.pages.user.account.AccountLogoutPage;
+import com.softserve.edu.opencart.pages.user.account.LoginPage;
+import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
+import com.softserve.edu.opencart.pages.user.account.RegisterPage;
+import com.softserve.edu.opencart.pages.user.account.WishListPage;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
 import com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage;
 
@@ -339,6 +346,15 @@ public abstract class TopPart {
         setSearchTopField(searchText);
     }
     
+    protected void defaultLogin(User user) {
+    	if (!ApplicationStatus.get().isLogged()) {
+        	new LoginPage(driver)
+    			.fillLogin(user);
+    	} else {
+    		// TODO throw Custom Exception
+    	}
+    }
+    
 	// Business Logic
     
     public HomePage gotoHomePage() {
@@ -362,5 +378,67 @@ public abstract class TopPart {
         return new SearchUnsuccessPage(driver);
     }
 
+    // dropdownGuest
+    public LoginPage gotoLoginPage() {
+    	openMyAccountDropdown();
+    	createDropdownGuest();
+    	clickDropdownGuestLogin();
+        return new LoginPage(driver);
+    }
+
+    public RegisterPage gotoRegisterPage() {
+    	openMyAccountDropdown();
+    	createDropdownGuest();
+    	clickDropdownGuestRegister();
+        return new RegisterPage(driver);
+    }
+
+    // dropdownLogged
+    public MyAccountPage gotoMyAccount() {
+    	openMyAccountDropdown();
+    	createDropdownLogged();
+    	clickDropdownLoggedMyAccount();
+        return new MyAccountPage(driver);
+    }
+    
+//    public OrderHistoryPage gotoOrderHistory() {
+//    	openMyAccountDropdown();
+//    	createDropdownLogged();
+//    	clickDropdownLoggedOrderHistory();
+//        return new OrderHistoryPage(driver);
+//    }
+    
+//    public TransactionsPage gotoTransactions() {
+//    	openMyAccountDropdown();
+//    	createDropdownLogged();
+//    	clickDropdownLoggedTransactions();
+//        return new TransactionsPage(driver);
+//    }
+    
+//    public DownloadsPage gotoDownloads() {
+//    	openMyAccountDropdown();
+//    	createDropdownLogged();
+//    	clickDropdownLoggedDownloads();
+//        return new DownloadsPage(driver);
+//    }
+    
+    public AccountLogoutPage logout() {
+    	openMyAccountDropdown();
+    	createDropdownLogged();
+    	clickDropdownLoggedLogout();
+        return new AccountLogoutPage(driver);
+    }
+
+    // wishList
+    public WishListPage gotoWishListPage() {
+    	clickWishList();
+        return new WishListPage(driver);
+    }
+    
+    public WishListPage gotoWishListPage(User user) {
+    	clickWishList();
+    	defaultLogin(user);
+        return new WishListPage(driver);
+    }
 
 }
