@@ -10,7 +10,9 @@ import org.openqa.selenium.WebElement;
 public class WishListPage extends AccountSidebarLoggedPart {
 
     private WebElement continueButton;
-    private WishListTableContainerComponent wishListTableContainerComponent; //aggregation
+    private WishListTableContainerComponent wishListTableContainerComponent; //composition
+
+    //wish list message page extends wishlist page?????
 
     public WishListPage (WebDriver driver) {
         super(driver);
@@ -22,7 +24,6 @@ public class WishListPage extends AccountSidebarLoggedPart {
         continueButton = driver.findElement(By.xpath("//div[@class='pull-right']/a"));
         wishListTableContainerComponent = new WishListTableContainerComponent(driver);
     }
-
 
     // Page Object
 
@@ -40,22 +41,54 @@ public class WishListPage extends AccountSidebarLoggedPart {
     }
 
 
-    // Functional
+//functional
+
+    //get name of product
+    public  WishListPage getProductName(){
+        wishListTableContainerComponent.getWishListTableComponentByName()
+        return new WishListPage(driver);  //NOT SURE HOW MADE IT RIGHT
+    }
+
+    //get price of product
+    public  WishListPage getProductPrice(){
+        wishListTableContainerComponent.getWishListTableComponentPriceByName();//change names of methods , name of product
+        return new WishListPage(driver);
+    }
+
+    //get model of product
+    public  WishListPage getProductModule(){
+        wishListTableContainerComponent.getWishListTableComponentModelByName();//change names of methods , name of product
+        return new WishListPage(driver);
+    }
+
+
+    //дьоргає контейнер, а контейнер дьоргає компонент!!!
+
 
     //  TODO  Business Logic
 
+    //add product to Shopping cart
     public WishListPage addProductToShoppingCart(Product product) {
-       // clickAddToCartButton(product);
-        return new WishListPage(driver);
+        wishListTableContainerComponent.clickWishListTableComponentAddToCartButtonByName(product); //change names of methods, name of product
+        return new WishListMessagePage(driver);
     }
 
-    public WishListPage removeProductFromWishList(Product product) {
-        //clickRemoveFromWishListButton(product);
-        return new WishListPage(driver);
+    //delete product from Wish List
+    public WishListPage deleteProductFromWishList(Product product) {
+        wishListTableContainerComponent.clickWishListTableComponentRemoveButtonByName(product); //change names of methods, name of product
+        return new WishListMessagePage(driver);
     }
 
+    //go to product page after click on name
+    public  ProductPage goToProductPage(Product product) {
+        wishListTableContainerComponent.clickWishListTableComponentOnName(product); //change names of methods , name of product
+        return new ProductPage(driver);
+    }
+
+    //go to My Account Page
     public MyAccountPage goToMyAccountPage() {
-        //clickContinueButton();
+        clickContinueButton();
         return new MyAccountPage(driver);
     }
+
 }

@@ -75,16 +75,17 @@ public final class WishListTableComponent {
         return getStock().getText();
     }
 
+    //TODO
+    //there is sometimes two price what to do?
     // unitPrice
+    //по регулярному виразу витягувати першу ціну
     public WebElement getUnitPrice() {
         return unitPrice;
     }
+
     public String getUnitPriceText() {
         return getUnitPrice().getText();
     }
-    //TODO
-    //there is sometimes two price what to do
-
 
     // addToCartButton
     public WebElement getAddToCartButton() {
@@ -106,6 +107,8 @@ public final class WishListTableComponent {
     }
 
     // Functional
+
+    //дай першу ціну витягнути текст Обєкт класу рег вирази дьорнути метод віддай рез 1 -2 стрічки decimal
 
     // Business Logic
 }

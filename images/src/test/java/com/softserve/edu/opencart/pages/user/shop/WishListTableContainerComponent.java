@@ -2,20 +2,18 @@ package com.softserve.edu.opencart.pages.user.shop;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.softserve.edu.opencart.data.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class WishListTableContainerComponent {
 
-    //where they are supposed to be?
-    public final String PRODUCT_REMOVED = "Success: You have modified your wish list!";
-    public final String PRODUCT_ADDED_TO_CART = "Success: You have added %s to your shopping cart!";
-
-    private final String PRODUCT_TABLE_COMPONENT_CSS_SELECTOR = "//div[@class='table-responsive']//tbody//tr";
     protected WebDriver driver;
+    private final String PRODUCT_TABLE_COMPONENT_CSS_SELECTOR = "//div[@class='table-responsive']//tbody//tr";
 
-    private List<WishListTableComponent> wishListTableComponents; //aggregation
+    private List<WishListTableComponent> wishListTableComponents; //composition
 
     public WishListTableContainerComponent(WebDriver driver) {
         this.driver = driver;
@@ -31,10 +29,14 @@ public class WishListTableContainerComponent {
         }
     }
     // Page Object
+
     // wishListTableComponents
     public List<WishListTableComponent> getWishListTableComponents() {
         return wishListTableComponents;
     }
+
+
+
 
     // Functional
 
@@ -71,6 +73,8 @@ public class WishListTableContainerComponent {
         return result;
     }
 
+
+
     // TODO Change to Product
     public String getWishListTableComponentPriceByName(String productName)
     {
@@ -83,9 +87,19 @@ public class WishListTableContainerComponent {
     }
 
     // TODO Change to Product
-    public void clickWishListTableComponentAddToCartButtonByName(String productName) {
-        getWishListTableComponentByName(productName).clickAddToCartButton();
+    public void clickWishListTableComponentAddToCartButtonByName(Product productName) {
+        getWishListTableComponentByName(productName.getName()).clickAddToCartButton();
     }
+    // TODO Change to Product
+    public void clickWishListTableComponentRemoveButtonByName(Product productName) {
+        getWishListTableComponentByName(productName.getName()).clickRemoveFromWishListButton();
+    }
+
+    // TODO Change to Product
+    public void clickWishListTableComponentOnName(Product productName) {
+        getWishListTableComponentByName(productName.getName()).clickProductName();
+    }
+
 
 
 
