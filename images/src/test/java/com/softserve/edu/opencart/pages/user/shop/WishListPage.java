@@ -45,17 +45,17 @@ public class WishListPage extends AccountSidebarLoggedPart {
     //  TODO  Business Logic
 
     public WishListPage addProductToShoppingCart(Product product) {
-        //clickAddToCartButton(product);
+       // clickAddToCartButton(product);
         return new WishListPage(driver);
     }
 
     public WishListPage removeProductFromWishList(Product product) {
-       // clickRemoveFromWishListButton(product);
+        //clickRemoveFromWishListButton(product);
         return new WishListPage(driver);
     }
 
     public MyAccountPage goToMyAccountPage() {
-        clickContinueButton();
+        //clickContinueButton();
         return new MyAccountPage(driver);
     }
 }
