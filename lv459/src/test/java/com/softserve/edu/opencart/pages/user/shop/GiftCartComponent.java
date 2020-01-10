@@ -2,9 +2,9 @@ package com.softserve.edu.opencart.pages.user.shop;
 
 import org.openqa.selenium.WebDriver;
 
-public class CouponCartComponent extends CartOptionsPart{
+public class GiftCartComponent extends CartOptionsPart {
 
-    public CouponCartComponent(WebDriver driver) {
+    public GiftCartComponent(WebDriver driver) {
         super(driver);
         initElements();
     }
