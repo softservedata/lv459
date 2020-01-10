@@ -1,7 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.pages.user.HomePage;
