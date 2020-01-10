@@ -93,8 +93,8 @@ public class LoginPage extends DashboardRefPart{
         clearPasswordField();
         setPassword(password);
     }
-
-    public void fillLogin(Admin admin) {
+        //TODO++++++++++++++++++++++
+    /*public void fillLogin(Admin admin) {
         enterUsername(admin.getUsername());
         enterPassword(admin.getPassword());
         clickLoginButton();
@@ -111,5 +111,5 @@ public class LoginPage extends DashboardRefPart{
     public UnsuccessfulLoginPage unsuccessfulLoginPage(Admin invalidAdmin){
         fillLogin(invalidAdmin);
         return new UnsuccessfulLoginPage(driver);
-    }
+    }*/
 }
