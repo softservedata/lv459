@@ -9,8 +9,7 @@ import org.openqa.selenium.WebElement;
 public class EmptyWishListPage  extends AccountSidebarLoggedPart {
 
     private WebElement continueButton;
-    public static final String EMPTY_WISH_LIST_MESSAGE = "Your wish list is empty."; //очікуваний рез
-    //label
+    public static final String EMPTY_WISH_LIST_MESSAGE = "Your wish list is empty.";
     private WebElement labelText;
 
     public EmptyWishListPage (WebDriver driver) {
@@ -20,8 +19,7 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
 
     private void initElements() {
         // init elements
-
-        labelText = driver.findElement(By.cssSelector("h2 + p")); //chek if i find it correctly
+        labelText = driver.findElement(By.cssSelector("h2 + p"));
         continueButton = driver.findElement(By.xpath("//div[@class='pull-right']/a"));
     }
 
@@ -30,8 +28,6 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
     public WebElement getLabelText() {
         return labelText;
     }
-
-
 
     // continueButton
     public WebElement getContinueButton() {

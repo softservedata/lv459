@@ -22,10 +22,9 @@ public class WishListMessagePage extends WishListPage {
 
     private void initElements() {
         // init elements
-
         removeMessage = driver.findElement(By.xpath(""));//TODO
         addToCartMessage = driver.findElement(By.xpath(""));//TODO
-        crossButton = driver.findElement(By.xpath(""));//TODO
+        crossButton = driver.findElement(By.xpath("//div[@class = 'alert alert-success']//button"));
 
     }
 
@@ -63,13 +62,11 @@ public class WishListMessagePage extends WishListPage {
         return getAddToCartMessage().getText();
     }
 
-    //BL
+    //Business Logic
 
-    //click on хрестик
-
+    //click on cross button
     public MyAccountPage clickOnCrossButton() {
         clickCrossButton();
         return new MyAccountPage(driver);
     }
-
 }
