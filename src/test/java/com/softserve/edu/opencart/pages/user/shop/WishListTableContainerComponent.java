@@ -2,7 +2,6 @@ package com.softserve.edu.opencart.pages.user.shop;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.softserve.edu.opencart.data.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -34,8 +33,6 @@ public class WishListTableContainerComponent {
     public List<WishListTableComponent> getWishListTableComponents() {
         return wishListTableComponents;
     }
-
-
 
 
     // Functional

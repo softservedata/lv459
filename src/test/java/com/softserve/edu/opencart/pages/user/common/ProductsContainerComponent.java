@@ -2,7 +2,6 @@ package com.softserve.edu.opencart.pages.user.common;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -95,8 +94,7 @@ public class ProductsContainerComponent {
         getProductComponentByName(productName).clickAddToCartButton();
     }
 
-    // TODO Change to Product
-    public void clickProductComponentAddToWishButtonByName(String productName)
+    public void clickProductComponentAddToWishButtonByName(Product productName)
     {
         getProductComponentByName(productName).clickAddToWishButton();
     }
