@@ -37,9 +37,8 @@
 		<maven.os-maven-plugin.version>1.6.2</maven.os-maven-plugin.version>
 		<maven.webdriverextensions-maven-plugin.version>3.2.0</maven.webdriverextensions-maven-plugin.version>
 		<!-- - - - - - Reports - - - - - -->
-		<!--<testng.reports.directory>target/surefire-reports/test-output</testng.reports.directory> -->
+		<testng.reports.directory>target/surefire-reports/test-output</testng.reports.directory>
 		<aspectj.version>1.8.10</aspectj.version>
-		
 	</properties>
 
 	<dependencies>
@@ -56,14 +55,13 @@
 			<artifactId>selenium-server</artifactId>
 			<version>${org.seleniumhq.selenium.version}</version>
 		</dependency>
-		
+
 		<dependency>
         	<groupId>io.qameta.allure</groupId>
         	<artifactId>allure-junit4</artifactId>
        	 	<version>2.13.1</version>
         	<scope>test</scope>
     	</dependency>
-		
 
 	</dependencies>
 
@@ -77,33 +75,7 @@
 			</extension>
 		</extensions>
 
-	<pluginManagement>
 		<plugins>
-
-			<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.20</version>
-            <configuration>
-                <testFailureIgnore>false</testFailureIgnore>
-                <argLine>
-                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                </argLine>
-                <properties>
-                    <property>
-                        <name>listener</name>
-                        <value>io.qameta.allure.junit4.AllureJunit4</value>
-                    </property>
-                </properties>
-            </configuration>
-            <dependencies>
-                <dependency>
-                    <groupId>org.aspectj</groupId>
-                    <artifactId>aspectjweaver</artifactId>
-                    <version>${aspectj.version}</version>
-                </dependency>
-            </dependencies>
-        </plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -163,35 +135,33 @@
 					</drivers>
 				</configuration>
 			</plugin>
-
+			
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<!-- <artifactId>maven-surefire-plugin</artifactId> -->
-				<version>${maven.surefire.plugin.version}</version>
-				<configuration>
-					<argLine>-Xms512m -Xmx1024m</argLine>
-					<skipTests>false</skipTests>
-					<systemPropertyVariables>
-						<surefire.application.password>
-							${application.password}
-						</surefire.application.password>
-					</systemPropertyVariables>
-					<includes>
-						<!-- <include>**/*.java</include> -->
-						<!-- <include>**/MyData.java</include> -->
-                        <!-- <include>**/SimpleTest.java</include> -->
-						<!-- <include>**/ContentEqualsTest.java</include> -->
-					</includes>
-					<!-- <excludes> -->
-					<!-- <exclude>**/AppTest.java</exclude> -->
-					<!-- </excludes> -->
-
-				</configuration>
-			</plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.20</version>
+            <configuration>
+                <testFailureIgnore>false</testFailureIgnore>
+                <argLine>
+                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                </argLine>
+                <properties>
+                    <property>
+                        <name>listener</name>
+                        <value>io.qameta.allure.junit4.AllureJunit4</value>
+                    </property>
+                </properties>
+            </configuration>
+            <dependencies>
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                    <version>${aspectj.version}</version>
+                </dependency>
+            </dependencies>
+        </plugin>
 
 		</plugins>
-	</pluginManagement>
-	
 	</build>
 
 </project>
