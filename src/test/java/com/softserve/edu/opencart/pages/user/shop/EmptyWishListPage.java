@@ -1,6 +1,7 @@
 package com.softserve.edu.opencart.pages.user.shop;
 
 import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
+import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,9 +9,10 @@ import org.openqa.selenium.WebElement;
 public class EmptyWishListPage  extends AccountSidebarLoggedPart {
 
     private WebElement continueButton;
-    // Your wish list is empty. вичитати у вигляді константи
     public static final String EMPTY_WISH_LIST_MESSAGE = "Your wish list is empty."; //очікуваний рез
     //label
+    private WebElement labelText;
+
     public EmptyWishListPage (WebDriver driver) {
         super(driver);
         initElements();
@@ -18,15 +20,20 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
 
     private void initElements() {
         // init elements
-        //label = сам елемент
+
+        labelText = driver.findElement(By.cssSelector("h2 + p")); //chek if i find it correctly
         continueButton = driver.findElement(By.xpath("//div[@class='pull-right']/a"));
     }
 
     // Page Object
 
-    //functional
+    public WebElement getLabelText() {
+        return labelText;
+    }
 
-    // continueButton;
+
+
+    // continueButton
     public WebElement getContinueButton() {
         return continueButton;
     }
@@ -35,7 +42,14 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
         getContinueButton().click();
     }
 
+    //functional
 
     //BL
-    //continue
+
+    //go to My Account Page
+
+    public MyAccountPage goToMyAccountPage() {
+        clickContinueButton();
+        return new MyAccountPage(driver);
+    }
 }

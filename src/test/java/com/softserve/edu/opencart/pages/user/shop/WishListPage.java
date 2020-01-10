@@ -12,8 +12,6 @@ public class WishListPage extends AccountSidebarLoggedPart {
     private WebElement continueButton;
     private WishListTableContainerComponent wishListTableContainerComponent; //composition
 
-    //wish list message page extends wishlist page?????
-
     public WishListPage (WebDriver driver) {
         super(driver);
         initElements();

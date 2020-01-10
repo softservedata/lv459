@@ -24,7 +24,7 @@ public class WishListTableContainerComponent {
         // init elements
         wishListTableComponents = new ArrayList<>();
         //find all table products and add to container
-        for (WebElement current : driver.findElements(By.cssSelector(PRODUCT_TABLE_COMPONENT_CSS_SELECTOR))) {
+        for (WebElement current : driver.findElements(By.xpath(PRODUCT_TABLE_COMPONENT_CSS_SELECTOR))) {
             wishListTableComponents.add(new WishListTableComponent(current));
         }
     }
@@ -54,24 +54,7 @@ public class WishListTableContainerComponent {
         return wishListTableComponentNames;
     }
 
-
     //Get table component by name
-//    protected WishListTableComponent getWishListTableComponentByName(String productName) {
-//        WishListTableComponent result = null;
-//        for (WishListTableComponent current : getWishListTableComponents()) {
-//            if (current.getNameText().toLowerCase()
-//                    .equals(productName.toLowerCase())) {
-//                result = current;
-//                break;
-//            }
-//        }
-//        if (result == null) {
-//            // TODO Develop Custom Exception
-//            // Use String.format()
-//            throw new RuntimeException("ProductName: " + productName + " not Found.");
-//        }
-//        return result;
-//    }
     protected WishListTableComponent getWishListTableComponentByName(Product productName) {
         WishListTableComponent result = null;
         for (WishListTableComponent current : getWishListTableComponents()) {
