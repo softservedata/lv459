@@ -1,7 +1,7 @@
 package com.softserve.edu;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 /**
  * Unit test for simple App.

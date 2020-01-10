@@ -24,26 +24,34 @@
 		<jdk.compiler.version>1.8</jdk.compiler.version>
 		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<!-- - - - - - Test - - - - - -->
-		<!-- <org.testng.version>6.9.10</org.testng.version> -->
-		<org.testng.version>7.0.0</org.testng.version>
+		<org.testng.version>6.14.3</org.testng.version>
 		<testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
 		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
+		<!-- - - - - - Reports - - - - - -->
+		<testng.reports.directory>target/surefire-reports/test-output</testng.reports.directory>
 	</properties>
 
 	<dependencies>
 
+		<!-- <dependency> -->
+		<!-- <groupId>junit</groupId> -->
+		<!-- <artifactId>junit</artifactId> -->
+		<!-- <version>4.13-rc-2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13-rc-2</version>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${org.testng.version}</version>
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-server</artifactId>
-			<version>3.141.59</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.seleniumhq.selenium</groupId> -->
+<!-- 			<artifactId>selenium-server</artifactId> -->
+<!-- 			<version>3.141.59</version> -->
+<!-- 		</dependency> -->
 
 	</dependencies>
 
@@ -78,18 +86,18 @@
 					<argLine>-Xms512m -Xmx1024m</argLine>
 					<skipTests>false</skipTests>
 					<systemPropertyVariables>
-						<surefire.application.password>
+						<surefire.reports.directory>
+							${testng.reports.directory}
+						</surefire.reports.directory>
+						<selenium.version>3.14</selenium.version>
+						<temporary.variable>
 							${application.password}
-						</surefire.application.password>
+						</temporary.variable>
 					</systemPropertyVariables>
-					<!-- <includes> -->
-					<!-- <include>**/*.java</include> -->
-					<!-- <include>**/MyData.java</include> -->
-					<!-- </includes> -->
-					<!-- <excludes> -->
-					<!-- <exclude>**/AppTest.java</exclude> -->
-					<!-- </excludes> -->
-
+					<suiteXmlFiles>
+						<suiteXmlFile>testng4.xml</suiteXmlFile>
+					</suiteXmlFiles>
+					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
 				</configuration>
 			</plugin>
 

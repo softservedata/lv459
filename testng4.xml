@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Suite4">
+	<parameter name="url" value="http://10.26.34.118/opencart/upload/" />
+	<parameter name="browsername" value="chrome" />
+
+	<test name="Test41">
+		<parameter name="number" value="23145" />
+		<parameter name="implicitWait" value="30" />
+		<classes>
+			<class name="com.softserve.testng.TestNGTest6" />
+			<class name="com.softserve.testng.AppTest1" />
+			<class name="com.softserve.testng.FirstNg" />
+		</classes>
+	</test> <!-- Test -->
+
+</suite> <!-- Suite -->

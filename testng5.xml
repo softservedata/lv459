@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Suite5">
+
+	<test name="Test51">
+		<classes>
+			<class name="com.softserve.testng.TestNGTest10">
+				<methods>
+					<include name="method1" />
+					<include name="method2" />
+					<include name="method4" />
+					<include name="method3" />
+				</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
+
+</suite> <!-- Suite -->
