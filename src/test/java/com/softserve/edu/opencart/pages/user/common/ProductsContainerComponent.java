@@ -2,6 +2,7 @@ package com.softserve.edu.opencart.pages.user.common;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +36,7 @@ public class ProductsContainerComponent {
     // productComponents
     public List<ProductComponent> getProductComponents()
     {
+
         return productComponents;
     }
 
@@ -76,7 +78,7 @@ public class ProductsContainerComponent {
         return result;
     }
 
-    // TODO Change to Product
+    //TODO Change to Product
     public String getProductComponentPriceByName(String productName)
     {
         return getProductComponentByName(productName).getPriceText();
@@ -94,7 +96,8 @@ public class ProductsContainerComponent {
         getProductComponentByName(productName).clickAddToCartButton();
     }
 
-    public void clickProductComponentAddToWishButtonByName(Product productName)
+    // TODO Change to Product
+    public void clickProductComponentAddToWishButtonByName(String productName)
     {
         getProductComponentByName(productName).clickAddToWishButton();
     }

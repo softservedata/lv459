@@ -13,7 +13,7 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 
 public abstract class EpizyUserTestRunner {
 	private final Long ONE_SECOND_DELAY = 1000L;
-	private final String SERVER_URL = "http://taqc-opencart.epizy.com";
+	private final String SERVER_URL = "http://192.168.234.133/opencart/upload/index.php?route=common/home";
 	private static WebDriver driver;
 
 	@BeforeClass

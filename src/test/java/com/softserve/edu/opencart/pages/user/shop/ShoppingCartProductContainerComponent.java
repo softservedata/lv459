@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.user.shop;
 
+import com.softserve.edu.opencart.data.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,8 +41,8 @@ public class ShoppingCartProductContainerComponent {
         //Functional
 
     // get ShoppingCart  ProductComponents Count
-    public int getShoppingCartProductComponentsCount()
-    {
+    public int getShoppingCartProductComponentsCount(){
+
         return getShoppingCartProductComponents().size();
     }
 
@@ -56,13 +57,15 @@ public class ShoppingCartProductContainerComponent {
     }
 
     // get ShoppingCart Product Component By Name
-    protected ShoppingCartProductComponent getShoppingCartProductComponentByName(String productName)
+
+                            // чи тут має бути String productName чи Product product
+    protected ShoppingCartProductComponent getShoppingCartProductComponentByName(Product product)
     {
         ShoppingCartProductComponent result = null;
         for (ShoppingCartProductComponent current : getShoppingCartProductComponents())
         {
             if (current.getProductNameText().toLowerCase()
-                    .equals(productName.toLowerCase()))
+                    .equals(product.getName().toLowerCase()))
             {
                 result = current;
                 break;
@@ -72,10 +75,46 @@ public class ShoppingCartProductContainerComponent {
         {
             // TODO Develop Custom Exception
             // Use String.format()
-            throw new RuntimeException("ProductName: " + productName + " not Found.");
+            throw new RuntimeException("ProductName: " + product.getName() + " not Found.");
         }
         return result;
     }
+
+    //get Product Price By Name
+    public String getProductPriceByName(Product product){
+        return getShoppingCartProductComponentByName(product).getUnitPriceText();
+    }
+
+    //get Product Total Price By Name
+    public String getProductTotalPriceByName(Product product){
+        return getShoppingCartProductComponentByName(product).getTotalPriceText();
+    }
+
+    //get Product Model By Name
+    public String getProductModelByName(Product product){
+        return getShoppingCartProductComponentByName(product).getModelText();
+    }
+
+    //click Quantity By Product Name
+    public void clickQuantityByProductName(Product product){
+        getShoppingCartProductComponentByName(product).clickQuantityField();
+    }
+
+    //clear Quantity By Product Name
+    public void clearQuantityByProductName(Product product){
+        getShoppingCartProductComponentByName(product).clearQuantityField();
+    }
+
+    public void typeQuantityByProductName(Product product, String quantity){
+        getShoppingCartProductComponentByName(product).typeQuantity(quantity);
+    }
+
+
+
+
+
+
+
 
         //Business logic
 

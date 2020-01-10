@@ -61,10 +61,12 @@ public final class ProductComponent {
 
 	// price
 	public WebElement getPrice() {
+
 		return price;
 	}
 
 	public String getPriceText() {
+
 		return getPrice().getText();
 	}
 

@@ -1,10 +1,10 @@
 package com.softserve.edu.opencart.tests;
 
-import org.junit.Assert;
-import org.junit.Test;
+
 
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.pages.user.HomePage;
+import org.junit.Test;
 
 public class
 CurrencyTest extends EpizyUserTestRunner {

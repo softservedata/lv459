@@ -39,13 +39,14 @@ public class ShoppingCartProductComponent {
 
     // get ProductLayout
     public WebElement getProductLayout() {
+
         return productLayout;
     }
 
     // get image
     public WebElement getImage() {
         return Image;
-        //return productLayout.findElement(By.cssSelector("h4 a"));
+
     }
 
     // get product name
