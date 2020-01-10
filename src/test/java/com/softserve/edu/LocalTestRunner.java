@@ -18,6 +18,7 @@ public abstract class LocalTestRunner {
 		System.out.println("@BeforeClass");
 		System.setProperty("webdriver.chrome.driver",
 				LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
+				//"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
 		System.out.println("PATH: " + LocalTestRunner.class.getResource(
 				"/chromedriver-windows-32bit.exe").getPath());
 		driver = new ChromeDriver();
