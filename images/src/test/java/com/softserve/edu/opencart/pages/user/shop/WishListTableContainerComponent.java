@@ -56,11 +56,27 @@ public class WishListTableContainerComponent {
 
 
     //Get table component by name
-    protected WishListTableComponent getWishListTableComponentByName(String productName) {
+//    protected WishListTableComponent getWishListTableComponentByName(String productName) {
+//        WishListTableComponent result = null;
+//        for (WishListTableComponent current : getWishListTableComponents()) {
+//            if (current.getNameText().toLowerCase()
+//                    .equals(productName.toLowerCase())) {
+//                result = current;
+//                break;
+//            }
+//        }
+//        if (result == null) {
+//            // TODO Develop Custom Exception
+//            // Use String.format()
+//            throw new RuntimeException("ProductName: " + productName + " not Found.");
+//        }
+//        return result;
+//    }
+    protected WishListTableComponent getWishListTableComponentByName(Product productName) {
         WishListTableComponent result = null;
         for (WishListTableComponent current : getWishListTableComponents()) {
             if (current.getNameText().toLowerCase()
-                    .equals(productName.toLowerCase())) {
+                    .equals(productName.getName().toLowerCase())) {
                 result = current;
                 break;
             }
@@ -74,30 +90,29 @@ public class WishListTableContainerComponent {
     }
 
 
-
     // TODO Change to Product
-    public String getWishListTableComponentPriceByName(String productName)
+    public String getWishListTableComponentPriceByName(Product productName)
     {
         return getWishListTableComponentByName(productName).getUnitPriceText();
     }
 
    // TODO Change to Product
-    public String getWishListTableComponentModelByName(String productName) {
+    public String getWishListTableComponentModelByName(Product productName) {
         return getWishListTableComponentByName(productName).getModelText();
     }
 
     // TODO Change to Product
     public void clickWishListTableComponentAddToCartButtonByName(Product productName) {
-        getWishListTableComponentByName(productName.getName()).clickAddToCartButton();
+        getWishListTableComponentByName(productName).clickAddToCartButton();
     }
     // TODO Change to Product
     public void clickWishListTableComponentRemoveButtonByName(Product productName) {
-        getWishListTableComponentByName(productName.getName()).clickRemoveFromWishListButton();
+        getWishListTableComponentByName(productName).clickRemoveFromWishListButton();
     }
 
     // TODO Change to Product
     public void clickWishListTableComponentOnName(Product productName) {
-        getWishListTableComponentByName(productName.getName()).clickProductName();
+        getWishListTableComponentByName(productName).clickProductName();
     }
 
 
