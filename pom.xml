@@ -27,7 +27,7 @@
 		<org.junit.version>4.12</org.junit.version>
 		<!-- <org.junit.version>4.13-rc-2</org.junit.version> -->
 		<!-- <org.testng.version>6.9.10</org.testng.version> -->
-		<org.testng.version>7.0.0</org.testng.version>
+		<org.testng.version>7.1.0</org.testng.version>
 		<testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
 		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
 		<!-- - - - - - Automation - - - - - -->
@@ -53,6 +53,13 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
 			<version>${org.seleniumhq.selenium.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${org.testng.version}</version>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
@@ -140,16 +147,21 @@
 							${application.password}
 						</surefire.application.password>
 					</systemPropertyVariables>
-					<includes>
-						<!-- <include>**/*.java</include> -->
-						<!-- <include>**/MyData.java</include> -->
-<!-- 						<include>**/SimpleTest.java</include> -->
+<!--					<includes>
+						&lt;!&ndash; <include>**/*.java</include> &ndash;&gt;
+						&lt;!&ndash; <include>**/MyData.java</include> &ndash;&gt;
+&lt;!&ndash; 						<include>**/SimpleTest.java</include> &ndash;&gt;
 						<include>**/FindTest.java</include>
-					</includes>
+					</includes>-->
 					<!-- <excludes> -->
 					<!-- <exclude>**/AppTest.java</exclude> -->
 					<!-- </excludes> -->
-
+					<suiteXmlFiles>
+						<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
+						<!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
+						<suiteXmlFile>yulian.xml</suiteXmlFile>
+					</suiteXmlFiles>
+					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
 				</configuration>
 			</plugin>
 
