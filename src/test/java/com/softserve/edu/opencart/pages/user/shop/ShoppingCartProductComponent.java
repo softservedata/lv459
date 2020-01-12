@@ -132,11 +132,6 @@ public class ShoppingCartProductComponent {
 
 
 
-
-
-
-
-
     //Functional
 
     //Business logic

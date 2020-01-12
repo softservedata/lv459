@@ -105,17 +105,30 @@ public class ShoppingCartProductContainerComponent {
         getShoppingCartProductComponentByName(product).clearQuantityField();
     }
 
+    //type Quantity By Product Name
     public void typeQuantityByProductName(Product product, String quantity){
         getShoppingCartProductComponentByName(product).typeQuantity(quantity);
     }
 
+    //click Refresh Button By Product Name
+    public void clickRefreshButtonByProductName(Product product){
+        getShoppingCartProductComponentByName(product).clickRefreshButton();
+    }
 
-
-
-
-
+    //click Delete Button By Product Name
+    public void clickDeleteButtonByProductName(Product product){
+        getShoppingCartProductComponentByName(product).clickDeleteButton();
+    }
 
 
         //Business logic
+
+
+    //?????  It works on 'ProductsContainerComponent' class but not here?????
+
+   /* public ShoppingCartProductComponent getProductComponentByName(Product product)
+    {
+        return getProductComponentByName(product.getName());
+    }*/
 
 }
