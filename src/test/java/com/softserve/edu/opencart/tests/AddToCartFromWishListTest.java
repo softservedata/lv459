@@ -12,6 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_ADDED_TO_CART;
 import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
 
 public class AddToCartFromWishListTest extends LocalTestRunner {
@@ -22,7 +23,8 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
                 { UserRepository.getBohdanaUser() },
         };
     }
-    @Test
+
+    @Test(dataProvider = "customers")
     public void checkAddToCartFromWishList(User validUser) {
 
         MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
@@ -38,11 +40,11 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
         presentationSleep();
 
         //REMOVE FROM WISH LIST
-        wishListPage.deleteProductFromWishList(macBookProduct);;
+        wishListPage.addProductToShoppingCart(macBookProduct);;
 
         WishListMessagePage wishListMessagePage = wishListPage.gotoWishListMessagePage();
 
-        Assert.assertTrue(wishListMessagePage.getRemoveMessageText().equals(PRODUCT_REMOVED));
+        Assert.assertTrue(wishListMessagePage.getAddToCartMessageText().equals(PRODUCT_ADDED_TO_CART));
         presentationSleep();
 
     }

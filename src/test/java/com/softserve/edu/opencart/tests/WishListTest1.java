@@ -22,8 +22,8 @@ public class WishListTest1 extends LocalTestRunner {
             };
         }
 
-    @Test
-    public void checkWishList(User validUser) {
+        @Test(dataProvider = "customers")
+        public void checkWishList(User validUser) {
 
         MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
         presentationSleep();

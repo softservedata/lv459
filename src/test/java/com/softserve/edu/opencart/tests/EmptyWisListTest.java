@@ -17,7 +17,7 @@ public class EmptyWisListTest extends LocalTestRunner {
         };
     }
 
-    @Test
+    @Test(dataProvider = "customers")
     public void checkWishList(User validUser) {
 
         MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);

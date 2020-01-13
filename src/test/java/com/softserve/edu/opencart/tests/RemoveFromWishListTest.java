@@ -21,7 +21,8 @@ public class RemoveFromWishListTest extends LocalTestRunner {
                 { UserRepository.getBohdanaUser() },
         };
     }
-    @Test
+
+    @Test(dataProvider = "customers")
     public void checkRemoveFromWishList(User validUser) {
 
         MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
