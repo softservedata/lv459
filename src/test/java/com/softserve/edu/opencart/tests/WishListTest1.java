@@ -3,7 +3,7 @@ package com.softserve.edu.opencart.tests;
 import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
-import com.softserve.edu.opencart.pages.user.shop.WishListPage;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -16,10 +16,9 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 public class WishListTest1 extends LocalTestRunner {
 
             @DataProvider  //(parallel = true)
-        public Object[][] customers() {
+            public Object[][] customers() {
             return new Object[][] {
-                    { UserRepository.getDefault() },
-                    //{ UserRepository.getHahaha() },
+                    { UserRepository.getBohdanaUser() },
             };
         }
     @Test
@@ -33,7 +32,7 @@ public class WishListTest1 extends LocalTestRunner {
         //ADD TO WISH LIST
         HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
 
-        WishListPage wishListPage = myAccountPage.gotoWishListRight();
+        WishListPage wishListPage = homePage.gotoWishListPage();
         presentationSleep();
 
        // Check if product was added

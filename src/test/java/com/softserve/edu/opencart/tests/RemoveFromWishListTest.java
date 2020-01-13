@@ -6,27 +6,23 @@ import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
-import com.softserve.edu.opencart.pages.user.shop.WishListMessagePage;
-import com.softserve.edu.opencart.pages.user.shop.WishListPage;
-
-import static com.softserve.edu.opencart.pages.user.shop.WishListMessagePage.PRODUCT_REMOVED;
-
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
+import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class WishListTest2 extends LocalTestRunner {
+public class RemoveFromWishListTest extends LocalTestRunner {
 
     @DataProvider  //(parallel = true)
     public Object[][] customers() {
         return new Object[][] {
-                { UserRepository.getDefault() },
-                //{ UserRepository.getHahaha() },
+                { UserRepository.getBohdanaUser() },
         };
     }
     @Test
     public void checkRemoveFromWishList(User validUser) {
-
 
         MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
         presentationSleep();
@@ -36,7 +32,8 @@ public class WishListTest2 extends LocalTestRunner {
         //ADD TO WISH LIST
         HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
 
-        WishListPage wishListPage = myAccountPage.gotoWishListRight();
+        //WishListPage wishListPage = myAccountPage.gotoWishListRight();
+        WishListPage wishListPage = homePage.gotoWishListPage();
         presentationSleep();
 
         //REMOVE FROM WISH LIST

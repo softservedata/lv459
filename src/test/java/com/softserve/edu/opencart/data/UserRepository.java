@@ -14,6 +14,11 @@ public final class UserRepository {
                 System.getenv().get("MY_PASSWORD"));
     }
 
+    public static User getBohdanaUser() {
+        return new User("bohdanadobushovska@gmail.com", "dana", "qwerty");
+                //System.getenv().get("MY_PASSWORD"));
+    }
+
     public static User getAdmin() {
         return new User("hahaha@gmail.com", "123",
                 System.getenv().get("MY_PASSWORD"));

@@ -1,6 +1,8 @@
 package com.softserve.edu.opencart.pages.user.common;
 
 import java.util.List;
+
+import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +18,7 @@ import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.account.RegisterPage;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
 import com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage;
-import com.softserve.edu.opencart.pages.user.shop.WishListPage;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 
 public abstract class TopPart {
     protected final String OPTION_NULL_MESSAGE = "DropdownComponent is null";
@@ -432,6 +434,11 @@ public abstract class TopPart {
     public WishListPage gotoWishListPage() {
         clickWishList();
         return new WishListPage(driver);
+    }
+
+    public EmptyWishListPage gotoEmptyWishListPage() {
+        clickWishList();
+        return new EmptyWishListPage(driver);
     }
 
     public WishListPage gotoWishListPage(User user) {
