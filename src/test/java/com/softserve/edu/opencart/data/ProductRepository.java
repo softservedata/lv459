@@ -25,6 +25,14 @@ public final class ProductRepository {
 						.addPrice(Currencies.US_DOLLAR, "123.20");
 	}
 
+	public static Product getAppleCinema30() {
+		return new Product("Apple Cinema 30\"",
+				"The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed sp..", "90.00")
+				.addPrice(Currencies.EURO, "86.31")
+				.addPrice(Currencies.POUND_STERLING, "67.38")
+				.addPrice(Currencies.US_DOLLAR, "110.20");
+	}
+
 	public static Product getInvalid() {
 		return new Product("Bok", "Intel", "100");
 	}
