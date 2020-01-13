@@ -39,7 +39,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     }
 
 
-//functional
+    //functional
 
     //get name of product
     public  WishListPage getProductName(Product product) {
@@ -88,5 +88,8 @@ public class WishListPage extends AccountSidebarLoggedPart {
         clickContinueButton();
         return new MyAccountPage(driver);
     }
-
+    //go to Wish List Message Page
+    public WishListMessagePage gotoWishListMessagePage(){
+        return new WishListMessagePage(driver);
+    }
 }

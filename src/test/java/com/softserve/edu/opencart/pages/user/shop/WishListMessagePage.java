@@ -9,7 +9,7 @@ public class WishListMessagePage extends WishListPage {
 
 
     public static final String PRODUCT_REMOVED = "Success: You have modified your wish list!";
-    public static final String PRODUCT_ADDED_TO_CART = "Success: You have added %s to your shopping cart!"; //витягувати від імені класу в тестах
+    public static final String PRODUCT_ADDED_TO_CART = "Success: You have added %s to your shopping cart!";
 
     private WebElement removeMessage;
     private WebElement addToCartMessage;
@@ -22,8 +22,8 @@ public class WishListMessagePage extends WishListPage {
 
     private void initElements() {
         // init elements
-        removeMessage = driver.findElement(By.xpath(""));//TODO
-        addToCartMessage = driver.findElement(By.xpath(""));//TODO
+        removeMessage = driver.findElement(By.xpath("//div[@class = 'alert alert-success']/text()"));//TODO not sure how to find text message
+        addToCartMessage = driver.findElement(By.xpath("//div[@class = 'alert alert-success']/text()"));//TODO not sure how to find text message
         crossButton = driver.findElement(By.xpath("//div[@class = 'alert alert-success']//button"));
 
     }
