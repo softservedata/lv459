@@ -8,7 +8,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-
 import com.softserve.edu.opencart.pages.user.HomePage;
 
 public abstract class LocalTestRunner {

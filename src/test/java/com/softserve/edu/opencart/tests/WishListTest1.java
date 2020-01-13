@@ -21,6 +21,7 @@ public class WishListTest1 extends LocalTestRunner {
                     { UserRepository.getBohdanaUser() },
             };
         }
+
     @Test
     public void checkWishList(User validUser) {
 
@@ -30,6 +31,7 @@ public class WishListTest1 extends LocalTestRunner {
         Product macBookProduct = ProductRepository.getMacBook();
 
         //ADD TO WISH LIST
+        //TODO
         HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
 
         WishListPage wishListPage = homePage.gotoWishListPage();
@@ -38,5 +40,6 @@ public class WishListTest1 extends LocalTestRunner {
        // Check if product was added
         Assert.assertTrue(wishListPage.getProductName(macBookProduct).equals("iPhone"));
         presentationSleep();
+
     }
 }
