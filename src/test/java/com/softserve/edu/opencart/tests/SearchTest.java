@@ -1,7 +1,7 @@
 package com.softserve.edu.opencart.tests;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.Product;
@@ -10,7 +10,7 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.common.ProductComponent;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
 
-public class SearchTest extends EpizyUserTestRunner {
+public class SearchTest extends LocalTestRunner {
 	
 	@Test
 	public void checkSearch() {

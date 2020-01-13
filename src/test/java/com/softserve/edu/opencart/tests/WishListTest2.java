@@ -1,6 +1,5 @@
 package com.softserve.edu.opencart.tests;
 
-
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.User;
@@ -8,10 +7,13 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.WishListMessagePage;
 import com.softserve.edu.opencart.pages.user.shop.WishListPage;
-import org.junit.Assert;
-import org.junit.Test;
 
-public class WishListTest2 extends EpizyUserTestRunner {
+import static com.softserve.edu.opencart.pages.user.shop.WishListMessagePage.PRODUCT_REMOVED;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class WishListTest2 extends LocalTestRunner {
 
     //        @DataProvider  //(parallel = true)
 //        public Object[][] customers() {
@@ -37,8 +39,9 @@ public class WishListTest2 extends EpizyUserTestRunner {
         //REMOVE FROM WISH LIST
         wishListPage.deleteProductFromWishList(macBookProduct);;
 
+        WishListMessagePage wishListMessagePage = wishListPage.gotoWishListMessagePage();
 
-        Assert.assertTrue(wishListPage.equals(WishListMessagePage.PRODUCT_REMOVED));
+        Assert.assertTrue(wishListMessagePage.getRemoveMessageText().equals(PRODUCT_REMOVED));
         presentationSleep();
 
 

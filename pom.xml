@@ -42,12 +42,12 @@
 
 	<dependencies>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${org.junit.version}</version>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -147,19 +147,11 @@
 							${application.password}
 						</surefire.application.password>
 					</systemPropertyVariables>
-<!--					<includes>
-						&lt;!&ndash; <include>**/*.java</include> &ndash;&gt;
-						&lt;!&ndash; <include>**/MyData.java</include> &ndash;&gt;
-&lt;!&ndash; 						<include>**/SimpleTest.java</include> &ndash;&gt;
-						<include>**/FindTest.java</include>
-					</includes>-->
-					<!-- <excludes> -->
-					<!-- <exclude>**/AppTest.java</exclude> -->
-					<!-- </excludes> -->
+
 					<suiteXmlFiles>
 						<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
 						<!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
-						<suiteXmlFile>yulian.xml</suiteXmlFile>
+						<!-- <suiteXmlFile>yulian.xml</suiteXmlFile> -->
 					</suiteXmlFiles>
 					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
 				</configuration>
