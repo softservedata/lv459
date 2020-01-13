@@ -1,6 +1,5 @@
 package com.softserve.edu.opencart.tests;
 
-
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.User;
