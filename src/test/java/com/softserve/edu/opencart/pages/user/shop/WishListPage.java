@@ -38,7 +38,6 @@ public class WishListPage extends AccountSidebarLoggedPart {
         return wishListTableContainerComponent;
     }
 
-
     //functional
 
     //get name of product

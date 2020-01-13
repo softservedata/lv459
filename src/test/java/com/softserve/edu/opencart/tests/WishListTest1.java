@@ -18,7 +18,7 @@ public class WishListTest1 extends LocalTestRunner {
             @DataProvider  //(parallel = true)
         public Object[][] customers() {
             return new Object[][] {
-                    { UserRepository.getDefault() },
+                    { UserRepository.getBohdanaUser() },
                     //{ UserRepository.getHahaha() },
             };
         }
