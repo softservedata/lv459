@@ -1,5 +1,6 @@
-package com.softserve.edu.opencart.pages.user.shop;
+package com.softserve.edu.opencart.pages.user.shop.shoppingcart;
 
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartOptionsPart;
 import org.openqa.selenium.WebDriver;
 
 public class GiftCartComponent extends CartOptionsPart {
