@@ -11,6 +11,8 @@ import com.softserve.edu.opencart.pages.user.shop.WishListPage;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static com.softserve.edu.opencart.pages.user.shop.WishListMessagePage.PRODUCT_REMOVED;
+
 public class WishListTest2 extends EpizyUserTestRunner {
 
     //        @DataProvider  //(parallel = true)
@@ -37,8 +39,9 @@ public class WishListTest2 extends EpizyUserTestRunner {
         //REMOVE FROM WISH LIST
         wishListPage.deleteProductFromWishList(macBookProduct);;
 
+        WishListMessagePage wishListMessagePage = wishListPage.gotoWishListMessagePage();
 
-        Assert.assertTrue(wishListPage.equals(WishListMessagePage.PRODUCT_REMOVED));
+        Assert.assertTrue(wishListMessagePage.getRemoveMessageText().equals(PRODUCT_REMOVED));
         presentationSleep();
 
 
