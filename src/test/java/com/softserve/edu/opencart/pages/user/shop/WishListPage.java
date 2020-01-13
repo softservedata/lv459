@@ -39,7 +39,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     }
 
 
-//functional
+    //functional
 
     //get name of product
     public  WishListPage getProductName(Product product) {
