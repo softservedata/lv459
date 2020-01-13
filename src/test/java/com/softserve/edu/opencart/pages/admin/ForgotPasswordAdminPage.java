@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 
 public class ForgotPasswordAdminPage extends DashboardRefPart {
 
-    protected final String TAG_ATTRIBUTE_VALUE = "value";
-
     private WebElement forgotPasswordHeader;
     private WebElement email;
     private WebElement resetButton;
