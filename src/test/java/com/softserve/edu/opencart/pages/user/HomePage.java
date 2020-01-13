@@ -69,4 +69,5 @@ public class HomePage extends TopPart {
 		//productsContainerComponent.clickProductComponentAddToWishButtonByName(product);
 		return new HomePage(driver);
 	}
+
 }

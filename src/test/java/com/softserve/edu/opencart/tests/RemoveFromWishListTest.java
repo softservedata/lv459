@@ -32,7 +32,8 @@ public class RemoveFromWishListTest extends LocalTestRunner {
         //ADD TO WISH LIST
         HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
 
-        WishListPage wishListPage = myAccountPage.gotoWishListRight();
+        //WishListPage wishListPage = myAccountPage.gotoWishListRight();
+        WishListPage wishListPage = homePage.gotoWishListPage();
         presentationSleep();
 
         //REMOVE FROM WISH LIST

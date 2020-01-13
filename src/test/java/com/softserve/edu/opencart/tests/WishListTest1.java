@@ -32,7 +32,7 @@ public class WishListTest1 extends LocalTestRunner {
         //ADD TO WISH LIST
         HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
 
-        WishListPage wishListPage = myAccountPage.gotoWishListRight();
+        WishListPage wishListPage = homePage.gotoWishListPage();
         presentationSleep();
 
        // Check if product was added

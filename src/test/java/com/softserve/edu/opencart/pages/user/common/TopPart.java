@@ -1,6 +1,8 @@
 package com.softserve.edu.opencart.pages.user.common;
 
 import java.util.List;
+
+import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -432,6 +434,11 @@ public abstract class TopPart {
     public WishListPage gotoWishListPage() {
         clickWishList();
         return new WishListPage(driver);
+    }
+
+    public EmptyWishListPage gotoEmptyWishListPage() {
+        clickWishList();
+        return new EmptyWishListPage(driver);
     }
 
     public WishListPage gotoWishListPage(User user) {
