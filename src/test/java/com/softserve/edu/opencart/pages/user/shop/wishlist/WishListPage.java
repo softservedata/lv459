@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages.user.shop;
+package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;

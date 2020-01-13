@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages.user.shop;
+package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

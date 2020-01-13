@@ -3,7 +3,7 @@ package com.softserve.edu.opencart.tests;
 import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
-import com.softserve.edu.opencart.pages.user.shop.WishListPage;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;

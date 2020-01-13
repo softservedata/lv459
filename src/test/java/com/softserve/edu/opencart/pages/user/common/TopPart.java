@@ -16,7 +16,7 @@ import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.account.RegisterPage;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
 import com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage;
-import com.softserve.edu.opencart.pages.user.shop.WishListPage;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 
 public abstract class TopPart {
     protected final String OPTION_NULL_MESSAGE = "DropdownComponent is null";

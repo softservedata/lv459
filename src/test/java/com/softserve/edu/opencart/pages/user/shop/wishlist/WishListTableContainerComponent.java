@@ -1,8 +1,9 @@
-package com.softserve.edu.opencart.pages.user.shop;
+package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
 import java.util.ArrayList;
 import java.util.List;
 import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListTableComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

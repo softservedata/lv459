@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.softserve.edu.opencart.data.ApplicationStatus;
-import com.softserve.edu.opencart.pages.user.shop.WishListPage;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 public abstract class AccountSidebarLoggedPart extends AccountSidebarPart {
 
     private WebElement editAccountRight;

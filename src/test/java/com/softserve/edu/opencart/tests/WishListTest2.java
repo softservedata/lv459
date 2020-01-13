@@ -6,10 +6,10 @@ import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
-import com.softserve.edu.opencart.pages.user.shop.WishListMessagePage;
-import com.softserve.edu.opencart.pages.user.shop.WishListPage;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 
-import static com.softserve.edu.opencart.pages.user.shop.WishListMessagePage.PRODUCT_REMOVED;
+import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
