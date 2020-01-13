@@ -16,10 +16,9 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 public class WishListTest1 extends LocalTestRunner {
 
             @DataProvider  //(parallel = true)
-        public Object[][] customers() {
+            public Object[][] customers() {
             return new Object[][] {
                     { UserRepository.getBohdanaUser() },
-                    //{ UserRepository.getHahaha() },
             };
         }
     @Test

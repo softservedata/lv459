@@ -8,25 +8,21 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
-
 import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
-
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class WishListTest2 extends LocalTestRunner {
+public class RemoveFromWishListTest extends LocalTestRunner {
 
     @DataProvider  //(parallel = true)
     public Object[][] customers() {
         return new Object[][] {
                 { UserRepository.getBohdanaUser() },
-                //{ UserRepository.getHahaha() },
         };
     }
     @Test
     public void checkRemoveFromWishList(User validUser) {
-
 
         MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
         presentationSleep();
