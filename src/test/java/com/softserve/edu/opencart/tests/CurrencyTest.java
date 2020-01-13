@@ -7,7 +7,7 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 import org.junit.Test;
 
 public class
-CurrencyTest extends EpizyUserTestRunner {
+CurrencyTest extends LocalTestRunner {
 
 	@Test
 	public void checkChangeCurrency() throws Exception {
