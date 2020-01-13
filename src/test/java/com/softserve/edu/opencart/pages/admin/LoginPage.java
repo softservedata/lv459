@@ -1,10 +1,11 @@
 package com.softserve.edu.opencart.pages.admin;
 
+import com.softserve.edu.opencart.data.Admin;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LoginPage extends DashboardRefPart{
+public class LoginPage extends DashboardRefPart {
 
     protected final String TAG_ATTRIBUTE_VALUE = "value";
     protected final String TAG_ATTRIBUTE_SRC = "src";
@@ -20,12 +21,13 @@ public class LoginPage extends DashboardRefPart{
     }
 
     //username
-    private void initElements(){
+    private void initElements() {
         username = driver.findElement(By.id("input-username"));
         password = driver.findElement(By.id("input-password"));
         loginButton = driver.findElement(By.xpath("//button"));
         forgotPassword = driver.findElement(By.xpath("//span/a"));
     }
+
     public WebElement getUsername() {
         return username;
     }
@@ -67,6 +69,19 @@ public class LoginPage extends DashboardRefPart{
         getPassword().sendKeys(password);
     }
 
+    //Forgotten password
+    public WebElement forgotPassword() {
+        return forgotPassword;
+    }
+
+    public String forgotPasswordText() {
+        return forgotPassword().getText();
+    }
+
+    public ForgotPasswordAdminPage clickForgotPassword() {
+        return new ForgotPasswordAdminPage(driver);
+    }
+
     // loginButton
     public WebElement getLoginButton() {
         return loginButton;
@@ -82,10 +97,10 @@ public class LoginPage extends DashboardRefPart{
 
     // Functional
 
-    private void enterEmail(String username) {
+    private void enterUsername(String username) {
         clickUsernameField();
-        setUsername(username);
         clearUsernameField();
+        setUsername(username);
     }
 
     private void enterPassword(String password) {
@@ -93,23 +108,23 @@ public class LoginPage extends DashboardRefPart{
         clearPasswordField();
         setPassword(password);
     }
-        //TODO++++++++++++++++++++++
-    /*public void fillLogin(Admin admin) {
+
+    public void fillLogin(Admin admin) {
         enterUsername(admin.getUsername());
         enterPassword(admin.getPassword());
         clickLoginButton();
     }
 
-
     // Business Logic
-
-    public MainPage successfulLogin(Admin validAdmin){
+    //Вертає хоум пейджу після успішного логування
+    public HomePage successfulLogin(Admin validAdmin) {
         fillLogin(validAdmin);
-        return new MainPage(driver);
+        return new HomePage(driver);
     }
 
-    public UnsuccessfulLoginPage unsuccessfulLoginPage(Admin invalidAdmin){
+    //Вертає пейджу неуспішоного логування
+    public UnsuccessfulLoginPage unsuccessfulLoginPage(Admin invalidAdmin) {
         fillLogin(invalidAdmin);
         return new UnsuccessfulLoginPage(driver);
-    }*/
+    }
 }
