@@ -10,8 +10,7 @@ import org.openqa.selenium.WebElement;
 import com.softserve.edu.opencart.pages.user.common.ProductComponent;
 
 public class UsersContainerComponent {
-    //TODO Incorrect selector
-    private final String USERS_COMPONENT_CSSSELECTOR = ".product-layout";
+    private final String USERS_COMPONENT_CSSSELECTOR = ".table.table-bordered.table-hover tbody tr";
     protected WebDriver driver;
     //
     private List<UserComponent> productComponents;
