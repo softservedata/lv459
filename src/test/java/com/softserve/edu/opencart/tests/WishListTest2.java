@@ -7,13 +7,13 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.WishListMessagePage;
 import com.softserve.edu.opencart.pages.user.shop.WishListPage;
-import org.junit.Assert;
-import org.junit.Test;
 
 import static com.softserve.edu.opencart.pages.user.shop.WishListMessagePage.PRODUCT_REMOVED;
 
-public class WishListTest2 extends EpizyUserTestRunner {
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
+public class WishListTest2 extends LocalTestRunner {
     @Test
     public void checkRemoveFromWishList(User validUser) {
 

@@ -3,13 +3,16 @@ package com.softserve.edu.opencart.tests;
 import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.WishListPage;
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
 
-public class WishListTest1 extends EpizyUserTestRunner {
+public class WishListTest1 extends LocalTestRunner {
+
     @Test
     public void checkWishList(User validUser) {
 
