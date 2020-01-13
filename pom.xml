@@ -27,7 +27,7 @@
 		<org.junit.version>4.12</org.junit.version>
 		<!-- <org.junit.version>4.13-rc-2</org.junit.version> -->
 		<!-- <org.testng.version>6.9.10</org.testng.version> -->
-		<org.testng.version>7.1.0</org.testng.version>
+		<org.testng.version>7.0.0</org.testng.version>
 		<testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
 		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
 		<!-- - - - - - Automation - - - - - -->

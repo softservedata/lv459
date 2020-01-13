@@ -13,7 +13,7 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 
 public abstract class LocalTestRunner {
 	private final Long ONE_SECOND_DELAY = 1000L;
-	private final String SERVER_URL = "http://192.168.234.133/opencart/upload/index.php?route=common/home";
+	private final String SERVER_URL = "http://192.168.43.135/opencart/upload/";
 	private static WebDriver driver;
 
 	@BeforeClass
