@@ -7,9 +7,6 @@ import org.openqa.selenium.WebElement;
 
 public class LoginPage extends DashboardRefPart {
 
-    protected final String TAG_ATTRIBUTE_VALUE = "value";
-    protected final String TAG_ATTRIBUTE_SRC = "src";
-
     private WebElement username;
     private WebElement password;
     private WebElement loginButton;
