@@ -14,16 +14,16 @@ import static com.softserve.edu.opencart.pages.user.shop.WishListMessagePage.PRO
 
 public class WishListTest2 extends EpizyUserTestRunner {
 
-    //        @DataProvider  //(parallel = true)
+    @Test
+    public void checkRemoveFromWishList(User validUser) {
+
+//        @DataProvider  //(parallel = true)
 //        public Object[][] customers() {
 //            return new Object[][] {
 //                    { UserRepository.getDefault() },
 //                    //{ UserRepository.getHahaha() },
 //            };
 //        }
-    @Test
-    public void checkRemoveFromWishList(User validUser) {
-
         MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
         presentationSleep();
 
@@ -42,7 +42,6 @@ public class WishListTest2 extends EpizyUserTestRunner {
 
         Assert.assertTrue(wishListMessagePage.getRemoveMessageText().equals(PRODUCT_REMOVED));
         presentationSleep();
-
 
     }
 }

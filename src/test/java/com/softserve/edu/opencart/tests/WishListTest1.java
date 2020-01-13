@@ -10,7 +10,6 @@ import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
 
 public class WishListTest1 extends EpizyUserTestRunner {
-
     @Test
     public void checkWishList(User validUser) {
 
