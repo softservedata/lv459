@@ -1,8 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
-import com.softserve.edu.opencart.data.Currencies;
-import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.data.ProductRepository;
+import com.softserve.edu.opencart.data.*;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.common.ProductComponent;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
@@ -13,42 +11,34 @@ import org.testng.annotations.Test;
 public class SearchItemsTest extends LocalTestRunner {
 
 
-    //TODO
-/*    @DataProvider
+    @DataProvider
     public Object[][] searchData() {
-        return new Object[][] {
+        return new Object[][]{
+                // Checking lower/upper case letters, numbers and symbol
+                {ProductRepository.getAppleCinema30()},
+                // Checking lower/upper case letters
+                {ProductRepository.getMacBook()}
         };
-    }*/
+    }
 
-    /**
-     * Typing lower/upper case letters, numbers and symbol
-     * in "Search" field.
-     *
-     * @throws Exception exception
-     */
-    @Test
-    public void findItemCaseOne() throws Exception {
-        // Test Data
-        // SearchFilter searchFilter
-        Product validProduct = ProductRepository.getAppleCinema30();
+    @Test(dataProvider = "searchData")
+    public void findItemCaseOne(Product product){
         //
         // Steps
-        SearchSuccessPage searchSuccessPage = loadApplication().successfulSearch(validProduct);
-        presentationSleep();
+        // Typing in the "Search" field.
+        SearchSuccessPage searchSuccessPage = loadApplication().successfulSearch(product);
+        // Checking component
         ProductComponent actualProductComponent = searchSuccessPage.getProductsDisplay()
-                .getProductComponentByName(validProduct);
+                .getProductComponentByName(product);
         //
         // Check
-        Assert.assertTrue(actualProductComponent.getNameText().contains(validProduct.getName()));
+        Assert.assertTrue(actualProductComponent.getNameText().contains(product.getName()));
         //
-        // TODO
-        // Continue Searching. Use SearchCriteria from SearchCriteriaPart
-        //
-        // Return to Previous State
+        // Return to the Previous State
         HomePage homePage = searchSuccessPage.gotoHomePage();
         //
-        // Check (optional)
+        // Check
         Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
-        presentationSleep();
     }
+
 }
