@@ -91,4 +91,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     public WishListMessagePage gotoWishListMessagePage(){
         return new WishListMessagePage(driver);
     }
+
+    //TODO remove all elements
+
 }

@@ -18,7 +18,7 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
     @DataProvider  //(parallel = true)
     public Object[][] customers() {
         return new Object[][] {
-                { UserRepository.getBohdanaUser() },
+                { UserRepository.get().getHahaha() },//TODO
         };
     }
 
