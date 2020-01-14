@@ -91,15 +91,15 @@ public class ProductsContainerComponent {
     }
 
     // TODO Change to Product
-    public void clickProductComponentAddToCartButtonByName(String productName)
+    public void clickProductComponentAddToCartButtonByName(Product product)
     {
-        getProductComponentByName(productName).clickAddToCartButton();
+        getProductComponentByName(product).clickAddToCartButton();
     }
 
     // TODO Change to Product
-    public void clickProductComponentAddToWishButtonByName(String productName)
+    public void clickProductComponentAddToWishButtonByName(Product product)
     {
-        getProductComponentByName(productName).clickAddToWishButton();
+        getProductComponentByName(product).clickAddToWishButton();
     }
 
     public String getProductComponentPriceByProduct(Product product)
