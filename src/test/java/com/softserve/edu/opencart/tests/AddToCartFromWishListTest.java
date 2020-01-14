@@ -1,9 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
-import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.data.ProductRepository;
-import com.softserve.edu.opencart.data.User;
-import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.data.*;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
@@ -23,9 +20,11 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "customers")
-    public void checkAddToCartFromWishList(User validUser) {
+    public void checkAddToCartFromWishList(IUser validUser) {
 
-        MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
+        MyAccountPage myAccountPage = loadApplication()
+                .gotoLoginPage()
+                .successfulLogin(validUser);
         presentationSleep();
 
         Product macBookProduct = ProductRepository.getIPhone3();
@@ -42,7 +41,9 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
 
         WishListMessagePage wishListMessagePage = wishListPage.gotoWishListMessagePage();
 
-        Assert.assertTrue(wishListMessagePage.getAddToCartMessageText().equals(PRODUCT_ADDED_TO_CART));
+        Assert.assertTrue(wishListMessagePage
+                .getAddToCartMessageText()
+                .equals(PRODUCT_ADDED_TO_CART));
         presentationSleep();
 
     }

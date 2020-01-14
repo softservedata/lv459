@@ -1,13 +1,13 @@
 package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
 import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.data.ProductInfo;
 import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
 
 public class WishListPage extends AccountSidebarLoggedPart {
 
@@ -60,10 +60,6 @@ public class WishListPage extends AccountSidebarLoggedPart {
         return new WishListPage(driver);
     }
 
-
-    //дьоргає контейнер, а контейнер дьоргає компонент!!!
-
-
     //  TODO  Business Logic
 
     //add product to Shopping cart
@@ -78,10 +74,10 @@ public class WishListPage extends AccountSidebarLoggedPart {
         return new WishListMessagePage(driver);
     }
 
-    //go to product page after click on name
-//    public  ProductCartComponent goToProductPage(Product product) {
+//    go to product page after click on name
+//    public ProductInfo goToProductPage(Product product) {
 //        wishListTableContainerComponent.clickWishListTableComponentOnName(product); //change names of methods , name of product
-//        return new ProductCartComponent(driver);
+//        return new ProductInfo(driver);
 //    }
 
     //go to My Account Page
