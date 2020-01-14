@@ -15,9 +15,9 @@ public class SearchItemsTest extends LocalTestRunner {
     public Object[][] searchData() {
         return new Object[][]{
                 // Checking lower/upper case letters, numbers and symbol
-                {ProductRepository.getAppleCinema30()},
+                {ProductRepository.get().getAppleCinema30()},
                 // Checking lower/upper case letters
-                {ProductRepository.getMacBook()}
+                {ProductRepository.get().getMacBook()}
         };
     }
 

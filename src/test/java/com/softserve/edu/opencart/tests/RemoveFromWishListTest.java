@@ -27,7 +27,7 @@ public class RemoveFromWishListTest extends LocalTestRunner {
                 .successfulLogin(validUser);
         presentationSleep();
 
-        Product macBookProduct = ProductRepository.getIPhone3();
+        IProduct macBookProduct = ProductRepository.get().getIPhone3();
 
         //ADD TO WISH LIST
         HomePage homePage = loadApplication()

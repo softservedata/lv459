@@ -26,7 +26,7 @@ public class WishListTest1 extends LocalTestRunner {
         presentationSleep();
 
 
-        Product macBookProduct = ProductRepository.getMacBook();
+        IProduct macBookProduct = ProductRepository.get().getMacBook();
 
         //ADD TO WISH LIST
         //TODO

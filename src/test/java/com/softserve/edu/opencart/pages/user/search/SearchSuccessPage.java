@@ -51,7 +51,7 @@ public class SearchSuccessPage extends SearchCriteriaPart {
     }
 
     public SearchSuccessAlertPage AddToWishButtonByName(Product product) {
-    	productsDisplay.clickProductComponentAddToWishButtonByName(product.getName());
+    	productsDisplay.clickProductComponentAddToWishButtonByName(product);
     	return new SearchSuccessAlertPage(driver);
     }
 
