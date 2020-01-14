@@ -8,6 +8,7 @@ package com.softserve.edu.opencart.data;
 	}
 
 	interface PriceDollarExTax {
+		///TODO MAP
 		IBuildProduct setPriceDollarExTax(String priceDollarExTax);
 	}
 	interface IBuildProduct {

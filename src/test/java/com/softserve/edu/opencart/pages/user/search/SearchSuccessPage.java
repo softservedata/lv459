@@ -2,9 +2,8 @@ package com.softserve.edu.opencart.pages.user.search;
 
 import com.softserve.edu.opencart.data.IProduct;
 import org.openqa.selenium.WebDriver;
-
 import com.softserve.edu.opencart.data.Currencies;
-import com.softserve.edu.opencart.data.Product;
+
 
 public class SearchSuccessPage extends SearchCriteriaPart {
 

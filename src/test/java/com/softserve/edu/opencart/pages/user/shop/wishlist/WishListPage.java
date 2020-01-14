@@ -45,7 +45,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     //get name of product
     public  WishListPage getProductName(IProduct product) {
         wishListTableContainerComponent.getWishListTableComponentByName(product);
-        return new WishListPage(driver);  //NOT SURE HOW MADE IT RIGHT
+        return new WishListPage(driver);  //TODO CHECK IF I MADE IT RIGHT
     }
 
     //get price of product
