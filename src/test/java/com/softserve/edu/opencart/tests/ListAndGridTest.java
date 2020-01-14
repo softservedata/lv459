@@ -3,37 +3,38 @@ package com.softserve.edu.opencart.tests;
 import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
-import com.softserve.edu.opencart.pages.user.common.ProductComponent;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
+import com.softserve.edu.opencart.pages.user.search.ProductsDisplayComponent;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class SearchItemsTest extends LocalTestRunner {
-
+public class ListAndGridTest extends LocalTestRunner {
 
     @DataProvider
     public Object[][] searchData() {
         return new Object[][]{
-                // Checking lower/upper case letters, numbers and symbol
-                {ProductRepository.get().getAppleCinema30()},
-                // Checking lower/upper case letters
-                {ProductRepository.get().getMacBook()}
+                {ProductRepository.get().getAppleCinema30()}
         };
     }
 
+    /**
+     * Pressing "List" button on "Search" window.
+     */
     @Test(dataProvider = "searchData")
-    public void findItemCaseOne(IProduct product){
+    public void findItemCaseOne(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
-        SearchSuccessPage searchSuccessPage = loadApplication().successfulSearch(product);
-        // Checking component
-        ProductComponent actualProductComponent = searchSuccessPage.getProductsDisplay()
-                .getProductComponentByName(product);
-        //
+        SearchSuccessPage searchSuccessPage = loadApplication()
+                .successfulSearch(product);
+        // Clicking "List" button
+        ProductsDisplayComponent productsDisplayComponent = searchSuccessPage
+                .getProductsDisplay()
+                .viewProductsByList();
+
         // Check
-        Assert.assertTrue(actualProductComponent.getNameText().contains(product.getName()));
+        Assert.assertTrue(productsDisplayComponent.statusListViewButton());
         //
         // Return to the Previous State
         HomePage homePage = searchSuccessPage.gotoHomePage();
