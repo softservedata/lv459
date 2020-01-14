@@ -15,7 +15,7 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 
 public abstract class EpizyUserTestRunner {
 	private final Long ONE_SECOND_DELAY = 1000L;
-	private String serverUrl;// = "http://taqc-opencart.epizy.com";
+	private String serverUrl = "http://taqc-opencart.epizy.com";
 	private WebDriver driver;
 
 	@BeforeClass

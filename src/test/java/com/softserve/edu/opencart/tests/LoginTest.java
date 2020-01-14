@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.softserve.edu.opencart.data.ApplicationStatus;
-import com.softserve.edu.opencart.data.User;
+import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.EditAccountPage;
@@ -17,18 +17,20 @@ public class LoginTest extends EpizyUserTestRunner {
 	@DataProvider // (parallel = true)
 	public Object[][] customers() {
 		return new Object[][] {
-			{ UserRepository.getDefault() },
-			//{ UserRepository.getHahaha() },
+			{ UserRepository.get().getDefault() },
+			//{ UserRepository.get().getHahaha() },
 		};
 	}
 
 	@Test(dataProvider = "customers")
-	public void checkSuccessful(User validUser) throws Exception {
+	public void checkSuccessful(IUser validUser) throws Exception {
 		// Test Data
 		// User validUser = UserRepository.getDefault();
 		//
 		// Steps
-		MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
+		MyAccountPage myAccountPage = loadApplication()
+				.gotoLoginPage()
+				.successfulLogin(validUser);
 		presentationSleep();
 		//
 		// Check
@@ -37,7 +39,8 @@ public class LoginTest extends EpizyUserTestRunner {
 		//
 		// Steps
 		// GOTO EditAccountPage + Message
-		EditAccountPage editAccountPage = myAccountPage.gotoEditAccountRight();
+		EditAccountPage editAccountPage = myAccountPage
+				.gotoEditAccountRight();
 		presentationSleep();
 		//
 		// Check
@@ -45,11 +48,14 @@ public class LoginTest extends EpizyUserTestRunner {
 		//
 		// Return to Previous State
 		HomePage homePage = editAccountPage.gotoContinue() // optional
-				.gotoLogoutRight().gotoContinue();
+				.gotoLogoutRight()
+				.gotoContinue();
 		//
 		// Check (optional)
 		Assert.assertFalse(ApplicationStatus.get().isLogged());
-		Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
+		Assert.assertTrue(homePage
+				.getSlideshow0FirstImageAttributeSrcText()
+				.contains(HomePage.EXPECTED_IPHONE6));
 		presentationSleep();
 	}
 
