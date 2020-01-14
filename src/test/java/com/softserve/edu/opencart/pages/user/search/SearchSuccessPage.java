@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.user.search;
 
+import com.softserve.edu.opencart.data.IProduct;
 import org.openqa.selenium.WebDriver;
 
 import com.softserve.edu.opencart.data.Currencies;
@@ -48,18 +49,13 @@ public class SearchSuccessPage extends SearchCriteriaPart {
         return new SearchSuccessPage(driver);
     }
 
-    public SearchSuccessAlertPage AddToWishButtonByName(Product product) {
-<<<<<<< HEAD
+
+    public SearchSuccessAlertPage AddToWishButtonByName(IProduct product) {
     	productsDisplay.clickProductComponentAddToWishButtonByName(product);
     	return new SearchSuccessAlertPage(driver);
-=======
-        productsDisplay
-                .clickProductComponentAddToWishButtonByName(product.getName());
-        return new SearchSuccessAlertPage(driver);
->>>>>>> b936f7d86c4e4f3b5abcc85efaa26f0ae15961d1
     }
 
-    public ProductInfoPage gotoProductInfo(Product product) {
+    public ProductInfoPage gotoProductInfo(IProduct product) {
         getProductsDisplay().getProductComponentByName(product).clickName();
         return new ProductInfoPage(driver);
     }
