@@ -11,9 +11,7 @@ import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_ADDED_TO_CART;
-import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
 
 public class AddToCartFromWishListTest extends LocalTestRunner {
 
@@ -39,7 +37,7 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
         WishListPage wishListPage = homePage.gotoWishListPage();
         presentationSleep();
 
-        //REMOVE FROM WISH LIST
+        //ADD TO SHOPPING CART FROM WISH LIST
         wishListPage.addProductToShoppingCart(macBookProduct);;
 
         WishListMessagePage wishListMessagePage = wishListPage.gotoWishListMessagePage();

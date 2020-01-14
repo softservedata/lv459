@@ -40,13 +40,11 @@ public final class WishListTableComponent {
     // image
     public WebElement getImage() {
         return image;
-        //return productLayout.findElement(By.cssSelector("h4 a"));
     }
 
     // name
     public WebElement getProductName() {
         return productName;
-        //return productLayout.findElement(By.cssSelector("h4 a"));
     }
 
     public String getNameText() {

@@ -8,7 +8,6 @@ import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
@@ -27,6 +26,7 @@ public class WishListTest1 extends LocalTestRunner {
 
         MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
         presentationSleep();
+
 
         Product macBookProduct = ProductRepository.getMacBook();
 

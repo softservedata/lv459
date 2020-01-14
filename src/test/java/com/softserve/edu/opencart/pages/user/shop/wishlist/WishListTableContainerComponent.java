@@ -3,7 +3,6 @@ package com.softserve.edu.opencart.pages.user.shop.wishlist;
 import java.util.ArrayList;
 import java.util.List;
 import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListTableComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,7 +22,7 @@ public class WishListTableContainerComponent {
     private void initElements() {
         // init elements
         wishListTableComponents = new ArrayList<>();
-        //find all table products and add to container
+        //finds all table products and adds to table container
         for (WebElement current : driver.findElements(By.xpath(PRODUCT_TABLE_COMPONENT_CSS_SELECTOR))) {
             wishListTableComponents.add(new WishListTableComponent(current));
         }
@@ -43,7 +42,7 @@ public class WishListTableContainerComponent {
         return getWishListTableComponents().size();
     }
 
-    //Get all names from table
+    //get all names from table
     public List<String> getWishListTableComponentNames() {
         List<String> wishListTableComponentNames = new ArrayList<>();
         for (WishListTableComponent current : getWishListTableComponents()) {
@@ -52,7 +51,7 @@ public class WishListTableContainerComponent {
         return wishListTableComponentNames;
     }
 
-    //Get table component by name
+    //get table component by name
     protected WishListTableComponent getWishListTableComponentByName(Product productName) {
         WishListTableComponent result = null;
         for (WishListTableComponent current : getWishListTableComponents()) {
