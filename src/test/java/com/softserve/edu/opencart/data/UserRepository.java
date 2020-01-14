@@ -22,8 +22,6 @@ public final class UserRepository {
     }
 
     public IUser getHahaha() {
-//		return new User("hahaha@gmail.com", "hahaha",
-//				System.getenv().get("MY_PASSWORD"));
         return User.get()
                 .setFirstName("hahaha")
                 .setLastName("hahaha")
@@ -43,8 +41,6 @@ public final class UserRepository {
     }
 
     public IUser getAdmin() {
-//		return new User("hahaha@gmail.com", "123",
-//				System.getenv().get("MY_PASSWORD"));
         return User.get()
                 .setFirstName("hahaha")
                 .setLastName("hahaha")

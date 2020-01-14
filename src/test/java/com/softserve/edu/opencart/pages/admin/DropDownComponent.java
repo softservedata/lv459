@@ -7,18 +7,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class DroppDownComponent {
+public class DropDownComponent {
     protected final String OPTIONNAME_NOT_FOUND = "OptionName not Found.";
     protected WebDriver driver;
     private List<WebElement> listOptions;
     
-    public DroppDownComponent(WebDriver driver, By searchLocator) {
+    public DropDownComponent(WebDriver driver, By searchLocator) {
         this.driver = driver;
         initElements(searchLocator);
     }
 
     private void initElements(By searchLocator) {
-        // init elements
         listOptions = driver.findElements(searchLocator);
     }
 
