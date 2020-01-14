@@ -42,12 +42,12 @@
 
 	<dependencies>
 
-		<!-- <dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${org.junit.version}</version>
-			<scope>test</scope>
-		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>3.7.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -120,14 +120,14 @@
 						<driver>
 							<name>chromedriver</name>
 							<!--suppress UnresolvedMavenProperty -->
-							<platform>${os.detected.name}</platform>
+<!--							<platform>${os.detected.name}</platform>-->
 							<!-- <platform>windows</platform> -->
-							<bit>32</bit>
+<!--							<bit>32</bit>-->
 							<!-- <version>74.0.3729.6</version> -->
 							<!-- <url>https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip</url> -->
 							<!-- <version>76.0.3809.126</version> -->
 							<!-- <url>https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip</url> -->
-							<url>https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip</url>
+<!--							<url>https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip</url>-->
 							<!-- <version>79.0.3945.36</version> -->
 							<!-- <version>78.0.3904.105</version> -->
 						</driver>
