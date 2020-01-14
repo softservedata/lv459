@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class WishListPage extends AccountSidebarLoggedPart {
 
     private WebElement continueButton;
@@ -92,6 +94,15 @@ public class WishListPage extends AccountSidebarLoggedPart {
         return new WishListMessagePage(driver);
     }
 
-    //TODO remove all elements
 
+    //TODO remove all elements
+//    public void removeAllProductsFromWishList() {
+//        List<WebElement> closeButtons = driver.findElements(By.cssSelector(".fa.fa-times"));
+//        while (closeButtons.size() > 0) {
+//            closeButtons.get(0).click();
+//            (new WebDriverWait(driver,10)).until(ExpectedConditions.stalenessOf(closeButtons.get(0)));
+//            closeButtons = driver.findElements(By.cssSelector(".fa.fa-times"));
+//        }
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//    }
 }

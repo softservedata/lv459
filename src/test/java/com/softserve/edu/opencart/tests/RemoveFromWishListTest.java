@@ -24,7 +24,7 @@ public class RemoveFromWishListTest extends LocalTestRunner {
 
     @Test(dataProvider = "customers")
     public void checkRemoveFromWishList(User validUser) {
-
+        //LOGIN
         MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
         presentationSleep();
 
@@ -33,7 +33,6 @@ public class RemoveFromWishListTest extends LocalTestRunner {
         //ADD TO WISH LIST
         HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
 
-        //WishListPage wishListPage = myAccountPage.gotoWishListRight();
         WishListPage wishListPage = homePage.gotoWishListPage();
         presentationSleep();
 
