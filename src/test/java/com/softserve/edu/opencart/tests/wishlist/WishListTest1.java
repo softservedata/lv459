@@ -1,8 +1,9 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.wishlist;
 
 import com.softserve.edu.opencart.data.*;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
+import com.softserve.edu.opencart.tests.LocalTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

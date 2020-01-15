@@ -21,8 +21,8 @@ public class WishListMessagePage extends WishListPage {
 
     private void initElements() {
         // init elements
-        removeMessage = driver.findElement(By.xpath("//div[@class = 'alert alert-success']//text()"));//TODO not sure how to find text message
-        addToCartMessage = driver.findElement(By.xpath("//div[@class = 'alert alert-success']//text()"));//TODO not sure how to find text message
+        removeMessage = driver.findElement(By.xpath("//div[@class = 'alert alert-success']"));
+        addToCartMessage = driver.findElement(By.xpath("//div[@class = 'alert alert-success']"));
         crossButton = driver.findElement(By.xpath("//div[@class = 'alert alert-success']//button"));
     }
 

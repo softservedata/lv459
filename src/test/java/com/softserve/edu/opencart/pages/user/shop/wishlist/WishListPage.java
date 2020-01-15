@@ -63,13 +63,13 @@ public class WishListPage extends AccountSidebarLoggedPart {
     //  TODO  Business Logic
 
     //add product to Shopping cart
-    public WishListPage addProductToShoppingCart(IProduct product) {
+    public WishListMessagePage addProductToShoppingCart(IProduct product) {
         wishListTableContainerComponent.clickWishListTableComponentAddToCartButtonByName(product); //change names of methods, name of product
         return new WishListMessagePage(driver);
     }
 
     //delete product from Wish List
-    public WishListPage deleteProductFromWishList(IProduct product) {
+    public WishListMessagePage deleteProductFromWishList(IProduct product) {
         wishListTableContainerComponent.clickWishListTableComponentRemoveButtonByName(product); //change names of methods, name of product
         return new WishListMessagePage(driver);
     }

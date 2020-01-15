@@ -1,14 +1,14 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.wishlist;
 
-import com.softserve.edu.opencart.data.*;
-import com.softserve.edu.opencart.pages.user.HomePage;
-import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
-import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
-import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
-import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.data.ProductRepository;
+import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.tests.LocalTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
 
 public class RemoveFromWishListTest extends LocalTestRunner {
 
@@ -23,22 +23,21 @@ public class RemoveFromWishListTest extends LocalTestRunner {
     public void checkRemoveFromWishList(IUser validUser) {
         IProduct macBookProduct = ProductRepository.get().getMacBook();
         //LOGIN
-
         loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
                 .gotoHomePage().addProductToWishList(macBookProduct);
+
+        //TODO Explicit wait
         presentationSleep();
 
-        loadApplication()
+        String actual = loadApplication()
                 .gotoWishListPage()
-                .deleteProductFromWishList(macBookProduct);
+                .deleteProductFromWishList(macBookProduct)
+                .getRemoveMessageText();
 
-        String actualMessage = loadApplication().gotoWishListMessagePage().getRemoveMessageText();
-
-        Assert.assertTrue(actualMessage
-                .equals(PRODUCT_REMOVED));
-        presentationSleep();
+        Assert.assertTrue(actual
+                .contains(PRODUCT_REMOVED));
 
     }
 }
