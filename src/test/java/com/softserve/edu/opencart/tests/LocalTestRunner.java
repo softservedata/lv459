@@ -11,8 +11,6 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 
 public abstract class LocalTestRunner {
 	private final Long ONE_SECOND_DELAY = 1000L;
-	//private final String SERVER_URL = "http://10.26.34.158/opencart/upload/";
-    //environment variable
     private final String SERVER_URL = System.getenv().get("OPENCART_URL");
 	private WebDriver driver;
 
@@ -25,7 +23,7 @@ public abstract class LocalTestRunner {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
-	@AfterClass
+	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		if (driver != null) {
 			driver.quit();
