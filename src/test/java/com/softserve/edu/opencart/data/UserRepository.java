@@ -59,6 +59,25 @@ public final class UserRepository {
                 .setAddress2("address2_5")
                 .build();
     }
+    
+    public IUser getIncorrectUser() {
+        return User.get()
+                .setFirstName("hahaha")
+                .setLastName("hahaha")
+                .setEmail("mail123@gmail.com")
+                .setTelephone("telephone_5")
+                .setAddress1("address1_5")
+                .setCity("city_5")
+                .setPostCode("postCode_5")
+                .setCountry("country_5")
+                .setRegionState("regionState_5")
+                .setPassword("wrongpassword")
+                .setSubscribe(true)
+                .setFax("fax_5")
+                .setCompany("company_5")
+                .setAddress2("address2_5")
+                .build();
+    }
 
     public IUser getAdmin() {
         return User.get()

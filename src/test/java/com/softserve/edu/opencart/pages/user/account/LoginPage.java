@@ -110,8 +110,16 @@ public class LoginPage extends AccountSidebarGuestPart {
         return new MyAccountPage(driver);
     }
 
-    public UnsuccessfulLoginPage unsuccessfulLoginPage(IUser invalidUser){
+    public UnsuccessfulLoginPage unsuccessfulLogin(IUser invalidUser){
         fillLogin(invalidUser);
+        return new UnsuccessfulLoginPage(driver);
+    }
+    
+    public UnsuccessfulLoginPage unsuccessfulLogin(IUser invalidUser, int loginCount){
+        for (int i = 0; i < loginCount; i++) {           
+        fillLogin(invalidUser);
+        initElements();
+        }
         return new UnsuccessfulLoginPage(driver);
     }
 }
