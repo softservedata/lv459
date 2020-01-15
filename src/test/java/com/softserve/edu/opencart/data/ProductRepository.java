@@ -18,7 +18,7 @@ public final class ProductRepository {
         return instance;
     }
 
-    public IProduct getMacBook (){
+    public IProduct getMacBook() {
         return Product.get()
                 .setName("MacBook")
                 .setDescription("Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..")
@@ -26,14 +26,15 @@ public final class ProductRepository {
                 .build();
     }
 
-    public IProduct getIPhone3 (){
+    public IProduct getIPhone3() {
         return Product.get()
                 .setName("iPhone 3")
                 .setDescription("iPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping a nam..")
                 .setPriceDollarExTax("101.00")
                 .build();
     }
-    public IProduct getAppleCinema30 (){
+
+    public IProduct getAppleCinema30() {
         return Product.get()
                 .setName("Apple Cinema 30\"")
                 .setDescription("The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed sp..")
@@ -41,8 +42,14 @@ public final class ProductRepository {
                 .build();
     }
 
-
-//    private ProductRepository() {
+    public IProduct getCustomItem(String name) {
+        return Product.get()
+                .setName(name)
+                .setDescription(new String())
+                .setPriceDollarExTax(new String())
+                .build();
+    }
+    //    private ProductRepository() {
 //    }
 //
 //    public static Product getDefault() {
