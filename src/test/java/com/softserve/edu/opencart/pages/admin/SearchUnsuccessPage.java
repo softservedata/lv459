@@ -2,7 +2,7 @@ package com.softserve.edu.opencart.pages.admin;
 
 import org.openqa.selenium.WebDriver;
 
-public class SearchUnsuccessPage extends SearchCriteriaPart{
+public class SearchUnsuccessPage extends SearchCriteriaPartTop {
 
     public SearchUnsuccessPage(WebDriver driver) {
         super(driver);

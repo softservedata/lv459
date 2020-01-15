@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class MenuPart extends DashboardRefPart{
+public abstract class TopMenuPart extends DashboardRefPart{
 
     private WebElement burgerMenu;
     private WebElement bellButton;
@@ -12,7 +12,7 @@ public class MenuPart extends DashboardRefPart{
     private WebElement lifeRingButton;
     private WebElement logOutButton;
 
-    public MenuPart(WebDriver driver) {
+    public TopMenuPart(WebDriver driver) {
         super(driver);
         initElements();
     }
@@ -65,9 +65,9 @@ public class MenuPart extends DashboardRefPart{
     public void clickLogOutButton() {
         getLogOutButton().click();
     }
-    public DropDownComponent clickComponent() {
-        return new DropDownComponent(driver, By.id("menu-catalog"));
-    }
+//    public DropDownComponent clickComponent() {
+//        return new DropDownComponent(driver, By.id("menu-catalog"));
+//    }
 
 
     // Functional

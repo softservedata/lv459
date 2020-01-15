@@ -15,7 +15,7 @@ import com.softserve.edu.opencart.pages.admin.HomePage;
 
 public abstract class LocalAdminTestRunner {
     private final Long ONE_SECOND_DELAY = 1000L;
-    //private final String SERVER_URL = "http://192.168.43.135/opencart/upload/";
+//    private final String SERVER_URL = "http://192.168.43.135/opencart/upload/" + "admin";
     //environment variable
     private final String SERVER_URL = System.getenv().get("OPENCART_URL") + "admin";
     private static WebDriver driver;

@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public abstract class SearchCriteriaPart extends MenuPart{
+public abstract class SearchCriteriaPartTop extends TopMenuPart {
     
     private WebElement criteriaSearchButton;
 
-    public SearchCriteriaPart(WebDriver driver) {
+    public SearchCriteriaPartTop(WebDriver driver) {
         super(driver);
         initElements();
     }

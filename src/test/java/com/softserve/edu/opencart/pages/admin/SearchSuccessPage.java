@@ -2,7 +2,7 @@ package com.softserve.edu.opencart.pages.admin;
 
 import org.openqa.selenium.WebDriver;
 
-public class SearchSuccessPage extends SearchCriteriaPart {
+public class SearchSuccessPage extends SearchCriteriaPartTop {
 
     private UsersContainerComponent usersContainerComponent;
 

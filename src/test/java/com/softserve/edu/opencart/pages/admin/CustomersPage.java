@@ -4,14 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HomePage extends LeftMenuPart {
+public class CustomersPage extends LeftMenuPart {
 
-    //    private LeftMenuPart burgerMenuComponent;
     private WebElement header;
     private WebElement homePageContent;
     private WebElement footer;
 
-    public HomePage(WebDriver driver) {
+    public CustomersPage(WebDriver driver) {
         super(driver);
         initElements();
     }
@@ -29,20 +28,6 @@ public class HomePage extends LeftMenuPart {
 
         footer = driver.findElement(By.id("footer"));
 
-    }
-
-    // Page Object
-
-    // Functional
-
-    // Business Logic
-
-    public CustomersPage gotoCustomersCustomersPage() {
-        clickCustomers();
-        DropDownCustomers dropDownCustomers = new DropDownCustomers(driver);
-        dropDownCustomers.clickCustomersCustomers();
-        return new CustomersPage(driver);
 
     }
-
 }
