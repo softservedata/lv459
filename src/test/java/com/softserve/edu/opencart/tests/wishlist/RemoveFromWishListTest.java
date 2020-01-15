@@ -8,9 +8,7 @@ import com.softserve.edu.opencart.tests.LocalTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.util.concurrent.TimeUnit;
-
 import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
 
 public class RemoveFromWishListTest extends LocalTestRunner {
@@ -33,8 +31,9 @@ public class RemoveFromWishListTest extends LocalTestRunner {
 
         //TODO Explicit wait
         //driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        //
-        //
+        //(new WebDriverWait(driver, 10))
+        //                .until(ExpectedConditions.());
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         presentationSleep();
 
         String actual = loadApplication()

@@ -1,6 +1,7 @@
 package com.softserve.edu.opencart.tests.wishlist;
 
 import com.softserve.edu.opencart.data.*;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
 import com.softserve.edu.opencart.tests.LocalTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -22,21 +23,27 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
         IProduct macBookProduct = ProductRepository.get().getMacBook();
         //LOGIN
 
-        loadApplication()
+                loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
-                .gotoHomePage().addProductToWishList(macBookProduct);
+                .gotoHomePage()
+                .addProductToWishList(macBookProduct);
 
         //TODO Explicit wait
         presentationSleep();
 
-        String actual = loadApplication()
+        //add to shopping cart
+        WishListMessagePage wishListMessagePage = loadApplication()
                 .gotoWishListPage()
-                .addProductToShoppingCart(macBookProduct)
-                .getAddToCartMessageText();
-
-        Assert.assertTrue(actual
+                .addProductToShoppingCart(macBookProduct);
+        //check message
+        Assert.assertTrue(wishListMessagePage.getAddToCartMessageText()
                 .contains(String.format(PRODUCT_ADDED_TO_CART, "MacBook")));
+
+        //clear wish list after test
+        wishListMessagePage.removeAllProductsFromWishList();
+
+
 
     }
 }
