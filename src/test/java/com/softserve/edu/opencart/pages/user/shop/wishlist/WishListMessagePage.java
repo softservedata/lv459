@@ -49,7 +49,6 @@ public class WishListMessagePage extends WishListPage {
         return getRemoveMessage().getText();
     }
 
-
     // addToCartMessage
     public WebElement getAddToCartMessage() {
         return addToCartMessage;
