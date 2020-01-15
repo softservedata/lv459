@@ -21,6 +21,7 @@ public class EmptyWisListTest extends LocalTestRunner {
     @Test(dataProvider = "customers")
     public void checkWishList(IUser validUser) {
 
+        //TODO
         MyAccountPage myAccountPage = loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser);
@@ -33,5 +34,6 @@ public class EmptyWisListTest extends LocalTestRunner {
                .getLabelText()
                .equals(EmptyWishListPage.EMPTY_WISH_LIST_MESSAGE));
         presentationSleep();
+
     }
 }

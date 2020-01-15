@@ -2,10 +2,7 @@ package com.softserve.edu.opencart.pages.user.common;
 
 import java.util.List;
 
-import com.softserve.edu.opencart.data.ApplicationStatus;
-import com.softserve.edu.opencart.data.Currencies;
-import com.softserve.edu.opencart.data.IProduct;
-import com.softserve.edu.opencart.data.User;
+import com.softserve.edu.opencart.data.*;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -347,7 +344,7 @@ public abstract class TopPart {
         setSearchTopField(searchText);
     }
 
-    protected void defaultLogin(User user) {
+    protected void defaultLogin(IUser user) {
         if (!ApplicationStatus.get().isLogged()) {
             new LoginPage(driver)
                     .fillLogin(user);
@@ -441,7 +438,7 @@ public abstract class TopPart {
         return new EmptyWishListPage(driver);
     }
 
-    public WishListPage gotoWishListPage(User user) {
+    public WishListPage gotoWishListPage(IUser user) {
         clickWishList();
         defaultLogin(user);
         return new WishListPage(driver);

@@ -29,22 +29,11 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
 
         IProduct macBookProduct = ProductRepository.get().getIPhone3();
 
-        //ADD TO WISH LIST
-        HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
 
-        //WishListPage wishListPage = myAccountPage.gotoWishListRight();
-        WishListPage wishListPage = homePage.gotoWishListPage();
-        presentationSleep();
-
-        //ADD TO SHOPPING CART FROM WISH LIST
-        wishListPage.addProductToShoppingCart(macBookProduct);;
-
-        WishListMessagePage wishListMessagePage = wishListPage.gotoWishListMessagePage();
-
-        Assert.assertTrue(wishListMessagePage
-                .getAddToCartMessageText()
-                .equals(PRODUCT_ADDED_TO_CART));
-        presentationSleep();
+//        Assert.assertTrue(wishListMessagePage
+//                .getAddToCartMessageText()
+//                .equals(PRODUCT_ADDED_TO_CART));
+//        presentationSleep();
 
     }
 }

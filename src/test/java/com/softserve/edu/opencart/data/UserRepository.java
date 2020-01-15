@@ -32,7 +32,8 @@ public final class UserRepository {
                 .setPostCode("postCode_5")
                 .setCountry("country_5")
                 .setRegionState("regionState_5")
-                .setPassword(System.getenv().get("MY_PASSWORD"))
+                //.setPassword(System.getenv().get("MY_PASSWORD"))
+                .setPassword("qwerty")
                 .setSubscribe(true)
                 .setFax("fax_5")
                 .setCompany("company_5")
@@ -58,4 +59,5 @@ public final class UserRepository {
                 .setAddress2("address2_5")
                 .build();
     }
+
 }
