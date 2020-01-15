@@ -23,19 +23,21 @@ public class RemoveFromWishListTest extends LocalTestRunner {
     public void checkRemoveFromWishList(IUser validUser) {
         IProduct macBookProduct = ProductRepository.get().getMacBook();
         //LOGIN
+
         loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
-                .gotoHomePage()
-                .addProductToWishList(macBookProduct)
-                .gotoWishListPage()
-                .deleteProductFromWishList(macBookProduct);
+                .gotoHomePage().addProductToWishList(macBookProduct);
         presentationSleep();
 
+        loadApplication()
+                .gotoWishListPage()
+                .deleteProductFromWishList(macBookProduct);
 
-//        Assert.assertTrue(wishListMessagePage
-//                .getRemoveMessageText()
-//                .equals(PRODUCT_REMOVED));
+        String actualMessage = loadApplication().gotoWishListMessagePage().getRemoveMessageText();
+
+        Assert.assertTrue(actualMessage
+                .equals(PRODUCT_REMOVED));
         presentationSleep();
 
     }
