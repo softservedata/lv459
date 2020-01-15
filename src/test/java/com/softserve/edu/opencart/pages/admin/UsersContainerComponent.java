@@ -7,13 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.opencart.pages.user.common.ProductComponent;
-
 public class UsersContainerComponent {
+    
     private final String USERS_COMPONENT_CSSSELECTOR = ".table.table-bordered.table-hover tbody tr";
     protected WebDriver driver;
     //
-    private List<UserComponent> productComponents;
+    private List<UserComponent> userComponents;
 
     public UsersContainerComponent(WebDriver driver) {
         this.driver = driver;
@@ -22,10 +21,10 @@ public class UsersContainerComponent {
 
     private void initElements() {
         // init elements
-        productComponents = new ArrayList<>();
+        userComponents = new ArrayList<>();
         for (WebElement current : driver.findElements(By.cssSelector(USERS_COMPONENT_CSSSELECTOR)))
         {
-            productComponents.add(new UserComponent(current));
+            userComponents.add(new UserComponent(current));
         }
     }
 
@@ -35,7 +34,7 @@ public class UsersContainerComponent {
     public List<UserComponent> getUserComponents()
     {
 
-        return productComponents;
+        return userComponents;
     }
 
     // Functional

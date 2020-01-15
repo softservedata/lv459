@@ -95,6 +95,9 @@ public class ProductsDisplayComponent extends ProductsContainerComponent {
 
 	// Functional
 
+	public Boolean statusListViewButton() {
+		return getListViewButton().getAttribute("class").equals("btn btn-default active");
+	}
 	// Business Logic
 
 	public ProductsDisplayComponent viewProductsByList() {

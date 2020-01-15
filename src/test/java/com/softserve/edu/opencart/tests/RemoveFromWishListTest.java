@@ -1,9 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
-import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.data.ProductRepository;
-import com.softserve.edu.opencart.data.User;
-import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.data.*;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
@@ -23,26 +20,24 @@ public class RemoveFromWishListTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "customers")
-    public void checkRemoveFromWishList(User validUser) {
+    public void checkRemoveFromWishList(IUser validUser) {
+        IProduct macBookProduct = ProductRepository.get().getMacBook();
+        //LOGIN
 
-        MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
+        loadApplication()
+                .gotoLoginPage()
+                .successfulLogin(validUser)
+                .gotoHomePage().addProductToWishList(macBookProduct);
         presentationSleep();
 
-        Product macBookProduct = ProductRepository.getIPhone3();
+        loadApplication()
+                .gotoWishListPage()
+                .deleteProductFromWishList(macBookProduct);
 
-        //ADD TO WISH LIST
-        HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
+        String actualMessage = loadApplication().gotoWishListMessagePage().getRemoveMessageText();
 
-        //WishListPage wishListPage = myAccountPage.gotoWishListRight();
-        WishListPage wishListPage = homePage.gotoWishListPage();
-        presentationSleep();
-
-        //REMOVE FROM WISH LIST
-        wishListPage.deleteProductFromWishList(macBookProduct);;
-
-        WishListMessagePage wishListMessagePage = wishListPage.gotoWishListMessagePage();
-
-        Assert.assertTrue(wishListMessagePage.getRemoveMessageText().equals(PRODUCT_REMOVED));
+        Assert.assertTrue(actualMessage
+                .equals(PRODUCT_REMOVED));
         presentationSleep();
 
     }
