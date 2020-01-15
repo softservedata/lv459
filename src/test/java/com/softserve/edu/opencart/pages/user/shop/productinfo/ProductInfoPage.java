@@ -1,5 +1,13 @@
 package com.softserve.edu.opencart.pages.user.shop.productinfo;
 
-public class ProductInfoPage {
+import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
+import org.openqa.selenium.WebDriver;
+
+public class ProductInfoPage extends BreadCrumbPart {
+
+    public ProductInfoPage(WebDriver driver){
+        super(driver);
+    }
+
 
 }
