@@ -5,12 +5,12 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
-import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_ADDED_TO_CART;
 
-public class RemoveFromWishListTest extends LocalTestRunner {
+public class AddToCartFromWishListTest extends LocalTestRunner {
 
     @DataProvider  //(parallel = true)
     public Object[][] customers() {
@@ -20,8 +20,8 @@ public class RemoveFromWishListTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "customers")
-    public void checkRemoveFromWishList(IUser validUser) {
-        //LOGIN
+    public void checkAddToCartFromWishList(IUser validUser) {
+
         MyAccountPage myAccountPage = loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser);
@@ -30,21 +30,22 @@ public class RemoveFromWishListTest extends LocalTestRunner {
         IProduct macBookProduct = ProductRepository.get().getIPhone3();
 
         //ADD TO WISH LIST
-        HomePage homePage = loadApplication()
-                .addProductToWishList(macBookProduct);
+        HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
 
+        //WishListPage wishListPage = myAccountPage.gotoWishListRight();
         WishListPage wishListPage = homePage.gotoWishListPage();
         presentationSleep();
 
-        //REMOVE FROM WISH LIST
-        wishListPage.deleteProductFromWishList(macBookProduct);;
+        //ADD TO SHOPPING CART FROM WISH LIST
+        wishListPage.addProductToShoppingCart(macBookProduct);;
 
         WishListMessagePage wishListMessagePage = wishListPage.gotoWishListMessagePage();
 
         Assert.assertTrue(wishListMessagePage
-                .getRemoveMessageText()
-                .equals(PRODUCT_REMOVED));
+                .getAddToCartMessageText()
+                .equals(PRODUCT_ADDED_TO_CART));
         presentationSleep();
 
     }
 }
+

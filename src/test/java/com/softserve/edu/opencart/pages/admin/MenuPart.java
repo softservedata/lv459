@@ -46,6 +46,9 @@ public class MenuPart extends DashboardRefPart {
     public WebElement getLogOutButton() {
         return logOutButton;
     }
+    public DropDownComponent getDropDownComponent() {
+        return new DropDownComponent(driver, By.id("menu-catalog"));
+    }
 
     public void clickBurgerMenu() {
         getBurgerMenu().click();
@@ -65,6 +68,9 @@ public class MenuPart extends DashboardRefPart {
 
     public void clickLogOutButton() {
         getLogOutButton().click();
+    }
+    public DropDownComponent clickComponent() {
+        return new DropDownComponent(driver, By.id("menu-catalog"));
     }
 
 

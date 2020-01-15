@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.user.account;
 
+import com.softserve.edu.opencart.data.IUser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -96,7 +97,7 @@ public class LoginPage extends AccountSidebarGuestPart {
         setPassword(password);
     }
 
-    public void fillLogin(User user) {
+    public void fillLogin(IUser user) {
         enterEmail(user.getEmail());
         enterPassword(user.getPassword());
         clickLoginButton();
@@ -104,12 +105,12 @@ public class LoginPage extends AccountSidebarGuestPart {
 
     // Business Logic
 
-    public MyAccountPage successfulLogin(User validUser){
+    public MyAccountPage successfulLogin(IUser validUser){
         fillLogin(validUser);
         return new MyAccountPage(driver);
     }
 
-    public UnsuccessfulLoginPage unsuccessfulLoginPage(User invalidUser){
+    public UnsuccessfulLoginPage unsuccessfulLoginPage(IUser invalidUser){
         fillLogin(invalidUser);
         return new UnsuccessfulLoginPage(driver);
     }

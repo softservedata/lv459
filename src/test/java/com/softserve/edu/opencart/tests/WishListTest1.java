@@ -1,16 +1,11 @@
 package com.softserve.edu.opencart.tests;
 
-import com.softserve.edu.opencart.data.User;
-import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.data.*;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
-
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
 
 public class WishListTest1 extends LocalTestRunner {
@@ -18,25 +13,34 @@ public class WishListTest1 extends LocalTestRunner {
             @DataProvider  //(parallel = true)
             public Object[][] customers() {
             return new Object[][] {
-                    { UserRepository.getBohdanaUser() },
+                    { UserRepository.get().getHahaha() },//TODO
             };
         }
-    @Test
-    public void checkWishList(User validUser) {
 
-        MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
+        @Test(dataProvider = "customers")
+        public void checkWishList(IUser validUser) {
+
+        MyAccountPage myAccountPage = loadApplication()
+                .gotoLoginPage()
+                .successfulLogin(validUser);
         presentationSleep();
 
-        Product macBookProduct = ProductRepository.getMacBook();
+
+        IProduct macBookProduct = ProductRepository.get().getMacBook();
 
         //ADD TO WISH LIST
-        HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
+        //TODO
+        HomePage homePage = loadApplication()
+                .addProductToWishList(macBookProduct);
 
         WishListPage wishListPage = homePage.gotoWishListPage();
         presentationSleep();
 
        // Check if product was added
-        Assert.assertTrue(wishListPage.getProductName(macBookProduct).equals("iPhone"));
+        Assert.assertTrue(wishListPage
+                .getProductName(macBookProduct)
+                .equals("MacBook"));
         presentationSleep();
+
     }
 }

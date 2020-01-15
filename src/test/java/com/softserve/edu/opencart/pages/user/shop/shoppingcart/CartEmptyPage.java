@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class CartEmptyPage extends BreadCrumbPart {
 
+    public static final String EMPTY_SHOPPING_CART_MESSAGE = "Your shopping cart is empty!";
     private WebElement Empty_Shopping_Cart_Name;
     private WebElement Empty_Shopping_Cart_Message;
 	private WebElement Continue_Button;

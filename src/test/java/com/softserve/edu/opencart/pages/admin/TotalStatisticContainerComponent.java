@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 
 public class TotalStatisticContainerComponent {
     //TODO search selector is incorrect
-    private final String STATISTIC_COMPONENT_CSSSELECTOR = ".product-layout";
+    private final String STATISTIC_COMPONENT_CSSSELECTOR = ".col-lg-3.col-md-3.col-sm-6";
     
     protected WebDriver driver;
     //

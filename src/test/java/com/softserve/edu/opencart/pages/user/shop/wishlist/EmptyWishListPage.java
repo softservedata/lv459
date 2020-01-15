@@ -38,12 +38,10 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
         getContinueButton().click();
     }
 
-    //functional
 
     //BL
 
     //go to My Account Page
-
     public MyAccountPage goToMyAccountPage() {
         clickContinueButton();
         return new MyAccountPage(driver);

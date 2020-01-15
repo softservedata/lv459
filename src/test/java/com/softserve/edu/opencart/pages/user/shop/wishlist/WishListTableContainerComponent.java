@@ -2,8 +2,7 @@ package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListTableComponent;
+import com.softserve.edu.opencart.data.IProduct;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,7 +22,7 @@ public class WishListTableContainerComponent {
     private void initElements() {
         // init elements
         wishListTableComponents = new ArrayList<>();
-        //find all table products and add to container
+        //finds all table products and adds to table container
         for (WebElement current : driver.findElements(By.xpath(PRODUCT_TABLE_COMPONENT_CSS_SELECTOR))) {
             wishListTableComponents.add(new WishListTableComponent(current));
         }
@@ -43,7 +42,7 @@ public class WishListTableContainerComponent {
         return getWishListTableComponents().size();
     }
 
-    //Get all names from table
+    //get all names from table
     public List<String> getWishListTableComponentNames() {
         List<String> wishListTableComponentNames = new ArrayList<>();
         for (WishListTableComponent current : getWishListTableComponents()) {
@@ -52,8 +51,8 @@ public class WishListTableContainerComponent {
         return wishListTableComponentNames;
     }
 
-    //Get table component by name
-    protected WishListTableComponent getWishListTableComponentByName(Product productName) {
+    //get table component by name
+    protected WishListTableComponent getWishListTableComponentByName(IProduct productName) {
         WishListTableComponent result = null;
         for (WishListTableComponent current : getWishListTableComponents()) {
             if (current.getNameText().toLowerCase()
@@ -71,28 +70,23 @@ public class WishListTableContainerComponent {
     }
 
 
-    // TODO Change to Product
-    public String getWishListTableComponentPriceByName(Product productName)
+    public String getWishListTableComponentPriceByName(IProduct productName)
     {
         return getWishListTableComponentByName(productName).getUnitPriceText();
     }
 
-   // TODO Change to Product
-    public String getWishListTableComponentModelByName(Product productName) {
+    public String getWishListTableComponentModelByName(IProduct productName) {
         return getWishListTableComponentByName(productName).getModelText();
     }
 
-    // TODO Change to Product
-    public void clickWishListTableComponentAddToCartButtonByName(Product productName) {
+    public void clickWishListTableComponentAddToCartButtonByName(IProduct productName) {
         getWishListTableComponentByName(productName).clickAddToCartButton();
     }
-    // TODO Change to Product
-    public void clickWishListTableComponentRemoveButtonByName(Product productName) {
+    public void clickWishListTableComponentRemoveButtonByName(IProduct productName) {
         getWishListTableComponentByName(productName).clickRemoveFromWishListButton();
     }
 
-    // TODO Change to Product
-    public void clickWishListTableComponentOnName(Product productName) {
+    public void clickWishListTableComponentOnName(IProduct productName) {
         getWishListTableComponentByName(productName).clickProductName();
     }
 
@@ -100,19 +94,19 @@ public class WishListTableContainerComponent {
 
 
 
-//    public String getProductComponentPriceByProduct(Product product)
+//    public String getProductComponentPriceByProduct(IProduct product)
 //    {
 //        return getProductComponentPriceByName(product.getName());
 //    }
 //
-//    public String getProductComponentDescriptionByProduct(Product product)
+//    public String getProductComponentDescriptionByProduct(IProduct product)
 //    {
 //        return getProductComponentDescriptionByName(product.getName());
 //    }
 //
 //
         // Business Logic
-//    public WishListTableComponent getProductComponentByName(Product product)
+//    public WishListTableComponent getProductComponentByName(IProduct product)
 //    {
 //        return getProductComponentByName(product.getName());
 //    }
