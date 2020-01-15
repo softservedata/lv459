@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
+import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
@@ -18,15 +19,19 @@ public class EmptyWisListTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "customers")
-    public void checkWishList(User validUser) {
+    public void checkWishList(IUser validUser) {
 
-        MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
+        MyAccountPage myAccountPage = loadApplication()
+                .gotoLoginPage()
+                .successfulLogin(validUser);
         presentationSleep();
 
         EmptyWishListPage  emptyWishListPage =  myAccountPage.gotoEmptyWishListPage();
         presentationSleep();
 
-       Assert.assertTrue(emptyWishListPage.getLabelText().equals(EmptyWishListPage.EMPTY_WISH_LIST_MESSAGE));
+       Assert.assertTrue(emptyWishListPage
+               .getLabelText()
+               .equals(EmptyWishListPage.EMPTY_WISH_LIST_MESSAGE));
         presentationSleep();
     }
 }

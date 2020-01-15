@@ -1,9 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
-import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.data.ProductRepository;
-import com.softserve.edu.opencart.data.User;
-import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.data.*;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
@@ -23,17 +20,19 @@ public class RemoveFromWishListTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "customers")
-    public void checkRemoveFromWishList(User validUser) {
-
-        MyAccountPage myAccountPage = loadApplication().gotoLoginPage().successfulLogin(validUser);
+    public void checkRemoveFromWishList(IUser validUser) {
+        //LOGIN
+        MyAccountPage myAccountPage = loadApplication()
+                .gotoLoginPage()
+                .successfulLogin(validUser);
         presentationSleep();
 
-        Product macBookProduct = ProductRepository.getIPhone3();
+        IProduct macBookProduct = ProductRepository.get().getIPhone3();
 
         //ADD TO WISH LIST
-        HomePage homePage = loadApplication().addProductToWishList(macBookProduct);
+        HomePage homePage = loadApplication()
+                .addProductToWishList(macBookProduct);
 
-        //WishListPage wishListPage = myAccountPage.gotoWishListRight();
         WishListPage wishListPage = homePage.gotoWishListPage();
         presentationSleep();
 
@@ -42,7 +41,9 @@ public class RemoveFromWishListTest extends LocalTestRunner {
 
         WishListMessagePage wishListMessagePage = wishListPage.gotoWishListMessagePage();
 
-        Assert.assertTrue(wishListMessagePage.getRemoveMessageText().equals(PRODUCT_REMOVED));
+        Assert.assertTrue(wishListMessagePage
+                .getRemoveMessageText()
+                .equals(PRODUCT_REMOVED));
         presentationSleep();
 
     }

@@ -2,15 +2,15 @@ package com.softserve.edu.opencart.pages.user.common;
 
 import java.util.List;
 
+import com.softserve.edu.opencart.data.ApplicationStatus;
+import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.opencart.data.ApplicationStatus;
-import com.softserve.edu.opencart.data.Currencies;
-import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.AccountLogoutPage;
 import com.softserve.edu.opencart.pages.user.account.LoginPage;
@@ -364,7 +364,7 @@ public abstract class TopPart {
     }
 
     //public SearchSuccessPage successfulSearch(String searchText) {
-    public SearchSuccessPage successfulSearch(Product product) {
+    public SearchSuccessPage successfulSearch(IProduct product) {
         //fillSearchTopField(searchText);
         fillSearchTopField(product.getName());
         clickSearchTopButton();
