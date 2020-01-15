@@ -26,7 +26,7 @@ public class CustomersPage extends LeftMenuPart {
         filterByEmailField = driver.findElement(By.cssSelector("input#input-email"));
         filterButton = driver.findElement(By.cssSelector("button#button-filter"));
 
-        //TODO container and component
+        //TODO CustomersContainer and CustomersComponent
         // table with results
         //        ("table.table.table-bordered.table-hover")
 
