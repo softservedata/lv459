@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -22,6 +23,7 @@ public abstract class EpizyUserTestRunner {
 	public void beforeClass(ITestContext context) {
 		System.setProperty("webdriver.chrome.driver",
 				EpizyUserTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
+		// TODO Check Exist ChromeDriver
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -35,7 +37,7 @@ public abstract class EpizyUserTestRunner {
 		}
 	}
 
-	@AfterClass
+	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		if (driver != null) {
 			driver.quit();
@@ -50,8 +52,12 @@ public abstract class EpizyUserTestRunner {
 
 	//@After
 	@AfterMethod
-	public void afterMethod() {
+	public void afterMethod(ITestResult result) {
 		// TODO Logout
+		if (!result.isSuccess()) {
+			System.out.println("***Test " + result.getName() + " ERROR");
+			// Take Screenshot, save sourceCode, save to log, prepare report, Return to previous state, logout, etc.
+		}
 		// driver.get(SERVER_URL);
 	}
 

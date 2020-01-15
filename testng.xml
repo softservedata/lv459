@@ -2,8 +2,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="SuiteOpenCart">
-	<parameter name="url" value="http://10.26.34.169/opencart/upload/" />
-<!-- 	<parameter name="url" value="http://taqc-opencart.epizy.com" /> -->
+<!-- 	<parameter name="url" value="http://10.26.34.169/opencart/upload/" /> -->
+	<parameter name="url" value="http://taqc-opencart.epizy.com" />
 	<parameter name="browsername" value="chrome" />
 
 	<test name="TestLogin">

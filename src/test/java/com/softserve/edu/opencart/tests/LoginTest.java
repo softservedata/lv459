@@ -10,6 +10,7 @@ import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.EditAccountPage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
+import com.softserve.edu.opencart.tools.ListUtils;
 
 public class LoginTest extends EpizyUserTestRunner {
 
@@ -22,7 +23,14 @@ public class LoginTest extends EpizyUserTestRunner {
 		};
 	}
 
-	@Test(dataProvider = "customers")
+	@DataProvider // (parallel = true)
+	public Object[][] externalCustomers() {
+		//return ListUtils.toMultiArray(UserRepository.get().fromCsv());
+		return ListUtils.toMultiArray(UserRepository.get().fromExcel());
+	}
+
+	//@Test(dataProvider = "customers")
+	@Test(dataProvider = "externalCustomers")
 	public void checkSuccessful(IUser validUser) throws Exception {
 		// Test Data
 		// User validUser = UserRepository.getDefault();
