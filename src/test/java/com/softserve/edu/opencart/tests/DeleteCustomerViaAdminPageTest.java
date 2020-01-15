@@ -5,16 +5,17 @@ import com.softserve.edu.opencart.pages.admin.CustomersPage;
 import com.softserve.edu.opencart.pages.admin.HomePage;
 import org.testng.annotations.Test;
 
-public class AdminPageTest extends LocalAdminTestRunner {
+public class DeleteCustomerViaAdminPageTest extends LocalAdminTestRunner {
 
     @Test
     public void sampleTest() {
-        HomePage homepage = loadApplication().successfulLogin(AdminRepo.getValidAdmin());
+        CustomersPage homepage = loadApplication()
+                .successfulLogin(AdminRepo.getValidAdmin())
+                .gotoCustomersCustomersPage();
 
-        presentationSleep(1);
+        presentationSleep(2);
 
-        CustomersPage customersPage = homepage.gotoCustomersCustomersPage();
 
-        presentationSleep(4);
+
     }
 }

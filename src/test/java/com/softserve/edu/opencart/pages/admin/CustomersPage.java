@@ -7,8 +7,12 @@ import org.openqa.selenium.WebElement;
 public class CustomersPage extends LeftMenuPart {
 
     private WebElement header;
-    private WebElement homePageContent;
     private WebElement footer;
+    private WebElement deleteButton;
+    private WebElement filterByEmailField;
+    private WebElement filterButton;
+    private CustomersContainer customersList;
+
 
     public CustomersPage(WebDriver driver) {
         super(driver);
@@ -16,18 +20,23 @@ public class CustomersPage extends LeftMenuPart {
     }
 
     private void initElements() {
+
         // init elements
+        deleteButton = driver.findElement(By.cssSelector("button.btn.btn-danger"));
+        filterByEmailField = driver.findElement(By.cssSelector("input#input-email"));
+        filterButton = driver.findElement(By.cssSelector("button#button-filter"));
 
-        //        burgerMenuComponent = new LeftMenuPart(driver);
-        header = driver.findElement(By.cssSelector(".page-header"));
-        homePageContent = driver.findElement(By.cssSelector(
-                "#content>.container-fluid")); // contains below elements:
-        //        1чотири вікна квадрати
-        //        2карта світу + аналітика
-        //        3активність і останні замовлення
+        // table with results
+        //        ("table.table.table-bordered.table-hover")
 
-        footer = driver.findElement(By.id("footer"));
+        // results
+        // <td class="text-center">
+        // <input type="checkbox" name="selected[]" value="71">
+        // </td> ...
 
+
+        // no results
+        //        <td class="text-center" colspan="8">No results!</td>
 
     }
 }

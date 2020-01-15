@@ -16,6 +16,8 @@ public abstract class LeftMenuPart extends TopMenuPart {
     protected WebElement system;
     protected WebElement reports;
     protected WebElement stats;
+    protected WebElement header;
+    protected WebElement footer;
 
     protected DropDownComponent dropDownCustomer;
 
@@ -26,15 +28,17 @@ public abstract class LeftMenuPart extends TopMenuPart {
 
     private void initElements() {
         // init elements
+        header = driver.findElement(By.cssSelector(".page-header"));
+        footer = driver.findElement(By.id("footer"));
 
-        if (driver.findElements(By.cssSelector(("nav#column-left.active")))
-                .isEmpty()) {
+        if (driver.findElement(By.cssSelector(("nav#column-left"))).getAttribute("class").isEmpty()) {
+            //Expand 'burger menu'
             driver.findElement(By.cssSelector(("#button-menu"))).click();
         }
 
         customers = driver.findElement(By.id("menu-customer"));
 
-        // TODO later add other li
+        // TODO here is added customer menu tab. later add other 'li'
         //        WebElement objElement = driver.findElement(By.cssSelector
         //
         // ("tagType[attributeName1=attributeValue1][attributeName2
