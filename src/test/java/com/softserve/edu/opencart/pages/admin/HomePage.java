@@ -2,12 +2,13 @@ package com.softserve.edu.opencart.pages.admin;
 
 import org.openqa.selenium.WebDriver;
 
-public class HomePage extends MenuPart{
+public class HomePage extends MenuPart {
 
     public HomePage(WebDriver driver) {
         super(driver);
         initElements();
     }
+
     private void initElements() {
         // init elements
     }
@@ -15,7 +16,7 @@ public class HomePage extends MenuPart{
     // Page Object
 
     // firstNameField
-  
+
 
     // Functional
 

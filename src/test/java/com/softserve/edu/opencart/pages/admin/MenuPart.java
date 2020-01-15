@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class MenuPart extends DashboardRefPart{
+public class MenuPart extends DashboardRefPart {
 
     private WebElement burgerMenu;
     private WebElement bellButton;
@@ -48,17 +48,21 @@ public class MenuPart extends DashboardRefPart{
     }
 
     public void clickBurgerMenu() {
-         getBurgerMenu().click();
+        getBurgerMenu().click();
     }
+
     public void clickBellButton() {
         getBellButton().click();
     }
+
     public void clickTopMenuHomeButton() {
         getTopMenuHomeButton().click();
     }
+
     public void clickLifeRingButton() {
         getLifeRingButton().click();
     }
+
     public void clickLogOutButton() {
         getLogOutButton().click();
     }
@@ -68,7 +72,7 @@ public class MenuPart extends DashboardRefPart{
 
     // Business Logic
 
-    public LoginPage LogOut(){
+    public LoginPage LogOut() {
         clickLogOutButton();
         return new LoginPage(driver);
     }
