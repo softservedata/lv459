@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.softserve.edu.opencart.data.IUser;
 
-public class MainPage {
+public class MainEmailPage {
     
     private WebDriver driver;
     private WebElement mailWidget;
@@ -18,7 +18,7 @@ public class MainPage {
     private WebElement inputPassword;
     private WebElement buttonSubmit;
 
-    public MainPage(WebDriver driver){
+    public MainEmailPage(WebDriver driver){
         this.driver = driver;
         initElements();
     }

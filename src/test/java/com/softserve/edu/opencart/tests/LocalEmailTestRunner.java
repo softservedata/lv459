@@ -8,11 +8,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-import com.softserve.edu.ukrNet.MainPage;
+import com.softserve.edu.opencart.pages.user.HomePage;
+import com.softserve.edu.ukrNet.MainEmailPage;
 
 public class LocalEmailTestRunner {
 
-    private final String SERVER_URL = "https://www.ukr.net/";
+    private final String EMAIL_URL = "https://www.ukr.net/";
+    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
     private static WebDriver driver;
 
     @BeforeClass
@@ -36,7 +38,12 @@ public class LocalEmailTestRunner {
         driver.get(SERVER_URL);
     }
 
-    public MainPage loadApplication() {
-        return new MainPage(driver);
+    public HomePage loadApplication() {
+        return new HomePage(driver);
+    }
+    
+    public MainEmailPage loadEmailPage() {
+        driver.get(EMAIL_URL);
+        return new MainEmailPage(driver);
     }
 }
