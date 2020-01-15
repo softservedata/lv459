@@ -151,7 +151,7 @@
 					<suiteXmlFiles>
 						<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
 						<!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
-						<!-- <suiteXmlFile>lv459.xml</suiteXmlFile> -->
+						<suiteXmlFile>lv459.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
 				</configuration>

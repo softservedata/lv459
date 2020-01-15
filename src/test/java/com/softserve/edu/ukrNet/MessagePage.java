@@ -4,11 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class MessagePage extends MenuPart {
+public class MessagePage {
     private WebElement restoreLink;
+    private WebDriver driver;
 
     public MessagePage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
         initElements();
     }
 

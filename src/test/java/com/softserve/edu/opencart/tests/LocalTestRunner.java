@@ -14,10 +14,10 @@ public abstract class LocalTestRunner {
 	//private final String SERVER_URL = "http://192.168.43.135/opencart/upload/";
     //environment variable
     private final String SERVER_URL = System.getenv().get("OPENCART_URL");
-	private static WebDriver driver;
+	private WebDriver driver;
 
 	@BeforeClass
-	public static void beforeClass() {
+	public void beforeClass() {
 		System.setProperty("webdriver.chrome.driver",
 				LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
 		driver = new ChromeDriver();
@@ -26,7 +26,7 @@ public abstract class LocalTestRunner {
 	}
 
 	@AfterClass
-	public static void afterClass() {
+	public void afterClass() {
 		if (driver != null) {
 			driver.quit();
 		}

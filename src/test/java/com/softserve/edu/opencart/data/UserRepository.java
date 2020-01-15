@@ -58,4 +58,23 @@ public final class UserRepository {
                 .setAddress2("address2_5")
                 .build();
     }
+    
+    public IUser getEmailUser() {
+        return User.get()
+                .setFirstName("")
+                .setLastName("")
+                .setEmail("lv459@ukr.net")
+                .setTelephone("")
+                .setAddress1("")
+                .setCity("")
+                .setPostCode("")
+                .setCountry("")
+                .setRegionState("")
+                .setPassword(System.getenv().get("OPENCART_ADMIN_PASSWORD"))
+                .setSubscribe(true)
+                .setFax("")
+                .setCompany("")
+                .setAddress2("")
+                .build();
+    }
 }
