@@ -4,10 +4,7 @@
 <suite name="Suite1">
     <test thread-count="5" name="Test11">
         <classes>
-            <class name="com.softserve.edu.opencart.tests.wishlist.EmptyWisListTest">
-            <methods>
-            </methods>
-        </class>
+         
 <!--            <class name="com.softserve.edu.opencart.tests.RestorePasswordTest">-->
 <!--                <methods>-->
 <!--                    <include name="changePasswordTest" />-->
