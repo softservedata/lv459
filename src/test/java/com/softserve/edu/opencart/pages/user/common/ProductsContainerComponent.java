@@ -3,11 +3,12 @@ package com.softserve.edu.opencart.pages.user.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.softserve.edu.opencart.data.IProduct;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.data.IProduct;
 
 public class ProductsContainerComponent {
     public final String PRODUCT_NOT_FOUND = "There is no product that matches the search criteria.";
@@ -78,43 +79,39 @@ public class ProductsContainerComponent {
         return result;
     }
 
-    //TODO Change to Product
     public String getProductComponentPriceByName(String productName)
     {
         return getProductComponentByName(productName).getPriceText();
     }
 
-    // TODO Change to Product
     public String getProductComponentDescriptionByName(String productName)
     {
         return getProductComponentByName(productName).getPartialDescriptionText();
     }
 
-    // TODO Change to Product
-    public void clickProductComponentAddToCartButtonByName(Product product)
+    public void clickProductComponentAddToCartButtonByName(IProduct product)
     {
         getProductComponentByName(product).clickAddToCartButton();
     }
 
-    // TODO Change to Product
-    public void clickProductComponentAddToWishButtonByName(Product product)
+    public void clickProductComponentAddToWishButtonByName(IProduct product)
     {
         getProductComponentByName(product).clickAddToWishButton();
     }
 
-    public String getProductComponentPriceByProduct(Product product)
+    public String getProductComponentPriceByProduct(IProduct product)
     {
         return getProductComponentPriceByName(product.getName());
     }
 
-    public String getProductComponentDescriptionByProduct(Product product)
+    public String getProductComponentDescriptionByProduct(IProduct product)
     {
         return getProductComponentDescriptionByName(product.getName());
     }
 
     // Business Logic
 
-    public ProductComponent getProductComponentByName(Product product) 
+    public ProductComponent getProductComponentByName(IProduct product)
     {
     	return getProductComponentByName(product.getName());
     }

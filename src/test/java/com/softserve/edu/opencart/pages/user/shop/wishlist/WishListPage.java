@@ -1,6 +1,6 @@
 package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
-import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.ProductInfo;
 import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
@@ -43,19 +43,19 @@ public class WishListPage extends AccountSidebarLoggedPart {
     //functional
 
     //get name of product
-    public  WishListPage getProductName(Product product) {
+    public  WishListPage getProductName(IProduct product) {
         wishListTableContainerComponent.getWishListTableComponentByName(product);
-        return new WishListPage(driver);  //NOT SURE HOW MADE IT RIGHT
+        return new WishListPage(driver);  //TODO CHECK IF I MADE IT RIGHT
     }
 
     //get price of product
-    public  WishListPage getProductPrice(Product product){
+    public  WishListPage getProductPrice(IProduct product){
         wishListTableContainerComponent.getWishListTableComponentPriceByName(product);//change names of methods , name of product
         return new WishListPage(driver);
     }
 
     //get model of product
-    public  WishListPage getProductModule(Product product){
+    public  WishListPage getProductModule(IProduct product){
         wishListTableContainerComponent.getWishListTableComponentModelByName(product);//change names of methods , name of product
         return new WishListPage(driver);
     }
@@ -63,19 +63,19 @@ public class WishListPage extends AccountSidebarLoggedPart {
     //  TODO  Business Logic
 
     //add product to Shopping cart
-    public WishListPage addProductToShoppingCart(Product product) {
+    public WishListPage addProductToShoppingCart(IProduct product) {
         wishListTableContainerComponent.clickWishListTableComponentAddToCartButtonByName(product); //change names of methods, name of product
         return new WishListMessagePage(driver);
     }
 
     //delete product from Wish List
-    public WishListPage deleteProductFromWishList(Product product) {
+    public WishListPage deleteProductFromWishList(IProduct product) {
         wishListTableContainerComponent.clickWishListTableComponentRemoveButtonByName(product); //change names of methods, name of product
         return new WishListMessagePage(driver);
     }
 
 //    go to product page after click on name
-//    public ProductInfo goToProductPage(Product product) {
+//    public ProductInfo goToProductPage(IProduct product) {
 //        wishListTableContainerComponent.clickWishListTableComponentOnName(product); //change names of methods , name of product
 //        return new ProductInfo(driver);
 //    }

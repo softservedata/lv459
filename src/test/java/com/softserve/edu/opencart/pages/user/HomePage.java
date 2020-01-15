@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.user;
 
+import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -64,7 +65,7 @@ public class HomePage extends TopPart {
         return new HomePage(driver);
     }
 
-	public HomePage addProductToWishList(Product product)
+	public HomePage addProductToWishList(IProduct product)
 	{
 		productsContainerComponent.clickProductComponentAddToWishButtonByName(product);
 		return new HomePage(driver);

@@ -25,8 +25,11 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
 
     // Page Object
 
-    public WebElement getLabelText() {
+    public WebElement getLabel(){
         return labelText;
+    }
+    public String getLabelText() {
+        return getLabel().getText();
     }
 
     // continueButton
