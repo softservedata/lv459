@@ -1,6 +1,7 @@
 package com.softserve.edu.opencart.pages.user.shop.shoppingcart;
 
-import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -38,19 +39,50 @@ public class CartPage extends BreadCrumbPart {
         return shoppingCartProductContainerComponent;
     }
 
+    public CouponCartComponent getCouponCartComponent(){
+        return couponCartComponent;
+    }
+
+    public GiftCartComponent getGiftCartComponent(){
+        return giftCartComponent;
+    }
+
+    public TotalTaxComponent getTotalTaxComponent(){
+        return totalTaxComponent;
+    }
+
+    public WebElement getContinueShoppingButton(){
+        return ContinueShoppingButton;
+    }
+
+    public void clickContinueShoppingButton(){
+        getContinueShoppingButton().click();
+    }
+
+    public WebElement getCheckoutButton(){
+        return CheckoutButton;
+    }
+
+    public void clickCheckoutButton(){
+        getCheckoutButton().click();
+    }
+
     //Functional
 
     //Business logic
 
-    public CartPage refreshProductOnShoppingCart(Product product){
+    public CartPage refreshProductOnShoppingCart(IProduct product){
         shoppingCartProductContainerComponent.clickRefreshButtonByProductName(product);
         return new CartPage(driver);
     }
 
-    public CartEmptyPage deleteProductOnShoppingCart(Product product){
-        //?????????????????????
-        // видаляти все чи один елемент
+    public CartEmptyPage deleteProductOnShoppingCart(IProduct product){
         shoppingCartProductContainerComponent.clickDeleteButtonByProductName(product);
         return new CartEmptyPage(driver);
+    }
+
+    public HomePage continueShopping() {
+        clickContinueShoppingButton();
+        return new HomePage(driver);
     }
 }

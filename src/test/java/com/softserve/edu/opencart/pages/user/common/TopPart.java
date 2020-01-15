@@ -3,6 +3,9 @@ package com.softserve.edu.opencart.pages.user.common;
 import java.util.List;
 
 import com.softserve.edu.opencart.data.*;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartEmptyPage;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
 import org.openqa.selenium.By;
@@ -106,6 +109,7 @@ public abstract class TopPart {
     public void clickWishList() {
         getWishList().click();
     }
+
 
 //    public int getWishListNumber() {
 //        Use getWishListText()
@@ -447,6 +451,24 @@ public abstract class TopPart {
         clickWishList();
         defaultLogin(user);
         return new WishListPage(driver);
+    }
+
+    // Shopping Cart
+
+    public CartPage gotoShoppingCart() {
+        clickShoppingCart();
+        return new CartPage(driver);
+    }
+
+    public CartEmptyPage gotoCartEmptyPage() {
+        clickShoppingCart();
+        return new CartEmptyPage(driver);
+    }
+
+
+    ////?????????????????????????
+    public AlertMessagePage gotoAlertMessagePage() {
+        return new AlertMessagePage(driver);
     }
 
 }

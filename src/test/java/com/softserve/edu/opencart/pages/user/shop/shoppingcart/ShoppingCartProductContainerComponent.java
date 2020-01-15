@@ -1,7 +1,6 @@
 package com.softserve.edu.opencart.pages.user.shop.shoppingcart;
 
-import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.pages.user.shop.shoppingcart.ShoppingCartProductComponent;
+import com.softserve.edu.opencart.data.IProduct;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -57,10 +56,10 @@ public class ShoppingCartProductContainerComponent {
         return shoppingCartProductComponentNames;
     }
 
-    // get ShoppingCart Product Component By Name
+    // get ShoppingCart IProduct Component By Name
 
-                            // чи тут має бути String productName чи Product product
-    protected ShoppingCartProductComponent getShoppingCartProductComponentByName(Product product)
+                            // чи тут має бути String productName чи IProduct product
+    protected ShoppingCartProductComponent getShoppingCartProductComponentByName(IProduct product)
     {
         ShoppingCartProductComponent result = null;
         for (ShoppingCartProductComponent current : getShoppingCartProductComponents())
@@ -81,43 +80,43 @@ public class ShoppingCartProductContainerComponent {
         return result;
     }
 
-    //get Product Price By Name
-    public String getProductPriceByName(Product product){
+    //get IProduct Price By Name
+    public String getProductPriceByName(IProduct product){
         return getShoppingCartProductComponentByName(product).getUnitPriceText();
     }
 
-    //get Product Total Price By Name
-    public String getProductTotalPriceByName(Product product){
+    //get IProduct Total Price By Name
+    public String getProductTotalPriceByName(IProduct product){
         return getShoppingCartProductComponentByName(product).getTotalPriceText();
     }
 
-    //get Product Model By Name
-    public String getProductModelByName(Product product){
+    //get IProduct Model By Name
+    public String getProductModelByName(IProduct product){
         return getShoppingCartProductComponentByName(product).getModelText();
     }
 
-    //click Quantity By Product Name
-    public void clickQuantityByProductName(Product product){
+    //click Quantity By IProduct Name
+    public void clickQuantityByProductName(IProduct product){
         getShoppingCartProductComponentByName(product).clickQuantityField();
     }
 
-    //clear Quantity By Product Name
-    public void clearQuantityByProductName(Product product){
+    //clear Quantity By IProduct Name
+    public void clearQuantityByProductName(IProduct product){
         getShoppingCartProductComponentByName(product).clearQuantityField();
     }
 
-    //type Quantity By Product Name
-    public void typeQuantityByProductName(Product product, String quantity){
+    //type Quantity By IProduct Name
+    public void typeQuantityByProductName(IProduct product, String quantity){
         getShoppingCartProductComponentByName(product).typeQuantity(quantity);
     }
 
-    //click Refresh Button By Product Name
-    public void clickRefreshButtonByProductName(Product product){
+    //click Refresh Button By IProduct Name
+    public void clickRefreshButtonByProductName(IProduct product){
         getShoppingCartProductComponentByName(product).clickRefreshButton();
     }
 
-    //click Delete Button By Product Name
-    public void clickDeleteButtonByProductName(Product product){
+    //click Delete Button By IProduct Name
+    public void clickDeleteButtonByProductName(IProduct product){
         getShoppingCartProductComponentByName(product).clickDeleteButton();
     }
 
@@ -126,8 +125,8 @@ public class ShoppingCartProductContainerComponent {
 
 
     //?????  It works on 'ProductsContainerComponent' class but not here?????
-
-   /* public ShoppingCartProductComponent getProductComponentByName(Product product)
+/*
+    public ShoppingCartProductComponent getProductComponentByName(IProduct product)
     {
         return getProductComponentByName(product.getName());
     }*/

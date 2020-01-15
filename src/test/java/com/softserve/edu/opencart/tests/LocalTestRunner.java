@@ -15,7 +15,8 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 
 public abstract class LocalTestRunner {
 	private final Long ONE_SECOND_DELAY = 1000L;
-    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
+    //private final String SERVER_URL = System.getenv().get("OPENCART_URL");
+	private final String SERVER_URL = "http://192.168.234.133/opencart/upload/";
     protected final String BLOCK_USER_ERROR_MESSAGE = "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.";
 	private WebDriver driver;
 
