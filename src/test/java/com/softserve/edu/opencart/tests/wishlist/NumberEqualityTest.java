@@ -11,6 +11,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class NumberEqualityTest extends LocalTestRunner {
+    private static String EXPECTED_NUMBER = "2";
 
     @DataProvider  //(parallel = true)
     public Object[][] customers() {
@@ -43,7 +44,7 @@ public class NumberEqualityTest extends LocalTestRunner {
         System.out.println(wishListPage.getWishListText());
 
         Assert.assertTrue(wishListPage.getWishListText()
-                .contains("2"));
+                .contains(EXPECTED_NUMBER));
 
         wishListPage.removeAllProductsFromWishList();
     }
