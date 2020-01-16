@@ -33,7 +33,8 @@ interface ISymbolRight extends IBuilderCurrency {
 }
 
 public final class Currency implements
-        IStatus, IValue, IDecimalPlaces, ICode, ITitle, ICurrency, IBuilderCurrency {
+        IStatus, IValue, IDecimalPlaces, ICode, ITitle,
+        ICurrency, IBuilderCurrency, ISymbolRight, ISymbolLeft {
     private String title;
     private String code;
     private String symbolLeft;//optional
@@ -64,7 +65,7 @@ public final class Currency implements
 
     public ISymbolRight setCurrencySymbolLeft(String symbolLeft) {
         this.symbolLeft = symbolLeft;
-        return null;
+        return this;
     }
 
     public IBuilderCurrency setCurrencySymbolRight(String symbolRight) {
@@ -84,7 +85,7 @@ public final class Currency implements
 
     public ISymbolLeft setCurrencyStatus(String status) {
         this.status = status;
-        return null;
+        return this;
     }
 
     public ICurrency build() {
