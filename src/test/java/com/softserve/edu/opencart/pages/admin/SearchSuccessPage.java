@@ -14,6 +14,10 @@ public class SearchSuccessPage extends SearchCriteriaPartTop {
     private void initElements() {
         usersContainerComponent = new UsersContainerComponent(driver);
     }
+    
+    public UsersContainerComponent getUserContainer() {
+        return usersContainerComponent;
+    }
 
     // Page Object
 

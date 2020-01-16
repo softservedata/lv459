@@ -10,42 +10,48 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+/**
+ * <h3> This class contains test which verify if if Wish List is empty by default.</h3>
+ */
 public class NumberEqualityTest extends LocalTestRunner {
+
     private static String EXPECTED_NUMBER = "2";
 
     @DataProvider  //(parallel = true)
     public Object[][] customers() {
         return new Object[][]{
-                {UserRepository.get().getHahaha()},//TODO
+                {UserRepository.get().getBohdanaUser()},
         };
     }
 
+    /**
+     * <h3>This method check if Wish List is empty by default.</h3>
+     */
     @Test(dataProvider = "customers")
     public void checkAddToCartFromWishList(IUser validUser) {
 
         IProduct macBookProduct = ProductRepository.get().getMacBook();
         IProduct appleCinema30  = ProductRepository.get().getAppleCinema30();
 
-        //LOGIN
+        //Login and add to wish list
         loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
                 .gotoHomePage()
                 .addProductToWishList(macBookProduct);
 
-        //TODO explicit wait
-        presentationSleep();
-
+        //add second product
        loadApplication()
                 .addProductToWishList(appleCinema30);
 
+       //go to wish list page
         WishListPage wishListPage = loadApplication().gotoWishListPage();
 
-        System.out.println(wishListPage.getWishListText());
-
+        //check whether 2 product were added
         Assert.assertTrue(wishListPage.getWishListText()
                 .contains(EXPECTED_NUMBER));
 
+        //clear wish list
         wishListPage.removeAllProductsFromWishList();
     }
 }

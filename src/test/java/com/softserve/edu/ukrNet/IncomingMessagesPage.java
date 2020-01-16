@@ -2,7 +2,7 @@ package com.softserve.edu.ukrNet;
 
 import org.openqa.selenium.WebDriver;
 
-public class IncomingMessagesPage{
+public class IncomingMessagesPage {
     WebDriver driver;
     private IncomingMessagesContainer incomingMessagesContainer;
 
@@ -19,14 +19,14 @@ public class IncomingMessagesPage{
         return incomingMessagesContainer;
     }
 
-
     public MessagePage goToRestorePasswordMessage(String message) {
         for (IncomingMessageComponent singleMessage : getIncomingMessagesContainer().getIncomingMessageComponents()) {
             if (singleMessage.getMessageSubject().toLowerCase().contains(message.toLowerCase())) {
-                  singleMessage.clickMessage();
-                  break;
+                singleMessage.clickMessage();
+                break;
             }
         }
         return new MessagePage(driver);
     }
+
 }

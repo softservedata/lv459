@@ -7,20 +7,36 @@ public class TotalStatisticComponent {
     private WebElement statisticLayout;
     private WebElement statisticName;
     private WebElement statisticDetail;
-    
+
     public TotalStatisticComponent(WebElement statisticLayout) {
         this.statisticLayout = statisticLayout;
         initElements();
     }
+
     private void initElements() {
         statisticName = statisticLayout.findElement(By.cssSelector(".tile-heading"));
         statisticDetail = statisticLayout.findElement(By.cssSelector(".tile-footer a"));
     }
 
+    public WebElement getStatisticName() {
+        return statisticName;
+    }
+
+    public WebElement getStatisticDetail() {
+        return statisticDetail;
+    }
+
+    public String getStatisticNameText() {
+        return getStatisticName().getText();
+    }
+    
+    public void clickStatisticDetail() {
+        getStatisticDetail().click();
+    }
+
     // Page Object
 
     // firstNameField
-  
 
     // Functional
 

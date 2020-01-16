@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class MenuPart extends DashboardRefPart {
+public abstract class MenuPart extends DashboardRefPart{
 
     private WebElement burgerMenu;
     private WebElement bellButton;

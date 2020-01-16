@@ -40,6 +40,25 @@ public final class UserRepository {
                 .setAddress2("address2_5")
                 .build();
     }
+    public IUser getBohdanaUser() {
+        return User.get()
+                .setFirstName("Dana")
+                .setLastName("Dobushovska")
+                .setEmail("bohdanadobushovska@gmail.com")
+                .setTelephone("12345")
+                .setAddress1("address")
+                .setCity("Lviv")
+                .setPostCode("12345")
+                .setCountry("Ukraine")
+                .setRegionState("L'vivska Oblast'")
+                //.setPassword(System.getenv().get("MY_PASSWORD"))
+                .setPassword("qwerty")
+                .setSubscribe(true)
+                .setFax("fax")
+                .setCompany("company")
+                .setAddress2("address2")
+                .build();
+    }
     
     public IUser getCorrectUser() {
         return User.get()

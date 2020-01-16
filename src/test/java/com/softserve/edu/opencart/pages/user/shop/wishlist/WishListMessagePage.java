@@ -19,6 +19,9 @@ public class WishListMessagePage extends WishListPage {
         initElements();
     }
 
+    /**
+     * <h3>This method inits all elements on page.</h3>
+     */
     private void initElements() {
         // init elements
         removeMessage = driver.findElement(By.xpath("//div[@class = 'alert alert-success']"));
@@ -28,10 +31,16 @@ public class WishListMessagePage extends WishListPage {
 
     //page object
 
+    /**
+     * <h3>This method gets cross button.</h3>
+     */
     public WebElement getCrossButton() {
         return crossButton;
     }
 
+    /**
+     * <h3>This method clicks on cross button.</h3>
+     */
     public void clickCrossButton() {
         getCrossButton().click();
     }
@@ -39,29 +48,40 @@ public class WishListMessagePage extends WishListPage {
 
     //functional
 
-    // removeMessage
+    /**
+     * <h3>This method gets remove message.</h3>
+     */
     public WebElement getRemoveMessage() {
         return removeMessage;
 
     }
 
+    /**
+     * <h3>This method gets remove message text.</h3>
+     */
     public String getRemoveMessageText() {
         return getRemoveMessage().getText();
     }
 
-    // addToCartMessage
+    /**
+     * <h3>This method gets add ot cart message.</h3>
+     */
     public WebElement getAddToCartMessage() {
         return addToCartMessage;
-
     }
 
+    /**
+     * <h3>This method gets add to cart message text.</h3>
+     */
     public String getAddToCartMessageText() {
         return getAddToCartMessage().getText();
     }
 
     //Business Logic
 
-    //click on cross button
+    /**
+     * <h3>This method clicks on cross button.</h3>
+     */
     public MyAccountPage clickOnCrossButton() {
         clickCrossButton();
         return new MyAccountPage(driver);

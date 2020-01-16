@@ -39,11 +39,6 @@ public class UsersContainerComponent {
 
     // Functional
 
-    public int getUserComponentCount()
-    {
-        return getUserComponents().size();
-    }
-
 //    public List<String> getUserComponentNames()
 //    {
 //        List<String> productComponentNames = new ArrayList<>();

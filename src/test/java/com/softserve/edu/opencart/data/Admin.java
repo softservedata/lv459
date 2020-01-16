@@ -1,28 +1,42 @@
 package com.softserve.edu.opencart.data;
 
-public class Admin {
+interface ILogin {
+    IAdminPassword setLogin(String login);
+}
+
+interface IAdminPassword {
+    IBuildAdmin setPassword(String password);
+}
+
+interface IBuildAdmin {
+    IAdmin build();
+}
+
+public final class Admin implements ILogin, IAdminPassword, IBuildAdmin, IAdmin {
 
     private String username;
     private String password;
 
-    public Admin(String username, String password) {
+    public static ILogin get() {
+        return new Admin();
+    }
+
+    public IAdminPassword setLogin(String username) {
         this.username = username;
+        return this;
+    }
+
+    public IBuildAdmin setPassword(String password) {
         this.password = password;
+        return this;
     }
 
-    // setters
 
-    public void setUsername(String username) {
-        this.username = username;
+    public IAdmin build() {
+        return this;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    // getters
-
-    public String getUsername() {
+    public String getLogin() {
         return username;
     }
 

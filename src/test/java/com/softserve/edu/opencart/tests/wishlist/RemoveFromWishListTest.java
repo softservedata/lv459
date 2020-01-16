@@ -8,34 +8,37 @@ import com.softserve.edu.opencart.tests.LocalTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import java.util.concurrent.TimeUnit;
 import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
 
+/**
+ * <h3> This class verify if button remove from Wish List work.</h3>
+ */
 public class RemoveFromWishListTest extends LocalTestRunner {
 
     @DataProvider  //(parallel = true)
     public Object[][] customers() {
         return new Object[][] {
-                { UserRepository.get().getHahaha() },//TODO
+                { UserRepository.get().getBohdanaUser() },
         };
     }
 
+    /**
+     * <h3>This method check if button 'Remove from wish list' works.</h3>
+     */
     @Test(dataProvider = "customers")
     public void checkRemoveFromWishList(IUser validUser) {
+
+        //get product from repository
         IProduct macBookProduct = ProductRepository.get().getMacBook();
-        //LOGIN
+
+        //login and add to wish list
         loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
-                .gotoHomePage().addProductToWishList(macBookProduct);
+                .gotoHomePage()
+                .addProductToWishList(macBookProduct);
 
-        //TODO Explicit wait
-        //driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        //(new WebDriverWait(driver, 10))
-        //                .until(ExpectedConditions.());
-        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        presentationSleep();
-
+        //go to wish list and delete product
         String actual = loadApplication()
                 .gotoWishListPage()
                 .deleteProductFromWishList(macBookProduct)
@@ -43,6 +46,5 @@ public class RemoveFromWishListTest extends LocalTestRunner {
 
         Assert.assertTrue(actual
                 .contains(PRODUCT_REMOVED));
-
     }
 }

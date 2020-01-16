@@ -4,24 +4,54 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public abstract class SearchCriteriaPartTop extends MenuPart{
-    
+public abstract class SearchCriteriaPartTop extends MenuPart {
+
     private WebElement criteriaSearchButton;
+    private WebElement emailSearchInput;
 
     public SearchCriteriaPartTop(WebDriver driver) {
         super(driver);
         initElements();
     }
+
     private void initElements() {
-        criteriaSearchButton.findElement(By.id("button-filter"));
+        criteriaSearchButton = driver.findElement(By.id("button-filter"));
+        emailSearchInput = driver.findElement(By.id("input-email"));
     }
 
-    // Page Object
+    public WebElement getEmailSearchInput() {
+        return emailSearchInput;
+    }
 
-    // firstNameField
-  
+    public WebElement getCriteriaSearchButton() {
+        return criteriaSearchButton;
+    }
 
-    // Functional
+    public void clickCriteriaSearchButton() {
+        getCriteriaSearchButton().click();
+    }
 
-    // Business Logic
+    public void clickEmailSearchInput() {
+        getEmailSearchInput().click();
+    }
+
+    public void clearEmailSearchInput() {
+        getEmailSearchInput().clear();
+    }
+
+    public void setEmailSearckInput(String email) {
+        getEmailSearchInput().sendKeys(email);
+    }
+
+    public void fillEmailSearchInput(String email) {
+        clickEmailSearchInput();
+        clearEmailSearchInput();
+        setEmailSearckInput(email);
+    }
+
+    public SearchSuccessPage searchByEmail(String email) {
+        fillEmailSearchInput(email);
+        clickCriteriaSearchButton();
+        return new SearchSuccessPage(driver);
+    }
 }
