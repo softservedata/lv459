@@ -114,13 +114,11 @@ public class LoginPage extends DashboardRefPart {
     }
 
     // Business Logic
-    //Вертає хоум пейджу після успішного логування
     public HomePage successfulLogin(IAdmin validAdmin) {
         fillLogin(validAdmin);
         return new HomePage(driver);
     }
 
-    //Вертає пейджу неуспішоного логування
     public UnsuccessfulLoginPage unsuccessfulLoginPage(IAdmin invalidAdmin) {
         fillLogin(invalidAdmin);
         return new UnsuccessfulLoginPage(driver);
