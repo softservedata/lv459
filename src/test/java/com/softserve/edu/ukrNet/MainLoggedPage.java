@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.EmailStatus;
+
 public class MainLoggedPage {
 
     private WebElement incomingMessages;
@@ -12,6 +14,7 @@ public class MainLoggedPage {
     public MainLoggedPage(WebDriver driver) {
         this.driver = driver;
         initElements();
+        EmailStatus.get().setLogged(true);
     }
 
     private void initElements() {
