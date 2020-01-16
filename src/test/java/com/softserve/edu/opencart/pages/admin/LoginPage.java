@@ -1,9 +1,10 @@
 package com.softserve.edu.opencart.pages.admin;
 
-import com.softserve.edu.opencart.data.Admin;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.data.IAdmin;
 
 public class LoginPage extends DashboardRefPart {
 
@@ -106,21 +107,21 @@ public class LoginPage extends DashboardRefPart {
         setPassword(password);
     }
 
-    public void fillLogin(Admin admin) {
-        enterUsername(admin.getUsername());
+    public void fillLogin(IAdmin admin) {
+        enterUsername(admin.getLogin());
         enterPassword(admin.getPassword());
         clickLoginButton();
     }
 
     // Business Logic
     //Вертає хоум пейджу після успішного логування
-    public HomePage successfulLogin(Admin validAdmin) {
+    public HomePage successfulLogin(IAdmin validAdmin) {
         fillLogin(validAdmin);
         return new HomePage(driver);
     }
 
     //Вертає пейджу неуспішоного логування
-    public UnsuccessfulLoginPage unsuccessfulLoginPage(Admin invalidAdmin) {
+    public UnsuccessfulLoginPage unsuccessfulLoginPage(IAdmin invalidAdmin) {
         fillLogin(invalidAdmin);
         return new UnsuccessfulLoginPage(driver);
     }

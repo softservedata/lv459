@@ -1,9 +1,32 @@
 package com.softserve.edu.opencart.data;
 
-public class AdminRepo {
-    protected static final String DB_PASSWORD = System.getenv("DB_PASSWORD");
+public final class AdminRepo {
 
-    public static Admin getValidAdmin () {
-        return new Admin("admin", DB_PASSWORD);
+    private static volatile AdminRepo instance = null;
+    
+    private AdminRepo() {
+        
+    }
+    
+    public static AdminRepo get() {
+        if (instance == null) {
+            synchronized (AdminRepo.class) {
+                if (instance == null) {
+                    instance = new AdminRepo();
+                }
+            }
+        }
+        return instance;
+    }
+    
+    public IAdmin getDefault() {
+        return getValidAdmin();
+    }
+
+    public IAdmin getValidAdmin() {
+        return Admin.get()
+                .setLogin("admin")
+                .setPassword(System.getenv("DB_PASSWORD"))
+                .build();
     }
 }
