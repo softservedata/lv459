@@ -3,13 +3,10 @@ package com.softserve.edu.opencart.pages.admin;
 public class CustomersContainer {
 
 
-    // table with results
+    // TODO HERE by speretc
+    // table with results to be realized here gives list of users or gives user by email
     //        ("table.table.table-bordered.table-hover")
 
-    // results
-    // <td class="text-center">
-    // <input type="checkbox" name="selected[]" value="71">
-    // </td> ...
 
 
 }
