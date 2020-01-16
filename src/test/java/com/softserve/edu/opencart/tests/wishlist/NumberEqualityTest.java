@@ -6,6 +6,9 @@ import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 import com.softserve.edu.opencart.tests.LocalTestRunner;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -16,7 +19,7 @@ public class NumberEqualityTest extends LocalTestRunner {
     @DataProvider  //(parallel = true)
     public Object[][] customers() {
         return new Object[][]{
-                {UserRepository.get().getHahaha()},//TODO
+                {UserRepository.get().getBohdanaUser()},
         };
     }
 
@@ -26,26 +29,25 @@ public class NumberEqualityTest extends LocalTestRunner {
         IProduct macBookProduct = ProductRepository.get().getMacBook();
         IProduct appleCinema30  = ProductRepository.get().getAppleCinema30();
 
-        //LOGIN
+        //Login and add to wish list
         loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
                 .gotoHomePage()
                 .addProductToWishList(macBookProduct);
 
-        //TODO explicit wait
-        presentationSleep();
-
+        //add second product
        loadApplication()
                 .addProductToWishList(appleCinema30);
 
+       //go to wish list page
         WishListPage wishListPage = loadApplication().gotoWishListPage();
 
-        System.out.println(wishListPage.getWishListText());
-
+        //check whether 2 product were added
         Assert.assertTrue(wishListPage.getWishListText()
                 .contains(EXPECTED_NUMBER));
 
+        //clear wish list
         wishListPage.removeAllProductsFromWishList();
     }
 }

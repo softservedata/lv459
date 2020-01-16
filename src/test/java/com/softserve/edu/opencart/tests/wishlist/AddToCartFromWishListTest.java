@@ -13,7 +13,7 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
     @DataProvider  //(parallel = true)
     public Object[][] customers() {
         return new Object[][] {
-                { UserRepository.get().getHahaha() },//TODO
+                { UserRepository.get().getBohdanaUser() },
         };
     }
 
@@ -21,29 +21,25 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
     public void checkAddToCartFromWishList(IUser validUser) {
 
         IProduct macBookProduct = ProductRepository.get().getMacBook();
-        //LOGIN
 
-                loadApplication()
+        //login and add to wish list
+        loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
                 .gotoHomePage()
                 .addProductToWishList(macBookProduct);
 
-        //TODO Explicit wait
-        presentationSleep();
-
         //add to shopping cart
         WishListMessagePage wishListMessagePage = loadApplication()
                 .gotoWishListPage()
                 .addProductToShoppingCart(macBookProduct);
+
         //check message
         Assert.assertTrue(wishListMessagePage.getAddToCartMessageText()
                 .contains(String.format(PRODUCT_ADDED_TO_CART, "MacBook")));
 
         //clear wish list after test
         wishListMessagePage.removeAllProductsFromWishList();
-
-
 
     }
 }

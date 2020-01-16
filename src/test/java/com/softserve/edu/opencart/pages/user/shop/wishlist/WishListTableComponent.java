@@ -103,9 +103,4 @@ public final class WishListTableComponent {
         getRemoveFromWishListButton().click();
     }
 
-    // Functional
-
-    //дай першу ціну витягнути текст Обєкт класу рег вирази дьорнути метод віддай рез 1 -2 стрічки decimal
-
-    // Business Logic
 }

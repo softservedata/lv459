@@ -464,11 +464,4 @@ public abstract class TopPart {
         clickShoppingCart();
         return new CartEmptyPage(driver);
     }
-
-
-    ////?????????????????????????
-    public AlertMessagePage gotoAlertMessagePage() {
-        return new AlertMessagePage(driver);
-    }
-
 }

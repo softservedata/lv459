@@ -41,7 +41,6 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
         getContinueButton().click();
     }
 
-
     //BL
 
     //go to My Account Page

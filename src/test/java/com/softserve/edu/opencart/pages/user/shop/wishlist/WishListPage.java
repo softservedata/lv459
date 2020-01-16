@@ -1,7 +1,6 @@
 package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
 import com.softserve.edu.opencart.data.IProduct;
-import com.softserve.edu.opencart.data.ProductInfo;
 import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import org.openqa.selenium.By;
@@ -64,8 +63,6 @@ public class WishListPage extends AccountSidebarLoggedPart {
         return new WishListPage(driver);
     }
 
-    //  TODO  Business Logic
-
     //add product to Shopping cart
     public WishListMessagePage addProductToShoppingCart(IProduct product) {
         wishListTableContainerComponent.clickWishListTableComponentAddToCartButtonByName(product); //change names of methods, name of product
@@ -104,7 +101,6 @@ public class WishListPage extends AccountSidebarLoggedPart {
             closeButtons.get(0).click();
             closeButtons = driver.findElements(By.cssSelector(".text-right .fa.fa-times"));
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return new EmptyWishListPage(driver);
     }
 }
