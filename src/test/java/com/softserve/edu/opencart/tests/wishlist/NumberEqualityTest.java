@@ -6,14 +6,15 @@ import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 import com.softserve.edu.opencart.tests.LocalTestRunner;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+/**
+ * <h3> This class contains test which verify if if Wish List is empty by default.</h3>
+ */
 public class NumberEqualityTest extends LocalTestRunner {
+
     private static String EXPECTED_NUMBER = "2";
 
     @DataProvider  //(parallel = true)
@@ -23,6 +24,9 @@ public class NumberEqualityTest extends LocalTestRunner {
         };
     }
 
+    /**
+     * <h3>This method check if Wish List is empty by default.</h3>
+     */
     @Test(dataProvider = "customers")
     public void checkAddToCartFromWishList(IUser validUser) {
 

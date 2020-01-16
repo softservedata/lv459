@@ -8,6 +8,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_ADDED_TO_CART;
 
+/**
+ * <h3> This class verify if button add to cart in Wish List work.</h3>
+ */
 public class AddToCartFromWishListTest extends LocalTestRunner {
 
     @DataProvider  //(parallel = true)
@@ -17,6 +20,9 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
         };
     }
 
+    /**
+     * <h3>This method check if button 'Add to shopping cart' works.</h3>
+     */
     @Test(dataProvider = "customers")
     public void checkAddToCartFromWishList(IUser validUser) {
 

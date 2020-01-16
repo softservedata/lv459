@@ -19,6 +19,9 @@ public final class WishListTableComponent {
         initElements();
     }
 
+    /**
+     * <h3>This method inits all elements which product in wish list has.</h3>
+     */
     private void initElements() {
         // init elements
         image = tableLayout.findElement(By.xpath("//div[@class='table-responsive']//td[@class='text-center']/a"));
@@ -31,43 +34,65 @@ public final class WishListTableComponent {
     }
     // Page Object
 
-    // tableProduct
+    /**
+     * <h3>This method gets tableLayout.</h3>
+     */
     public WebElement getTableLayout() {
         return tableLayout;
     }
 
-    // image
+    /**
+     * <h3>This method gets image.</h3>
+     */
     public WebElement getImage() {
         return image;
     }
 
-    // name
+    /**
+     * <h3>This method gets productName.</h3>
+     */
     public WebElement getProductName() {
         return productName;
     }
 
+    /**
+     * <h3>This method gets getNameText.</h3>
+     */
     public String getNameText() {
         return getProductName().getText();
     }
 
+    /**
+     * <h3>This method clicks on prodict name</h3>
+     */
     public void clickProductName() {
         getProductName().click();
     }
 
-    // model
+    /**
+     * <h3>This method gets product model.</h3>
+     */
     public WebElement getModel() {
         return model;
     }
 
+    /**
+     * <h3>This method gets product model text.</h3>
+     */
     public String getModelText() {
         return getModel().getText();
     }
 
-    // stock
+    /**
+     * <h3>This method gets product stock.</h3>
+     */
     public WebElement getStock() {
         return stock;
     }
 
+    /**
+     * <h3>This method gets product stock text.</h3>
+     */
     public String getStockText() {
         return getStock().getText();
     }
@@ -76,31 +101,45 @@ public final class WishListTableComponent {
     //there is sometimes two price what to do?
     // unitPrice
     //по регулярному виразу витягувати першу ціну
+    /**
+     * <h3>This method gets product unit price.</h3>
+     */
     public WebElement getUnitPrice() {
         return unitPrice;
     }
 
+    /**
+     * <h3>This method gets product unit price text.</h3>
+     */
     public String getUnitPriceText() {
         return getUnitPrice().getText();
     }
 
-    // addToCartButton
+    /**
+     * <h3>This method gets add to cart button.</h3>
+     */
     public WebElement getAddToCartButton() {
         return addToCartButton;
     }
 
-    //Click add to cart
+    /**
+     * <h3>This method clicks add to cart button.</h3>
+     */
     public void clickAddToCartButton() {
         getAddToCartButton().click();
     }
 
-    // Remove FromWishListButton
+    /**
+     * <h3>This method gets remove button.</h3>
+     */
     public WebElement getRemoveFromWishListButton() {
         return removeFromWishListButton;
     }
 
+    /**
+     * <h3>This method clicks remove button.</h3>
+     */
     public void clickRemoveFromWishListButton() {
         getRemoveFromWishListButton().click();
     }
-
 }

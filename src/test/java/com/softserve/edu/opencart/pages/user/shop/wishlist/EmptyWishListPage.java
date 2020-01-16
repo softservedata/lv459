@@ -17,6 +17,9 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
         initElements();
     }
 
+    /**
+     * <h3>This method inits all elements on page.</h3>
+     */
     private void initElements() {
         // init elements
         labelText = driver.findElement(By.cssSelector("h2 + p"));
@@ -25,25 +28,39 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
 
     // Page Object
 
+    /**
+     * <h3>This method gets web element labelText.</h3>
+     */
     public WebElement getLabel(){
         return labelText;
     }
+
+    /**
+     * <h3>This method gets web element labelText text.</h3>
+     */
     public String getLabelText() {
         return getLabel().getText();
     }
 
-    // continueButton
+    /**
+     * <h3>This method gets continueButton.</h3>
+     */
     public WebElement getContinueButton() {
         return continueButton;
     }
 
+    /**
+     * <h3>This method clicks on continueButton.</h3>
+     */
     public void clickContinueButton() {
         getContinueButton().click();
     }
 
     //BL
 
-    //go to My Account Page
+    /**
+     * <h3>This method is written to go to  My Account Page.</h3>
+     */
     public MyAccountPage goToMyAccountPage() {
         clickContinueButton();
         return new MyAccountPage(driver);

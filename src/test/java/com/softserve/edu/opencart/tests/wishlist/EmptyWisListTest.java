@@ -9,6 +9,9 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+/**
+ * <h3> This class contains verify if  Wish List is empty by default.</h3>
+ */
 public class EmptyWisListTest extends LocalTestRunner {
 
     @DataProvider  //(parallel = true)
@@ -18,6 +21,9 @@ public class EmptyWisListTest extends LocalTestRunner {
         };
     }
 
+    /**
+     * <h3>This method check if Wish List is empty by default.</h3>
+     */
     @Test(dataProvider = "customers")
     public void checkWishListIsEmpty(IUser validUser) {
 
