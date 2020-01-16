@@ -62,7 +62,6 @@
 			<scope>test</scope>
 		</dependency>
 
-	<dependencies>
 		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
