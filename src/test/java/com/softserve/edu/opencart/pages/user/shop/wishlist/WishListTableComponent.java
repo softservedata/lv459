@@ -28,7 +28,6 @@ public final class WishListTableComponent {
         unitPrice = tableLayout.findElement(By.xpath(("//div[@class='price']")));
         addToCartButton = tableLayout.findElement(By.cssSelector("tbody .fa.fa-shopping-cart"));
         removeFromWishListButton = tableLayout.findElement(By.cssSelector(".fa.fa-times"));
-
     }
     // Page Object
 

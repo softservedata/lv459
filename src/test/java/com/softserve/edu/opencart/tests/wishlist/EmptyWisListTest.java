@@ -1,10 +1,10 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.wishlist;
 
 import com.softserve.edu.opencart.data.IUser;
-import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
+import com.softserve.edu.opencart.tests.LocalTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -19,19 +19,16 @@ public class EmptyWisListTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "customers")
-    public void checkWishList(IUser validUser) {
+    public void checkWishListIsEmpty(IUser validUser) {
 
         MyAccountPage myAccountPage = loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser);
-        presentationSleep();
 
-        EmptyWishListPage  emptyWishListPage =  myAccountPage.gotoEmptyWishListPage();
-        presentationSleep();
+        EmptyWishListPage  actualResult =  myAccountPage.gotoEmptyWishListPage();
 
-       Assert.assertTrue(emptyWishListPage
+        Assert.assertTrue(actualResult
                .getLabelText()
                .equals(EmptyWishListPage.EMPTY_WISH_LIST_MESSAGE));
-        presentationSleep();
     }
 }

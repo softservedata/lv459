@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 public class EditAccountPage extends AccountSidebarLoggedPart {
 
     private WebElement firstNameField;
+    private WebElement emailField;
     private WebElement continueButton;
 
     public EditAccountPage(WebDriver driver) {
@@ -18,6 +19,7 @@ public class EditAccountPage extends AccountSidebarLoggedPart {
         // init elements
         firstNameField = driver.findElement(By.name("firstname"));
         continueButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        emailField = driver.findElement(By.id("input-email"));
     }
 
     // Page Object
@@ -26,9 +28,17 @@ public class EditAccountPage extends AccountSidebarLoggedPart {
     public WebElement getFirstNameField() {
         return firstNameField;
     }
+    
+    public WebElement getEmailField() {
+        return emailField;
+    }
 
     public String getFirstNameFieldText() {
         return getFirstNameField().getAttribute(TAG_ATTRIBUTE_VALUE);
+    }
+    
+    public String getEmailFieldText() {
+        return getEmailField().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
     public void clearFirstNameField() {

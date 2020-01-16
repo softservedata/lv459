@@ -2,6 +2,7 @@ package com.softserve.edu.opencart.pages.user;
 
 import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -72,9 +73,9 @@ public class HomePage extends TopPart {
 	}
 
 	// add Product To Shopping Cart on Home Page
-	public HomePage addProductToShoppingCart(Product product)
+	public AlertMessagePage addProductToShoppingCart(IProduct product)
 	{
 		productsContainerComponent.clickProductComponentAddToCartButtonByName(product);
-		return new HomePage(driver);
+		return new AlertMessagePage(driver);
 	}
 }

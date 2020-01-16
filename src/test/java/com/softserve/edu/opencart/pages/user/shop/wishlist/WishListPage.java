@@ -9,6 +9,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+
 public class WishListPage extends AccountSidebarLoggedPart {
 
     private WebElement continueButton;
@@ -63,13 +67,13 @@ public class WishListPage extends AccountSidebarLoggedPart {
     //  TODO  Business Logic
 
     //add product to Shopping cart
-    public WishListPage addProductToShoppingCart(IProduct product) {
+    public WishListMessagePage addProductToShoppingCart(IProduct product) {
         wishListTableContainerComponent.clickWishListTableComponentAddToCartButtonByName(product); //change names of methods, name of product
         return new WishListMessagePage(driver);
     }
 
     //delete product from Wish List
-    public WishListPage deleteProductFromWishList(IProduct product) {
+    public WishListMessagePage deleteProductFromWishList(IProduct product) {
         wishListTableContainerComponent.clickWishListTableComponentRemoveButtonByName(product); //change names of methods, name of product
         return new WishListMessagePage(driver);
     }
@@ -92,13 +96,15 @@ public class WishListPage extends AccountSidebarLoggedPart {
 
 
     //TODO remove all elements
-//    public void removeAllProductsFromWishList() {
-//        List<WebElement> closeButtons = driver.findElements(By.cssSelector(".fa.fa-times"));
-//        while (closeButtons.size() > 0) {
-//            closeButtons.get(0).click();
-//            (new WebDriverWait(driver,10)).until(ExpectedConditions.stalenessOf(closeButtons.get(0)));
-//            closeButtons = driver.findElements(By.cssSelector(".fa.fa-times"));
-//        }
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//    }
+    public EmptyWishListPage removeAllProductsFromWishList() {
+        initElements();
+        List<WebElement> closeButtons = driver.findElements(By.cssSelector(".text-right .fa.fa-times"));
+        System.out.println(closeButtons.size());
+        while (closeButtons.size() > 0) {
+            closeButtons.get(0).click();
+            closeButtons = driver.findElements(By.cssSelector(".text-right .fa.fa-times"));
+        }
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        return new EmptyWishListPage(driver);
+    }
 }

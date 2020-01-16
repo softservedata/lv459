@@ -1,17 +1,17 @@
 package com.softserve.edu.opencart.pages.user.account;
 
-import com.softserve.edu.opencart.data.IUser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.opencart.data.User;
+import com.softserve.edu.opencart.data.IUser;
 
 public class LoginPage extends AccountSidebarGuestPart {
 
     private WebElement email;
     private WebElement password;
     private WebElement loginButton;
+    private WebElement forgotPassword;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -22,6 +22,7 @@ public class LoginPage extends AccountSidebarGuestPart {
         email = driver.findElement(By.name("email"));
         password = driver.findElement(By.name("password"));
         loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        forgotPassword = driver.findElement(By.cssSelector(".form-group a[href*='forgotten']"));
     }
 
     // Page Object
@@ -31,6 +32,10 @@ public class LoginPage extends AccountSidebarGuestPart {
     // email
     public WebElement getEmail() {
         return email;
+    }
+    
+    public WebElement getForgorPassword() {
+        return forgotPassword;
     }
 
     public String getEmailText() {
@@ -43,6 +48,11 @@ public class LoginPage extends AccountSidebarGuestPart {
 
     public void clickEmailField() {
         getEmail().click();
+    }
+    
+    public ForgotPasswordPage forgotPassword() {
+        getForgorPassword().click();
+        return new ForgotPasswordPage(driver);
     }
 
     public void setEmail(String email) {
@@ -110,8 +120,16 @@ public class LoginPage extends AccountSidebarGuestPart {
         return new MyAccountPage(driver);
     }
 
-    public UnsuccessfulLoginPage unsuccessfulLoginPage(IUser invalidUser){
+    public UnsuccessfulLoginPage unsuccessfulLogin(IUser invalidUser){
         fillLogin(invalidUser);
+        return new UnsuccessfulLoginPage(driver);
+    }
+    
+    public UnsuccessfulLoginPage unsuccessfulLogin(IUser invalidUser, int loginCount){
+        for (int i = 0; i < loginCount; i++) {           
+        fillLogin(invalidUser);
+        initElements();
+        }
         return new UnsuccessfulLoginPage(driver);
     }
 }

@@ -69,7 +69,6 @@ public class WishListTableContainerComponent {
         return result;
     }
 
-
     public String getWishListTableComponentPriceByName(IProduct productName)
     {
         return getWishListTableComponentByName(productName).getUnitPriceText();
@@ -89,26 +88,5 @@ public class WishListTableContainerComponent {
     public void clickWishListTableComponentOnName(IProduct productName) {
         getWishListTableComponentByName(productName).clickProductName();
     }
-
-
-
-
-
-//    public String getProductComponentPriceByProduct(IProduct product)
-//    {
-//        return getProductComponentPriceByName(product.getName());
-//    }
-//
-//    public String getProductComponentDescriptionByProduct(IProduct product)
-//    {
-//        return getProductComponentDescriptionByName(product.getName());
-//    }
-//
-//
-        // Business Logic
-//    public WishListTableComponent getProductComponentByName(IProduct product)
-//    {
-//        return getProductComponentByName(product.getName());
-//    }
 
 }

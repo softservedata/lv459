@@ -49,7 +49,10 @@ public class SearchSuccessPage extends SearchCriteriaPart {
     }
 
 
+
+
     public SearchSuccessAlertPage AddToWishButtonByName(IProduct product) {
+
     	productsDisplay.clickProductComponentAddToWishButtonByName(product);
     	return new SearchSuccessAlertPage(driver);
     }

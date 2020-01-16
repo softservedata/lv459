@@ -22,7 +22,7 @@ public class ListAndGridTest extends LocalTestRunner {
      * Pressing "List" button on "Search" window.
      */
     @Test(dataProvider = "searchData")
-    public void findItemCaseOne(IProduct product) {
+    public void caseOne(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
@@ -33,13 +33,38 @@ public class ListAndGridTest extends LocalTestRunner {
                 .getProductsDisplay()
                 .viewProductsByList();
 
-        // Check
+        // Checking
         Assert.assertTrue(productsDisplayComponent.statusListViewButton());
         //
-        // Return to the Previous State
+        // Returning to the previous state
         HomePage homePage = searchSuccessPage.gotoHomePage();
         //
-        // Check
+        // Checking
+        Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
+    }
+
+    /**
+     * Pressing "Grid" button on "Search" window.
+     */
+    @Test(dataProvider = "searchData")
+    public void caseTwo(IProduct product) {
+        //
+        // Steps
+        // Typing in the "Search" field.
+        SearchSuccessPage searchSuccessPage = loadApplication()
+                .successfulSearch(product);
+        // Clicking "List" button
+        ProductsDisplayComponent productsDisplayComponent = searchSuccessPage
+                .getProductsDisplay()
+                .viewProductsByGrid();
+
+        // Checking
+        Assert.assertTrue(productsDisplayComponent.statusGridViewButton());
+        //
+        // Returning to the previous state
+        HomePage homePage = searchSuccessPage.gotoHomePage();
+        //
+        // Checking
         Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
     }
 

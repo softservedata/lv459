@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public final class IncomingMessageComponent {
+    private WebDriver driver;
     private WebElement messageLayout;
     private WebElement messageSubject;
-    private WebDriver driver;
 
     public IncomingMessageComponent(WebElement layout, WebDriver driver) {
         this.messageLayout = layout;
@@ -16,7 +16,7 @@ public final class IncomingMessageComponent {
     }
 
     private void initElements() {
-        messageSubject = messageLayout.findElement(By.cssSelector("tbody > tr .msglist__row-subject a"));
+        messageSubject = messageLayout.findElement(By.xpath("//td[@class = 'msglist__row-subject']"));
     }
 
     public WebElement getMessageLayout() {

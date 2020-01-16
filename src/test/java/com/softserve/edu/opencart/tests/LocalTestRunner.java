@@ -1,23 +1,25 @@
 package com.softserve.edu.opencart.tests;
 
 import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import com.softserve.edu.opencart.data.ApplicationStatus;
 import com.softserve.edu.opencart.pages.user.HomePage;
 
 public abstract class LocalTestRunner {
 	private final Long ONE_SECOND_DELAY = 1000L;
-	//private final String SERVER_URL = "http://192.168.43.135/opencart/upload/";
-    //environment variable
     private final String SERVER_URL = System.getenv().get("OPENCART_URL");
-	private static WebDriver driver;
+	//private final String SERVER_URL = "http://192.168.234.133/opencart/upload/";
+    protected final String BLOCK_USER_ERROR_MESSAGE = "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.";
+	private WebDriver driver;
 
 	@BeforeClass
-	public static void beforeClass() {
+	public void beforeClass() {
 		System.setProperty("webdriver.chrome.driver",
 				LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
 		driver = new ChromeDriver();
@@ -25,8 +27,8 @@ public abstract class LocalTestRunner {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
-	@AfterClass
-	public static void afterClass() {
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
 		if (driver != null) {
 			driver.quit();
 		}
@@ -37,10 +39,15 @@ public abstract class LocalTestRunner {
 		driver.get(SERVER_URL);
 	}
 
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void afterMethod() {
-		// TODO Logout
-		// driver.get(SERVER_URL);
+		if (ApplicationStatus.get().isLogged()) {
+		    driver.findElement(By.id("logo")).click();
+            loadApplication()
+            .gotoMyAccount()
+            .gotoEditAccountRight()
+            .clickLogoutRight();
+        }
 	}
 
 	public HomePage loadApplication() {
