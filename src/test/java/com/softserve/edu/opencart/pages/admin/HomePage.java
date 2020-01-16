@@ -6,9 +6,10 @@ import org.openqa.selenium.WebElement;
 
 public class HomePage extends LeftMenuPart {
 
-    //    private LeftMenuPart burgerMenuComponent;
+    // private LeftMenuPart burgerMenuComponent;
 
     private WebElement homePageContent;
+    private TotalStatisticContainerComponent totalStatisticContainer;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -16,16 +17,15 @@ public class HomePage extends LeftMenuPart {
     }
 
     private void initElements() {
-        // init elements
-        homePageContent = driver.findElement(By.cssSelector(
-                "#content>.container-fluid"));
-        // contains below elements:
-        //        1чотири вікна квадрати
-        //        2карта світу + аналітика
-        //        3активність і останні замовлення
+        homePageContent = driver.findElement(By.cssSelector("#content>.container-fluid"));
+        totalStatisticContainer = new TotalStatisticContainerComponent(driver);
     }
 
     // Page Object
+    
+    public TotalStatisticContainerComponent getTotalStatisticContainer() {
+        return totalStatisticContainer;
+    }
 
     // Functional
 
