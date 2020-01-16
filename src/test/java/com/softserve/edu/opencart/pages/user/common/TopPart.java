@@ -3,6 +3,7 @@ package com.softserve.edu.opencart.pages.user.common;
 import java.util.List;
 
 import com.softserve.edu.opencart.data.*;
+import com.softserve.edu.opencart.pages.user.search.SearchRequestURITooLongPage;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartEmptyPage;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartPage;
@@ -373,12 +374,19 @@ public abstract class TopPart {
         return new SearchSuccessPage(driver);
     }
 
-    public SearchUnsuccessPage unsuccessfulSearch(String searchText){
-        //public SearchUnsuccessPageTop unsuccessfulSearch(Product product){
-        fillSearchTopField(searchText);
+   // public SearchUnsuccessPage unsuccessfulSearch(String searchText){
+        public SearchUnsuccessPage unsuccessfulSearch(IProduct product){
+        fillSearchTopField(product.getName());
         //fillSearchTopField(product.getName());
         clickSearchTopButton();
         return new SearchUnsuccessPage(driver);
+    }
+
+    public SearchRequestURITooLongPage unsuccessfulSearchRequestURITooLong(IProduct product){
+        fillSearchTopField(product.getName());
+        //fillSearchTopField(product.getName());
+        clickSearchTopButton();
+        return new SearchRequestURITooLongPage(driver);
     }
 
     // dropdownGuest
