@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages.user.shop.productinfo;
+package com.softserve.edu.opencart.pages.user.shop.productinfoapplecinema;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

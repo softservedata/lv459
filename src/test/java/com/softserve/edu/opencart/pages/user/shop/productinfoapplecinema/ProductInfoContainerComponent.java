@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages.user.shop.productinfo;
+package com.softserve.edu.opencart.pages.user.shop.productinfoapplecinema;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppleCinemaContainer {
+public class ProductInfoContainerComponent {
 
     private final String PRODUCT_CONTAINER_COMPONENT = "#product";
 
@@ -15,7 +15,7 @@ public class AppleCinemaContainer {
 
     private List<ProductInfoComponents> productInfoComponents;
 
-    public AppleCinemaContainer(WebDriver driver) {
+    public ProductInfoContainerComponent(WebDriver driver) {
         this.driver = driver;
         initElements();
     }
