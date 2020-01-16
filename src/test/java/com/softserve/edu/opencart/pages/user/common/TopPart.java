@@ -374,7 +374,7 @@ public abstract class TopPart {
     }
 
     public SearchUnsuccessPage unsuccessfulSearch(String searchText){
-        //public SearchUnsuccessPage unsuccessfulSearch(Product product){
+        //public SearchUnsuccessPageTop unsuccessfulSearch(Product product){
         fillSearchTopField(searchText);
         //fillSearchTopField(product.getName());
         clickSearchTopButton();
