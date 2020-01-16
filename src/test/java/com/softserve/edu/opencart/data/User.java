@@ -45,25 +45,43 @@ interface IPassword {
 }
 
 interface ISubscribe {
-	IBuildUser setSubscribe(boolean subscribe);
+	IFaxOptional setSubscribe(boolean subscribe);
 }
 
 //5. Add Builder
-interface IBuildUser {
-	IBuildUser setFax(String fax);
-	IBuildUser setCompany(String company);
-	IBuildUser setAddress2(String address2);
+//interface IBuildUser {
+//	IBuildUser setFax(String fax);
+//	IBuildUser setCompany(String company);
+//	IBuildUser setAddress2(String address2);
 	// 5. Add Builder
 	//User build();
 	// 6. Add Dependency Inversion
+//	IUser build();
+//}
+
+// 8. Add Optional Parameters
+interface IBuildUser {
 	IUser build();
 }
+
+interface IFaxOptional extends IBuildUser {
+	ICompanyOptional setFax(String fax);
+}
+
+interface ICompanyOptional extends IBuildUser {
+	IAddressOptional setCompany(String company);
+}
+
+interface IAddressOptional extends IBuildUser {
+	IBuildUser setAddress2(String address2);
+}
+
 
 public final class User
 		// 5. Add Builder
 		implements IFirstName, ILastName, IEmail,
 			ITelephone, IAddress, ICity, IPostCode, ICountry, IRegionState,
-			IPassword, ISubscribe, IBuildUser,
+			IPassword, ISubscribe, IFaxOptional, ICompanyOptional, IAddressOptional, IBuildUser,
 			// 6. Add Dependency Inversion
 			IUser {
 
@@ -193,12 +211,12 @@ public final class User
 		return this;
 	}
 
-	public IBuildUser setFax(String fax) {
+	public ICompanyOptional setFax(String fax) {
 		this.fax = fax;
 		return this;
 	}
 
-	public IBuildUser setCompany(String company) {
+	public IAddressOptional setCompany(String company) {
 		this.company = company;
 		return this;
 	}
@@ -238,7 +256,7 @@ public final class User
 		return this;
 	}
 
-	public IBuildUser setSubscribe(boolean subscribe) {
+	public IFaxOptional setSubscribe(boolean subscribe) {
 		this.subscribe = subscribe;
 		return this;
 	}

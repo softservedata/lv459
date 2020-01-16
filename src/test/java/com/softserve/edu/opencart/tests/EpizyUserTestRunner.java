@@ -1,8 +1,19 @@
 package com.softserve.edu.opencart.tests;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
@@ -16,6 +27,7 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 
 public abstract class EpizyUserTestRunner {
 	private final Long ONE_SECOND_DELAY = 1000L;
+	private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
 	private String serverUrl = "http://taqc-opencart.epizy.com";
 	private WebDriver driver;
 
@@ -44,19 +56,21 @@ public abstract class EpizyUserTestRunner {
 		}
 	}
 
-	//@Before
+	// @Before
 	@BeforeMethod
 	public void beforeMethod() {
 		driver.get(serverUrl);
 	}
 
-	//@After
+	// @After
 	@AfterMethod
-	public void afterMethod(ITestResult result) {
+	public void afterMethod(ITestResult result) throws IOException {
 		// TODO Logout
 		if (!result.isSuccess()) {
 			System.out.println("***Test " + result.getName() + " ERROR");
-			// Take Screenshot, save sourceCode, save to log, prepare report, Return to previous state, logout, etc.
+			// Take Screenshot, save sourceCode, save to log, prepare report, Return to
+			takePageSource(takeScreenShot());
+			// previous state, logout, etc.
 		}
 		// driver.get(SERVER_URL);
 	}
@@ -78,4 +92,23 @@ public abstract class EpizyUserTestRunner {
 		}
 	}
 
+	private String takeScreenShot() throws IOException {
+		String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File("./img/" + currentTime + "_screenshot.png"));
+		// log.info("Screenshot was taken");
+		return "./img/" + currentTime + "_screenshot";
+	}
+
+	private void takePageSource(String fileName) {
+		String pageSource = driver.getPageSource();
+		Path path = Paths.get(fileName + ".txt");
+		byte[] strToBytes = pageSource.getBytes();
+		try {
+			Files.write(path, strToBytes, StandardOpenOption.CREATE);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
