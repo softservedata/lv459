@@ -21,6 +21,8 @@ interface IStatus {
 }
 
 interface IBuilderCurrency {
+    IBuilderCurrency setCurrencySymbolLeft(String symbolLeft);
+    IBuilderCurrency setCurrencySymbolRight(String symbolRight);
     ICurrency build();
 }
 
