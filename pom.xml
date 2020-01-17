@@ -83,20 +83,6 @@
 			<version>1.7.25</version>
 		</dependency>
 
-		<!--<dependency>-->
-			<!--<groupId>io.cucumber</groupId>-->
-			<!--<artifactId>cucumber-java</artifactId>-->
-			<!--<version>5.0.0</version>-->
-			<!--<scope>test</scope>-->
-		<!--</dependency>-->
-
-		<!--<dependency>-->
-			<!--<groupId>io.cucumber</groupId>-->
-			<!--<artifactId>cucumber-junit</artifactId>-->
-			<!--<version>5.0.0</version>-->
-			<!--<scope>test</scope>-->
-		<!--</dependency>-->
-
 		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
 		<dependency>
 			<groupId>info.cukes</groupId>
