@@ -116,4 +116,5 @@ public class ProductsContainerComponent {
     	return getProductComponentByName(product.getName());
     }
 
+
 }

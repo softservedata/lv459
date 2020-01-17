@@ -1,6 +1,7 @@
 package com.softserve.edu.opencart.pages.user.shop.productinfomacbook;
 
 import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,6 +29,88 @@ public class ProductInfoMacBookPage extends BreadCrumbPart {
         quantityLabel = driver.findElement(By.cssSelector("#product .control-label"));
         quantityField = driver.findElement(By.cssSelector("#input-quantity"));
         addToCartButton = driver.findElement(By.cssSelector("#button-cart"));
+        descriptionMacBookComponent = new DescriptionMacBookComponent(driver);
+        specificationMacBookComponent = new SpecificationMacBookComponent(driver);
+        reviewMacBookComponent = new ReviewMacBookComponent(driver);
+    }
+
+
+    public WebElement getProductName(){
+        return productName;
+    }
+
+    public String getProductNameText(){
+        return getProductName().getText();
+    }
+
+    public WebElement getProductPrice(){
+        return productPrice;
+    }
+
+    public String getProductPriceText(){
+        return getProductPrice().getText();
+    }
+
+    public WebElement getQuantityLabel(){
+        return quantityLabel;
+    }
+
+    public String getQuantityLabelText(){
+        return getQuantityLabel().getText();
+    }
+
+    public WebElement getQuantityField(){
+        return quantityField;
+    }
+
+    public void clickQuantityField(){
+        getQuantityField().click();
+    }
+
+    public void clearQuantityField(){
+        getQuantityField().clear();
+    }
+
+
+    public void setQuantityField(String qty){
+        getQuantityField().sendKeys(qty);
+    }
+
+
+    public WebElement getAddToCartButton(){
+        return addToCartButton;
+    }
+
+    public void clickAddToCartButton(){
+        getAddToCartButton().click();
+    }
+
+    public DescriptionMacBookComponent getDescriptionMacBookComponent(){
+        return descriptionMacBookComponent;
+    }
+
+    public SpecificationMacBookComponent getSpecificationMacBookComponent(){
+        return specificationMacBookComponent;
+    }
+
+    public ReviewMacBookComponent getReviewMacBookComponent(){
+        return reviewMacBookComponent;
+    }
+
+    //Functional
+
+    public void setQuantity(String qty){
+        clickQuantityField();
+        clearQuantityField();
+        getQuantityField().sendKeys(qty);
+    }
+
+    //Business Logic
+
+    public AlertMessagePage addMacBookToCartWithQty(String qty){
+        setQuantity(qty);
+        clickAddToCartButton();
+        return new AlertMessagePage(driver);
     }
 
 

@@ -3,6 +3,7 @@ package com.softserve.edu.opencart.pages.user.common;
 import java.util.List;
 
 import com.softserve.edu.opencart.data.*;
+import com.softserve.edu.opencart.pages.user.shop.productinfomacbook.ProductInfoMacBookPage;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartEmptyPage;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartPage;
@@ -464,4 +465,5 @@ public abstract class TopPart {
         clickShoppingCart();
         return new CartEmptyPage(driver);
     }
+
 }
