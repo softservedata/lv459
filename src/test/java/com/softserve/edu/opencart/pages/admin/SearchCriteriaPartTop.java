@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.IUser;
 
-public abstract class SearchCriteriaPartTop extends TopMenuPart {
+public abstract class SearchCriteriaPartTop extends LeftMenuPart {
 
     private WebElement criteriaSearchButton;
     private WebElement emailSearchInput;

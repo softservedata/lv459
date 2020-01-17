@@ -4,6 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+/*
+ * @startuml
+ * TopMenuPart --|>> DashboardRefPart
+ * @enduml
+ */
 public abstract class TopMenuPart extends DashboardRefPart {
 
     private WebElement burgerMenu;
