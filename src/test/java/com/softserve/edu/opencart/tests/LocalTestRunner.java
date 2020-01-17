@@ -41,6 +41,7 @@ public abstract class LocalTestRunner {
 		options.addArguments("--disable-gpu");
 		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
 	}
 
 	@AfterClass(alwaysRun = true)
