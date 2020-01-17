@@ -2,6 +2,7 @@ package com.softserve.edu.opencart.pages.user;
 
 import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.pages.user.shop.productinfomacbook.ProductInfoMacBookPage;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +26,7 @@ public class HomePage extends TopPart {
 
 	private void initElements() {
 		// init elements
-		slideshow0 = driver.findElement(By.id("slideshow0"));
+		slideshow0 = driver.findElement(By.cssSelector("#slideshow0"));
 		productsContainerComponent = new ProductsContainerComponent(driver);
 	}
 
@@ -72,10 +73,18 @@ public class HomePage extends TopPart {
 		return new HomePage(driver);
 	}
 
+
+
 	// add Product To Shopping Cart on Home Page
 	public AlertMessagePage addProductToShoppingCart(IProduct product)
 	{
 		productsContainerComponent.clickProductComponentAddToCartButtonByName(product);
 		return new AlertMessagePage(driver);
+	}
+
+	// go to MacBook Page
+	public ProductInfoMacBookPage gotoProductInfoMacBookPage(IProduct product){
+		productsContainerComponent.getProductComponentByName(product).clickName();
+		return new ProductInfoMacBookPage(driver);
 	}
 }
