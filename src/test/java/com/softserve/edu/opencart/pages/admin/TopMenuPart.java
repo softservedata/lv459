@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public abstract class TopMenuPart extends DashboardRefPart{
+public abstract class TopMenuPart extends DashboardRefPart {
 
     private WebElement burgerMenu;
     private WebElement bellButton;
@@ -46,35 +46,40 @@ public abstract class TopMenuPart extends DashboardRefPart{
     public WebElement getLogOutButton() {
         return logOutButton;
     }
+
     public DropDownComponent getDropDownComponent() {
         return new DropDownComponent(driver, By.id("menu-catalog"));
     }
 
     public void clickBurgerMenu() {
-         getBurgerMenu().click();
+        getBurgerMenu().click();
     }
+
     public void clickBellButton() {
         getBellButton().click();
     }
+
     public void clickTopMenuHomeButton() {
         getTopMenuHomeButton().click();
     }
+
     public void clickLifeRingButton() {
         getLifeRingButton().click();
     }
+
     public void clickLogOutButton() {
         getLogOutButton().click();
     }
-//    public DropDownComponent clickComponent() {
-//        return new DropDownComponent(driver, By.id("menu-catalog"));
-//    }
+    public DropDownComponent clickComponent() {
+        return new DropDownComponent(driver, By.id("menu-catalog"));
+    }
 
 
     // Functional
 
     // Business Logic
 
-    public LoginPage LogOut(){
+    public LoginPage LogOut() {
         clickLogOutButton();
         return new LoginPage(driver);
     }

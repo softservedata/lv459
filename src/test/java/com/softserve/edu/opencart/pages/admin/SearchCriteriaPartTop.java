@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public abstract class SearchCriteriaPartTop extends MenuPart {
+public abstract class SearchCriteriaPartTop extends TopMenuPart {
 
     private WebElement criteriaSearchButton;
     private WebElement emailSearchInput;
@@ -39,14 +39,14 @@ public abstract class SearchCriteriaPartTop extends MenuPart {
         getEmailSearchInput().clear();
     }
 
-    public void setEmailSearckInput(String email) {
+    public void setEmailSearchInput(String email) {
         getEmailSearchInput().sendKeys(email);
     }
 
     public void fillEmailSearchInput(String email) {
         clickEmailSearchInput();
         clearEmailSearchInput();
-        setEmailSearckInput(email);
+        setEmailSearchInput(email);
     }
 
     public SearchSuccessPage searchByEmail(String email) {

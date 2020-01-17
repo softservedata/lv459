@@ -4,7 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public abstract class MenuPart extends DashboardRefPart{
+/**
+ * Duplicated. Can be easily deleted.
+ */
+public abstract class MenuPart extends DashboardRefPart {
 
     private WebElement burgerMenu;
     private WebElement bellButton;
@@ -46,6 +49,7 @@ public abstract class MenuPart extends DashboardRefPart{
     public WebElement getLogOutButton() {
         return logOutButton;
     }
+
     public DropDownComponent getDropDownComponent() {
         return new DropDownComponent(driver, By.id("menu-catalog"));
     }
@@ -69,6 +73,7 @@ public abstract class MenuPart extends DashboardRefPart{
     public void clickLogOutButton() {
         getLogOutButton().click();
     }
+
     public DropDownComponent clickComponent() {
         return new DropDownComponent(driver, By.id("menu-catalog"));
     }

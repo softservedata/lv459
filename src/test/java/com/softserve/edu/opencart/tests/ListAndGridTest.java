@@ -33,7 +33,7 @@ public class ListAndGridTest extends LocalTestRunner {
                 .getProductsDisplay()
                 .viewProductsByList();
 
-        // Checking
+        // Checking if button is active
         Assert.assertTrue(productsDisplayComponent.statusListViewButton());
         //
         // Returning to the previous state
@@ -58,7 +58,7 @@ public class ListAndGridTest extends LocalTestRunner {
                 .getProductsDisplay()
                 .viewProductsByGrid();
 
-        // Checking
+        // Checking if button is active
         Assert.assertTrue(productsDisplayComponent.statusGridViewButton());
         //
         // Returning to the previous state
