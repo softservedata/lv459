@@ -117,7 +117,7 @@ public final class UserRepository {
                 .build();
     }
     
-    public IUser getEmailUser() {
+    public IUser emailUser() {
         return User.get()
                 .setFirstName("")
                 .setLastName("")

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class UsersContainerComponent {
-    
+
     private final String USERS_COMPONENT_CSSSELECTOR = ".table.table-bordered.table-hover tbody tr";
     protected WebDriver driver;
     //
@@ -22,17 +22,15 @@ public class UsersContainerComponent {
     private void initElements() {
         // init elements
         userComponents = new ArrayList<>();
-        for (WebElement current : driver.findElements(By.cssSelector(USERS_COMPONENT_CSSSELECTOR)))
-        {
-            userComponents.add(new UserComponent(current));
+        for (WebElement current : driver.findElements(By.cssSelector(USERS_COMPONENT_CSSSELECTOR))) {
+            userComponents.add(new UserComponent(driver, current));
         }
     }
 
     // Page Object
 
     // productComponents
-    public List<UserComponent> getUserComponents()
-    {
+    public List<UserComponent> getUserComponents() {
 
         return userComponents;
     }

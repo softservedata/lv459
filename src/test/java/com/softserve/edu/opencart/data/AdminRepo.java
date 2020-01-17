@@ -20,10 +20,10 @@ public final class AdminRepo {
     }
     
     public IAdmin getDefault() {
-        return getValidAdmin();
+        return validAdmin();
     }
 
-    public IAdmin getValidAdmin() {
+    public IAdmin validAdmin() {
         return Admin.get()
                 .setLogin("admin")
                 .setPassword(System.getenv("DB_PASSWORD"))

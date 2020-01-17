@@ -13,7 +13,7 @@ public class DeleteCustomerViaAdminPageTest extends LocalAdminTestRunner {
     @Test
     public void sampleTest() {
         CustomersPage homepage = loadApplication()
-                .successfulLogin(AdminRepo.get().getValidAdmin())
+                .successfulLogin(AdminRepo.get().validAdmin())
                 .gotoCustomersCustomersPage();
 
         presentationSleep(2);
