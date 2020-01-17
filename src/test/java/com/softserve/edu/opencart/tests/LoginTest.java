@@ -37,7 +37,7 @@ public class LoginTest extends LocalTestRunner {
     public void incorrectUserLoginTest(IUser invalidUser) {
       String warningMessage =  loadApplication()
         .gotoLoginPage()
-        .unsuccessfulLogin(invalidUser,6)
+        .unsuccessfulLogin(invalidUser,6)//TODO repeat 6 times, const
         .getAlertWarningText();
       Assert.assertEquals(warningMessage, BLOCK_USER_ERROR_MESSAGE);
     }

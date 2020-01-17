@@ -61,7 +61,7 @@ public abstract class LocalTestRunner {
 	@AfterMethod(alwaysRun = true)
 	public void afterMethod() {
 		if (ApplicationStatus.get().isLogged()) {
-		    driver.findElement(By.id("logo")).click();
+		    driver.get(SERVER_URL);
             loadApplication()
             .gotoMyAccount()
             .gotoEditAccountRight()

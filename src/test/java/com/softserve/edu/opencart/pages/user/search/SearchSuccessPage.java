@@ -57,9 +57,9 @@ public class SearchSuccessPage extends SearchCriteriaPart {
     	return new SearchSuccessAlertPage(driver);
     }
 
-    public ProductInfoPage gotoProductInfo(IProduct product) {
-        getProductsDisplay().getProductComponentByName(product).clickName();
-        return new ProductInfoPage(driver);
-    }
+//    public ProductInfoPage gotoProductInfo(IProduct product) {
+//        getProductsDisplay().getProductComponentByName(product).clickName();
+//        return new ProductInfoPage(driver);
+//    }
 
 }

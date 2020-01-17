@@ -20,6 +20,7 @@ import com.softserve.edu.ukrNet.MainEmailPage;
 public class LocalEmailTestRunner {
 
     private final String EMAIL_URL = "https://www.ukr.net/";
+    protected final String RESET_PASSWORD_TAB = "Password reset";
     private final String SERVER_URL = System.getenv().get("OPENCART_URL");
     private static WebDriver driver;
 
@@ -36,7 +37,7 @@ public class LocalEmailTestRunner {
         options.addArguments("--disable-browser-side-navigation");
         options.addArguments("--disable-gpu");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterClass(alwaysRun = true)

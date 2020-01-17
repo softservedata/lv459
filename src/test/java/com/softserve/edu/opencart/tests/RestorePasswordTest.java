@@ -12,7 +12,7 @@ public class RestorePasswordTest extends LocalEmailTestRunner {
     @DataProvider // (parallel = true)
     public Object[][] correctCustomers() {
         return new Object[][] {
-            { UserRepository.get().getEmailUser() },
+            { UserRepository.get().emailUser() },
         };
     }
 
@@ -26,7 +26,7 @@ public class RestorePasswordTest extends LocalEmailTestRunner {
      String email = loadEmailPage()
         .successfulLogin(validUser)
         .goToIncomingMwssages()
-        .goToRestorePasswordMessage("Password reset")
+        .goToRestorePasswordMessage(RESET_PASSWORD_TAB)
         .clickRestorePasswordLink()
         .enterNewPassword(validUser)
         .successfulLogin(validUser)
@@ -50,7 +50,8 @@ public class RestorePasswordTest extends LocalEmailTestRunner {
         .clickRestorePasswordLink()
         .enterNewPassword(validUser)
         .successfulLogin(validUser)
-        .gotoEditAccountRight().getEmailFieldText();
+        .gotoEditAccountRight()
+        .getEmailFieldText();
      
      Assert.assertEquals(validUser.getEmail(), email);
 

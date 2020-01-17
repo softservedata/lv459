@@ -33,7 +33,7 @@ public class LoginPage extends AccountSidebarGuestPart {
     public WebElement getEmail() {
         return email;
     }
-    
+
     public WebElement getForgorPassword() {
         return forgotPassword;
     }
@@ -49,7 +49,7 @@ public class LoginPage extends AccountSidebarGuestPart {
     public void clickEmailField() {
         getEmail().click();
     }
-    
+
     public ForgotPasswordPage forgotPassword() {
         getForgorPassword().click();
         return new ForgotPasswordPage(driver);
@@ -115,20 +115,20 @@ public class LoginPage extends AccountSidebarGuestPart {
 
     // Business Logic
 
-    public MyAccountPage successfulLogin(IUser validUser){
+    public MyAccountPage successfulLogin(IUser validUser) {
         fillLogin(validUser);
         return new MyAccountPage(driver);
     }
 
-    public UnsuccessfulLoginPage unsuccessfulLogin(IUser invalidUser){
+    public UnsuccessfulLoginPage unsuccessfulLogin(IUser invalidUser) {
         fillLogin(invalidUser);
         return new UnsuccessfulLoginPage(driver);
     }
-    
-    public UnsuccessfulLoginPage unsuccessfulLogin(IUser invalidUser, int loginCount){
-        for (int i = 0; i < loginCount; i++) {           
-        fillLogin(invalidUser);
-        initElements();
+
+    public UnsuccessfulLoginPage unsuccessfulLogin(IUser invalidUser, int loginCount) {
+        for (int i = 0; i < loginCount; i++) {
+            fillLogin(invalidUser);
+            initElements();
         }
         return new UnsuccessfulLoginPage(driver);
     }
