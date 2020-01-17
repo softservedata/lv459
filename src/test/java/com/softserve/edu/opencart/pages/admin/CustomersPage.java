@@ -13,7 +13,10 @@ public class CustomersPage extends LeftMenuPart {
     private WebElement filterButton;
     private CustomersContainer customersList;
 
-
+    /**
+     * Customers page in OpenCart_Admin.
+     * @param driver
+     */
     public CustomersPage(WebDriver driver) {
         super(driver);
         initElements();

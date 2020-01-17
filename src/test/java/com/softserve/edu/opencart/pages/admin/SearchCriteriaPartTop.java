@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public abstract class SearchCriteriaPartTop extends TopMenuPart {
+public abstract class SearchCriteriaPartTop extends LeftMenuPart {
 
     private WebElement criteriaSearchButton;
     private WebElement emailSearchInput;
