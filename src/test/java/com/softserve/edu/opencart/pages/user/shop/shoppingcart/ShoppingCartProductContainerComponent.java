@@ -25,7 +25,7 @@ public class ShoppingCartProductContainerComponent {
     private void initElements() {
         shoppingCartProductComponents = new ArrayList<>();
 
-        for (WebElement current : driver.findElements(By.xpath(PRODUCT_TABLE_COMPONENTS))) {
+        for (WebElement current : driver.findElements(By.cssSelector(PRODUCT_TABLE_COMPONENTS))) {
             shoppingCartProductComponents.add(new ShoppingCartProductComponent(current));
 
         }
