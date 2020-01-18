@@ -36,16 +36,22 @@ public abstract class LeftMenuPart extends TopMenuPart {
             driver.findElement(By.cssSelector(("#button-menu"))).click();
         }
 
+        catalog = driver.findElement(By.id("menu-catalog"));
+        extensions = driver.findElement(By.id("menu-extension"));
+        design = driver.findElement(By.id("menu-design"));
+        sales = driver.findElement(By.id("menu-sale"));
         customers = driver.findElement(By.id("menu-customer"));
-
-        // TODO here is added customer menu tab. later add other 'li'
-        //        WebElement objElement = driver.findElement(By.cssSelector
-        //
-        // ("tagType[attributeName1=attributeValue1][attributeName2
-        // =attributeValue2][attribute3Name=attributeValue3]"));
+        marketing = driver.findElement(By.id("menu-catalog"));
+        system = driver.findElement(By.id("menu-marketing"));
+        reports = driver.findElement(By.id("menu-report"));
+        stats = driver.findElement(By.id("stats"));
 
     }
 
+    public void clickCatalog() {
+        catalog.click();
+    }
+    
     public void clickCustomers() {
         customers.click();
     }
