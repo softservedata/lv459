@@ -17,9 +17,11 @@ public class ProductInfoMacBook {
 
     //getters
 
-    public String getQuantity(String quantity){
+    public String getQuantity(){
 	    return quantity;
     }
+
+
 
 
 }

@@ -103,7 +103,7 @@ public class ProductInfoMacBookPage extends BreadCrumbPart {
     public void setQuantity(ProductInfoMacBook qty){
         clickQuantityField();
         clearQuantityField();
-        getQuantityField().sendKeys((CharSequence) qty);  //// Idk how correct is that.
+        getQuantityField().sendKeys( qty.getQuantity());  //// Idk how correct is that.
     }
 
     //Business Logic
