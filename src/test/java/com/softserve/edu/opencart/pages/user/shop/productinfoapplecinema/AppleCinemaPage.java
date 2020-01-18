@@ -37,8 +37,8 @@ public class AppleCinemaPage extends BreadCrumbPart {
 
     private void initElements(){
 
-        radioButton = driver.findElement(By.xpath("//div[@class='radio']/label[text()[contains(., 'Large')]]"));
-        checkboxButton = driver.findElement(By.xpath("//div[@class='checkbox']/label[text()[contains(., 'Checkbox 3')]]"));
+        radioButton = driver.findElement(By.xpath("//div[@class='radio']/label[text()[contains(., 'Large')]]/input"));
+        checkboxButton = driver.findElement(By.xpath("//div[@class='checkbox']/label[text()[contains(., 'Checkbox 3')]]/input"));
         textField = driver.findElement(By.xpath("//input[@placeholder='Text']"));
         selectField = driver.findElement(By.xpath("//select"));
         selectOptions = driver.findElement(By.xpath("//option[starts-with(.,'Green')]"));
