@@ -1,6 +1,8 @@
 package com.softserve.edu.opencart.pages.user;
 
+import com.softserve.edu.opencart.data.AppleCinemaInfo;
 import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.pages.user.shop.productinfoapplecinema.AppleCinemaPage;
 import com.softserve.edu.opencart.pages.user.shop.productinfomacbook.MacBookPage;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 import org.openqa.selenium.By;
@@ -85,5 +87,10 @@ public class HomePage extends TopPart {
 	public MacBookPage gotoProductInfoMacBookPage(IProduct product){
 		productsContainerComponent.getProductComponentByName(product).clickName();
 		return new MacBookPage(driver);
+	}
+
+	public AppleCinemaPage gotoAppleCinemaPage(IProduct product){
+		productsContainerComponent.getProductComponentByName(product).clickName();
+		return new AppleCinemaPage(driver);
 	}
 }

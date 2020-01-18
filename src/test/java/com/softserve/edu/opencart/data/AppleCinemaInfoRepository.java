@@ -23,10 +23,10 @@ public class AppleCinemaInfoRepository {
     }*/
 
 
-    public static AppleCinemaInfo getMacBookInfo() {
+    public static AppleCinemaInfo getAppleCinemaInfo() {
         return new AppleCinemaInfo("test1",
                 "text1",
-                "fee9e81729574a48e990d2a6fcfd01c98be0c8e7",
+                "ab11fd00be88a38bf36227247541ca9f90b481c2",
                 "2020-01-21",
                 "11:00",
                 "2020-01-21 11:00",

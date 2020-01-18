@@ -281,7 +281,7 @@ public class AppleCinemaPage extends BreadCrumbPart {
 
     //Business Logic
 
-    public AlertMessagePage addAppleCinemaToCartWithQty(AppleCinemaInfo text, AppleCinemaInfo textarea, AppleCinemaInfo fileValue, AppleCinemaInfo data,
+    public AlertMessagePage addAppleCinemaToCartWithAllOpt(AppleCinemaInfo text, AppleCinemaInfo textarea, AppleCinemaInfo fileValue, AppleCinemaInfo data,
                                                         AppleCinemaInfo time, AppleCinemaInfo datatime, AppleCinemaInfo qty){
         clickRadioButton();
         clickCheckboxButton();
