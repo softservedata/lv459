@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.ApplicationStatus;
+
 public class UnsuccessfulLoginPage extends LoginPage {
 
     public static final String EXPECTED_LOGIN_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
@@ -13,6 +15,7 @@ public class UnsuccessfulLoginPage extends LoginPage {
     public UnsuccessfulLoginPage(WebDriver driver) {
         super(driver);
         initElements();
+        ApplicationStatus.get().setLogged(false);
     }
 
     private void initElements() {

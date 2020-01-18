@@ -37,7 +37,11 @@ interface IRegionState {
 }
 
 interface IPassword {
-    ISubscribe setPassword(String password);
+    INewPassword setPassword(String password);
+}
+
+interface INewPassword {
+    ISubscribe setNewPassword(String newPassword);
 }
 
 interface ISubscribe {
@@ -55,7 +59,7 @@ interface IBuildUser {
 public final class User
         implements IFirstName, ILastName, IEmail,
         ITelephone, IAddress, ICity, IPostCode, ICountry, IRegionState,
-        IPassword, ISubscribe, IBuildUser,
+        IPassword, ISubscribe, IBuildUser, INewPassword,
         IUser {
 
     public final static String EMPTY_STRING = "";
@@ -72,6 +76,7 @@ public final class User
     private String country;
     private String regionState;
     private String password;
+    private String newPassword;
     private boolean subscribe;
 
 
@@ -147,7 +152,12 @@ public final class User
         return this;
     }
 
-    public ISubscribe setPassword(String password) {
+    public INewPassword setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+    
+    public ISubscribe setNewPassword(String password) {
         this.password = password;
         return this;
     }
@@ -214,6 +224,10 @@ public final class User
 
     public String getPassword() {
         return password;
+    }
+    
+    public String getNewPassword() {
+        return newPassword;
     }
 
     public boolean isSubscribe() {

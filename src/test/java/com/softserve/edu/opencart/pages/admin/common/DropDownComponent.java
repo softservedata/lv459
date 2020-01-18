@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages.admin;
+package com.softserve.edu.opencart.pages.admin.common;
 
 import java.util.ArrayList;
 import java.util.List;

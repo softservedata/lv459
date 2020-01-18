@@ -1,10 +1,13 @@
-package com.softserve.edu.opencart.pages.admin;
+package com.softserve.edu.opencart.pages.admin.account;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.IAdmin;
+import com.softserve.edu.opencart.pages.admin.ForgotPasswordAdminPage;
+import com.softserve.edu.opencart.pages.admin.HomePage;
+import com.softserve.edu.opencart.pages.admin.common.DashboardRefPart;
 
 public class LoginPage extends DashboardRefPart {
 

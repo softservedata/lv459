@@ -23,7 +23,7 @@ public class LoginTest extends LocalTestRunner {
         };
     }
 
-    @Test(dataProvider = "correctCustomers")
+    @Test(dataProvider = "correctCustomers", priority = 1)
     public void loginTest(IUser validUser) {
       String email =  loadApplication()
         .gotoLoginPage()
@@ -33,11 +33,16 @@ public class LoginTest extends LocalTestRunner {
       Assert.assertEquals(email, validUser.getEmail());
     }
     
-    @Test(dataProvider = "incorrectCustomers")
+    @Test(dataProvider = "incorrectCustomers", priority = 2)
     public void incorrectUserLoginTest(IUser invalidUser) {
       String warningMessage =  loadApplication()
         .gotoLoginPage()
-        .unsuccessfulLogin(invalidUser,6)//TODO repeat 6 times, const
+        .unsuccessfulLogin(invalidUser)
+        .unsuccessfulLogin(invalidUser)
+        .unsuccessfulLogin(invalidUser)
+        .unsuccessfulLogin(invalidUser)
+        .unsuccessfulLogin(invalidUser)
+        .unsuccessfulLogin(invalidUser)
         .getAlertWarningText();
       Assert.assertEquals(warningMessage, BLOCK_USER_ERROR_MESSAGE);
     }

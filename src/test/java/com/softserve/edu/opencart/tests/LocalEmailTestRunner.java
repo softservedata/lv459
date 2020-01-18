@@ -20,23 +20,28 @@ import com.softserve.edu.ukrNet.MainEmailPage;
 public class LocalEmailTestRunner {
 
     private final String EMAIL_URL = "https://www.ukr.net/";
-    protected final String RESET_PASSWORD_TAB = "Password reset";
+    protected final String RESET_PASSWORD_MESSAGE = "Password reset";
     private final String SERVER_URL = System.getenv().get("OPENCART_URL");
     private static WebDriver driver;
 
     @BeforeClass
     public void beforeClass() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        options.addArguments("enable-automation");
-        options.addArguments("--no-sandbox");
-//        options.addArguments("--headless");
-        options.addArguments("--disable-infobars");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-browser-side-navigation");
-        options.addArguments("--disable-gpu");
-        driver = new ChromeDriver(options);
+//        WebDriverManager.chromedriver().setup();
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("start-maximized");
+//        options.addArguments("enable-automation");
+//        options.addArguments("--no-sandbox");
+////        options.addArguments("--headless");
+//        options.addArguments("--disable-infobars");
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--disable-browser-side-navigation");
+//        options.addArguments("--disable-gpu");
+//        driver = new ChromeDriver(options);
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        System.setProperty("webdriver.chrome.driver",
+                LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
+        System.out.println("PATH: " + LocalTestRunner.class.getResource("/chromedriver-windows-32bit.exe").getPath());
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
@@ -55,7 +60,7 @@ public class LocalEmailTestRunner {
     @AfterMethod(alwaysRun = true)
     public void afterMethod() {
         if (ApplicationStatus.get().isLogged()) {
-            driver.findElement(By.id("logo")).click();
+            driver.get(SERVER_URL);
             loadApplication()
             .gotoMyAccount()
             .gotoEditAccountRight()

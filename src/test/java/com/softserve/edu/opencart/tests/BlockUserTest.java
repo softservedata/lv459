@@ -25,7 +25,14 @@ public class BlockUserTest extends LocalAdminTestRunner {
         .goToTotalCustomers()
         .successfullSearchByEmail(validUser)
         .getUserContainer()
-        .getUserComponents();
+        .getUserByEmail(validUser)
+        .clickEditButton();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
 }

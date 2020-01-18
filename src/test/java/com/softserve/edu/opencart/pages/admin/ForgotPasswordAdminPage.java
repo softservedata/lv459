@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.pages.admin.account.LoginPage;
+import com.softserve.edu.opencart.pages.admin.common.DashboardRefPart;
+
 public class ForgotPasswordAdminPage extends DashboardRefPart {
 
     private WebElement forgotPasswordHeader;

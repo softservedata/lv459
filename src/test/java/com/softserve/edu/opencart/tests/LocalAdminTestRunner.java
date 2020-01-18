@@ -2,8 +2,6 @@ package com.softserve.edu.opencart.tests;
 
 import java.util.concurrent.TimeUnit;
 
-import com.softserve.edu.opencart.pages.admin.LoginPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,7 +9,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import com.softserve.edu.opencart.pages.admin.HomePage;
+
+import com.softserve.edu.opencart.pages.admin.account.LoginPage;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public abstract class LocalAdminTestRunner {
     private final Long ONE_SECOND_DELAY = 1000L;

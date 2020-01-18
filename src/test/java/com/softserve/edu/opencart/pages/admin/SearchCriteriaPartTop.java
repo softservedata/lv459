@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
 
 public abstract class SearchCriteriaPartTop extends LeftMenuPart {
 

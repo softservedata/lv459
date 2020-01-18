@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages.admin;
+package com.softserve.edu.opencart.pages.admin.common;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

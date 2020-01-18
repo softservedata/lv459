@@ -18,15 +18,24 @@ public class UserComponent {
     }
 
     private void initElements() {
-        editButton = userLayout.findElement(By.cssSelector(".text-right a.btn"));
+        editButton = userLayout.findElement(By.cssSelector(".text-right > a"));
+        email = userLayout.findElement(By.xpath("//td[contains(text(), '@')]"));
     }
 
     public WebElement getEditButton() {
         return editButton;
     }
+    
+    public WebElement getEmailField() {
+        return email;
+    }
 
     public void clickEditButton() {
         getEditButton().click();
+    }
+    
+    public String getEmailFieldText() {
+        return getEmailField().getText();
     }
 
     public EditUserPage editUser() {

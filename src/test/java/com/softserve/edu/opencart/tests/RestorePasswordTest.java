@@ -26,7 +26,7 @@ public class RestorePasswordTest extends LocalEmailTestRunner {
      String email = loadEmailPage()
         .successfulLogin(validUser)
         .goToIncomingMwssages()
-        .goToRestorePasswordMessage(RESET_PASSWORD_TAB)
+        .goToRestorePasswordMessage(RESET_PASSWORD_MESSAGE)
         .clickRestorePasswordLink()
         .enterNewPassword(validUser)
         .successfulLogin(validUser)

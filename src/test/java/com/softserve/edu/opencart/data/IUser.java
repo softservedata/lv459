@@ -27,6 +27,8 @@ public interface IUser {
     String getRegionState();
 
     String getPassword();
+    
+    String getNewPassword();
 
     boolean isSubscribe();
 
