@@ -47,10 +47,32 @@ public abstract class LeftMenuPart extends TopMenuPart {
         stats = driver.findElement(By.id("stats"));
 
     }
-
-    public void clickCatalog() {
-        catalog.click();
-    }
+    
+////
+//    public void Categories() {
+//        catalog.click();
+//    }
+//    
+//    public void clickCategories() {
+//        categories.click();
+//    }
+//    
+//    public void clickCategories() {
+//    	clickCatalog();
+//    	clickCategories();
+//    	return new CategoriesPage(WebDriver driver);
+//    }
+//    
+//    public void clickProducts() {
+//        products.click();
+//    }
+//    
+//    public ProductsPage gotoProductPage() {
+//    	clickCatalog();
+//    	clickProducts();
+//    	return new ProductsPage(driver);
+//    }
+////   
     
     public void clickCustomers() {
         customers.click();
