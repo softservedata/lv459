@@ -15,7 +15,7 @@ import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessag
  */
 public class RemoveFromWishListTest extends LocalTestRunner {
 
-    @DataProvider  //(parallel = true)
+    @DataProvider
     public Object[][] customers() {
         return new Object[][] {
                 { UserRepository.get().getBohdanaUser() },

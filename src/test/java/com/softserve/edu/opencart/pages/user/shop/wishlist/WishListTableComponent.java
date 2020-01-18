@@ -32,6 +32,7 @@ public final class WishListTableComponent {
         addToCartButton = tableLayout.findElement(By.cssSelector("tbody .fa.fa-shopping-cart"));
         removeFromWishListButton = tableLayout.findElement(By.cssSelector(".fa.fa-times"));
     }
+
     // Page Object
 
     /**
@@ -97,10 +98,6 @@ public final class WishListTableComponent {
         return getStock().getText();
     }
 
-    //TODO
-    //there is sometimes two price what to do?
-    // unitPrice
-    //по регулярному виразу витягувати першу ціну
     /**
      * <h3>This method gets product unit price.</h3>
      */

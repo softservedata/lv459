@@ -8,8 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
- * <h3> </h3>
- *
+ * <h3> Wish List Table Container Component class.</h3>
  */
 public class WishListTableContainerComponent {
 
@@ -78,7 +77,6 @@ public class WishListTableContainerComponent {
         }
         if (result == null) {
             // TODO Develop Custom Exception
-            // Use String.format()
             throw new RuntimeException("ProductName: " + productName + " not Found.");
         }
         return result;

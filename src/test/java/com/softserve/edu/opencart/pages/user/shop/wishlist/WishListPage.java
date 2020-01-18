@@ -9,8 +9,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 /**
- * <h3> </h3>
- *
+ * <h3> Wish list page.</h3>
  */
 public class WishListPage extends AccountSidebarLoggedPart {
 
@@ -68,7 +67,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
      * <h3>This method gets product price.</h3>
      */
     public  WishListPage getProductPrice(IProduct product){
-        wishListTableContainerComponent.getWishListTableComponentPriceByName(product);//change names of methods , name of product
+        wishListTableContainerComponent.getWishListTableComponentPriceByName(product);
         return new WishListPage(driver);
     }
 
@@ -76,7 +75,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
      * <h3>This method gets product module.</h3>
      */
     public  WishListPage getProductModule(IProduct product){
-        wishListTableContainerComponent.getWishListTableComponentModelByName(product);//change names of methods , name of product
+        wishListTableContainerComponent.getWishListTableComponentModelByName(product);
         return new WishListPage(driver);
     }
 
@@ -84,7 +83,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
      * <h3>This method add product to shopping cart .</h3>
      */
     public WishListMessagePage addProductToShoppingCart(IProduct product) {
-        wishListTableContainerComponent.clickWishListTableComponentAddToCartButtonByName(product); //change names of methods, name of product
+        wishListTableContainerComponent.clickWishListTableComponentAddToCartButtonByName(product);
         return new WishListMessagePage(driver);
     }
 
@@ -92,15 +91,11 @@ public class WishListPage extends AccountSidebarLoggedPart {
      * <h3>This method deletes product from wish list.</h3>
      */
     public WishListMessagePage deleteProductFromWishList(IProduct product) {
-        wishListTableContainerComponent.clickWishListTableComponentRemoveButtonByName(product); //change names of methods, name of product
+        wishListTableContainerComponent.clickWishListTableComponentRemoveButtonByName(product);
         return new WishListMessagePage(driver);
     }
 
-//    go to product page after click on name
-//    public ProductInfo goToProductPage(IProduct product) {
-//        wishListTableContainerComponent.clickWishListTableComponentOnName(product); //change names of methods , name of product
-//        return new ProductInfo(driver);
-//    }
+    //BL
 
     /**
      * <h3>This method is written to go to MyAccountPage.</h3>

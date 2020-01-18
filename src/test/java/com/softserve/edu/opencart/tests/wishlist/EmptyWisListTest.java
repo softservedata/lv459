@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
  */
 public class EmptyWisListTest extends LocalTestRunner {
 
-    @DataProvider  //(parallel = true)
+    @DataProvider
     public Object[][] customers() {
         return new Object[][] {
                 { UserRepository.get().getBohdanaUser() },
@@ -33,7 +33,7 @@ public class EmptyWisListTest extends LocalTestRunner {
                 .successfulLogin(validUser);
 
         //go to empty wish list page
-        EmptyWishListPage  actualResult =  myAccountPage.gotoEmptyWishListPage();
+        EmptyWishListPage  actualResult = myAccountPage.gotoEmptyWishListPage();
 
         //check whether it contains message
         Assert.assertTrue(actualResult

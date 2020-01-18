@@ -11,13 +11,15 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
- * <h3> This class contains test which verify if if Wish List is empty by default.</h3>
+ * <h3> This class contains test which verify whether the number
+ * of added elements are the same to the number of items that are displayed on
+ * the page.</h3> .</h3>
  */
 public class NumberEqualityTest extends LocalTestRunner {
 
     private static String EXPECTED_NUMBER = "2";
 
-    @DataProvider  //(parallel = true)
+    @DataProvider
     public Object[][] customers() {
         return new Object[][]{
                 {UserRepository.get().getBohdanaUser()},
