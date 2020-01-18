@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.user.shop.productinfomacbook;
 
+import com.softserve.edu.opencart.data.ProductInfoMacBook;
 import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 import org.openqa.selenium.By;
@@ -99,15 +100,15 @@ public class ProductInfoMacBookPage extends BreadCrumbPart {
 
     //Functional
 
-    public void setQuantity(String qty){
+    public void setQuantity(ProductInfoMacBook qty){
         clickQuantityField();
         clearQuantityField();
-        getQuantityField().sendKeys(qty);
+        getQuantityField().sendKeys((CharSequence) qty);  //// Idk how correct is that.
     }
 
     //Business Logic
 
-    public AlertMessagePage addMacBookToCartWithQty(String qty){
+    public AlertMessagePage addMacBookToCartWithQty(ProductInfoMacBook qty){
         setQuantity(qty);
         clickAddToCartButton();
         return new AlertMessagePage(driver);
