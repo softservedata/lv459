@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class DescriptionComponent extends ProductInfoAppleCinemaPage {   // wrong xpath
+public class DescriptionComponent extends AppleCinemaPage {   // wrong xpath
 
     private WebElement Description;
 

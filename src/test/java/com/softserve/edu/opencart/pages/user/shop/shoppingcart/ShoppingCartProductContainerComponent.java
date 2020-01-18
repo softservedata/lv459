@@ -125,10 +125,9 @@ public class ShoppingCartProductContainerComponent {
 
 
     //?????  It works on 'ProductsContainerComponent' class but not here?????
-/*
     public ShoppingCartProductComponent getProductComponentByName(IProduct product)
     {
-        return getProductComponentByName(product.getName());
-    }*/
+        return getProductComponentByName(product);
+    }
 
 }

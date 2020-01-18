@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage.PRODUCT_ADDED_TO_CART;
 
-public class AddToCartFromProductInfoPageTest extends LocalTestRunner {
+public class AddToCartMacBookTest extends LocalTestRunner {
 
     @DataProvider  //(parallel = true)
     public Object[][] customers() {
@@ -22,7 +22,7 @@ public class AddToCartFromProductInfoPageTest extends LocalTestRunner {
     public void addToCartFromProductInfoPageTest(IUser validUser){
 
         IProduct macBookProduct = ProductRepository.get().getMacBook();
-        ProductInfoMacBook macBookProductInfo = ProductInfoMacRepository.getMacBookInfo();
+        MacBookInfo macBookProductInfo = MacBookInfoRepository.getMacBookInfo();
 
         String actual = loadApplication()
                 .gotoLoginPage()

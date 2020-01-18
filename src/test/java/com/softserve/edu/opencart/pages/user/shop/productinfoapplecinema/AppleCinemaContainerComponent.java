@@ -7,38 +7,39 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductInfoContainerComponent {
+public class AppleCinemaContainerComponent {
 
     private final String PRODUCT_CONTAINER_COMPONENT = "#product";
 
     protected WebDriver driver;
 
-    private List<ProductInfoComponents> productInfoComponents;
+    private List<AppleCinemaComponents> appleCinemaComponents;
 
-    public ProductInfoContainerComponent(WebDriver driver) {
+    public AppleCinemaContainerComponent(WebDriver driver) {
         this.driver = driver;
         initElements();
     }
 
     private void initElements(){
-        productInfoComponents = new ArrayList<>();
+        appleCinemaComponents = new ArrayList<>();
         for (WebElement current : driver.findElements(By.cssSelector(PRODUCT_CONTAINER_COMPONENT))){
-            productInfoComponents.add(new ProductInfoComponents(current));
+            appleCinemaComponents.add(new AppleCinemaComponents(current));
         }
     }
 
     //Page Object
 
-    public List<ProductInfoComponents> getProductInfoComponents(){
-        return productInfoComponents;
+    public List<AppleCinemaComponents> getProductInfoComponents(){
+        return appleCinemaComponents;
     }
 
     //Functional
 
-    // Product Info Components Size
-    public int getProductInfoComponentsCount(){
-        return getProductInfoComponents().size();
-    }
+
+
+
+
+
 
 
     //Business Logic

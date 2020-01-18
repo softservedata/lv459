@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SpecificationComponent extends ProductInfoAppleCinemaPage {
+public class SpecificationComponent extends AppleCinemaPage {
 
     private WebElement Specification;
 

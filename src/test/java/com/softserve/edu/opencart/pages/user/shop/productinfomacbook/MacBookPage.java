@@ -1,13 +1,13 @@
 package com.softserve.edu.opencart.pages.user.shop.productinfomacbook;
 
-import com.softserve.edu.opencart.data.ProductInfoMacBook;
+import com.softserve.edu.opencart.data.MacBookInfo;
 import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ProductInfoMacBookPage extends BreadCrumbPart {
+public class MacBookPage extends BreadCrumbPart {
 
     private WebElement productName;
     private WebElement productPrice;
@@ -19,7 +19,7 @@ public class ProductInfoMacBookPage extends BreadCrumbPart {
     private ReviewMacBookComponent reviewMacBookComponent;
 
 
-    public ProductInfoMacBookPage(WebDriver driver){
+    public MacBookPage(WebDriver driver){
         super(driver);
         initElements();
     }
@@ -100,7 +100,7 @@ public class ProductInfoMacBookPage extends BreadCrumbPart {
 
     //Functional
 
-    public void setQuantity(ProductInfoMacBook qty){
+    public void setQuantity(MacBookInfo qty){
         clickQuantityField();
         clearQuantityField();
         getQuantityField().sendKeys( qty.getQuantity());  //// Idk how correct is that.
@@ -108,7 +108,7 @@ public class ProductInfoMacBookPage extends BreadCrumbPart {
 
     //Business Logic
 
-    public AlertMessagePage addMacBookToCartWithQty(ProductInfoMacBook qty){
+    public AlertMessagePage addMacBookToCartWithQty(MacBookInfo qty){
         setQuantity(qty);
         clickAddToCartButton();
         return new AlertMessagePage(driver);

@@ -3,7 +3,7 @@ package com.softserve.edu.opencart.pages.user.shop.productinfoapplecinema;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class ProductInfoComponents{
+public class AppleCinemaComponents {
 
     private WebElement productLayout;
 
@@ -20,7 +20,7 @@ public class ProductInfoComponents{
     private WebElement quantityField;
     private WebElement addToCartButton;
 
-    public ProductInfoComponents(WebElement productLayout){
+    public AppleCinemaComponents(WebElement productLayout){
         this.productLayout = productLayout;
         initElements();
     }

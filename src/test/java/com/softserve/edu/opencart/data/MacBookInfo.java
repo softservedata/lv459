@@ -1,11 +1,11 @@
 package com.softserve.edu.opencart.data;
 
-public class ProductInfoMacBook {
+public class MacBookInfo {
 
     //private String name;
 	private String quantity;
 
-	public ProductInfoMacBook( String quantity){
+	public MacBookInfo(String quantity){
 	    this.quantity = quantity;
     }
 
