@@ -16,11 +16,6 @@ public class CategoriesPage extends LeftMenuPart {
 	private WebElement addNewButton;
 	private WebElement rebuildButton;
 	private WebElement deleteButton;
-	private WebElement inputCategoryName;
-	private WebElement inputMetaTagTitle;
-	private WebElement switchToData;
-	private WebElement inputParent;
-	private WebElement saveButton;
 	
 	public CategoriesPage(WebDriver driver) {
 		super(driver);
@@ -33,12 +28,7 @@ public class CategoriesPage extends LeftMenuPart {
 		addNewButton = driver.findElement(By.cssSelector(".pull-right > .btn-primary"));
 		rebuildButton = driver.findElement(By.cssSelector(".btn-default"));
 		deleteButton = driver.findElement(By.cssSelector("button.btn.btn-danger"));
-		//
-		inputCategoryName = driver.findElement(By.id("#input-name1"));
-		inputMetaTagTitle = driver.findElement(By.id("#input-meta-title1"));
-		switchToData = driver.findElement(By.cssSelector("#form-category > ul > li.active > a"));
-		inputParent = driver.findElement(By.id("#input-parent"));
-		saveButton = driver.findElement(By.cssSelector(".btn-primary > .fa"));
+		
 	}
 
 	// Page Object
@@ -61,8 +51,9 @@ public class CategoriesPage extends LeftMenuPart {
 		return getAddNewButton().getText();
 	}
 	
-	public void clickAddNewButton() {
+	public AddNewCategory gotoAddNewCategory() {
         getAddNewButton().click();
+        return new AddNewCategory(driver);
     }
 	
 	//rebuildButton
@@ -93,7 +84,13 @@ public class CategoriesPage extends LeftMenuPart {
 	
 	
 	// Functional
-
+	
+	//inputCategoryName
+	//inputMetaTagTitle
+	//dataButton
+	//inputParent
+	//saveButton
+	
 	// Business Logic
 	
 }

@@ -26,7 +26,8 @@ public final class AdminRepo {
     public IAdmin validAdmin() {
         return Admin.get()
                 .setLogin("admin")
-                .setPassword(System.getenv("DB_PASSWORD"))
+                //.setPassword(System.getenv("DB_PASSWORD"))
+                .setPassword("Lv459_Taqc")
                 .build();
     }
 }

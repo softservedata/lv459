@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.pages.admin.catalog.CategoriesPage;
+import com.softserve.edu.opencart.pages.admin.catalog.ProductsPage;
+
 public abstract class LeftMenuPart extends TopMenuPart {
 
     protected WebElement profile;
@@ -18,7 +21,10 @@ public abstract class LeftMenuPart extends TopMenuPart {
     protected WebElement stats;
     protected WebElement header;
     protected WebElement footer;
-
+    
+    protected WebElement categories;
+    protected WebElement products;
+    
     protected DropDownComponent dropDownCustomer;
 
     public LeftMenuPart(WebDriver driver) {
@@ -45,34 +51,40 @@ public abstract class LeftMenuPart extends TopMenuPart {
         system = driver.findElement(By.id("menu-marketing"));
         reports = driver.findElement(By.id("menu-report"));
         stats = driver.findElement(By.id("stats"));
+        
+        categories = driver.findElement(
+				By.xpath("//li[@id='menu-catalog']//a[contains(text(),'Categories')]"));
+        products = driver.findElement(
+				By.xpath("//li[@id='menu-catalog']//a[contains(text(),'Products')]"));
 
     }
     
-////
-//    public void Categories() {
-//        catalog.click();
-//    }
-//    
-//    public void clickCategories() {
-//        categories.click();
-//    }
-//    
-//    public void clickCategories() {
-//    	clickCatalog();
-//    	clickCategories();
-//    	return new CategoriesPage(WebDriver driver);
-//    }
-//    
-//    public void clickProducts() {
-//        products.click();
-//    }
-//    
-//    public ProductsPage gotoProductPage() {
-//    	clickCatalog();
-//    	clickProducts();
-//    	return new ProductsPage(driver);
-//    }
-////   
+    //Categories
+    public void clickCatalog() {
+        catalog.click();
+    }
+    
+    public void clickCategories() {
+        categories.click();
+    }
+    
+    public CategoriesPage gotoCategoriesPage() {
+    	clickCatalog();
+    	clickCategories();
+    	return new CategoriesPage(driver);
+    }
+    
+    //Products
+    public void clickProducts() {
+        products.click();
+    }
+    
+    public ProductsPage gotoProductPage() {
+    	clickCatalog();
+    	clickProducts();
+    	return new ProductsPage(driver);
+    }
+//   
     
     public void clickCustomers() {
         customers.click();
