@@ -21,9 +21,15 @@ public class SearchCriteriaTest extends LocalTestRunner {
                 {ProductRepository.get().getSamsungSyncMaster941BW()}
         };
     }
+    /**
+     * Typing in "Search Criteria" field value "Samsung SyncMaster 941BW"
+     * checking if there is this word in the description and
+     * checking subcategory if there is "Samsung SyncMaster 941BW".
+     *
+     */
 
     @Test(dataProvider = "searchDataCaseOne")
-    private void findItemCaseOne(IProduct product) throws InterruptedException {
+    private void findItemCaseOne(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
