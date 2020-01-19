@@ -2,6 +2,9 @@ package com.softserve.edu.opencart.tests;
 
 import java.util.concurrent.TimeUnit;
 
+import com.softserve.edu.opencart.pages.user.search.SearchCriteriaPart;
+import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
+import com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -71,6 +74,19 @@ public abstract class LocalTestRunner {
 
 	public HomePage loadApplication() {
 		return new HomePage(driver);
+	}
+
+	public SearchCriteriaPart loadSearchCriteriaPart() {
+		return new SearchCriteriaPart(driver) {
+		};
+	}
+
+	public SearchUnsuccessPage loadSearchUnsuccessPage() {
+		return new SearchUnsuccessPage(driver);
+	}
+
+	public SearchSuccessPage loadSearchSuccessPage() {
+		return new SearchSuccessPage(driver);
 	}
 
 	public void presentationSleep() {

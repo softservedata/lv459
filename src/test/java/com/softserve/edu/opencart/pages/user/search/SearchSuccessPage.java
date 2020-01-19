@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 public class SearchSuccessPage extends SearchCriteriaPart {
 
     private ProductsDisplayComponent productsDisplay;
-    private SearchCriteriaPart searchCriteriaPart;
 
     public SearchSuccessPage(WebDriver driver) {
         super(driver);
@@ -20,12 +19,6 @@ public class SearchSuccessPage extends SearchCriteriaPart {
     private void initElements() {
         // init elements
         productsDisplay = new ProductsDisplayComponent(driver);
-        searchCriteriaPart = new SearchCriteriaPart(driver) {
-            @Override
-            public void clickCriteriaSubCategoryByName(Categories subcategory) {
-                super.clickCriteriaSubCategoryByName(subcategory);
-            }
-        };
     }
 
     // Page Object
@@ -34,10 +27,6 @@ public class SearchSuccessPage extends SearchCriteriaPart {
 
     public ProductsDisplayComponent getProductsDisplay() {
         return productsDisplay;
-    }
-
-    public SearchCriteriaPart getSearchCriteriaPart() {
-        return searchCriteriaPart;
     }
 
     // Functional
@@ -62,12 +51,10 @@ public class SearchSuccessPage extends SearchCriteriaPart {
     }
 
 
-
-
     public SearchSuccessAlertPage AddToWishButtonByName(IProduct product) {
 
-    	productsDisplay.clickProductComponentAddToWishButtonByName(product);
-    	return new SearchSuccessAlertPage(driver);
+        productsDisplay.clickProductComponentAddToWishButtonByName(product);
+        return new SearchSuccessAlertPage(driver);
     }
 
 //    public ProductInfoPage gotoProductInfo(IProduct product) {
