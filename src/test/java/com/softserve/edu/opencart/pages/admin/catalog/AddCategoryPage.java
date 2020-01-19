@@ -55,7 +55,7 @@ public class AddCategoryPage extends LeftMenuPart {
 		return this;
 	}
 	
-	public ModifiedCatatalogPage gotoModifiedCategoriesPage() {
+	public ModifiedCatatalogPage gotoModifiedCatalogPage() {
 		saveButton.click();
 		return new ModifiedCatatalogPage(driver);
 	}

@@ -25,11 +25,11 @@ public class CategoriesAddingTest extends LocalAdminTestRunner {
     	.successfulLogin(validAdmin)
     	.gotoCategoriesPage()
     	.gotoAddNewCategory()
-		.typeName("some")
-		.typeTitle("some")
+		.typeName("test")
+		.typeTitle("test")
 		.clickDataButton()
-		.typeParent("some")
-		.gotoModifiedCategoriesPage()
+		.typeParent("test")
+		.gotoModifiedCatalogPage()
 		.getSuccessText();
 	}
 }
