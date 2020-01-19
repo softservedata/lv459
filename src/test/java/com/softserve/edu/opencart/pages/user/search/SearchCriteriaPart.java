@@ -29,7 +29,7 @@ public abstract class SearchCriteriaPart extends BreadCrumbPart {
 		criteriaCategory = new Select(driver.findElement(By.name("category_id")));
 		criteriaSubCategory = driver.findElement(By.name("sub_category"));
 		criteriaDescription = driver.findElement(By.id("description"));
-		criteriaSearchButton = driver.findElement(By.id("description"));
+		criteriaSearchButton = driver.findElement(By.id("button-search"));
 	}
 
 	// Page Object
@@ -85,7 +85,7 @@ public abstract class SearchCriteriaPart extends BreadCrumbPart {
 		return getCriteriaSubCategory().isEnabled();
 	}
 
-	public void clickCriteriaSubCategory() {
+	public void clickCriteriaSubCategoryCheckBox() {
 		if (!getCriteriaSubCategory().isEnabled()) {
 			// TODO Develop Custom Exception
 			throw new RuntimeException(CRITERIA_SUB_CATEGORY_IS_DISABLED);
@@ -107,16 +107,16 @@ public abstract class SearchCriteriaPart extends BreadCrumbPart {
 		return criteriaSearchButton;
 	}
 
-	public void ClickCriteriaSearchButton() {
+	public void clickCriteriaSearchButton() {
 		getCriteriaSearchButton().click();
 	}
 
 	// Functional
 
 	// criteriaSubCategory
-	public void clickCriteriaSubCategoryByName(Categories subcategory) {
+	public void chooseCriteriaByName(Categories subcategory) {
 		setCriteriaCategory(subcategory.toString());
-		clickCriteriaSubCategory();
+		//clickCriteriaSubCategory();
 	}
 
 	// Business Logic

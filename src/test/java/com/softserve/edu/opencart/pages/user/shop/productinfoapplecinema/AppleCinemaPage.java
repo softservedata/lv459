@@ -4,10 +4,11 @@ import com.softserve.edu.opencart.data.AppleCinemaInfo;
 import com.softserve.edu.opencart.data.MacBookInfo;
 import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 
 public class AppleCinemaPage extends BreadCrumbPart {
 
@@ -18,16 +19,16 @@ public class AppleCinemaPage extends BreadCrumbPart {
     private WebElement selectField;
     private WebElement selectOptions;
     private WebElement textAreaField;
-    private WebElement uploadFileButton;
+    private WebElement uploadFileInput;
     private WebElement dateField;
     private WebElement timeField;
     private WebElement dateTimeField;
     private WebElement quantityField;
     private WebElement addToCartButton;
 
-    DescriptionComponent descriptionComponent;
-    SpecificationComponent specificationComponent;
-    ReviewComponent reviewComponent;
+    //DescriptionComponent descriptionComponent;
+    //SpecificationComponent specificationComponent;
+    //ReviewComponent reviewComponent;
 
     public AppleCinemaPage(WebDriver driver){
         super(driver);
@@ -43,15 +44,15 @@ public class AppleCinemaPage extends BreadCrumbPart {
         selectField = driver.findElement(By.xpath("//select"));
         selectOptions = driver.findElement(By.xpath("//option[starts-with(.,'Green')]"));
         textAreaField = driver.findElement(By.xpath("//textarea[@placeholder='Textarea']"));
-        uploadFileButton = driver.findElement(By.cssSelector("#button-upload222 i"));
+        uploadFileInput = driver.findElement(By.xpath("//button[starts-with(@id,'button-upload')]/following-sibling::input"));
         dateField = driver.findElement(By.xpath("//div[@class='input-group date']/input"));
         timeField = driver.findElement(By.xpath("//div[@class='input-group time']/input"));
         dateTimeField = driver.findElement(By.xpath("//div[@class='input-group datetime']/input"));
         quantityField = driver.findElement(By.cssSelector("#input-quantity"));
         addToCartButton = driver.findElement(By.cssSelector("#button-cart"));
-        descriptionComponent = new DescriptionComponent(driver);
-        specificationComponent = new SpecificationComponent(driver);
-        reviewComponent = new ReviewComponent(driver);
+        //descriptionComponent = new DescriptionComponent(driver);
+        //specificationComponent = new SpecificationComponent(driver);
+        //reviewComponent = new ReviewComponent(driver);
 
     }
 
@@ -129,14 +130,14 @@ public class AppleCinemaPage extends BreadCrumbPart {
     }
 
     //get Upload File Button
-    public WebElement getUploadFileButton(){
-        return uploadFileButton;
+    public WebElement getUploadFileInput(){
+        return uploadFileInput;
     }
 
     //click Upload File Button
-    public void clickUploadFileButton(){
-        getUploadFileButton().click();
-    }
+//    public void clickUploadFileButton(){
+//        getUploadFileButton().click();
+//    }
 
     //get Date Field
     public WebElement getDateField(){
@@ -209,7 +210,7 @@ public class AppleCinemaPage extends BreadCrumbPart {
     }
 
 
-    public DescriptionComponent getDescriptionComponent(){
+   /* public DescriptionComponent getDescriptionComponent(){
         return descriptionComponent;
     }
 
@@ -220,7 +221,7 @@ public class AppleCinemaPage extends BreadCrumbPart {
     public ReviewComponent getReviewComponent(){
         return reviewComponent;
     }
-
+*/
     //Functional
 
     //set Text Field
@@ -244,9 +245,34 @@ public class AppleCinemaPage extends BreadCrumbPart {
     }
 
     public void setUploadFileButton(AppleCinemaInfo uploadFileValue){
-        WebElement uploadInput = driver.findElement(By.xpath("//button[starts-with(@id,'button-upload')]/following-sibling::input"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);",
-                uploadInput, "value", uploadFileValue.getUploadFileValue());
+                getUploadFileInput(), "value", uploadFileValue.getUploadFileValue());
+       /* Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.xpath("//*[@id='button-upload222']/i")).click();//starts-with id text
+        robot.setAutoDelay(2000);
+        StringSelection stringSelection = new StringSelection("C:\\Users\\talia\\Desktop\\marshmello.jpg");
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+        robot.setAutoDelay(3000);
+
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyRelease(KeyEvent.VK_V);
+
+        robot.setAutoDelay(3000);
+
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+
+        Alert alert_box = driver.switchTo().alert();
+        alert_box.accept();
+*/
     }
 
 
@@ -281,18 +307,20 @@ public class AppleCinemaPage extends BreadCrumbPart {
 
     //Business Logic
 
-    public AlertMessagePage addAppleCinemaToCartWithAllOpt(AppleCinemaInfo text, AppleCinemaInfo textarea, AppleCinemaInfo fileValue, AppleCinemaInfo data,
+    public AlertMessagePage addAppleCinemaToCartWithAllOpt(AppleCinemaInfo text, AppleCinemaInfo textarea, AppleCinemaInfo uploadFileValue, AppleCinemaInfo data,
                                                         AppleCinemaInfo time, AppleCinemaInfo datatime, AppleCinemaInfo qty){
+
         clickRadioButton();
         clickCheckboxButton();
         setTextField(text);
         setSelectOptions();
         setTextAreaField(textarea);
-        setUploadFileButton(fileValue);
+        setUploadFileButton(uploadFileValue);
         setDateField(data);
         setTimeField(time);
         setDateTimeField(datatime);
         setQuantity(qty);
+        clickAddToCartButton();
         return new AlertMessagePage(driver);
     }
 
