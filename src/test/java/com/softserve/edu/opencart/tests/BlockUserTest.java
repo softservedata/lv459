@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,28 +12,50 @@ import com.softserve.edu.opencart.data.UserRepository;
 public class BlockUserTest extends LocalAdminTestRunner {
     
     @DataProvider // (parallel = true)
-    public Object[][] correctAdmin() {
+    public Object[][] correctUsers() {
         return new Object[][] { 
             { AdminRepo.get().validAdmin(),UserRepository.get().emailUser()},
             };
     }
 
-    @Test(dataProvider = "correctAdmin", priority = 1)
+    @Test(dataProvider = "correctUsers", priority = 1)
     public void blockUserTest(IAdmin validAdmin, IUser validUser) {
-        loadApplication()
+        loadAdminPage()
         .successfulLogin(validAdmin)
         .getTotalStatisticContainer()
         .goToTotalCustomers()
         .successfullSearchByEmail(validUser)
         .getUserContainer()
         .getUserByEmail(validUser)
-        .clickEditButton();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        .editUser()
+        .changeUserStatus(USER_DISABLED);
+
+      String errorMessage =  loadmainPage()
+        .gotoLoginPage()
+        .unsuccessfulLogin(validUser)
+        .getAlertWarningText();
+      
+      Assert.assertEquals(errorMessage, EXPECTED_ERROR_MESSAGE);
+    }
+    
+    @Test(dataProvider = "correctUsers", priority = 2)
+    public void unblockUserTest(IAdmin validAdmin, IUser validUser) {
+        loadAdminPage()
+        .successfulLogin(validAdmin)
+        .getTotalStatisticContainer()
+        .goToTotalCustomers()
+        .successfullSearchByEmail(validUser)
+        .getUserContainer()
+        .getUserByEmail(validUser)
+        .editUser()
+        .changeUserStatus(USER_ENABLED);
+      
+        String email =  loadmainPage()
+                .gotoLoginPage()
+                .successfulLogin(validUser)
+                .gotoEditAccountRight()
+                .getEmailFieldText();
+              Assert.assertEquals(email, validUser.getEmail());
     }
 
 }

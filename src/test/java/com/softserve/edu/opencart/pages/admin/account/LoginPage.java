@@ -21,11 +21,11 @@ public class LoginPage extends DashboardRefPart {
         initElements();
     }
 
-    //username
+    // username
     private void initElements() {
         username = driver.findElement(By.id("input-username"));
         password = driver.findElement(By.id("input-password"));
-        loginButton = driver.findElement(By.xpath("//button"));
+        loginButton = driver.findElement(By.cssSelector(".btn.btn-primary"));
         forgotPassword = driver.findElement(By.xpath("//span/a"));
     }
 
@@ -70,7 +70,7 @@ public class LoginPage extends DashboardRefPart {
         getPassword().sendKeys(password);
     }
 
-    //Forgotten password
+    // Forgotten password
     public WebElement forgotPassword() {
         return forgotPassword;
     }
@@ -118,7 +118,7 @@ public class LoginPage extends DashboardRefPart {
 
     // Business Logic
     public HomePage successfulLogin(IAdmin validAdmin) {
-        fillLogin(validAdmin);
+            fillLogin(validAdmin);
         return new HomePage(driver);
     }
 

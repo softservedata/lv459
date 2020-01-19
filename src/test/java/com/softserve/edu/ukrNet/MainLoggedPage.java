@@ -6,13 +6,12 @@ import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.EmailStatus;
 
-public class MainLoggedPage {
+public class MainLoggedPage extends MainEmailPage{
 
     private WebElement incomingMessages;
-    private WebDriver driver;
 
     public MainLoggedPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         initElements();
         EmailStatus.get().setLogged(true);
     }

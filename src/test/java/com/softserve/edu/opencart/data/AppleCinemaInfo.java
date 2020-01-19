@@ -1,7 +1,5 @@
 package com.softserve.edu.opencart.data;
 
-import org.openqa.selenium.WebElement;
-
 public class AppleCinemaInfo {
 
     private String textField;

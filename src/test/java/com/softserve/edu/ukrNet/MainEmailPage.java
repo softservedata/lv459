@@ -13,7 +13,7 @@ import com.softserve.edu.opencart.data.IUser;
 
 public class MainEmailPage {
 
-    private WebDriver driver;
+    protected WebDriver driver;
     private WebElement mailWidget;
     private WebElement inputLogin;
     private WebElement inputPassword;

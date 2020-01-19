@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 public class IncomingMessagesPage {
     WebDriver driver;
     private IncomingMessagesContainer incomingMessagesContainer;
-
+    private MessagePage messagePage;
     public IncomingMessagesPage(WebDriver driver) {
         this.driver = driver;
         initElements();

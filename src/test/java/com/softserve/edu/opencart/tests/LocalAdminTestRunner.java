@@ -11,14 +11,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import com.softserve.edu.opencart.pages.admin.account.LoginPage;
+import com.softserve.edu.opencart.pages.user.HomePage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public abstract class LocalAdminTestRunner {
     private final Long ONE_SECOND_DELAY = 1000L;
-//    private final String SERVER_URL = "http://192.168.43.135/opencart/upload/" + "admin";
-    //environment variable
-    private final String SERVER_URL = System.getenv().get("OPENCART_URL") + "admin";
+    private final String SERVER_ADMIN_URL = System.getenv().get("OPENCART_URL") + "admin";
+    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
+    protected final String USER_ENABLED = "1";
+    protected final String USER_DISABLED = "0";
+    protected final String EXPECTED_ERROR_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
     private static WebDriver driver;
 
     @BeforeClass
@@ -46,7 +49,7 @@ public abstract class LocalAdminTestRunner {
 
     @BeforeMethod
     public void beforeMethod() {
-        driver.get(SERVER_URL);
+        driver.get(SERVER_ADMIN_URL);
     }
 
     @AfterMethod
@@ -55,8 +58,13 @@ public abstract class LocalAdminTestRunner {
         // driver.get(SERVER_URL);
     }
 
-    public LoginPage loadApplication() {
+    public LoginPage loadAdminPage() {
         return new LoginPage(driver);
+    }
+    
+    public HomePage loadmainPage() {
+        driver.get(SERVER_URL);
+        return new HomePage(driver);
     }
 
     public void presentationSleep() {
