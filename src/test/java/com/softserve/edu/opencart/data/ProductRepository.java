@@ -42,6 +42,14 @@ public final class ProductRepository {
                 .build();
     }
 
+    public IProduct getSamsungSyncMaster941BW() {
+        return Product.get()
+                .setName("Samsung SyncMaster 941BW")
+                .setDescription("Imagine the advantages of going big without slowing down. The big 19\" 941BW monitor combines..")
+                .setPriceDollarExTax("200.00")
+                .build();
+    }
+
     public IProduct getCustomItem(String name) {
         return Product.get()
                 .setName(name)

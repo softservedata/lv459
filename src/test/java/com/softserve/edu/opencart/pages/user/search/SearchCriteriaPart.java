@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.user.search;
 
+import com.softserve.edu.opencart.data.Categories;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
 
 public abstract class SearchCriteriaPart extends BreadCrumbPart {
+
+	protected final String CRITERIA_SUB_CATEGORY_IS_DISABLED = "Error, CriteriaSubCategory is disabled";
 
 	private WebElement criteriaSearchField;
 	private Select criteriaCategory;
@@ -85,7 +88,7 @@ public abstract class SearchCriteriaPart extends BreadCrumbPart {
 	public void clickCriteriaSubCategory() {
 		if (!getCriteriaSubCategory().isEnabled()) {
 			// TODO Develop Custom Exception
-			throw new RuntimeException("Error, CriteriaSubCategory had disabled");
+			throw new RuntimeException(CRITERIA_SUB_CATEGORY_IS_DISABLED);
 		}
 		getCriteriaSubCategory().click();
 	}
@@ -111,8 +114,8 @@ public abstract class SearchCriteriaPart extends BreadCrumbPart {
 	// Functional
 
 	// criteriaSubCategory
-	public void clickCriteriaSubCategory(String subcategory) {
-		setCriteriaCategory(subcategory);
+	public void clickCriteriaSubCategoryByName(Categories subcategory) {
+		setCriteriaCategory(subcategory.toString());
 		clickCriteriaSubCategory();
 	}
 
