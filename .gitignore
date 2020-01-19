@@ -27,7 +27,7 @@ hs_err_pid*
 
 # Config Files
 *.ini
-pom.xml
+*.xml
 
 # Binary Files
 *.dat
