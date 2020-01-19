@@ -61,6 +61,26 @@ public final class UserRepository {
                 .setAddress2("address2")
                 .build();
     }
+
+    public IUser getYuriiUser() {
+        return User.get()
+                .setFirstName("user")
+                .setLastName("user")
+                .setEmail("spirnyak2010@gmail.com")
+                .setTelephone("12345")
+                .setAddress1("address")
+                .setCity("city")
+                .setPostCode("12345")
+                .setCountry("country")
+                .setRegionState("region'")
+                .setPassword(System.getenv().get("MY_PASSWORD"))
+                .setNewPassword(System.getenv().get("MY_PASSWORD"))
+                .setSubscribe(true)
+                .setFax("fax")
+                .setCompany("company")
+                .setAddress2("address2")
+                .build();
+    }
     
     public IUser getCorrectUser() {
         return User.get()

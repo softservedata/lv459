@@ -28,7 +28,7 @@ public class CurrencyRepository {
                 .setCurrencyCode("UAH")
                 .setCurrencyDecimalPlaces(2)
                 .setCurrencyValue(25)
-                .setCurrencyStatus("Enabled")
+                .setCurrencyStatus("1")
                 .setCurrencySymbolRight("₴")
                 .build();
     }
