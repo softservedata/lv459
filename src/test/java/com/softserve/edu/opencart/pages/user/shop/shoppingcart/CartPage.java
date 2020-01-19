@@ -49,7 +49,6 @@ public class CartPage extends BreadCrumbPart {
     public GiftCartComponent getGiftCartComponent(){
         return giftCartComponent;
     }
-
     public TotalTaxComponent getTotalTaxComponent(){
         return totalTaxComponent;
     }
@@ -92,7 +91,7 @@ public class CartPage extends BreadCrumbPart {
     public CartEmptyPage removeAllProductsFromCartPage() {
         initElements();
         List<WebElement> closeButtons = driver.findElements(By.cssSelector(".fa.fa-times-circle"));
-        System.out.println(closeButtons.size());
+        //System.out.println(closeButtons.size());
         while (closeButtons.size() > 0) {
             closeButtons.get(0).click();
             closeButtons = driver.findElements(By.cssSelector(".fa.fa-times-circle"));
