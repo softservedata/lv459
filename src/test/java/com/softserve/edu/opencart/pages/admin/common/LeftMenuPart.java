@@ -1,11 +1,18 @@
 package com.softserve.edu.opencart.pages.admin.common;
 
+import com.softserve.edu.opencart.pages.admin.currencies.CurrenciesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public abstract class LeftMenuPart extends TopMenuPart {
-
+    private final String NAVIGATE_PANNEL_ACTIVE = "active";
+    private final String NAVIGATION_MENU_LIST_CSSSELECTOR = "#menu > li";
+    //
+    private WebElement navigatePannel;
+    private WebElement logoutButton;
+    //
+    private NavigationComponent navigationComponent;
     protected WebElement profile;
     protected WebElement catalog;
     protected WebElement extensions;
@@ -46,6 +53,56 @@ public abstract class LeftMenuPart extends TopMenuPart {
         reports = driver.findElement(By.id("menu-report"));
         stats = driver.findElement(By.id("stats"));
 
+        navigatePannel = driver.findElement(By.id("column-left"));
+    }
+
+    // navigatePannel
+    public WebElement getNavigatePannel() {
+        return navigatePannel;
+    }
+
+    public String getNavigatePannelAttribute(String attributeName) {
+        return getNavigatePannel().getAttribute(attributeName);
+    }
+
+    public String getNavigatePannelClassAttribute() {
+        return getNavigatePannelAttribute(TAG_ATTRIBUTE_CLASS);
+    }
+
+    // menuButton
+
+    public NavigationComponent getNavigationComponent() {
+        return navigationComponent;
+    }
+
+    // Functional
+
+    public boolean isNavigatePannelActive() {
+        return getNavigatePannelClassAttribute().equals(NAVIGATE_PANNEL_ACTIVE);
+    }
+
+    // navigatePannel
+    public void activeNavigatePannel() {
+        if (!isNavigatePannelActive()) {
+            clickBurgerMenu();
+            navigationComponent = new NavigationComponent(navigatePannel, By.cssSelector(NAVIGATION_MENU_LIST_CSSSELECTOR));
+        }
+    }
+
+    public void deactivateNavigatePannel() {
+        if (isNavigatePannelActive()) {
+            clickBurgerMenu();
+        }
+        navigationComponent = null;
+    }
+
+    // Business Logic
+
+    public CurrenciesPage gotoCurrenciesPage() {
+        activeNavigatePannel();
+        getNavigationComponent()
+                .clickNavigationOptionByPartialName("System", "Localisation", "Currencies");
+        return new CurrenciesPage(driver);
     }
     
 ////
