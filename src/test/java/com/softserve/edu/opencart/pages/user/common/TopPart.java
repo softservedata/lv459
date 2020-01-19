@@ -482,6 +482,7 @@ public abstract class TopPart {
         return new CartPage(driver);
     }
 
+
     public CartEmptyPage gotoCartEmptyPage() {
         clickShoppingCart();
         return new CartEmptyPage(driver);
