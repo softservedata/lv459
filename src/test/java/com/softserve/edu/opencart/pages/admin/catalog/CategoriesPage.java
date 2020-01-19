@@ -51,7 +51,7 @@ public class CategoriesPage extends LeftMenuPart {
 		return getAddNewButton().getText();
 	}
 	
-	public AddCategoryPage gotoAddNewCategory() {
+	public AddCategoryPage gotoAddCategoryPage() {
         getAddNewButton().click();
         return new AddCategoryPage(driver);
     }

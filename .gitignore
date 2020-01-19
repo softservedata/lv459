@@ -27,6 +27,7 @@ hs_err_pid*
 
 # Config Files
 *.ini
+pom.xml
 
 # Binary Files
 *.dat
@@ -47,6 +48,7 @@ hs_err_pid*
 /lib/
 /test-output/
 /allure-results/
+/allure-report/
 /.classpath
 /.project
 /.checkstyle
@@ -65,6 +67,7 @@ hs_err_pid*
 /**/lib/
 /**/test-output/
 /**/allure-results/
+/**/allure-report/
 /**/report/
 /**/.classpath
 /**/.project

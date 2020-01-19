@@ -1,0 +1,43 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "com.softserve.edu.opencart.tests.admincatalog",
+    "children" : [ {
+      "name" : "CategoriesAddingTest",
+      "children" : [ {
+        "name" : "addNewCategory",
+        "uid" : "6589231e6d6b5e18",
+        "parentUid" : "e899f32850bd787e673b0c83467cd08b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1579467080689,
+          "stop" : 1579467085948,
+          "duration" : 5259
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "com.softserve.edu.opencart.data.Admin@5f0a2638" ]
+      } ],
+      "uid" : "e899f32850bd787e673b0c83467cd08b"
+    }, {
+      "name" : "ProductsAddingTest",
+      "children" : [ {
+        "name" : "addNewProduct",
+        "uid" : "262e3b0ce526fc3f",
+        "parentUid" : "7ea0423b7511791d90f8ab26ae129ebc",
+        "status" : "failed",
+        "time" : {
+          "start" : 1579467089731,
+          "stop" : 1579467097983,
+          "duration" : 8252
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "com.softserve.edu.opencart.data.Admin@5da6b13d", "Product{name='MacBook', description='Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..', priceDollarExTax='500.00'}" ]
+      } ],
+      "uid" : "7ea0423b7511791d90f8ab26ae129ebc"
+    } ],
+    "uid" : "com.softserve.edu.opencart.tests.admincatalog"
+  } ]
+}

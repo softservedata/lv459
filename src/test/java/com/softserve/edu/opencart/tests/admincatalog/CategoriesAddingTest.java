@@ -18,13 +18,13 @@ public class CategoriesAddingTest extends LocalAdminTestRunner {
             };
     }
         
-    @Test(dataProvider = "correctUsers", priority = 1)
+    @Test(dataProvider = "correctUsers")
 	public void addNewCategory(IAdmin validAdmin) {
 		
 		loadAdminPage()
     	.successfulLogin(validAdmin)
     	.gotoCategoriesPage()
-    	.gotoAddNewCategory()
+    	.gotoAddCategoryPage()
 		.typeName("test")
 		.typeTitle("test")
 		.clickDataButton()
@@ -32,4 +32,5 @@ public class CategoriesAddingTest extends LocalAdminTestRunner {
 		.gotoModifiedCatalogPage()
 		.getSuccessText();
 	}
+    
 }

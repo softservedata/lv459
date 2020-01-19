@@ -1,0 +1,129 @@
+{
+  "uid" : "6589231e6d6b5e18",
+  "name" : "addNewCategory",
+  "fullName" : "com.softserve.edu.opencart.tests.admincatalog.CategoriesAddingTest.addNewCategory",
+  "historyId" : "8028d4777ccd0d4a1518879e35f2051b",
+  "time" : {
+    "start" : 1579467080689,
+    "stop" : 1579467085948,
+    "duration" : 5259
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "beforeMethod",
+    "time" : {
+      "start" : 1579467079884,
+      "stop" : 1579467080529,
+      "duration" : 645
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "beforeClass",
+    "time" : {
+      "start" : 1579467075584,
+      "stop" : 1579467079847,
+      "duration" : 4263
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "afterClass",
+    "time" : {
+      "start" : 1579467085974,
+      "stop" : 1579467086594,
+      "duration" : 620
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "afterMethod",
+    "time" : {
+      "start" : 1579467085966,
+      "stop" : 1579467085966,
+      "duration" : 0
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "com.softserve.edu.opencart.tests.admincatalog.CategoriesAddingTest"
+  }, {
+    "name" : "testClass",
+    "value" : "com.softserve.edu.opencart.tests.admincatalog.CategoriesAddingTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "addNewCategory"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Suite"
+  }, {
+    "name" : "suite",
+    "value" : "Test1"
+  }, {
+    "name" : "subSuite",
+    "value" : "com.softserve.edu.opencart.tests.admincatalog.CategoriesAddingTest"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-REQEC2G"
+  }, {
+    "name" : "thread",
+    "value" : "15292@DESKTOP-REQEC2G.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "testng"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "arg0",
+    "value" : "com.softserve.edu.opencart.data.Admin@5f0a2638"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "6589231e6d6b5e18.json",
+  "parameterValues" : [ "com.softserve.edu.opencart.data.Admin@5f0a2638" ]
+}

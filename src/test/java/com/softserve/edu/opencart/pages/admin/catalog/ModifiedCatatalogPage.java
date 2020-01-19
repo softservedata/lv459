@@ -14,7 +14,7 @@ public class ModifiedCatatalogPage extends CategoriesPage {
 	}
 	
 	private void initElements() {
-		success = driver.findElement(By.xpath("//div[@class='alert alert-success']"));
+		success = driver.findElement(By.cssSelector(".alert"));
 		
 	}
 
