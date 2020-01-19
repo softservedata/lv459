@@ -51,9 +51,9 @@ public class CategoriesPage extends LeftMenuPart {
 		return getAddNewButton().getText();
 	}
 	
-	public AddNewCategory gotoAddNewCategory() {
+	public AddCategoryPage gotoAddNewCategory() {
         getAddNewButton().click();
-        return new AddNewCategory(driver);
+        return new AddCategoryPage(driver);
     }
 	
 	//rebuildButton
@@ -81,16 +81,5 @@ public class CategoriesPage extends LeftMenuPart {
 	public void clickDeleteButton() {
         getDeleteButton().click();
     }
-	
-	
-	// Functional
-	
-	//inputCategoryName
-	//inputMetaTagTitle
-	//dataButton
-	//inputParent
-	//saveButton
-	
-	// Business Logic
 	
 }

@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ModifiedCategoriesPage extends CategoriesPage {
+public class ModifiedCatatalogPage extends CategoriesPage {
 
 	private WebElement success;
 	
-	public ModifiedCategoriesPage(WebDriver driver) {
+	public ModifiedCatatalogPage(WebDriver driver) {
 		super(driver);
 		initElements();
 	}

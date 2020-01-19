@@ -154,5 +154,5 @@ public abstract class LeftMenuPart extends TopMenuPart {
     public WebElement getCustomers() {
         return customers;
     }
-
+    
 }
