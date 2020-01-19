@@ -44,6 +44,7 @@ public abstract class TopPart {
     private WebElement searchTopField;
     private WebElement searchTopButton;
     private WebElement cartButton;
+    private WebElement components;
     //
     // private MainMenuComponent MainMenuComponent;
     private DropdownComponent dropdownComponent;
@@ -67,6 +68,7 @@ public abstract class TopPart {
         searchTopField = driver.findElement(By.name("search"));
         searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
         cartButton = driver.findElement(By.cssSelector("#cart > button"));
+        components = driver.findElement(By.xpath("//li[@class='dropdown']/a[contains(.,'Components')]"));
     }
 
     // Page Object
@@ -201,6 +203,18 @@ public abstract class TopPart {
 //  public int getCartButtonSum() {
 //  Use getCartButtonText()
 //}
+    // components
+    public WebElement getComponents() {
+        return components;
+    }
+
+    public String getComponentsText() {
+        return getComponents().getText();
+    }
+
+    public void clickComponents() {
+        getComponents().click();
+    }
 
     // dropdownComponent
     protected DropdownComponent getDropdownComponent() {

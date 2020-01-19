@@ -2,10 +2,13 @@ package com.softserve.edu.opencart.tests;
 
 import com.softserve.edu.opencart.data.Categories;
 import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
+import com.softserve.edu.opencart.pages.user.common.ComponentsTopPart;
 import com.softserve.edu.opencart.pages.user.common.ProductComponent;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
+import com.softserve.edu.opencart.pages.user.shop.SamsungSyncMaster941BWPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -50,13 +53,13 @@ public class SearchCriteriaTest extends LocalTestRunner {
         // Clicking on the "Search" button
         loadSearchCriteriaPart().clickCriteriaSearchButton();
         //
-        //
-        SearchSuccessPage searchSuccessfulPage1 = loadSearchSuccessPage();
-        ProductComponent actualProductComponent1 = searchSuccessfulPage1.getProductsDisplay()
+        // Checking if there is "Samsung SyncMaster 941BW" in subcategories
+        SearchSuccessPage searchSuccessful = loadSearchSuccessPage();
+        ProductComponent actualProduct = searchSuccessful.getProductsDisplay()
                 .getProductComponentByName(product);
         //
         // Checking product's name
-        Assert.assertTrue(actualProductComponent1.getNameText().contains(product.getName()));
+        Assert.assertTrue(actualProduct.getNameText().contains(product.getName()));
         //
         // Clicking on the "Search in product descriptions" checkbox
         loadSearchCriteriaPart().clickCriteriaDescription();
@@ -64,10 +67,22 @@ public class SearchCriteriaTest extends LocalTestRunner {
         // Clicking on the "Search" button
         loadSearchCriteriaPart().clickCriteriaSearchButton();
         //
+        // Opening "Samsung SyncMaster 941BW" page and checking if the is this name in description
+        SamsungSyncMaster941BWPage samsungSyncMaster941BWPage = loadSearchSuccessPage().gotoSamsungSyncMaster941BWPage(product);
+        String actualProductResult = samsungSyncMaster941BWPage.getTitleText();
+        // Checking product's name
+        Assert.assertTrue(actualProductResult.contains(product.getName()));
+        //
+        //
+        loadComponentsTopPart().gotoShowAllComponents();
+        loadComponentsPart().clickOnMonitors();
+        Assert.assertTrue(actualProductResult.contains(product.getName()));
+
+        //
         // Returning to the previous state
-        //HomePage homePage = searchSuccessfulPage.gotoHomePage();
+        HomePage homePage = loadComponentsTopPart().gotoHomePage();
         //
         // Checking am I on the home page
-        //Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
+        Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
     }
 }
