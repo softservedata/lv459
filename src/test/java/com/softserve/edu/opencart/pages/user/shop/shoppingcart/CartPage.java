@@ -3,9 +3,12 @@ package com.softserve.edu.opencart.pages.user.shop.shoppingcart;
 import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class CartPage extends BreadCrumbPart {
 
@@ -84,5 +87,16 @@ public class CartPage extends BreadCrumbPart {
     public HomePage continueShopping() {
         clickContinueShoppingButton();
         return new HomePage(driver);
+    }
+
+    public CartEmptyPage removeAllProductsFromCartPage() {
+        initElements();
+        List<WebElement> closeButtons = driver.findElements(By.cssSelector(".fa.fa-times-circle"));
+        System.out.println(closeButtons.size());
+        while (closeButtons.size() > 0) {
+            closeButtons.get(0).click();
+            closeButtons = driver.findElements(By.cssSelector(".fa.fa-times-circle"));
+        }
+        return new CartEmptyPage(driver);
     }
 }
