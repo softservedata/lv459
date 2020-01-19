@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"failed","Sun Jan 19 22:51:29 EET 2020","Sun Jan 19 22:51:37 EET 2020","8252","Suite","Test1","com.softserve.edu.opencart.tests.admincatalog.ProductsAddingTest","com.softserve.edu.opencart.tests.admincatalog.ProductsAddingTest","addNewProduct","addNewProduct",""
-"passed","Sun Jan 19 22:51:20 EET 2020","Sun Jan 19 22:51:25 EET 2020","5259","Suite","Test1","com.softserve.edu.opencart.tests.admincatalog.CategoriesAddingTest","com.softserve.edu.opencart.tests.admincatalog.CategoriesAddingTest","addNewCategory","addNewCategory",""
