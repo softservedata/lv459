@@ -5,6 +5,7 @@ import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.pages.user.shop.productinfoapplecinema.AppleCinemaPage;
 import com.softserve.edu.opencart.pages.user.shop.productinfomacbook.MacBookPage;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -93,4 +94,6 @@ public class HomePage extends TopPart {
 		productsContainerComponent.getProductComponentByName(product).clickName();
 		return new AppleCinemaPage(driver);
 	}
+
+
 }

@@ -1,6 +1,8 @@
 package com.softserve.edu.opencart.tests.shoppingcart;
 
 import com.softserve.edu.opencart.data.*;
+import com.softserve.edu.opencart.pages.user.shop.productinfoapplecinema.AppleCinemaPage;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 import com.softserve.edu.opencart.tests.LocalTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -29,19 +31,18 @@ public class AddToCartAppleCinemaTest extends LocalTestRunner {
         AppleCinemaInfo datatime = AppleCinemaInfoRepository.getAppleCinemaInfo();
         AppleCinemaInfo qty = AppleCinemaInfoRepository.getAppleCinemaInfo();
 
-        String actual = loadApplication()
+        AlertMessagePage alertMessagePage = loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
                 .gotoHomePage()
                 .gotoAppleCinemaPage(appleCinemaProduct)
-                .addAppleCinemaToCartWithAllOpt(text,textarea,fileValue,date,time,datatime,qty)
-                .getProductAddedToCartText();
+                .addAppleCinemaToCartWithAllOpt(text,textarea, fileValue, date,time,datatime,qty);
 
+        Assert.assertTrue(alertMessagePage.getProductAddedToCartText().contains(String.format(PRODUCT_ADDED_TO_CART, "Apple Cinema 30\"")));
 
-        System.out.println(actual);
-
-        Assert.assertTrue(actual.contains(String.format(PRODUCT_ADDED_TO_CART, "Apple Cinema \"")));
-
+        alertMessagePage
+                .gotoShoppingCart()
+                .removeAllProductsFromCartPage();
     }
 
 
