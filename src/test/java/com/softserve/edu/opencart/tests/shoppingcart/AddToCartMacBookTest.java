@@ -26,19 +26,22 @@ public class AddToCartMacBookTest extends LocalTestRunner {
         IProduct macBookProduct = ProductRepository.get().getMacBook();
         MacBookInfo macBookProductInfo = MacBookInfoRepository.getMacBookInfo();
 
-        CartEmptyPage cartEmptyPage = loadApplication()
+
+        AlertMessagePage alertMessagePage = loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
                 .gotoHomePage()
                 .gotoProductInfoMacBookPage(macBookProduct)
-                .addMacBookToCartWithQty(macBookProductInfo)
+                .addMacBookToCartWithQty(macBookProductInfo);
+
+
+
+        Assert.assertTrue(alertMessagePage.getProductAddedToCartText().contains(String.format(PRODUCT_ADDED_TO_CART, "MacBook")));
+
+
+        alertMessagePage
                 .gotoShoppingCart()
-                .removeAllProductsFromCartPage();
-
-
-        //Assert.assertTrue(alertMessagePage.getProductAddedToCartText().contains(String.format(PRODUCT_ADDED_TO_CART, "MacBook")));
-
-
+                .deleteProductOnShoppingCart(macBookProduct);
 
     }
 

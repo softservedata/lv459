@@ -13,11 +13,11 @@ import java.util.List;
 public class CartPage extends BreadCrumbPart {
 
     private ShoppingCartProductContainerComponent shoppingCartProductContainerComponent;
-    private CouponCartComponent couponCartComponent;
-    private GiftCartComponent giftCartComponent;
-    private TotalTaxComponent totalTaxComponent;
-    private WebElement ContinueShoppingButton;
-    private WebElement CheckoutButton;
+   // private CouponCartComponent couponCartComponent;
+   // private GiftCartComponent giftCartComponent;
+   // private TotalTaxComponent totalTaxComponent;
+    //private WebElement ContinueShoppingButton;
+    //private WebElement CheckoutButton;
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -27,11 +27,11 @@ public class CartPage extends BreadCrumbPart {
     private void initElements(){
 
         shoppingCartProductContainerComponent = new ShoppingCartProductContainerComponent(driver);
-        couponCartComponent = new CouponCartComponent(driver);
-        giftCartComponent = new GiftCartComponent(driver);
-        totalTaxComponent = new TotalTaxComponent(driver);
-        ContinueShoppingButton = driver.findElement(By.xpath("//div[@id='content']//div[@class='pull-left']"));
-        CheckoutButton = driver.findElement(By.xpath("//div[@class='pull-right']"));
+//        couponCartComponent = new CouponCartComponent(driver);
+//        giftCartComponent = new GiftCartComponent(driver);
+//        totalTaxComponent = new TotalTaxComponent(driver);
+//        ContinueShoppingButton = driver.findElement(By.xpath("//div[@id='content']//div[@class='pull-left']"));
+//        CheckoutButton = driver.findElement(By.xpath("//div[@class='pull-right']"));
     }
 
 
@@ -42,7 +42,7 @@ public class CartPage extends BreadCrumbPart {
         return shoppingCartProductContainerComponent;
     }
 
-    public CouponCartComponent getCouponCartComponent(){
+   /* public CouponCartComponent getCouponCartComponent(){
         return couponCartComponent;
     }
 
@@ -68,7 +68,7 @@ public class CartPage extends BreadCrumbPart {
     public void clickCheckoutButton(){
         getCheckoutButton().click();
     }
-
+*/
     //Functional
 
     //Business logic
@@ -83,10 +83,10 @@ public class CartPage extends BreadCrumbPart {
         return new CartEmptyPage(driver);
     }
 
-    public HomePage continueShopping() {
+    /*public HomePage continueShopping() {
         clickContinueShoppingButton();
         return new HomePage(driver);
-    }
+    }*/
 
     public CartEmptyPage removeAllProductsFromCartPage() {
         initElements();
