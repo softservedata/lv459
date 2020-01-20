@@ -1,13 +1,17 @@
 package com.softserve.edu.opencart.pages.user.search;
 
-import com.softserve.edu.opencart.data.IProduct;
 import org.openqa.selenium.WebDriver;
+
 import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.pages.user.common.ProductsContainerComponent;
+import com.softserve.edu.opencart.pages.user.shop.SamsungSyncMaster941BWPage;
 
 
 public class SearchSuccessPage extends SearchCriteriaPart {
 
     private ProductsDisplayComponent productsDisplay;
+    private ProductsContainerComponent productsContainerComponent;
 
     public SearchSuccessPage(WebDriver driver) {
         super(driver);
@@ -17,6 +21,7 @@ public class SearchSuccessPage extends SearchCriteriaPart {
     private void initElements() {
         // init elements
         productsDisplay = new ProductsDisplayComponent(driver);
+        productsContainerComponent = new ProductsContainerComponent(driver);
     }
 
     // Page Object
@@ -49,17 +54,19 @@ public class SearchSuccessPage extends SearchCriteriaPart {
     }
 
 
-
-
     public SearchSuccessAlertPage AddToWishButtonByName(IProduct product) {
 
-    	productsDisplay.clickProductComponentAddToWishButtonByName(product);
-    	return new SearchSuccessAlertPage(driver);
+        productsDisplay.clickProductComponentAddToWishButtonByName(product);
+        return new SearchSuccessAlertPage(driver);
     }
 
-//    public ProductInfoPage gotoProductInfo(IProduct product) {
+    //    public ProductInfoPage gotoProductInfo(IProduct product) {
 //        getProductsDisplay().getProductComponentByName(product).clickName();
 //        return new ProductInfoPage(driver);
 //    }
+    public SamsungSyncMaster941BWPage gotoSamsungSyncMaster941BWPage(IProduct product) {
+        productsContainerComponent.getProductComponentByName(product).clickName();
+        return new SamsungSyncMaster941BWPage(driver);
+    }
 
 }

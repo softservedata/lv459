@@ -1,12 +1,13 @@
 package com.softserve.edu.opencart.pages.user.shop.shoppingcart;
 
-import com.softserve.edu.opencart.data.IProduct;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.softserve.edu.opencart.data.IProduct;
 
 public class ShoppingCartProductContainerComponent {
 

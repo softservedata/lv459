@@ -16,32 +16,26 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public abstract class LocalAdminTestRunner {
+    
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String SERVER_ADMIN_URL = System.getenv().get("OPENCART_URL") + "admin";
     private final String SERVER_URL = System.getenv().get("OPENCART_URL");
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
     protected final String EXPECTED_ERROR_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
-    private static WebDriver driver;
+    private WebDriver driver;
 
     @BeforeClass
-    public static void beforeClass() {
-
+    public void beforeClass() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-        options.addArguments("enable-automation");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-infobars");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-browser-side-navigation");
-        options.addArguments("--disable-gpu");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterClass
-    public static void afterClass() {
+    public void afterClass() {
         if (driver != null) {
             driver.quit();
         }

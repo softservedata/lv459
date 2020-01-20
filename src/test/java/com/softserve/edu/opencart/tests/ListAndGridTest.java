@@ -1,18 +1,19 @@
 package com.softserve.edu.opencart.tests;
 
-import com.softserve.edu.opencart.data.IProduct;
-import com.softserve.edu.opencart.data.ProductRepository;
-import com.softserve.edu.opencart.pages.user.HomePage;
-import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
-import com.softserve.edu.opencart.pages.user.search.ProductsDisplayComponent;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.data.ProductRepository;
+import com.softserve.edu.opencart.pages.user.HomePage;
+import com.softserve.edu.opencart.pages.user.search.ProductsDisplayComponent;
+import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
+
 public class ListAndGridTest extends LocalTestRunner {
 
     @DataProvider
-    public Object[][] searchData() {
+    private Object[][] searchData() {
         return new Object[][]{
                 {ProductRepository.get().getAppleCinema30()}
         };
@@ -22,7 +23,7 @@ public class ListAndGridTest extends LocalTestRunner {
      * Pressing "List" button on "Search" window.
      */
     @Test(dataProvider = "searchData")
-    public void caseOne(IProduct product) {
+    private void caseOne(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
@@ -47,7 +48,7 @@ public class ListAndGridTest extends LocalTestRunner {
      * Pressing "Grid" button on "Search" window.
      */
     @Test(dataProvider = "searchData")
-    public void caseTwo(IProduct product) {
+    private void caseTwo(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.

@@ -32,9 +32,9 @@ public class MainEmailPage {
         driver.switchTo().frame(frame);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         if (!EmailStatus.get().isLogged()) {
-        inputLogin = driver.findElement(By.id("id-input-login"));
-        inputPassword = driver.findElement(By.id("id-input-password"));
-        buttonSubmit = driver.findElement(By.className("form__submit"));
+            inputLogin = driver.findElement(By.id("id-input-login"));
+            inputPassword = driver.findElement(By.id("id-input-password"));
+            buttonSubmit = driver.findElement(By.className("form__submit"));
         }
     }
 

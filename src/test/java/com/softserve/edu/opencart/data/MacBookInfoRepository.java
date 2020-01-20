@@ -24,7 +24,7 @@ public class MacBookInfoRepository {
 
 
     public static MacBookInfo getMacBookInfo() {
-        return new MacBookInfo("1");
+        return new MacBookInfo("2");
     }
 
 

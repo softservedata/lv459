@@ -1,8 +1,9 @@
 package com.softserve.edu.opencart.tests;
 
+import org.testng.annotations.Test;
+
 import com.softserve.edu.opencart.data.AdminRepo;
 import com.softserve.edu.opencart.pages.admin.CustomersPage;
-import org.testng.annotations.Test;
 
 public class DeleteCustomerViaAdminPageTest extends LocalAdminTestRunner {
 

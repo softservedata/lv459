@@ -12,6 +12,9 @@ import com.softserve.edu.opencart.pages.admin.account.LoginPage;
  * @enduml
  */
 public abstract class TopMenuPart extends DashboardRefPart {
+    protected final String TAG_ATTRIBUTE_VALUE = "value";
+    protected final String TAG_ATTRIBUTE_SRC = "src";
+    protected final String TAG_ATTRIBUTE_CLASS = "class";
 
     private WebElement burgerMenu;
     private WebElement bellButton;
@@ -77,6 +80,7 @@ public abstract class TopMenuPart extends DashboardRefPart {
     public void clickLogOutButton() {
         getLogOutButton().click();
     }
+
     public DropDownComponent clickComponent() {
         return new DropDownComponent(driver, By.id("menu-catalog"));
     }

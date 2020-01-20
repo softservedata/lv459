@@ -5,9 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import com.softserve.edu.opencart.data.Categories;
 import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
 
 public abstract class SearchCriteriaPart extends BreadCrumbPart {
+
+	protected final String CRITERIA_SUB_CATEGORY_IS_DISABLED = "Error, CriteriaSubCategory is disabled";
 
 	private WebElement criteriaSearchField;
 	private Select criteriaCategory;
@@ -26,7 +29,7 @@ public abstract class SearchCriteriaPart extends BreadCrumbPart {
 		criteriaCategory = new Select(driver.findElement(By.name("category_id")));
 		criteriaSubCategory = driver.findElement(By.name("sub_category"));
 		criteriaDescription = driver.findElement(By.id("description"));
-		criteriaSearchButton = driver.findElement(By.id("description"));
+		criteriaSearchButton = driver.findElement(By.id("button-search"));
 	}
 
 	// Page Object
@@ -82,10 +85,10 @@ public abstract class SearchCriteriaPart extends BreadCrumbPart {
 		return getCriteriaSubCategory().isEnabled();
 	}
 
-	public void clickCriteriaSubCategory() {
+	public void clickCriteriaSubCategoryCheckBox() {
 		if (!getCriteriaSubCategory().isEnabled()) {
 			// TODO Develop Custom Exception
-			throw new RuntimeException("Error, CriteriaSubCategory had disabled");
+			throw new RuntimeException(CRITERIA_SUB_CATEGORY_IS_DISABLED);
 		}
 		getCriteriaSubCategory().click();
 	}
@@ -104,16 +107,16 @@ public abstract class SearchCriteriaPart extends BreadCrumbPart {
 		return criteriaSearchButton;
 	}
 
-	public void ClickCriteriaSearchButton() {
+	public void clickCriteriaSearchButton() {
 		getCriteriaSearchButton().click();
 	}
 
 	// Functional
 
 	// criteriaSubCategory
-	public void clickCriteriaSubCategory(String subcategory) {
-		setCriteriaCategory(subcategory);
-		clickCriteriaSubCategory();
+	public void chooseCriteriaByName(Categories subcategory) {
+		setCriteriaCategory(subcategory.toString());
+		//clickCriteriaSubCategory();
 	}
 
 	// Business Logic

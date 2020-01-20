@@ -1,15 +1,20 @@
 package com.softserve.edu.opencart.tests.wishlist;
 
-import com.softserve.edu.opencart.data.*;
-import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
-import com.softserve.edu.opencart.tests.LocalTestRunner;
+import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_ADDED_TO_CART;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_ADDED_TO_CART;
+
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.data.ProductRepository;
+import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
+import com.softserve.edu.opencart.tests.LocalTestRunner;
 
 /**
- * <h3> This class verify if button add to cart in Wish List work.</h3>
+ * This class verify if button add to cart in Wish List work.
  */
 public class AddToCartFromWishListTest extends LocalTestRunner {
 
@@ -21,7 +26,7 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
     }
 
     /**
-     * <h3>This method check if button 'Add to shopping cart' works.</h3>
+     * This method check if button 'Add to shopping cart' works.
      */
     @Test(dataProvider = "customers")
     public void checkAddToCartFromWishList(IUser validUser) {

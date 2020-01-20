@@ -2,24 +2,26 @@ package com.softserve.edu.opencart.pages.user.common;
 
 import java.util.List;
 
-import com.softserve.edu.opencart.data.*;
-import com.softserve.edu.opencart.pages.user.search.SearchRequestURITooLongPage;
-import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
-import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartEmptyPage;
-import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartPage;
-import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
-import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.ApplicationStatus;
+import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.AccountLogoutPage;
 import com.softserve.edu.opencart.pages.user.account.LoginPage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.account.RegisterPage;
+import com.softserve.edu.opencart.pages.user.search.SearchRequestURITooLongPage;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
 import com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartEmptyPage;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartPage;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 
 public abstract class TopPart {
@@ -44,6 +46,7 @@ public abstract class TopPart {
     private WebElement searchTopField;
     private WebElement searchTopButton;
     private WebElement cartButton;
+    private WebElement components;
     //
     // private MainMenuComponent MainMenuComponent;
     private DropdownComponent dropdownComponent;
@@ -67,6 +70,7 @@ public abstract class TopPart {
         searchTopField = driver.findElement(By.name("search"));
         searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
         cartButton = driver.findElement(By.cssSelector("#cart > button"));
+        components = driver.findElement(By.xpath("//li[@class='dropdown']/a[contains(.,'Components')]"));
     }
 
     // Page Object
@@ -201,6 +205,18 @@ public abstract class TopPart {
 //  public int getCartButtonSum() {
 //  Use getCartButtonText()
 //}
+    // components
+    public WebElement getComponents() {
+        return components;
+    }
+
+    public String getComponentsText() {
+        return getComponents().getText();
+    }
+
+    public void clickComponents() {
+        getComponents().click();
+    }
 
     // dropdownComponent
     protected DropdownComponent getDropdownComponent() {
@@ -467,6 +483,7 @@ public abstract class TopPart {
         clickShoppingCart();
         return new CartPage(driver);
     }
+
 
     public CartEmptyPage gotoCartEmptyPage() {
         clickShoppingCart();

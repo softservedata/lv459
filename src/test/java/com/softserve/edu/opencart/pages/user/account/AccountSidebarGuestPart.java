@@ -5,8 +5,9 @@ package com.softserve.edu.opencart.pages.user.account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
+
 import com.softserve.edu.opencart.data.User;
+import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 
 public abstract class AccountSidebarGuestPart extends AccountSidebarPart {
 

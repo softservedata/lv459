@@ -3,7 +3,6 @@ package com.softserve.edu.opencart.pages.user.common;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.softserve.edu.opencart.data.IProduct;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

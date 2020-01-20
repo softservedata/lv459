@@ -1,16 +1,17 @@
 package com.softserve.edu.opencart.tests.wishlist;
 
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
 import com.softserve.edu.opencart.tests.LocalTestRunner;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 /**
- * <h3> This class contains verify if  Wish List is empty by default.</h3>
+ *  This class contains verify if  Wish List is empty by default.
  */
 public class EmptyWisListTest extends LocalTestRunner {
 
@@ -22,7 +23,7 @@ public class EmptyWisListTest extends LocalTestRunner {
     }
 
     /**
-     * <h3>This method check if Wish List is empty by default.</h3>
+     * This method check if Wish List is empty by default.
      */
     @Test(dataProvider = "customers")
     public void checkWishListIsEmpty(IUser validUser) {

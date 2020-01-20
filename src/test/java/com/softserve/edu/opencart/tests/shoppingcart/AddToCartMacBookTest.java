@@ -1,12 +1,16 @@
 package com.softserve.edu.opencart.tests.shoppingcart;
 
-import com.softserve.edu.opencart.data.*;
-import com.softserve.edu.opencart.tests.LocalTestRunner;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage.PRODUCT_ADDED_TO_CART;
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.data.MacBookInfo;
+import com.softserve.edu.opencart.data.MacBookInfoRepository;
+import com.softserve.edu.opencart.data.ProductRepository;
+import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartEmptyPage;
+import com.softserve.edu.opencart.tests.LocalTestRunner;
 
 public class AddToCartMacBookTest extends LocalTestRunner {
 
@@ -24,18 +28,19 @@ public class AddToCartMacBookTest extends LocalTestRunner {
         IProduct macBookProduct = ProductRepository.get().getMacBook();
         MacBookInfo macBookProductInfo = MacBookInfoRepository.getMacBookInfo();
 
-        String actual = loadApplication()
+        CartEmptyPage cartEmptyPage = loadApplication()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
                 .gotoHomePage()
                 .gotoProductInfoMacBookPage(macBookProduct)
                 .addMacBookToCartWithQty(macBookProductInfo)
-                .getProductAddedToCartText();
+                .gotoShoppingCart()
+                .removeAllProductsFromCartPage();
 
 
-        System.out.println(actual);
+        //Assert.assertTrue(alertMessagePage.getProductAddedToCartText().contains(String.format(PRODUCT_ADDED_TO_CART, "MacBook")));
 
-        Assert.assertTrue(actual.contains(String.format(PRODUCT_ADDED_TO_CART, "MacBook")));
+
 
     }
 

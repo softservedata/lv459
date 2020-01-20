@@ -1,5 +1,11 @@
 package com.softserve.edu.opencart.tests;
 
+import java.util.Random;
+
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
@@ -7,18 +13,11 @@ import com.softserve.edu.opencart.pages.user.common.ProductComponent;
 import com.softserve.edu.opencart.pages.user.search.SearchRequestURITooLongPage;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
 import com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
-import java.util.Random;
-
-import static com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage.NO_PRODUCT_MESSAGE;
 
 public class SearchItemsTest extends LocalTestRunner {
 
     @DataProvider
-    public Object[][] searchDataCaseOne() {
+    private Object[][] searchDataCaseOne() {
         return new Object[][]{
                 // Lower/upper case letters, numbers and symbol
                 {ProductRepository.get().getAppleCinema30()},
@@ -40,7 +39,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "searchDataCaseOne")
-    public void findItemCaseOne(IProduct product) {
+    private void findItemCaseOne(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
@@ -71,7 +70,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @DataProvider
-    public Object[][] searchDataCaseTwo() {
+    private Object[][] searchDataCaseTwo() {
         return new Object[][]{
                 // Empty "Search" field
                 {ProductRepository.get().getCustomItem(new String())},
@@ -83,7 +82,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "searchDataCaseTwo")
-    public void findItemCaseTwo(IProduct product) {
+    private void findItemCaseTwo(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
@@ -93,7 +92,6 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Checking if there is such message in the page
         Assert.assertTrue(searchUnsuccessfulPage.getNoProductMessageText().contains(actualUnsuccessfulPage));
-        //Assert.assertTrue(NO_PRODUCT_MESSAGE.contains(actualUnsuccessfulPage));
         //
         // Returning to the previous state
         HomePage homePage = searchUnsuccessfulPage.gotoHomePage();
@@ -103,7 +101,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @DataProvider
-    public Object[][] searchDataCaseThree() {
+    private Object[][] searchDataCaseThree() {
         return new Object[][]{
                 // 65536 letters
                 {ProductRepository.get().getCustomItem(generateRandomString(SIXTY_FIVE_THOUSANDS_FIVE_HUNDRED_AND_THIRTY_SIX))}
@@ -111,7 +109,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "searchDataCaseThree")
-    public void findItemCaseThree(IProduct product) {
+    private void findItemCaseThree(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.

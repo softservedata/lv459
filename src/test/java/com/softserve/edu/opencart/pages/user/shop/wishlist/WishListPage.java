@@ -1,15 +1,17 @@
 package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
-import com.softserve.edu.opencart.data.IProduct;
-import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
-import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import java.util.List;
+
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
+import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 
 /**
- * <h3> Wish list page.</h3>
+ *  Wish list page.<
  */
 public class WishListPage extends AccountSidebarLoggedPart {
 
@@ -22,7 +24,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     }
 
     /**
-     * <h3>This method inits all elements on page.</h3>
+     * This method inits all elements on page.
      */
     private void initElements() {
         // init elements
@@ -33,21 +35,21 @@ public class WishListPage extends AccountSidebarLoggedPart {
     // Page Object
 
     /**
-     * <h3>This method gets continue button.</h3>
+     * This method gets continue button.
      */
     public WebElement getContinueButton() {
         return continueButton;
     }
 
     /**
-     * <h3>This method clicks on continue button.</h3>
+     * This method clicks on continue button.
      */
     public void clickContinueButton() {
         getContinueButton().click();
     }
 
     /**
-     * <h3>This method gets Wish List Table Container Component.</h3>
+     * This method gets Wish List Table Container Component.
      */
     public WishListTableContainerComponent getWishListTableContainerComponent() {
         return wishListTableContainerComponent;
@@ -56,7 +58,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     //functional
 
     /**
-     * <h3>This method gets product name.</h3>
+     * This method gets product name.
      */
     public  WishListPage getProductName(IProduct product) {
         wishListTableContainerComponent.getWishListTableComponentByName(product);
@@ -64,7 +66,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     }
 
     /**
-     * <h3>This method gets product price.</h3>
+     * This method gets product price.
      */
     public  WishListPage getProductPrice(IProduct product){
         wishListTableContainerComponent.getWishListTableComponentPriceByName(product);
@@ -72,7 +74,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     }
 
     /**
-     * <h3>This method gets product module.</h3>
+     * This method gets product module.
      */
     public  WishListPage getProductModule(IProduct product){
         wishListTableContainerComponent.getWishListTableComponentModelByName(product);
@@ -80,7 +82,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     }
 
     /**
-     * <h3>This method add product to shopping cart .</h3>
+     * This method add product to shopping cart .
      */
     public WishListMessagePage addProductToShoppingCart(IProduct product) {
         wishListTableContainerComponent.clickWishListTableComponentAddToCartButtonByName(product);
@@ -88,7 +90,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     }
 
     /**
-     * <h3>This method deletes product from wish list.</h3>
+     * This method deletes product from wish list.
      */
     public WishListMessagePage deleteProductFromWishList(IProduct product) {
         wishListTableContainerComponent.clickWishListTableComponentRemoveButtonByName(product);
@@ -98,7 +100,7 @@ public class WishListPage extends AccountSidebarLoggedPart {
     //BL
 
     /**
-     * <h3>This method is written to go to MyAccountPage.</h3>
+     * This method is written to go to MyAccountPage.
      */
     public MyAccountPage goToMyAccountPage() {
         clickContinueButton();
@@ -106,14 +108,14 @@ public class WishListPage extends AccountSidebarLoggedPart {
     }
 
     /**
-     * <h3>This method is written to go to WishListMessagePage.</h3>
+     * This method is written to go to WishListMessagePage.
      */
     public WishListMessagePage gotoWishListMessagePage(){
         return new WishListMessagePage(driver);
     }
 
     /**
-     * <h3>This method clears wish list.</h3>
+     * This method clears wish list.
      */
     public EmptyWishListPage removeAllProductsFromWishList() {
         initElements();
