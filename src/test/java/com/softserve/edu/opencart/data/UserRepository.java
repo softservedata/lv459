@@ -51,7 +51,7 @@ public final class UserRepository {
 //		return new User("hahaha@gmail.com", "123",
 //				System.getenv().get("MY_PASSWORD"));
 		return User.get()
-				.setFirstName("hahaha")
+				.setFirstName("admin")
 				.setLastName("hahaha")
 				.setEmail("hahaha@gmail.com")
 				.setTelephone("telephone_5")
@@ -60,7 +60,7 @@ public final class UserRepository {
 				.setPostCode("postCode_5")
 				.setCountry("country_5")
 				.setRegionState("regionState_5")
-				.setPassword(System.getenv().get("MY_PASSWORD"))
+				.setPassword(System.getenv().get("ADMIN_PASSWORD"))
 				.setSubscribe(true)
 				.setFax("fax_5")
 				.setCompany("company_5")

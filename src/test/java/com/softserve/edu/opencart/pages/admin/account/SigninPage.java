@@ -9,7 +9,10 @@ import com.softserve.edu.opencart.pages.admin.common.HeaderPart;
 import com.softserve.edu.opencart.pages.admin.dashboard.Dashboard;
 
 public class SigninPage extends HeaderPart {
-
+	
+	public static final String EXPECTED_PANEL_TITLE_MESSAGE = "Please enter your login details.";
+	//
+	private WebElement panelTitle;
 	private WebElement username;
 	private WebElement password;
 	private WebElement loginButton;
@@ -21,12 +24,22 @@ public class SigninPage extends HeaderPart {
 
 	private void initElements() {
 		// init elements
+		panelTitle = driver.findElement(By.cssSelector("h1.panel-title"));
 		username = driver.findElement(By.id("input-username"));
 		password = driver.findElement(By.id("input-password"));
 		loginButton = driver.findElement(By.cssSelector("button[type='submit']"));
 	}
 
 	// Page Object
+	
+	// panelTitle
+	public WebElement getPanelTitle() {
+		return panelTitle;
+	}
+
+	public String getPanelTitleText() {
+		return getPanelTitle().getText();
+	}
 	
 	// username
 	public WebElement getUsername() {
@@ -106,6 +119,7 @@ public class SigninPage extends HeaderPart {
 	// Business Logic
 	
 	public Dashboard successfulLogin(IUser validAdmin){
+		//System.out.println("***" + validAdmin);
 		fillLogin(validAdmin);
 		return new Dashboard(driver);
 	}

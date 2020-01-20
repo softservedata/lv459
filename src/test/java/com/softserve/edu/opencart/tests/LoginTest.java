@@ -15,7 +15,7 @@ import com.softserve.edu.opencart.tools.ListUtils;
 public class LoginTest extends EpizyUserTestRunner {
 
 	// some staff here
-	@DataProvider // (parallel = true)
+	@DataProvider//(parallel = true)
 	public Object[][] customers() {
 		return new Object[][] {
 			{ UserRepository.get().getDefault() },
@@ -23,7 +23,7 @@ public class LoginTest extends EpizyUserTestRunner {
 		};
 	}
 
-	@DataProvider // (parallel = true)
+	@DataProvider(parallel = true)
 	public Object[][] externalCustomers() {
 		//return ListUtils.toMultiArray(UserRepository.get().fromCsv());
 		return ListUtils.toMultiArray(UserRepository.get().fromExcel());

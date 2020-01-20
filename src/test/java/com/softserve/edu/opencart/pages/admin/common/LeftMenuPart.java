@@ -84,6 +84,13 @@ public class LeftMenuPart extends HeaderPart {
 		if (!isNavigatePannelActive()) {
 			clickMenuButton();
 			navigationComponent = new NavigationComponent(navigatePannel, By.cssSelector(NAVIGATION_MENU_LIST_CSSSELECTOR));
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			//System.out.println("***LEFTMENU: " + navigationComponent.getListOptionsText());
 		}
 	}
 
@@ -99,7 +106,7 @@ public class LeftMenuPart extends HeaderPart {
 	public CurrenciesPage gotoCurrenciesPage() {
 		activeNavigatePannel();
 		getNavigationComponent()
-			.clickNavigationOptionByPartialName("System", "Localisation", "Currencies");
+			.clickNavigationOptionByPartialName("System", "Localisation", "Currencies"); // TODO Use Enum
 		return new CurrenciesPage(driver);
 	}
 	

@@ -9,8 +9,10 @@ import org.openqa.selenium.WebElement;
 public class NavigationComponent {
 
 	private final String OPTIONNAME_NOT_FOUND = "OptionName not Found.";
-	private final String NAVIGATION_OPTIONS_TEXT_CSSSELECTOR = "> a.parent";
-	private final String NAVIGATION_OPTIONS_LIST_CSSSELECTOR = "> ul > li";
+	//private final String NAVIGATION_OPTIONS_TEXT_CSSSELECTOR = "a.parent"; // "> a.parent";
+	private final String NAVIGATION_OPTIONS_TEXT_XPATH = "./a"; // "./a/span"; // "> a.parent";
+	//private final String NAVIGATION_OPTIONS_LIST_CSSSELECTOR = "ul > li";
+	private final String NAVIGATION_OPTIONS_LIST_XPATH = "./ul/li";
 	//
 	private WebElement parent;
 	//
@@ -35,6 +37,7 @@ public class NavigationComponent {
 
 	// listOptions
 	public List<WebElement> getListOptions() {
+		//System.out.println("***listOptions size: " + listOptions.size());
 		return listOptions;
 	}
 
@@ -43,8 +46,9 @@ public class NavigationComponent {
 	// listOptions
 	public WebElement getNavigationOptionByPartialName(String optionName) {
 		WebElement result = null;
+		//System.out.println("***OPTIONS: " + getListOptionsText());
 		for (WebElement current : getListOptions()) {
-			WebElement liCurrent = current.findElement(By.cssSelector(NAVIGATION_OPTIONS_TEXT_CSSSELECTOR));
+			WebElement liCurrent = current.findElement(By.xpath(NAVIGATION_OPTIONS_TEXT_XPATH));
 			if (liCurrent.getText().toLowerCase().contains(optionName.toLowerCase())) {
 				result = current;
 				break;
@@ -61,7 +65,8 @@ public class NavigationComponent {
 	public List<String> getListOptionsText() {
 		List<String> result = new ArrayList<>();
 		for (WebElement current : getListOptions()) {
-			WebElement liCurrent = current.findElement(By.cssSelector(NAVIGATION_OPTIONS_TEXT_CSSSELECTOR));
+			//System.out.println("***Current Attribute: " + current.getAttribute("id"));
+			WebElement liCurrent = current.findElement(By.xpath(NAVIGATION_OPTIONS_TEXT_XPATH));
 			result.add(liCurrent.getText());
 		}
 		return result;
@@ -88,7 +93,7 @@ public class NavigationComponent {
 			for (int i = 0; i < nextOptionName.length; i++) {
 				nextOptionName[i] = optionName[i + 1];
 			}
-			new NavigationComponent(currentElement, By.cssSelector(NAVIGATION_OPTIONS_LIST_CSSSELECTOR))
+			new NavigationComponent(currentElement, By.xpath(NAVIGATION_OPTIONS_LIST_XPATH))
 				.clickNavigationOptionByPartialName(nextOptionName);
 		}
 	}

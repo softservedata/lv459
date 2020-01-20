@@ -8,6 +8,8 @@ import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
 
 public class CurrenciesPage extends LeftMenuPart {
 	
+	public static final String EXPECTED_TITLE_MESSAGE = "Currencies";
+	//
 	private WebElement title;
 
 	public CurrenciesPage(WebDriver driver) {
