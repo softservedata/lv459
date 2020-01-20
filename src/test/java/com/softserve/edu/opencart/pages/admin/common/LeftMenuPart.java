@@ -9,6 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
+import com.softserve.edu.opencart.pages.admin.catalog.CategoriesPage;
+import com.softserve.edu.opencart.pages.admin.catalog.ProductsPage;
+
 public abstract class LeftMenuPart extends TopMenuPart {
     private final String NAVIGATE_PANNEL_ACTIVE = "active";
     private final String NAVIGATION_MENU_LIST_CSSSELECTOR = "#menu > li";
@@ -31,6 +34,10 @@ public abstract class LeftMenuPart extends TopMenuPart {
     protected WebElement footer;
 
     WebDriverWait wait = new WebDriverWait(driver, 20);
+
+    
+    protected WebElement categories;
+    protected WebElement products;
 
     protected DropDownComponent dropDownCustomer;
 
@@ -58,6 +65,11 @@ public abstract class LeftMenuPart extends TopMenuPart {
         system = driver.findElement(By.id("menu-system"));
         reports = driver.findElement(By.id("menu-report"));
         stats = driver.findElement(By.id("stats"));
+        
+        categories = driver.findElement(
+				By.xpath("//li[@id='menu-catalog']//a[contains(text(),'Categories')]"));
+        products = driver.findElement(
+				By.xpath("//li[@id='menu-catalog']//a[contains(text(),'Products')]"));
 
         navigatePannel = driver.findElement(By.id("column-left"));
     }
@@ -184,6 +196,34 @@ public abstract class LeftMenuPart extends TopMenuPart {
 //    }
 ////   
 
+    
+    //Categories
+    public void clickCatalog() {
+        catalog.click();
+    }
+    
+    public void clickCategories() {
+        categories.click();
+    }
+    
+    public CategoriesPage gotoCategoriesPage() {
+    	clickCatalog();
+    	clickCategories();
+    	return new CategoriesPage(driver);
+    }
+    
+    //Products
+    public void clickProducts() {
+        products.click();
+    }
+    
+    public ProductsPage gotoProductPage() {
+    	clickCatalog();
+    	clickProducts();
+    	return new ProductsPage(driver);
+    }
+//   
+
     public void clickCustomers() {
         customers.click();
     }
@@ -195,5 +235,5 @@ public abstract class LeftMenuPart extends TopMenuPart {
     public WebElement getCustomers() {
         return customers;
     }
-
+    
 }
