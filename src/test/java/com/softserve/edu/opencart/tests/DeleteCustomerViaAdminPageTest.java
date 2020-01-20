@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.softserve.edu.opencart.data.AdminRepo;
@@ -13,13 +14,20 @@ public class DeleteCustomerViaAdminPageTest extends LocalAdminTestRunner {
      */
     @Test
     public void sampleTest() {
-        CustomersPage homepage = loadAdminPage()
+        String userEmail = System.getenv("USER_EMAIL");
+
+        CustomersPage page = loadAdminPage()
                 .successfulLogin(AdminRepo.get().validAdmin())
                 .gotoCustomersCustomersPage()
-                .filterByEmail(System.getenv("USER_EMAIL"));
+                .filterByEmail(userEmail)
+                .deleteCustomer(userEmail)
+                ;
+        Assert.assertTrue(page.getContainer().isCustomerNoResults());
 
-        presentationSleep(1);
-        String email = System.getenv("USER_EMAIL");
+        System.out.println("Prerequisites: Customer is not in database: " + page
+                .getContainer().isCustomerNoResults());
+        presentationSleep(2);
+
 
         presentationSleep(2);
 

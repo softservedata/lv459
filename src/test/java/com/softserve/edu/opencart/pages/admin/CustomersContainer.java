@@ -39,8 +39,6 @@ public class CustomersContainer {
                                      (customersTable.get(i)));
             }
         }
-        System.out.println("customerNoResults " + customerNoResults);
-        System.out.println("customersTable " + customersTable.toString());
 
     }
 

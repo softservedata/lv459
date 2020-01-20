@@ -1,10 +1,9 @@
 package com.softserve.edu.opencart.pages.admin;
 
+import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
 
 public class CustomersPage extends LeftMenuPart {
 
@@ -15,6 +14,10 @@ public class CustomersPage extends LeftMenuPart {
     private WebElement filterButton;
     private WebElement customersList;
     private CustomersContainer container;
+
+    public CustomersContainer getContainer() {
+        return container;
+    }
 
     /**
      * Customers page in OpenCart_Admin.
@@ -45,14 +48,6 @@ public class CustomersPage extends LeftMenuPart {
 
         // Page Object
 
-        // results
-        // <td class="text-center">
-        // <input type="checkbox" name="selected[]" value="71">
-        // </td> ...
-
-        // no results
-        //        <td class="text-center" colspan="8">No results!</td>
-
     }
 
     // Field find customer by email
@@ -76,6 +71,7 @@ public class CustomersPage extends LeftMenuPart {
         filterByEmailField.sendKeys(customerEmail);
     }
 
+    //
     // Delete button
 
     private String getDeleteButtonText() {
@@ -89,6 +85,8 @@ public class CustomersPage extends LeftMenuPart {
     private WebElement getDeleteButton() {
         return deleteButton;
     }
+
+    //
     // Filter button
 
     public WebElement getFilterButton() {
@@ -145,8 +143,9 @@ public class CustomersPage extends LeftMenuPart {
     // deleteCustomerByEmail
     // findCustomerByEmail
 
-    public void deleteCustomer(String email) {
+    public CustomersPage deleteCustomer(String email) {
         filterByEmail(email).clickAndConfirmDeleteCustomer();
+    return new CustomersPage(driver);
     }
 
 }
