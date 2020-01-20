@@ -9,6 +9,8 @@ import com.softserve.edu.opencart.pages.user.common.ProductsContainerComponent;
 
 public class ProductsDisplayComponent extends ProductsContainerComponent {
 
+	public final String CLASS = "class";
+	private final String BUTTON_STATUS_ACTIVE = "btn btn-default active";
 	private WebElement listViewButton;
 	private WebElement gridViewButton;
 	// TODO productCompare
@@ -96,11 +98,11 @@ public class ProductsDisplayComponent extends ProductsContainerComponent {
 	// Functional
 
 	public Boolean statusListViewButton() {
-		return getListViewButton().getAttribute("class").equals("btn btn-default active"); //константи
+		return getListViewButton().getAttribute(CLASS).equals(BUTTON_STATUS_ACTIVE);
 	}
 
 	public Boolean statusGridViewButton() {
-		return getGridViewButton().getAttribute("class").equals("btn btn-default active");
+		return getGridViewButton().getAttribute(CLASS).equals(BUTTON_STATUS_ACTIVE);
 	}
 	// Business Logic
 

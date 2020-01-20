@@ -13,7 +13,7 @@ import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
 public class ListAndGridTest extends LocalTestRunner {
 
     @DataProvider
-    private Object[][] searchData() {
+    public Object[][] searchData() {
         return new Object[][]{
                 {ProductRepository.get().getAppleCinema30()}
         };
@@ -23,7 +23,7 @@ public class ListAndGridTest extends LocalTestRunner {
      * Pressing "List" button on "Search" window.
      */
     @Test(dataProvider = "searchData")
-    private void caseOne(IProduct product) {
+    public void caseOne(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
@@ -49,7 +49,7 @@ public class ListAndGridTest extends LocalTestRunner {
      * Pressing "Grid" button on "Search" window.
      */
     @Test(dataProvider = "searchData")
-    private void caseTwo(IProduct product) {
+    public void caseTwo(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.

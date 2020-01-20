@@ -17,7 +17,7 @@ import com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage;
 public class SearchItemsTest extends LocalTestRunner {
 
     @DataProvider
-    private Object[][] searchDataCaseOne() {
+    public Object[][] searchDataCaseOne() {
         return new Object[][]{
                 // Lower/upper case letters, numbers and symbol
                 {ProductRepository.get().getAppleCinema30()},
@@ -39,7 +39,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "searchDataCaseOne")
-    private void findItemCaseOne(IProduct product) {
+    public void findItemCaseOne(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
@@ -73,7 +73,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @DataProvider
-    private Object[][] searchDataCaseTwo() {
+    public Object[][] searchDataCaseTwo() {
         return new Object[][]{
                 // Empty "Search" field
                 {ProductRepository.get().getCustomItem(new String())},
@@ -85,7 +85,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "searchDataCaseTwo")
-    private void findItemCaseTwo(IProduct product) {
+    public void findItemCaseTwo(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
@@ -107,7 +107,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @DataProvider
-    private Object[][] searchDataCaseThree() {
+    public Object[][] searchDataCaseThree() {
         return new Object[][]{
                 // 65536 letters
                 {ProductRepository.get().getCustomItem(generateRandomString(SIXTY_FIVE_THOUSANDS_FIVE_HUNDRED_AND_THIRTY_SIX))}
@@ -115,7 +115,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "searchDataCaseThree")
-    private void findItemCaseThree(IProduct product) {
+    public void findItemCaseThree(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.

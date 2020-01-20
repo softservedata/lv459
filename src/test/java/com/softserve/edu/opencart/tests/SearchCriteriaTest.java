@@ -15,7 +15,7 @@ import com.softserve.edu.opencart.pages.user.shop.SamsungSyncMaster941BWPage;
 public class SearchCriteriaTest extends LocalTestRunner {
 
     @DataProvider
-    private Object[][] searchDataCaseOne() {
+    public Object[][] searchCriteriaCaseOne() {
         return new Object[][]{
                 {ProductRepository.get().getSamsungSyncMaster941BW()}
         };
@@ -24,12 +24,10 @@ public class SearchCriteriaTest extends LocalTestRunner {
      * Typing in "Search Criteria" field value "Samsung SyncMaster 941BW"
      * checking if there is this word in the description and
      * checking subcategory if there is "Samsung SyncMaster 941BW".
-     *
-     * 
      */
 
-    @Test(dataProvider = "searchDataCaseOne")
-    private void findItemCaseOne(IProduct product) {
+    @Test(dataProvider = "searchCriteriaCaseOne")
+    public void searchCriteriaCaseOne(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
