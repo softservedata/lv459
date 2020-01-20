@@ -38,8 +38,6 @@
 		<maven.webdriverextensions-maven-plugin.version>3.2.0</maven.webdriverextensions-maven-plugin.version>
 		<!-- - - - - - Reports - - - - - -->
 		<testng.reports.directory>target/surefire-reports/test-output</testng.reports.directory>
-		<!-- - - - - - Allure Reports - - - - - -->
-		<aspectj.version>1.8.10</aspectj.version>
 	</properties>
 
 	<dependencies>
@@ -51,13 +49,6 @@
 			<scope>test</scope>
 		</dependency> -->
 		
-		<dependency>
-        	<groupId>io.qameta.allure</groupId>
-        	<artifactId>allure-testng</artifactId>
-        	<version>2.13.1</version>
-        	<scope>test</scope>
-    	</dependency>
-
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
@@ -177,9 +168,6 @@
 				<version>${maven.surefire.plugin.version}</version>
 				<configuration>
 					<argLine>-Xms512m -Xmx1024m</argLine>
-					<argLine>
-                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                	</argLine>	
 					<skipTests>false</skipTests>
 					<systemPropertyVariables>
 						<surefire.application.password>
@@ -188,7 +176,7 @@
 					</systemPropertyVariables>
 
 					<suiteXmlFiles>
-						<suiteXmlFile>opozatc.xml</suiteXmlFile>
+						<!-- <suiteXmlFile>opozatc.xml</suiteXmlFile> -->
 						<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
 						<!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
 						<!-- <suiteXmlFile>dana.xml</suiteXmlFile> -->

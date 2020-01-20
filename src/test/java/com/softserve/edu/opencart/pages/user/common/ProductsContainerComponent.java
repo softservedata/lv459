@@ -79,6 +79,8 @@ public class ProductsContainerComponent {
         return result;
     }
 
+
+
     public String getProductComponentPriceByName(String productName)
     {
         return getProductComponentByName(productName).getPriceText();
