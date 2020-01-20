@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 /**
- *  Wish list page.<
+ *  Wish list page.
  */
 public class WishListPage extends AccountSidebarLoggedPart {
 

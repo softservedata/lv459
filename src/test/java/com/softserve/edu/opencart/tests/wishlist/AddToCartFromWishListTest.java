@@ -4,14 +4,17 @@ import com.softserve.edu.opencart.data.*;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
 import com.softserve.edu.opencart.tests.LocalTestRunner;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_ADDED_TO_CART;
 
 /**
- * This class verify if button add to cart in Wish List work.
+ * This class verify if button add to cart in Wish List works.
  */
 public class AddToCartFromWishListTest extends LocalTestRunner {
+
+    private  WishListMessagePage wishListMessagePage = null;
 
     @DataProvider
     public Object[][] customers() {
@@ -36,7 +39,7 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
                 .addProductToWishList(macBookProduct);
 
         //add to shopping cart
-        WishListMessagePage wishListMessagePage = loadApplication()
+             wishListMessagePage = loadApplication()
                 .gotoWishListPage()
                 .addProductToShoppingCart(macBookProduct);
 
@@ -44,9 +47,12 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
         Assert.assertTrue(wishListMessagePage.getAddToCartMessageText()
                 .contains(String.format(PRODUCT_ADDED_TO_CART, "MacBook")));
 
-        //clear wish list after test
-        wishListMessagePage.removeAllProductsFromWishList();
-
+    }
+    @AfterMethod public void remove() {
+        if( wishListMessagePage != null) {
+            //clear wish list after test
+            wishListMessagePage.removeAllProductsFromWishList();
+        }
     }
 }
 

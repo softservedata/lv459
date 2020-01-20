@@ -92,8 +92,12 @@
 			<version>1.7.25</version>
 		</dependency>
 
-	</dependencies>
-
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+		</dependencies>
 	<build>
 
 		<extensions>
@@ -192,14 +196,7 @@
 
 					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
 				</configuration>
-				
-				<dependencies>
-               		<dependency>
-                    	<groupId>org.aspectj</groupId>
-                    	<artifactId>aspectjweaver</artifactId>
-                    	<version>${aspectj.version}</version>
-                	</dependency>
-            	</dependencies>
+
 			</plugin>
 			
 		</plugins>
