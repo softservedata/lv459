@@ -14,7 +14,11 @@ public class DeleteCustomerViaAdminPageTest extends LocalAdminTestRunner {
     public void sampleTest() {
         CustomersPage homepage = loadAdminPage()
                 .successfulLogin(AdminRepo.get().validAdmin())
-                .gotoCustomersCustomersPage();
+                .gotoCustomersCustomersPage()
+                .filterByEmail(System.getenv("USER_EMAIL"));
+
+        presentationSleep(1);
+        String email = System.getenv("USER_EMAIL");
 
         presentationSleep(2);
 
