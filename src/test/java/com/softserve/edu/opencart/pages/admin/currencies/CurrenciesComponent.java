@@ -22,12 +22,12 @@ public class CurrenciesComponent {
     }
 
     private void initElements() {
-        checkBox = component.findElement(By.xpath("//input[@name='selected[]']"));
-        title = component.findElement(By.xpath("//tbody/tr/td[2]"));
-        code = component.findElement(By.xpath("//tbody/tr/td[3]"));
-        value = component.findElement(By.xpath("//tbody/tr/td[4]"));
-        date = component.findElement(By.xpath("//tbody/tr/td[5]"));
-        editButton = component.findElement(By.xpath("//*[@data-original-title='Edit']"));
+        checkBox = component.findElement(By.xpath(".//input[@name='selected[]']"));
+        title = component.findElement(By.xpath("./td[2]"));
+        code = component.findElement(By.xpath("./td[3]"));
+        value = component.findElement(By.xpath("./td[4]"));
+        date = component.findElement(By.xpath("./td[5]"));//const!!!!!!!!!!
+        editButton = component.findElement(By.xpath(".//a[@data-original-title='Edit']"));
     }
 
     public WebElement getProductComponent() {
