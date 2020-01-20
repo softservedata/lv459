@@ -11,9 +11,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
- * <h3> This class contains test which verify whether the number
+ * This class contains test which verify whether the number
  * of added elements are the same to the number of items that are displayed on
- * the page.</h3>
+ * the page.
  */
 public class NumberEqualityTest extends LocalTestRunner {
 
@@ -27,7 +27,7 @@ public class NumberEqualityTest extends LocalTestRunner {
     }
 
     /**
-     * <h3>This method check if Wish List is empty by default.</h3>
+     * This method check if Wish List is empty by default.
      */
     @Test(dataProvider = "customers")
     public void checkAddToCartFromWishList(IUser validUser) {

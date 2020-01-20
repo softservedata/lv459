@@ -36,6 +36,6 @@ public class AddToCartFromHomePageTest extends LocalTestRunner {
 
         alertMessagePage
                 .gotoShoppingCart()
-                .removeAllProductsFromCartPage();
+                .deleteProductOnShoppingCart(macBookProduct);
     }
 }
