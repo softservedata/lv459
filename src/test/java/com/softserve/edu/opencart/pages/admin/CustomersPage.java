@@ -50,6 +50,7 @@ public class CustomersPage extends LeftMenuPart {
 
     }
 
+    //
     // Field find customer by email
     public WebElement getFilterByEmailField() {
         return filterByEmailField;
@@ -129,19 +130,7 @@ public class CustomersPage extends LeftMenuPart {
         return new CustomersPage(driver);
     }
 
-    //    delete customer -
-    //    click email filed
-    //    enter email
-    //    click filter
-    //    click checkbox
-    //    click Delete
-    //    click confirm (popup window)
-
     // Business logic
-
-    // createCustomerByEmail
-    // deleteCustomerByEmail
-    // findCustomerByEmail
 
     public CustomersPage deleteCustomer(String email) {
         filterByEmail(email).clickAndConfirmDeleteCustomer();

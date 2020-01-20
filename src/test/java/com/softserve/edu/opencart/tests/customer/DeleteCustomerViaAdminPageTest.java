@@ -1,5 +1,6 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.customer;
 
+import com.softserve.edu.opencart.tests.LocalAdminTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -28,8 +29,6 @@ public class DeleteCustomerViaAdminPageTest extends LocalAdminTestRunner {
                 .getContainer().isCustomerNoResults());
         presentationSleep(2);
 
-
-        presentationSleep(2);
 
     }
 }
