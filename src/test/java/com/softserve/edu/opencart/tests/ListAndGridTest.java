@@ -37,7 +37,8 @@ public class ListAndGridTest extends LocalTestRunner {
         Assert.assertTrue(productsDisplayComponent.statusListViewButton());
         //
         // Returning to the previous state
-        HomePage homePage = searchSuccessPage.gotoHomePage();
+        HomePage homePage = searchSuccessPage
+                .gotoHomePage();
         //
         // Checking
         Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
@@ -62,7 +63,8 @@ public class ListAndGridTest extends LocalTestRunner {
         Assert.assertTrue(productsDisplayComponent.statusGridViewButton());
         //
         // Returning to the previous state
-        HomePage homePage = searchSuccessPage.gotoHomePage();
+        HomePage homePage = searchSuccessPage
+                .gotoHomePage();
         //
         // Checking
         Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));

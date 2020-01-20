@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class ComponentsPart extends TopPart {
     private WebElement monitors;
+    public final String MONITORS = "Monitors";
 
     public ComponentsPart(WebDriver driver) {
         super(driver);

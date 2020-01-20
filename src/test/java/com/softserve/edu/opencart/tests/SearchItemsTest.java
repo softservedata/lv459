@@ -42,22 +42,25 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Steps
         // Typing in the "Search" field.
-        SearchSuccessPage searchSuccessfulPage = loadApplication().successfulSearch(product);
+        SearchSuccessPage searchSuccessfulPage = loadApplication()
+                .successfulSearch(product);
         // Getting Product Component By Name
-        ProductComponent actualProductComponent = searchSuccessfulPage.getProductsDisplay()
+        ProductComponent actualProductComponent = searchSuccessfulPage
+                .getProductsDisplay()
                 .getProductComponentByName(product);
         //
         // Checking product's name
         Assert.assertTrue(actualProductComponent.getNameText().contains(product.getName()));
         //
         // Returning to the previous state
-        HomePage homePage = searchSuccessfulPage.gotoHomePage();
+        HomePage homePage = searchSuccessfulPage
+                .gotoHomePage();
         //
         // Checking am I on the home page
         Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
     }
 
-    private String generateRandomString(int length){
+    private String generateRandomString(int length) {
         Random r = new Random();
         char[] subset = NUMBERS_AND_LETTERS.toCharArray();
         char[] buf = new char[length];
@@ -85,15 +88,18 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Steps
         // Typing in the "Search" field.
-        SearchUnsuccessPage searchUnsuccessfulPage = loadApplication().unsuccessfulSearch(product);
+        SearchUnsuccessPage searchUnsuccessfulPage = loadApplication()
+                .unsuccessfulSearch(product);
         // Getting "There is no product that matches the search criteria." label
-        String actualUnsuccessfulPage = searchUnsuccessfulPage.getNoProductMessageText();
+        String actualUnsuccessfulPage = searchUnsuccessfulPage
+                .getNoProductMessageText();
         //
         // Checking if there is such message in the page
         Assert.assertTrue(searchUnsuccessfulPage.getNoProductMessageText().contains(actualUnsuccessfulPage));
         //
         // Returning to the previous state
-        HomePage homePage = searchUnsuccessfulPage.gotoHomePage();
+        HomePage homePage = searchUnsuccessfulPage
+                .gotoHomePage();
         //
         // Checking am I on the home page
         Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
@@ -112,9 +118,11 @@ public class SearchItemsTest extends LocalTestRunner {
         //
         // Steps
         // Typing in the "Search" field.
-        SearchRequestURITooLongPage searchRequestURITooLongPage = loadApplication().unsuccessfulSearchRequestURITooLong(product);
+        SearchRequestURITooLongPage searchRequestURITooLongPage = loadApplication()
+                .unsuccessfulSearchRequestURITooLong(product);
         // Getting "Request-URI Too Long" label
-        String actualRequestURITooLongPage = searchRequestURITooLongPage.getRequestToLongMessageText();
+        String actualRequestURITooLongPage = searchRequestURITooLongPage
+                .getRequestToLongMessageText();
         //
         // Checking if there is such message in the page
         Assert.assertTrue(searchRequestURITooLongPage.getRequestToLongMessageText().contains(actualRequestURITooLongPage));

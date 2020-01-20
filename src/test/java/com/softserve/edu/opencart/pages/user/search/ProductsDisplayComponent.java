@@ -96,7 +96,7 @@ public class ProductsDisplayComponent extends ProductsContainerComponent {
 	// Functional
 
 	public Boolean statusListViewButton() {
-		return getListViewButton().getAttribute("class").equals("btn btn-default active");
+		return getListViewButton().getAttribute("class").equals("btn btn-default active"); //константи
 	}
 
 	public Boolean statusGridViewButton() {
