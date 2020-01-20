@@ -36,14 +36,6 @@ public class CustomersComponent {
                 current.findElement(By.cssSelector("td:nth-child(7)"))
                         .getText();
 
-        System.out.println("checkbox selected? " + checkbox.isSelected());
-        System.out.println(customerName);
-        System.out.println(email);
-        System.out.println(customerGroup);
-        System.out.println(customerStatus);
-        System.out.println(customerIP);
-        System.out.println(customerDateAdded);
-
     }
 
     public String getCustomerName() {

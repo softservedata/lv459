@@ -7,7 +7,4 @@ public class CustomersTest {
    * Prerequisites to test for creation of new customer.
    */
 
-  public static void main(String[] args) {
-
-  }
 }

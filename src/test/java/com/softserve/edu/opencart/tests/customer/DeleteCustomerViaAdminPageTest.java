@@ -25,10 +25,11 @@ public class DeleteCustomerViaAdminPageTest extends LocalAdminTestRunner {
                 ;
         Assert.assertTrue(page.getContainer().isCustomerNoResults());
 
-        System.out.println("Prerequisites: Customer is not in database: " + page
-                .getContainer().isCustomerNoResults());
-        presentationSleep(2);
 
+        String errorMessage =  loadmainPage()
+                .gotoRegisterPage()
+                .
+                // TODO HERE THE TEST
 
     }
 }
