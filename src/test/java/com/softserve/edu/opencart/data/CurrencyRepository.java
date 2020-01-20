@@ -24,7 +24,7 @@ public class CurrencyRepository {
 
     public ICurrency getNewUACurrency() {
         return Currency.get()
-                .setCurrencyTitle("Ukrainian UAH")
+                .setCurrencyTitle("Hryvnia")
                 .setCurrencyCode("UAH")
                 .setCurrencyDecimalPlaces(2)
                 .setCurrencyValue(25)

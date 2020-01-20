@@ -4,6 +4,10 @@ import com.softserve.edu.opencart.pages.admin.currencies.CurrenciesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 public abstract class LeftMenuPart extends TopMenuPart {
     private final String NAVIGATE_PANNEL_ACTIVE = "active";
@@ -25,6 +29,8 @@ public abstract class LeftMenuPart extends TopMenuPart {
     protected WebElement stats;
     protected WebElement header;
     protected WebElement footer;
+
+    WebDriverWait wait = new WebDriverWait(driver, 20);
 
     protected DropDownComponent dropDownCustomer;
 
@@ -49,12 +55,51 @@ public abstract class LeftMenuPart extends TopMenuPart {
         sales = driver.findElement(By.id("menu-sale"));
         customers = driver.findElement(By.id("menu-customer"));
         marketing = driver.findElement(By.id("menu-catalog"));
-        system = driver.findElement(By.id("menu-marketing"));
+        system = driver.findElement(By.id("menu-system"));
         reports = driver.findElement(By.id("menu-report"));
         stats = driver.findElement(By.id("stats"));
 
         navigatePannel = driver.findElement(By.id("column-left"));
     }
+
+    //CUSTOM
+    public WebElement getSystem() {
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.elementToBeClickable(system));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        return system;
+    }
+
+    public void clickSystem() {
+        getSystem().click();
+    }
+
+    public WebElement getLocalisation() {
+        WebElement localisation = driver.findElement(By.xpath("//*[@id='menu-system']//a[contains(text(), 'Localisation')]"));
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.elementToBeClickable(localisation));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        return localisation;
+    }
+
+    public void clickLocalisation() {
+        getLocalisation().click();
+    }
+
+    public WebElement getCurrencies() {
+        WebElement currencies = driver.findElement(By.xpath("//*[@id='menu-system']//li/a[contains(text(), 'Currencies')]"));
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.elementToBeClickable(currencies));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        return currencies;
+    }
+
+    public void clickCurrencies() {
+        getCurrencies().click();
+    }
+
+
+    //CUSTOM
 
     // navigatePannel
     public WebElement getNavigatePannel() {
@@ -104,7 +149,15 @@ public abstract class LeftMenuPart extends TopMenuPart {
                 .clickNavigationOptionByPartialName("System", "Localisation", "Currencies");
         return new CurrenciesPage(driver);
     }
-    
+
+    public CurrenciesPage gotoCurrencyPage() {
+        activeNavigatePannel();
+        clickSystem();
+        clickLocalisation();
+        clickCurrencies();
+        return new CurrenciesPage(driver);
+    }
+
 ////
 //    public void Categories() {
 //        catalog.click();
@@ -130,7 +183,7 @@ public abstract class LeftMenuPart extends TopMenuPart {
 //    	return new ProductsPage(driver);
 //    }
 ////   
-    
+
     public void clickCustomers() {
         customers.click();
     }

@@ -61,7 +61,7 @@ public class CurrenciesPage extends LeftMenuPart {
         return new EditCurrenciesPage(driver);
     }
 
-    public AddNewCurrecyPage addNewCurrecyPage (WebDriver driver){
+    public AddNewCurrecyPage gotoAddNewCurrecyPage (){
         clickAddNewButton();
         return new AddNewCurrecyPage(driver);
     }

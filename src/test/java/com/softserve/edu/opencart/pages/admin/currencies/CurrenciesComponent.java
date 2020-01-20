@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class CurrenciesComponent {
     WebDriver driver;
 
-    private WebElement productLayout;
+    private WebElement component;
 
     private WebElement checkBox;
     private WebElement title;
@@ -16,31 +16,30 @@ public class CurrenciesComponent {
     private WebElement date;
     private WebElement editButton;
 
-    public CurrenciesComponent(WebElement productLayout) {
-        this.productLayout = productLayout;
+    public CurrenciesComponent(WebElement component) {
+        this.component = component;
         initElements();
     }
 
     private void initElements() {
-        checkBox = productLayout.findElement(By.xpath("//input[@name='selected[]']"));
-        title = productLayout.findElement(By.xpath("//tbody/tr/td[2]"));
-        code = productLayout.findElement(By.xpath("//tbody/tr/td[3]"));
-        value = productLayout.findElement(By.xpath("//tbody/tr/td[4]"));
-        date = productLayout.findElement(By.xpath("//tbody/tr/td[5]"));
-        editButton = productLayout.findElement(By.xpath("//*[@data-original-title='Edit']"));
+        checkBox = component.findElement(By.xpath("//input[@name='selected[]']"));
+        title = component.findElement(By.xpath("//tbody/tr/td[2]"));
+        code = component.findElement(By.xpath("//tbody/tr/td[3]"));
+        value = component.findElement(By.xpath("//tbody/tr/td[4]"));
+        date = component.findElement(By.xpath("//tbody/tr/td[5]"));
+        editButton = component.findElement(By.xpath("//*[@data-original-title='Edit']"));
     }
 
-    public WebElement getProductLayout() {
-        return productLayout;
+    public WebElement getProductComponent() {
+        return component;
     }
 
     public WebElement getCheckBox() {
         return checkBox;
     }
 
-    public CurrenciesPage clickCheckBox(){
+    public void clickCheckBox(){
         getCheckBox().click();
-        return new CurrenciesPage(driver);
     }
 
     public WebElement getTitle() {
