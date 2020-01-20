@@ -25,6 +25,7 @@ public class SearchCriteriaTest extends LocalTestRunner {
      * checking if there is this word in the description and
      * checking subcategory if there is "Samsung SyncMaster 941BW".
      *
+     * 
      */
 
     @Test(dataProvider = "searchDataCaseOne")
