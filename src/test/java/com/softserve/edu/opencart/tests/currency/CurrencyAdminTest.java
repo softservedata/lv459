@@ -6,6 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.collections.Lists;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,15 +27,16 @@ public class CurrencyAdminTest extends AdminTestRunner {
 
     @Test(dataProvider = "loginAdminData")
     public void checkMacBookPriceTest(IAdmin validAdmin, ICurrency currency) {
-         /*String actual = */loadAdminPage()
+         String actual = loadAdminPage()
                 .successfulLogin(validAdmin)
                 .gotoCurrencyPage()
                 //.gotoAddNewCurrecyPage()
                 //.addNewCurrency(currency)
                 .getCurrenciesContainerComponent()
-                .getCurrencyTitleText(currency);
+                 .getCurrencyTitleText(currency);
+                //.getCurrencyTitleText(currency);
 
-        System.out.println();
+        System.out.println("***********" + actual);
         //Assert.assertTrue(actual.contains(HRYVNIA));
     }
 }

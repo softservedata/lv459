@@ -6,6 +6,9 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CurrencyHomeTest extends LocalTestRunner {
 
     final String CURRENCY_PATTERN = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
@@ -39,12 +42,14 @@ public class CurrencyHomeTest extends LocalTestRunner {
                 .getProductComponentPriceByName("MacBook");
 
         Assert.assertTrue(actual.contains(MAC_BOOK_TAX_PRICE));
-/*        Pattern p = Pattern.compile(CURRENCY_PATTERN);
+        Pattern p = Pattern.compile(CURRENCY_PATTERN);
+        System.out.println("***********" + actual);
         Matcher m = p.matcher(actual);
-        m.reset();
-        while (m.find()) {
+/*        m.reset();*/
+        /*while (m.find()) {*/
+            m.find();
             Assert.assertEquals(MAC_BOOK_TAX_PRICE, actual.substring(m.start(), m.end()));
-        }*/
+        //}
     }
 
     @Test(dataProvider = "currencyNoTaxData")
@@ -147,7 +152,7 @@ public class CurrencyHomeTest extends LocalTestRunner {
     //Cart tests
 
     //@Test(dataProvider = "currencyTaxData")
-    public void checkMacBookPriceCartTest(IUser validUser) {
+/*    public void checkMacBookPriceCartTest(IUser validUser) {
 
         IProduct macBookProduct = ProductRepository.get().getMacBook();
 
@@ -165,6 +170,6 @@ public class CurrencyHomeTest extends LocalTestRunner {
         loadApplication()
                 .gotoShoppingCart()
                 .deleteProductOnShoppingCart(macBookProduct);
-    }
+    }*/
 
 }
