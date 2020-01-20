@@ -13,28 +13,28 @@ public class CurrencyAdminTest extends AdminTestRunner {
     @DataProvider
     private Object[][] loginAdminData() {
         return new Object[][]{
-                {AdminRepo.get().validAdmin(), CurrencyRepository.get().getNewUACurrency()}
+                {AdminRepo.get().validAdmin(), CurrencyRepository.get().getUACurrency()}
         };
     }
 
     @DataProvider
     private Object[][] currencyAdminData() {
         return new Object[][]{
-                {CurrencyRepository.get().getNewUACurrency()}
+                {CurrencyRepository.get().getUACurrency()}
         };
     }
 
     @Test(dataProvider = "loginAdminData")
     public void checkMacBookPriceTest(IAdmin validAdmin, ICurrency currency) {
-         List<String> actual = loadAdminPage()
+         /*String actual = */loadAdminPage()
                 .successfulLogin(validAdmin)
                 .gotoCurrencyPage()
-                .gotoAddNewCurrecyPage()
-                .addNewCurrency(currency)
-                 .getCurrenciesContainerComponent()
-                 .getCurrencyComponentTitles();
+                //.gotoAddNewCurrecyPage()
+                //.addNewCurrency(currency)
+                .getCurrenciesContainerComponent()
+                .getCurrencyTitleText(currency);
 
-        System.out.println(actual);
+        System.out.println();
         //Assert.assertTrue(actual.contains(HRYVNIA));
     }
 }
