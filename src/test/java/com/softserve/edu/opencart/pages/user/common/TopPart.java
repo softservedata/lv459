@@ -1,6 +1,7 @@
 package com.softserve.edu.opencart.pages.user.common;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,6 +24,8 @@ import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class TopPart {
     protected final String OPTION_NULL_MESSAGE = "DropdownComponent is null";
@@ -130,6 +133,10 @@ public abstract class TopPart {
     }
 
     public void clickShoppingCart() {
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        (new WebDriverWait(driver,10))
+                .until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[title='Shopping Cart']")));
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         getShoppingCart().click();
     }
 

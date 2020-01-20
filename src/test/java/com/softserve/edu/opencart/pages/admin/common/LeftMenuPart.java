@@ -33,7 +33,7 @@ public abstract class LeftMenuPart extends TopMenuPart {
     protected WebElement header;
     protected WebElement footer;
 
-    WebDriverWait wait = new WebDriverWait(driver, 20);
+    WebDriverWait wait = new WebDriverWait(driver, 5);
 
     
     protected WebElement categories;

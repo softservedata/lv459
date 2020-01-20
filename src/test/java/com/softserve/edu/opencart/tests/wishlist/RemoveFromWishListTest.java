@@ -13,7 +13,7 @@ import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.tests.LocalTestRunner;
 
 /**
- * This class verify if button remove from Wish List work.
+ * This class verify if button remove from Wish List works.
  */
 public class RemoveFromWishListTest extends LocalTestRunner {
 
@@ -46,6 +46,7 @@ public class RemoveFromWishListTest extends LocalTestRunner {
                 .deleteProductFromWishList(macBookProduct)
                 .getRemoveMessageText();
 
+        //check message
         Assert.assertTrue(actual
                 .contains(PRODUCT_REMOVED));
     }

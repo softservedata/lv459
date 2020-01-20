@@ -73,9 +73,9 @@ public class HomePage extends TopPart {
 
 
     // add Product To Shopping Cart on Home Page
-    public AlertMessagePage addProductToShoppingCart(IProduct product) {
+    public AlertMessageCommon addProductToShoppingCart(IProduct product) {
         productsContainerComponent.clickProductComponentAddToCartButtonByName(product);
-        return new AlertMessagePage(driver);
+        return new AlertMessageCommon(driver);
     }
 
     // go to MacBook Page

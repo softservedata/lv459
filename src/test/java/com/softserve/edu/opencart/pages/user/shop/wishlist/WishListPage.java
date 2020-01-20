@@ -11,7 +11,7 @@ import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 
 /**
- *  Wish list page.<
+ *  Wish list page.
  */
 public class WishListPage extends AccountSidebarLoggedPart {
 

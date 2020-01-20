@@ -40,11 +40,10 @@ public class CurrenciesContainerComponent {
     public int getCurrenciesComponentsCount() {
         return getCurrenciesComponents().size();
     }
-    public List<String> getCurrencyComponentTitles()
-    {
+
+    public List<String> getCurrencyComponentTitles() {
         List<String> currencyComponentTitles = new ArrayList<>();
-        for (CurrenciesComponent current : getCurrenciesComponents())
-        {
+        for (CurrenciesComponent current : getCurrenciesComponents()) {
             currencyComponentTitles.add(current.getTitleText());
         }
         return currencyComponentTitles;
@@ -53,8 +52,8 @@ public class CurrenciesContainerComponent {
     protected CurrenciesComponent getCurrenciesComponentByTitle(ICurrency currency) {
         CurrenciesComponent result = null;
         for (CurrenciesComponent current : getCurrenciesComponents()) {
-            if (current.getTitleText().toLowerCase()
-                    .equals(currency.getCurrencyTitle().toLowerCase())) {
+            if (current.getTitleText()
+                    .equals(currency.getCurrencyTitle())) {
                 result = current;
                 break;
             }

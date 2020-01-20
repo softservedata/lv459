@@ -246,32 +246,6 @@ public class AppleCinemaPage extends BreadCrumbPart {
     public void setUploadFileButton(AppleCinemaInfo uploadFileValue){
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);",
                 getUploadFileInput(), "value", uploadFileValue.getUploadFileValue());
-       /* Robot robot = null;
-        try {
-            robot = new Robot();
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
-        driver.findElement(By.xpath("//*[@id='button-upload222']/i")).click();//starts-with id text
-        robot.setAutoDelay(2000);
-        StringSelection stringSelection = new StringSelection("C:\\Users\\talia\\Desktop\\marshmello.jpg");
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-        robot.setAutoDelay(3000);
-
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_V);
-
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.keyRelease(KeyEvent.VK_V);
-
-        robot.setAutoDelay(3000);
-
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-
-        Alert alert_box = driver.switchTo().alert();
-        alert_box.accept();
-*/
     }
 
 
@@ -297,7 +271,7 @@ public class AppleCinemaPage extends BreadCrumbPart {
     public void setQuantity(AppleCinemaInfo qty){
         clickQuantityField();
         clearQuantityField();
-        getQuantityField().sendKeys( qty.getQuantityField());  //// Idk how correct is that.
+        getQuantityField().sendKeys( qty.getQuantityField());
     }
 
 
@@ -306,19 +280,18 @@ public class AppleCinemaPage extends BreadCrumbPart {
 
     //Business Logic
 
-    public AlertMessagePage addAppleCinemaToCartWithAllOpt(AppleCinemaInfo text, AppleCinemaInfo textarea, AppleCinemaInfo uploadFileValue, AppleCinemaInfo data,
-                                                        AppleCinemaInfo time, AppleCinemaInfo datatime, AppleCinemaInfo qty){
+    public AlertMessagePage addAppleCinemaToCartWithAllOpt(AppleCinemaInfo appleCinemaInfo){
 
         clickRadioButton();
         clickCheckboxButton();
-        setTextField(text);
+        setTextField(appleCinemaInfo);
         setSelectOptions();
-        setTextAreaField(textarea);
-        setUploadFileButton(uploadFileValue);
-        setDateField(data);
-        setTimeField(time);
-        setDateTimeField(datatime);
-        setQuantity(qty);
+        setTextAreaField(appleCinemaInfo);
+        setUploadFileButton(appleCinemaInfo);
+        setDateField(appleCinemaInfo);
+        setTimeField(appleCinemaInfo);
+        setDateTimeField(appleCinemaInfo);
+        setQuantity(appleCinemaInfo);
         clickAddToCartButton();
         return new AlertMessagePage(driver);
     }
