@@ -7,6 +7,7 @@ import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 import com.softserve.edu.opencart.tests.LocalTestRunner;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -17,6 +18,7 @@ import org.testng.annotations.Test;
  */
 public class NumberEqualityTest extends LocalTestRunner {
 
+    private WishListPage wishListPage = null;
     private static String EXPECTED_NUMBER = "2";
 
     @DataProvider
@@ -47,13 +49,18 @@ public class NumberEqualityTest extends LocalTestRunner {
                 .addProductToWishList(appleCinema30);
 
        //go to wish list page
-        WishListPage wishListPage = loadApplication().gotoWishListPage();
+        wishListPage = loadApplication().gotoWishListPage();
 
         //check whether 2 product were added
         Assert.assertTrue(wishListPage.getWishListText()
                 .contains(EXPECTED_NUMBER));
+    }
 
-        //clear wish list
-        wishListPage.removeAllProductsFromWishList();
+    @AfterMethod
+    public void clearWishList() {
+        if(wishListPage != null) {
+            //clear wish list
+            wishListPage.removeAllProductsFromWishList();
+        }
     }
 }

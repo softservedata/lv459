@@ -171,5 +171,20 @@ public class CurrencyHomeTest extends LocalTestRunner {
                 .gotoShoppingCart()
                 .deleteProductOnShoppingCart(macBookProduct);
     }*/
+//        String actual = loadApplication()
+//                .gotoLoginPage()
+//                .successfulLogin(validUser)
+//                .gotoHomePage()
+//                .addProductToShoppingCart(macBookProduct)//WAIT
+//                .gotoShoppingCart()
+//                .getTotalTaxComponent()
+//                .getTotalText();
+//
+//        Assert.assertTrue(actual.contains(MAC_BOOK_TAX_PRICE));
+//
+//        loadApplication()
+//                .gotoShoppingCart()
+//                .deleteProductOnShoppingCart(macBookProduct);
+    //}
 
 }
