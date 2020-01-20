@@ -8,6 +8,7 @@
            <class name="com.softserve.edu.opencart.tests.RestorePasswordTest">
                <methods>
                    <include name="changePasswordTest" />
+                   <include name="restorePasswordTest" />
                </methods>
            </class>
         </classes>

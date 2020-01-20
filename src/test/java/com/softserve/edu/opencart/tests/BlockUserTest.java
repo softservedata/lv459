@@ -17,7 +17,12 @@ public class BlockUserTest extends LocalAdminTestRunner {
             { AdminRepo.get().validAdmin(),UserRepository.get().emailUser()},
             };
     }
-
+/**
+ * This test go to administration panel, block user, try to login with this user
+ * and verify error message.
+ * @param validAdmin - administrator with correct credentials.
+ * @param validUser - user with correct credentials.
+ */
     @Test(dataProvider = "correctUsers", priority = 1)
     public void blockUserTest(IAdmin validAdmin, IUser validUser) {
         loadAdminPage()
@@ -38,6 +43,12 @@ public class BlockUserTest extends LocalAdminTestRunner {
       Assert.assertEquals(errorMessage, EXPECTED_ERROR_MESSAGE);
     }
     
+    /**
+     * This test go to administration panel, unblock user, try to login with this user
+     * and verify that we go to the right customer.
+     * @param validAdmin - administrator with correct credentials.
+     * @param validUser - user with correct credentials.
+     */
     @Test(dataProvider = "correctUsers", priority = 2)
     public void unblockUserTest(IAdmin validAdmin, IUser validUser) {
         loadAdminPage()

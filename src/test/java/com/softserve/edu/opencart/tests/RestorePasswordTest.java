@@ -15,7 +15,10 @@ public class RestorePasswordTest extends LocalEmailTestRunner {
             { UserRepository.get().emailUser() },
         };
     }
-
+/**
+ * This test change password and try to login with new credentials.
+ * @param validUser - User with correct credentials.
+ */
     @Test(dataProvider = "correctCustomers", priority = 1)
     public void changePasswordTest(IUser validUser){
         loadApplication()
@@ -36,6 +39,10 @@ public class RestorePasswordTest extends LocalEmailTestRunner {
 
     }
     
+    /**
+     * This test restore old password.
+     * @param validUser - User with correct credentials.
+     */
     @Test(dataProvider = "correctCustomers", priority = 2)
     public void restorePasswordTest(IUser validUser){
         loadApplication()

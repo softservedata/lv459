@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 
 import com.softserve.edu.opencart.data.ApplicationStatus;
 import com.softserve.edu.opencart.pages.user.HomePage;
-import com.softserve.edu.ukrNet.MainEmailPage;
+import com.softserve.edu.ukrNet.MailLoginPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -59,8 +59,8 @@ public abstract class LocalEmailTestRunner {
         return new HomePage(driver);
     }
     
-    public MainEmailPage loadEmailPage() {
+    public MailLoginPage loadEmailPage() {
         driver.get(EMAIL_URL);
-        return new MainEmailPage(driver);
+        return new MailLoginPage(driver);
     }
 }

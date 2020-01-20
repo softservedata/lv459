@@ -22,7 +22,10 @@ public class LoginTest extends LocalTestRunner {
             { UserRepository.get().getIncorrectUser() },
         };
     }
-
+/**
+ * This test try login with correct credentials and verify that we go to the right customer.
+ * @param validUser - user with correct credentials
+ */
     @Test(dataProvider = "correctCustomers", priority = 1)
     public void loginTest(IUser validUser) {
       String email =  loadApplication()
@@ -33,6 +36,10 @@ public class LoginTest extends LocalTestRunner {
       Assert.assertEquals(email, validUser.getEmail());
     }
     
+    /**
+     * This test try to login with incorrect credentials and verify error message.
+     * @param invalidUser - user with incorrect credentials.
+     */
     @Test(dataProvider = "incorrectCustomers", priority = 2)
     public void incorrectUserLoginTest(IUser invalidUser) {
       String warningMessage =  loadApplication()

@@ -170,7 +170,7 @@
 							<!-- <suiteXmlFile>opozatc.xml</suiteXmlFile> -->
 							<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
 							<!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
-							<!-- <suiteXmlFile>dana.xml</suiteXmlFile> -->
+							<suiteXmlFile>Andry.xml</suiteXmlFile>
 						</suiteXmlFiles>
 
 						<reportsDirectory>${testng.reports.directory}</reportsDirectory>
