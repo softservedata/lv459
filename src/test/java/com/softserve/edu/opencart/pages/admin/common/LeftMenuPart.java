@@ -61,7 +61,7 @@ public abstract class LeftMenuPart extends TopMenuPart {
         design = driver.findElement(By.id("menu-design"));
         sales = driver.findElement(By.id("menu-sale"));
         customers = driver.findElement(By.id("menu-customer"));
-        marketing = driver.findElement(By.id("menu-catalog"));
+        marketing = driver.findElement(By.id("menu-marketing"));
         system = driver.findElement(By.id("menu-system"));
         reports = driver.findElement(By.id("menu-report"));
         stats = driver.findElement(By.id("stats"));

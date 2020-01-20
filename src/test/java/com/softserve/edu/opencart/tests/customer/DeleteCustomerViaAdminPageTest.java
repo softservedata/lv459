@@ -26,10 +26,10 @@ public class DeleteCustomerViaAdminPageTest extends LocalAdminTestRunner {
         Assert.assertTrue(page.getContainer().isCustomerNoResults());
 
 
-        String errorMessage =  loadmainPage()
+/*        String errorMessage =  loadmainPage()
                 .gotoRegisterPage()
                 .
-                // TODO HERE THE TEST
+                // TODO HERE THE TEST*/
 
     }
 }

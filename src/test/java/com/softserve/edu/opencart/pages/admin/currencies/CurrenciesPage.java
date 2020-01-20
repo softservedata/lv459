@@ -1,11 +1,14 @@
 package com.softserve.edu.opencart.pages.admin.currencies;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.ICurrency;
 import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CurrenciesPage extends LeftMenuPart {
 
@@ -57,12 +60,21 @@ public class CurrenciesPage extends LeftMenuPart {
     }
 
     //Business Logic
-    public EditCurrenciesPage deleteProductOnShoppingCart(ICurrency currency) {
+    public EditCurrenciesPage editCurrenciesPage(ICurrency currency) {
         currenciesContainerComponent.clickEditButtonByTitle(currency);
         return new EditCurrenciesPage(driver);
     }
 
-    public AddNewCurrecyPage gotoAddNewCurrecyPage (){
+    public CurrenciesPage deleteCurrencyByName(ICurrency currency) {
+        currenciesContainerComponent.clickCheckBoxButtonByTitle(currency);
+        clickDeleteButton();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.accept();
+        return new CurrenciesPage(driver);
+    }
+
+    public AddNewCurrecyPage gotoAddNewCurrecyPage() {
         clickAddNewButton();
         return new AddNewCurrecyPage(driver);
     }

@@ -18,11 +18,11 @@ public class CurrencyRepository {
     }
 
     public ICurrency getDefault() {
-        return getUACurrency();
+        return UACurrency();
 
     }
 
-    public ICurrency getUACurrency() {
+    public ICurrency UACurrency() {
         return Currency.get()
                 .setCurrencyTitle("Hryvnia")
                 .setCurrencyCode("UAH")
@@ -32,7 +32,7 @@ public class CurrencyRepository {
                 .setCurrencySymbolRight("₴")
                 .build();
     }
-    public ICurrency getUKCurrency() {
+    public ICurrency UKCurrency() {
         return Currency.get()
                 .setCurrencyTitle("Pound Sterling")
                 .setCurrencyCode("GBP")
@@ -42,7 +42,7 @@ public class CurrencyRepository {
                 .setCurrencySymbolLeft("£")
                 .build();
     }
-    public ICurrency getEUCurrency() {
+    public ICurrency EUCurrency() {
         return Currency.get()
                 .setCurrencyTitle("Euro")
                 .setCurrencyCode("EUR")
@@ -52,7 +52,7 @@ public class CurrencyRepository {
                 .setCurrencySymbolRight("€")
                 .build();
     }
-    public ICurrency getUSCurrency() {
+    public ICurrency USCurrency() {
         return Currency.get()
                 .setCurrencyTitle("US Dollar")
                 .setCurrencyCode("USD")
