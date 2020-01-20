@@ -48,7 +48,8 @@ public class AddToCartFromWishListTest extends LocalTestRunner {
                 .contains(String.format(PRODUCT_ADDED_TO_CART, "MacBook")));
 
     }
-    @AfterMethod public void remove() {
+
+    @AfterMethod public void clearWishList() {
         if( wishListMessagePage != null) {
             //clear wish list after test
             wishListMessagePage.removeAllProductsFromWishList();

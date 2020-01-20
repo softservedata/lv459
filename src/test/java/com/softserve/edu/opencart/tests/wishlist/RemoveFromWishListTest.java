@@ -44,6 +44,7 @@ public class RemoveFromWishListTest extends LocalTestRunner {
                 .deleteProductFromWishList(macBookProduct)
                 .getRemoveMessageText();
 
+        //check message
         Assert.assertTrue(actual
                 .contains(PRODUCT_REMOVED));
     }
