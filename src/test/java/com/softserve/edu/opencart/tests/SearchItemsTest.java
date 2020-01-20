@@ -1,5 +1,11 @@
 package com.softserve.edu.opencart.tests;
 
+import java.util.Random;
+
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
@@ -7,11 +13,6 @@ import com.softserve.edu.opencart.pages.user.common.ProductComponent;
 import com.softserve.edu.opencart.pages.user.search.SearchRequestURITooLongPage;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
 import com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
-import java.util.Random;
 
 public class SearchItemsTest extends LocalTestRunner {
 

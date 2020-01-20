@@ -1,56 +1,109 @@
 package com.softserve.edu.opencart.pages.admin;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 public class CustomersComponent {
 
-    // table with results
-    //        ("table.table.table-bordered.table-hover")
+    private WebElement checkbox;
+    private String customerName;
+    private String email;
+    private String customerGroup;
+    private String customerStatus;
+    private String customerIP;
+    private String customerDateAdded;
+    private WebElement current;
+    // TODO add buttons
 
-    // VALID results to be realized here
-    // <td class="text-center">
-    // <input type="checkbox" name="selected[]" value="71">
-    // </td> .
-    //
-    // <tr>
-    //                  <td class="text-center">                    <input
-    //                  type="checkbox" name="selected[]" value="71">
-    //                    </td>
-    //                  <td class="text-left">Se Pe</td>
-    //                  <td class="text-left">3774217@gmail.com</td>
-    //                  <td class="text-left">Default</td>
-    //                  <td class="text-left">Enabled</td>
-    //                  <td class="text-left">172.16.0.1</td>
-    //                  <td class="text-left">27/12/2019</td>
-    //                  <td class="text-right">                    <button
-    //                  type="button" class="btn btn-success" disabled=""><i
-    //                  class="fa fa-thumbs-o-up"></i></button>
-    //                                        <div class="btn-group"
-    //                                        data-toggle="tooltip" title=""
-    //                                        data-original-title="Login into
-    //                                        Store">
-    //                      <button type="button" data-toggle="dropdown"
-    //                      class="btn btn-info dropdown-toggle"><i class="fa
-    //                      fa-lock"></i></button>
-    //                      <ul class="dropdown-menu pull-right">
-    //                        <li><a href="index
-    //                        .php?route=customer/customer/login&amp;
-    //                        token=0yayHYCEYLCFbg7zucFJR31yFdNFVelL&amp;
-    //                        customer_id=71&amp;store_id=0"
-    //                        target="_blank">Default</a></li>
-    //                                              </ul>
-    //                    </div>
-    //                                        <button type="button"
-    //                                        class="btn btn-warning"
-    //                                        disabled=""><i class="fa
-    //                                        fa-unlock"></i></button>
-    //                                        <a href="http://172.16.0
-    //                                        .129/opencart/upload/admin/index.php?route=customer/customer/edit&amp;token=0yayHYCEYLCFbg7zucFJR31yFdNFVelL&amp;customer_id=71" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a></td>
-    //                </tr>..
+    public CustomersComponent(WebElement current) {
+        this.current = current;
+        initElements();
+    }
 
+    private void initElements() {
+        checkbox = current.findElement(By.cssSelector("td:nth-child(1)"));
+        customerName = current.findElement(By.cssSelector("td:nth-child(2)"))
+                .getText();
+        email = current.findElement(By.cssSelector("td:nth-child(3)"))
+                .getText();
+        customerGroup = current.findElement(By.cssSelector("td:nth-child(4)"))
+                .getText();
+        customerStatus = current.findElement(By.cssSelector("td:nth-child(5)"))
+                .getText();
+        customerIP = current.findElement(By.cssSelector("td:nth-child(6)"))
+                .getText();
+        customerDateAdded =
+                current.findElement(By.cssSelector("td:nth-child(7)"))
+                        .getText();
 
-    // NO RESULTS!
-//    <tbody>
-//                                <tr>
-//                  <td class="text-center" colspan="8">No results!</td>
-//                </tr>
-//                              </tbody>
+        System.out.println("checkbox selected? " + checkbox.isSelected());
+        System.out.println(customerName);
+        System.out.println(email);
+        System.out.println(customerGroup);
+        System.out.println(customerStatus);
+        System.out.println(customerIP);
+        System.out.println(customerDateAdded);
+
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCustomerGroup() {
+        return customerGroup;
+    }
+
+    public void setCustomerGroup(String customerGroup) {
+        this.customerGroup = customerGroup;
+    }
+
+    public String getCustomerStatus() {
+        return customerStatus;
+    }
+
+    public void setCustomerStatus(String customerStatus) {
+        this.customerStatus = customerStatus;
+    }
+
+    public String getCustomerIP() {
+        return customerIP;
+    }
+
+    public void setCustomerIP(String customerIP) {
+        this.customerIP = customerIP;
+    }
+
+    public String getCustomerDateAdded() {
+        return customerDateAdded;
+    }
+
+    public void setCustomerDateAdded(String customerDateAdded) {
+        this.customerDateAdded = customerDateAdded;
+    }
+
+    // Page Object
+
+    // Check if selected
+    public boolean isChecked() {
+        return checkbox.isSelected();
+    }
+
+    // Select
+    public void selectCheckBox() {
+        checkbox.click();
+    }
+
 }

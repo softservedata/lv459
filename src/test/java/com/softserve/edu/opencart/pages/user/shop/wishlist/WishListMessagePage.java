@@ -1,9 +1,10 @@
 package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
-import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 
 public class WishListMessagePage extends WishListPage {
 
@@ -20,7 +21,7 @@ public class WishListMessagePage extends WishListPage {
     }
 
     /**
-     * <h3>This method inits all elements on page.</h3>
+     * This method inits all elements on page.
      */
     private void initElements() {
         // init elements
@@ -32,14 +33,14 @@ public class WishListMessagePage extends WishListPage {
     //page object
 
     /**
-     * <h3>This method gets cross button.</h3>
+     * This method gets cross button.
      */
     public WebElement getCrossButton() {
         return crossButton;
     }
 
     /**
-     * <h3>This method clicks on cross button.</h3>
+     * This method clicks on cross button.
      */
     public void clickCrossButton() {
         getCrossButton().click();
@@ -49,7 +50,7 @@ public class WishListMessagePage extends WishListPage {
     //functional
 
     /**
-     * <h3>This method gets remove message.</h3>
+     * This method gets remove message.
      */
     public WebElement getRemoveMessage() {
         return removeMessage;
@@ -57,21 +58,21 @@ public class WishListMessagePage extends WishListPage {
     }
 
     /**
-     * <h3>This method gets remove message text.</h3>
+     * This method gets remove message text.
      */
     public String getRemoveMessageText() {
         return getRemoveMessage().getText();
     }
 
     /**
-     * <h3>This method gets add ot cart message.</h3>
+     * This method gets add ot cart message.
      */
     public WebElement getAddToCartMessage() {
         return addToCartMessage;
     }
 
     /**
-     * <h3>This method gets add to cart message text.</h3>
+     * This method gets add to cart message text.
      */
     public String getAddToCartMessageText() {
         return getAddToCartMessage().getText();
@@ -80,7 +81,7 @@ public class WishListMessagePage extends WishListPage {
     //Business Logic
 
     /**
-     * <h3>This method clicks on cross button.</h3>
+     * This method clicks on cross button.
      */
     public MyAccountPage clickOnCrossButton() {
         clickCrossButton();

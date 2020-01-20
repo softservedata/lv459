@@ -41,6 +41,7 @@ public final class UserRepository {
                 .setAddress2("address2_5")
                 .build();
     }
+
     public IUser getBohdanaUser() {
         return User.get()
                 .setFirstName("Dana")
@@ -61,7 +62,47 @@ public final class UserRepository {
                 .setAddress2("address2")
                 .build();
     }
-    
+
+    public IUser getYuriiUkUser() {
+        return User.get()
+                .setFirstName("user")
+                .setLastName("user")
+                .setEmail("spirnyak2010@gmail.com")
+                .setTelephone("12345")
+                .setAddress1("address")
+                .setCity("city")
+                .setPostCode("12345")
+                .setCountry("country")
+                .setRegionState("region'")
+                .setPassword(System.getenv().get("MY_PASSWORD"))
+                .setNewPassword(System.getenv().get("MY_PASSWORD"))
+                .setSubscribe(true)
+                .setFax("fax")
+                .setCompany("company")
+                .setAddress2("address2")
+                .build();
+    }
+
+    public IUser getYuriiUaUser() {
+        return User.get()
+                .setFirstName("user")
+                .setLastName("user")
+                .setEmail("spirnyak2010_2@gmail.com")
+                .setTelephone("12345")
+                .setAddress1("address")
+                .setCity("city")
+                .setPostCode("12345")
+                .setCountry("country")
+                .setRegionState("region'")
+                .setPassword(System.getenv().get("MY_PASSWORD"))
+                .setNewPassword(System.getenv().get("MY_PASSWORD"))
+                .setSubscribe(true)
+                .setFax("fax")
+                .setCompany("company")
+                .setAddress2("address2")
+                .build();
+    }
+
     public IUser getCorrectUser() {
         return User.get()
                 .setFirstName("hahaha")
@@ -81,7 +122,7 @@ public final class UserRepository {
                 .setAddress2("address2_5")
                 .build();
     }
-    
+
     public IUser getIncorrectUser() {
         return User.get()
                 .setFirstName("hahaha")
@@ -121,7 +162,7 @@ public final class UserRepository {
                 .setAddress2("address2_5")
                 .build();
     }
-    
+
     public IUser emailUser() {
         return User.get()
                 .setFirstName("")

@@ -3,7 +3,6 @@ package com.softserve.edu.opencart.pages.admin.catalog;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.server.handler.SendKeys;
 
 import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
 

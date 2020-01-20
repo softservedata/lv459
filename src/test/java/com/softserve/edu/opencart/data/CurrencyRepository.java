@@ -18,18 +18,48 @@ public class CurrencyRepository {
     }
 
     public ICurrency getDefault() {
-        return getNewUACurrency();
+        return getUACurrency();
 
     }
 
-    public ICurrency getNewUACurrency() {
+    public ICurrency getUACurrency() {
         return Currency.get()
-                .setCurrencyTitle("Ukrainian UAH")
+                .setCurrencyTitle("Hryvnia")
                 .setCurrencyCode("UAH")
                 .setCurrencyDecimalPlaces(2)
                 .setCurrencyValue(25)
-                .setCurrencyStatus("Enabled")
+                .setCurrencyStatus("1")
                 .setCurrencySymbolRight("₴")
+                .build();
+    }
+    public ICurrency getUKCurrency() {
+        return Currency.get()
+                .setCurrencyTitle("Pound Sterling")
+                .setCurrencyCode("GBP")
+                .setCurrencyDecimalPlaces(2)
+                .setCurrencyValue(0.61250001)
+                .setCurrencyStatus("1")
+                .setCurrencySymbolLeft("£")
+                .build();
+    }
+    public ICurrency getEUCurrency() {
+        return Currency.get()
+                .setCurrencyTitle("Euro")
+                .setCurrencyCode("EUR")
+                .setCurrencyDecimalPlaces(2)
+                .setCurrencyValue(0.78460002)
+                .setCurrencyStatus("1")
+                .setCurrencySymbolRight("€")
+                .build();
+    }
+    public ICurrency getUSCurrency() {
+        return Currency.get()
+                .setCurrencyTitle("US Dollar")
+                .setCurrencyCode("USD")
+                .setCurrencyDecimalPlaces(2)
+                .setCurrencyValue(1)
+                .setCurrencyStatus("1")
+                .setCurrencySymbolLeft("$")
                 .build();
     }
 }

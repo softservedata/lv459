@@ -51,9 +51,9 @@ public class ProductsPage extends LeftMenuPart {
 		return getAddNewButton().getText();
 	}
 		
-	public AddCategoryPage gotoAddNewCategory() {
+	public AddProductPage gotoAddProductPage() {
 	    getAddNewButton().click();
-	    return new AddCategoryPage(driver);
+	    return new AddProductPage(driver);
 	}
 	
 	//rebuildButton

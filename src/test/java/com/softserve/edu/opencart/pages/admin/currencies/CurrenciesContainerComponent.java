@@ -1,12 +1,13 @@
 package com.softserve.edu.opencart.pages.admin.currencies;
 
-import com.softserve.edu.opencart.data.ICurrency;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.softserve.edu.opencart.data.ICurrency;
 
 public class CurrenciesContainerComponent {
     private WebDriver driver;
@@ -40,11 +41,19 @@ public class CurrenciesContainerComponent {
         return getCurrenciesComponents().size();
     }
 
+    public List<String> getCurrencyComponentTitles() {
+        List<String> currencyComponentTitles = new ArrayList<>();
+        for (CurrenciesComponent current : getCurrenciesComponents()) {
+            currencyComponentTitles.add(current.getTitleText());
+        }
+        return currencyComponentTitles;
+    }
+
     protected CurrenciesComponent getCurrenciesComponentByTitle(ICurrency currency) {
         CurrenciesComponent result = null;
         for (CurrenciesComponent current : getCurrenciesComponents()) {
-            if (current.getTitleText().toLowerCase()
-                    .equals(currency.getCurrencyTitle().toLowerCase())) {
+            if (current.getTitleText()
+                    .equals(currency.getCurrencyTitle())) {
                 result = current;
                 break;
             }

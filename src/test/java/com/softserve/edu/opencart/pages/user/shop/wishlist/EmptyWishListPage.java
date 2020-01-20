@@ -1,10 +1,11 @@
 package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
-import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
-import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
+import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 
 public class EmptyWishListPage  extends AccountSidebarLoggedPart {
 
@@ -18,7 +19,7 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
     }
 
     /**
-     * <h3>This method inits all elements on page.</h3>
+     * This method inits all elements on page.
      */
     private void initElements() {
         // init elements
@@ -29,28 +30,28 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
     // Page Object
 
     /**
-     * <h3>This method gets web element labelText.</h3>
+     * This method gets web element labelText.
      */
     public WebElement getLabel(){
         return labelText;
     }
 
     /**
-     * <h3>This method gets web element labelText text.</h3>
+     * This method gets web element labelText text.
      */
     public String getLabelText() {
         return getLabel().getText();
     }
 
     /**
-     * <h3>This method gets continueButton.</h3>
+     * This method gets continueButton.
      */
     public WebElement getContinueButton() {
         return continueButton;
     }
 
     /**
-     * <h3>This method clicks on continueButton.</h3>
+     * This method clicks on continueButton.
      */
     public void clickContinueButton() {
         getContinueButton().click();
@@ -59,7 +60,7 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
     //BL
 
     /**
-     * <h3>This method is written to go to  My Account Page.</h3>
+     * This method is written to go to  My Account Page.
      */
     public MyAccountPage goToMyAccountPage() {
         clickContinueButton();

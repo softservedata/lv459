@@ -1,10 +1,11 @@
 package com.softserve.edu.opencart.pages.admin.currencies;
 
-import com.softserve.edu.opencart.data.ICurrency;
-import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.data.ICurrency;
+import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
 
 public class CurrenciesPage extends LeftMenuPart {
 
@@ -61,7 +62,7 @@ public class CurrenciesPage extends LeftMenuPart {
         return new EditCurrenciesPage(driver);
     }
 
-    public AddNewCurrecyPage addNewCurrecyPage (WebDriver driver){
+    public AddNewCurrecyPage gotoAddNewCurrecyPage (){
         clickAddNewButton();
         return new AddNewCurrecyPage(driver);
     }

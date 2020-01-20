@@ -1,22 +1,25 @@
 package com.softserve.edu.opencart.tests.wishlist;
 
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
 import com.softserve.edu.opencart.tests.LocalTestRunner;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 /**
- * <h3> This class contains test which verify whether the number
+ * This class contains test which verify whether the number
  * of added elements are the same to the number of items that are displayed on
- * the page.</h3>
+ * the page.
  */
 public class NumberEqualityTest extends LocalTestRunner {
 
+    private WishListPage wishListPage = null;
     private static String EXPECTED_NUMBER = "2";
 
     @DataProvider
@@ -27,7 +30,7 @@ public class NumberEqualityTest extends LocalTestRunner {
     }
 
     /**
-     * <h3>This method check if Wish List is empty by default.</h3>
+     * This method check if Wish List is empty by default.
      */
     @Test(dataProvider = "customers")
     public void checkAddToCartFromWishList(IUser validUser) {
@@ -47,13 +50,18 @@ public class NumberEqualityTest extends LocalTestRunner {
                 .addProductToWishList(appleCinema30);
 
        //go to wish list page
-        WishListPage wishListPage = loadApplication().gotoWishListPage();
+        wishListPage = loadApplication().gotoWishListPage();
 
         //check whether 2 product were added
         Assert.assertTrue(wishListPage.getWishListText()
                 .contains(EXPECTED_NUMBER));
+    }
 
-        //clear wish list
-        wishListPage.removeAllProductsFromWishList();
+    @AfterMethod
+    public void clearWishList() {
+        if(wishListPage != null) {
+            //clear wish list
+            wishListPage.removeAllProductsFromWishList();
+        }
     }
 }

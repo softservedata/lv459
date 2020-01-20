@@ -1,13 +1,14 @@
 package com.softserve.edu.opencart.tests;
 
-import com.softserve.edu.opencart.data.IProduct;
-import com.softserve.edu.opencart.data.ProductRepository;
-import com.softserve.edu.opencart.pages.user.HomePage;
-import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
-import com.softserve.edu.opencart.pages.user.search.ProductsDisplayComponent;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.data.ProductRepository;
+import com.softserve.edu.opencart.pages.user.HomePage;
+import com.softserve.edu.opencart.pages.user.search.ProductsDisplayComponent;
+import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
 
 public class ListAndGridTest extends LocalTestRunner {
 

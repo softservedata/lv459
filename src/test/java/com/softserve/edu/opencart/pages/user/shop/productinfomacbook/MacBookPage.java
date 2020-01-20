@@ -1,11 +1,12 @@
 package com.softserve.edu.opencart.pages.user.shop.productinfomacbook;
 
-import com.softserve.edu.opencart.data.MacBookInfo;
-import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
-import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.data.MacBookInfo;
+import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 
 public class MacBookPage extends BreadCrumbPart {
 
