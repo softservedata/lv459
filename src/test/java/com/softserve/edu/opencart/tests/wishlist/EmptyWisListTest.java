@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
- * <h3> This class contains verify if  Wish List is empty by default.</h3>
+ *  This class contains verify if  Wish List is empty by default.
  */
 public class EmptyWisListTest extends LocalTestRunner {
 
@@ -22,7 +22,7 @@ public class EmptyWisListTest extends LocalTestRunner {
     }
 
     /**
-     * <h3>This method check if Wish List is empty by default.</h3>
+     * This method check if Wish List is empty by default.
      */
     @Test(dataProvider = "customers")
     public void checkWishListIsEmpty(IUser validUser) {

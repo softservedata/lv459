@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import static com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage.PRODUCT_REMOVED;
 
 /**
- * <h3> This class verify if button remove from Wish List work.</h3>
+ * This class verify if button remove from Wish List work.
  */
 public class RemoveFromWishListTest extends LocalTestRunner {
 
@@ -23,7 +23,7 @@ public class RemoveFromWishListTest extends LocalTestRunner {
     }
 
     /**
-     * <h3>This method check if button 'Remove from wish list' works.</h3>
+     * This method check if button 'Remove from wish list' works.
      */
     @Test(dataProvider = "customers")
     public void checkRemoveFromWishList(IUser validUser) {

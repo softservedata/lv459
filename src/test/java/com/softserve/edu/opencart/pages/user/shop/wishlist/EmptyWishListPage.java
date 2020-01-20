@@ -18,7 +18,7 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
     }
 
     /**
-     * <h3>This method inits all elements on page.</h3>
+     * This method inits all elements on page.
      */
     private void initElements() {
         // init elements
@@ -29,28 +29,28 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
     // Page Object
 
     /**
-     * <h3>This method gets web element labelText.</h3>
+     * This method gets web element labelText.
      */
     public WebElement getLabel(){
         return labelText;
     }
 
     /**
-     * <h3>This method gets web element labelText text.</h3>
+     * This method gets web element labelText text.
      */
     public String getLabelText() {
         return getLabel().getText();
     }
 
     /**
-     * <h3>This method gets continueButton.</h3>
+     * This method gets continueButton.
      */
     public WebElement getContinueButton() {
         return continueButton;
     }
 
     /**
-     * <h3>This method clicks on continueButton.</h3>
+     * This method clicks on continueButton.
      */
     public void clickContinueButton() {
         getContinueButton().click();
@@ -59,7 +59,7 @@ public class EmptyWishListPage  extends AccountSidebarLoggedPart {
     //BL
 
     /**
-     * <h3>This method is written to go to  My Account Page.</h3>
+     * This method is written to go to  My Account Page.
      */
     public MyAccountPage goToMyAccountPage() {
         clickContinueButton();
