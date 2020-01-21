@@ -42,13 +42,8 @@ public class CustomersPage extends LeftMenuPart {
                 By.cssSelector("table.table.table-bordered.table-hover"));
         container = new CustomersContainer(customersList);
 
-        //TODO CustomersContainer and CustomersComponent
-        // table with results
-        //        ("table.table.table-bordered.table-hover")
-
-        // Page Object
-
     }
+    // Page Object
 
     //
     // Field find customer by email
@@ -113,10 +108,11 @@ public class CustomersPage extends LeftMenuPart {
     }
 
     // Checks checkbox for first position in customers list
-    public void selectCheckBox() {
+    public CustomersPage selectCheckBox() {
         if (!container.isCustomerNoResults()) {
             container.getCustomersList().get(0).selectCheckBox();
         }
+        return this;
     }
 
     public void clickConfirmationPopupConfirm() {
@@ -133,8 +129,11 @@ public class CustomersPage extends LeftMenuPart {
     // Business logic
 
     public CustomersPage deleteCustomer(String email) {
-        filterByEmail(email).clickAndConfirmDeleteCustomer();
-    return new CustomersPage(driver);
+        filterByEmail(email)
+                .selectCheckBox()
+                .clickAndConfirmDeleteCustomer()
+        ;
+        return new CustomersPage(driver);
     }
 
 }

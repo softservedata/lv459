@@ -1,3 +1,4 @@
 firstname;lastname;email;telephone;address1;city;postCode;country;regionState;password;subscribe;fax;company;address2
-hahaha;hahaha;hahaha@gmail.com;1234567;address1;city;postcode;country;region;qwerty;true;;mycompany;;
-hahaha;hahaha;hahaha@gmail.com;1234567;address1;city;postcode;country;region;qwerty;true;;mycompany;;
+customer1;lastname1;lv459@i.ua;1234567;address1;city;postcode;220;3489;MY_PASSWORD;true;;mycompany;;
+customer2;lastname2;lv459@gmail.com;1234567;address1;city;postcode;220;3489;MY_PASSWORD;true;;mycompany;;
+Se;Pe;lv459@gmail.com;+38067000;SoftServe#4;Lviv;79000;220;3489;MY_PASSWORD;false;;Softserve;Address2;

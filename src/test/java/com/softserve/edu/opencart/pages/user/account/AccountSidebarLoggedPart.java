@@ -36,8 +36,9 @@ public abstract class AccountSidebarLoggedPart extends AccountSidebarPart {
         return getEditAccountRight().getText();
     }
 
-    public void clickEditAccountRight() {
+    public MyAccountPage clickEditAccountRight() {
         getEditAccountRight().click();
+    return new MyAccountPage(driver);
     }
 
     // passwordRight

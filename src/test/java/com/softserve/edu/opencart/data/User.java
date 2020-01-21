@@ -1,4 +1,8 @@
 package com.softserve.edu.opencart.data;
+
+import java.util.ArrayList;
+import java.util.List;
+
 //5. Add Builder
 interface IFirstName {
     ILastName setFirstName(String firstName);
@@ -50,7 +54,9 @@ interface ISubscribe {
 
 interface IBuildUser {
     IBuildUser setFax(String fax);
+
     IBuildUser setCompany(String company);
+
     IBuildUser setAddress2(String address2);
 
     IUser build();
@@ -58,9 +64,10 @@ interface IBuildUser {
 
 public final class User
         implements IFirstName, ILastName, IEmail,
-        ITelephone, IAddress, ICity, IPostCode, ICountry, IRegionState,
-        IPassword, ISubscribe, IBuildUser, INewPassword,
-        IUser {
+                   ITelephone, IAddress, ICity, IPostCode, ICountry,
+                   IRegionState,
+                   IPassword, ISubscribe, IBuildUser, INewPassword,
+                   IUser {
 
     public final static String EMPTY_STRING = "";
     private String firstName;
@@ -78,15 +85,14 @@ public final class User
     private String password;
     private String newPassword;
     private boolean subscribe;
-
+    private final static String EMAIL_SEPARATOR = "@";
 
     private User() {
 
-        this.fax = EMPTY_STRING; 		// optional
-        this.company = EMPTY_STRING; 	// optional
-        this.address2 = EMPTY_STRING;	// optional
+        this.fax = EMPTY_STRING;        // optional
+        this.company = EMPTY_STRING;    // optional
+        this.address2 = EMPTY_STRING;    // optional
     }
-
 
     public static IFirstName get() {
         return new User();
@@ -156,7 +162,7 @@ public final class User
         this.password = password;
         return this;
     }
-    
+
     public ISubscribe setNewPassword(String password) {
         this.password = password;
         return this;
@@ -166,7 +172,6 @@ public final class User
         this.subscribe = subscribe;
         return this;
     }
-
 
     public IUser build() {
         return this;
@@ -225,7 +230,7 @@ public final class User
     public String getPassword() {
         return password;
     }
-    
+
     public String getNewPassword() {
         return newPassword;
     }
@@ -237,18 +242,98 @@ public final class User
     @Override
     public String toString() {
         return "User [firstName=" + firstName
-                + ", lastName=" + lastName
-                + ", email=" + email
-                + ", telephone=" + telephone
-                + ", fax=" + fax
-                + ", company=" + company
-                + ", address1=" + address1
-                + ", address2=" + address2
-                + ", city=" + city
-                + ", postCode=" + postCode
-                + ", country=" + country
-                + ", regionState=" + regionState
-                + ", password=" + password
-                + ", subscribe=" + subscribe + "]";
+               + ", lastName=" + lastName
+               + ", email=" + email
+               + ", telephone=" + telephone
+               + ", fax=" + fax
+               + ", company=" + company
+               + ", address1=" + address1
+               + ", address2=" + address2
+               + ", city=" + city
+               + ", postCode=" + postCode
+               + ", country=" + country
+               + ", regionState=" + regionState
+               + ", password=" + password
+               + ", newpassword=" + newPassword
+               + ", subscribe=" + subscribe + "]";
+    }
+
+    //------------------- TO READ FROM FILES ------------------//
+
+    public static IUser getByList(List<String> row) {
+        //logger.trace("row.size() = " + row.size() + " UserColumns.values()
+        // .length = " + UserColumns.values().length);
+        List<String> userData = new ArrayList<>(row);
+        for (int i = userData.size(); i < UserColumns.values().length; i++) {
+            userData.add(EMPTY_STRING);
+        }
+        return User.get()
+                .setFirstName(userData.get(UserColumns.FIRST_NAME.getIndex()))
+                .setLastName(userData.get(UserColumns.LAST_NAME.getIndex()))
+                .setEmail(userData.get(UserColumns.EMAIL.getIndex()))
+                .setTelephone(userData.get(UserColumns.TELEPHONE.getIndex()))
+                .setAddress1(userData.get(UserColumns.ADDRESS1.getIndex()))
+                .setCity(userData.get(UserColumns.CITY.getIndex()))
+                .setPostCode(userData.get(UserColumns.POST_CODE.getIndex()))
+                .setCountry(userData.get(UserColumns.COUNTRY.getIndex()))
+                .setRegionState(
+                        userData.get(UserColumns.REGION_STATE.getIndex()))
+                .setPassword(System.getenv().get(userData.get(
+                        UserColumns.PASSWORD.getIndex())))
+                .setNewPassword("null")
+                .setSubscribe(Boolean.parseBoolean(
+                        userData.get(UserColumns.SUBSCRIBE.getIndex())
+                                .toLowerCase()))
+                .setFax(userData.get(UserColumns.FAX.getIndex()) != null ?
+                        userData.get(UserColumns.FAX.getIndex()) : EMPTY_STRING)
+                .setCompany(
+                        userData.get(UserColumns.COMPANY.getIndex()) != null ?
+                        userData.get(UserColumns.COMPANY.getIndex()) :
+                        EMPTY_STRING)
+                .setAddress2(
+                        userData.get(UserColumns.ADDRESS2.getIndex()) != null ?
+                        userData.get(UserColumns.ADDRESS2.getIndex()) :
+                        EMPTY_STRING)
+                .build();
+    }
+
+    public static List<IUser> getByLists(List<List<String>> rows) {
+        List<IUser> result = new ArrayList<>();
+
+        if (!rows.get(0).get(UserColumns.EMAIL.getIndex())
+                .contains(EMAIL_SEPARATOR)) {
+            rows.remove(0);
+        }
+        for (List<String> currentRow : rows) {
+            result.add(getByList(currentRow));
+        }
+        return result;
+    }
+
+    public static enum UserColumns {
+        FIRST_NAME(0),
+        LAST_NAME(1),
+        EMAIL(2),
+        TELEPHONE(3),
+        ADDRESS1(4),
+        CITY(5),
+        POST_CODE(6),
+        COUNTRY(7),
+        REGION_STATE(8),
+        PASSWORD(9),
+        SUBSCRIBE(10),
+        FAX(11),
+        COMPANY(12),
+        ADDRESS2(13);
+        //
+        private int index;
+
+        private UserColumns(int index) {
+            this.index = index;
+        }
+
+        public int getIndex() {
+            return index;
+        }
     }
 }

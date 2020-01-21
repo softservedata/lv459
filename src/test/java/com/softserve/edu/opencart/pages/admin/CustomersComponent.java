@@ -13,7 +13,7 @@ public class CustomersComponent {
     private String customerIP;
     private String customerDateAdded;
     private WebElement current;
-    // TODO add buttons
+
 
     public CustomersComponent(WebElement current) {
         this.current = current;

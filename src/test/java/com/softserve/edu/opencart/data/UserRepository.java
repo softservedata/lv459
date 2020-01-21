@@ -1,5 +1,9 @@
 package com.softserve.edu.opencart.data;
 
+import com.softserve.edu.opencart.tools.CSVReader;
+
+import java.util.List;
+
 public final class UserRepository {
     private static volatile UserRepository instance = null;
 
@@ -181,5 +185,53 @@ public final class UserRepository {
                 .setCompany("")
                 .setAddress2("")
                 .build();
+    }
+
+    public IUser getValidCustomer() {
+        return User.get()
+                .setFirstName("Se")
+                .setLastName("Pe")
+                .setEmail(System.getenv("USER_EMAIL"))
+                .setTelephone("+380675515")
+                .setAddress1("Ploshcha Rynok")
+                .setCity("Lemberg")
+                .setPostCode("79000")
+                .setCountry("220")
+                .setRegionState("3489")
+                .setPassword(System.getenv("USER_PASSWORD"))
+                .setNewPassword(System.getenv("USER_PASSWORD"))
+                .setSubscribe(true)
+                .setFax("+38065065")
+                .setCompany("SoftServe")
+                .setAddress2("no address")
+                .build();
+    }
+
+    public IUser getInvalidCustomer() {
+        return User.get()
+                .setFirstName("123456789012345678901234567890123")
+                .setLastName("Pe")
+                .setEmail(System.getenv("USER_EMAIL"))
+                .setTelephone("+380675515")
+                .setAddress1("Ploshcha Rynok")
+                .setCity("Lemberg")
+                .setPostCode("79000")
+                .setCountry("220")
+                .setRegionState("3489")
+                .setPassword(System.getenv("USER_PASSWORD"))
+                .setNewPassword(System.getenv("USER_PASSWORD"))
+                .setSubscribe(true)
+                .setFax("+38065065")
+                .setCompany("SoftServe")
+                .setAddress2("no address")
+                .build();
+    }
+
+    public List<IUser> fromCsv(String filename) {
+        return User.getByLists(new CSVReader(filename).getAllCells());
+    }
+
+    public List<IUser> fromCsv() {
+        return fromCsv("users.csv");
     }
 }

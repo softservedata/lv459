@@ -35,7 +35,7 @@ public class BlockUserTest extends LocalAdminTestRunner {
         .editUser()
         .changeUserStatus(USER_DISABLED);
 
-      String errorMessage =  loadmainPage()
+      String errorMessage =  loadMainPage()
         .gotoLoginPage()
         .unsuccessfulLogin(validUser)
         .getAlertWarningText();
@@ -61,7 +61,7 @@ public class BlockUserTest extends LocalAdminTestRunner {
         .editUser()
         .changeUserStatus(USER_ENABLED);
       
-        String email =  loadmainPage()
+        String email =  loadMainPage()
                 .gotoLoginPage()
                 .successfulLogin(validUser)
                 .gotoEditAccountRight()

@@ -38,6 +38,9 @@
 		<maven.webdriverextensions-maven-plugin.version>3.2.0</maven.webdriverextensions-maven-plugin.version>
 		<!-- - - - - - Reports - - - - - -->
 		<testng.reports.directory>target/surefire-reports/test-output</testng.reports.directory>
+		<!-- - - - - - Utils - - - - - -->
+		<org.apache.poi.version>4.1.1</org.apache.poi.version>
+
 	</properties>
 
 	<dependencies>
@@ -79,7 +82,20 @@
 			<version>1.7.25</version>
 		</dependency>
 
-	</dependencies>
+		<!-- - - - Read from Excel formats, etc. - - - -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${org.apache.poi.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>3.141.59</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
 	<build>
 
 		<extensions>
@@ -170,7 +186,7 @@
 							<!-- <suiteXmlFile>opozatc.xml</suiteXmlFile> -->
 							<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
 							<!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
-							<suiteXmlFile>Andry.xml</suiteXmlFile>
+							<suiteXmlFile>speretc.xml</suiteXmlFile>
 						</suiteXmlFiles>
 
 						<reportsDirectory>${testng.reports.directory}</reportsDirectory>

@@ -1,14 +1,27 @@
 package com.softserve.edu.opencart.tests;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.TakesScreenshot;
+import org.testng.ITestResult;
+import org.testng.ITestContext;
+
+import org.testng.annotations.*;
 
 import com.softserve.edu.opencart.pages.admin.account.LoginPage;
 import com.softserve.edu.opencart.pages.user.HomePage;
@@ -16,48 +29,95 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public abstract class LocalAdminTestRunner {
-    
+
     private final Long ONE_SECOND_DELAY = 1000L;
-    private final String SERVER_ADMIN_URL = System.getenv().get("OPENCART_URL") + "admin";
-    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
+    //    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
+    private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
+    private String serverUrl = "http://172.16.0.130/opencart/upload/";
+    private final String SERVER_URL = "http://172.16.0.130/opencart/upload/";
+    private final String SERVER_ADMIN_URL = SERVER_URL + "admin";
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
     protected final String EXPECTED_ERROR_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
+    protected final String CUSTOMER_SUCCESSFULLY_CREATED_MESSAGE = "Your Account Has Been Created!";
+    protected final String CUSTOMER_FIRSTNAME_ERROR = "First Name must be between 1 and 32 characters!";
+    protected final String FIRST_NAME_AMEND = "Lv459-TAQC-Updated";
+    protected final String CUSTOMER_UPDATED_MESSAGE = "Success: Your account has been successfully updated.";
+    private Map<Long, WebDriver> drivers;
+
     private WebDriver driver;
 
-    @BeforeClass
-    public void beforeClass() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    @BeforeSuite
+    public void beforeSuit (){
+        drivers = new HashMap<>();
     }
 
-    @AfterClass
+    @AfterSuite
+    public void afterSuit(){
+        drivers=null;
+    }
+
+
+    @BeforeClass
+    public void beforeClass(ITestContext context) {
+//        WebDriverManager.chromedriver().setup();
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("start-maximized");
+//        driver = new ChromeDriver(options);
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+            for (Map.Entry<String, String> entry : context.getCurrentXmlTest().getAllParameters().entrySet()) {
+                System.out.println("Key: " + entry.getKey() + "  Value: " + entry.getValue());
+                if (entry.getKey().toLowerCase().equals("url")) {
+                    serverUrl = entry.getValue();
+                    break;
+                }
+            }
+
+    }
+
+    @AfterClass(alwaysRun = true)
     public void afterClass() {
-        if (driver != null) {
-            driver.quit();
+        //if (driver != null) {
+        //	driver.quit();
+        //}
+        for (Map.Entry<Long, WebDriver> currentWebDriver : drivers.entrySet()) {
+            if (currentWebDriver.getValue() != null) {
+                currentWebDriver.getValue().quit();
+            }
         }
     }
+//    @AfterClass
+//    public void afterClass(){
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 
     @BeforeMethod
     public void beforeMethod() {
-        driver.get(SERVER_ADMIN_URL);
+
     }
 
     @AfterMethod
-    public void afterMethod() {
-        // TODO Logout
-        // driver.get(SERVER_URL);
+    public void afterMethod(ITestResult result) throws IOException {
+        if (!result.isSuccess()) {
+            System.out.println("***Test " + result.getName() + " ERROR");
+            // Take Screenshot, save sourceCode, save to log, prepare report, Return to
+            takePageSource(takeScreenShot());}
+
     }
 
     public LoginPage loadAdminPage() {
+        getDriver().get(SERVER_ADMIN_URL);
+//        driver.get(SERVER_ADMIN_URL);
         return new LoginPage(driver);
     }
-    
-    public HomePage loadmainPage() {
-        driver.get(SERVER_URL);
+
+    public HomePage loadMainPage() {
+        getDriver().get(SERVER_URL);
+//        driver.get(SERVER_URL);
         return new HomePage(driver);
     }
 
@@ -72,6 +132,38 @@ public abstract class LocalAdminTestRunner {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    private String takeScreenShot() throws IOException {
+        String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("./img/" + currentTime + "_screenshot.png"));
+        return "./img/" + currentTime + "_screenshot";
+    }
+
+    private void takePageSource(String fileName) {
+        String pageSource = getDriver().getPageSource();
+        Path path = Paths.get(fileName + ".txt");
+        byte[] strToBytes = pageSource.getBytes();
+        try {
+            Files.write(path, strToBytes, StandardOpenOption.CREATE);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    protected WebDriver getDriver() {
+        WebDriver currentWebDriver = drivers.get(Thread.currentThread().getId());
+        if (currentWebDriver == null) {
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("start-maximized");
+            currentWebDriver = new ChromeDriver();
+
+            drivers.put(Thread.currentThread().getId(), currentWebDriver);
+        }
+        return currentWebDriver;
     }
 
 }

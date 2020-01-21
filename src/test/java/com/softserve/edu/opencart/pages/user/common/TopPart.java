@@ -1,12 +1,5 @@
 package com.softserve.edu.opencart.pages.user.common;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import com.softserve.edu.opencart.data.ApplicationStatus;
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.IProduct;
@@ -24,19 +17,29 @@ import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 public abstract class TopPart {
     protected final String OPTION_NULL_MESSAGE = "DropdownComponent is null";
-    protected final String OPTION_NOT_FOUND_MESSAGE = "Option %s not found in %s";
-    protected final String PAGE_DO_NOT_EXIST="Page do not exist!!!";
+    protected final String OPTION_NOT_FOUND_MESSAGE =
+            "Option %s not found in %s";
+    protected final String PAGE_DO_NOT_EXIST = "Page do not exist!!!";
     //
     protected final String TAG_ATTRIBUTE_VALUE = "value";
     protected final String TAG_ATTRIBUTE_SRC = "src";
     //
-    protected final String LIST_CURRENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
-    protected final String DROPDOWN_MYACCOUNT_CSSSELECTOR = ".dropdown-menu-right li";
+    protected final String LIST_CURRENCIES_CSSSELECTOR =
+            "div.btn-group.open ul.dropdown-menu li";
+    protected final String DROPDOWN_MYACCOUNT_CSSSELECTOR =
+            ".dropdown-menu-right li";
+
     //
     protected WebDriver driver;
     //
@@ -64,23 +67,29 @@ public abstract class TopPart {
 
     private void initElements() {
         // init elements
-        currency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
-        myAccount = driver.findElement(By.cssSelector(".list-inline > li > a.dropdown-toggle"));
+        currency = driver.findElement(
+                By.cssSelector(".btn.btn-link.dropdown-toggle"));
+        myAccount = driver.findElement(
+                By.cssSelector(".list-inline > li > a.dropdown-toggle"));
         wishList = driver.findElement(By.id("wishlist-total"));
-        shoppingCart = driver.findElement(By.cssSelector("a[title='Shopping Cart']"));
+        shoppingCart =
+                driver.findElement(By.cssSelector("a[title='Shopping Cart']"));
         checkout = driver.findElement(By.cssSelector("a[title='Checkout']"));
         logo = driver.findElement(By.cssSelector("#logo a"));
         searchTopField = driver.findElement(By.name("search"));
-        searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
+        searchTopButton =
+                driver.findElement(By.cssSelector("button.btn.btn-default"));
         cartButton = driver.findElement(By.cssSelector("#cart > button"));
-        components = driver.findElement(By.xpath("//li[@class='dropdown']/a[contains(.,'Components')]"));
+        components = driver.findElement(By.xpath(
+                "//li[@class='dropdown']/a[contains(.,'Components')]"));
     }
 
     // Page Object
 
     // currency
     public WebElement getCurrency() {
-        //return driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
+        //return driver.findElement(By.cssSelector(".btn.btn-link
+        // .dropdown-toggle"));
         return currency;
     }
 
@@ -118,10 +127,9 @@ public abstract class TopPart {
         getWishList().click();
     }
 
-
-//    public int getWishListNumber() {
-//        Use getWishListText()
-//    }
+    //    public int getWishListNumber() {
+    //        Use getWishListText()
+    //    }
 
     // shoppingCart
     public WebElement getShoppingCart() {
@@ -134,8 +142,9 @@ public abstract class TopPart {
 
     public void clickShoppingCart() {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        (new WebDriverWait(driver,10))
-                .until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[title='Shopping Cart']")));
+        (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.elementToBeClickable(
+                        By.cssSelector("a[title='Shopping Cart']")));
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         getShoppingCart().click();
     }
@@ -205,13 +214,13 @@ public abstract class TopPart {
         getCartButton().click();
     }
 
-//  public int getCartButtonCount() {
-//  Use getCartButtonText()
-//}
+    //  public int getCartButtonCount() {
+    //  Use getCartButtonText()
+    //}
 
-//  public int getCartButtonSum() {
-//  Use getCartButtonText()
-//}
+    //  public int getCartButtonSum() {
+    //  Use getCartButtonText()
+    //}
     // components
     public WebElement getComponents() {
         return components;
@@ -227,9 +236,9 @@ public abstract class TopPart {
 
     // dropdownComponent
     protected DropdownComponent getDropdownComponent() {
-        //LeaveUtils.castExceptionByCondition(dropdownOptions == null, OPTION_NULL_MESSAGE);
-        if (dropdownComponent == null)
-        {
+        //LeaveUtils.castExceptionByCondition(dropdownOptions == null,
+        // OPTION_NULL_MESSAGE);
+        if (dropdownComponent == null) {
             // TODO Develop Custom Exception
             throw new RuntimeException(OPTION_NULL_MESSAGE);
         }
@@ -242,12 +251,17 @@ public abstract class TopPart {
     }
 
     private void clickDropdownComponentByPartialName(String optionName) {
-        //LeaveUtils.castExceptionByCondition(!getDropdownOptions().isExistDropdownOptionByPartialName(optionName),
-        //        String.format(OPTION_NOT_FOUND_MESSAGE, optionName, dropdownOptions.getListOptionsText().toString()));
-        if (!getDropdownComponent().isExistDropdownOptionByPartialName(optionName))
-        {
+        //LeaveUtils.castExceptionByCondition(!getDropdownOptions()
+        // .isExistDropdownOptionByPartialName(optionName),
+        //        String.format(OPTION_NOT_FOUND_MESSAGE, optionName,
+        //        dropdownOptions.getListOptionsText().toString()));
+        if (!getDropdownComponent()
+                .isExistDropdownOptionByPartialName(optionName)) {
             // TODO Develop Custom Exception
-            throw new RuntimeException(String.format(OPTION_NOT_FOUND_MESSAGE, optionName, getDropdownComponent().getListOptionsText().toString()));
+            throw new RuntimeException(
+                    String.format(OPTION_NOT_FOUND_MESSAGE, optionName,
+                                  getDropdownComponent().getListOptionsText()
+                                          .toString()));
         }
         getDropdownComponent().clickDropdownOptionByPartialName(optionName);
         dropdownComponent = null;
@@ -261,8 +275,7 @@ public abstract class TopPart {
 
     // dropdownGuest
     protected DropdownGuest getDropdownGuest() {
-        if (dropdownGuest == null)
-        {
+        if (dropdownGuest == null) {
             // TODO Develop Custom Exception
             throw new RuntimeException(OPTION_NULL_MESSAGE);
         }
@@ -291,8 +304,7 @@ public abstract class TopPart {
 
     // dropdownLogged
     protected DropdownLogged getDropdownLogged() {
-        if (dropdownLogged == null)
-        {
+        if (dropdownLogged == null) {
             // TODO Develop Custom Exception
             throw new RuntimeException(OPTION_NULL_MESSAGE);
         }
@@ -306,32 +318,32 @@ public abstract class TopPart {
 
     private void clickDropdownLoggedMyAccount() {
         getDropdownLogged().clickMyAccount();
-        dropdownLogged= null;
+        dropdownLogged = null;
     }
 
     private void clickDropdownLoggedOrderHistory() {
         getDropdownLogged().clickOrderHistory();
-        dropdownLogged= null;
+        dropdownLogged = null;
     }
 
     private void clickDropdownLoggedTransactions() {
         getDropdownLogged().clickTransactions();
-        dropdownLogged= null;
+        dropdownLogged = null;
     }
 
     private void clickDropdownLoggedDownloads() {
         getDropdownLogged().clickDownloads();
-        dropdownLogged= null;
+        dropdownLogged = null;
     }
 
     private void clickDropdownLoggedLogout() {
         getDropdownLogged().clickLogout();
-        dropdownLogged= null;
+        dropdownLogged = null;
     }
 
     private void closeDropdownLogged() {
         clickSearchTopField();
-        dropdownLogged= null;
+        dropdownLogged = null;
     }
 
     // Functional
@@ -344,7 +356,8 @@ public abstract class TopPart {
         createDropdownComponent(By.cssSelector(LIST_CURRENCIES_CSSSELECTOR));
     }
 
-    //protected void clickCurrencyByPartialName(String currencyName) { // Code Smell
+    //protected void clickCurrencyByPartialName(String currencyName) { //
+    // Code Smell
     protected void clickCurrencyByPartialName(Currencies optionName) {
         openCurrencyDropdownComponent();
         //clickDropdownComponentByPartialName(currencyName);
@@ -397,15 +410,16 @@ public abstract class TopPart {
         return new SearchSuccessPage(driver);
     }
 
-   // public SearchUnsuccessPage unsuccessfulSearch(String searchText){
-        public SearchUnsuccessPage unsuccessfulSearch(IProduct product){
+    // public SearchUnsuccessPage unsuccessfulSearch(String searchText){
+    public SearchUnsuccessPage unsuccessfulSearch(IProduct product) {
         fillSearchTopField(product.getName());
         //fillSearchTopField(product.getName());
         clickSearchTopButton();
         return new SearchUnsuccessPage(driver);
     }
 
-    public SearchRequestURITooLongPage unsuccessfulSearchRequestURITooLong(IProduct product){
+    public SearchRequestURITooLongPage unsuccessfulSearchRequestURITooLong(
+            IProduct product) {
         fillSearchTopField(product.getName());
         //fillSearchTopField(product.getName());
         clickSearchTopButton();
@@ -435,27 +449,6 @@ public abstract class TopPart {
         return new MyAccountPage(driver);
     }
 
-//    public OrderHistoryPage gotoOrderHistory() {
-//    	openMyAccountDropdown();
-//    	createDropdownLogged();
-//    	clickDropdownLoggedOrderHistory();
-//        return new OrderHistoryPage(driver);
-//    }
-
-//    public TransactionsPage gotoTransactions() {
-//    	openMyAccountDropdown();
-//    	createDropdownLogged();
-//    	clickDropdownLoggedTransactions();
-//        return new TransactionsPage(driver);
-//    }
-
-//    public DownloadsPage gotoDownloads() {
-//    	openMyAccountDropdown();
-//    	createDropdownLogged();
-//    	clickDropdownLoggedDownloads();
-//        return new DownloadsPage(driver);
-//    }
-
     public AccountLogoutPage logout() {
         openMyAccountDropdown();
         createDropdownLogged();
@@ -473,6 +466,7 @@ public abstract class TopPart {
         clickWishList();
         return new EmptyWishListPage(driver);
     }
+
     public WishListMessagePage gotoWishListMessagePage() {
         clickWishList();
         return new WishListMessagePage(driver);
@@ -490,7 +484,6 @@ public abstract class TopPart {
         clickShoppingCart();
         return new CartPage(driver);
     }
-
 
     public CartEmptyPage gotoCartEmptyPage() {
         clickShoppingCart();

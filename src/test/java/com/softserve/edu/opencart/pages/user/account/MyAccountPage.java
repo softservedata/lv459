@@ -11,12 +11,13 @@ public class MyAccountPage extends AccountSidebarLoggedPart {
 
     private void initElements() {
         // init elements
+
     }
 
     // Page Object
 
-    // Functional
+    //
+    //Alert Success
 
-    // Business Logic
 
 }
