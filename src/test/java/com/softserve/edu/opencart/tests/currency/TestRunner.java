@@ -37,7 +37,7 @@ public abstract class TestRunner {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass
     public void afterClass() {
         if (driver != null) {
             driver.quit();
@@ -49,7 +49,7 @@ public abstract class TestRunner {
         driver.get(SERVER_URL);
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod
     public void afterMethod() {
         if (ApplicationStatus.get().isLogged()) {
             driver.get(SERVER_URL);

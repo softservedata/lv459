@@ -14,6 +14,9 @@ import com.softserve.edu.opencart.tests.LocalTestRunner;
 
 public class CurrencyHomeTest extends TestRunner {
 
+    /**
+     * @return user's with taxes e-mail and password
+     */
     @DataProvider
     private Object[][] currencyTaxData() {
         return new Object[][]{
@@ -21,6 +24,9 @@ public class CurrencyHomeTest extends TestRunner {
         };
     }
 
+    /**
+     * @return user's with NO taxes e-mail and password
+     */
     @DataProvider
     private Object[][] currencyNoTaxData() {
         return new Object[][]{
@@ -28,6 +34,10 @@ public class CurrencyHomeTest extends TestRunner {
         };
     }
 
+    /**
+     * @param validUser user's with taxes e-mail and password.
+     *                  Test MacBook price with taxes.
+     */
     @Test(dataProvider = "currencyTaxData")
     public void checkMacBookPriceTest(IUser validUser) {
 
@@ -44,6 +54,10 @@ public class CurrencyHomeTest extends TestRunner {
         Assert.assertEquals(MAC_BOOK_TAX_PRICE, actual.substring(m.start(), m.end()));
     }
 
+    /**
+     * @param validUser user's with NO taxes e-mail and password.
+     *                  Test MacBook price with NO taxes.
+     */
     @Test(dataProvider = "currencyNoTaxData")
     public void checkMacBookPrice2Test(IUser validUser) {
 
@@ -59,7 +73,10 @@ public class CurrencyHomeTest extends TestRunner {
         m.find();
         Assert.assertEquals(MAC_BOOK_NO_TAX_PRICE, actual.substring(m.start(), m.end()));
     }
-
+    /**
+     * @param validUser user's with taxes e-mail and password.
+     *                  Test MacBook price with NO taxes.
+     */
     @Test(dataProvider = "currencyTaxData")
     public void checkMacBookNoTaxPriceTest(IUser validUser) {
 
@@ -75,7 +92,10 @@ public class CurrencyHomeTest extends TestRunner {
         m.find();
         Assert.assertEquals(MAC_BOOK_TAX_PRICE, actual.substring(m.start(), m.end()));
     }
-
+    /**
+     * @param validUser user's with NO taxes e-mail and password.
+     *                  Test MacBook price with NO taxes.
+     */
     @Test(dataProvider = "currencyNoTaxData")
     public void checkMacBookNoTaxPrice2Test(IUser validUser) {
 

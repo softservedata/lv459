@@ -59,8 +59,6 @@ public class CurrenciesContainerComponent {
             }
         }
         if (result == null) {
-            // TODO Develop Custom Exception
-            // Use String.format()
             throw new RuntimeException("CurrencyTitle: " + currency.getCurrencyTitle() + " not Found.");
         }
         return result;

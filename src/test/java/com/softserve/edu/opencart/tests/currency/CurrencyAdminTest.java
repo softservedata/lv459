@@ -2,7 +2,6 @@ package com.softserve.edu.opencart.tests.currency;
 
 import com.softserve.edu.opencart.data.*;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -13,6 +12,9 @@ import java.util.regex.Pattern;
 public class CurrencyAdminTest extends AdminTestRunner {
 
 
+    /**
+     * @return valid admin login and password; UAH Currency.
+     */
     @DataProvider
     private Object[][] loginAdminData() {
         return new Object[][]{
@@ -20,6 +22,9 @@ public class CurrencyAdminTest extends AdminTestRunner {
         };
     }
 
+    /**
+     * @return UAH Currency.
+     */
     @DataProvider
     private Object[][] currencyAdminData() {
         return new Object[][]{
@@ -27,6 +32,11 @@ public class CurrencyAdminTest extends AdminTestRunner {
         };
     }
 
+    /**
+     * @param validAdmin admin data to log in.
+     * @param currency UAH Currency to test.
+     *                 Test if the currency was created.
+     */
     @Test(dataProvider = "loginAdminData", priority = 1)
     public void checkPresenceOfCreatedCurrencyTest(IAdmin validAdmin, ICurrency currency) {
         String actual = loadAdminPage()
@@ -39,6 +49,10 @@ public class CurrencyAdminTest extends AdminTestRunner {
         Assert.assertTrue(actual.contains(HRYVNIA));
     }
 
+    /**
+     * @param currency UAH Currency to test.
+     *                  Test if the currency was created on the customers' page.
+     */
     @Test(dataProvider = "currencyAdminData", dependsOnMethods = "checkPresenceOfCreatedCurrencyTest")
     public void checkPresenceOfCreatedCurrencyCustomerPageTest(ICurrency currency) {
         String actual = loadMainPage()
@@ -52,6 +66,11 @@ public class CurrencyAdminTest extends AdminTestRunner {
         Assert.assertEquals(MAC_BOOK_TAX_PRICE, actual.substring(m.start(), m.end()));
     }
 
+    /**
+     * @param validAdmin admin data to log in.
+     * @param currency UAH Currency to test.
+     *                 Test if the currency was deleted.
+     */
     @Test(dataProvider = "loginAdminData", dependsOnMethods = "checkPresenceOfCreatedCurrencyCustomerPageTest",
             expectedExceptions = RuntimeException.class)
     public void checkRemovalOfTheCurrencyTest(IAdmin validAdmin, ICurrency currency) {
