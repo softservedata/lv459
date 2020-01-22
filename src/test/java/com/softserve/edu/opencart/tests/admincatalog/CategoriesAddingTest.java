@@ -7,10 +7,8 @@ import org.testng.annotations.Test;
 import com.softserve.edu.opencart.data.AdminRepo;
 import com.softserve.edu.opencart.data.CategoryRepository;
 import com.softserve.edu.opencart.data.IAdmin;
-<<<<<<< HEAD
 import com.softserve.edu.opencart.data.ICategory;
-=======
->>>>>>> d233b68d979517a7149c3988750fe7df535843b1
+
 import com.softserve.edu.opencart.tests.LocalAdminTestRunner;
 
 /**

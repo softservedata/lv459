@@ -107,7 +107,6 @@
 
 		<pluginManagement>
 
-<<<<<<< HEAD
 		<plugins>
 
 			<plugin>
@@ -194,10 +193,6 @@
 					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
 				</configuration>
 			</plugin>
-			
-		</plugins>
-=======
-			<plugins>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -272,10 +267,9 @@
 						</systemPropertyVariables>
 
 						<suiteXmlFiles>
-							<!-- <suiteXmlFile>opozatc.xml</suiteXmlFile> -->
-							<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
+							<suiteXmlFile>testng.xml</suiteXmlFile>
 							<!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
-							<suiteXmlFile>Andry.xml</suiteXmlFile>
+							<!-- <suiteXmlFile>Andry.xml</suiteXmlFile> -->
 						</suiteXmlFiles>
 
 						<reportsDirectory>${testng.reports.directory}</reportsDirectory>
@@ -284,7 +278,7 @@
 				</plugin>
 
 			</plugins>
->>>>>>> d233b68d979517a7149c3988750fe7df535843b1
+
 		</pluginManagement>
 	</build>
 

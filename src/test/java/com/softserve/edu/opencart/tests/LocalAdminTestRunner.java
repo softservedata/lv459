@@ -23,12 +23,8 @@ public abstract class LocalAdminTestRunner {
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
     protected final String EXPECTED_ERROR_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
-<<<<<<< HEAD
     protected final String SUCCESS_MESSAGE = "Success";
-    private static WebDriver driver;
-=======
     private WebDriver driver;
->>>>>>> d233b68d979517a7149c3988750fe7df535843b1
 
     @BeforeClass
     public void beforeClass() {
