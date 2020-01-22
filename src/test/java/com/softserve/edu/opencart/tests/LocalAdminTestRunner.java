@@ -22,6 +22,7 @@ public abstract class LocalAdminTestRunner {
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
     protected final String EXPECTED_ERROR_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
+    protected final String SUCCESS_MESSAGE = "Success";
     private static WebDriver driver;
 
     @BeforeClass
@@ -30,14 +31,8 @@ public abstract class LocalAdminTestRunner {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-        options.addArguments("enable-automation");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-infobars");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-browser-side-navigation");
-        options.addArguments("--disable-gpu");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterClass

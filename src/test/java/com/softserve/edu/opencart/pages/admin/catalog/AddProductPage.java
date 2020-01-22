@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.IAdminProduct;
+import com.softserve.edu.opencart.data.ICategory;
 import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
 
 public class AddProductPage extends LeftMenuPart {
@@ -28,11 +30,19 @@ public class AddProductPage extends LeftMenuPart {
 		saveButton = driver.findElement(By.cssSelector(".btn-primary > .fa"));
 	}
 	
-	public AddProductPage typeName(String arg) {
+	public void typeName(String arg) {
 		inputName.click();
 		inputName.clear();
 		inputName.sendKeys(arg);
-		return this;
+	}
+	
+	public ModifiedCatatalogPage addProduct(IAdminProduct arg) {
+		typeName(arg.getName());
+		typeTitle(arg.getTitle());
+		clickDataButton();
+		typeModel(arg.getModel());
+		saveButton.click();
+		return new ModifiedCatatalogPage(driver);
 	}
 	
 	public AddProductPage typeTitle(String arg) {
@@ -54,7 +64,7 @@ public class AddProductPage extends LeftMenuPart {
 		return this;
 	}
 	
-	public ModifiedCatatalogPage gotoModifiedCategoriesPage() {
+	public ModifiedCatatalogPage gotoModifiedCatalogPage() {
 		saveButton.click();
 		return new ModifiedCatatalogPage(driver);
 	}

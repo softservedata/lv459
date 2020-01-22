@@ -6,11 +6,6 @@ import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
 
-/**
- * 
- * @author alessandro
- *
- */
 public class ProductsPage extends LeftMenuPart {
 
 	private WebElement title;

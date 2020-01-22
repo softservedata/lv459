@@ -5,11 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
-/**
- * 
- * @author alessandro
- *
- */
+
 public class CategoriesPage extends LeftMenuPart {
 
 	private WebElement title;
@@ -30,8 +26,6 @@ public class CategoriesPage extends LeftMenuPart {
 		deleteButton = driver.findElement(By.cssSelector("button.btn.btn-danger"));
 		
 	}
-
-	// Page Object
 
 	// title
 	public WebElement getTitle() {

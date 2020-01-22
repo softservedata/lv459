@@ -3,8 +3,8 @@ package com.softserve.edu.opencart.pages.admin.catalog;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.server.handler.SendKeys;
 
+import com.softserve.edu.opencart.data.ICategory;
 import com.softserve.edu.opencart.pages.admin.common.LeftMenuPart;
 
 public class AddCategoryPage extends LeftMenuPart {
@@ -29,11 +29,19 @@ public class AddCategoryPage extends LeftMenuPart {
 		saveButton = driver.findElement(By.cssSelector(".btn-primary > .fa"));
 	}
 	
-	public AddCategoryPage typeName(String arg) {
+	public void typeName(String arg) {
 		inputName.click();
 		inputName.clear();
 		inputName.sendKeys(arg);
-		return this;
+	}
+	
+	public ModifiedCatatalogPage addCategory(ICategory arg) {
+		typeName(arg.getName());
+		typeTitle(arg.getTitle());
+		clickDataButton();
+		typeParent(arg.getParent());
+		saveButton.click();
+		return new ModifiedCatatalogPage(driver);
 	}
 	
 	public AddCategoryPage typeTitle(String arg) {

@@ -1,0 +1,41 @@
+package com.softserve.edu.opencart.tests.admincatalog;
+
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.softserve.edu.opencart.data.AdminProductRepository;
+import com.softserve.edu.opencart.data.AdminRepo;
+import com.softserve.edu.opencart.data.IAdmin;
+import com.softserve.edu.opencart.data.IAdminProduct;
+import com.softserve.edu.opencart.tests.LocalAdminTestRunner;
+
+/**
+ * This {@code} class adds products from admin panel with empty creds.
+ */
+public class AddProductNegativeTest extends LocalAdminTestRunner {
+
+	@DataProvider
+    public Object[][] correctUsers() {
+        return new Object[][] { 
+            { AdminRepo.get().validAdmin(), AdminProductRepository.get().getSamsung() },
+            { AdminRepo.get().validAdmin(), AdminProductRepository.get().getNikon() }
+            };
+    }
+        
+    @Test(dataProvider = "correctUsers")
+    
+	public void addNewProduct(IAdmin validAdmin, IAdminProduct product)  {
+	
+    	String actual = 
+		loadAdminPage()
+			.successfulLogin(validAdmin)
+			.gotoProductPage()
+			.gotoAddProductPage()
+    		.addProduct(product)
+    		.getSuccessText();
+
+    	Assert.assertTrue(actual.contains(SUCCESS_MESSAGE));	
+	}
+    
+}

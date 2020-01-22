@@ -1,19 +1,22 @@
 package com.softserve.edu.opencart.tests.currency;
 
-import com.softserve.edu.opencart.data.*;
-import com.softserve.edu.opencart.tests.LocalTestRunner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class CurrencyHomeTest extends LocalTestRunner {
+import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.tests.LocalTestRunner;
 
-    final String CURRENCY_PATTERN = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
-    final String MAC_BOOK_TAX_PRICE = "602.00";
-    final String MAC_BOOK_NO_TAX_PRICE = "500.00";
-    final String MAC_BOOK_TAX_PRICE_POUND = "368.73";
-    final String MAC_BOOK_NO_TAX_PRICE_POUND = "306.25";
+public class CurrencyHomeTest extends TestRunner {
 
+    /**
+     * @return user's with taxes e-mail and password
+     */
     @DataProvider
     private Object[][] currencyTaxData() {
         return new Object[][]{
@@ -21,6 +24,9 @@ public class CurrencyHomeTest extends LocalTestRunner {
         };
     }
 
+    /**
+     * @return user's with NO taxes e-mail and password
+     */
     @DataProvider
     private Object[][] currencyNoTaxData() {
         return new Object[][]{
@@ -28,6 +34,10 @@ public class CurrencyHomeTest extends LocalTestRunner {
         };
     }
 
+    /**
+     * @param validUser user's with taxes e-mail and password.
+     *                  Test MacBook price with taxes.
+     */
     @Test(dataProvider = "currencyTaxData")
     public void checkMacBookPriceTest(IUser validUser) {
 
@@ -36,17 +46,18 @@ public class CurrencyHomeTest extends LocalTestRunner {
                 .successfulLogin(validUser)
                 .gotoHomePage()
                 .getProductComponentsContainer()
-                .getProductComponentPriceByName("MacBook");
+                .getProductComponentPriceByName(MAC_BOOK);
 
-        Assert.assertTrue(actual.contains(MAC_BOOK_TAX_PRICE));
-/*        Pattern p = Pattern.compile(CURRENCY_PATTERN);
+        Pattern p = Pattern.compile(CURRENCY_PATTERN);
         Matcher m = p.matcher(actual);
-        m.reset();
-        while (m.find()) {
-            Assert.assertEquals(MAC_BOOK_TAX_PRICE, actual.substring(m.start(), m.end()));
-        }*/
+        m.find();
+        Assert.assertEquals(MAC_BOOK_TAX_PRICE, actual.substring(m.start(), m.end()));
     }
 
+    /**
+     * @param validUser user's with NO taxes e-mail and password.
+     *                  Test MacBook price with NO taxes.
+     */
     @Test(dataProvider = "currencyNoTaxData")
     public void checkMacBookPrice2Test(IUser validUser) {
 
@@ -55,11 +66,17 @@ public class CurrencyHomeTest extends LocalTestRunner {
                 .successfulLogin(validUser)
                 .gotoHomePage()
                 .getProductComponentsContainer()
-                .getProductComponentPriceByName("MacBook");
+                .getProductComponentPriceByName(MAC_BOOK);
 
-        Assert.assertTrue(actual.contains(MAC_BOOK_NO_TAX_PRICE));
+        Pattern p = Pattern.compile(CURRENCY_PATTERN);
+        Matcher m = p.matcher(actual);
+        m.find();
+        Assert.assertEquals(MAC_BOOK_NO_TAX_PRICE, actual.substring(m.start(), m.end()));
     }
-
+    /**
+     * @param validUser user's with taxes e-mail and password.
+     *                  Test MacBook price with NO taxes.
+     */
     @Test(dataProvider = "currencyTaxData")
     public void checkMacBookNoTaxPriceTest(IUser validUser) {
 
@@ -68,11 +85,17 @@ public class CurrencyHomeTest extends LocalTestRunner {
                 .successfulLogin(validUser)
                 .gotoHomePage()
                 .getProductComponentsContainer()
-                .getProductComponentPriceByName("MacBook");
+                .getProductComponentPriceByName(MAC_BOOK);
 
-        Assert.assertTrue(actual.contains(MAC_BOOK_NO_TAX_PRICE));
+        Pattern p = Pattern.compile(CURRENCY_PATTERN);
+        Matcher m = p.matcher(actual);
+        m.find();
+        Assert.assertEquals(MAC_BOOK_TAX_PRICE, actual.substring(m.start(), m.end()));
     }
-
+    /**
+     * @param validUser user's with NO taxes e-mail and password.
+     *                  Test MacBook price with NO taxes.
+     */
     @Test(dataProvider = "currencyNoTaxData")
     public void checkMacBookNoTaxPrice2Test(IUser validUser) {
 
@@ -81,9 +104,11 @@ public class CurrencyHomeTest extends LocalTestRunner {
                 .successfulLogin(validUser)
                 .gotoHomePage()
                 .getProductComponentsContainer()
-                .getProductComponentPriceByName("MacBook");
-
-        Assert.assertTrue(actual.contains(MAC_BOOK_NO_TAX_PRICE));
+                .getProductComponentPriceByName(MAC_BOOK);
+        Pattern p = Pattern.compile(CURRENCY_PATTERN);
+        Matcher m = p.matcher(actual);
+        m.find();
+        Assert.assertEquals(MAC_BOOK_NO_TAX_PRICE, actual.substring(m.start(), m.end()));
     }
 
     //Tests with changing currency
@@ -97,9 +122,11 @@ public class CurrencyHomeTest extends LocalTestRunner {
                 .gotoHomePage()
                 .chooseCurrency(Currencies.POUND_STERLING)
                 .getProductComponentsContainer()
-                .getProductComponentPriceByName("MacBook");
-
-        Assert.assertTrue(actual.contains(MAC_BOOK_TAX_PRICE_POUND));
+                .getProductComponentPriceByName(MAC_BOOK);
+        Pattern p = Pattern.compile(CURRENCY_PATTERN);
+        Matcher m = p.matcher(actual);
+        m.find();
+        Assert.assertEquals(MAC_BOOK_TAX_PRICE_POUND, actual.substring(m.start(), m.end()));
     }
 
     @Test(dataProvider = "currencyNoTaxData")
@@ -111,9 +138,11 @@ public class CurrencyHomeTest extends LocalTestRunner {
                 .gotoHomePage()
                 .chooseCurrency(Currencies.POUND_STERLING)
                 .getProductComponentsContainer()
-                .getProductComponentPriceByName("MacBook");
-
-        Assert.assertTrue(actual.contains(MAC_BOOK_NO_TAX_PRICE_POUND));
+                .getProductComponentPriceByName(MAC_BOOK);
+        Pattern p = Pattern.compile(CURRENCY_PATTERN);
+        Matcher m = p.matcher(actual);
+        m.find();
+        Assert.assertEquals(MAC_BOOK_NO_TAX_PRICE_POUND, actual.substring(m.start(), m.end()));
     }
 
     @Test(dataProvider = "currencyTaxData")
@@ -125,9 +154,11 @@ public class CurrencyHomeTest extends LocalTestRunner {
                 .gotoHomePage()
                 .chooseCurrency(Currencies.POUND_STERLING)
                 .getProductComponentsContainer()
-                .getProductComponentPriceByName("MacBook");
-
-        Assert.assertTrue(actual.contains(MAC_BOOK_NO_TAX_PRICE_POUND));
+                .getProductComponentPriceByName(MAC_BOOK);
+        Pattern p = Pattern.compile(CURRENCY_PATTERN);
+        Matcher m = p.matcher(actual);
+        m.find();
+        Assert.assertEquals(MAC_BOOK_TAX_PRICE_POUND, actual.substring(m.start(), m.end()));
     }
 
     @Test(dataProvider = "currencyNoTaxData")
@@ -139,32 +170,11 @@ public class CurrencyHomeTest extends LocalTestRunner {
                 .gotoHomePage()
                 .chooseCurrency(Currencies.POUND_STERLING)
                 .getProductComponentsContainer()
-                .getProductComponentPriceByName("MacBook");
-
-        Assert.assertTrue(actual.contains(MAC_BOOK_NO_TAX_PRICE_POUND));
-    }
-
-    //Cart tests
-
-    //@Test(dataProvider = "currencyTaxData")
-    public void checkMacBookPriceCartTest(IUser validUser) {
-
-        IProduct macBookProduct = ProductRepository.get().getMacBook();
-
-        String actual = loadApplication()
-                .gotoLoginPage()
-                .successfulLogin(validUser)
-                .gotoHomePage()
-                .addProductToShoppingCart(macBookProduct)//WAIT
-                .gotoShoppingCart()
-                .getTotalTaxComponent()
-                .getTotalText();
-
-        Assert.assertTrue(actual.contains(MAC_BOOK_TAX_PRICE));
-
-        loadApplication()
-                .gotoShoppingCart()
-                .deleteProductOnShoppingCart(macBookProduct);
+                .getProductComponentPriceByName(MAC_BOOK);
+        Pattern p = Pattern.compile(CURRENCY_PATTERN);
+        Matcher m = p.matcher(actual);
+        m.find();
+        Assert.assertEquals(MAC_BOOK_NO_TAX_PRICE_POUND, actual.substring(m.start(), m.end()));
     }
 
 }
