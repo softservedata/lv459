@@ -1,9 +1,9 @@
-package com.softserve.task1Tests;
+package com.softserve.edu.task1Tests;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.softserve.task1.NumContains;
+import com.softserve.edu.task1.NumContains;
 
 /**
  * Test case for NumContains class method.

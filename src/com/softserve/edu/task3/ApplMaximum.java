@@ -1,6 +1,6 @@
-package com.softserve.task3;
+package com.softserve.edu.task3;
 
-import com.softserve.task1.ConsoleOperation;
+import com.softserve.edu.task1.ConsoleOperation;
 
 /*
  * Running application Maximum.

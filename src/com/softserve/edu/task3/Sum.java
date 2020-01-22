@@ -1,4 +1,4 @@
-package com.softserve.task3;
+package com.softserve.edu.task3;
 
 import java.util.List;
 

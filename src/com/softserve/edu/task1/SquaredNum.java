@@ -1,4 +1,4 @@
-package com.softserve.task1;
+package com.softserve.edu.task1;
 
 /**
  * The {@code SquaredNum} class calculates the square of the given number.

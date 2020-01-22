@@ -1,4 +1,4 @@
-package com.softserve.task3;
+package com.softserve.edu.task3;
 
 /**
  * The {@code Maximum} class finds the number with the biggest sum of dividers.

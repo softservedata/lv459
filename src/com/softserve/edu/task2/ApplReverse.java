@@ -1,6 +1,6 @@
-package com.softserve.task2;
+package com.softserve.edu.task2;
 
-import com.softserve.task1.ConsoleOperation;
+import com.softserve.edu.task1.ConsoleOperation;
 
 /*
  * Running application NumReverse.

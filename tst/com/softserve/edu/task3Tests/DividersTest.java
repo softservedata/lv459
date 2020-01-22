@@ -1,11 +1,11 @@
-package com.softserve.task3Tests;
+package com.softserve.edu.task3Tests;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.softserve.task3.Dividers;
+import com.softserve.edu.task3.Dividers;
 
 /**
  * Test case for Dividers class method.

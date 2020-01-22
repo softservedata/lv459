@@ -1,4 +1,4 @@
-package com.softserve.task1;
+package com.softserve.edu.task1;
 
 /**
  * The {@code NumContains} class finds is the given number contains digit 3 or not.

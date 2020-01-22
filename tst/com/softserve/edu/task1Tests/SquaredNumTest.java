@@ -1,9 +1,9 @@
-package com.softserve.task1Tests;
+package com.softserve.edu.task1Tests;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.softserve.task1.SquaredNum;
+import com.softserve.edu.task1.SquaredNum;
 
 /**
  * Test case for SquaredNum class method.

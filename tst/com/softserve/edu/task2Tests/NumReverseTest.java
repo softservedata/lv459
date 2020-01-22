@@ -1,9 +1,9 @@
-package com.softserve.task2Tests;
+package com.softserve.edu.task2Tests;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.softserve.task2.NumReverse;
+import com.softserve.edu.task2.NumReverse;
 
 /**
  * Test case for NumReverse class method.
