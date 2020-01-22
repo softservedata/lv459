@@ -1,4 +1,4 @@
-package com.tasks.demo0;
+package com.softserve.task2;
 
 /**
  * The {@code NumReverse} class changes the order of the given number.

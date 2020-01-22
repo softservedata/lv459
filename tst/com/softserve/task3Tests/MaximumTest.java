@@ -1,7 +1,9 @@
-package com.tasks.demo1;
+package com.softserve.task3Tests;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.softserve.task3.Maximum;
 
 /**
  * Test case for Maximum class method.

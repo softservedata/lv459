@@ -1,4 +1,4 @@
-package com.tasks.demo;
+package com.softserve.task1;
 
 /*
  * Running application NumContains.

@@ -1,4 +1,4 @@
-package com.tasks.demo1;
+package com.softserve.task3;
 
 import java.util.List;
 
