@@ -5,11 +5,12 @@
     <test thread-count="5" name="Test11">
         <classes>
          
-<!--            <class name="com.softserve.edu.opencart.tests.RestorePasswordTest">-->
-<!--                <methods>-->
-<!--                    <include name="changePasswordTest" />-->
-<!--                </methods>-->
-<!--            </class>-->
+           <class name="com.softserve.edu.opencart.tests.RestorePasswordTest">
+               <methods>
+                   <include name="changePasswordTest" />
+                   <include name="restorePasswordTest" />
+               </methods>
+           </class>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

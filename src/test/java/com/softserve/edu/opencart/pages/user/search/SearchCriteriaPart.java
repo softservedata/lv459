@@ -1,11 +1,11 @@
 package com.softserve.edu.opencart.pages.user.search;
 
-import com.softserve.edu.opencart.data.Categories;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import com.softserve.edu.opencart.data.Categories;
 import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
 
 public abstract class SearchCriteriaPart extends BreadCrumbPart {

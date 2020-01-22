@@ -1,9 +1,10 @@
 package com.softserve.edu.opencart.pages.user.shop;
 
-import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
 
 public class SamsungSyncMaster941BWPage extends BreadCrumbPart {
 

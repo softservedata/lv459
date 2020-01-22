@@ -1,19 +1,17 @@
-package com.softserve.edu.opencart.pages.user.shop.shoppingcart;
+package com.softserve.edu.opencart.pages.user;
 
+import com.softserve.edu.opencart.pages.user.common.TopPart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
-
-public class AlertMessagePage extends BreadCrumbPart {
-
+public class AlertMessageCommon extends TopPart {
     public static final String PRODUCT_ADDED_TO_CART = "Success: You have added %s to your shopping cart!";
 
     private WebElement RemoveMessageButton;
     private WebElement AddToCartMessage;
 
-    public AlertMessagePage(WebDriver driver) {
+    public AlertMessageCommon(WebDriver driver) {
         super(driver);
         initElements();
     }
@@ -21,12 +19,6 @@ public class AlertMessagePage extends BreadCrumbPart {
     private void initElements(){
         RemoveMessageButton = driver.findElement(By.xpath("//div[@class='alert alert-success']//button"));
         AddToCartMessage = driver.findElement(By.cssSelector(".alert.alert-success"));
-        //wait
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
     }
 
     // Page Object

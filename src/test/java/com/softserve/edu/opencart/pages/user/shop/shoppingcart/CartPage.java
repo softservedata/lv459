@@ -1,14 +1,14 @@
 package com.softserve.edu.opencart.pages.user.shop.shoppingcart;
 
-import com.softserve.edu.opencart.data.IProduct;
-import com.softserve.edu.opencart.pages.user.HomePage;
-import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
-import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.pages.user.HomePage;
+import com.softserve.edu.opencart.pages.user.common.BreadCrumbPart;
 
 public class CartPage extends BreadCrumbPart {
 

@@ -1,10 +1,11 @@
 package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
-import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
-import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
+import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 
 public class EmptyWishListPage  extends AccountSidebarLoggedPart {
 

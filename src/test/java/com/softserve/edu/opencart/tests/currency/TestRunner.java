@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.currency;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,25 +10,23 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-import com.softserve.edu.opencart.pages.admin.account.LoginPage;
+import com.softserve.edu.opencart.data.ApplicationStatus;
 import com.softserve.edu.opencart.pages.user.HomePage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public abstract class LocalAdminTestRunner {
-    
+public abstract class TestRunner {
+
+    final String CURRENCY_PATTERN = "(\\d{1,3},)*\\d{1,3}\\.\\d{2}";
+    final String MAC_BOOK_TAX_PRICE = "602.00";
+    final String MAC_BOOK_NO_TAX_PRICE = "500.00";
+    final String MAC_BOOK_TAX_PRICE_POUND = "368.73";
+    final String MAC_BOOK_NO_TAX_PRICE_POUND = "306.25";
+    final String MAC_BOOK = "MacBook";
+
     private final Long ONE_SECOND_DELAY = 1000L;
-    private final String SERVER_ADMIN_URL = System.getenv().get("OPENCART_URL") + "admin";
     private final String SERVER_URL = System.getenv().get("OPENCART_URL");
-    protected final String USER_ENABLED = "1";
-    protected final String USER_DISABLED = "0";
-    protected final String EXPECTED_ERROR_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
-<<<<<<< HEAD
-    protected final String SUCCESS_MESSAGE = "Success";
-    private static WebDriver driver;
-=======
     private WebDriver driver;
->>>>>>> d233b68d979517a7149c3988750fe7df535843b1
 
     @BeforeClass
     public void beforeClass() {
@@ -48,21 +46,19 @@ public abstract class LocalAdminTestRunner {
 
     @BeforeMethod
     public void beforeMethod() {
-        driver.get(SERVER_ADMIN_URL);
+        driver.get(SERVER_URL);
     }
 
     @AfterMethod
     public void afterMethod() {
-        // TODO Logout
-        // driver.get(SERVER_URL);
+        if (ApplicationStatus.get().isLogged()) {
+            driver.get(SERVER_URL);
+            loadApplication().gotoMyAccount().gotoEditAccountRight().clickLogoutRight();
+        }
+        driver.manage().deleteAllCookies();
     }
 
-    public LoginPage loadAdminPage() {
-        return new LoginPage(driver);
-    }
-    
-    public HomePage loadmainPage() {
-        driver.get(SERVER_URL);
+    public HomePage loadApplication() {
         return new HomePage(driver);
     }
 
@@ -74,7 +70,6 @@ public abstract class LocalAdminTestRunner {
         try {
             Thread.sleep(seconds * ONE_SECOND_DELAY); // For Presentation ONLY
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

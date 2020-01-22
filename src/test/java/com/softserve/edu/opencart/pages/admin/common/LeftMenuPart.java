@@ -1,16 +1,16 @@
 package com.softserve.edu.opencart.pages.admin.common;
 
-import com.softserve.edu.opencart.pages.admin.currencies.CurrenciesPage;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
 import com.softserve.edu.opencart.pages.admin.catalog.CategoriesPage;
 import com.softserve.edu.opencart.pages.admin.catalog.ProductsPage;
+import com.softserve.edu.opencart.pages.admin.currencies.CurrenciesPage;
 
 public abstract class LeftMenuPart extends TopMenuPart {
     private final String NAVIGATE_PANNEL_ACTIVE = "active";
@@ -61,7 +61,7 @@ public abstract class LeftMenuPart extends TopMenuPart {
         design = driver.findElement(By.id("menu-design"));
         sales = driver.findElement(By.id("menu-sale"));
         customers = driver.findElement(By.id("menu-customer"));
-        marketing = driver.findElement(By.id("menu-catalog"));
+        marketing = driver.findElement(By.id("menu-marketing"));
         system = driver.findElement(By.id("menu-system"));
         reports = driver.findElement(By.id("menu-report"));
         stats = driver.findElement(By.id("stats"));

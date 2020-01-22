@@ -1,13 +1,11 @@
 package com.softserve.edu.opencart.pages.user.search;
 
-import com.softserve.edu.opencart.data.Categories;
+import org.openqa.selenium.WebDriver;
+
+import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.IProduct;
-import com.softserve.edu.opencart.pages.user.common.DropdownComponent;
 import com.softserve.edu.opencart.pages.user.common.ProductsContainerComponent;
 import com.softserve.edu.opencart.pages.user.shop.SamsungSyncMaster941BWPage;
-import org.openqa.selenium.WebDriver;
-import com.softserve.edu.opencart.data.Currencies;
-import org.openqa.selenium.WebElement;
 
 
 public class SearchSuccessPage extends SearchCriteriaPart {

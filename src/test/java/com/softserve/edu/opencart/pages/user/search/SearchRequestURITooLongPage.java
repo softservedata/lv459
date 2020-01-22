@@ -1,9 +1,10 @@
 package com.softserve.edu.opencart.pages.user.search;
 
-import com.softserve.edu.opencart.pages.user.common.TopPart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.pages.user.common.TopPart;
 
 public class SearchRequestURITooLongPage extends TopPart {
     public static final String REQUEST_URI_TOO_LONG_MESSAGE = "Request-URI Too Long";

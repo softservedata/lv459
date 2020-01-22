@@ -1,15 +1,17 @@
 package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
-import com.softserve.edu.opencart.data.IProduct;
-import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
-import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import java.util.List;
+
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.pages.user.account.AccountSidebarLoggedPart;
+import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 
 /**
- *  Wish list page.<
+ *  Wish list page.
  */
 public class WishListPage extends AccountSidebarLoggedPart {
 

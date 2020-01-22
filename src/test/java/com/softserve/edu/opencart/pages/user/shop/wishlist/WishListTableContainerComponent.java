@@ -2,10 +2,12 @@ package com.softserve.edu.opencart.pages.user.shop.wishlist;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.softserve.edu.opencart.data.IProduct;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.data.IProduct;
 
 /**
  *  Wish List Table Container Component class.

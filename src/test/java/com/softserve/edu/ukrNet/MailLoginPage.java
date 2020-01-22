@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.softserve.edu.opencart.data.EmailStatus;
 import com.softserve.edu.opencart.data.IUser;
 
-public class MainEmailPage {
+public class MailLoginPage  extends MailTopMenuPart{
 
     protected WebDriver driver;
     private WebElement mailWidget;
@@ -19,7 +19,8 @@ public class MainEmailPage {
     private WebElement inputPassword;
     private WebElement buttonSubmit;
 
-    public MainEmailPage(WebDriver driver) {
+    public MailLoginPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         initElements();
     }
@@ -32,9 +33,9 @@ public class MainEmailPage {
         driver.switchTo().frame(frame);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         if (!EmailStatus.get().isLogged()) {
-        inputLogin = driver.findElement(By.id("id-input-login"));
-        inputPassword = driver.findElement(By.id("id-input-password"));
-        buttonSubmit = driver.findElement(By.className("form__submit"));
+            inputLogin = driver.findElement(By.id("id-input-login"));
+            inputPassword = driver.findElement(By.id("id-input-password"));
+            buttonSubmit = driver.findElement(By.className("form__submit"));
         }
     }
 

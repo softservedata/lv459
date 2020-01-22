@@ -1,19 +1,16 @@
 package com.softserve.edu.opencart.pages.user;
 
-import com.softserve.edu.opencart.data.AppleCinemaInfo;
-import com.softserve.edu.opencart.data.IProduct;
-import com.softserve.edu.opencart.pages.user.common.ComponentsTopPart;
-import com.softserve.edu.opencart.pages.user.shop.productinfoapplecinema.AppleCinemaPage;
-import com.softserve.edu.opencart.pages.user.shop.productinfomacbook.MacBookPage;
-import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
-import com.softserve.edu.opencart.pages.user.shop.shoppingcart.CartPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.pages.user.common.ProductsContainerComponent;
 import com.softserve.edu.opencart.pages.user.common.TopPart;
+import com.softserve.edu.opencart.pages.user.shop.productinfoapplecinema.AppleCinemaPage;
+import com.softserve.edu.opencart.pages.user.shop.productinfomacbook.MacBookPage;
+import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
 
 public class HomePage extends TopPart {
     public static final String EXPECTED_IPHONE6 = "iPhone6";
@@ -76,9 +73,9 @@ public class HomePage extends TopPart {
 
 
     // add Product To Shopping Cart on Home Page
-    public AlertMessagePage addProductToShoppingCart(IProduct product) {
+    public AlertMessageCommon addProductToShoppingCart(IProduct product) {
         productsContainerComponent.clickProductComponentAddToCartButtonByName(product);
-        return new AlertMessagePage(driver);
+        return new AlertMessageCommon(driver);
     }
 
     // go to MacBook Page

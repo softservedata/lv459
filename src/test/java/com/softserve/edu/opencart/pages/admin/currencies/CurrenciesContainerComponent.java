@@ -1,15 +1,13 @@
 package com.softserve.edu.opencart.pages.admin.currencies;
 
-import com.softserve.edu.opencart.data.ICurrency;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.softserve.edu.opencart.data.ICurrency;
 
 public class CurrenciesContainerComponent {
     private WebDriver driver;
@@ -61,8 +59,6 @@ public class CurrenciesContainerComponent {
             }
         }
         if (result == null) {
-            // TODO Develop Custom Exception
-            // Use String.format()
             throw new RuntimeException("CurrencyTitle: " + currency.getCurrencyTitle() + " not Found.");
         }
         return result;

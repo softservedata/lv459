@@ -1,5 +1,11 @@
 package com.softserve.edu.opencart.tests;
 
+import java.util.Random;
+
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
@@ -7,16 +13,11 @@ import com.softserve.edu.opencart.pages.user.common.ProductComponent;
 import com.softserve.edu.opencart.pages.user.search.SearchRequestURITooLongPage;
 import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
 import com.softserve.edu.opencart.pages.user.search.SearchUnsuccessPage;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
-import java.util.Random;
 
 public class SearchItemsTest extends LocalTestRunner {
 
     @DataProvider
-    private Object[][] searchDataCaseOne() {
+    public Object[][] searchDataCaseOne() {
         return new Object[][]{
                 // Lower/upper case letters, numbers and symbol
                 {ProductRepository.get().getAppleCinema30()},
@@ -38,26 +39,29 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "searchDataCaseOne")
-    private void findItemCaseOne(IProduct product) {
+    public void findItemCaseOne(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
-        SearchSuccessPage searchSuccessfulPage = loadApplication().successfulSearch(product);
+        SearchSuccessPage searchSuccessfulPage = loadApplication()
+                .successfulSearch(product);
         // Getting Product Component By Name
-        ProductComponent actualProductComponent = searchSuccessfulPage.getProductsDisplay()
+        ProductComponent actualProductComponent = searchSuccessfulPage
+                .getProductsDisplay()
                 .getProductComponentByName(product);
         //
         // Checking product's name
         Assert.assertTrue(actualProductComponent.getNameText().contains(product.getName()));
         //
         // Returning to the previous state
-        HomePage homePage = searchSuccessfulPage.gotoHomePage();
+        HomePage homePage = searchSuccessfulPage
+                .gotoHomePage();
         //
         // Checking am I on the home page
         Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
     }
 
-    private String generateRandomString(int length){
+    private String generateRandomString(int length) {
         Random r = new Random();
         char[] subset = NUMBERS_AND_LETTERS.toCharArray();
         char[] buf = new char[length];
@@ -69,7 +73,7 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @DataProvider
-    private Object[][] searchDataCaseTwo() {
+    public Object[][] searchDataCaseTwo() {
         return new Object[][]{
                 // Empty "Search" field
                 {ProductRepository.get().getCustomItem(new String())},
@@ -81,26 +85,29 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "searchDataCaseTwo")
-    private void findItemCaseTwo(IProduct product) {
+    public void findItemCaseTwo(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
-        SearchUnsuccessPage searchUnsuccessfulPage = loadApplication().unsuccessfulSearch(product);
+        SearchUnsuccessPage searchUnsuccessfulPage = loadApplication()
+                .unsuccessfulSearch(product);
         // Getting "There is no product that matches the search criteria." label
-        String actualUnsuccessfulPage = searchUnsuccessfulPage.getNoProductMessageText();
+        String actualUnsuccessfulPage = searchUnsuccessfulPage
+                .getNoProductMessageText();
         //
         // Checking if there is such message in the page
         Assert.assertTrue(searchUnsuccessfulPage.getNoProductMessageText().contains(actualUnsuccessfulPage));
         //
         // Returning to the previous state
-        HomePage homePage = searchUnsuccessfulPage.gotoHomePage();
+        HomePage homePage = searchUnsuccessfulPage
+                .gotoHomePage();
         //
         // Checking am I on the home page
         Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
     }
 
     @DataProvider
-    private Object[][] searchDataCaseThree() {
+    public Object[][] searchDataCaseThree() {
         return new Object[][]{
                 // 65536 letters
                 {ProductRepository.get().getCustomItem(generateRandomString(SIXTY_FIVE_THOUSANDS_FIVE_HUNDRED_AND_THIRTY_SIX))}
@@ -108,13 +115,15 @@ public class SearchItemsTest extends LocalTestRunner {
     }
 
     @Test(dataProvider = "searchDataCaseThree")
-    private void findItemCaseThree(IProduct product) {
+    public void findItemCaseThree(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
-        SearchRequestURITooLongPage searchRequestURITooLongPage = loadApplication().unsuccessfulSearchRequestURITooLong(product);
+        SearchRequestURITooLongPage searchRequestURITooLongPage = loadApplication()
+                .unsuccessfulSearchRequestURITooLong(product);
         // Getting "Request-URI Too Long" label
-        String actualRequestURITooLongPage = searchRequestURITooLongPage.getRequestToLongMessageText();
+        String actualRequestURITooLongPage = searchRequestURITooLongPage
+                .getRequestToLongMessageText();
         //
         // Checking if there is such message in the page
         Assert.assertTrue(searchRequestURITooLongPage.getRequestToLongMessageText().contains(actualRequestURITooLongPage));

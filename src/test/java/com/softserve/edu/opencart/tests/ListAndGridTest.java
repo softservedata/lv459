@@ -1,18 +1,19 @@
 package com.softserve.edu.opencart.tests;
 
-import com.softserve.edu.opencart.data.IProduct;
-import com.softserve.edu.opencart.data.ProductRepository;
-import com.softserve.edu.opencart.pages.user.HomePage;
-import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
-import com.softserve.edu.opencart.pages.user.search.ProductsDisplayComponent;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.softserve.edu.opencart.data.IProduct;
+import com.softserve.edu.opencart.data.ProductRepository;
+import com.softserve.edu.opencart.pages.user.HomePage;
+import com.softserve.edu.opencart.pages.user.search.ProductsDisplayComponent;
+import com.softserve.edu.opencart.pages.user.search.SearchSuccessPage;
+
 public class ListAndGridTest extends LocalTestRunner {
 
     @DataProvider
-    private Object[][] searchData() {
+    public Object[][] searchData() {
         return new Object[][]{
                 {ProductRepository.get().getAppleCinema30()}
         };
@@ -22,7 +23,7 @@ public class ListAndGridTest extends LocalTestRunner {
      * Pressing "List" button on "Search" window.
      */
     @Test(dataProvider = "searchData")
-    private void caseOne(IProduct product) {
+    public void caseOne(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
@@ -37,7 +38,8 @@ public class ListAndGridTest extends LocalTestRunner {
         Assert.assertTrue(productsDisplayComponent.statusListViewButton());
         //
         // Returning to the previous state
-        HomePage homePage = searchSuccessPage.gotoHomePage();
+        HomePage homePage = searchSuccessPage
+                .gotoHomePage();
         //
         // Checking
         Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
@@ -47,7 +49,7 @@ public class ListAndGridTest extends LocalTestRunner {
      * Pressing "Grid" button on "Search" window.
      */
     @Test(dataProvider = "searchData")
-    private void caseTwo(IProduct product) {
+    public void caseTwo(IProduct product) {
         //
         // Steps
         // Typing in the "Search" field.
@@ -62,7 +64,8 @@ public class ListAndGridTest extends LocalTestRunner {
         Assert.assertTrue(productsDisplayComponent.statusGridViewButton());
         //
         // Returning to the previous state
-        HomePage homePage = searchSuccessPage.gotoHomePage();
+        HomePage homePage = searchSuccessPage
+                .gotoHomePage();
         //
         // Checking
         Assert.assertTrue(homePage.getSlideshow0FirstImageAttributeSrcText().contains(HomePage.EXPECTED_IPHONE6));
