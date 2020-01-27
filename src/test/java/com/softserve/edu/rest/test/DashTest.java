@@ -49,7 +49,11 @@ public class DashTest {
 		String resultJson;
 		//
 		// Get TokenLifetime
-		request = new Request.Builder().url("http://localhost:8080/tokenlifetime").get().build();
+		request = new Request
+				.Builder()
+				.url("http://localhost:8080/tokenlifetime")
+				.get()
+				.build();
 		response = client.newCall(request).execute();
 		resultJson = response.body().string();
 		simpleEntity = gson.fromJson(resultJson, SimpleEntity.class);
@@ -61,8 +65,14 @@ public class DashTest {
 		System.out.println("simpleEntity: " + simpleEntity);
 		//
 		// Login
-		formBody = new FormBody.Builder().add("name", "admin").add("password", "qwerty").build();
-		request = new Request.Builder().url("http://localhost:8080/login").post(formBody).build();
+		formBody = new FormBody.Builder()
+				.add("name", "admin")
+				.add("password", "qwerty")
+				.build();
+		request = new Request.Builder()
+				.url("http://localhost:8080/login")
+				.post(formBody)
+				.build();
 		response = client.newCall(request).execute();
 		resultJson = response.body().string();
 		simpleEntity = gson.fromJson(resultJson, SimpleEntity.class);
@@ -73,8 +83,14 @@ public class DashTest {
 		System.out.println("simpleEntity: " + simpleEntity);
 		//
 		// Update TokenLifetime
-		formBody = new FormBody.Builder().add("token", token).add("time", "901000").build();
-		request = new Request.Builder().url("http://localhost:8080/tokenlifetime").put(formBody).build();
+		formBody = new FormBody.Builder()
+				.add("token", token)
+				.add("time", "901000")
+				.build();
+		request = new Request.Builder()
+				.url("http://localhost:8080/tokenlifetime")
+				.put(formBody)
+				.build();
 		response = client.newCall(request).execute();
 		resultJson = response.body().string();
 		simpleEntity = gson.fromJson(resultJson, SimpleEntity.class);
@@ -86,7 +102,10 @@ public class DashTest {
 		System.out.println("simpleEntity: " + simpleEntity);
 		//
 		// Get NEW TokenLifetime
-		request = new Request.Builder().url("http://localhost:8080/tokenlifetime").get().build();
+		request = new Request.Builder()
+				.url("http://localhost:8080/tokenlifetime")
+				.get()
+				.build();
 		response = client.newCall(request).execute();
 		resultJson = response.body().string();
 		simpleEntity = gson.fromJson(resultJson, SimpleEntity.class);
@@ -98,8 +117,14 @@ public class DashTest {
 		System.out.println("simpleEntity: " + simpleEntity);
 		//
 		// Logout
-		formBody = new FormBody.Builder().add("name", "admin").add("token", token).build();
-		request = new Request.Builder().url("http://localhost:8080/logout").post(formBody).build();
+		formBody = new FormBody.Builder()
+				.add("name", "admin")
+				.add("token", token)
+				.build();
+		request = new Request.Builder()
+				.url("http://localhost:8080/logout")
+				.post(formBody)
+				.build();
 		response = client.newCall(request).execute();
 		resultJson = response.body().string();
 		simpleEntity = gson.fromJson(resultJson, SimpleEntity.class);
@@ -110,7 +135,10 @@ public class DashTest {
 		System.out.println("simpleEntity: " + simpleEntity);
 		//
 		// Reset Server
-		request = new Request.Builder().url("http://localhost:8080/reset").get().build();
+		request = new Request.Builder()
+				.url("http://localhost:8080/reset")
+				.get()
+				.build();
 		response = client.newCall(request).execute();
 		resultJson = response.body().string();
 		simpleEntity = gson.fromJson(resultJson, SimpleEntity.class);
@@ -241,10 +269,87 @@ public class DashTest {
 		//
 	}
 
+	public class Owner {
+		private String login;
+		private String type;
+
+		public Owner(String login, String type) {
+			this.login = login;
+			this.type = type;
+		}
+
+		public String getLogin() {
+			return login;
+		}
+
+		public String getType() {
+			return type;
+		}
+
+		@Override
+		public String toString() {
+			return "\nOwner ["
+					+ " login =" + login
+					+ ", type =" + type
+					+ " ]";
+		}
+	
+	}
+	
+	public class GitHubDifficultInnerClass {
+		
+		private Owner owner;
+		private Integer id;
+		private String description;
+		private String homepage;
+		private String language;
+
+		public GitHubDifficultInnerClass() {}
+		
+		public GitHubDifficultInnerClass(Owner owner, Integer id, String description, String homepage, String language) {
+			this.owner = owner;
+			this.id = id;
+			this.description = description;
+			this.homepage = homepage;
+			this.language = language;
+		}
+		
+		public Owner getOwner() {
+			return owner;
+		}
+
+		public Integer getId() {
+			return id;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public String getHomepage() {
+			return homepage;
+		}
+
+		public String getLanguage() {
+			return language;
+		}
+
+		@Override
+		public String toString() {
+			return "\nGitHubDifficultInnerClass ["
+					+ " owner=" + owner.toString()
+					+ " id =" + id
+					+ " description =" + description
+					+ ", homepage =" + homepage
+					+ ", language =" + language
+					+ " ]";
+		}
+	}
+	
 	@Test
 	public void checkGithubDifficultInnerClass() throws Exception {
 		Gson gson = new Gson();
-		List<GitHubDifficult> gitHubDifficult;
+		List<GitHubDifficultInnerClass> gitHubDifficultInnerClass;
 		//
 		OkHttpClient client = new OkHttpClient();
 		Request request;
@@ -258,11 +363,11 @@ public class DashTest {
 				.build();
 		response = client.newCall(request).execute();
 		resultJson = response.body().string();
-		gitHubDifficult = gson.fromJson(resultJson, new TypeToken<List<GitHubDifficult>>(){}.getType());
+		gitHubDifficultInnerClass = gson.fromJson(resultJson, new TypeToken<List<GitHubDifficultInnerClass>>(){}.getType());
 		//
 		Assert.assertTrue(response.isSuccessful());
 		System.out.println("resultJson: " + resultJson);
-		System.out.println("gitHubSimple: " + gitHubDifficult);
+		System.out.println("gitHubSimple: " + gitHubDifficultInnerClass);
 		//
 	}
 
