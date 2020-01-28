@@ -52,8 +52,17 @@ public abstract class RestQueries<TGET, TPOST, TPUT, TDELETE, TPATCH> extends Re
 
 	// Entity - - - - - - - - - - - - - - - - - - - -
 
+	protected TGET httpGetAsEntity(RestParameters pathVariables, RestParameters urlParameters, RestUrl restUrl) {
+		return convertToEntityTGET(httpGetAsText(pathVariables, urlParameters, restUrl));
+	}
+
 	public TGET httpGetAsEntity(RestParameters pathVariables, RestParameters urlParameters) {
 		return convertToEntityTGET(httpGetAsText(pathVariables, urlParameters));
+	}
+
+	protected TPOST httpPostAsEntity(RestParameters pathVariables, RestParameters urlParameters,
+			RestParameters bodyParameters, RestUrl restUrl) {
+		return convertToEntityTPOST(httpPostAsText(pathVariables, urlParameters, bodyParameters, restUrl));
 	}
 
 	public TPOST httpPostAsEntity(RestParameters pathVariables, RestParameters urlParameters,
@@ -61,14 +70,29 @@ public abstract class RestQueries<TGET, TPOST, TPUT, TDELETE, TPATCH> extends Re
 		return convertToEntityTPOST(httpPostAsText(pathVariables, urlParameters, bodyParameters));
 	}
 
+	protected TPUT httpPutAsEntity(RestParameters pathVariables, RestParameters urlParameters,
+			RestParameters bodyParameters, RestUrl restUrl) {
+		return convertToEntityTPUT(httpPutAsText(pathVariables, urlParameters, bodyParameters, restUrl));
+	}
+
 	public TPUT httpPutAsEntity(RestParameters pathVariables, RestParameters urlParameters,
 			RestParameters bodyParameters) {
 		return convertToEntityTPUT(httpPutAsText(pathVariables, urlParameters, bodyParameters));
 	}
 
+	protected TDELETE httpDeleteAsEntity(RestParameters pathVariables, RestParameters urlParameters,
+			RestParameters bodyParameters, RestUrl restUrl) {
+		return convertToEntityTDELETE(httpDeleteAsText(pathVariables, urlParameters, bodyParameters, restUrl));
+	}
+
 	public TDELETE httpDeleteAsEntity(RestParameters pathVariables, RestParameters urlParameters,
 			RestParameters bodyParameters) {
 		return convertToEntityTDELETE(httpDeleteAsText(pathVariables, urlParameters, bodyParameters));
+	}
+
+	protected TPATCH httpPatchAsEntity(RestParameters pathVariables, RestParameters urlParameters,
+			RestParameters bodyParameters, RestUrl restUrl) {
+		return convertToEntityTPATCH(httpPatchAsText(pathVariables, urlParameters, bodyParameters, restUrl));
 	}
 
 	public TPATCH httpPatchAsEntity(RestParameters pathVariables, RestParameters urlParameters,

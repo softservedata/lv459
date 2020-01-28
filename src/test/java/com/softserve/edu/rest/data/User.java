@@ -1,56 +1,50 @@
 package com.softserve.edu.rest.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 
-	//private final String ERROR_USER_LOCKED = "ERROR, user locked";
-	//private final String ERROR_USER_NOT_FOUND = "ERROR, user not found";
+	// private final String ERROR_USER_LOCKED = "ERROR, user locked";
+	// private final String ERROR_USER_NOT_FOUND = "ERROR, user not found";
 	//
 	private String name;
 	private String password;
-	// TODO Remove
-	private String token;
-	private String time;
-//    private List<Item> items;
-	private boolean adminRights;
+	private boolean isAdmin;
+	private List<String> items;
 
 	// TODO Develop Builder
-	public User(String name, String password) {
+	public User(String name, String password, boolean isAdmin) {
 		this.name = name;
 		this.password = password;
-		// items = new ArrayList<>();
-		token = new String();
-		adminRights = false;
+		this.isAdmin = isAdmin;
+		items = new ArrayList<>();
 	}
 
 	// setters
-
-	public User setAdminRights(boolean adminRights) {
-		this.adminRights = adminRights;
+	
+	public User setName(String name) {
+		this.name = name;
 		return this;
 	}
-
-	public User setToken(String token) {
-		this.token = token;
-		return this;
-	}
-
-	public User setTime(String time) {
-		this.time = time;
-		return this;
-	}
-
-//    public User addItem(Item item) {
-//        items.add(item);
-//        return this;
-//    }
 
 	public User setPassword(String password) {
 		this.password = password;
 		return this;
 	}
 
-	// getters
+	public User setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+		return this;
+	}
 
+	public User addItem(String item) {
+		items.add(item);
+		return this;
+	}
+	
+	// getters
+	
 	public String getName() {
 		return name;
 	}
@@ -59,29 +53,12 @@ public class User {
 		return password;
 	}
 
-	public String getToken() {
-		return token;
+	public boolean isAdmin() {
+		return isAdmin;
 	}
 
-	public String getTime() {
-		return time;
+	public List<String> getItems() {
+		return items;
 	}
 
-	public boolean isAdminRights() {
-		return adminRights;
-	}
-
-//    public List<Item> getItems() {
-//        return items;
-//    }
-
-	@Override
-	public String toString() {
-		return "User{" + "name='" + name + '\'' 
-				+ ", password='" + password + '\'' 
-				+ ", token='" + token + '\'' +
-//                ", items=" + items +
-				", adminRights=" + adminRights + '}';
-	}
-	
 }

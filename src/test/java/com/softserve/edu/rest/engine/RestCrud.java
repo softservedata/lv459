@@ -28,6 +28,10 @@ public abstract class RestCrud {
         client = new OkHttpClient();
     }
 
+	protected RestUrl getRestUrl() {
+		return restUrl;
+	}
+    
     // protected - - - - - - - - - - - - - - - - - - - -
 
 //    protected void ThrowException(string message)
@@ -47,8 +51,8 @@ public abstract class RestCrud {
 //    }
 
     // Parameters - - - - - - - - - - - - - - - - - - - -
-
-    private String prepareUrlParameters(String urlTemplate, RestParameters urlParameters)
+ 
+	private String prepareUrlParameters(String urlTemplate, RestParameters urlParameters)
     {
         if (urlParameters != null)
         {
@@ -139,8 +143,16 @@ public abstract class RestCrud {
     
     // Http Get - - - - - - - - - - - - - - - - - - - -
 
-    protected Response httpGetAsResponse(RestParameters pathVariables, RestParameters urlParameters) {
+    protected Response httpGetAsResponse(RestParameters pathVariables, RestParameters urlParameters, RestUrl restUrl) {
         return executeRequest(prepareRequestBuilder(restUrl.readGetUrl(), pathVariables, urlParameters).get().build());
+    }
+
+    protected Response httpGetAsResponse(RestParameters pathVariables, RestParameters urlParameters) {
+        return executeRequest(prepareRequestBuilder(getRestUrl().readGetUrl(), pathVariables, urlParameters).get().build());
+    }
+
+    protected String httpGetAsText(RestParameters pathVariables, RestParameters urlParameters, RestUrl restUrl) {
+    	return responseBodyAsText(httpGetAsResponse(pathVariables, urlParameters, restUrl));
     }
 
     protected String httpGetAsText(RestParameters pathVariables, RestParameters urlParameters) {
@@ -150,9 +162,20 @@ public abstract class RestCrud {
     // Http Post - - - - - - - - - - - - - - - - - - - -
 
     protected Response httpPostAsResponse(RestParameters pathVariables, RestParameters urlParameters,
-            RestParameters bodyParameters) {
+            RestParameters bodyParameters, RestUrl restUrl) {
         return executeRequest(prepareRequestBuilder(restUrl.readPostUrl(), pathVariables, urlParameters)
                 .post(prepareRequestBody(bodyParameters)).build());
+    }
+
+    protected Response httpPostAsResponse(RestParameters pathVariables, RestParameters urlParameters,
+            RestParameters bodyParameters) {
+        return executeRequest(prepareRequestBuilder(getRestUrl().readPostUrl(), pathVariables, urlParameters)
+                .post(prepareRequestBody(bodyParameters)).build());
+    }
+
+    protected String httpPostAsText(RestParameters pathVariables, RestParameters urlParameters,
+            RestParameters bodyParameters, RestUrl restUrl) {
+        return responseBodyAsText(httpPostAsResponse(pathVariables, urlParameters, bodyParameters, restUrl));
     }
 
     protected String httpPostAsText(RestParameters pathVariables, RestParameters urlParameters,
@@ -163,9 +186,20 @@ public abstract class RestCrud {
     // Http Put - - - - - - - - - - - - - - - - - - - -
 
     protected Response httpPutAsResponse(RestParameters pathVariables, RestParameters urlParameters,
-            RestParameters bodyParameters) {
+            RestParameters bodyParameters, RestUrl restUrl) {
         return executeRequest(prepareRequestBuilder(restUrl.readPutUrl(), pathVariables, urlParameters)
                 .put(prepareRequestBody(bodyParameters)).build());
+    }
+
+    protected Response httpPutAsResponse(RestParameters pathVariables, RestParameters urlParameters,
+            RestParameters bodyParameters) {
+        return executeRequest(prepareRequestBuilder(getRestUrl().readPutUrl(), pathVariables, urlParameters)
+                .put(prepareRequestBody(bodyParameters)).build());
+    }
+
+    protected String httpPutAsText(RestParameters pathVariables, RestParameters urlParameters,
+            RestParameters bodyParameters, RestUrl restUrl) {
+        return responseBodyAsText(httpPutAsResponse(pathVariables, urlParameters, bodyParameters, restUrl));
     }
 
     protected String httpPutAsText(RestParameters pathVariables, RestParameters urlParameters,
@@ -176,9 +210,20 @@ public abstract class RestCrud {
     // Http Delete - - - - - - - - - - - - - - - - - - - -
 
     protected Response httpDeleteAsResponse(RestParameters pathVariables, RestParameters urlParameters,
-            RestParameters bodyParameters) {
+            RestParameters bodyParameters, RestUrl restUrl) {
         return executeRequest(prepareRequestBuilder(restUrl.readDeleteUrl(), pathVariables, urlParameters)
                 .delete(prepareRequestBody(bodyParameters)).build());
+    }
+
+    protected Response httpDeleteAsResponse(RestParameters pathVariables, RestParameters urlParameters,
+            RestParameters bodyParameters) {
+        return executeRequest(prepareRequestBuilder(getRestUrl().readDeleteUrl(), pathVariables, urlParameters)
+                .delete(prepareRequestBody(bodyParameters)).build());
+    }
+
+    protected String httpDeleteAsText(RestParameters pathVariables, RestParameters urlParameters,
+            RestParameters bodyParameters, RestUrl restUrl) {
+        return responseBodyAsText(httpDeleteAsResponse(pathVariables, urlParameters, bodyParameters, restUrl));
     }
 
     protected String httpDeleteAsText(RestParameters pathVariables, RestParameters urlParameters,
@@ -189,9 +234,20 @@ public abstract class RestCrud {
     // Http Patch - - - - - - - - - - - - - - - - - - - -
 
     protected Response httpPatchAsResponse(RestParameters pathVariables, RestParameters urlParameters,
-            RestParameters bodyParameters) {
+            RestParameters bodyParameters, RestUrl restUrl) {
         return executeRequest(prepareRequestBuilder(restUrl.readPatchUrl(), pathVariables, urlParameters)
                 .patch(prepareRequestBody(bodyParameters)).build());
+    }
+
+    protected Response httpPatchAsResponse(RestParameters pathVariables, RestParameters urlParameters,
+            RestParameters bodyParameters) {
+        return executeRequest(prepareRequestBuilder(getRestUrl().readPatchUrl(), pathVariables, urlParameters)
+                .patch(prepareRequestBody(bodyParameters)).build());
+    }
+
+    protected String httpPatchAsText(RestParameters pathVariables, RestParameters urlParameters,
+            RestParameters bodyParameters, RestUrl restUrl) {
+        return responseBodyAsText(httpPatchAsResponse(pathVariables, urlParameters, bodyParameters, restUrl));
     }
 
     protected String httpPatchAsText(RestParameters pathVariables, RestParameters urlParameters,

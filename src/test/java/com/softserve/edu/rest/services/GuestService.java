@@ -1,6 +1,7 @@
 package com.softserve.edu.rest.services;
 
 import com.softserve.edu.rest.data.User;
+import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
 import com.softserve.edu.rest.resources.LoginResource;
@@ -29,12 +30,15 @@ public class GuestService {
 //		resetApiResource.httpGetAsEntity(null, null);
 //	}
 
-	protected void checkEntity(SimpleEntity simpleEntity, String message) {
+	protected void checkEntity(SimpleEntity simpleEntity,
+			String wrongMessage, String errorMessage) {
 		// if (!simpleEntity.getContent().toLowerCase().equals("true"))
-		if ((simpleEntity.getContent() == null) || (simpleEntity.getContent().isEmpty())
-				|| (simpleEntity.getContent().toLowerCase().equals("false"))) {
+		if ((simpleEntity.getContent() == null)
+				|| (simpleEntity.getContent().isEmpty())
+				|| (simpleEntity.getContent().toLowerCase()
+						.equals(wrongMessage.toLowerCase()))) {
 			// TODO Develop Custom Exception
-			throw new RuntimeException(message);
+			throw new RuntimeException(errorMessage);
 		}
 	}
 
@@ -69,10 +73,9 @@ public class GuestService {
 				.addParameter("password", user.getPassword());
 		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
 		//logger.trace("successfulUserLogin TRACE, simpleEntity = " + simpleEntity);
-//		checkEntity(simpleEntity, "Error Login");
-		user.setToken(simpleEntity.getContent());
+		checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
 		//logger.debug("successfulUserLogin DONE, user = " + user);
-		return new UserService(user);
+		return new UserService(new LoginedUser(user, simpleEntity.getContent()));
 	}
 
 //	public AdminService SuccessfulAdminLogin(User adminUser) {

@@ -12,7 +12,7 @@ public final class RestUrlRepository {
 				.addGetUrl("/login/users")
 				.addPostUrl("/login")
 				.addPutUrl("")
-				.addDeleteUrl("");
+				.addDeleteUrl("/logout");
 		// .addDeleteUrl("/logout");
 	}
 
@@ -22,7 +22,7 @@ public final class RestUrlRepository {
 				.addGetUrl("")
 				.addPostUrl("/login")
 				.addPutUrl("")
-				.addDeleteUrl("")
+				.addDeleteUrl("/logout") // run POST
 				.addPatchUrl("");
 		// .addDeleteUrl("/logout");
 	}

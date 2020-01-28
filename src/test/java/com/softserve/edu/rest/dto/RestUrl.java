@@ -3,11 +3,15 @@ package com.softserve.edu.rest.dto;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RestUrl {
+public class RestUrl implements Cloneable {
 	private Map<RestUrlKeys, String> urls;
 
 	public RestUrl() {
 		urls = new HashMap<>();
+	}
+
+	public Map<RestUrlKeys, String> getUrls() {
+		return urls;
 	}
 
 	public RestUrl addUrl(RestUrlKeys key, String url) {
@@ -72,4 +76,25 @@ public class RestUrl {
 	public String readPatchUrl() {
 		return readBaseUrl() + urls.get(RestUrlKeys.PATCH);
 	}
+
+	@Override
+	public RestUrl clone() {
+		RestUrl cloneRestUrl = new RestUrl();
+		for (Map.Entry<RestUrlKeys, String> currentUrl : getUrls().entrySet()) {
+			cloneRestUrl.addUrl(currentUrl.getKey(), currentUrl.getValue());
+		}
+		return cloneRestUrl;
+	}
+
+	@Override
+	public String toString() {
+		String result = "RestUrl [";
+		for (Map.Entry<RestUrlKeys, String> currentUrl : getUrls().entrySet()) {
+			result = result
+					+ " Method = " + currentUrl.getKey().name()
+					+ " Uri: " + currentUrl.getValue();
+		}
+		return result + "]";
+	}
+	
 }
