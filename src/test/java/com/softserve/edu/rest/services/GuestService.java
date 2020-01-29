@@ -1,22 +1,24 @@
 package com.softserve.edu.rest.services;
 
+import com.softserve.edu.rest.data.Lifetime;
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
 import com.softserve.edu.rest.resources.LoginResource;
+import com.softserve.edu.rest.resources.TokenlifetimeResource;
 
 public class GuestService {
 	//public static final Logger logger = LoggerFactory.getLogger(LoginLogoutTest.class); // org.slf4j.LoggerFactory
 
 	protected LoginResource loginResource;
-//	protected TokenlifetimeResource tokenlifetimeResource;
+	protected TokenlifetimeResource tokenlifetimeResource;
 //	protected CooldownResource cooldownResource;
 //	private ResetApiResource resetApiResource;
 
 	public GuestService() {
 		loginResource = new LoginResource();
-//		tokenlifetimeResource = new TokenlifetimeResource();
+		tokenlifetimeResource = new TokenlifetimeResource();
 //		cooldownResource = new CooldownResource();
 //		resetApiResource = new ResetApiResource();
 	}
@@ -50,10 +52,10 @@ public class GuestService {
 //		return simpleEntity.getContent().equals("ERROR, user locked");
 //	}
 
-//	public Lifetime getCurrentLifetime() {
-//		SimpleEntity simpleEntity = tokenlifetimeResource.httpGetAsEntity(null, null);
-//		return new Lifetime(simpleEntity.getContent());
-//	}
+	public Lifetime getCurrentLifetime() {
+		SimpleEntity simpleEntity = tokenlifetimeResource.httpGetAsEntity(null, null);
+		return new Lifetime(simpleEntity.getContent());
+	}
 
 //	public Cooldown getCurrentCooldown() {
 //		SimpleEntity simpleEntity = cooldownResource.httpGetAsEntity(null, null);
@@ -78,14 +80,15 @@ public class GuestService {
 		return new UserService(new LoginedUser(user, simpleEntity.getContent()));
 	}
 
-//	public AdminService SuccessfulAdminLogin(User adminUser) {
-//		RestParameters bodyParameters = new RestParameters().addParameter("name", adminUser.getName())
-//				.addParameter("password", adminUser.getPassword());
-//		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-//		checkEntity(simpleEntity, "Error Login");
-//		adminUser.setToken(simpleEntity.getContent());
-//		return new AdminService(adminUser);
-//	}
+	public AdminService SuccessfulAdminLogin(User adminUser) {
+		RestParameters bodyParameters = new RestParameters()
+				.addParameter("name", adminUser.getName())
+				.addParameter("password", adminUser.getPassword());
+		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
+		checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
+		//adminUser.setToken(simpleEntity.getContent());
+		return new AdminService(new LoginedUser(adminUser, simpleEntity.getContent()));
+	}
 
 //	public AdminService ChangeCurrentPassword(User adminUser) {
 //		String pass = "1111";

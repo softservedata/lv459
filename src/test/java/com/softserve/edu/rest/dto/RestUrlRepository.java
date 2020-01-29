@@ -6,36 +6,36 @@ public final class RestUrlRepository {
 	private RestUrlRepository() {
 	}
 
-	public static RestUrl getAdminAuthorized() {
-		return new RestUrl()
-				.addBaseUrl(server)
-				.addGetUrl("/login/users")
-				.addPostUrl("/login")
-				.addPutUrl("")
-				.addDeleteUrl("/logout");
-		// .addDeleteUrl("/logout");
-	}
+//	public static RestUrl getAdminAuthorized() {
+//		return new RestUrl()
+//				.addBaseUrl(server)
+//				.addGetUrl("/login/users")
+//				.addPostUrl("/login")
+//				.addPutUrl("")
+//				.addDeleteUrl("/logout");
+//		// .addDeleteUrl("/logout");
+//	}
 
 	public static RestUrl getUserAuthorized() {
 		return new RestUrl()
 				.addBaseUrl(server)
-				.addGetUrl("")
+				.addGetUrl("") // TODO getLoginedUsers, getLoginedAdmins
 				.addPostUrl("/login")
-				.addPutUrl("")
+				.addPutUrl("") // TODO Change Password
 				.addDeleteUrl("/logout") // run POST
-				.addPatchUrl("");
+				.addPatchUrl(""); // TODO Change Password
 		// .addDeleteUrl("/logout");
 	}
 
-	public static RestUrl getLogout() {
-		return new RestUrl()
-				.addBaseUrl(server)
-				.addGetUrl("")
-				.addPostUrl("/logout")
-				.addPutUrl("")
-				.addDeleteUrl("")
-				.addPatchUrl("");
-	}
+//	public static RestUrl getLogout() {
+//		return new RestUrl()
+//				.addBaseUrl(server)
+//				.addGetUrl("")
+//				.addPostUrl("/logout")
+//				.addPutUrl("")
+//				.addDeleteUrl("")
+//				.addPatchUrl("");
+//	}
 
 	public static RestUrl getTokenLifetime() {
 		return new RestUrl()

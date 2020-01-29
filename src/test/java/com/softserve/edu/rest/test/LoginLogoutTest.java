@@ -44,7 +44,7 @@ public class LoginLogoutTest {
         //Assert.assertTrue(userService.isUserLogged(user));
         //
         //Step
-        //GuestService guestService = userService.logout();
+        GuestService guestService = userService.logout();
         //Assert.assertFalse(guestService.isUserLogged(user));
         //
         //log.debug("loginPositiveTest finished!");

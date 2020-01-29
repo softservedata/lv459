@@ -83,6 +83,7 @@ public class RestUrl implements Cloneable {
 		for (Map.Entry<RestUrlKeys, String> currentUrl : getUrls().entrySet()) {
 			cloneRestUrl.addUrl(currentUrl.getKey(), currentUrl.getValue());
 		}
+		//System.out.println("cloneRestUrl: " + cloneRestUrl);
 		return cloneRestUrl;
 	}
 
@@ -91,7 +92,7 @@ public class RestUrl implements Cloneable {
 		String result = "RestUrl [";
 		for (Map.Entry<RestUrlKeys, String> currentUrl : getUrls().entrySet()) {
 			result = result
-					+ " Method = " + currentUrl.getKey().name()
+					+ "\n Method = " + currentUrl.getKey().name()
 					+ " Uri: " + currentUrl.getValue();
 		}
 		return result + "]";
