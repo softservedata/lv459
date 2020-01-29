@@ -84,10 +84,14 @@ public class GuestService {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("name", adminUser.getName())
 				.addParameter("password", adminUser.getPassword());
-		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-		checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
-		//adminUser.setToken(simpleEntity.getContent());
-		return new AdminService(new LoginedUser(adminUser, simpleEntity.getContent()));
+		SimpleEntity adminContent = loginResource.httpPostAsEntity(null, null, bodyParameters);
+		checkEntity(adminContent, "ERROR, user not found", "Error Login");
+		RestParameters urlParameters = new RestParameters()
+				.addParameter("token", adminContent.getContent());
+		SimpleEntity loginedAdmins = loginResource.httpGetLoginedAdmins(null, urlParameters);
+		// TODO CHECK
+		System.out.println("loginedAdmins: " + loginedAdmins);
+		return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
 	}
 
 //	public AdminService ChangeCurrentPassword(User adminUser) {

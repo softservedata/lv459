@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.data.UserRepository;
+import com.softserve.edu.rest.services.AdminService;
 import com.softserve.edu.rest.services.GuestService;
 import com.softserve.edu.rest.services.UserService;
 
@@ -46,6 +47,11 @@ public class LoginLogoutTest {
         //Step
         GuestService guestService = userService.logout();
         //Assert.assertFalse(guestService.isUserLogged(user));
+        //
+        AdminService adminService = guestService
+        		.SuccessfulAdminLogin(user);
+        //
+        guestService = adminService.logout();
         //
         //log.debug("loginPositiveTest finished!");
         //logger.info("loginPositiveTest DONE, user = " + user);

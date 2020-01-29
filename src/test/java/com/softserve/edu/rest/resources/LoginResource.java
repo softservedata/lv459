@@ -18,7 +18,14 @@ public class LoginResource extends RestQueries<SimpleEntity, SimpleEntity, Simpl
 	@Override
     public SimpleEntity httpDeleteAsEntity(RestParameters pathVariables, RestParameters urlParameters,
 			RestParameters bodyParameters) {
+//		return httpPostAsEntity(pathVariables, urlParameters, bodyParameters,
+//				getRestUrl().clone().addPostUrl(getRestUrl().getUrl(RestUrlKeys.DELETE)));
 		return httpPostAsEntity(pathVariables, urlParameters, bodyParameters,
-				getRestUrl().clone().addPostUrl(getRestUrl().getUrl(RestUrlKeys.DELETE)));
+				getRestUrl().clone().addPostUrlAsFirst(getRestUrl().getUrl(RestUrlKeys.POST, 1)));
+	}
+	
+	public SimpleEntity httpGetLoginedAdmins(RestParameters pathVariables, RestParameters urlParameters) {
+		return httpGetAsEntity(pathVariables, urlParameters,
+				getRestUrl().clone().addGetUrlAsFirst(getRestUrl().getUrl(RestUrlKeys.GET, 1)));
 	}
 }

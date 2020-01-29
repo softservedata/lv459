@@ -19,10 +19,10 @@ public final class RestUrlRepository {
 	public static RestUrl getUserAuthorized() {
 		return new RestUrl()
 				.addBaseUrl(server)
-				.addGetUrl("") // TODO getLoginedUsers, getLoginedAdmins
-				.addPostUrl("/login")
+				.addGetUrl("/login/users").addGetUrl("/login/admins") // getLoginedUsers, getLoginedAdmins
+				.addPostUrl("/login").addPostUrl("/logout") // login, logout
 				.addPutUrl("") // TODO Change Password
-				.addDeleteUrl("/logout") // run POST
+				.addDeleteUrl("") // run POST
 				.addPatchUrl(""); // TODO Change Password
 		// .addDeleteUrl("/logout");
 	}
