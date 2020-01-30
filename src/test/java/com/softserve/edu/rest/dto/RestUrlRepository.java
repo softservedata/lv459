@@ -27,15 +27,15 @@ public final class RestUrlRepository {
 		// .addDeleteUrl("/logout");
 	}
 
-//	public static RestUrl getLogout() {
-//		return new RestUrl()
-//				.addBaseUrl(server)
-//				.addGetUrl("")
-//				.addPostUrl("/logout")
-//				.addPutUrl("")
-//				.addDeleteUrl("")
-//				.addPatchUrl("");
-//	}
+	public static RestUrl getApplication() {
+		return new RestUrl()
+				.addBaseUrl(server)
+				.addGetUrl("/reset")
+				.addPostUrl("")
+				.addPutUrl("")
+				.addDeleteUrl("")
+				.addPatchUrl("");
+	}
 
 	public static RestUrl getTokenLifetime() {
 		return new RestUrl()

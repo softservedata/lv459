@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.dto.RestUrl;
+import com.softserve.edu.rest.dto.RestUrlKeys;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -13,7 +14,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public abstract class RestCrud {
-	//private final String NOT_SUPPORT_MESSAGE = "Method %s not Support for %s Resource";
+	private final String NOT_SUPPORT_MESSAGE = "Method %s not Support for %s Resource";
     //
     private final String URL_PARAMETERS_SEPARATOR = "?";
     private final String NEXT_PARAMETERS_SEPARATOR = "&";
@@ -34,21 +35,24 @@ public abstract class RestCrud {
     
     // protected - - - - - - - - - - - - - - - - - - - -
 
-//    protected void ThrowException(string message)
-//    {
-//        // TODO Develop Custom Exception
-//        string resourceName = this.GetType().ToString();
-//        throw new Exception(string.Format(NOT_SUPPORT_MESSAGE, message, resourceName));
-//    }
+    protected void throwException(String message)
+    {
+        // TODO Develop Custom Exception
+        String resourceName = this.getClass().getName();
+        resourceName = resourceName.substring(resourceName.lastIndexOf(".") + 1);
+        System.out.println("resourceName = " + resourceName);
+        throw new RuntimeException(String.format(NOT_SUPPORT_MESSAGE, message, resourceName));
+    }
 
-//    protected void CheckImplementation(RestUrlKeys restUrlKeys)
-//    {
-//        // if (restUrl.GetUrl(restUrlKeys).Length == 0)
-//        if (string.IsNullOrEmpty(restUrl.GetUrl(restUrlKeys)))
-//        {
-//            ThrowException(restUrlKeys.ToString());
-//        }
-//    }
+    protected void checkImplementation(RestUrlKeys restUrlKeys)
+    {
+        // if (restUrl.GetUrl(restUrlKeys).Length == 0)
+    	String methodUri = getRestUrl().getUrl(restUrlKeys);
+        if ((methodUri == null) || (methodUri.isEmpty()))
+        {
+            throwException(restUrlKeys.name());
+        }
+    }
 
     // Parameters - - - - - - - - - - - - - - - - - - - -
  
@@ -89,16 +93,14 @@ public abstract class RestCrud {
         return url;
     }
 
-    private RequestBody prepareRequestBody(RestParameters bodyParameters) {
-    	RequestBody requestBody = null;
-        if (bodyParameters != null) {
-            FormBody.Builder formBodyBuilder = new FormBody.Builder();
-            for (String currentKey : bodyParameters.getAllParameters().keySet()) {
-                formBodyBuilder.add(currentKey, bodyParameters.getParameter(currentKey));
-            }
-            requestBody = formBodyBuilder.build();
-        }
-        return requestBody;
+	private RequestBody prepareRequestBody(RestParameters bodyParameters) {
+		FormBody.Builder formBodyBuilder = new FormBody.Builder();
+		if (bodyParameters != null) {
+			for (String currentKey : bodyParameters.getAllParameters().keySet()) {
+				formBodyBuilder.add(currentKey, bodyParameters.getParameter(currentKey));
+			}
+		}
+		return formBodyBuilder.build();
     }
 
     // Request - - - - - - - - - - - - - - - - - - - -
@@ -144,10 +146,12 @@ public abstract class RestCrud {
     // Http Get - - - - - - - - - - - - - - - - - - - -
 
     protected Response httpGetAsResponse(RestParameters pathVariables, RestParameters urlParameters, RestUrl restUrl) {
+    	checkImplementation(RestUrlKeys.GET);
         return executeRequest(prepareRequestBuilder(restUrl.readGetUrl(), pathVariables, urlParameters).get().build());
     }
 
     protected Response httpGetAsResponse(RestParameters pathVariables, RestParameters urlParameters) {
+    	checkImplementation(RestUrlKeys.GET);
         return executeRequest(prepareRequestBuilder(getRestUrl().readGetUrl(), pathVariables, urlParameters).get().build());
     }
 
@@ -163,12 +167,14 @@ public abstract class RestCrud {
 
     protected Response httpPostAsResponse(RestParameters pathVariables, RestParameters urlParameters,
             RestParameters bodyParameters, RestUrl restUrl) {
+    	checkImplementation(RestUrlKeys.POST);
         return executeRequest(prepareRequestBuilder(restUrl.readPostUrl(), pathVariables, urlParameters)
                 .post(prepareRequestBody(bodyParameters)).build());
     }
 
     protected Response httpPostAsResponse(RestParameters pathVariables, RestParameters urlParameters,
             RestParameters bodyParameters) {
+    	checkImplementation(RestUrlKeys.POST);
         return executeRequest(prepareRequestBuilder(getRestUrl().readPostUrl(), pathVariables, urlParameters)
                 .post(prepareRequestBody(bodyParameters)).build());
     }
@@ -187,12 +193,14 @@ public abstract class RestCrud {
 
     protected Response httpPutAsResponse(RestParameters pathVariables, RestParameters urlParameters,
             RestParameters bodyParameters, RestUrl restUrl) {
+    	checkImplementation(RestUrlKeys.PUT);
         return executeRequest(prepareRequestBuilder(restUrl.readPutUrl(), pathVariables, urlParameters)
                 .put(prepareRequestBody(bodyParameters)).build());
     }
 
     protected Response httpPutAsResponse(RestParameters pathVariables, RestParameters urlParameters,
             RestParameters bodyParameters) {
+    	checkImplementation(RestUrlKeys.PUT);
         return executeRequest(prepareRequestBuilder(getRestUrl().readPutUrl(), pathVariables, urlParameters)
                 .put(prepareRequestBody(bodyParameters)).build());
     }
@@ -211,12 +219,14 @@ public abstract class RestCrud {
 
     protected Response httpDeleteAsResponse(RestParameters pathVariables, RestParameters urlParameters,
             RestParameters bodyParameters, RestUrl restUrl) {
+    	checkImplementation(RestUrlKeys.DELETE);
         return executeRequest(prepareRequestBuilder(restUrl.readDeleteUrl(), pathVariables, urlParameters)
                 .delete(prepareRequestBody(bodyParameters)).build());
     }
 
     protected Response httpDeleteAsResponse(RestParameters pathVariables, RestParameters urlParameters,
             RestParameters bodyParameters) {
+    	checkImplementation(RestUrlKeys.DELETE);
         return executeRequest(prepareRequestBuilder(getRestUrl().readDeleteUrl(), pathVariables, urlParameters)
                 .delete(prepareRequestBody(bodyParameters)).build());
     }
@@ -235,12 +245,14 @@ public abstract class RestCrud {
 
     protected Response httpPatchAsResponse(RestParameters pathVariables, RestParameters urlParameters,
             RestParameters bodyParameters, RestUrl restUrl) {
+    	checkImplementation(RestUrlKeys.PATCH);
         return executeRequest(prepareRequestBuilder(restUrl.readPatchUrl(), pathVariables, urlParameters)
                 .patch(prepareRequestBody(bodyParameters)).build());
     }
 
     protected Response httpPatchAsResponse(RestParameters pathVariables, RestParameters urlParameters,
             RestParameters bodyParameters) {
+    	checkImplementation(RestUrlKeys.PATCH);
         return executeRequest(prepareRequestBuilder(getRestUrl().readPatchUrl(), pathVariables, urlParameters)
                 .patch(prepareRequestBody(bodyParameters)).build());
     }

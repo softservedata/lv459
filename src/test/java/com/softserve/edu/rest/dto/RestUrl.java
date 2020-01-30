@@ -40,7 +40,8 @@ public class RestUrl implements Cloneable {
 	}
 
 	public String getUrl(RestUrlKeys key) {
-		return urls.get(key).get(0);
+		//return urls.get(key).get(0);
+		return getUrl(key, 0);
 	}
 
 	public String getUrl(RestUrlKeys key, int index) {

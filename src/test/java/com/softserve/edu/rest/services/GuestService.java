@@ -5,6 +5,7 @@ import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
+import com.softserve.edu.rest.resources.ApplicationResource;
 import com.softserve.edu.rest.resources.LoginResource;
 import com.softserve.edu.rest.resources.TokenlifetimeResource;
 
@@ -14,22 +15,18 @@ public class GuestService {
 	protected LoginResource loginResource;
 	protected TokenlifetimeResource tokenlifetimeResource;
 //	protected CooldownResource cooldownResource;
-//	private ResetApiResource resetApiResource;
+	private ApplicationResource applicationResource;
 
 	public GuestService() {
 		loginResource = new LoginResource();
 		tokenlifetimeResource = new TokenlifetimeResource();
 //		cooldownResource = new CooldownResource();
-//		resetApiResource = new ResetApiResource();
+		applicationResource = new ApplicationResource();
 	}
 
 //	public GuestService(LoginResource loginResource, TokenlifetimeResource tokenlifetimeResource) {
 //		this.loginResource = loginResource;
 //		this.tokenlifetimeResource = tokenlifetimeResource;
-//	}
-
-//	public void resetServiceToInitialState() {
-//		resetApiResource.httpGetAsEntity(null, null);
 //	}
 
 	protected void checkEntity(SimpleEntity simpleEntity,
@@ -44,7 +41,13 @@ public class GuestService {
 		}
 	}
 
-//	public boolean isUserLockedAfterTryToLogin(User user) {
+	public GuestService resetServiceToInitialState() {
+		SimpleEntity simpleEntity = applicationResource.httpPutAsEntity(null, null, null);
+		checkEntity(simpleEntity, "false", "Error Reset Server");
+		return this;
+	}
+
+	//	public boolean isUserLockedAfterTryToLogin(User user) {
 //		RestParameters bodyParameters = new RestParameters().addParameter("name", user.getName())
 //				.addParameter("password", user.getPassword());
 //		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
@@ -57,6 +60,21 @@ public class GuestService {
 		return new Lifetime(simpleEntity.getContent());
 	}
 
+	// Check Error
+	public void updateLifetime() {
+		tokenlifetimeResource.httpPostAsEntity(null, null, null);
+	}
+	
+	// Check Error
+	public GuestService updateCurrentLifetime() {
+		RestParameters bodyParameters = new RestParameters()
+				.addParameter("token", "111111111111111")
+				.addParameter("time", new Lifetime("111111").getTimeAsText());
+		SimpleEntity simpleEntity = tokenlifetimeResource.httpPutAsEntity(null, null, bodyParameters);
+		//checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
+		return this;
+	}
+	
 //	public Cooldown getCurrentCooldown() {
 //		SimpleEntity simpleEntity = cooldownResource.httpGetAsEntity(null, null);
 //		return new Cooldown(simpleEntity.getContent());
@@ -80,17 +98,12 @@ public class GuestService {
 		return new UserService(new LoginedUser(user, simpleEntity.getContent()));
 	}
 
-	public AdminService SuccessfulAdminLogin(User adminUser) {
+	public AdminService successfulAdminLogin(User adminUser) {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("name", adminUser.getName())
 				.addParameter("password", adminUser.getPassword());
 		SimpleEntity adminContent = loginResource.httpPostAsEntity(null, null, bodyParameters);
 		checkEntity(adminContent, "ERROR, user not found", "Error Login");
-		RestParameters urlParameters = new RestParameters()
-				.addParameter("token", adminContent.getContent());
-		SimpleEntity loginedAdmins = loginResource.httpGetLoginedAdmins(null, urlParameters);
-		// TODO CHECK
-		System.out.println("loginedAdmins: " + loginedAdmins);
 		return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
 	}
 
