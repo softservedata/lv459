@@ -1,5 +1,7 @@
 package com.softserve.edu.rest.test;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,7 +15,7 @@ import com.softserve.edu.rest.services.GuestService;
 import com.softserve.edu.rest.services.UserService;
 
 public class LoginLogoutTest extends RestTestRunner {
-	////public static final Logger logger = LoggerFactory.getLogger(LoginLogoutTest.class); // org.slf4j.LoggerFactory
+	public static final Logger logger = LoggerFactory.getLogger(LoginLogoutTest.class); // org.slf4j.LoggerFactory
 	//public final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	//@Test
@@ -98,7 +100,7 @@ public class LoginLogoutTest extends RestTestRunner {
 	@Test(dataProvider = "correctAdminTime")
 	      //expectedExceptions = RuntimeException.class)
 	public void verifyException(User admin, Lifetime lifetime) {
-		// logger.info("loginPositiveTest START, user = " + user);
+		logger.info("verifyException START, user = " + admin.toString() + " lifetime = " + lifetime.toString());
 		// log.debug("loginPositiveTest started!");
 		//
 		// Steps
@@ -110,7 +112,7 @@ public class LoginLogoutTest extends RestTestRunner {
 		guestService.updateCurrentLifetime();
 		//
 		// log.debug("loginPositiveTest finished!");
-		// logger.info("loginPositiveTest DONE, user = " + user);
+		logger.info("verifyException DONE, user = " + admin.toString());
 	}
 
 }

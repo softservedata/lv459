@@ -1,5 +1,8 @@
 package com.softserve.edu.rest.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.softserve.edu.rest.data.Lifetime;
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
@@ -10,7 +13,7 @@ import com.softserve.edu.rest.resources.LoginResource;
 import com.softserve.edu.rest.resources.TokenlifetimeResource;
 
 public class GuestService {
-	//public static final Logger logger = LoggerFactory.getLogger(LoginLogoutTest.class); // org.slf4j.LoggerFactory
+	public static final Logger logger = LoggerFactory.getLogger(GuestService.class); // org.slf4j.LoggerFactory
 
 	protected LoginResource loginResource;
 	protected TokenlifetimeResource tokenlifetimeResource;
@@ -67,11 +70,13 @@ public class GuestService {
 	
 	// Check Error
 	public GuestService updateCurrentLifetime() {
+		logger.debug("updateCurrentLifetime START");
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", "111111111111111")
 				.addParameter("time", new Lifetime("111111").getTimeAsText());
 		SimpleEntity simpleEntity = tokenlifetimeResource.httpPutAsEntity(null, null, bodyParameters);
 		//checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
+		logger.debug("updateCurrentLifetime DONE");
 		return this;
 	}
 	

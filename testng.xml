@@ -10,12 +10,13 @@
 		<parameter name="number" value="23145" />
 		<parameter name="implicitWait" value="30" />
 		<classes>
+			<class name="com.softserve.edu.rest.test.LoginLogoutTest" />
 			<!-- <class name="com.softserve.testng.FirstNg" /> -->
-			<class name="com.softserve.edu.opencart.tests.LoginTest">
-				<methods>
-					<include name="checkSuccessful" />
-				</methods>
-			</class>
+<!-- 			<class name="com.softserve.edu.opencart.tests.LoginTest"> -->
+<!-- 				<methods> -->
+<!-- 					<include name="checkSuccessful" /> -->
+<!-- 				</methods> -->
+<!-- 			</class> -->
 		</classes>
 	</test> <!-- Test -->
 
