@@ -33,9 +33,9 @@ public abstract class LocalAdminTestRunner {
     private final Long ONE_SECOND_DELAY = 1000L;
     //    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
-    private String serverUrl = "http://172.16.0.130/opencart/upload/";
-    private final String SERVER_URL = "http://172.16.0.130/opencart/upload/";
-    private final String SERVER_ADMIN_URL = SERVER_URL + "admin";
+    private String serverUrl = "http://172.16.0.131/opencart/upload/";
+    private final String SERVER_URL = "http://172.16.0.131/opencart/upload/";
+    private final String SERVER_ADMIN_URL = SERVER_URL + "admin/";
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
     protected final String EXPECTED_ERROR_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
@@ -82,12 +82,16 @@ public abstract class LocalAdminTestRunner {
         //if (driver != null) {
         //	driver.quit();
         //}
+
+        // closes driver if running in parallel streams
         for (Map.Entry<Long, WebDriver> currentWebDriver : drivers.entrySet()) {
             if (currentWebDriver.getValue() != null) {
                 currentWebDriver.getValue().quit();
             }
         }
     }
+
+    // for only one driver, not multithread
 //    @AfterClass
 //    public void afterClass(){
 //        if (driver != null) {
@@ -97,7 +101,6 @@ public abstract class LocalAdminTestRunner {
 
     @BeforeMethod
     public void beforeMethod() {
-
     }
 
     @AfterMethod
@@ -112,13 +115,15 @@ public abstract class LocalAdminTestRunner {
     public LoginPage loadAdminPage() {
         getDriver().get(SERVER_ADMIN_URL);
 //        driver.get(SERVER_ADMIN_URL);
-        return new LoginPage(driver);
+//        return new LoginPage(driver);
+        return new LoginPage(getDriver());
     }
 
     public HomePage loadMainPage() {
         getDriver().get(SERVER_URL);
 //        driver.get(SERVER_URL);
-        return new HomePage(driver);
+//        return new HomePage(driver);
+        return new HomePage(getDriver());
     }
 
     public void presentationSleep() {
@@ -136,7 +141,8 @@ public abstract class LocalAdminTestRunner {
 
     private String takeScreenShot() throws IOException {
         String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File("./img/" + currentTime + "_screenshot.png"));
         return "./img/" + currentTime + "_screenshot";
     }
@@ -159,7 +165,10 @@ public abstract class LocalAdminTestRunner {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("start-maximized");
+
             currentWebDriver = new ChromeDriver();
+            currentWebDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
 
             drivers.put(Thread.currentThread().getId(), currentWebDriver);
         }

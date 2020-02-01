@@ -2,6 +2,8 @@ package com.softserve.edu.opencart.data;
 
 public interface IUser {
 
+    int getId();
+
     String getFirstName();
 
     String getLastName();

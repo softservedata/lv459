@@ -189,15 +189,15 @@ public final class UserRepository {
 
     public IUser getValidCustomer() {
         return User.get()
-                .setFirstName("Se")
-                .setLastName("Pe")
+                .setFirstName("SeNew")
+                .setLastName("PeNew")
                 .setEmail(System.getenv("USER_EMAIL"))
                 .setTelephone("+380675515")
                 .setAddress1("Ploshcha Rynok")
                 .setCity("Lemberg")
                 .setPostCode("79000")
                 .setCountry("220")
-                .setRegionState("3489")
+                .setRegionState("3493")
                 .setPassword(System.getenv("USER_PASSWORD"))
                 .setNewPassword(System.getenv("USER_PASSWORD"))
                 .setSubscribe(true)

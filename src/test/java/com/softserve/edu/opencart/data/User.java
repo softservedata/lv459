@@ -1,9 +1,17 @@
 package com.softserve.edu.opencart.data;
 
+import org.testng.annotations.Test;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 //5. Add Builder
+
+interface IId {
+    IBuildUser setId(int id);
+}
+
 interface IFirstName {
     ILastName setFirstName(String firstName);
 }
@@ -11,6 +19,7 @@ interface IFirstName {
 interface ILastName {
     IEmail setLastName(String lastName);
 }
+
 
 interface IEmail {
     ITelephone setEmail(String email);
@@ -62,14 +71,22 @@ interface IBuildUser {
     IUser build();
 }
 
+@Entity
+@Table (name = "oc_customer")
 public final class User
         implements IFirstName, ILastName, IEmail,
                    ITelephone, IAddress, ICity, IPostCode, ICountry,
                    IRegionState,
                    IPassword, ISubscribe, IBuildUser, INewPassword,
-                   IUser {
+                   IUser, IId {
 
     public final static String EMPTY_STRING = "";
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "customer_id")
+    private int id;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -92,6 +109,15 @@ public final class User
         this.fax = EMPTY_STRING;        // optional
         this.company = EMPTY_STRING;    // optional
         this.address2 = EMPTY_STRING;    // optional
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public IBuildUser setId (int id) {
+        this.id = id;
+        return this;
     }
 
     public static IFirstName get() {
