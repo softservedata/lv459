@@ -26,7 +26,7 @@ public class AdminService extends UserService {
             throw new RuntimeException("Error Admin Login. Response: " + loginedAdmins.getContent());
 		}
 	}
-	
+
 	public AdminService changeCurrentLifetime(Lifetime lifetime) {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken())
@@ -36,6 +36,35 @@ public class AdminService extends UserService {
 		return this;
 	}
 
+	//alessandro
+	public String getAllLoggedUsers() {
+		RestParameters urlParameters = new RestParameters()
+				.addParameter("token", loginedUser.getToken());
+		SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
+		return simpleEntity.getContent();
+	}
+
+	public boolean isUserLogged(User user) {
+
+		if (getAllLoggedUsers().contains(user.getName())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	//create user
+	public AdminService createUser2( ) {
+		RestParameters bodyParameters = new RestParameters()
+				.addParameter("token", loginedUser.getToken())
+				.addParameter("name", "Vasya")
+				.addParameter("password","qwerty")
+				.addParameter("rights", "false");
+		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
+		System.out.println(simpleEntity);
+		checkEntity(simpleEntity, "false", "Error create user");
+		return this;
+	}
 
 	//Dana code
 	//create user
