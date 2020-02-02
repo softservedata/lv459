@@ -1,10 +1,10 @@
 package com.softserve.edu.rest.test.item;
 
+import com.softserve.edu.rest.data.Item;
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.data.UserRepository;
 import com.softserve.edu.rest.services.AdminService;
 import com.softserve.edu.rest.services.GuestService;
-import com.softserve.edu.rest.services.UserService;
 import com.softserve.edu.rest.test.RestTestRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,16 +31,17 @@ public class AddItemTest extends RestTestRunner {
         logger.debug("loginPositiveTest started!");
 
         // prerequisites. create new user.
-        UserService userService = new GuestService()
-                .successfulUserLogin(user);
-
-        AdminService adminService = userService.successfulAdminLogin(user)
+        AdminService adminService = new GuestService()
+                .successfulUserLogin(user)
                 .successfulAdminLogin(user);
 
         System.out.println(
                 "logined user as admin: token " + adminService.toString());
 
         System.out.println(adminService.getToken());
+
+        adminService.postNewItemByIndex(new Item("0", "new item from idea!"))
+
         //
         //Steps
 
@@ -49,13 +50,13 @@ public class AddItemTest extends RestTestRunner {
         //Assert.assertTrue(userService.isUserLogged(user));
         //
         //Step
-//        GuestService guestService = userService.logout();
+        //        GuestService guestService = userService.logout();
         //Assert.assertFalse(guestService.isUserLogged(user));
         //
-//        AdminService adminService = guestService
-//                .successfulAdminLogin(user);
-//        //
-//        guestService = adminService.logout();
+        //        AdminService adminService = guestService
+        //                .successfulAdminLogin(user);
+        //        //
+        //        guestService = adminService.logout();
         //
         //log.debug("loginPositiveTest finished!");
         //logger.info("loginPositiveTest DONE, user = " + user);

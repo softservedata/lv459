@@ -34,7 +34,7 @@ public class RestUrl implements Cloneable {
 		return this;
 	}
 
-	public RestUrl addUrlByInedex(RestUrlKeys key, String url, int index) {
+	public RestUrl addUrlByIndex(RestUrlKeys key, String url, int index) {
 		urls.get(key).add(index, url);
 		return this;
 	}
