@@ -8,8 +8,6 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.data.UserRepository;
-import com.softserve.edu.rest.dto.RestParameters;
-import com.softserve.edu.rest.services.AdminService;
 import com.softserve.edu.rest.services.GuestService;
 import com.softserve.edu.rest.services.UserService;
 
@@ -21,38 +19,30 @@ public class LoginTest extends RestTestRunner {
 		//logger.info("@DataProvider correctUser() DONE");
         return new Object[][]{
                 { UserRepository.getAdmin() },
+				//{ UserRepository.createVasya() },
         };
     }
 
 	@Test(dataProvider = "correctUser")
 	public void verifyLogin(User user) {
-//		logger.info("loginPositiveTest START, user = " + user);
-	    //log.debug("loginPositiveTest started!");
-		//
-	    //Steps
-	    UserService userService = new GuestService()
-	        	.successfulUserLogin(user);
-	    RestParameters urlParameters = new RestParameters()
-				.addParameter("token", userService.getToken());
-	    //SimpleEntity loginedAdmins = loginResource.httpGetLoginedAdmins(null, urlParameters);
-		//System.out.println("loginedAdmins: " + loginedAdmins);
-	    //System.out.println("++++++++");
-	    //
-	    //Check
-//	    Assert.assertTrue(userService.isUserLogged(user));
+		logger.info("loginPositiveTest START, user = " + user);
+//create user
+//		AdminService adminService = new GuestService()
+//				.successfulAdminLogin(admin)
+//				.createUser2();
 
-	    //
-	    //Step
+	    UserService userService = new GuestService()
+				.successfulUserLogin(user);
+
+		Assert.assertNotEquals(userService.getToken(),"Error Login");
+
 	    GuestService guestService = userService.logout();
-	    System.out.println("======" + userService.getToken());
-	    //Assert.assertFalse(guestService.isUserLogged(user));
-	    //
-	    AdminService adminService = guestService
-	        	.successfulAdminLogin(user);
-	    //
-	    guestService = adminService.logout();
-	    //
-	    //log.debug("loginPositiveTest finished!");
-//	    logger.info("loginPositiveTest DONE, user = " + user);
+
+//	    AdminService adminService = guestService
+//	        	.successfulAdminLogin(user);
+//		Assert.assertNotEquals(userService.getToken(),"Error Login");
+//	    uestService = adminService.logout();
+
+	    logger.info("loginPositiveTest DONE, user = " + user);
 	    }
 }

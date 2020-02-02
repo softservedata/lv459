@@ -112,6 +112,8 @@ public class GuestService {
 		return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
 	}
 
+
+
 //	public AdminService ChangeCurrentPassword(User adminUser) {
 //		String pass = "1111";
 //		RestParameters bodyParameters = new RestParameters().addParameter("token", adminUser.getToken())
