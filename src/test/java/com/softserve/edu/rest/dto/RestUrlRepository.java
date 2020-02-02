@@ -47,6 +47,10 @@ public final class RestUrlRepository {
 				.addPatchUrl("");
 	}
 
+    /**
+     *
+     * @return
+     */
 	public static RestUrl getUserItem() {
 		return new RestUrl()
 				.addBaseUrl(server)
@@ -57,6 +61,10 @@ public final class RestUrlRepository {
 				.addPatchUrl("");
 	}
 
+    /**
+     *
+     * @return
+     */
 	public static RestUrl getItem() {
 		return new RestUrl().addBaseUrl(server)
 				.addGetUrl("/item/{index}")
