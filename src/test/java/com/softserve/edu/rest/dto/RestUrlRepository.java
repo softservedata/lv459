@@ -66,4 +66,5 @@ public final class RestUrlRepository {
 				.addPatchUrl("");
 	}
 
+	// TODO loco add here resources for item addition etc by loco
 }

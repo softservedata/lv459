@@ -11,6 +11,7 @@ public class AdminService extends UserService {
 	public AdminService(LoginedUser loginedUser) {
 		super(loginedUser);
 		check();
+		System.out.println(loginResource.toString());
 	}
 	
 	private void check() {

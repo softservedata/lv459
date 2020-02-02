@@ -22,5 +22,8 @@ public class UserService extends GuestService {
 		checkEntity(simpleEntity, "false", "Error Logout");
 		return new GuestService();
 	}
-	
+
+	public String  getToken (){
+		return loginedUser.getToken();
+	}
 }

@@ -17,4 +17,8 @@ public final class UserRepository {
 		return new User("Anna", "ksjddlfkjddqwerty", false).addItem("My data");
 	}
 
+	public static User someNotAdminUser (){
+		return new User("user", "qwerty", false).addItem("usersNewItem");
+	}
+
 }
