@@ -90,6 +90,8 @@ public abstract class RestCrud {
                 }
             }
         }
+
+        System.out.println("prepare path variables from RestCrud; url = " + url);
         return url;
     }
 

@@ -9,7 +9,7 @@ import com.softserve.edu.rest.resources.ItemIndexResource;
 public class UserService extends GuestService {
 
     protected LoginedUser loginedUser;
-    protected ItemIndexResource itemIndexResource;
+    protected ItemIndexResource itemByIndexResource;
 
     public UserService(LoginedUser loginedUser) {
         // super();
@@ -36,10 +36,11 @@ public class UserService extends GuestService {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", getToken());
         RestParameters pathVariables = new RestParameters()
-                .addParameter("", index);
+                .addParameter(index, index);
 
-        SimpleEntity simpleEntity = itemIndexResource
-                .httpGetAsEntity(pathVariables,
+        SimpleEntity simpleEntity = itemByIndexResource
+                .httpGetAsEntity(
+                        pathVariables,
                                  bodyParameters);
         System.out.println("simpleEntity =" + simpleEntity.getContent());
         return simpleEntity.getContent();
@@ -54,9 +55,9 @@ public class UserService extends GuestService {
         RestParameters pathVariables = new RestParameters()
                 .addParameter("", item.getItemIndex());
 
-        SimpleEntity simpleEntity = itemIndexResource
+        SimpleEntity simpleEntity = itemByIndexResource
                 .httpGetAsEntity(pathVariables, bodyParameters);
-        System.out.println("answer from server on add one item: " +simpleEntity.getContent());
+        System.out.println("answer from server on add one item: " + simpleEntity.getContent());
         return this;
     }
 

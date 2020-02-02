@@ -35,12 +35,10 @@ public class AddItemTest extends RestTestRunner {
                 .successfulUserLogin(user)
                 .successfulAdminLogin(user);
 
-        System.out.println(
-                "logined user as admin: token " + adminService.toString());
+        System.out.println("token = " + adminService.getToken());
 
-        System.out.println(adminService.getToken());
-
-        adminService.postNewItemByIndex(new Item("0", "new item from idea!"));
+        adminService.getItemByIndex("0");
+//        adminService.postNewItemByIndex(new Item("0", "new item from idea!"));
 
         //
         //Steps

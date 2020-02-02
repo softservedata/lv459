@@ -1,10 +1,8 @@
 package com.softserve.edu.rest.dto;
 
 import com.softserve.edu.rest.data.User;
-import com.softserve.edu.rest.services.UserService;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class LoginedUser {
 
@@ -31,7 +29,7 @@ public class LoginedUser {
         return loginTime;
     }
 
-    public ArrayList <String> fillAllItems() {
+    public ArrayList<String> fillAllItems() {
         //    "content": "1 \tnew item by loco\n3 \tnew item by loco\n"
         // TODO - parse results into 'items'arraylist
         return fillAllItems();
