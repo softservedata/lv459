@@ -33,5 +33,35 @@ public class AdminService extends UserService {
 		checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
 		return this;
 	}
-	
+
+
+	//Dana code
+
+	//create user
+	public AdminService createUser() {
+		RestParameters bodyParameters = new RestParameters()
+				.addParameter("token", loginedUser.getToken())
+				.addParameter("name", "Dana")
+				.addParameter("password","qwerty")
+				.addParameter("rights", "false");
+		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
+		System.out.println(simpleEntity);
+		checkEntity(simpleEntity, "false", "Error create user");
+		return this;
+	}
+
+	//delete user
+	public AdminService deleteUser() {
+		RestParameters bodyParameters = new RestParameters()
+				.addParameter("token", loginedUser.getToken())
+				.addParameter("name", "Dana")
+				.addParameter("password","qwerty")
+				.addParameter("rights", "false");
+		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
+		System.out.println(simpleEntity);
+		checkEntity(simpleEntity, "false", "Error delete user");
+		return this;
+	}
+
+	//get all users
 }
