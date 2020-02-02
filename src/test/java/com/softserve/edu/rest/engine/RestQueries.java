@@ -3,6 +3,7 @@ package com.softserve.edu.rest.engine;
 import com.google.gson.Gson;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.dto.RestUrl;
+import com.softserve.edu.rest.dto.RestUrlRepository;
 
 public abstract class RestQueries<TGET, TPOST, TPUT, TDELETE, TPATCH> extends RestCrud {
 
@@ -27,6 +28,11 @@ public abstract class RestQueries<TGET, TPOST, TPUT, TDELETE, TPATCH> extends Re
 		this.classTDELETE = classTDELETE;
 		this.classTPATCH = classTPATCH;
 		gson = new Gson();
+	}
+
+	//Trainee on fire
+	public RestQueries(RestUrl adminAuthorized) {
+		super(RestUrlRepository.getAdminAuthorized());
 	}
 
 	// TODO Move Converter to class

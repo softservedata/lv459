@@ -1,5 +1,6 @@
 package com.softserve.edu.rest.services;
 
+import com.softserve.edu.rest.resources.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,14 +9,13 @@ import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
-import com.softserve.edu.rest.resources.ApplicationResource;
-import com.softserve.edu.rest.resources.LoginResource;
-import com.softserve.edu.rest.resources.TokenlifetimeResource;
 
 public class GuestService {
 	public static final Logger logger = LoggerFactory.getLogger(GuestService.class); // org.slf4j.LoggerFactory
 
 	protected LoginResource loginResource;
+	protected LoginUserResource loginUserResource;
+	protected LoginAdminResource loginAdminResource;
 	protected TokenlifetimeResource tokenlifetimeResource;
 //	protected CooldownResource cooldownResource;
 	private ApplicationResource applicationResource;

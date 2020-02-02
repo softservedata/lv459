@@ -37,14 +37,21 @@ public class AdminService extends UserService {
 	}
 
 	//alessandro
-//	public boolean isUserLogged(User user) {
-//
-//		if (getAllLoggedUsers().contains(user.getName())) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-//	}
+	public String getAllLoggedUsers() {
+		RestParameters urlParameters = new RestParameters()
+				.addParameter("token", loginedUser.getToken());
+		SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
+		return simpleEntity.getContent();
+	}
+
+	public boolean isUserLogged(User user) {
+
+		if (getAllLoggedUsers().contains(user.getName())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	//create user
 	public AdminService createUser2( ) {
