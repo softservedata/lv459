@@ -42,5 +42,6 @@ public class UserService extends GuestService {
 		checkEntity(simpleEntity, "false", "Error change password");
 		return new UserService(loginedUser);
 	}
+
 }
 
