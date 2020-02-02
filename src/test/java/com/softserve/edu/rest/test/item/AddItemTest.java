@@ -40,7 +40,7 @@ public class AddItemTest extends RestTestRunner {
 
         System.out.println(adminService.getToken());
 
-        adminService.postNewItemByIndex(new Item("0", "new item from idea!"))
+        adminService.postNewItemByIndex(new Item("0", "new item from idea!"));
 
         //
         //Steps
