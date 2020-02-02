@@ -7,7 +7,7 @@ import com.softserve.edu.rest.entity.SimpleEntity;
 public class ItemIndexResource extends RestQueries<SimpleEntity, SimpleEntity, SimpleEntity, SimpleEntity, SimpleEntity> {
 
     public ItemIndexResource() {
-    	super(RestUrlRepository.getTokenLifetime(),
+    	super(RestUrlRepository.getItem(),
 				SimpleEntity.class, SimpleEntity.class,
 				SimpleEntity.class, SimpleEntity.class, SimpleEntity.class);
     }

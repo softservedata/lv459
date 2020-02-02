@@ -37,25 +37,18 @@ public class AddItemTest extends RestTestRunner {
 
         System.out.println("token = " + adminService.getToken());
 
-        adminService.getItemByIndex("0");
-//        adminService.postNewItemByIndex(new Item("0", "new item from idea!"));
+//        adminService.getItemByIndex("0");
+        adminService.postNewItemByIndex(new Item("0", "new item from idea!"));
 
         //
         //Steps
 
         //
         //Check
-        //Assert.assertTrue(userService.isUserLogged(user));
+
         //
-        //Step
-        //        GuestService guestService = userService.logout();
-        //Assert.assertFalse(guestService.isUserLogged(user));
-        //
-        //        AdminService adminService = guestService
-        //                .successfulAdminLogin(user);
-        //        //
-        //        guestService = adminService.logout();
-        //
+        //Steps
+
         //log.debug("loginPositiveTest finished!");
         //logger.info("loginPositiveTest DONE, user = " + user);
     }
