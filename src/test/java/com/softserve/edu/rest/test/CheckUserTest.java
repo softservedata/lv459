@@ -29,10 +29,10 @@ public class CheckUserTest extends RestTestRunner {
         GuestService guestService = new GuestService();
 
         AdminService adminService = guestService
-                .successfulAdminLogin(admin)
-                .createUser(); //error user not found
+                .successfulAdminLogin(admin);
 
-       // logger.info("admin token = " + adminService.getToken());
+          adminService.createUser();
+
 
         //logout
         adminService.logout();
