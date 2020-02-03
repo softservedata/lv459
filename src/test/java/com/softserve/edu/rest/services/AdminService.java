@@ -1,9 +1,11 @@
 package com.softserve.edu.rest.services;
 
 import com.softserve.edu.rest.data.Lifetime;
+import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
+import com.softserve.edu.rest.resources.TokenlifetimeResource;
 import com.softserve.edu.rest.tools.RegexUtils;
 
 public class AdminService extends UserService {
@@ -24,7 +26,7 @@ public class AdminService extends UserService {
             throw new RuntimeException("Error Admin Login. Response: " + loginedAdmins.getContent());
 		}
 	}
-	
+
 	public AdminService changeCurrentLifetime(Lifetime lifetime) {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken())
@@ -34,14 +36,28 @@ public class AdminService extends UserService {
 		return this;
 	}
 
+	//alessandro
+	public String getAllLoggedUsers() {
+		RestParameters urlParameters = new RestParameters()
+				.addParameter("token", loginedUser.getToken());
+		SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
+		return simpleEntity.getContent();
+	}
 
-	//Dana code
+	public boolean isUserLogged(User user) {
+
+		if (getAllLoggedUsers().contains(user.getName())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	//create user
-	public AdminService createUser() {
+	public AdminService createUser2( ) {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken())
-				.addParameter("name", "Dana")
+				.addParameter("name", "Vasya")
 				.addParameter("password","qwerty")
 				.addParameter("rights", "false");
 		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
@@ -50,8 +66,10 @@ public class AdminService extends UserService {
 		return this;
 	}
 
-	//delete user
-	public AdminService deleteUser() {
+	//Dana code
+	//create user
+	public AdminService createUser( ) {
+		logger.debug("creation of user START");
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken())
 				.addParameter("name", "Dana")
@@ -59,9 +77,24 @@ public class AdminService extends UserService {
 				.addParameter("rights", "false");
 		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
 		System.out.println(simpleEntity);
+		checkEntity(simpleEntity, "false", "Error create user");
+		logger.debug("creation of user DONE");
+		return this;
+	}
+
+	//delete user
+	public AdminService deleteUser() {
+		RestParameters bodyParameters = new RestParameters()
+				.addParameter("token", loginedUser.getToken())
+				.addParameter("name", "Dana");
+		SimpleEntity simpleEntity = loginResource.httpDeleteAsEntity(null, null, bodyParameters);
+		System.out.println(simpleEntity);
 		checkEntity(simpleEntity, "false", "Error delete user");
 		return this;
 	}
 
 	//get all users
+
+	//change user password
+
 }

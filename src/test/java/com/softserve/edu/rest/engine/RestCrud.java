@@ -90,6 +90,8 @@ public abstract class RestCrud {
                 }
             }
         }
+
+        System.out.println("prepare path variables from RestCrud; url = " + url);
         return url;
     }
 
@@ -115,6 +117,10 @@ public abstract class RestCrud {
         }
         String url = preparePathVariables(requestUrl, pathVariables);
         url = prepareUrlParameters(url, urlParameters);
+
+        // TODO - remove when url is good
+        System.out.println("logoutURL = "+ url);
+
         return new Request.Builder().url(url);
     }
     
@@ -156,7 +162,9 @@ public abstract class RestCrud {
     }
 
     protected String httpGetAsText(RestParameters pathVariables, RestParameters urlParameters, RestUrl restUrl) {
-    	return responseBodyAsText(httpGetAsResponse(pathVariables, urlParameters, restUrl));
+        String r = responseBodyAsText(httpGetAsResponse(pathVariables, urlParameters, restUrl));
+        System.out.println("From rest crud.class. 166 line: httpGetAsText = "  + r);
+    	return r;
     }
 
     protected String httpGetAsText(RestParameters pathVariables, RestParameters urlParameters) {
