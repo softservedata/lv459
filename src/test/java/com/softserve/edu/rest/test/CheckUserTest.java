@@ -1,11 +1,11 @@
 package com.softserve.edu.rest.test;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.data.UserRepository;
 import com.softserve.edu.rest.services.AdminService;
 import com.softserve.edu.rest.services.GuestService;
-import com.softserve.edu.rest.services.UserService;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 public class CheckUserTest extends RestTestRunner {
 
