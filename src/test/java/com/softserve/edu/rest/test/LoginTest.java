@@ -28,13 +28,14 @@ public class LoginTest extends RestTestRunner {
 		logger.info("loginPositiveTest START, user = " + user);
 //create user
 //		AdminService adminService = new GuestService()
-//				.successfulAdminLogin(admin)
+//				.successfulAdminLogin(admin);
 //				.createUser2();
 
-	    UserService userService = new GuestService()
+	    UserService userService = loadApplication()
 				.successfulUserLogin(user);
 
-		Assert.assertNotEquals(userService.getToken(),"Error Login");
+		//Assert.assertNotEquals(userService.getToken(),"Error Login");
+        Assert.assertTrue(userService.isUserLogged(user));
 
 	    GuestService guestService = userService.logout();
 

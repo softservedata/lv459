@@ -18,12 +18,12 @@ public class CheckUserTest extends RestTestRunner {
     public Object[][] correctUser() {
         logger.info("@DataProvider correctUser() DONE");
         return new Object[][]{
-                { UserRepository.getAdmin()}
+                { UserRepository.getAdmin(), UserRepository.getDana()}
         };
     }
 
     @Test(dataProvider = "correctUser")
-    public void verifyLogin(User admin){
+    public void verifyLogin(User admin, User newUser){
         logger.info("checkUser Test  START, admin = " + admin);
 
         GuestService guestService = new GuestService();
@@ -31,9 +31,9 @@ public class CheckUserTest extends RestTestRunner {
         AdminService adminService = guestService
                 .successfulAdminLogin(admin);
 
-          adminService.createUser();
+          adminService.createUser(newUser);
 
-
+          adminService.getAllUsers();
         //logout
         adminService.logout();
 

@@ -37,21 +37,21 @@ public class AdminService extends UserService {
 	}
 
 	//alessandro
-	public String getAllLoggedUsers() {
-		RestParameters urlParameters = new RestParameters()
-				.addParameter("token", loginedUser.getToken());
-		SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
-		return simpleEntity.getContent();
-	}
-
-	public boolean isUserLogged(User user) {
-
-		if (getAllLoggedUsers().contains(user.getName())) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+//	public String getAllLoggedUsers() {
+//		RestParameters urlParameters = new RestParameters()
+//				.addParameter("token", loginedUser.getToken());
+//		SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
+//		return simpleEntity.getContent();
+//	}
+//
+//	public boolean isUserLogged(User user) {
+//
+//		if (getAllLoggedUsers().contains(user.getName())) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 
 	//create user
 	public AdminService createUser2( ) {
@@ -68,13 +68,13 @@ public class AdminService extends UserService {
 
 	//Dana code
 	//create user
-	public AdminService createUser( ) {
+	public AdminService createUser( User newUser) {
 		logger.debug("creation of user START");
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken())
-				.addParameter("name", "Dana")
-				.addParameter("password","qwerty")
-				.addParameter("rights", "false");
+				.addParameter("name", newUser.getName())
+				.addParameter("password", newUser.getPassword())
+				.addParameter("rights", String.valueOf(newUser.isAdmin()));
 		SimpleEntity simpleEntity = userResource.httpPostAsEntity(null, null, bodyParameters);
 		System.out.println(simpleEntity);
 		checkEntity(simpleEntity, "false", "Error create user");
@@ -83,18 +83,25 @@ public class AdminService extends UserService {
 	}
 
 	//delete user
-	public AdminService deleteUser() {
+	public AdminService deleteUser( User existUser) {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken())
-				.addParameter("name", "Dana");
-		SimpleEntity simpleEntity = loginResource.httpDeleteAsEntity(null, null, bodyParameters);
+				.addParameter("name", existUser.getName());
+		SimpleEntity simpleEntity = userResource.httpDeleteAsEntity(null, null, bodyParameters);
 		System.out.println(simpleEntity);
 		checkEntity(simpleEntity, "false", "Error delete user");
 		return this;
 	}
 
 	//get all users
-
+	public AdminService getAllUsers() {
+		RestParameters bodyParameters = new RestParameters()
+				.addParameter("token", loginedUser.getToken());
+		SimpleEntity simpleEntity = userResource.httpGetAsEntity(null, bodyParameters);
+		System.out.println(simpleEntity);
+		checkEntity(simpleEntity, "false", "Error get all users");
+		return this;
+	}
 	//change user password
 
 }

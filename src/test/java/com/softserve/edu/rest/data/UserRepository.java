@@ -25,4 +25,8 @@ public final class UserRepository {
 		return new User("Vasya", "qwerty", false).addItem("usersNewItem");
 	}
 
+	public static User getDana(){
+		return new User("Dana", "qwerty", false).addItem("usersNewItem");
+	}
+
 }
