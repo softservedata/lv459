@@ -36,7 +36,6 @@ public class GuestService {
 
 	protected void checkEntity(SimpleEntity simpleEntity,
 			String wrongMessage, String errorMessage) {
-		// if (!simpleEntity.getContent().toLowerCase().equals("true"))
 		if ((simpleEntity.getContent() == null)
 				|| (simpleEntity.getContent().isEmpty())
 				|| (simpleEntity.getContent().toLowerCase()
