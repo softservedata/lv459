@@ -27,8 +27,12 @@ public class GuestService {
 		tokenlifetimeResource = new TokenlifetimeResource();
 //		cooldownResource = new CooldownResource();
 		applicationResource = new ApplicationResource();
+<<<<<<< HEAD
 		loginUserResource = new LoginUserResource();
 		loginAdminResource = new LoginAdminResource();
+=======
+		userResource = new UserResource();
+>>>>>>> f6f68f2554e674c6225fc81ae7f880cdbb409c4d
 	}
 
 //	public GuestService(LoginResource loginResource, TokenlifetimeResource tokenlifetimeResource) {
