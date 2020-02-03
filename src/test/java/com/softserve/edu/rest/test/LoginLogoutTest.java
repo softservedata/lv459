@@ -35,7 +35,7 @@ public class LoginLogoutTest extends RestTestRunner {
         };
     }
 	
-	//@Test(dataProvider = "correctUser")
+//	@Test(dataProvider = "correctUser")
 	public void verifyLogin(User user) {
 		//logger.info("loginPositiveTest START, user = " + user);
         //log.debug("loginPositiveTest started!");

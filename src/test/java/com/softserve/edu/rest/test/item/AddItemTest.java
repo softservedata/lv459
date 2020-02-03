@@ -5,6 +5,7 @@ import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.data.UserRepository;
 import com.softserve.edu.rest.services.AdminService;
 import com.softserve.edu.rest.services.GuestService;
+import com.softserve.edu.rest.services.UserService;
 import com.softserve.edu.rest.test.RestTestRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,15 +31,17 @@ public class AddItemTest extends RestTestRunner {
         logger.info("loginPositiveTest AddItem START, user = " + user);
         logger.debug("loginPositiveTest started!");
 
-        // prerequisites. create new user.
-        AdminService adminService = new GuestService()
+        // prerequisites.
+        UserService
+                service = new GuestService()
                 .successfulUserLogin(user)
-                .successfulAdminLogin(user);
+//                .successfulAdminLogin(user)
+                ;
 
-        System.out.println("token = " + adminService.getToken());
+        System.out.println("token = " + service.getToken());
 
-//        adminService.getItemByIndex("0");
-        adminService.postNewItemByIndex(new Item("0", "new item from idea!"));
+//        service.getItemByIndex("0");
+        service.postNewItemByIndex(new Item("0", "new item from idea!"));
 
         //
         //Steps
