@@ -19,7 +19,7 @@ public final class RestUrlRepository {
 	public static RestUrl getUser() {
 		return new RestUrl()
 				.addBaseUrl(server)
-				.addGetUrl("/user")
+				.addGetUrl("/users")
 				.addPostUrl("/user")
 				.addPutUrl("/user")
 				.addDeleteUrl("/user");
