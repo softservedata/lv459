@@ -5,7 +5,6 @@ import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
-import com.softserve.edu.rest.resources.TokenlifetimeResource;
 import com.softserve.edu.rest.tools.RegexUtils;
 
 public class AdminService extends UserService {
@@ -20,7 +19,7 @@ public class AdminService extends UserService {
 		RestParameters urlParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken());
 		SimpleEntity loginedAdmins = loginResource.httpGetLoginedAdmins(null, urlParameters);
-		System.out.println("loginedAdmins: " + loginedAdmins);
+		logger.info("LoginedAdmins: " + loginedAdmins);
 		if (!RegexUtils.isTextContains("admin", loginedAdmins.getContent())) {
 			// TODO Develop Custom Exception
             throw new RuntimeException("Error Admin Login. Response: " + loginedAdmins.getContent());
