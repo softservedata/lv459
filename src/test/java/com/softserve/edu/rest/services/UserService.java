@@ -1,6 +1,7 @@
 package com.softserve.edu.rest.services;
 
 import com.softserve.edu.rest.data.Item;
+import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
@@ -61,6 +62,21 @@ public class UserService extends GuestService {
         return this;
     }
 
+    //alessandro
+    public String getAllLoggedUsers() {
+        RestParameters urlParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
+        return simpleEntity.getContent();
+    }
+    public boolean isUserLogged(User user) {
+
+        if (getAllLoggedUsers().contains(user.getName())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     //DELETE item .addText("URL=/item/{index}, method=DELETE deleteItem,
     // PARAMETERS= token, index")
 
