@@ -17,8 +17,10 @@ public class GuestService {
 	protected LoginUserResource loginUserResource;
 	protected LoginAdminResource loginAdminResource;
 	protected TokenlifetimeResource tokenlifetimeResource;
+	protected UserResource userResource;
 //	protected CooldownResource cooldownResource;
 	private ApplicationResource applicationResource;
+
 
 	public GuestService() {
 		loginResource = new LoginResource();

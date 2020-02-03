@@ -75,7 +75,7 @@ public class AdminService extends UserService {
 				.addParameter("name", "Dana")
 				.addParameter("password","qwerty")
 				.addParameter("rights", "false");
-		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
+		SimpleEntity simpleEntity = userResource.httpPostAsEntity(null, null, bodyParameters);
 		System.out.println(simpleEntity);
 		checkEntity(simpleEntity, "false", "Error create user");
 		logger.debug("creation of user DONE");
