@@ -83,11 +83,11 @@ public class AdminService extends UserService {
 	}
 
 	//delete user
-	public AdminService deleteUser( User existUser) {
+	public AdminService removeUser( User existUser) {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken())
 				.addParameter("name", existUser.getName());
-		SimpleEntity simpleEntity = userResource.httpDeleteAsEntity(null, null, bodyParameters);
+		SimpleEntity simpleEntity = userResource.httpDeleteAsEntity(null, bodyParameters, null);//тут бага
 		System.out.println(simpleEntity);
 		checkEntity(simpleEntity, "false", "Error delete user");
 		return this;
@@ -102,6 +102,8 @@ public class AdminService extends UserService {
 		checkEntity(simpleEntity, "false", "Error get all users");
 		return this;
 	}
+
+
 	//change user password
 
 }

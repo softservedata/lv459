@@ -15,7 +15,8 @@ public final class RestUrlRepository {
 				.addDeleteUrl("/logout");
 		// .addDeleteUrl("/logout");
 	}
-	//new user DANA
+
+	//new user
 	public static RestUrl getUser() {
 		return new RestUrl()
 				.addBaseUrl(server)

@@ -32,8 +32,16 @@ public class CheckUserTest extends RestTestRunner {
                 .successfulAdminLogin(admin);
 
           adminService.createUser(newUser);
+            //Assert
 
           adminService.getAllUsers();
+
+          adminService.removeUser(newUser);
+
+          //Assert
+
+          adminService.getAllUsers();
+
         //logout
         adminService.logout();
 

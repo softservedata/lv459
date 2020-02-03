@@ -235,7 +235,7 @@ public abstract class RestCrud {
     protected Response httpDeleteAsResponse(RestParameters pathVariables, RestParameters urlParameters,
             RestParameters bodyParameters) {
     	checkImplementation(RestUrlKeys.DELETE);
-        return executeRequest(prepareRequestBuilder(getRestUrl().readDeleteUrl(), pathVariables, urlParameters)
+    	return executeRequest(prepareRequestBuilder(getRestUrl().readDeleteUrl(), pathVariables, urlParameters)
                 .delete(prepareRequestBody(bodyParameters)).build());
     }
 
