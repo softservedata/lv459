@@ -95,7 +95,7 @@ public class GuestService {
 //    }
 //
 
-<<<<<<< HEAD
+/*
     public UserService successfulUserLogin(User user) {
         logger.debug("successfulUserLogin START, user = " + user);
         RestParameters bodyParameters = new RestParameters()
@@ -106,17 +106,17 @@ public class GuestService {
         checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
         logger.debug("successfulUserLogin DONE, user = " + user);
         return new UserService(new LoginedUser(user, simpleEntity.getContent()));
-    }
+    }*/
 
-    public AdminService successfulAdminLogin(User adminUser) {
+/*    public AdminService successfulAdminLogin(User adminUser) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("name", adminUser.getName())
                 .addParameter("password", adminUser.getPassword());
         SimpleEntity adminContent = loginResource.httpPostAsEntity(null, null, bodyParameters);
         checkEntity(adminContent, "ERROR, user not found", "Error Login");
         return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
-    }
-=======
+    }*/
+
 	public UserService successfulUserLogin(User user) {
 		logger.debug("SuccessfulUserLogin START, user = " + user);
 		RestParameters bodyParameters = new RestParameters()
@@ -138,7 +138,7 @@ public class GuestService {
 		return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
 	}
 
->>>>>>> eebd4457de38751a147f42205fd5287b471ecfbd
+
 
 
 //	public AdminService ChangeCurrentPassword(User adminUser) {
