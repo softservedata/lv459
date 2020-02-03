@@ -10,23 +10,23 @@ public final class UserRepository {
 	}
 
 	public static User getAdmin() {
-		return new User("admin", "qwerty", true).addItem("My data");
+		return new User("admin", "qwerty", true).addItem(ItemRepository.getDefaultItemIndex0());
 	}
 
 	public static User notExistingUser() {
-		return new User("Anna", "ksjddlfkjddqwerty", false).addItem("My data");
+		return new User("Anna", "ksjddlfkjddqwerty", false).addItem(ItemRepository.getDefaultItemIndex0());
 	}
 
 	public static User someNotAdminUser (){
-		return new User("user", "qwerty", false).addItem("usersNewItem");
+		return new User("user", "qwerty", false).addItem(ItemRepository.getDefaultItemIndex0());
 	}
 
 	public static User createVasya(){
-		return new User("Vasya", "qwerty", false).addItem("usersNewItem");
+		return new User("Vasya", "qwerty", false).addItem(ItemRepository.getDefaultItemIndex0());
 	}
 
 	public static User getDana(){
-		return new User("Dana", "qwerty", false).addItem("usersNewItem");
+		return new User("Dana", "qwerty", false).addItem(ItemRepository.getDefaultItemIndex0());
 	}
 
 }

@@ -1,7 +1,9 @@
 package com.softserve.edu.rest.data;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
 
@@ -11,14 +13,14 @@ public class User {
 	private String name;
 	private String password;
 	private boolean isAdmin;
-	private List<String> items;
+	private Map<String, String> items;
 
 	// TODO Develop Builder
 	public User(String name, String password, boolean isAdmin) {
 		this.name = name;
 		this.password = password;
 		this.isAdmin = isAdmin;
-		items = new ArrayList<>();
+		items = new HashMap();
 	}
 
 	// setters
@@ -38,8 +40,8 @@ public class User {
 		return this;
 	}
 
-	public User addItem(String item) {
-		items.add(item);
+	public User addItem(Item item) {
+		items.put(item.getItemIndex(), item.getItemText());
 		return this;
 	}
 	
@@ -57,7 +59,7 @@ public class User {
 		return isAdmin;
 	}
 
-	public List<String> getItems() {
+	public Map<String, String > getItems() {
 		return items;
 	}
 
