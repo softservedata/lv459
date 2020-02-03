@@ -6,7 +6,7 @@ public class Item {
 
     private String itemText;
 
-    public Item (String itemIndex, String itemText){
+    public Item(String itemIndex, String itemText) {
         this.itemIndex = itemIndex;
         this.itemText = itemText;
     }

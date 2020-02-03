@@ -35,4 +35,9 @@ public class LoginedUser {
         return fillAllItems();
     }
 
+    @Override
+    public String toString() {
+        return user + "";
+    }
+
 }

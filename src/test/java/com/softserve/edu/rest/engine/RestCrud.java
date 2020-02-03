@@ -32,7 +32,7 @@ public abstract class RestCrud {
 	protected RestUrl getRestUrl() {
 		return restUrl;
 	}
-    
+
     // protected - - - - - - - - - - - - - - - - - - - -
 
     protected void throwException(String message)
@@ -55,7 +55,7 @@ public abstract class RestCrud {
     }
 
     // Parameters - - - - - - - - - - - - - - - - - - - -
- 
+
 	private String prepareUrlParameters(String urlTemplate, RestParameters urlParameters)
     {
         if (urlParameters != null)
@@ -123,7 +123,7 @@ public abstract class RestCrud {
 
         return new Request.Builder().url(url);
     }
-    
+
     private Response executeRequest(Request request) {
         Response result = null;
         try {
@@ -135,7 +135,7 @@ public abstract class RestCrud {
         }
         return result;
     }
-    
+
     private String responseBodyAsText(Response response) {
         String responseText = null;
         try {
@@ -148,7 +148,7 @@ public abstract class RestCrud {
         }
         return responseText;
     }
-    
+
     // Http Get - - - - - - - - - - - - - - - - - - - -
 
     protected Response httpGetAsResponse(RestParameters pathVariables, RestParameters urlParameters, RestUrl restUrl) {
