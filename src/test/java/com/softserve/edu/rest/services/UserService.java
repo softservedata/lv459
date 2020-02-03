@@ -85,4 +85,38 @@ public class UserService extends GuestService {
 
     //PUT .addText("URL=/item/{index}, method=PUT updateItem, PARAMETERS=
     // token, index, item")
+
+
+
+
+    //Dana code
+    //change user password
+    public UserService changePassword(User existUser) {
+        logger.debug("change password START");
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken())
+                .addParameter("oldpassword", existUser.getPassword())
+                .addParameter("newpassword", String.valueOf(existUser.setPassword("qwerty5")));
+        SimpleEntity simpleEntity = userResource.httpPutAsEntity(null,null,  bodyParameters);
+        System.out.println(simpleEntity);
+        checkEntity(simpleEntity, "false", "Error change password");
+        logger.debug("change password DONE");
+        return this;
+    }
+
+    //is user created
+    public boolean isUserCreated(User user) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = userResource.httpGetAsEntity(null, bodyParameters);
+        return simpleEntity.getContent().contains(user.getName());
+    }
+
+    //is user removed
+    public boolean isUserRemoved(User user) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = userResource.httpGetAsEntity(null, bodyParameters);
+        return !simpleEntity.getContent().contains(user.getName());
+    }
 }

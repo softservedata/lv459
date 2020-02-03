@@ -83,27 +83,27 @@ public class AdminService extends UserService {
 	}
 
 	//delete user
-	public AdminService removeUser( User existUser) {
+	public AdminService removeUser(User existUser) {
+		logger.debug("removing  user START");
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken())
 				.addParameter("name", existUser.getName());
-		SimpleEntity simpleEntity = userResource.httpDeleteAsEntity(null, bodyParameters, null);//тут бага
+		SimpleEntity simpleEntity = userResource.httpDeleteAsEntity(null, bodyParameters, null);//bug of application
 		System.out.println(simpleEntity);
 		checkEntity(simpleEntity, "false", "Error delete user");
+		logger.debug("removing user DONE");
 		return this;
 	}
 
 	//get all users
 	public AdminService getAllUsers() {
+		logger.debug("get all user START");
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken());
 		SimpleEntity simpleEntity = userResource.httpGetAsEntity(null, bodyParameters);
 		System.out.println(simpleEntity);
 		checkEntity(simpleEntity, "false", "Error get all users");
+		logger.debug("get all user DONE");
 		return this;
 	}
-
-
-	//change user password
-
 }
