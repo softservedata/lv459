@@ -1,9 +1,9 @@
 package com.softserve.edu.rest.test.item;
 
 import com.softserve.edu.rest.data.Item;
+import com.softserve.edu.rest.data.ItemRepository;
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.data.UserRepository;
-import com.softserve.edu.rest.services.AdminService;
 import com.softserve.edu.rest.services.GuestService;
 import com.softserve.edu.rest.services.UserService;
 import com.softserve.edu.rest.test.RestTestRunner;
@@ -15,8 +15,6 @@ import org.testng.annotations.Test;
 public class AddItemTest extends RestTestRunner {
     public static final Logger logger =
             LoggerFactory.getLogger(AddItemTest.class);
-    // org.slf4j.LoggerFactory
-    //public final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @DataProvider
     public Object[][] correctAdmin() {
@@ -28,20 +26,20 @@ public class AddItemTest extends RestTestRunner {
 
     @Test(dataProvider = "correctAdmin")
     public void verifyAddItem(User user) {
-        logger.info("loginPositiveTest AddItem START, user = " + user);
-        logger.debug("loginPositiveTest started!");
-
-        // prerequisites.
-        UserService
-                service = new GuestService()
+        logger.info("LoginPositiveTest AddItem START, user = " + user);
+        logger.debug("LoginPositiveTest started!");
+        Item item = ItemRepository.getDefaultItemIndex0();
+        // prerequisites - run test as admin / run test as user?
+        UserService service = new GuestService()
                 .successfulUserLogin(user)
-//                .successfulAdminLogin(user)
+                //                .successfulAdminLogin(user)
                 ;
 
-        System.out.println("token = " + service.getToken());
+        logger.info("We've got token = " + service.getToken());
 
-//        service.getItemByIndex("0");
-        service.postNewItemByIndex(new Item("0", "new item from idea!"));
+        //        service.getItemByIndex("0");
+        service.postNewItemByIndex(item)
+               .getItemByIndex(item);
 
         //
         //Steps
@@ -52,7 +50,7 @@ public class AddItemTest extends RestTestRunner {
         //
         //Steps
 
-        //log.debug("loginPositiveTest finished!");
-        //logger.info("loginPositiveTest DONE, user = " + user);
+        logger.debug("AddItemPositiveTest finished!");
+        logger.info("AddItemPositiveTest DONE, user = " + user + "item = " + item);
     }
 }

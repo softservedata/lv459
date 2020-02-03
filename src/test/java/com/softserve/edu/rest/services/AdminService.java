@@ -5,11 +5,11 @@ import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
-import com.softserve.edu.rest.resources.TokenlifetimeResource;
 import com.softserve.edu.rest.tools.RegexUtils;
 
 public class AdminService extends UserService {
 
+<<<<<<< HEAD
     public AdminService(LoginedUser loginedUser) {
         super(loginedUser);
         check();
@@ -23,6 +23,21 @@ public class AdminService extends UserService {
         System.out.println("loginedAdmins: " + loginedAdmins);
         if (!RegexUtils.isTextContains("admin", loginedAdmins.getContent())) {
             // TODO Develop Custom Exception
+=======
+	public AdminService(LoginedUser loginedUser) {
+		super(loginedUser);
+		check();
+		System.out.println(loginResource.toString());
+	}
+	
+	private void check() {
+		RestParameters urlParameters = new RestParameters()
+				.addParameter("token", loginedUser.getToken());
+		SimpleEntity loginedAdmins = loginResource.httpGetLoginedAdmins(null, urlParameters);
+		logger.info("LoginedAdmins: " + loginedAdmins);
+		if (!RegexUtils.isTextContains("admin", loginedAdmins.getContent())) {
+			// TODO Develop Custom Exception
+>>>>>>> eebd4457de38751a147f42205fd5287b471ecfbd
             throw new RuntimeException("Error Admin Login. Response: " + loginedAdmins.getContent());
         }
     }
@@ -53,6 +68,7 @@ public class AdminService extends UserService {
 //		}
 //	}
 
+<<<<<<< HEAD
     //create user
     public AdminService createUser2() {
         RestParameters bodyParameters = new RestParameters()
@@ -81,6 +97,23 @@ public class AdminService extends UserService {
         logger.debug("creation of user DONE");
         return this;
     }
+=======
+	//Dana code
+	//create user
+	public AdminService createUser( User newUser) {
+		logger.debug("creation of user START");
+		RestParameters bodyParameters = new RestParameters()
+				.addParameter("token", loginedUser.getToken())
+				.addParameter("name", newUser.getName())
+				.addParameter("password", newUser.getPassword())
+				.addParameter("rights", String.valueOf(newUser.isAdmin()));
+		SimpleEntity simpleEntity = userResource.httpPostAsEntity(null, null, bodyParameters);
+		System.out.println(simpleEntity);
+		checkEntity(simpleEntity, "false", "Error create user");
+		logger.debug("creation of user DONE");
+		return this;
+	}
+>>>>>>> eebd4457de38751a147f42205fd5287b471ecfbd
 
     //delete user
     public AdminService removeUser(User existUser) {

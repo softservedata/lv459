@@ -35,34 +35,34 @@ public class UserService extends GuestService {
 
     //GET item (token + index) 	.addText("URL=/item/{index}, method=GET
     // getItem, PARAMETERS= token, index");
-    public String getItemByIndex(String index) {
+    public String getItemByIndex(Item item) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", getToken());
-        RestParameters pathVariables = new RestParameters()
-                .addParameter(index, index);
-
-        SimpleEntity simpleEntity = itemByIndexResource
-                .httpGetAsEntity(
-                        pathVariables,
-                                 bodyParameters);
-        System.out.println("simpleEntity =" + simpleEntity.getContent());
-        return simpleEntity.getContent();
-    }
-
-    //POST  .addText("URL=/item/{index}, method=POST addItem, PARAMETERS=
-    // token, item")
-    public UserService postNewItemByIndex(Item item) { // TODO user should be here speretec
-        RestParameters bodyParameters = new RestParameters()
-                .addParameter("token", getToken());
-
         RestParameters pathVariables = new RestParameters()
                 .addParameter("index", item.getItemIndex());
 
         SimpleEntity simpleEntity = itemByIndexResource
                 .httpGetAsEntity(
                         pathVariables,
-                        bodyParameters);
-        System.out.println("answer from server on add one item: " + simpleEntity.getContent());
+                                 bodyParameters);
+        logger.info("Answer from server on GET one item: " + simpleEntity.toString());
+
+        return simpleEntity.getContent();
+    }
+
+    //POST  .addText("URL=/item/{index}, method=POST addItem, PARAMETERS=
+    // token, item")
+    public UserService postNewItemByIndex(Item item) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", getToken())
+                .addParameter("item", item.getItemText());
+
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", item.getItemIndex());
+
+        SimpleEntity simpleEntity = itemByIndexResource
+                .httpPostAsEntity(pathVariables , null , bodyParameters);
+        logger.info("Answer from server on POST one item: " + simpleEntity.toString());
         return this;
     }
 
