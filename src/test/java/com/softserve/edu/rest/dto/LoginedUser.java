@@ -31,7 +31,7 @@ public class LoginedUser {
 
     public ArrayList<String> fillAllItems() {
         //    "content": "1 \tnew item by loco\n3 \tnew item by loco\n"
-        // TODO - parse results into 'items'arraylist
+        // TODO - parse results into 'items'arraylist @speretc
         return fillAllItems();
     }
 

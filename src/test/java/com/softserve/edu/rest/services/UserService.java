@@ -52,7 +52,7 @@ public class UserService extends GuestService {
 
     //POST  .addText("URL=/item/{index}, method=POST addItem, PARAMETERS=
     // token, item")
-    public UserService postNewItemByIndex(Item item) { // TODO user should be here speretec
+    public UserService postNewItemByIndex(Item item) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", getToken())
                 .addParameter("item", item.getItemText());
