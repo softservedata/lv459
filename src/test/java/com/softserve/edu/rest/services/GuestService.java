@@ -96,14 +96,14 @@ public class GuestService {
 //
 
 	public UserService successfulUserLogin(User user) {
-		logger.debug("successfulUserLogin START, user = " + user);
+		logger.debug("SuccessfulUserLogin START, user = " + user);
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("name", user.getName())
 				.addParameter("password", user.getPassword());
 		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-		logger.trace("successfulUserLogin TRACE, simpleEntity = " + simpleEntity);
+		logger.trace("SuccessfulUserLogin TRACE, simpleEntity = " + simpleEntity);
 		checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
-		logger.debug("successfulUserLogin DONE, user = " + user);
+		logger.debug("SuccessfulUserLogin DONE, user = " + user);
 		return new UserService(new LoginedUser(user, simpleEntity.getContent()));
 	}
 
