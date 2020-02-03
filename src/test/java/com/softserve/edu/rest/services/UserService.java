@@ -1,6 +1,7 @@
 package com.softserve.edu.rest.services;
 
 import com.softserve.edu.rest.data.Item;
+import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
@@ -14,6 +15,8 @@ public class UserService extends GuestService {
     public UserService(LoginedUser loginedUser) {
         // super();
         this.loginedUser = loginedUser;
+        itemByIndexResource = new ItemIndexResource();
+
     }
 
     public GuestService logout() {
@@ -48,19 +51,35 @@ public class UserService extends GuestService {
 
     //POST  .addText("URL=/item/{index}, method=POST addItem, PARAMETERS=
     // token, item")
-    public UserService postNewItemByIndex(Item item) {
+    public UserService postNewItemByIndex(Item item) { // TODO user should be here speretec
         RestParameters bodyParameters = new RestParameters()
-                .addParameter("token", getToken())
-                .addParameter(item.getItemIndex(), item.getItemText());
+                .addParameter("token", getToken());
+
         RestParameters pathVariables = new RestParameters()
-                .addParameter("", item.getItemIndex());
+                .addParameter("index", item.getItemIndex());
 
         SimpleEntity simpleEntity = itemByIndexResource
-                .httpGetAsEntity(pathVariables, bodyParameters);
+                .httpGetAsEntity(
+                        pathVariables,
+                        bodyParameters);
         System.out.println("answer from server on add one item: " + simpleEntity.getContent());
         return this;
     }
 
+    public String getAllLoggedUsers() {
+        RestParameters urlParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
+        return simpleEntity.getContent();
+    }
+    public boolean isUserLogged(User user) {
+
+        if (getAllLoggedUsers().contains(user.getName())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     //DELETE item .addText("URL=/item/{index}, method=DELETE deleteItem,
     // PARAMETERS= token, index")
 
