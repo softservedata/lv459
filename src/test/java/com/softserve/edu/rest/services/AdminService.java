@@ -53,19 +53,6 @@ public class AdminService extends UserService {
 //		}
 //	}
 
-	//create user
-	public AdminService createUser2( ) {
-		RestParameters bodyParameters = new RestParameters()
-				.addParameter("token", loginedUser.getToken())
-				.addParameter("name", "Vasya")
-				.addParameter("password","qwerty")
-				.addParameter("rights", "false");
-		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-		System.out.println(simpleEntity);
-		checkEntity(simpleEntity, "false", "Error create user");
-		return this;
-	}
-
 	//Dana code
 	//create user
 	public AdminService createUser( User newUser) {
