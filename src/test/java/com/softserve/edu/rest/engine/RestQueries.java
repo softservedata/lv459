@@ -30,7 +30,6 @@ public abstract class RestQueries<TGET, TPOST, TPUT, TDELETE, TPATCH> extends Re
 		gson = new Gson();
 	}
 
-	//Trainee on fire
 	public RestQueries(RestUrl adminAuthorized) {
 		super(RestUrlRepository.getAdminAuthorized());
 	}

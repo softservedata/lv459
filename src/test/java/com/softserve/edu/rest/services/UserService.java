@@ -62,7 +62,6 @@ public class UserService extends GuestService {
         return this;
     }
 
-    //alessandro
     public String getAllLoggedUsers() {
         RestParameters urlParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());
