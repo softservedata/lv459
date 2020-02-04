@@ -1,6 +1,5 @@
 package com.softserve.edu.rest.services;
 
-import com.softserve.edu.rest.resources.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,6 +8,12 @@ import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
+import com.softserve.edu.rest.resources.ApplicationResource;
+import com.softserve.edu.rest.resources.LoginAdminResource;
+import com.softserve.edu.rest.resources.LoginResource;
+import com.softserve.edu.rest.resources.LoginUserResource;
+import com.softserve.edu.rest.resources.TokenlifetimeResource;
+import com.softserve.edu.rest.resources.UserResource;
 
 public class GuestService {
     public static final Logger logger = LoggerFactory.getLogger(GuestService.class); // org.slf4j.LoggerFactory
@@ -18,7 +23,7 @@ public class GuestService {
     protected LoginAdminResource loginAdminResource;
     protected TokenlifetimeResource tokenlifetimeResource;
     protected UserResource userResource;
-    //	protected CooldownResource cooldownResource;
+//	protected CooldownResource cooldownResource;
     private ApplicationResource applicationResource;
 
 
@@ -27,6 +32,7 @@ public class GuestService {
         tokenlifetimeResource = new TokenlifetimeResource();
 //		cooldownResource = new CooldownResource();
         applicationResource = new ApplicationResource();
+        loginResource = new LoginResource();
         loginUserResource = new LoginUserResource();
         loginAdminResource = new LoginAdminResource();
         userResource = new UserResource();
@@ -75,6 +81,7 @@ public class GuestService {
     // Check Error
     public GuestService updateCurrentLifetime() {
         logger.debug("updateCurrentLifetime START");
+        // checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", "111111111111111")
                 .addParameter("time", new Lifetime("111111").getTimeAsText());
@@ -94,28 +101,6 @@ public class GuestService {
 //    {
 //    }
 //
-
-/*
-    public UserService successfulUserLogin(User user) {
-        logger.debug("successfulUserLogin START, user = " + user);
-        RestParameters bodyParameters = new RestParameters()
-                .addParameter("name", user.getName())
-                .addParameter("password", user.getPassword());
-        SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-        logger.trace("successfulUserLogin TRACE, simpleEntity = " + simpleEntity);
-        checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
-        logger.debug("successfulUserLogin DONE, user = " + user);
-        return new UserService(new LoginedUser(user, simpleEntity.getContent()));
-    }*/
-
-/*    public AdminService successfulAdminLogin(User adminUser) {
-        RestParameters bodyParameters = new RestParameters()
-                .addParameter("name", adminUser.getName())
-                .addParameter("password", adminUser.getPassword());
-        SimpleEntity adminContent = loginResource.httpPostAsEntity(null, null, bodyParameters);
-        checkEntity(adminContent, "ERROR, user not found", "Error Login");
-        return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
-    }*/
 
 	public UserService successfulUserLogin(User user) {
 		logger.debug("SuccessfulUserLogin START, user = " + user);
