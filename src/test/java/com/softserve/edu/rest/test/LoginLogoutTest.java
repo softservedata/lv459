@@ -45,7 +45,7 @@ public class LoginLogoutTest extends RestTestRunner {
         		.successfulUserLogin(user);
         //
         //Check
-        //Assert.assertTrue(userService.isUserLogged(user));
+//        Assert.assertTrue(userService.isUserLogged(user));
         //
         //Step
         GuestService guestService = userService.logout();
