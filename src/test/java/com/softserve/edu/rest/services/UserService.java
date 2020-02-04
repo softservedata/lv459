@@ -84,7 +84,6 @@ public class UserService extends GuestService {
         return this;
     }
 
-    // TODO finish this method
     public UserService putOverwriteItemByIndex(Item initialItem, Item overwtriteItem) {
 
         RestParameters bodyParameters = new RestParameters()
@@ -98,9 +97,23 @@ public class UserService extends GuestService {
                 .httpPutAsEntity(pathVariables , null , bodyParameters);
         logger.info("Answer from server on PUT one item: " + simpleEntity.toString());
         return this;
-
-
     }
+
+    public UserService deleteItemByIndex(Item item) {
+
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", getToken());
+
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", item.getItemIndex());
+
+        SimpleEntity simpleEntity = itemByIndexResource
+                .httpDeleteAsEntity(pathVariables , bodyParameters, null);
+        logger.info("Answer from server on DELETE one item: " + simpleEntity.toString());
+        return this;
+    }
+
+
     public String getAllLoggedUsers() {
         RestParameters urlParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());

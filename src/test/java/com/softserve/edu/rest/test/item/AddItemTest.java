@@ -27,8 +27,8 @@ public class AddItemTest extends RestTestRunner {
 
     @Test(dataProvider = "correctAdmin")
     public void verifyPostAddItem(User user) {
-        logger.info("LoginPositiveTest AddItem START, user = " + user);
-        logger.debug("LoginPositiveTest started!");
+        logger.info("AddItemPositiveTest AddItem START, user = " + user);
+        logger.debug("AddItemPositiveTest started!");
 
         Item item = ItemRepository.getDefaultItemIndex0();
 
@@ -59,8 +59,8 @@ public class AddItemTest extends RestTestRunner {
 
     @Test(dataProvider = "correctAdmin")
     public void verifyPostOverwriteExistingItem(User user) {
-        logger.info("LoginPositiveTest AddItem START, user = " + user);
-        logger.debug("LoginPositiveTest started!");
+        logger.info("OverwriteItemByIndexPositiveTest AddItem START, user = " + user);
+        logger.debug("OverwriteItemByIndexPositiveTest started!");
 
         Item initialItem = ItemRepository.getDefaultItemIndex0();
 
@@ -94,8 +94,8 @@ public class AddItemTest extends RestTestRunner {
 
     @Test(dataProvider = "correctAdmin")
     public void verifyPutOverwriteExistingItem(User user) {
-        logger.info("LoginPositiveTest AddItem START, user = " + user);
-        logger.debug("LoginPositiveTest started!");
+        logger.info("OverwriteItemByIndexPutPositiveTest AddItem START, user = " + user);
+        logger.debug("OverwriteItemByIndexPutPositiveTest started!");
 
         Item initialItem = ItemRepository.getDefaultItemIndex0();
 
@@ -112,7 +112,7 @@ public class AddItemTest extends RestTestRunner {
         //Steps
 
         String result = service.postNewItemByIndex(initialItem)
-                .postOverwriteItemByIndex(initialItem, replacedItem)
+                .putOverwriteItemByIndex(initialItem, replacedItem)
                 .getItemByIndex(initialItem);
 
         //
@@ -122,9 +122,44 @@ public class AddItemTest extends RestTestRunner {
         //
         //Steps
 
-        logger.debug("OverwriteItemByIndexPositiveTest finished!");
-        logger.info("OverwriteItemByIndexPositiveTest DONE, user = "
+        logger.debug("OverwriteItemByIndexPutPositiveTest finished!");
+        logger.info("OverwriteItemByIndexPutPositiveTest DONE, user = "
                     + user + "item = " + initialItem
                     + "\t" + "replaced by item : " + replacedItem);
     }
+
+    @Test(dataProvider = "correctAdmin")
+    public void verifyDeleteItem(User user) {
+        logger.info("DeteleItemByIndexPositiveTest AddItem START, user = " + user);
+        logger.debug("DeteleItemByIndexPositiveTest started!");
+
+        Item item = ItemRepository.getDefaultItemIndex0();
+        // prerequisites - run test as admin / run test as user?
+        // login
+        UserService service = new GuestService()
+                .successfulUserLogin(user)
+                .successfulAdminLogin(user)
+                ;
+        logger.info("We've got token = " + service.getToken());
+
+        //
+        //Steps
+
+        String result = service.postNewItemByIndex(item)
+                .deleteItemByIndex(item)
+                .getItemByIndex(item)
+                ;
+
+        //
+        //Check
+        Assert.assertEquals(result, null);
+
+        //
+        //Steps
+
+        logger.debug("DeteleItemByIndexPositiveTest finished!");
+        logger.info("DeteleItemByIndexPositiveTest DONE, user = "
+                    + user + "item = " + item);
+    }
+
 }
