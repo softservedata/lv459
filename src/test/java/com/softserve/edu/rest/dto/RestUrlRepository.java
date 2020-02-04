@@ -20,9 +20,9 @@ public final class RestUrlRepository {
 	public static RestUrl getAdminUser() {
 		return new RestUrl()
 				.addBaseUrl(server)
-				.addGetUrl("")
+				.addGetUrl("/users")
 				.addPostUrl("/user")
-				.addPutUrl("")
+				.addPutUrl("/user")
 				.addDeleteUrl("/logout");
 		// .addDeleteUrl("/logout");
 	}

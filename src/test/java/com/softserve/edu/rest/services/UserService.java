@@ -144,6 +144,8 @@ public class UserService extends GuestService {
         return simpleEntity.getContent().contains(user.getName());
     }
 
+
+
     //is user removed
     public boolean isUserRemoved(User user) {
         RestParameters bodyParameters = new RestParameters()
