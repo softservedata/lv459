@@ -16,6 +16,17 @@ public final class RestUrlRepository {
 		// .addDeleteUrl("/logout");
 	}
 
+
+	public static RestUrl getAdminUser() {
+		return new RestUrl()
+				.addBaseUrl(server)
+				.addGetUrl("")
+				.addPostUrl("/user")
+				.addPutUrl("")
+				.addDeleteUrl("/logout");
+		// .addDeleteUrl("/logout");
+	}
+
 	//new user
 	public static RestUrl getUser() {
 		return new RestUrl()

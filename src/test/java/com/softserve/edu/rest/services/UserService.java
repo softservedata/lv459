@@ -6,16 +6,19 @@ import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
 import com.softserve.edu.rest.resources.ItemIndexResource;
+import com.softserve.edu.rest.resources.UserDBResource;
 
 public class UserService extends GuestService {
 
     protected LoginedUser loginedUser;
     protected ItemIndexResource itemByIndexResource;
+    protected UserDBResource userDBResource;
 
     public UserService(LoginedUser loginedUser) {
         // super();
         this.loginedUser = loginedUser;
         itemByIndexResource = new ItemIndexResource();
+        userDBResource = new UserDBResource();
 
     }
 
