@@ -30,6 +30,21 @@ public class AdminService extends UserService {
         }
     }
 
+
+
+    public AdminService createNewAdmin(User adminUser){
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken())
+                .addParameter("name", adminUser.getName())
+                .addParameter("password", adminUser.getPassword())
+                .addParameter("rights", "true");
+        SimpleEntity simpleEntity = userDBResource.httpPostAsEntity(null,null, bodyParameters);
+        System.out.println("*******"+simpleEntity);
+        checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
+        return this;
+
+    }
+
     public AdminService changeCurrentLifetime(Lifetime lifetime) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken())
