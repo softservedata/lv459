@@ -69,25 +69,25 @@ public class CheckUserTest extends RestTestRunner {
 
         //user login
        logger.info("******" + newUser.getName()+ " " + newUser.getPassword());
+
         UserService userService = new GuestService()
                 .successfulUserLogin(newUser);
 
         //change password
         userService.changePassword(newUser);
 
-        //check password
-       // Assert.assertTrue(newUser.getPassword().equals("qwerty5"));
-
         //user logout
         userService.logout();
 
-        //login
-       System.out.println("*****************"+newUser.getPassword());
+        newUser.setPassword("qwerty5");
 
-       UserService service = new GuestService()
-       .successfulUserLogin(newUser); //error login WHY????
+       //check password
+       Assert.assertTrue(newUser.getPassword().equals("qwerty5"));
 
+       //login
+       UserService userService1 = new GuestService()
+               .successfulUserLogin(newUser);
         //logout
-//         userService.logout();
+       userService1.logout(); //without service1 not working
     }
 }

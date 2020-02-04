@@ -59,14 +59,6 @@ public class AdminService extends UserService {
         return this;
     }
 
-    // Dana code
-    // create user
-    public AdminService createUser() {
-        logger.debug("creation of user START");
-        RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
-                .addParameter("name", "Dana").addParameter("password", "qwerty").addParameter("rights", "false");
-        return this;
-    }
     public AdminService createNewAdmin(User adminUser) {
         RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
                 .addParameter("name", adminUser.getName()).addParameter("password", adminUser.getPassword())
@@ -112,14 +104,30 @@ public class AdminService extends UserService {
     }
 
     // delete user
-    public AdminService deleteUser() {
-        RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
-                .addParameter("name", "Dana");
-        SimpleEntity simpleEntity = loginResource.httpDeleteAsEntity(null, null, bodyParameters);
+    public AdminService removeUser(User existUser) {
+        logger.debug("removing  user START");
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken())
+                .addParameter("name", existUser.getName());
+        SimpleEntity simpleEntity = userResource.httpDeleteAsEntity(null, bodyParameters, null);// bug of application
         System.out.println(simpleEntity);
         checkEntity(simpleEntity, "false", "Error delete user");
+        logger.debug("removing user DONE");
         return this;
     }
+
+    //Dana code
+    // get all users
+    public AdminService getAllUsers() {
+        logger.debug("get all user START");
+        RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = userResource.httpGetAsEntity(null, bodyParameters);
+        System.out.println(simpleEntity);
+        checkEntity(simpleEntity, "false", "Error get all users");
+        logger.debug("get all user DONE");
+        return this;
+    }
+
 
     public AdminService waitTokenLifeTime(Lifetime lifetime) {
         try {
@@ -131,10 +139,6 @@ public class AdminService extends UserService {
         return this;
     }
 
-    // get all users
-
-    // change user password
-    // Dana code
     // create user
     /*
      * public AdminService createUser( User newUser) {
@@ -148,28 +152,7 @@ public class AdminService extends UserService {
      * "Error create user"); logger.debug("creation of user DONE"); return this; }
      */
 
-    // delete user
-    public AdminService removeUser(User existUser) {
-        logger.debug("removing  user START");
-        RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
-                .addParameter("name", existUser.getName());
-        SimpleEntity simpleEntity = userResource.httpDeleteAsEntity(null, bodyParameters, null);// bug of application
-        System.out.println(simpleEntity);
-        checkEntity(simpleEntity, "false", "Error delete user");
-        logger.debug("removing user DONE");
-        return this;
-    }
 
-    // get all users
-    public AdminService getAllUsers() {
-        logger.debug("get all user START");
-        RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken());
-        SimpleEntity simpleEntity = userResource.httpGetAsEntity(null, bodyParameters);
-        System.out.println(simpleEntity);
-        checkEntity(simpleEntity, "false", "Error get all users");
-        logger.debug("get all user DONE");
-        return this;
-    }
     @Override
     public String toString() {
         return loginedUser + "";
