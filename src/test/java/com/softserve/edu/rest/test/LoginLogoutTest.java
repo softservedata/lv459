@@ -97,8 +97,8 @@ public class LoginLogoutTest extends RestTestRunner {
         //logger.info("loginPositiveTest DONE, user = " + user);
     }
 
-	@Test(dataProvider = "correctAdminTime")
-	      //expectedExceptions = RuntimeException.class)
+	@Test(dataProvider = "correctAdminTime",//)
+	      expectedExceptions = RuntimeException.class)
 	public void verifyException(User admin, Lifetime lifetime) {
 		logger.info("verifyException START, user = " + admin.toString() + " lifetime = " + lifetime.toString());
 		// log.debug("loginPositiveTest started!");
