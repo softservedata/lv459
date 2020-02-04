@@ -129,7 +129,8 @@ public class UserService extends GuestService {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken())
                 .addParameter("oldpassword", existUser.getPassword())
-                .addParameter("newpassword", "qwerty5");
+                .addParameter("newpassword", String.valueOf(existUser.setPassword("password")));
+        System.out.println("***************************gfgg" +String.valueOf(existUser.setPassword("password")));
         SimpleEntity simpleEntity = userResource.httpPutAsEntity(null,  bodyParameters,  null);
         System.out.println(userResource);
         checkEntity(simpleEntity, "false", "Error change password");

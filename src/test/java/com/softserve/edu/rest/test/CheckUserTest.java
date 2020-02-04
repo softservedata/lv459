@@ -82,8 +82,8 @@ public class CheckUserTest extends RestTestRunner {
         userService.logout();
 
         //login
-       newUser.setPassword("qwerty5");
        System.out.println("*****************"+newUser.getPassword());
+
        UserService service = new GuestService()
        .successfulUserLogin(newUser); //error login WHY????
 
