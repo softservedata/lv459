@@ -50,13 +50,15 @@ public class AdminService extends UserService {
         }
     }
 
-    // create user
-    public AdminService createUser2() {
-        RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
-                .addParameter("name", "Vasya").addParameter("password", "qwerty").addParameter("rights", "false");
-        SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-        System.out.println(simpleEntity);
-        checkEntity(simpleEntity, "false", "Error create user");
+    //Lock user
+    public AdminService lockUser(User userForLock) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        RestParameters pathParameters = new RestParameters()
+                .addParameter("name", userForLock.getName());
+        SimpleEntity simpleEntity = lockUserResource
+                .httpPostAsEntity(pathParameters, null, bodyParameters);
+        checkLockEntity(simpleEntity, "User was not locked");
         return this;
     }
 

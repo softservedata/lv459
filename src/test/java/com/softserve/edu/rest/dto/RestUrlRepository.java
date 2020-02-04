@@ -49,6 +49,33 @@ public final class RestUrlRepository {
 		// .addDeleteUrl("/logout");
 	}
 
+	public static RestUrl getLockedUser() {
+		return new RestUrl()
+				.addBaseUrl(server)
+				.addGetUrl("")
+				.addPostUrl("/locked/user/{name}")
+				.addPutUrl("/locked/user/{name}")
+				.addDeleteUrl("");
+	}
+
+	public static RestUrl getLockedUsers() {
+		return new RestUrl()
+				.addBaseUrl(server)
+				.addGetUrl("/locked/users")
+				.addPostUrl("")
+				.addPutUrl("/locked/reset")
+				.addDeleteUrl("");
+	}
+
+	public static RestUrl getLockedAdmins() {
+		return new RestUrl()
+				.addBaseUrl(server)
+				.addGetUrl("/locked/admins")
+				.addPostUrl("")
+				.addPutUrl("/locked/reset")
+				.addDeleteUrl("");
+	}
+
 	public static RestUrl getApplication() {
 		return new RestUrl()
 				.addBaseUrl(server)
