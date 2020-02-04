@@ -2,6 +2,7 @@ package com.softserve.edu.rest.services;
 
 import com.softserve.edu.rest.data.Item;
 import com.softserve.edu.rest.data.User;
+import com.softserve.edu.rest.data.UserRepository;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
@@ -125,16 +126,14 @@ public class UserService extends GuestService {
     //Dana code
     //change user password
     public UserService changePassword(User existUser) {
-        logger.debug("change password START");
+      //  logger.debug("change password START");
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken())
                 .addParameter("oldpassword", existUser.getPassword())
-                .addParameter("newpassword", String.valueOf(existUser.setPassword("password")));
-        System.out.println("***************************gfgg" +String.valueOf(existUser.setPassword("password")));
+                .addParameter("newpassword", "qwerty5");
         SimpleEntity simpleEntity = userResource.httpPutAsEntity(null,  bodyParameters,  null);
-        System.out.println(userResource);
         checkEntity(simpleEntity, "false", "Error change password");
-        logger.debug("change password DONE");
+      //  logger.debug("change password DONE");
         return this;
     }
 
