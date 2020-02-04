@@ -49,43 +49,6 @@ public class AdminService extends UserService {
         }
     }
 
-    // create user
-    public AdminService createUser2() {
-        RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
-                .addParameter("name", "Vasya").addParameter("password", "qwerty").addParameter("rights", "false");
-        SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-        System.out.println(simpleEntity);
-        checkEntity(simpleEntity, "false", "Error create user");
-        return this;
-    }
-
-    public AdminService createNewAdmin(User adminUser) {
-        RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
-                .addParameter("name", adminUser.getName()).addParameter("password", adminUser.getPassword())
-                .addParameter("rights", "true");
-        SimpleEntity simpleEntity = userDBResource.httpPostAsEntity(null, null, bodyParameters);
-        System.out.println("*******" + simpleEntity);
-        checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
-        return this;
-
-    }
-
-    // alessandro
-//	public String getAllLoggedUsers() {
-//		RestParameters urlParameters = new RestParameters()
-//				.addParameter("token", loginedUser.getToken());
-//		SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
-//		return simpleEntity.getContent();
-//	}
-//
-//	public boolean isUserLogged(User user) {
-//
-//		if (getAllLoggedUsers().contains(user.getName())) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-//	}
 
     // Dana code
     // create user
@@ -138,20 +101,6 @@ public class AdminService extends UserService {
         logger.debug("Waint token life done");
         return this;
     }
-
-    // create user
-    /*
-     * public AdminService createUser( User newUser) {
-     * logger.debug("creation of user START"); RestParameters bodyParameters = new
-     * RestParameters() .addParameter("token", loginedUser.getToken())
-     * .addParameter("name", newUser.getName()) .addParameter("password",
-     * newUser.getPassword()) .addParameter("rights",
-     * String.valueOf(newUser.isAdmin())); SimpleEntity simpleEntity =
-     * userResource.httpPostAsEntity(null, null, bodyParameters);
-     * System.out.println(simpleEntity); checkEntity(simpleEntity, "false",
-     * "Error create user"); logger.debug("creation of user DONE"); return this; }
-     */
-
 
     @Override
     public String toString() {
