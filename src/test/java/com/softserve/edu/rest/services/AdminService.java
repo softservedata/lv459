@@ -51,22 +51,17 @@ public class AdminService extends UserService {
 
     // create user
     public AdminService createUser2() {
-        RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
-                .addParameter("name", "Vasya").addParameter("password", "qwerty").addParameter("rights", "false");
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken())
+                .addParameter("name", "Vasya")
+                .addParameter("password", "qwerty")
+                .addParameter("rights", "false");
         SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
         System.out.println(simpleEntity);
         checkEntity(simpleEntity, "false", "Error create user");
         return this;
     }
 
-    // Dana code
-    // create user
-    public AdminService createUser() {
-        logger.debug("creation of user START");
-        RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
-                .addParameter("name", "Dana").addParameter("password", "qwerty").addParameter("rights", "false");
-        return this;
-    }
     public AdminService createNewAdmin(User adminUser) {
         RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
                 .addParameter("name", adminUser.getName()).addParameter("password", adminUser.getPassword())
@@ -77,23 +72,6 @@ public class AdminService extends UserService {
         return this;
 
     }
-
-    // alessandro
-//	public String getAllLoggedUsers() {
-//		RestParameters urlParameters = new RestParameters()
-//				.addParameter("token", loginedUser.getToken());
-//		SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
-//		return simpleEntity.getContent();
-//	}
-//
-//	public boolean isUserLogged(User user) {
-//
-//		if (getAllLoggedUsers().contains(user.getName())) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-//	}
 
     // Dana code
     // create user

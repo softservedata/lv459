@@ -17,7 +17,7 @@ public class TokenTest extends RestTestRunner{
 
     @DataProvider
     public Object[][] correctAdminExtend() {
-        //logger.info("@DataProvider correctUser() DONE");
+        logger.info("@DataProvider correctAdminExtend() DONE");
         return new Object[][]{
                 { UserRepository.getAdmin(), LifetimeRepository.getExtend()}
         };
@@ -25,7 +25,7 @@ public class TokenTest extends RestTestRunner{
     
     @DataProvider
     public Object[][] correctAdminShort() {
-        //logger.info("@DataProvider correctUser() DONE");
+        logger.info("@DataProvider correctAdminShort() DONE");
         return new Object[][]{
                 { UserRepository.getAdmin(), LifetimeRepository.getShort()}
         };
