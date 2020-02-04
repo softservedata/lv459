@@ -8,8 +8,11 @@ public class ItemIndexResource extends RestQueries<SimpleEntity, SimpleEntity, S
 
     public ItemIndexResource() {
     	super(RestUrlRepository.getItem(),
-				SimpleEntity.class, SimpleEntity.class,
-				SimpleEntity.class, SimpleEntity.class, SimpleEntity.class);
+			  SimpleEntity.class,
+			  SimpleEntity.class,
+			  SimpleEntity.class,
+			  SimpleEntity.class,
+			  SimpleEntity.class);
     }
 
 }

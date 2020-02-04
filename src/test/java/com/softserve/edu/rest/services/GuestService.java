@@ -26,12 +26,16 @@ public class GuestService {
 //	protected CooldownResource cooldownResource;
     private ApplicationResource applicationResource;
 
+
     public GuestService() {
         loginResource = new LoginResource();
         tokenlifetimeResource = new TokenlifetimeResource();
 //		cooldownResource = new CooldownResource();
         applicationResource = new ApplicationResource();
         loginResource = new LoginResource();
+        loginUserResource = new LoginUserResource();
+        loginAdminResource = new LoginAdminResource();
+        userResource = new UserResource();
     }
 
 //	public GuestService(LoginResource loginResource, TokenlifetimeResource tokenlifetimeResource) {
@@ -39,9 +43,12 @@ public class GuestService {
 //		this.tokenlifetimeResource = tokenlifetimeResource;
 //	}
 
-    protected void checkEntity(SimpleEntity simpleEntity, String wrongMessage, String errorMessage) {
-        if ((simpleEntity.getContent() == null) || (simpleEntity.getContent().isEmpty())
-                || (simpleEntity.getContent().toLowerCase().equals(wrongMessage.toLowerCase()))) {
+    protected void checkEntity(SimpleEntity simpleEntity,
+                               String wrongMessage, String errorMessage) {
+        if ((simpleEntity.getContent() == null)
+                || (simpleEntity.getContent().isEmpty())
+                || (simpleEntity.getContent().toLowerCase()
+                .equals(wrongMessage.toLowerCase()))) {
             // TODO Develop Custom Exception
             throw new RuntimeException(errorMessage);
         }
@@ -53,7 +60,7 @@ public class GuestService {
         return this;
     }
 
-    // public boolean isUserLockedAfterTryToLogin(User user) {
+    //	public boolean isUserLockedAfterTryToLogin(User user) {
 //		RestParameters bodyParameters = new RestParameters().addParameter("name", user.getName())
 //				.addParameter("password", user.getPassword());
 //		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
@@ -74,10 +81,12 @@ public class GuestService {
     // Check Error
     public GuestService updateCurrentLifetime() {
         logger.debug("updateCurrentLifetime START");
-        RestParameters bodyParameters = new RestParameters().addParameter("token", "111111111111111")
+        // checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", "111111111111111")
                 .addParameter("time", new Lifetime("111111").getTimeAsText());
         SimpleEntity simpleEntity = tokenlifetimeResource.httpPutAsEntity(null, null, bodyParameters);
-        // checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
+        //checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
         logger.debug("updateCurrentLifetime DONE");
         return this;
     }
@@ -93,24 +102,29 @@ public class GuestService {
 //    }
 //
 
-    public UserService successfulUserLogin(User user) {
-        // logger.debug("successfulUserLogin START, user = " + user);
-        RestParameters bodyParameters = new RestParameters().addParameter("name", user.getName())
-                .addParameter("password", user.getPassword());
-        SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-        // logger.trace("successfulUserLogin TRACE, simpleEntity = " + simpleEntity);
-        checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
-        // logger.debug("successfulUserLogin DONE, user = " + user);
-        return new UserService(new LoginedUser(user, simpleEntity.getContent()));
-    }
+	public UserService successfulUserLogin(User user) {
+		logger.debug("SuccessfulUserLogin START, user = " + user);
+		RestParameters bodyParameters = new RestParameters()
+				.addParameter("name", user.getName())
+				.addParameter("password", user.getPassword());
+		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
+		logger.trace("SuccessfulUserLogin TRACE, simpleEntity = " + simpleEntity);
+		checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
+		logger.debug("SuccessfulUserLogin DONE, user = " + user);
+		return new UserService(new LoginedUser(user, simpleEntity.getContent()));
+	}
 
-    public AdminService successfulAdminLogin(User adminUser) {
-        RestParameters bodyParameters = new RestParameters().addParameter("name", adminUser.getName())
-                .addParameter("password", adminUser.getPassword());
-        SimpleEntity adminContent = loginResource.httpPostAsEntity(null, null, bodyParameters);
-        checkEntity(adminContent, "ERROR, user not found", "Error Login");
-        return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
-    }
+	public AdminService successfulAdminLogin(User adminUser) {
+		RestParameters bodyParameters = new RestParameters()
+				.addParameter("name", adminUser.getName())
+				.addParameter("password", adminUser.getPassword());
+		SimpleEntity adminContent = loginResource.httpPostAsEntity(null, null, bodyParameters);
+		checkEntity(adminContent, "ERROR, user not found", "Error Login");
+		return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
+	}
+
+
+
 
 //	public AdminService ChangeCurrentPassword(User adminUser) {
 //		String pass = "1111";
@@ -121,5 +135,6 @@ public class GuestService {
 //		adminUser.setToken(simpleEntity.getContent());
 //		return new AdminService(adminUser);
 //	}
+
 
 }

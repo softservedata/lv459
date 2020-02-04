@@ -15,11 +15,23 @@ public final class RestUrlRepository {
 				.addDeleteUrl("/logout");
 		// .addDeleteUrl("/logout");
 	}
-	//new user DANA
+
+
+	public static RestUrl getAdminUser() {
+		return new RestUrl()
+				.addBaseUrl(server)
+				.addGetUrl("")
+				.addPostUrl("/user")
+				.addPutUrl("")
+				.addDeleteUrl("/logout");
+		// .addDeleteUrl("/logout");
+	}
+
+	//new user
 	public static RestUrl getUser() {
 		return new RestUrl()
 				.addBaseUrl(server)
-				.addGetUrl("/user")
+				.addGetUrl("/users")
 				.addPostUrl("/user")
 				.addPutUrl("/user")
 				.addDeleteUrl("/user");
@@ -84,5 +96,5 @@ public final class RestUrlRepository {
 				.addPatchUrl("");
 	}
 
-	// TODO loco add here resources for item addition etc by loco
+	// TODO @speretc add here resources for item addition etc
 }

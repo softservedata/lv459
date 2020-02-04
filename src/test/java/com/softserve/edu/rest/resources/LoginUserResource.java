@@ -8,7 +8,8 @@ public class LoginUserResource
         extends RestQueries<SimpleEntity, SimpleEntity, SimpleEntity, SimpleEntity, SimpleEntity> {
 
     public LoginUserResource() {
-        super(RestUrlRepository.getUserAuthorized(), SimpleEntity.class, SimpleEntity.class, SimpleEntity.class,
-                SimpleEntity.class, SimpleEntity.class);
+
+        super(RestUrlRepository.getUserAuthorized(), SimpleEntity.class, SimpleEntity.class,
+                SimpleEntity.class, SimpleEntity.class, SimpleEntity.class);
     }
 }

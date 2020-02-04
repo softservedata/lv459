@@ -7,8 +7,7 @@ import com.softserve.edu.rest.entity.SimpleEntity;
 public class LoginAdminResource extends RestQueries<SimpleEntity, SimpleEntity, SimpleEntity, SimpleEntity, SimpleEntity> {
 
     public LoginAdminResource() {
-        super(RestUrlRepository.getAdminAuthorized(),
-                SimpleEntity.class, SimpleEntity.class,
+        super(RestUrlRepository.getAdminAuthorized(), SimpleEntity.class, SimpleEntity.class,
                 SimpleEntity.class, SimpleEntity.class, SimpleEntity.class);
     }
 

@@ -50,10 +50,10 @@ public class TokenTest extends RestTestRunner{
         
         AdminService adminService = loadApplication()
                 .successfulAdminLogin(admin)
-                .changeCurrentLifetime(tokenShort);
-              //  .waitTokenLifeTime(tokenShort);
-        System.out.println(adminService.isUserLogged(admin));
-        //Assert.assertEquals(adminService.getCurrentLifetime(),);
+                .changeCurrentLifetime(tokenShort)
+                .waitTokenLifeTime(tokenShort);
+        
+        Assert.assertFalse(adminService.isUserLogged(admin));
         
         logger.info("verifyTokenLifetime DONE, admin = " + admin);
     }

@@ -7,13 +7,19 @@ import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.dto.RestUrl;
 import com.softserve.edu.rest.dto.RestUrlKeys;
 
+import com.softserve.edu.rest.test.item.AddItemTest;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class RestCrud {
+
+    public static final Logger logger =
+            LoggerFactory.getLogger(AddItemTest.class);
 	private final String NOT_SUPPORT_MESSAGE = "Method %s not Support for %s Resource";
     //
     private final String URL_PARAMETERS_SEPARATOR = "?";
@@ -32,7 +38,7 @@ public abstract class RestCrud {
 	protected RestUrl getRestUrl() {
 		return restUrl;
 	}
-    
+
     // protected - - - - - - - - - - - - - - - - - - - -
 
     protected void throwException(String message)
@@ -55,7 +61,7 @@ public abstract class RestCrud {
     }
 
     // Parameters - - - - - - - - - - - - - - - - - - - -
- 
+
 	private String prepareUrlParameters(String urlTemplate, RestParameters urlParameters)
     {
         if (urlParameters != null)
@@ -91,7 +97,6 @@ public abstract class RestCrud {
             }
         }
 
-        System.out.println("prepare path variables from RestCrud; url = " + url);
         return url;
     }
 
@@ -118,12 +123,12 @@ public abstract class RestCrud {
         String url = preparePathVariables(requestUrl, pathVariables);
         url = prepareUrlParameters(url, urlParameters);
 
-        // TODO - remove when url is good
-        System.out.println("logoutURL = "+ url);
+
+        logger.info("URL to_go (RestCrud.class)= "+ url);
 
         return new Request.Builder().url(url);
     }
-    
+
     private Response executeRequest(Request request) {
         Response result = null;
         try {
@@ -135,7 +140,7 @@ public abstract class RestCrud {
         }
         return result;
     }
-    
+
     private String responseBodyAsText(Response response) {
         String responseText = null;
         try {
@@ -148,7 +153,7 @@ public abstract class RestCrud {
         }
         return responseText;
     }
-    
+
     // Http Get - - - - - - - - - - - - - - - - - - - -
 
     protected Response httpGetAsResponse(RestParameters pathVariables, RestParameters urlParameters, RestUrl restUrl) {
@@ -235,7 +240,7 @@ public abstract class RestCrud {
     protected Response httpDeleteAsResponse(RestParameters pathVariables, RestParameters urlParameters,
             RestParameters bodyParameters) {
     	checkImplementation(RestUrlKeys.DELETE);
-        return executeRequest(prepareRequestBuilder(getRestUrl().readDeleteUrl(), pathVariables, urlParameters)
+    	return executeRequest(prepareRequestBuilder(getRestUrl().readDeleteUrl(), pathVariables, urlParameters)
                 .delete(prepareRequestBody(bodyParameters)).build());
     }
 

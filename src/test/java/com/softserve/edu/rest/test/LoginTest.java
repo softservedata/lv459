@@ -1,5 +1,6 @@
 package com.softserve.edu.rest.test;
 
+import com.softserve.edu.rest.services.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -23,26 +24,37 @@ public class LoginTest extends RestTestRunner {
         };
     }
 
-	@Test(dataProvider = "correctUser")
+	//@Test(dataProvider = "correctUser")
 	public void verifyLogin(User user) {
 		logger.info("loginPositiveTest START, user = " + user);
-//create user
-//		AdminService adminService = new GuestService()
-//				.successfulAdminLogin(admin)
-//				.createUser2();
 
-	    UserService userService = new GuestService()
+	    UserService userService = loadApplication()
 				.successfulUserLogin(user);
 
-		Assert.assertNotEquals(userService.getToken(),"Error Login");
+		//Assert.assertNotEquals(userService.getToken(),"Error Login");
+        Assert.assertTrue(userService.isUserLogged(user));
 
-	    GuestService guestService = userService.logout();
-
-//	    AdminService adminService = guestService
-//	        	.successfulAdminLogin(user);
-//		Assert.assertNotEquals(userService.getToken(),"Error Login");
-//	    uestService = adminService.logout();
+	    userService.logout();
 
 	    logger.info("loginPositiveTest DONE, user = " + user);
 	    }
+
+	@Test(dataProvider = "correctUser")
+	public void createUser(User admin, User newUser) {
+		logger.info("createUserPositiveTest  START, admin = " + admin);
+
+		//create user
+		AdminService adminService = loadApplication()
+				.successfulAdminLogin(admin)
+				.createUser(newUser);
+
+		Assert.assertTrue(adminService.isUserCreated(newUser));
+
+		adminService.getAllUsers();
+
+		adminService.logout();
+
+		logger.info("createUserPositiveTest DONE, user = " + admin);
+	}
+
 }
