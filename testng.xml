@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="SuiteOpenCart">
+<suite name="Rest-Test">
 <!-- 	<parameter name="url" value="http://10.26.34.169/opencart/upload/" /> -->
-	<parameter name="url" value="http://taqc-opencart.epizy.com" />
-	<parameter name="browsername" value="chrome" />
+
 
 	<test name="TestLogin">
-		<parameter name="number" value="23145" />
-		<parameter name="implicitWait" value="30" />
 		<classes>
-			<class name="com.softserve.edu.rest.test.LoginLogoutTest" />
+			<class name="com.softserve.edu.rest.test.item.AddItemTest" />
 			<!-- <class name="com.softserve.testng.FirstNg" /> -->
 <!-- 			<class name="com.softserve.edu.opencart.tests.LoginTest"> -->
 <!-- 				<methods> -->
