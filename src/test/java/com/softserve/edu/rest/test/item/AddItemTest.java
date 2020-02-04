@@ -13,6 +13,10 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+/**
+ * speretc
+ */
+
 public class AddItemTest extends RestTestRunner {
     public static final Logger logger =
             LoggerFactory.getLogger(AddItemTest.class);
