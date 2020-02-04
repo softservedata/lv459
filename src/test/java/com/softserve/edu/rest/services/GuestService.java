@@ -75,7 +75,7 @@ public class GuestService {
 				.addParameter("token", "111111111111111")
 				.addParameter("time", new Lifetime("111111").getTimeAsText());
 		SimpleEntity simpleEntity = tokenlifetimeResource.httpPutAsEntity(null, null, bodyParameters);
-		//checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
+		checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
 		logger.debug("updateCurrentLifetime DONE");
 		return this;
 	}
