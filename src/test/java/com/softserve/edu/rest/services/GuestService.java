@@ -123,7 +123,8 @@ public class GuestService {
 				.addParameter("name", user.getName())
 				.addParameter("password", user.getPassword());
 		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-		logger.trace("SuccessfulUserLogin TRACE, simpleEntity = " + simpleEntity);
+		logger.info("SuccessfulUserLogin TRACE, simpleEntity = " + simpleEntity);
+        System.out.println("USER ********** " + user.toString());
 		checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
 		logger.debug("SuccessfulUserLogin DONE, user = " + user);
 		return new UserService(new LoginedUser(user, simpleEntity.getContent()));

@@ -29,7 +29,7 @@ public final class UserRepository {
         return new User("Dana", "qwerty", false).addItem(ItemRepository.getDefaultItemIndex0());
     }
 
-    //	public static User getDanaWithChangedPassword(){
+//    	public static User getDanaWithChangedPassword(){
 //		return new User("Dana", "qwerty5", false).addItem(ItemRepository.getDefaultItemIndex0());
 //	}
 	public static User getAdmin1() {

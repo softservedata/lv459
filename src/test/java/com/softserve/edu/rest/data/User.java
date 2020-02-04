@@ -12,6 +12,7 @@ public class User {
     //
     private String name;
     private String password;
+    private String newPassword;
     private boolean isAdmin;
     private Map<String, String> items;
 

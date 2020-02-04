@@ -70,8 +70,8 @@ public abstract class RestCrud {
             for (String currentKey : urlParameters.getAllParameters().keySet()) {
                 if (isFirstParameter)
                 {
-                    urlTemplate = urlTemplate + URL_PARAMETERS_SEPARATOR;
-                    isFirstParameter = false;
+                        urlTemplate = urlTemplate + URL_PARAMETERS_SEPARATOR;
+                        isFirstParameter = false;
                 }
                 else
                 {
