@@ -66,6 +66,38 @@ public class UserService extends GuestService {
         return this;
     }
 
+    public UserService postOverwriteItemByIndex(Item initialItem, Item overwtriteItem) {
+
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", getToken())
+                .addParameter("item", overwtriteItem.getItemText());
+
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", initialItem.getItemIndex());
+
+        SimpleEntity simpleEntity = itemByIndexResource
+                .httpPostAsEntity(pathVariables , null , bodyParameters);
+        logger.info("Answer from server on POST one item: " + simpleEntity.toString());
+        return this;
+    }
+
+    // TODO finish this method
+    public UserService putOverwriteItemByIndex(Item initialItem, Item overwtriteItem) {
+
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", getToken())
+                .addParameter("item", overwtriteItem.getItemText());
+
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", initialItem.getItemIndex());
+
+        SimpleEntity simpleEntity = itemByIndexResource
+                .httpPutAsEntity(pathVariables , null , bodyParameters);
+        logger.info("Answer from server on PUT one item: " + simpleEntity.toString());
+        return this;
+
+
+    }
     public String getAllLoggedUsers() {
         RestParameters urlParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());

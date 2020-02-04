@@ -9,6 +9,7 @@ import com.softserve.edu.rest.services.UserService;
 import com.softserve.edu.rest.test.RestTestRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,32 +26,105 @@ public class AddItemTest extends RestTestRunner {
     }
 
     @Test(dataProvider = "correctAdmin")
-    public void verifyAddItem(User user) {
+    public void verifyPostAddItem(User user) {
         logger.info("LoginPositiveTest AddItem START, user = " + user);
         logger.debug("LoginPositiveTest started!");
+
         Item item = ItemRepository.getDefaultItemIndex0();
+
         // prerequisites - run test as admin / run test as user?
+        // login
         UserService service = new GuestService()
                 .successfulUserLogin(user)
-                //                .successfulAdminLogin(user)
+                .successfulAdminLogin(user)
                 ;
-
         logger.info("We've got token = " + service.getToken());
-
-        //        service.getItemByIndex("0");
-        service.postNewItemByIndex(item)
-               .getItemByIndex(item);
 
         //
         //Steps
 
+        String result = service.postNewItemByIndex(item)
+                .getItemByIndex(item);
+
         //
         //Check
+        Assert.assertEquals(item.getItemText(), result);
 
         //
         //Steps
 
         logger.debug("AddItemPositiveTest finished!");
         logger.info("AddItemPositiveTest DONE, user = " + user + "item = " + item);
+    }
+
+    @Test(dataProvider = "correctAdmin")
+    public void verifyPostOverwriteExistingItem(User user) {
+        logger.info("LoginPositiveTest AddItem START, user = " + user);
+        logger.debug("LoginPositiveTest started!");
+
+        Item initialItem = ItemRepository.getDefaultItemIndex0();
+
+        Item replacedItem = ItemRepository.getItemIndex1();
+        // prerequisites - run test as admin / run test as user?
+        // login
+        UserService service = new GuestService()
+                .successfulUserLogin(user)
+                .successfulAdminLogin(user)
+                ;
+        logger.info("We've got token = " + service.getToken());
+
+        //
+        //Steps
+
+        String result = service.postOverwriteItemByIndex(initialItem, replacedItem)
+                .getItemByIndex(initialItem);
+
+        //
+        //Check
+        Assert.assertEquals(replacedItem.getItemText(), result);
+
+        //
+        //Steps
+
+        logger.debug("OverwriteItemByIndexPositiveTest finished!");
+        logger.info("OverwriteItemByIndexPositiveTest DONE, user = "
+                    + user + "item = " + initialItem
+                    + "\t" + "replaced by item : " + replacedItem);
+    }
+
+    @Test(dataProvider = "correctAdmin")
+    public void verifyPutOverwriteExistingItem(User user) {
+        logger.info("LoginPositiveTest AddItem START, user = " + user);
+        logger.debug("LoginPositiveTest started!");
+
+        Item initialItem = ItemRepository.getDefaultItemIndex0();
+
+        Item replacedItem = ItemRepository.getItemIndex1();
+        // prerequisites - run test as admin / run test as user?
+        // login
+        UserService service = new GuestService()
+                .successfulUserLogin(user)
+                .successfulAdminLogin(user)
+                ;
+        logger.info("We've got token = " + service.getToken());
+
+        //
+        //Steps
+
+        String result = service.postNewItemByIndex(initialItem)
+                .postOverwriteItemByIndex(initialItem, replacedItem)
+                .getItemByIndex(initialItem);
+
+        //
+        //Check
+        Assert.assertEquals(replacedItem.getItemText(), result);
+
+        //
+        //Steps
+
+        logger.debug("OverwriteItemByIndexPositiveTest finished!");
+        logger.info("OverwriteItemByIndexPositiveTest DONE, user = "
+                    + user + "item = " + initialItem
+                    + "\t" + "replaced by item : " + replacedItem);
     }
 }
