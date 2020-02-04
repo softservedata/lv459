@@ -2,7 +2,6 @@ package com.softserve.edu.rest.services;
 
 import com.softserve.edu.rest.data.Item;
 import com.softserve.edu.rest.data.User;
-import com.softserve.edu.rest.data.UserRepository;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
