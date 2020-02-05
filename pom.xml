@@ -166,45 +166,6 @@
 				</configuration>
 			</plugin>
 
-			<!--<plugin>-->
-				<!--<groupId>com.github.webdriverextensions</groupId>-->
-				<!--<artifactId>webdriverextensions-maven-plugin</artifactId>-->
-				<!--<version>${maven.webdriverextensions-maven-plugin.version}</version>-->
-				<!--<executions>-->
-					<!--<execution>-->
-						<!--<id>pre-test</id>-->
-						<!--<goals>-->
-							<!--<goal>install-drivers</goal>-->
-						<!--</goals>-->
-						<!--&lt;!&ndash; Uncomment for download automatically &ndash;&gt;-->
-						<!--<phase>test-compile</phase>-->
-						<!--&lt;!&ndash; <phase>process-test-classes</phase> &ndash;&gt;-->
-						<!--&lt;!&ndash; <phase>test</phase> &ndash;&gt;-->
-					<!--</execution>-->
-				<!--</executions>-->
-				<!--<configuration>-->
-					<!--<installationDirectory>${project.build.directory}/test-classes</installationDirectory>-->
-					<!--&lt;!&ndash; <installationDirectory>${project.basedir}/src/test/resources</installationDirectory> &ndash;&gt;-->
-					<!--<keepDownloadedWebdrivers>true</keepDownloadedWebdrivers>-->
-					<!--<drivers>-->
-						<!--<driver>-->
-							<!--<name>chromedriver</name>-->
-							<!--&lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
-							<!--&lt;!&ndash;<platform>${os.detected.name}</platform>&ndash;&gt;-->
-							<!--&lt;!&ndash; <platform>windows</platform> &ndash;&gt;-->
-							<!--&lt;!&ndash;<bit>32</bit>&ndash;&gt;-->
-							<!--&lt;!&ndash; <version>74.0.3729.6</version> &ndash;&gt;-->
-							<!--&lt;!&ndash; <url>https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip</url> &ndash;&gt;-->
-							<!--&lt;!&ndash; <version>76.0.3809.126</version> &ndash;&gt;-->
-							<!--&lt;!&ndash; <url>https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip</url> &ndash;&gt;-->
-							<!--&lt;!&ndash;<url>https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip</url>&ndash;&gt;-->
-							<!--&lt;!&ndash; <version>79.0.3945.36</version> &ndash;&gt;-->
-							<!--&lt;!&ndash; <version>78.0.3904.105</version> &ndash;&gt;-->
-						<!--</driver>-->
-					<!--</drivers>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -219,8 +180,6 @@
 					</systemPropertyVariables>
 					<!-- <includes> -->
 					<!-- <include>**/*.java</include> -->
-					<!-- <include>**/MyData.java</include> -->
-					<!-- <include>**/SimpleTest.java</include> -->
 					<!-- <include>**/FindTest.java</include> -->
 					<!-- </includes> -->
 					<!-- <excludes> -->

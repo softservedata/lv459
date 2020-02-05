@@ -7,6 +7,7 @@ import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
 import com.softserve.edu.rest.resources.ItemIndexResource;
 import com.softserve.edu.rest.resources.UserDBResource;
+import io.qameta.allure.Step;
 
 public class UserService extends GuestService {
 
@@ -22,6 +23,7 @@ public class UserService extends GuestService {
 
     }
 
+    @Step("Log out")
     public GuestService logout() {
         logger.info("logout START");
         RestParameters bodyParameters = new RestParameters()
@@ -34,6 +36,7 @@ public class UserService extends GuestService {
         return new GuestService();
     }
 
+    @Step("Get Token")
     public String getToken() {
         return loginedUser.getToken();
     }
@@ -53,6 +56,7 @@ public class UserService extends GuestService {
         return simpleEntity.getContent();
     }
 
+    @Step("Add user's item by index")
     public UserService postNewItemByIndex(Item item) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", getToken())
@@ -67,6 +71,7 @@ public class UserService extends GuestService {
         return this;
     }
 
+    @Step("Overwrite user's item by index(POST)")
     public UserService postOverwriteItemByIndex(Item initialItem, Item overwtriteItem) {
 
         RestParameters bodyParameters = new RestParameters()
@@ -82,6 +87,7 @@ public class UserService extends GuestService {
         return this;
     }
 
+    @Step("Overwrite user's item by index(PUT)")
     public UserService putOverwriteItemByIndex(Item initialItem, Item overwtriteItem) {
 
         RestParameters bodyParameters = new RestParameters()
@@ -97,6 +103,7 @@ public class UserService extends GuestService {
         return this;
     }
 
+    @Step("Delete item by index")
     public UserService deleteItemByIndex(Item item) {
 
         RestParameters bodyParameters = new RestParameters()
@@ -117,11 +124,9 @@ public class UserService extends GuestService {
     //PUT .addText("URL=/item/{index}, method=PUT updateItem, PARAMETERS=
     // token, index, item")
 
-
-
-
     //Dana code
     //change user password
+    @Step("Change password")
     public UserService changePassword(User existUser) {
       //  logger.debug("change password START");
         RestParameters bodyParameters = new RestParameters()
@@ -135,6 +140,7 @@ public class UserService extends GuestService {
     }
 
     //is user created
+    @Step("Check if user is created")
     public boolean isUserCreated(User user) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());
@@ -142,9 +148,8 @@ public class UserService extends GuestService {
         return simpleEntity.getContent().contains(user.getName());
     }
 
-
-
     //is user removed
+    @Step("Check if user is removed from DB")
     public boolean isUserRemoved(User user) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());
