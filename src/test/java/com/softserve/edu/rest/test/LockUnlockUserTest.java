@@ -21,7 +21,7 @@ public class LockUnlockUserTest extends RestTestRunner {
         };
     }
 
-    //@Test(dataProvider = "lockUser")
+    @Test(dataProvider = "lockUser", priority = 1)
     public void lockUser(User admin, User userToLock) {
         logger.info("lockUserPositiveTest  START, userToLock = " + userToLock) ;
 
@@ -40,11 +40,12 @@ public class LockUnlockUserTest extends RestTestRunner {
                 .successfulUserLogin(userToLock);
 
         //TODO Assert
+        //TODO unSuccessfulUserLogin
 
         logger.info("lockUserPositiveTest DONE, userToLock = " + userToLock);
     }
 
-    @Test(dataProvider = "lockUser")
+    @Test(dataProvider = "lockUser", priority = 2)
     public void unlockUser(User admin, User userToLock) {
         logger.info("unlockUserPositiveTest  START, userToUnlock = " + userToLock);
 
