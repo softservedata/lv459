@@ -42,6 +42,13 @@ public class CreateUpdateItemsTest extends RestTestRunner {
                 .updateItem(book, book2)
                 .updateItem(copybook, copybook2)
                 .getAllItems();
+        // TODO Asserts
+
+        AdminService deleteItems = updateItems
+                .deleteItem(book2)
+                .deleteItem(copybook2)
+                .getAllItems();
+        // TODO Asserts
 
 
         //

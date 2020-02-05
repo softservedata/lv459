@@ -193,7 +193,7 @@ public class AdminService extends UserService {
         RestParameters urlParameters = new RestParameters().addParameter("token", loginedUser.getToken());
         SimpleEntity simpleEntity = itemResource.httpGetAsEntity(null, urlParameters);
         System.out.println(simpleEntity);
-        checkEntity(simpleEntity, "false", "Error get all items");
+        //checkEntity(simpleEntity, "false", "Error get all items");
         return this;
     }
 
@@ -217,7 +217,18 @@ public class AdminService extends UserService {
                 .addParameter("index", oldItem.getItemIndex());
         SimpleEntity simpleEntity = itemByIndexResource.httpPutAsEntity(pathVariables, null, bodyParameters);
         System.out.println(simpleEntity);
-        checkEntity(simpleEntity, "false", "Error add item");
+        checkEntity(simpleEntity, "false", "Error update item");
+        return this;
+    }
+
+    public AdminService deleteItem(Item item) {
+        RestParameters urlParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", item.getItemIndex());
+        SimpleEntity simpleEntity = itemByIndexResource.httpDeleteAsEntity(pathVariables, urlParameters, null);
+        System.out.println(simpleEntity);
+        checkEntity(simpleEntity, "false", "Error delete item");
         return this;
     }
 
