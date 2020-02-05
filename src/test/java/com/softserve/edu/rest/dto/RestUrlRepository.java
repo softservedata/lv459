@@ -63,7 +63,7 @@ public final class RestUrlRepository {
 				.addBaseUrl(server)
 				.addGetUrl("/locked/users")
 				.addPostUrl("")
-				.addPutUrl("/locked/reset")
+				.addPutUrl("")
 				.addDeleteUrl("");
 	}
 
@@ -72,7 +72,7 @@ public final class RestUrlRepository {
 				.addBaseUrl(server)
 				.addGetUrl("/locked/admins")
 				.addPostUrl("")
-				.addPutUrl("/locked/reset")
+				.addPutUrl("")
 				.addDeleteUrl("");
 	}
 

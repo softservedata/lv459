@@ -38,9 +38,11 @@ public class AdminService extends UserService {
     public String getAllLoggedUsers() {
         RestParameters urlParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());
-        SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
+        SimpleEntity simpleEntity = loginUserResource
+                .httpGetAsEntity(null, urlParameters);
         return simpleEntity.getContent();
     }
+
     public boolean isUserLogged(User user) {
 
         if (getAllLoggedUsers().contains(user.getName())) {
@@ -51,16 +53,54 @@ public class AdminService extends UserService {
     }
 
     //Lock user
-    public AdminService lockUser(User userForLock) {
+    public AdminService lockUser(User userToLock) {
+        logger.debug("Locked user START");
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());
         RestParameters pathParameters = new RestParameters()
-                .addParameter("name", userForLock.getName());
+                .addParameter("name", userToLock.getName());
         SimpleEntity simpleEntity = lockUserResource
                 .httpPostAsEntity(pathParameters, null, bodyParameters);
         checkLockEntity(simpleEntity, "User was not locked");
+        logger.debug("Locked user DONE");
         return this;
     }
+
+    //Unlock user
+    public AdminService unlockUser(User user) {
+        logger.debug("Locked user START");
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        RestParameters pathParameters = new RestParameters()
+                .addParameter("", user.getName());
+        SimpleEntity simpleEntity = lockUserResource
+                .httpPutAsEntity(pathParameters, null, bodyParameters);
+        checkLockEntity(simpleEntity, "User was not unlocked");
+        logger.debug("Locked user DONE");
+        return this;
+    }
+
+    //Get all locked users
+    public String getAllLockedUsers() {
+        logger.debug("get all locked users START");
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = lockUsersResource
+                .httpGetAsEntity(null, bodyParameters);
+        logger.debug("get all locked users DONE");
+        return simpleEntity.getContent();
+    }
+
+    //Check is the user locked
+    public boolean isUserLocked(User userToLock) {
+
+        if (getAllLockedUsers().contains(userToLock.getName())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     /*public AdminService createNewAdmin(User adminUser) {
         RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken())
@@ -72,23 +112,6 @@ public class AdminService extends UserService {
         return this;
     }
 */
-
-    // alessandro
-//	public String getAllLoggedUsers() {
-//		RestParameters urlParameters = new RestParameters()
-//				.addParameter("token", loginedUser.getToken());
-//		SimpleEntity simpleEntity = loginUserResource.httpGetAsEntity(null, urlParameters);
-//		return simpleEntity.getContent();
-//	}
-//
-//	public boolean isUserLogged(User user) {
-//
-//		if (getAllLoggedUsers().contains(user.getName())) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-//	}
 
     // Dana code
     // create user

@@ -8,7 +8,7 @@ import com.softserve.edu.rest.entity.SimpleEntity;
 public class LockUserResource extends RestQueries<SimpleEntity, SimpleEntity, SimpleEntity, SimpleEntity, SimpleEntity> {
 
     public LockUserResource() {
-        super(RestUrlRepository.getUser(), SimpleEntity.class, SimpleEntity.class,
+        super(RestUrlRepository.getLockedUser(), SimpleEntity.class, SimpleEntity.class,
                 SimpleEntity.class, SimpleEntity.class, SimpleEntity.class);
     }
 }

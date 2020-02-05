@@ -1,6 +1,7 @@
 package com.softserve.edu.rest.services;
 
 import com.softserve.edu.rest.resources.*;
+import com.softserve.edu.rest.test.LoginTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +18,7 @@ public class GuestService {
     protected LoginUserResource loginUserResource;
     protected LoginAdminResource loginAdminResource;
     protected LockUserResource lockUserResource;
+    protected LockUsersResource lockUsersResource;
     protected TokenlifetimeResource tokenlifetimeResource;
     protected UserResource userResource;
 //	protected CooldownResource cooldownResource;
@@ -32,6 +34,7 @@ public class GuestService {
         loginUserResource = new LoginUserResource();
         loginAdminResource = new LoginAdminResource();
         lockUserResource = new LockUserResource();
+        lockUsersResource = new LockUsersResource();
         userResource = new UserResource();
     }
 
@@ -92,7 +95,7 @@ public class GuestService {
     protected void checkLockEntity(SimpleEntity simpleEntity, String message) {
         if ((simpleEntity.getContent() == null) || (simpleEntity.getContent().isEmpty())
                 || (simpleEntity.getContent().toLowerCase().equals("false"))) {
-            //loggerGuest.error("Throw LockPersonException");
+            logger.error("Throw LockPersonException");
             throw new RuntimeException(message);
         }
     }
