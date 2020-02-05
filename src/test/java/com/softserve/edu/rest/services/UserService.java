@@ -23,12 +23,14 @@ public class UserService extends GuestService {
     }
 
     public GuestService logout() {
+        logger.info("logout START");
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("name", loginedUser.getUser().getName())
                 .addParameter("token", loginedUser.getToken());
         SimpleEntity simpleEntity = loginResource
                 .httpDeleteAsEntity(null, null, bodyParameters);
         checkEntity(simpleEntity, "false", "Error Logout");
+        logger.info("logout END");
         return new GuestService();
     }
 
