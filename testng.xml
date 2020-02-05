@@ -8,9 +8,10 @@
 	<test name="Tests">
 		<classes>
 			<class name="com.softserve.edu.rest.test.item.AddItemTest" />
+			<class name="com.softserve.edu.rest.test.item.CreateUpdateItemsTest" />
 			<class name="com.softserve.edu.rest.test.TokenTest" />
 			<class name="com.softserve.edu.rest.test.CheckUserTest" />
-			<class name="com.softserve.edu.rest.test.admins.CreateLoginAdminTest" />
+			<!--<class name="com.softserve.edu.rest.test.admins.CreateLoginAdminTest" />-->
 			<!-- <class name="com.softserve.testng.FirstNg" /> -->
 <!-- 			<class name="com.softserve.edu.opencart.tests.LoginTest"> -->
 <!-- 				<methods> -->

@@ -15,15 +15,18 @@ public class Item {
         return itemIndex;
     }
 
-    public void setItemIndex(String itemIndex) {
+    public Item setItemIndex(String itemIndex) {
         this.itemIndex = itemIndex;
+        return this;
     }
 
     public String getItemText() {
         return itemText;
     }
 
-    public void setItemText(String itemText) {
+    public Item setItemText(String itemText) {
         this.itemText = itemText;
+        return this;
+
     }
 }

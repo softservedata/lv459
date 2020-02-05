@@ -2,6 +2,7 @@ package com.softserve.edu.rest.services;
 
 import com.softserve.edu.rest.resources.*;
 import com.softserve.edu.rest.test.LoginTest;
+import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,11 +38,6 @@ public class GuestService {
         lockUsersResource = new LockUsersResource();
         userResource = new UserResource();
     }
-
-//	public GuestService(LoginResource loginResource, TokenlifetimeResource tokenlifetimeResource) {
-//		this.loginResource = loginResource;
-//		this.tokenlifetimeResource = tokenlifetimeResource;
-//	}
 
     protected void checkEntity(SimpleEntity simpleEntity,
                                String wrongMessage, String errorMessage) {
@@ -111,6 +107,7 @@ public class GuestService {
 //    }
 //
 
+    @Step("Logging in as User")
 	public UserService successfulUserLogin(User user) {
 		logger.debug("SuccessfulUserLogin START, user = " + user);
 		RestParameters bodyParameters = new RestParameters()
@@ -124,6 +121,7 @@ public class GuestService {
 		return new UserService(new LoginedUser(user, simpleEntity.getContent()));
 	}
 
+	@Step ("Logging in as Admin")
 	public AdminService successfulAdminLogin(User adminUser) {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("name", adminUser.getName())
@@ -132,19 +130,5 @@ public class GuestService {
 		checkEntity(adminContent, "ERROR, user not found", "Error Login");
 		return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
 	}
-
-
-
-
-//	public AdminService ChangeCurrentPassword(User adminUser) {
-//		String pass = "1111";
-//		RestParameters bodyParameters = new RestParameters().addParameter("token", adminUser.getToken())
-//				.addParameter("oldpassword", adminUser.getPassword()).addParameter("newpassword", pass);
-//		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-//		checkEntity(simpleEntity, "Error Login");
-//		adminUser.setToken(simpleEntity.getContent());
-//		return new AdminService(adminUser);
-//	}
-
 
 }

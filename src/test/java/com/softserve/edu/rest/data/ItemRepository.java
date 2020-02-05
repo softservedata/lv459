@@ -11,8 +11,12 @@ public class ItemRepository {
         return new Item("1", "ItemWithIndex1");
     }
 
-    public static Item getItemIndex2() {
-        return new Item("2", "ItemWithIndex2");
+    public static Item getItemDana() {
+        return new Item("1", "ItemDana");
+    }
+
+    public static Item getItemVasya() {
+        return new Item("1", "ItemVasya");
     }
 
     public static Item getBook() {

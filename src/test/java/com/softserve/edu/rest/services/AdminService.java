@@ -6,6 +6,7 @@ import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
 import com.softserve.edu.rest.tools.RegexUtils;
+import io.qameta.allure.Step;
 
 public class AdminService extends UserService {
 
@@ -25,6 +26,7 @@ public class AdminService extends UserService {
         }
     }
 
+    @Step("Change Token LifeTime")
     public AdminService changeCurrentLifetime(Lifetime lifetime) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken())
@@ -34,7 +36,7 @@ public class AdminService extends UserService {
         return this;
     }
 
-
+    @Step("Get all logged users")
     public String getAllLoggedUsers() {
         RestParameters urlParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());
@@ -43,6 +45,7 @@ public class AdminService extends UserService {
         return simpleEntity.getContent();
     }
 
+    @Step("Check if user is logged")
     public boolean isUserLogged(User user) {
 
         if (getAllLoggedUsers().contains(user.getName())) {
@@ -53,6 +56,7 @@ public class AdminService extends UserService {
     }
 
     //Lock user
+    @Step("Lock user")
     public AdminService lockUser(User userToLock) {
         logger.debug("Locked user START");
         RestParameters bodyParameters = new RestParameters()
@@ -67,6 +71,7 @@ public class AdminService extends UserService {
     }
 
     //Unlock user
+    @Step("Unlock user")
     public AdminService unlockUser(User user) {
         logger.debug("Locked user START");
         RestParameters bodyParameters = new RestParameters()
@@ -81,6 +86,7 @@ public class AdminService extends UserService {
     }
 
     //Get all locked users
+    @Step("Get all locked users")
     public String getAllLockedUsers() {
         logger.debug("get all locked users START");
         RestParameters bodyParameters = new RestParameters()
@@ -92,6 +98,7 @@ public class AdminService extends UserService {
     }
 
     //Check is the user locked
+    @Step("Check if user is locked")
     public boolean isUserLocked(User userToLock) {
 
         if (getAllLockedUsers().contains(userToLock.getName())) {
@@ -115,6 +122,7 @@ public class AdminService extends UserService {
 
     // Dana code
     // create user
+    @Step("Create new user")
     public AdminService createUser(User newUser) {
         logger.debug("creation of user START");
         RestParameters bodyParameters = new RestParameters()
@@ -130,6 +138,7 @@ public class AdminService extends UserService {
     }
 
     // delete user
+    @Step("Delete user")
     public AdminService removeUser(User existUser) {
         logger.debug("removing  user START");
         RestParameters bodyParameters = new RestParameters()
@@ -144,6 +153,7 @@ public class AdminService extends UserService {
 
     //Dana code
     // get all users
+    @Step("Get all users")
     public AdminService getAllUsers() {
         logger.debug("get all user START");
         RestParameters bodyParameters = new RestParameters().addParameter("token", loginedUser.getToken());
@@ -177,7 +187,6 @@ public class AdminService extends UserService {
      * System.out.println(simpleEntity); checkEntity(simpleEntity, "false",
      * "Error create user"); logger.debug("creation of user DONE"); return this; }
      */
-
 
     @Override
     public String toString() {

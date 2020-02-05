@@ -4,9 +4,11 @@ import com.softserve.edu.rest.data.Item;
 import com.softserve.edu.rest.data.ItemRepository;
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.data.UserRepository;
+import com.softserve.edu.rest.services.AdminService;
 import com.softserve.edu.rest.services.GuestService;
 import com.softserve.edu.rest.services.UserService;
 import com.softserve.edu.rest.test.RestTestRunner;
+import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -164,6 +166,41 @@ public class AddItemTest extends RestTestRunner {
         logger.debug("DeteleItemByIndexPositiveTest finished!");
         logger.info("DeteleItemByIndexPositiveTest DONE, user = "
                     + user + "item = " + item);
+    }
+
+
+    @Test (dataProvider = "correctAdmin")
+    public void gettingStrangeUserItem (User user){
+
+        // prerequisites - login as admin and create two users
+        // login
+        User vasya = UserRepository.getVasya();
+        User dana = UserRepository.getDana();
+        AdminService service = new GuestService()
+                .successfulUserLogin(user)
+                .successfulAdminLogin(user)
+                .createUser(vasya)
+                .createUser(dana);
+
+        //
+        //Steps
+        //Login as Vasya
+        Item itemVasya = ItemRepository.getItemVasya();
+
+        UserService userServiceVasya = loadApplication()
+                .successfulUserLogin(vasya)
+                .postNewItemByIndex(itemVasya);
+
+
+        //Login as Dana
+        Item itemDana = ItemRepository.getItemDana();
+
+        UserService userServiceDana = loadApplication()
+                .successfulUserLogin(dana)
+                .postNewItemByIndex(itemDana);
+
+
+
     }
 
 }
