@@ -21,7 +21,7 @@ public class CreateUpdateItemsTest extends RestTestRunner {
         //logger.info("@DataProvider correctUser() DONE");
         return new Object[][]{
                 {UserRepository.getAdmin1(), ItemRepository.getBook(), ItemRepository.getCopybook(),
-                ItemRepository.getBook2(), ItemRepository.getBook2()}
+                ItemRepository.getBook2(), ItemRepository.getCopybook2()}
         };
     }
 
@@ -34,12 +34,13 @@ public class CreateUpdateItemsTest extends RestTestRunner {
                 .successfulAdminLogin(admin);
         //
         // Check
-        logger.info("Expected result: " + UserRepository.getAdmin1());
+/*        logger.info("Expected result: " + UserRepository.getAdmin1());
         logger.info("Actual result: " + adminService.toString());
-        Assert.assertTrue(adminService.toString().equals(UserRepository.getAdmin1().toString()));
+        Assert.assertTrue(adminService.toString().equals(UserRepository.getAdmin1().toString()));*/
 
-        //AdminService newAdminService = adminService.getAllItems();
-       // logger.info("Actual result: " + newAdminService.toString());
+        AdminService newAdminService = adminService.addItem(book2).addItem(copybook2)
+                .getAllItems();
+        //logger.info("Actual result: " + newAdminService.toString());
 /*        logger.info("Expected result: " + book.toString());
         logger.info("Actual result: " + copybook.toString());*/
         adminService.logout();

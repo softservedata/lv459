@@ -39,8 +39,8 @@ public final class UserRepository {
     }
 
 	public static User getAdmin1() {
-		return new User("admin", "qwerty", true)
-				.addItem(ItemRepository.getBook())
-				.addItem(ItemRepository.getCopybook());
+		return new User("admin", "qwerty", true);
+/*				.addItem(ItemRepository.getBook())
+				.addItem(ItemRepository.getCopybook());*/
 	}
 }

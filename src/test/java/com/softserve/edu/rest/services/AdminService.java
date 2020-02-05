@@ -1,5 +1,6 @@
 package com.softserve.edu.rest.services;
 
+import com.softserve.edu.rest.data.Item;
 import com.softserve.edu.rest.data.Lifetime;
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
@@ -187,6 +188,18 @@ public class AdminService extends UserService {
      * System.out.println(simpleEntity); checkEntity(simpleEntity, "false",
      * "Error create user"); logger.debug("creation of user DONE"); return this; }
      */
+
+    public AdminService addItem(Item newItem) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken())
+                .addParameter("item", newItem.getItemText());
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", newItem.getItemIndex());
+        SimpleEntity simpleEntity = itemByIndexResource.httpPostAsEntity(pathVariables, null, bodyParameters);
+        System.out.println(simpleEntity);
+        checkEntity(simpleEntity, "false", "Error add item");
+        return this;
+    }
 
     public AdminService getAllItems() {
         RestParameters urlParameters = new RestParameters().addParameter("token", loginedUser.getToken());
