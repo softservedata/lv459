@@ -12,6 +12,8 @@ import com.softserve.edu.rest.resources.ApplicationResource;
 import com.softserve.edu.rest.resources.LoginResource;
 import com.softserve.edu.rest.resources.TokenlifetimeResource;
 
+import io.qameta.allure.Step;
+
 public class GuestService {
 	public static final Logger logger = LoggerFactory.getLogger(GuestService.class); // org.slf4j.LoggerFactory
 
@@ -44,6 +46,7 @@ public class GuestService {
 		}
 	}
 
+	@Step("Reset_Service_To_Initial_State")
 	public GuestService resetServiceToInitialState() {
 		SimpleEntity simpleEntity = applicationResource.httpPutAsEntity(null, null, null);
 		checkEntity(simpleEntity, "false", "Error Reset Server");
@@ -103,6 +106,7 @@ public class GuestService {
 		return new UserService(new LoginedUser(user, simpleEntity.getContent()));
 	}
 
+	@Step("Successful_Admin_Login")
 	public AdminService successfulAdminLogin(User adminUser) {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("name", adminUser.getName())

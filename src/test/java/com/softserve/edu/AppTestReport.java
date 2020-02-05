@@ -3,7 +3,9 @@ package com.softserve.edu;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -26,20 +28,24 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-//import io.qameta.allure.Attachment;
-//import io.qameta.allure.Description;
-//import io.qameta.allure.Severity;
-//import io.qameta.allure.SeverityLevel;
-//import io.qameta.allure.Step;
-//import io.qameta.allure.Story;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Issue;
+import io.qameta.allure.Link;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 
-//@Epic("AllureTest")
-//@Feature("Login_Application_Test FEATURE")
+@Epic("AllureTest")
+@Feature("Login_Application_Test FEATURE")
 public class AppTestReport {
 	public static final Logger logger = LoggerFactory.getLogger(AppTestReport.class);
 	private WebDriver driver; 
 
-//	@Attachment(value = "{0}", type = "image/png")
+	@Attachment(value = "{0}", type = "image/png")
 	public byte[] saveImageAttach(String attachName) {
 		byte[] result = null;
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -53,7 +59,13 @@ public class AppTestReport {
 		return result;
 	}
 
-//	@Attachment(value = "{0}", type = "text/plain")
+	@Attachment(value = "{0}", type = "text/plain")
+	public byte[] saveHtmlAttach(String attachName) {
+		return driver.getPageSource().getBytes();
+	}
+
+	
+	@Attachment(value = "{0}", type = "text/plain")
 	public byte[] saveTextAttach(String attachName, String attachPath) {
 		byte[] result = null;
 		try {
@@ -65,12 +77,14 @@ public class AppTestReport {
 		return result;
 	}
 
-//	@Step("goto_Login STEP")
+	@Step("goto_Login STEP")
 	private void takeScreenShot() throws IOException {
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(scrFile, new File(System.getenv().get("USERPROFILE") + "\\Downloads\\screenshot.png"));
 		String htmlText = driver.getPageSource();
-		FileUtils.writeStringToFile(new File(System.getenv().get("USERPROFILE") + "\\Downloads\\screenshot.html"), htmlText);
+		//FileUtils.writeStringToFile(new File(System.getenv().get("USERPROFILE") + "\\Downloads\\screenshot.html"), htmlText);
+		Path path = Paths.get(System.getenv().get("USERPROFILE") + "\\Downloads\\screenshot.html");
+		Files.write(path, htmlText.getBytes(), StandardOpenOption.CREATE);
 	}
 	
 	// @Test
@@ -129,9 +143,11 @@ public class AppTestReport {
 		driver.quit();
 	}
 
-//	@Description("Test Description: class AllureTest; testAllure1().")
-//	@Severity(SeverityLevel.BLOCKER)
-//	@Story("testApp2 STORY")
+	@Description("Test Description: class AllureTest; testAllure1().")
+	@Severity(SeverityLevel.BLOCKER)
+	@Story("testApp2 STORY")
+	@Issue("LVATQAOMS-776")
+	@Link("https://softserve.academy/")
 	@Test
 	public void testApp2() {
 		logger.info("\t+++testApp2() Start");
@@ -177,8 +193,10 @@ public class AppTestReport {
         js.executeScript("arguments[0].scrollIntoView(true);", position);
         takeScreenShot();
         //
-        //saveImageAttach("devextreme-reactive");
+        saveImageAttach("devextreme-reactive");
         //saveTextAttach("<br>html Info", System.getenv().get("USERPROFILE") + "/Downloads/Screenshot.html");
+        saveHtmlAttach("HTML Source of devextreme-reactive");
+        saveTextAttach("<br>html Info: React_Grid", System.getenv().get("USERPROFILE") + "/Downloads/React_Grid.html");
         Assert.assertTrue(false);
 	}
 	

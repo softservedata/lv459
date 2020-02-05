@@ -3,6 +3,7 @@ package com.softserve.edu.rest.engine;
 import com.google.gson.Gson;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.dto.RestUrl;
+import com.softserve.edu.rest.tools.AllureUtils;
 
 public abstract class RestQueries<TGET, TPOST, TPUT, TDELETE, TPATCH> extends RestCrud {
 
@@ -31,22 +32,27 @@ public abstract class RestQueries<TGET, TPOST, TPUT, TDELETE, TPATCH> extends Re
 
 	// TODO Move Converter to class
 	private TGET convertToEntityTGET(String json) {
+		AllureUtils.checkSaveJsonAttach("Method GET", json);
 		return gson.fromJson(json, classTGET);
 	}
 
 	private TPOST convertToEntityTPOST(String json) {
+		AllureUtils.checkSaveJsonAttach("Method POST", json);
 		return gson.fromJson(json, classTPOST);
 	}
 
 	private TPUT convertToEntityTPUT(String json) {
+		AllureUtils.checkSaveJsonAttach("Method PUT", json);
 		return gson.fromJson(json, classTPUT);
 	}
 
 	private TDELETE convertToEntityTDELETE(String json) {
+		AllureUtils.checkSaveJsonAttach("Method DELETE", json);
 		return gson.fromJson(json, classTDELETE);
 	}
 
 	private TPATCH convertToEntityTPATCH(String json) {
+		AllureUtils.checkSaveJsonAttach("Method PATCH", json);
 		return gson.fromJson(json, classTPATCH);
 	}
 

@@ -6,6 +6,8 @@ import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
 import com.softserve.edu.rest.tools.RegexUtils;
 
+import io.qameta.allure.Step;
+
 public class AdminService extends UserService {
 
 	public AdminService(LoginedUser loginedUser) {
@@ -24,6 +26,7 @@ public class AdminService extends UserService {
 		}
 	}
 	
+	@Step("Change_Current_Lifetime")
 	public AdminService changeCurrentLifetime(Lifetime lifetime) {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("token", loginedUser.getToken())

@@ -26,7 +26,8 @@
 		<!-- - - - - - Test - - - - - -->
 		<org.junit.version>4.12</org.junit.version>
 		<!-- <org.junit.version>4.13-rc-2</org.junit.version> -->
-		<org.testng.version>7.1.0</org.testng.version>
+		<!-- <org.testng.version>7.1.0</org.testng.version> -->
+		<org.testng.version>6.14.3</org.testng.version>
 		<!-- <org.testng.version>7.0.0</org.testng.version> -->
 		<testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
 		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
@@ -38,8 +39,8 @@
 		<maven.webdriverextensions-maven-plugin.version>3.2.0</maven.webdriverextensions-maven-plugin.version>
 		<!-- - - - - - Reports - - - - - -->
 		<testng.reports.directory>target/surefire-reports/test-output</testng.reports.directory>
-		<allure.version>2.10.0</allure.version>
-		<aspectj.version>1.9.2</aspectj.version>
+		<allure.version>2.13.1</allure.version>
+		<aspectj.version>1.9.5</aspectj.version>
 		<!-- - - - - - Mocks - - - - - -->
 		<org.mockito.version>1.10.19</org.mockito.version>
 		<org.powermock.version>1.7.4</org.powermock.version>
@@ -113,13 +114,28 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.core.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>${google.gson.version}</version>
 		</dependency>
-		
+
+		<!-- - - - Reports - - - -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>${allure.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+			<!-- <scope>test</scope> -->
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -220,7 +236,18 @@
 						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
+					<argLine>
+						-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+					</argLine>
 				</configuration>
+				<!-- <dependencies> -->
+				<!-- <dependency> -->
+				<!-- <groupId>org.aspectj</groupId> -->
+				<!-- <artifactId>aspectjweaver</artifactId> -->
+				<!-- <version>${aspectj.version}</version> -->
+				<!-- <scope>test</scope> -->
+				<!-- </dependency> -->
+				<!-- </dependencies> -->
 			</plugin>
 
 		</plugins>

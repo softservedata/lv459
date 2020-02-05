@@ -4,6 +4,8 @@ import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
 
+import io.qameta.allure.Step;
+
 public class UserService extends GuestService {
 
 	protected LoginedUser loginedUser;
@@ -13,6 +15,7 @@ public class UserService extends GuestService {
 		this.loginedUser = loginedUser;
 	}
 
+	@Step("Logout")
 	public GuestService logout() {
 		RestParameters bodyParameters = new RestParameters()
 				.addParameter("name", loginedUser.getUser().getName())

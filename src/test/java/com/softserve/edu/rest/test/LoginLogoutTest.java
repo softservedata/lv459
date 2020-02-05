@@ -13,7 +13,19 @@ import com.softserve.edu.rest.data.UserRepository;
 import com.softserve.edu.rest.services.AdminService;
 import com.softserve.edu.rest.services.GuestService;
 import com.softserve.edu.rest.services.UserService;
+import com.softserve.edu.rest.tools.AllureUtils;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Issue;
+import io.qameta.allure.Link;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
+@Epic("AllureTest")
+@Feature("Login_Application_Test FEATURE")
 public class LoginLogoutTest extends RestTestRunner {
 	public static final Logger logger = LoggerFactory.getLogger(LoginLogoutTest.class); // org.slf4j.LoggerFactory
 	//public final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -68,8 +80,15 @@ public class LoginLogoutTest extends RestTestRunner {
         };
     }
 
-	//@Test(dataProvider = "correctAdminTime")
+	@Description("Test Description: class LoginLogoutTest; verifyLifeTimeToken()")
+	@Severity(SeverityLevel.CRITICAL)
+	@Story("testApp2 STORY")
+	@Issue("LVATQAOMS-776")
+	@Link(name = "allure", type = "mylink")
+	@Link("https://softserve.academy/")
+	@Test(dataProvider = "correctAdminTime")
 	public void verifyLifeTimeToken(User admin, Lifetime lifetime) {
+		AllureUtils.isSaveJson = true;
 		//logger.info("loginPositiveTest START, user = " + user);
         //log.debug("loginPositiveTest started!");
 		//
@@ -97,8 +116,8 @@ public class LoginLogoutTest extends RestTestRunner {
         //logger.info("loginPositiveTest DONE, user = " + user);
     }
 
-	@Test(dataProvider = "correctAdminTime",//)
-	      expectedExceptions = RuntimeException.class)
+	//@Test(dataProvider = "correctAdminTime",//)
+	//      expectedExceptions = RuntimeException.class)
 	public void verifyException(User admin, Lifetime lifetime) {
 		logger.info("verifyException START, user = " + admin.toString() + " lifetime = " + lifetime.toString());
 		// log.debug("loginPositiveTest started!");

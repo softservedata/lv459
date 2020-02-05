@@ -11,6 +11,8 @@ import org.testng.annotations.BeforeMethod;
 
 import com.softserve.edu.rest.services.GuestService;
 
+import io.qameta.allure.Step;
+
 public abstract class RestTestRunner {
 	private final Long ONE_SECOND_DELAY = 1000L;
 
@@ -40,6 +42,7 @@ public abstract class RestTestRunner {
 		}
 	}
 
+	@Step("Load_Application")
 	public GuestService loadApplication() {
 		// TODO Check Server Availability
 		return new GuestService();
