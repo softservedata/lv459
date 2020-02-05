@@ -1,12 +1,20 @@
 package com.softserve.edu.rest.test.admins;
 
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.data.UserRepository;
 import com.softserve.edu.rest.services.AdminService;
 import com.softserve.edu.rest.services.GuestService;
 import com.softserve.edu.rest.test.RestTestRunner;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
+
+                    /**
+                     * Taliana's tests
+                     */
+
 
 public class CreateLoginAdminTest extends RestTestRunner {
 
@@ -21,12 +29,14 @@ public class CreateLoginAdminTest extends RestTestRunner {
     }
 
     @Test(dataProvider = "correctUser", priority = 1)
-    public void loginAdminTest(User user){
+    public void loginAdminTest(User existAdmin){
 
         AdminService adminService = guestService
-                .successfulAdminLogin(user);
+                .successfulAdminLogin(existAdmin);
 
-        /// Ask how to do Assert
+        Assert.assertTrue(adminService.isUserLogged(existAdmin));
+
+        adminService.getAllUsers();
 
         adminService.logout();
 
@@ -41,12 +51,15 @@ public class CreateLoginAdminTest extends RestTestRunner {
     }
 
     @Test(dataProvider = "correctAdminCreate", priority = 2)
-    public void createNewAdminTest(User user, User user1){ //change param
+    public void createNewAdminTest(User existAdmin, User newAdmin){ //change param
 
         AdminService adminService = guestService
-                .successfulAdminLogin(user)
-                .createNewAdmin(user1);
+                .successfulAdminLogin(existAdmin)
+                .createUser(newAdmin);
 
+        Assert.assertTrue(adminService.isUserCreated(newAdmin));
+
+        adminService.getAllUsers();
 
         adminService.logout();
         //.successfulAdminLogin(user1);
@@ -61,13 +74,38 @@ public class CreateLoginAdminTest extends RestTestRunner {
         };
     }
 
-    @Test(dataProvider = "correctAdminNew", priority = 3)     //Test don't work
-    public void loginNewAdminTest(User user){
+    @Test(dataProvider = "correctAdminNew", priority = 3)
+    public void loginNewAdminTest(User newAdmin){
 
         AdminService adminService = guestService
-                .successfulAdminLogin(user);
+                .successfulAdminLogin(newAdmin);
+
+        Assert.assertTrue(adminService.isUserLogged(newAdmin));
+
+        adminService.getAllUsers();
 
         adminService.logout();
     }
+
+    @Test(dataProvider = "correctAdminNew")
+    public void logoutNewAdminTest(User newAdmin){
+
+    AdminService adminService = guestService
+    .successfulAdminLogin(newAdmin);
+
+    Assert.assertTrue(adminService.isUserLogged(newAdmin));
+
+    adminService.getAllUsers();
+
+    adminService.removeUser(newAdmin);
+
+    Assert.assertTrue(adminService.isUserRemoved(newAdmin));
+
+    adminService.getAllUsers();
+
+    adminService.logout();
+    }
+
+
 
 }

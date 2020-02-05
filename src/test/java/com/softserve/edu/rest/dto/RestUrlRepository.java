@@ -20,9 +20,9 @@ public final class RestUrlRepository {
 	public static RestUrl getAdminUser() {
 		return new RestUrl()
 				.addBaseUrl(server)
-				.addGetUrl("")
+				.addGetUrl("/users")
 				.addPostUrl("/user")
-				.addPutUrl("")
+				.addPutUrl("/user")
 				.addDeleteUrl("/logout");
 		// .addDeleteUrl("/logout");
 	}
@@ -47,6 +47,33 @@ public final class RestUrlRepository {
 				.addDeleteUrl("") // run POST
 				.addPatchUrl(""); // TODO Change Password
 		// .addDeleteUrl("/logout");
+	}
+
+	public static RestUrl getLockedUser() {
+		return new RestUrl()
+				.addBaseUrl(server)
+				.addGetUrl("")
+				.addPostUrl("/locked/user/{name}")
+				.addPutUrl("/locked/user/{name}")
+				.addDeleteUrl("");
+	}
+
+	public static RestUrl getLockedUsers() {
+		return new RestUrl()
+				.addBaseUrl(server)
+				.addGetUrl("/locked/users")
+				.addPostUrl("")
+				.addPutUrl("")
+				.addDeleteUrl("");
+	}
+
+	public static RestUrl getLockedAdmins() {
+		return new RestUrl()
+				.addBaseUrl(server)
+				.addGetUrl("/locked/admins")
+				.addPostUrl("")
+				.addPutUrl("")
+				.addDeleteUrl("");
 	}
 
 	public static RestUrl getApplication() {

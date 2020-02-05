@@ -10,7 +10,7 @@ public final class UserRepository {
     }
 
     public static User getAdmin() {
-        return new User("admin", System.getenv("REST_PASSWORD"), true)
+        return new User("admin", "qwerty", true)
                 .addItem(ItemRepository.getDefaultItemIndex0());
     }
 
@@ -24,9 +24,8 @@ public final class UserRepository {
                 .addItem(ItemRepository.getDefaultItemIndex0());
     }
 
-    public static User createVasya() {
-        return new User("Vasya", "qwerty", false)
-                .addItem(ItemRepository.getDefaultItemIndex0());
+    public static User getVasya() {
+        return new User("Vasya", "qwerty", false).addItem(ItemRepository.getDefaultItemIndex0());
     }
 
     public static User getDana() {

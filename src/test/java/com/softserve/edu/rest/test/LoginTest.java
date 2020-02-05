@@ -1,6 +1,7 @@
 package com.softserve.edu.rest.test;
 
 import com.softserve.edu.rest.services.AdminService;
+import com.softserve.edu.rest.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -9,41 +10,22 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.data.UserRepository;
-import com.softserve.edu.rest.services.GuestService;
-import com.softserve.edu.rest.services.UserService;
 
 public class LoginTest extends RestTestRunner {
 	public static final Logger logger = LoggerFactory.getLogger(LoginTest.class);
-	
+
 	@DataProvider
-    public Object[][] correctUser() {
-		//logger.info("@DataProvider correctUser() DONE");
-        return new Object[][]{
-                { UserRepository.getAdmin() },
-				//{ UserRepository.createVasya() },
-        };
-    }
+	public Object[][] createUser() {
+		logger.info("@DataProvider createUser() DONE");
+		return new Object[][]{
+				{ UserRepository.getAdmin(), UserRepository.getVasya() }
+		};
+	}
 
-	//@Test(dataProvider = "correctUser")
-	public void verifyLogin(User user) {
-		logger.info("loginPositiveTest START, user = " + user);
-
-	    AdminService adminService = loadApplication()
-				.successfulAdminLogin(user);
-
-		//Assert.assertNotEquals(userService.getToken(),"Error Login");
-        Assert.assertTrue(adminService.isUserLogged(user));
-
-	    adminService.logout();
-
-	    logger.info("loginPositiveTest DONE, user = " + user);
-	    }
-
-	@Test(dataProvider = "correctUser")
+	@Test(dataProvider = "createUser", priority = 1)
 	public void createUser(User admin, User newUser) {
 		logger.info("createUserPositiveTest  START, admin = " + admin);
 
-		//create user
 		AdminService adminService = loadApplication()
 				.successfulAdminLogin(admin)
 				.createUser(newUser);
@@ -51,10 +33,71 @@ public class LoginTest extends RestTestRunner {
 		Assert.assertTrue(adminService.isUserCreated(newUser));
 
 		adminService.getAllUsers();
-
 		adminService.logout();
 
 		logger.info("createUserPositiveTest DONE, user = " + admin);
+	}
+
+	@DataProvider
+    public Object[][] newUser() {
+		logger.info("@DataProvider newUser() DONE");
+        return new Object[][]{
+                { UserRepository.getVasya() }
+        };
+    }
+
+	@Test(dataProvider = "newUser", priority = 2)
+	public void verifyNewUserLogin(User user) {
+		logger.info("loginNewUserTest START, user = " + user);
+
+		UserService userService = loadApplication()
+				.successfulUserLogin(user);
+
+		Assert.assertNotEquals(userService.getToken(),"Error Login");
+
+		userService.logout();
+
+		logger.info("loginNewUserTest DONE, user = " + user);
+	}
+
+	@DataProvider
+	public Object[][] correctAdmin() {
+		logger.info("@DataProvider correctAdmin() DONE");
+		return new Object[][]{
+				{ UserRepository.getAdmin() }
+		};
+	}
+
+	@Test(dataProvider = "correctAdmin", priority = 3)
+	public void verifyAdminLogin(User admin) {
+		logger.info("adminLoginPositiveTest START, user = " + admin);
+
+		AdminService adminService = loadApplication()
+				.successfulAdminLogin(admin);
+
+		Assert.assertTrue(adminService.isUserLogged(admin));
+
+		adminService.logout();
+
+		logger.info("adminLoginPositiveTest DONE, user = " + admin);
+	}
+
+	@DataProvider
+	public Object[][] invalidUser() {
+		logger.info("@DataProvider invalidUser() DONE");
+		return new Object[][]{
+				{ UserRepository.notExistingUser() }
+		};
+	}
+
+	@Test(dataProvider = "invalidUser", priority = 4, expectedExceptions = RuntimeException.class)
+	public void verifyLoginNegativeTest(User user) {
+		logger.info("loginNegativeTest START, user = " + user);
+
+		UserService userService = loadApplication()
+				.successfulUserLogin(user);
+
+		logger.info("loginNegativeTest DONE, user = " + user);
 	}
 
 }

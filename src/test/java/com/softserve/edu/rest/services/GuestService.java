@@ -1,5 +1,7 @@
 package com.softserve.edu.rest.services;
 
+import com.softserve.edu.rest.resources.*;
+import com.softserve.edu.rest.test.LoginTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,12 +10,6 @@ import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
-import com.softserve.edu.rest.resources.ApplicationResource;
-import com.softserve.edu.rest.resources.LoginAdminResource;
-import com.softserve.edu.rest.resources.LoginResource;
-import com.softserve.edu.rest.resources.LoginUserResource;
-import com.softserve.edu.rest.resources.TokenlifetimeResource;
-import com.softserve.edu.rest.resources.UserResource;
 
 public class GuestService {
     public static final Logger logger = LoggerFactory.getLogger(GuestService.class); // org.slf4j.LoggerFactory
@@ -21,6 +17,8 @@ public class GuestService {
     protected LoginResource loginResource;
     protected LoginUserResource loginUserResource;
     protected LoginAdminResource loginAdminResource;
+    protected LockUserResource lockUserResource;
+    protected LockUsersResource lockUsersResource;
     protected TokenlifetimeResource tokenlifetimeResource;
     protected UserResource userResource;
 //	protected CooldownResource cooldownResource;
@@ -35,6 +33,8 @@ public class GuestService {
         loginResource = new LoginResource();
         loginUserResource = new LoginUserResource();
         loginAdminResource = new LoginAdminResource();
+        lockUserResource = new LockUserResource();
+        lockUsersResource = new LockUsersResource();
         userResource = new UserResource();
     }
 
@@ -89,6 +89,15 @@ public class GuestService {
         //checkEntity(simpleEntity, "false", "Error Change Current Lifetime");
         logger.debug("updateCurrentLifetime DONE");
         return this;
+    }
+
+    //Check if lock request is success
+    protected void checkLockEntity(SimpleEntity simpleEntity, String message) {
+        if ((simpleEntity.getContent() == null) || (simpleEntity.getContent().isEmpty())
+                || (simpleEntity.getContent().toLowerCase().equals("false"))) {
+            logger.error("Throw LockPersonException");
+            throw new RuntimeException(message);
+        }
     }
 
 //	public Cooldown getCurrentCooldown() {
