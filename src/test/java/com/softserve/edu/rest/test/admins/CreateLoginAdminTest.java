@@ -103,7 +103,6 @@ public class CreateLoginAdminTest extends RestTestRunner {
 
     adminService.getAllUsers();
 
-    adminService.logout();
     }
 
 
