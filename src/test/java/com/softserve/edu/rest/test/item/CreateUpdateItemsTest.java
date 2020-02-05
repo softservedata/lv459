@@ -30,11 +30,10 @@ public class CreateUpdateItemsTest extends RestTestRunner {
         // Step
         AdminService addItems = loadApplication()
                 .resetServiceToInitialState()
-                .successfulAdminLogin(admin)
-                .addItem(book)
-
-       // Assert.assertEquals(addItems, book);
-                .addItem(copybook)
+                .successfulAdminLogin(admin);
+        String s = addItems.addItem(book).getUserItem(book);
+        Assert.assertEquals(s, book.getItemText());
+            /*    .addItem(copybook)
                 .getAllItems();
         //Assert.assertTrue(addItems.toString().equals(UserRepository.getAdmin1().toString()));
         // TODO Asserts
@@ -51,14 +50,14 @@ public class CreateUpdateItemsTest extends RestTestRunner {
                 .deleteItem(copybook2)
                 .getAllItems();
         // TODO Asserts
-
+*/
         //
         // Check
 /*        logger.info("Expected result: " + UserRepository.getAdmin1());
         logger.info("Actual result: " + adminService.toString());
         Assert.assertTrue(adminService.toString().equals(UserRepository.getAdmin1().toString()));*/
 
-        updateItems.logout();
+       // updateItems.logout();
 
     }
 }

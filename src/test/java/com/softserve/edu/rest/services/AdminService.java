@@ -6,18 +6,15 @@ import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
-import com.softserve.edu.rest.resources.ItemResource;
 import com.softserve.edu.rest.tools.RegexUtils;
 import io.qameta.allure.Step;
 
 public class AdminService extends UserService {
 
-    protected ItemResource itemResource;
     public AdminService(LoginedUser loginedUser) {
         super(loginedUser);
         check();
         //System.out.println(loginResource.toString());
-        itemResource = new ItemResource();
     }
 
     private void check() {
@@ -193,11 +190,23 @@ public class AdminService extends UserService {
      */
 
     public AdminService getAllItems() {
-        RestParameters urlParameters = new RestParameters().addParameter("token", loginedUser.getToken());
+        RestParameters urlParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
         SimpleEntity simpleEntity = itemResource.httpGetAsEntity(null, urlParameters);
         System.out.println(simpleEntity);
         //checkEntity(simpleEntity, "false", "Error get all items");
         return this;
+    }
+
+    public String getUserItem(Item item) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", getToken());
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", item.getItemIndex());
+
+        SimpleEntity simpleEntity = itemByIndexResource.httpGetAsEntity(pathVariables, bodyParameters);
+
+        return simpleEntity.getContent();
     }
 
     public AdminService addItem(Item newItem) {
@@ -235,8 +244,4 @@ public class AdminService extends UserService {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return loginedUser + "";
-    }
 }
