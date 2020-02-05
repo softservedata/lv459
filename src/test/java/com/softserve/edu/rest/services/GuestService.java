@@ -22,6 +22,8 @@ public class GuestService {
     protected LockUsersResource lockUsersResource;
     protected TokenlifetimeResource tokenlifetimeResource;
     protected UserResource userResource;
+    protected ItemResource itemResource;
+
     //	protected CooldownResource cooldownResource;
     private ApplicationResource applicationResource;
 
@@ -37,6 +39,7 @@ public class GuestService {
         lockUserResource = new LockUserResource();
         lockUsersResource = new LockUsersResource();
         userResource = new UserResource();
+        itemResource = new ItemResource();
     }
 
     protected void checkEntity(SimpleEntity simpleEntity,

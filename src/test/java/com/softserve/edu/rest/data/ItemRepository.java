@@ -27,4 +27,12 @@ public class ItemRepository {
         return new Item("4", "Copybook");
     }
 
+    public static Item getBook2() {
+        return new Item("3", "Book2");
+    }
+
+    public static Item getCopybook2() {
+        return new Item("4", "Copybook2");
+    }
+
 }

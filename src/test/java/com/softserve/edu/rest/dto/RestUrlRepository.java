@@ -123,5 +123,13 @@ public final class RestUrlRepository {
 				.addPatchUrl("");
 	}
 
+	public static RestUrl getItems() {
+		return new RestUrl().addBaseUrl(server)
+				.addGetUrl("/items")
+				.addPostUrl("")
+				.addPutUrl("")
+				.addDeleteUrl("")
+				.addPatchUrl("");
+	}
 	// TODO @speretc add here resources for item addition etc
 }

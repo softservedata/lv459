@@ -29,4 +29,12 @@ public class Item {
         return this;
 
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "itemIndex='" + itemIndex + '\'' +
+                ", itemText='" + itemText + '\'' +
+                '}';
+    }
 }

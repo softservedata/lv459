@@ -188,6 +188,14 @@ public class AdminService extends UserService {
      * "Error create user"); logger.debug("creation of user DONE"); return this; }
      */
 
+    public AdminService getAllItems() {
+        RestParameters urlParameters = new RestParameters().addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = itemResource.httpGetAsEntity(null, urlParameters);
+        System.out.println(simpleEntity);
+        checkEntity(simpleEntity, "false", "Error get all items");
+        return this;
+    }
+
     @Override
     public String toString() {
         return loginedUser + "";
