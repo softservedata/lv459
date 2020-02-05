@@ -1,4 +1,5 @@
 package com.softserve.edu.rest.test;
+
 import com.softserve.edu.rest.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,73 +22,69 @@ public class CheckUserTest extends RestTestRunner {
     public Object[][] correctUser() {
         logger.info("@DataProvider correctUser() DONE");
         return new Object[][]{
-                { UserRepository.getAdmin(), UserRepository.getDana()}
+                {UserRepository.getAdmin(), UserRepository.getDana()}
         };
     }
 
     @Test(dataProvider = "correctUser")
-    public void createRemoveUser(User admin, User newUser){
+    public void createRemoveUser(User admin, User newUser) {
         logger.info("checkUser Test  START, admin = " + admin);
 
         GuestService guestService = new GuestService();
 
+        //login ad admin, create user
         AdminService adminService = guestService
-                .successfulAdminLogin(admin);
-           //create user
-          adminService.createUser(newUser);
+                .successfulAdminLogin(admin)
+                .createUser(newUser);
 
-          Assert.assertTrue(adminService.isUserCreated(newUser));
+        Assert.assertTrue(adminService.isUserCreated(newUser));
 
-          //get all user
-          adminService.getAllUsers();
-          //remove user
-          adminService.removeUser(newUser);
+        //get all user
+        adminService.getAllUsers();
 
-          Assert.assertTrue(adminService.isUserRemoved(newUser));
+        //remove user
+        adminService.removeUser(newUser);
 
-          adminService.getAllUsers();
-          //logout
-          adminService.logout();
+        Assert.assertTrue(adminService.isUserRemoved(newUser));
+
+        adminService.getAllUsers();
+        //logout
+        adminService.logout();
     }
 
 
-   @Test(dataProvider = "correctUser")
-    public void changePassword(User admin, User newUser){
-        logger.info("checkUser Test  START, admin = " + admin);
+    @Test(dataProvider = "correctUser")
+    public void changePassword(User admin, User newUser) {
+        logger.info("change password Test  START, admin = " + admin);
 
         //login as admin
         AdminService adminService = loadApplication()
-                .successfulAdminLogin(admin);
-
-        //create user
-          adminService.createUser(newUser);
+                .successfulAdminLogin(admin).
+                        createUser(newUser);
 
         Assert.assertTrue(adminService.isUserCreated(newUser));
 
         //admin logout
         adminService.logout();
 
-        //user login
-       logger.info("******" + newUser.getName()+ " " + newUser.getPassword());
+        logger.info("******" + newUser.getName() + " " + newUser.getPassword());
 
+        //user login, change password
         UserService userService = new GuestService()
-                .successfulUserLogin(newUser);
-
-        //change password
-        userService.changePassword(newUser);
+                .successfulUserLogin(newUser)
+                .changePassword(newUser);
 
         //user logout
         userService.logout();
 
         newUser.setPassword("qwerty5");
+        //check password
+        Assert.assertTrue(newUser.getPassword().equals("qwerty5"));
 
-       //check password
-       Assert.assertTrue(newUser.getPassword().equals("qwerty5"));
-
-       //login
-       UserService userService1 = new GuestService()
-               .successfulUserLogin(newUser);
+        //login
+        UserService userService1 = new GuestService()
+                .successfulUserLogin(newUser);
         //logout
-       userService1.logout(); //without service1 not working
+        userService1.logout(); //without new service1 not working
     }
 }
