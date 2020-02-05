@@ -18,10 +18,9 @@ public class CreateUpdateItemsTest extends RestTestRunner {
 
     @DataProvider
     public Object[][] correctUser() {
-        //logger.info("@DataProvider correctUser() DONE");
         return new Object[][]{
                 {UserRepository.getAdmin1(), ItemRepository.getBook(), ItemRepository.getCopybook(),
-                ItemRepository.getBook2(), ItemRepository.getCopybook2()}
+                        ItemRepository.getBook2(), ItemRepository.getCopybook2()}
         };
     }
 
@@ -33,8 +32,11 @@ public class CreateUpdateItemsTest extends RestTestRunner {
                 .resetServiceToInitialState()
                 .successfulAdminLogin(admin)
                 .addItem(book)
+
+       // Assert.assertEquals(addItems, book);
                 .addItem(copybook)
                 .getAllItems();
+        //Assert.assertTrue(addItems.toString().equals(UserRepository.getAdmin1().toString()));
         // TODO Asserts
 
 
@@ -49,7 +51,6 @@ public class CreateUpdateItemsTest extends RestTestRunner {
                 .deleteItem(copybook2)
                 .getAllItems();
         // TODO Asserts
-
 
         //
         // Check

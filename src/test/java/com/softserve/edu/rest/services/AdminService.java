@@ -6,15 +6,18 @@ import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
+import com.softserve.edu.rest.resources.ItemResource;
 import com.softserve.edu.rest.tools.RegexUtils;
 import io.qameta.allure.Step;
 
 public class AdminService extends UserService {
 
+    protected ItemResource itemResource;
     public AdminService(LoginedUser loginedUser) {
         super(loginedUser);
         check();
-        System.out.println(loginResource.toString());
+        //System.out.println(loginResource.toString());
+        itemResource = new ItemResource();
     }
 
     private void check() {
