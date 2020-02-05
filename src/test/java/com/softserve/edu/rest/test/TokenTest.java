@@ -31,7 +31,7 @@ public class TokenTest extends RestTestRunner{
         };
     }
 
-    @Test(dataProvider = "correctAdminExtend")
+    @Test(dataProvider = "correctAdminExtend", priority = 1)
     public void verifyTokenChange(User admin, Lifetime extend){
         logger.info("verifyTokenChange START, admin = " + admin.toString());
         
@@ -44,7 +44,7 @@ public class TokenTest extends RestTestRunner{
         logger.info("verifyTokenChange DONE, admin = " + admin);
     }
     
-    @Test(dataProvider = "correctAdminShort")
+    @Test(dataProvider = "correctAdminShort", priority = 2)
     public void verifyTokenLifetime(User admin, Lifetime tokenShort){
         logger.info("verifyTokenLifetime START, admin = " + admin.toString());
         

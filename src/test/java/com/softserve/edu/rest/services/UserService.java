@@ -38,8 +38,6 @@ public class UserService extends GuestService {
         return loginedUser.getToken();
     }
 
-    //GET item (token + index) 	.addText("URL=/item/{index}, method=GET
-    // getItem, PARAMETERS= token, index");
     public String getItemByIndex(Item item) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", getToken());
@@ -55,8 +53,6 @@ public class UserService extends GuestService {
         return simpleEntity.getContent();
     }
 
-    //POST  .addText("URL=/item/{index}, method=POST addItem, PARAMETERS=
-    // token, item")
     public UserService postNewItemByIndex(Item item) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", getToken())
