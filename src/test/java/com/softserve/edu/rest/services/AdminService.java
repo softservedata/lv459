@@ -189,6 +189,14 @@ public class AdminService extends UserService {
      * "Error create user"); logger.debug("creation of user DONE"); return this; }
      */
 
+    public AdminService getAllItems() {
+        RestParameters urlParameters = new RestParameters().addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = itemResource.httpGetAsEntity(null, urlParameters);
+        System.out.println(simpleEntity);
+        checkEntity(simpleEntity, "false", "Error get all items");
+        return this;
+    }
+
     public AdminService addItem(Item newItem) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken())
@@ -201,11 +209,15 @@ public class AdminService extends UserService {
         return this;
     }
 
-    public AdminService getAllItems() {
-        RestParameters urlParameters = new RestParameters().addParameter("token", loginedUser.getToken());
-        SimpleEntity simpleEntity = itemResource.httpGetAsEntity(null, urlParameters);
+    public AdminService updateItem(Item oldItem, Item newItem ) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken())
+                .addParameter("item", newItem.getItemText());
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", oldItem.getItemIndex());
+        SimpleEntity simpleEntity = itemByIndexResource.httpPutAsEntity(pathVariables, null, bodyParameters);
         System.out.println(simpleEntity);
-        checkEntity(simpleEntity, "false", "Error get all items");
+        checkEntity(simpleEntity, "false", "Error add item");
         return this;
     }
 

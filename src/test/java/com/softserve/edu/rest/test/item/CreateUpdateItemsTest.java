@@ -29,21 +29,28 @@ public class CreateUpdateItemsTest extends RestTestRunner {
     public void verifyIsItemAdded(User admin, Item book, Item copybook, Item book2, Item copybook2) {
         //
         // Step
-        AdminService adminService = loadApplication()
+        AdminService addItems = loadApplication()
                 .resetServiceToInitialState()
-                .successfulAdminLogin(admin);
+                .successfulAdminLogin(admin)
+                .addItem(book)
+                .addItem(copybook)
+                .getAllItems();
+        // TODO Asserts
+
+
+        AdminService updateItems = addItems
+                .updateItem(book, book2)
+                .updateItem(copybook, copybook2)
+                .getAllItems();
+
+
         //
         // Check
 /*        logger.info("Expected result: " + UserRepository.getAdmin1());
         logger.info("Actual result: " + adminService.toString());
         Assert.assertTrue(adminService.toString().equals(UserRepository.getAdmin1().toString()));*/
 
-        AdminService newAdminService = adminService.addItem(book2).addItem(copybook2)
-                .getAllItems();
-        //logger.info("Actual result: " + newAdminService.toString());
-/*        logger.info("Expected result: " + book.toString());
-        logger.info("Actual result: " + copybook.toString());*/
-        adminService.logout();
+        updateItems.logout();
 
     }
 }
