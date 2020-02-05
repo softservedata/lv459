@@ -25,9 +25,7 @@
 		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<!-- - - - - - Test - - - - - -->
 		<org.junit.version>4.12</org.junit.version>
-		<!-- <org.junit.version>4.13-rc-2</org.junit.version> -->
-		<org.testng.version>7.1.0</org.testng.version>
-		<!-- <org.testng.version>7.0.0</org.testng.version> -->
+		<org.testng.version>6.14.3</org.testng.version>
 		<testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
 		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
 		<!-- - - - - - Automation - - - - - -->
@@ -38,8 +36,8 @@
 		<maven.webdriverextensions-maven-plugin.version>3.2.0</maven.webdriverextensions-maven-plugin.version>
 		<!-- - - - - - Reports - - - - - -->
 		<testng.reports.directory>target/surefire-reports/test-output</testng.reports.directory>
-		<allure.version>2.10.0</allure.version>
-		<aspectj.version>1.9.2</aspectj.version>
+		<allure.version>2.13.1</allure.version>
+		<aspectj.version>1.9.5</aspectj.version>
 		<!-- - - - - - Mocks - - - - - -->
 		<org.mockito.version>1.10.19</org.mockito.version>
 		<org.powermock.version>1.7.4</org.powermock.version>
@@ -119,7 +117,21 @@
 			<artifactId>gson</artifactId>
 			<version>${google.gson.version}</version>
 		</dependency>
-		
+
+		<!-- - - - Reports - - - -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>${allure.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -154,44 +166,44 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>com.github.webdriverextensions</groupId>
-				<artifactId>webdriverextensions-maven-plugin</artifactId>
-				<version>${maven.webdriverextensions-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>pre-test</id>
-						<goals>
-							<goal>install-drivers</goal>
-						</goals>
-						<!-- Uncomment for download automatically -->
-						<phase>test-compile</phase>
-						<!-- <phase>process-test-classes</phase> -->
-						<!-- <phase>test</phase> -->
-					</execution>
-				</executions>
-				<configuration>
-					<installationDirectory>${project.build.directory}/test-classes</installationDirectory>
-					<!-- <installationDirectory>${project.basedir}/src/test/resources</installationDirectory> -->
-					<keepDownloadedWebdrivers>true</keepDownloadedWebdrivers>
-					<drivers>
-						<driver>
-							<name>chromedriver</name>
-							<!--suppress UnresolvedMavenProperty -->
-							<!--<platform>${os.detected.name}</platform>-->
-							<!-- <platform>windows</platform> -->
-							<!--<bit>32</bit>-->
-							<!-- <version>74.0.3729.6</version> -->
-							<!-- <url>https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip</url> -->
-							<!-- <version>76.0.3809.126</version> -->
-							<!-- <url>https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip</url> -->
-							<!--<url>https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip</url>-->
-							<!-- <version>79.0.3945.36</version> -->
-							<!-- <version>78.0.3904.105</version> -->
-						</driver>
-					</drivers>
-				</configuration>
-			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>com.github.webdriverextensions</groupId>-->
+				<!--<artifactId>webdriverextensions-maven-plugin</artifactId>-->
+				<!--<version>${maven.webdriverextensions-maven-plugin.version}</version>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>pre-test</id>-->
+						<!--<goals>-->
+							<!--<goal>install-drivers</goal>-->
+						<!--</goals>-->
+						<!--&lt;!&ndash; Uncomment for download automatically &ndash;&gt;-->
+						<!--<phase>test-compile</phase>-->
+						<!--&lt;!&ndash; <phase>process-test-classes</phase> &ndash;&gt;-->
+						<!--&lt;!&ndash; <phase>test</phase> &ndash;&gt;-->
+					<!--</execution>-->
+				<!--</executions>-->
+				<!--<configuration>-->
+					<!--<installationDirectory>${project.build.directory}/test-classes</installationDirectory>-->
+					<!--&lt;!&ndash; <installationDirectory>${project.basedir}/src/test/resources</installationDirectory> &ndash;&gt;-->
+					<!--<keepDownloadedWebdrivers>true</keepDownloadedWebdrivers>-->
+					<!--<drivers>-->
+						<!--<driver>-->
+							<!--<name>chromedriver</name>-->
+							<!--&lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+							<!--&lt;!&ndash;<platform>${os.detected.name}</platform>&ndash;&gt;-->
+							<!--&lt;!&ndash; <platform>windows</platform> &ndash;&gt;-->
+							<!--&lt;!&ndash;<bit>32</bit>&ndash;&gt;-->
+							<!--&lt;!&ndash; <version>74.0.3729.6</version> &ndash;&gt;-->
+							<!--&lt;!&ndash; <url>https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip</url> &ndash;&gt;-->
+							<!--&lt;!&ndash; <version>76.0.3809.126</version> &ndash;&gt;-->
+							<!--&lt;!&ndash; <url>https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip</url> &ndash;&gt;-->
+							<!--&lt;!&ndash;<url>https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip</url>&ndash;&gt;-->
+							<!--&lt;!&ndash; <version>79.0.3945.36</version> &ndash;&gt;-->
+							<!--&lt;!&ndash; <version>78.0.3904.105</version> &ndash;&gt;-->
+						<!--</driver>-->
+					<!--</drivers>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -220,7 +232,11 @@
 						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
+					<argLine>
+						-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+					</argLine>
 				</configuration>
+
 			</plugin>
 
 		</plugins>
