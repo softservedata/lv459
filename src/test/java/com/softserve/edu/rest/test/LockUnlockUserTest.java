@@ -23,7 +23,7 @@ public class LockUnlockUserTest extends RestTestRunner {
 
     //@Test(dataProvider = "lockUser")
     public void lockUser(User admin, User userToLock) {
-        logger.info("lockUserPositiveTest  START, userToLock = " + userToLock);
+        logger.info("lockUserPositiveTest  START, userToLock = " + userToLock) ;
 
         AdminService adminService = loadApplication()
                 .successfulAdminLogin(admin)
