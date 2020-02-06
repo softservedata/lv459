@@ -62,22 +62,16 @@ public class CreateLoginAdminTest extends RestTestRunner {
         adminService.getAllUsers();
 
         adminService.logout();
-        //.successfulAdminLogin(user1);
+
     }
 
 
-    @DataProvider
-    public Object[][] correctAdminNew() {
-        //logger.info("@DataProvider correctUser() DONE");
-        return new Object[][]{
-                { UserRepository.getNewAdmin() },
-        };
-    }
-
-    @Test(dataProvider = "correctAdminNew", priority = 3)
-    public void loginNewAdminTest(User newAdmin){
+    @Test(dataProvider = "correctAdminCreate", priority = 3)
+    public void loginNewAdminTest(User existAdmin, User newAdmin){
 
         AdminService adminService = guestService
+                .successfulAdminLogin(existAdmin)
+                .createUser(newAdmin)
                 .successfulAdminLogin(newAdmin);
 
         Assert.assertTrue(adminService.isUserLogged(newAdmin));
@@ -87,11 +81,13 @@ public class CreateLoginAdminTest extends RestTestRunner {
         adminService.logout();
     }
 
-    @Test(dataProvider = "correctAdminNew")
-    public void logoutNewAdminTest(User newAdmin){
+    @Test(dataProvider = "correctAdminCreate", priority = 4)
+    public void logoutNewAdminTest(User existAdmin, User newAdmin){
 
-    AdminService adminService = guestService
-    .successfulAdminLogin(newAdmin);
+        AdminService adminService = guestService
+                .successfulAdminLogin(existAdmin)
+                .createUser(newAdmin)
+                .successfulAdminLogin(newAdmin);
 
     Assert.assertTrue(adminService.isUserLogged(newAdmin));
 
