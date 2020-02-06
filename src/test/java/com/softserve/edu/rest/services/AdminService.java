@@ -56,7 +56,6 @@ public class AdminService extends UserService {
         }
     }
 
-    //Lock user
     @Step("Lock user")
     public AdminService lockUser(User userToLock) {
         logger.debug("Locked user START");
@@ -71,10 +70,9 @@ public class AdminService extends UserService {
         return this;
     }
 
-    //Unlock user
     @Step("Unlock user")
     public AdminService unlockUser(User user) {
-        logger.debug("Locked user START");
+        logger.debug("Unlock user START");
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());
         RestParameters pathParameters = new RestParameters()
@@ -82,11 +80,19 @@ public class AdminService extends UserService {
         SimpleEntity simpleEntity = lockUserResource
                 .httpPutAsEntity(pathParameters, null, bodyParameters);
         checkLockEntity(simpleEntity, "User was not unlocked");
-        logger.debug("Locked user DONE");
+        logger.debug("Unlock user DONE");
         return this;
     }
 
-    //Get all locked users
+    @Step("Unlock all users")
+    public AdminService unlockAllUsers() {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = lockUserResource
+                .httpPutAsEntity(null, null, bodyParameters);
+        return this;
+    }
+
     @Step("Get all locked users")
     public String getAllLockedUsers() {
         logger.debug("get all locked users START");
@@ -98,7 +104,6 @@ public class AdminService extends UserService {
         return simpleEntity.getContent();
     }
 
-    //Check is the user locked
     @Step("Check if user is locked")
     public boolean isUserLocked(User userToLock) {
 

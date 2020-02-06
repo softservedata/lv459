@@ -1,7 +1,6 @@
 package com.softserve.edu.rest.services;
 
 import com.softserve.edu.rest.resources.*;
-import com.softserve.edu.rest.test.LoginTest;
 import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +14,7 @@ import com.softserve.edu.rest.entity.SimpleEntity;
 public class GuestService {
     public static final Logger logger = LoggerFactory.getLogger(GuestService.class); // org.slf4j.LoggerFactory
 
+    protected String userNotFoundMessage = "ERROR, user not found";
     protected LoginResource loginResource;
     protected LoginUserResource loginUserResource;
     protected LoginAdminResource loginAdminResource;
@@ -113,28 +113,49 @@ public class GuestService {
 //
 
 
-    @Step("Logging in as User")
-	public UserService successfulUserLogin(User user) {
-		logger.debug("SuccessfulUserLogin START, user = " + user);
-		RestParameters bodyParameters = new RestParameters()
-				.addParameter("name", user.getName())
-				.addParameter("password", user.getPassword());
-		SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
-		logger.info("SuccessfulUserLogin TRACE, simpleEntity = " + simpleEntity);
+    //@Step("Logging in as User")
+    public UserService successfulUserLogin(User user) {
+        logger.debug("SuccessfulUserLogin START, user = " + user);
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("name", user.getName())
+                .addParameter("password", user.getPassword());
+        SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
+        logger.info("SuccessfulUserLogin TRACE, simpleEntity = " + simpleEntity);
         System.out.println("USER ********** " + user.toString());
-		checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
-		logger.debug("SuccessfulUserLogin DONE, user = " + user);
-		return new UserService(new LoginedUser(user, simpleEntity.getContent()));
-	}
+        checkEntity(simpleEntity, "ERROR, user not found", "Error Login");
+        logger.debug("SuccessfulUserLogin DONE, user = " + user);
+        return new UserService(new LoginedUser(user, simpleEntity.getContent()));
+    }
 
-	@Step ("Logging in as Admin")
-	public AdminService successfulAdminLogin(User adminUser) {
-		RestParameters bodyParameters = new RestParameters()
-				.addParameter("name", adminUser.getName())
-				.addParameter("password", adminUser.getPassword());
-		SimpleEntity adminContent = loginResource.httpPostAsEntity(null, null, bodyParameters);
-		checkEntity(adminContent, "ERROR, user not found", "Error Login");
-		return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
-	}
+    @Step("Logging in as Admin")
+    public AdminService successfulAdminLogin(User adminUser) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("name", adminUser.getName())
+                .addParameter("password", adminUser.getPassword());
+        SimpleEntity adminContent = loginResource.httpPostAsEntity(null, null, bodyParameters);
+        checkEntity(adminContent, "ERROR, user not found", "Error Login");
+        return new AdminService(new LoginedUser(adminUser, adminContent.getContent()));
+    }
+
+    public GuestService unsuccessfulUserLogin(User user) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("name", user.getName())
+                .addParameter("password", user.getPassword());
+        SimpleEntity simpleEntity = loginUserResource.httpPostAsEntity(null, null, bodyParameters);
+//        if (simpleEntity.getContent() != userNotFoundMessage)
+//            return new UserService(user);
+            logger.trace("SuccessfulUserLogin DONE, user = " + user);
+        return new GuestService();
+    }
+
+    public GuestService unsuccessfulAdminLogin(User adminUser) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("name", adminUser.getName())
+                .addParameter("password", adminUser.getPassword());
+        SimpleEntity simpleEntity = loginAdminResource.httpPostAsEntity(null, null, bodyParameters);
+//        if (!simpleEntity.getContent().contains(userNotFoundMessage))
+//            return new UserService(adminUser);
+        return new GuestService();
+    }
 
 }

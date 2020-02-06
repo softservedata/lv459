@@ -30,17 +30,15 @@ public class LockUnlockUserTest extends RestTestRunner {
                 .createUser(userToLock)
                 .lockUser(userToLock);
 
-        adminService.getAllLockedUsers();
+        adminService.getAllLockedUsers(); //Doesn't work
 
         //Assert.assertTrue(adminService.getAllLockedUsers().contains("Vasya"));
         Assert.assertTrue(adminService.isUserLocked(userToLock));
 
+        // TODO: 07-Feb-20 Separate test
         //Verify login locked User
         UserService userService = loadApplication()
                 .successfulUserLogin(userToLock);
-
-        //TODO Assert
-        //TODO unSuccessfulUserLogin
 
         logger.info("lockUserPositiveTest DONE, userToLock = " + userToLock);
     }
@@ -51,7 +49,8 @@ public class LockUnlockUserTest extends RestTestRunner {
 
         AdminService adminService = loadApplication()
                 .successfulAdminLogin(admin)
-                .unlockUser(userToLock);
+                //.unlockUser(userToLock)
+                .unlockAllUsers();
 
         Assert.assertNotEquals(adminService.getAllLockedUsers(), "ERROR, user locked");
 
@@ -59,8 +58,7 @@ public class LockUnlockUserTest extends RestTestRunner {
         UserService userService = loadApplication()
                 .successfulUserLogin(userToLock);
 
-        //TODO Assert
-        //Assert.assertTrue(adminService.isUserLogged(userToLock));
+        Assert.assertTrue(adminService.isUserLogged(userToLock));
 
         logger.info("unlockUserPositiveTest DONE, userToUnlock = " + userToLock);
     }
