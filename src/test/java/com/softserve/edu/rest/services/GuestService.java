@@ -20,6 +20,7 @@ public class GuestService {
     protected LoginAdminResource loginAdminResource;
     protected LockUserResource lockUserResource;
     protected LockUsersResource lockUsersResource;
+    protected LockAdminsResource lockAdminsResource;
     protected TokenlifetimeResource tokenlifetimeResource;
     protected UserResource userResource;
     protected ItemResource itemResource;
@@ -39,6 +40,7 @@ public class GuestService {
         loginAdminResource = new LoginAdminResource();
         lockUserResource = new LockUserResource();
         lockUsersResource = new LockUsersResource();
+        lockAdminsResource = new LockAdminsResource();
         userResource = new UserResource();
         itemResource = new ItemResource();
         itemIndexResource = new ItemIndexResource();

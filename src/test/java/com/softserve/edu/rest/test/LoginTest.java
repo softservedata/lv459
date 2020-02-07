@@ -61,28 +61,6 @@ public class LoginTest extends RestTestRunner {
 	}
 
 	@DataProvider
-	public Object[][] correctAdmin() {
-		logger.info("@DataProvider correctAdmin() DONE");
-		return new Object[][]{
-				{ UserRepository.getAdmin() }
-		};
-	}
-
-	@Test(dataProvider = "correctAdmin", priority = 3)
-	public void verifyAdminLogin(User admin) {
-		logger.info("adminLoginPositiveTest START, user = " + admin);
-
-		AdminService adminService = loadApplication()
-				.successfulAdminLogin(admin);
-
-		Assert.assertTrue(adminService.isUserLogged(admin));
-
-		adminService.logout();
-
-		logger.info("adminLoginPositiveTest DONE, user = " + admin);
-	}
-
-	@DataProvider
 	public Object[][] invalidUser() {
 		logger.info("@DataProvider invalidUser() DONE");
 		return new Object[][]{
@@ -90,7 +68,7 @@ public class LoginTest extends RestTestRunner {
 		};
 	}
 
-	@Test(dataProvider = "invalidUser", priority = 4, expectedExceptions = RuntimeException.class)
+	@Test(dataProvider = "invalidUser", priority = 3, expectedExceptions = RuntimeException.class)
 	public void verifyLoginNegativeTest(User user) {
 		logger.info("loginNegativeTest START, user = " + user);
 

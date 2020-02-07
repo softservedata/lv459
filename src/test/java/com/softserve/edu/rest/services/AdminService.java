@@ -104,10 +104,28 @@ public class AdminService extends UserService {
         return simpleEntity.getContent();
     }
 
+    @Step("Get all locked admins")
+    public String getAllLockedAdmins() {
+        RestParameters urlParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = lockAdminsResource.httpGetAsEntity(null, urlParameters);
+        return simpleEntity.getContent();
+    }
+
     @Step("Check if user is locked")
     public boolean isUserLocked(User userToLock) {
 
         if (getAllLockedUsers().contains(userToLock.getName())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Step("Is admin locked")
+    public boolean isAdminLocked(User user) {
+
+        if (getAllLockedAdmins().contains(user.getName())) {
             return true;
         } else {
             return false;

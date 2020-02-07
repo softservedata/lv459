@@ -28,7 +28,7 @@ public abstract class RestTestRunner {
 	// @Before
 	@BeforeMethod
 	public void beforeMethod() {
-	    loadApplication().resetServiceToInitialState();
+	    //loadApplication().resetServiceToInitialState();
 	}
 
 	// @After
