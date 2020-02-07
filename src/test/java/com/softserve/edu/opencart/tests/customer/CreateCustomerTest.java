@@ -2,16 +2,12 @@ package com.softserve.edu.opencart.tests.customer;
 
 import com.softserve.edu.opencart.data.AdminRepo;
 import com.softserve.edu.opencart.data.IUser;
-import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.admin.CustomersPage;
 import com.softserve.edu.opencart.pages.user.account.CustomerCreatedPage;
 import com.softserve.edu.opencart.pages.user.account.RegisterPage;
 import com.softserve.edu.opencart.tests.LocalAdminTestRunner;
 import com.softserve.edu.opencart.tools.ListUtils;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -146,63 +142,64 @@ public class CreateCustomerTest extends LocalAdminTestRunner {
                 .deleteCustomer(userEmail);
     }
 
-    @Test(dataProvider = "getValidCustomer")
-    public void testWithHibernate(IUser customer) {
-        prerequisitesHibernate(customer);
-
-    }
-
-    /**
-     * Prerequisites - checks if customer is in the database already and
-     * deletes if present. In the end of test - also checks for customers
-     * presence and deletes if any. - by means of Hibernate
-     */
-    private static SessionFactory sessionFactory;
-
-    //
-    // Create the SessionFactory from 'hibernate.cfg.xml' file
-    static {
-        try {
-            sessionFactory =
-                    new Configuration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            // Make sure you log the exception, as it might be swallowed
-            System.err.println("SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
-
-    private void prerequisitesHibernate(IUser customer) {
-        Session session = sessionFactory.openSession();
-        try {
-            session.beginTransaction();
-
-            String query = String.format(
-                    "delete * from opencart.oc_customer where email=\"%s\"",
-                    customer.getEmail());
-
-//            System.out.println("delete query string = " + query);
-
-            IUser hiby = (IUser)session.get(User.class, customer.getId());
-            session.getTransaction().commit();
-            System.out.println("session getUser.class finished work. User.class find by customer email = " + hiby.getEmail()); //null pointer
-
-//            session.delete(customer); // INFO: HHH000114: Handling transient entity in delete processing
-//            session.remove(customer); // INFO: HHH000114: Handling transient entity in delete processing
-
-
-//            IUser local = session.get(IUser.class, customer.getEmail());
-//            System.out.println("local = " + local.getFirstName() + " " + local.getEmail());
+//    @Test(dataProvider = "getValidCustomer")
+//    public void testWithHibernate(IUser customer) {
+//        prerequisitesHibernate(customer);
+//
+//    }
+//
+//    /**
+//     * Prerequisites - checks if customer is in the database already and
+//     * deletes if present. In the end of test - also checks for customers
+//     * presence and deletes if any. - by means of Hibernate
+//     */
+//    // TODO prerequisites with Hibernate ans JDBC
+//    //  private static SessionFactory sessionFactory;
+//
+//    //
+//    // Create the SessionFactory from 'hibernate.cfg.xml' file
+//    static {
+//        try {
+//            sessionFactory =
+//                    new Configuration().configure().buildSessionFactory();
+//        } catch (Throwable ex) {
+//            // Make sure you log the exception, as it might be swallowed
+//            System.err.println("SessionFactory creation failed." + ex);
+//            throw new ExceptionInInitializerError(ex);
+//        }
+//    }
+//
+//    private void prerequisitesHibernate(IUser customer) {
+//        Session session = sessionFactory.openSession();
+//        try {
+//            session.beginTransaction();
+//
+//            String query = String.format(
+//                    "delete * from opencart.oc_customer where email=\"%s\"",
+//                    customer.getEmail());
+//
+////            System.out.println("delete query string = " + query);
+//
+//            IUser hiby = (IUser)session.get(User.class, customer.getId());
 //            session.getTransaction().commit();
-
-
-        } finally {
-
-            session.close();
-
-        }
-        System.exit(0);
-
-    }
+//            System.out.println("session getUser.class finished work. User.class find by customer email = " + hiby.getEmail()); //null pointer
+//
+////            session.delete(customer); // INFO: HHH000114: Handling transient entity in delete processing
+////            session.remove(customer); // INFO: HHH000114: Handling transient entity in delete processing
+//
+//
+////            IUser local = session.get(IUser.class, customer.getEmail());
+////            System.out.println("local = " + local.getFirstName() + " " + local.getEmail());
+////            session.getTransaction().commit();
+//
+//
+//        } finally {
+//
+//            session.close();
+//
+//        }
+//        System.exit(0);
+//
+//    }
 
 }

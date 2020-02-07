@@ -25,9 +25,7 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <!-- - - - - - Test - - - - - -->
         <org.junit.version>4.12</org.junit.version>
-        <!-- <org.junit.version>4.13-rc-2</org.junit.version> -->
-        <!-- <org.testng.version>6.9.10</org.testng.version> -->
-        <org.testng.version>7.0.0</org.testng.version>
+        <org.testng.version>6.14.3</org.testng.version>
         <testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
         <!-- - - - - - Automation - - - - - -->
@@ -36,10 +34,18 @@
         <com.codeborne.phantomjsdriver.version>1.4.4</com.codeborne.phantomjsdriver.version>
         <maven.os-maven-plugin.version>1.6.2</maven.os-maven-plugin.version>
         <maven.webdriverextensions-maven-plugin.version>3.2.0</maven.webdriverextensions-maven-plugin.version>
+        <webdrivermanager>3.7.1</webdrivermanager>
         <!-- - - - - - Reports - - - - - -->
         <testng.reports.directory>target/surefire-reports/test-output</testng.reports.directory>
+        <allure.version>2.13.1</allure.version>
+        <aspectj.version>1.9.5</aspectj.version>
+        <!-- - - - - - Logging - - - - - -->
+        <org.slf4j.version>1.7.30</org.slf4j.version>
+        <slf4j-simple>1.7.25</slf4j-simple>
         <!-- - - - - - Utils - - - - - -->
         <org.apache.poi.version>4.1.1</org.apache.poi.version>
+        <!-- - - - - - MySQL - - - - - -->
+        <mysql-connector-java>5.1.6</mysql-connector-java>
         <!-- - - - - - Hibernate - - - - - -->
         <org.hibernate.hibernate-core>5.4.10.Final</org.hibernate.hibernate-core>
         <org.hibernate.hibernate-entitmanager>5.4.10.Final</org.hibernate.hibernate-entitmanager>
@@ -49,8 +55,21 @@
 
     <dependencies>
 
-        <!-- <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId>
-            <version>${org.junit.version}</version> <scope>test</scope> </dependency> -->
+        <!-- - - - Reports - - - -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+        <!-- - - - Automation - - - -->
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -65,25 +84,29 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- - - - WebDriverManager - - - -->
+
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>3.7.1</version>
+            <version>${webdrivermanager}</version>
         </dependency>
+
+        <!-- - - - Logger - - - -->
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.25</version>
+            <version>${slf4j-simple}</version>
         </dependency>
 
         <!-- - - - Read from Excel formats, etc. - - - -->
@@ -92,10 +115,11 @@
             <artifactId>poi-ooxml</artifactId>
             <version>${org.apache.poi.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>3.141.59</version>
+            <version>${org.seleniumhq.selenium.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -105,17 +129,18 @@
             <artifactId>hibernate-core</artifactId>
             <version>${org.hibernate.hibernate-core}</version>
         </dependency>
-        <!--Hibernate-->
+
         <!--<dependency>-->
             <!--<groupId>org.hibernate</groupId>-->
             <!--<artifactId>hibernate-entitymanager</artifactId>-->
             <!--<version>${org.hibernate.hibernate-entitmanager}</version>-->
         <!--</dependency>-->
 
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.6</version>
+            <version>${mysql-connector-java}</version>
         </dependency>
     </dependencies>
     <build>
@@ -197,6 +222,9 @@
                     <version>${maven.surefire.plugin.version}</version>
                     <configuration>
                         <argLine>-Xms512m -Xmx1024m</argLine>
+                        <argLine>
+                            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        </argLine>
                         <skipTests>false</skipTests>
                         <systemPropertyVariables>
                             <surefire.application.password>
@@ -205,13 +233,12 @@
                         </systemPropertyVariables>
 
                         <suiteXmlFiles>
-                            <!-- <suiteXmlFile>opozatc.xml</suiteXmlFile> -->
-                            <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
                             <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                             <suiteXmlFile>speretc.xml</suiteXmlFile>
                         </suiteXmlFiles>
 
                         <reportsDirectory>${testng.reports.directory}</reportsDirectory>
+
                     </configuration>
 
                 </plugin>
