@@ -43,9 +43,8 @@ public abstract class LocalAdminTestRunner {
     protected final String CUSTOMER_FIRSTNAME_ERROR = "First Name must be between 1 and 32 characters!";
     protected final String FIRST_NAME_AMEND = "Lv459-TAQC-Updated";
     protected final String CUSTOMER_UPDATED_MESSAGE = "Success: Your account has been successfully updated.";
-    private Map<Long, WebDriver> drivers;
-
-    private WebDriver driver;
+    private Map<Long, WebDriver> drivers; // multithread
+    private WebDriver driver; // singlethread
 
     @BeforeSuite
     public void beforeSuit (){
@@ -57,47 +56,40 @@ public abstract class LocalAdminTestRunner {
         drivers=null;
     }
 
-
     @BeforeClass
     public void beforeClass(ITestContext context) {
-//        WebDriverManager.chromedriver().setup();
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("start-maximized");
-//        driver = new ChromeDriver(options);
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+        // For one singlethread driver
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-            for (Map.Entry<String, String> entry : context.getCurrentXmlTest().getAllParameters().entrySet()) {
-                System.out.println("Key: " + entry.getKey() + "  Value: " + entry.getValue());
-                if (entry.getKey().toLowerCase().equals("url")) {
-                    serverUrl = entry.getValue();
-                    break;
-                }
-            }
-
+        // Multithread drivers
+//            for (Map.Entry<String, String> entry : context.getCurrentXmlTest().getAllParameters().entrySet()) {
+//                System.out.println("Key: " + entry.getKey() + "  Value: " + entry.getValue());
+//                if (entry.getKey().toLowerCase().equals("url")) {
+//                    serverUrl = entry.getValue();
+//                    break;
+//                }
+//            }
     }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-        //if (driver != null) {
-        //	driver.quit();
-        //}
-
-        // closes driver if running in parallel streams
-        for (Map.Entry<Long, WebDriver> currentWebDriver : drivers.entrySet()) {
-            if (currentWebDriver.getValue() != null) {
-                currentWebDriver.getValue().quit();
-            }
+        // for only single thread driver
+        if (driver != null) {
+        	driver.quit();
         }
-    }
 
-    // for only one driver, not multithread
-//    @AfterClass
-//    public void afterClass(){
-//        if (driver != null) {
-//            driver.quit();
+        // closes driver if running in multi thread
+//        for (Map.Entry<Long, WebDriver> currentWebDriver : drivers.entrySet()) {
+//            if (currentWebDriver.getValue() != null) {
+//                currentWebDriver.getValue().quit();
+//            }
 //        }
-//    }
+    }
 
     @BeforeMethod
     public void beforeMethod() {
@@ -113,17 +105,30 @@ public abstract class LocalAdminTestRunner {
     }
 
     public LoginPage loadAdminPage() {
-        getDriver().get(SERVER_ADMIN_URL);
-//        driver.get(SERVER_ADMIN_URL);
-//        return new LoginPage(driver);
-        return new LoginPage(getDriver());
+//        getDriver().get(SERVER_ADMIN_URL); // multithread driver
+        driver.get(SERVER_ADMIN_URL); // single thread driver
+        return new LoginPage(driver); // single thread driver
+//        return new LoginPage(getDriver()); // multithread driver
     }
 
     public HomePage loadMainPage() {
-        getDriver().get(SERVER_URL);
-//        driver.get(SERVER_URL);
-//        return new HomePage(driver);
-        return new HomePage(getDriver());
+//        getDriver().get(SERVER_URL); // multithread driver
+        driver.get(SERVER_URL); // single thread driver
+        return new HomePage(driver); // single thread driver
+//        return new HomePage(getDriver()); // multithread driver
+    }
+
+    protected WebDriver getDriver() {
+        WebDriver currentWebDriver = drivers.get(Thread.currentThread().getId());
+        if (currentWebDriver == null) {
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("start-maximized");
+            currentWebDriver = new ChromeDriver();
+            currentWebDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            drivers.put(Thread.currentThread().getId(), currentWebDriver);
+        }
+        return currentWebDriver;
     }
 
     public void presentationSleep() {
@@ -158,21 +163,4 @@ public abstract class LocalAdminTestRunner {
             e.printStackTrace();
         }
     }
-
-    protected WebDriver getDriver() {
-        WebDriver currentWebDriver = drivers.get(Thread.currentThread().getId());
-        if (currentWebDriver == null) {
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("start-maximized");
-
-            currentWebDriver = new ChromeDriver();
-            currentWebDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-
-
-            drivers.put(Thread.currentThread().getId(), currentWebDriver);
-        }
-        return currentWebDriver;
-    }
-
 }
