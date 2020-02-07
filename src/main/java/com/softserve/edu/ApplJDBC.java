@@ -7,8 +7,8 @@ import java.sql.Statement;
 
 public class ApplJDBC {
 	private static Connection con = null;
-	private static String username = "ssu-oms";
-	private static String password = "ssu-oms";
+//	private static String username = "ssu-oms";
+//	private static String password = "ssu-oms";
 //	private static String username = "067db";
 //	private static String password = "067db";
 	// private static String username = "db304";
@@ -21,6 +21,8 @@ public class ApplJDBC {
 	// private static String password = "postgres";
 	//private static String username = "lv3X4";
 	//private static String password = "Lv3X4_TAQC";
+	private static String username = "lv459";
+	private static String password = "Lv459_Taqc";
 	//
 	// Microsoft
 	// private static String URL =
@@ -55,7 +57,7 @@ public class ApplJDBC {
 	//		"jdbc:jtds:sqlserver://ssu-sql12/ssu-oms;instance=tc;"; // port=1433
 	// private static String URL =
 	// "jdbc:jtds:sqlserver://CLASS02/Lv169OMS;instance=SQLEXPRESS;";
-	private static String URL ="jdbc:jtds:sqlserver://ssu-sql12/ssu-oms;instance=tc;";
+//	private static String URL ="jdbc:jtds:sqlserver://ssu-sql12/ssu-oms;instance=tc;";
 //	private static String URL ="jdbc:jtds:sqlserver://ssu-oms/_067_OMS1;instance=SQLEXPRESS;"; // 192.168.195.239
 	//
 	// MySQL
@@ -75,6 +77,7 @@ public class ApplJDBC {
 	//private static String URL = "jdbc:mysql://localhost:3306/lv375work";
 	//private static String URL = "jdbc:mysql://localhost:3306";
 //	private static String URL = "jdbc:mysql://localhost:3306/lv448work";
+	private static String URL = "jdbc:mysql://10.26.34.177:3306/opencart";
 	//
 	// PostgresSQL
 	// private static String URL =
@@ -115,7 +118,7 @@ public class ApplJDBC {
 		////st.execute("INSERT INTO dbo.Users (Login, Password, FirstName, LastName, Email, RegionRef, RoleRef, IsUserActive) VALUES ('iva222','qwerty', 'ivanka', 'horoshko', 'mail@gmail.com', '1', '1', '1');");
 		////st.execute("DELETE Users WHERE Login='iva';");
 		////ResultSet rs = st.executeQuery("SELECT * FROM users WHERE Login='iva';");
-		ResultSet rs = st.executeQuery("SELECT * FROM users WHERE Login LIKE 'iv%';");
+//		ResultSet rs = st.executeQuery("SELECT * FROM users WHERE Login LIKE 'iv%';");
 //		ResultSet rs = st.executeQuery("SELECT * FROM Users;");
 		// ResultSet rs = st.executeQuery("SELECT * FROM Users WHERE Login LIKE
 		// 'iv%';");
@@ -200,7 +203,7 @@ public class ApplJDBC {
 		//ResultSet rs = st.getResultSet();
 		//
 		//st.execute("UPDATE oc_customer_login SET total='1' WHERE email LIKE 'abc%';");
-		////ResultSet rs = st.executeQuery("select * from oc_customer_login;");
+		ResultSet rs = st.executeQuery("select * from oc_customer_login;");
 //		ResultSet rs = st.executeQuery("select * from MyUsers;");
 		//
 		//ResultSet rs = st.getResultSet();
@@ -210,6 +213,10 @@ public class ApplJDBC {
 		//
 		int columnCount = rs.getMetaData().getColumnCount();
 		// Resultset.getMetaData () get the information
+		for (int i = 1; i <= columnCount; i++) {
+			System.out.print(rs.getMetaData().getColumnName(i) + "\t");
+		}
+		System.out.println();
 		// output file
 		while (rs.next()) {
 			for (int i = 1; i <= columnCount; i++) {

@@ -68,6 +68,25 @@ public final class UserRepository {
 				.build();
 	}
 
+	public IUser getInvalid() {
+		return User.get()
+				.setFirstName("hahaha1")
+				.setLastName("hahaha1")
+				.setEmail("hahaha1@gmail.com")
+				.setTelephone("telephone_5")
+				.setAddress1("address1_5")
+				.setCity("city_5")
+				.setPostCode("postCode_5")
+				.setCountry("country_5")
+				.setRegionState("regionState_5")
+				.setPassword(System.getenv().get("MY_PASSWORD"))
+				.setSubscribe(true)
+				.setFax("fax_5")
+				.setCompany("company_5")
+				.setAddress2("address2_5")
+				.build();
+	}
+
 	public List<IUser> fromCsv(String filename) {
 		return User.getByLists(new CSVReader(filename).getAllCells());
 	}
