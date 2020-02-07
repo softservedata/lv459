@@ -30,7 +30,7 @@ public class LockUnlockUserTest extends RestTestRunner {
                 .createUser(userToLock)
                 .lockUser(userToLock);
 
-        adminService.getAllLockedUsers(); //Doesn't work
+        adminService.getAllLockedUsers();
 
         //Assert.assertTrue(adminService.getAllLockedUsers().contains("Vasya"));
         Assert.assertTrue(adminService.isUserLocked(userToLock));
