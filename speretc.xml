@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Opencart">
+    <test thread-count="5" name="Test speretc">
+        <classes>
+            <class name="com.softserve.edu.opencart.tests.customer.CreateCustomerTest"/>
+            <class name="com.softserve.edu.opencart.tests.customer.UpdateCustomersTest"/>
+            <class name="com.softserve.edu.opencart.tests.currency.CurrencyAdminTest"/>
+            <class name="com.softserve.edu.opencart.tests.currency.CurrencyHomeTest"/>
+            <class name="com.softserve.edu.opencart.tests.admincatalog.CategoriesAddingTest"/>
+            <class name="com.softserve.edu.opencart.tests.admincatalog.ProductsAddingTest"/>
+            <class name="com.softserve.edu.opencart.tests.shoppingcart.AddToCartAppleCinemaTest"/>
+            <class name="com.softserve.edu.opencart.tests.shoppingcart.AddToCartFromHomePageTest"/>
+            <class name="com.softserve.edu.opencart.tests.shoppingcart.AddToCartMacBookTest"/>
+            <class name="com.softserve.edu.opencart.tests.wishlist.AddToCartFromWishListTest"/>
+            <class name="com.softserve.edu.opencart.tests.wishlist.EmptyWisListTest"/>
+            <class name="com.softserve.edu.opencart.tests.wishlist.NumberEqualityTest"/>
+            <class name="com.softserve.edu.opencart.tests.wishlist.RemoveFromWishListTest"/>
+            <class name="com.softserve.edu.opencart.tests.LoginTest"/>
+            <class name="com.softserve.edu.opencart.tests.RestorePasswordTest"/>
+            <class name="com.softserve.edu.opencart.tests.SearchCriteriaTest"/>
+            <class name="com.softserve.edu.opencart.tests.SearchItemsTest"/>
+            <class name="com.softserve.edu.opencart.tests.ListAndGridTest"/>
+            <class name="com.softserve.edu.opencart.tests.BlockUserTest"/>
+
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
