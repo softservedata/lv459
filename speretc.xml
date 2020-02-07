@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="Opencart">
-    <test thread-count="5" name="Test speretc">
+    <test thread-count="1" name="Test speretc">
         <classes>
             <class name="com.softserve.edu.opencart.tests.customer.CreateCustomerTest"/>
             <class name="com.softserve.edu.opencart.tests.customer.UpdateCustomersTest"/>
