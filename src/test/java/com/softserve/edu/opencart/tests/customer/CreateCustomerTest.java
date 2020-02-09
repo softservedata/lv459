@@ -142,6 +142,8 @@ public class CreateCustomerTest extends LocalAdminTestRunner {
                 .deleteCustomer(userEmail);
     }
 
+
+
 //    @Test(dataProvider = "getValidCustomer")
 //    public void testWithHibernate(IUser customer) {
 //        prerequisitesHibernate(customer);
@@ -162,8 +164,8 @@ public class CreateCustomerTest extends LocalAdminTestRunner {
 //        try {
 //            sessionFactory =
 //                    new Configuration().configure().buildSessionFactory();
-//        } catch (Throwable ex) {
-//            // Make sure you log the exception, as it might be swallowed
+//        } catch (Throwable e) {
+//            // Make sure you lxog the exception, as it might be swallowed
 //            System.err.println("SessionFactory creation failed." + ex);
 //            throw new ExceptionInInitializerError(ex);
 //        }

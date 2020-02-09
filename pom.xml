@@ -230,7 +230,11 @@
                             <surefire.application.password>
                                 ${application.password}
                             </surefire.application.password>
+
+                            <allure.results.directory>
+                                ${project.build.directory}/allure-results</allure.results.directory>
                         </systemPropertyVariables>
+
 
                         <suiteXmlFiles>
                             <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->

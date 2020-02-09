@@ -23,7 +23,9 @@
             <!--<class name="com.softserve.edu.opencart.tests.SearchItemsTest"/>-->
             <!--<class name="com.softserve.edu.opencart.tests.ListAndGridTest"/>-->
             <!--<class name="com.softserve.edu.opencart.tests.BlockUserTest"/>-->
-
+                    <!--<methods>-->
+                        <!--<include name="changePasswordTest" />-->
+                    <!--</methods>-->
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
