@@ -99,7 +99,7 @@ public abstract class LocalAdminTestRunner {
 
     @BeforeMethod
     public void beforeMethod() {
-
+    System.out.println("@BeforeMethod working.");
     }
 
     @AfterMethod

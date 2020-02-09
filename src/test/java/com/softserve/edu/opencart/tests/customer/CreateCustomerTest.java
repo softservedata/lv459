@@ -31,7 +31,6 @@ public class CreateCustomerTest extends LocalAdminTestRunner {
     public Object[][] getInvalidCustomer() {
         return new Object[][]{
                 {UserRepository.get().getInvalidCustomer()},
-                {UserRepository.get().getValidCustomer()}
         };
     }
 
