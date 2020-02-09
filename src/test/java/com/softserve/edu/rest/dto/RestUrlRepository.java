@@ -132,4 +132,14 @@ public final class RestUrlRepository {
 				.addPatchUrl("");
 	}
 	// TODO @speretc add here resources for item addition etc
+
+	public static RestUrl getCoolDownTime() {
+		return new RestUrl()
+				.addBaseUrl(server)
+				.addGetUrl("/cooldowntime")
+				.addPostUrl("")
+				.addPutUrl("/cooldowntime")
+				.addDeleteUrl("")
+				.addPatchUrl("");
+	}
 }

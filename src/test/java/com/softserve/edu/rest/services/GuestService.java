@@ -25,6 +25,8 @@ public class GuestService {
     protected UserResource userResource;
     protected ItemResource itemResource;
     protected ItemIndexResource itemIndexResource;
+    protected CooldownTimeResource cooldownResource;
+
 
     //	protected CooldownResource cooldownResource;
     private ApplicationResource applicationResource;
@@ -158,6 +160,13 @@ public class GuestService {
 //        if (!simpleEntity.getContent().contains(userNotFoundMessage))
 //            return new UserService(adminUser);
         return new GuestService();
+    }
+
+    public Lifetime getCooldownTime() {
+        SimpleEntity simpleEntity = cooldownResource
+                .httpGetAsEntity(null, null);
+        checkEntity(simpleEntity, "false","Something gets wrong");
+        return new Lifetime(simpleEntity.getContent());
     }
 
 }

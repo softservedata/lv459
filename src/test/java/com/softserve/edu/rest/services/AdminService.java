@@ -6,10 +6,12 @@ import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
+import com.softserve.edu.rest.resources.CooldownTimeResource;
 import com.softserve.edu.rest.tools.RegexUtils;
 import io.qameta.allure.Step;
 
 public class AdminService extends UserService {
+    protected CooldownTimeResource cooldownResource;
 
     public AdminService(LoginedUser loginedUser) {
         super(loginedUser);
@@ -185,6 +187,17 @@ public class AdminService extends UserService {
         System.out.println(simpleEntity);
         checkEntity(simpleEntity, "false", "Error get all users");
         logger.debug("get all user DONE");
+        return this;
+    }
+
+    @Step("Change cooldowntime")
+    public AdminService changeCooldown(Lifetime lifetime) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken())
+                .addParameter("time", lifetime.getTimeAsText());
+        SimpleEntity simpleEntity = cooldownResource
+                .httpPutAsEntity(null, null, bodyParameters);
+        checkEntity(simpleEntity, "false","The cooldown time was not been changed");
         return this;
     }
 
