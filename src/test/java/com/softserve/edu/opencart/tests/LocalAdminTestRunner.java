@@ -31,10 +31,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public abstract class LocalAdminTestRunner {
 
     private final Long ONE_SECOND_DELAY = 1000L;
-    //    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
-    private String serverUrl = "http://172.16.0.131/opencart/upload/";
-    private final String SERVER_URL = "http://172.16.0.131/opencart/upload/";
+    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
     private final String SERVER_ADMIN_URL = SERVER_URL + "admin/";
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
@@ -59,7 +57,7 @@ public abstract class LocalAdminTestRunner {
     @BeforeClass
     public void beforeClass(ITestContext context) {
 
-        // For one singlethread driver
+        // For singlethread driver
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
@@ -101,6 +99,7 @@ public abstract class LocalAdminTestRunner {
 
     @BeforeMethod
     public void beforeMethod() {
+
     }
 
     @AfterMethod
@@ -161,14 +160,14 @@ public abstract class LocalAdminTestRunner {
     }
 
     private void takePageSource(String fileName) {
-        String pageSource = getDriver().getPageSource();
-        Path path = Paths.get(fileName + ".txt");
-        byte[] strToBytes = pageSource.getBytes();
-        try {
-            Files.write(path, strToBytes, StandardOpenOption.CREATE);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//        String pageSource = getDriver().getPageSource();
+//        Path path = Paths.get(fileName + ".txt");
+//        byte[] strToBytes = pageSource.getBytes();
+//        try {
+//            Files.write(path, strToBytes, StandardOpenOption.CREATE);
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
     }
 }

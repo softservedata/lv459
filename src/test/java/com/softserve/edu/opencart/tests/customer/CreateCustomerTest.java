@@ -144,18 +144,13 @@ public class CreateCustomerTest extends LocalAdminTestRunner {
 
 
 
-//    @Test(dataProvider = "getValidCustomer")
-//    public void testWithHibernate(IUser customer) {
-//        prerequisitesHibernate(customer);
-//
-//    }
-//
-//    /**
-//     * Prerequisites - checks if customer is in the database already and
-//     * deletes if present. In the end of test - also checks for customers
-//     * presence and deletes if any. - by means of Hibernate
-//     */
-//    // TODO prerequisites with Hibernate ans JDBC
+    //    // TODO prerequisites with Hibernate and JDBC
+    //        prerequisitesHibernate(customer);
+    //    /**
+    //     * Prerequisites - checks if customer is in the database already and
+    //     * deletes if present. In the end of test - also checks for customers
+    //     * presence and deletes if any. - by means of Hibernate
+    //     */
 //    //  private static SessionFactory sessionFactory;
 //
 //    //

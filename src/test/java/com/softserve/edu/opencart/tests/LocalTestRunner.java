@@ -82,10 +82,6 @@ public abstract class LocalTestRunner {
         return new ComponentsPart(driver);
     }
 
-    public void presentationSleep() {
-        presentationSleep(1);
-    }
-
     public void presentationSleep(Integer seconds) {
         try {
             Thread.sleep(seconds * ONE_SECOND_DELAY); // For Presentation ONLY
