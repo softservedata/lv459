@@ -34,8 +34,8 @@ public abstract class LocalAdminTestRunner {
 
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
-//    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
-    private final String SERVER_URL = ("192.168.214.131/upload/opencart");
+    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
+//    private final String SERVER_URL = ("192.168.214.131/upload/opencart");
     private final String SERVER_ADMIN_URL = SERVER_URL + "admin/";
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
@@ -65,10 +65,10 @@ public abstract class LocalAdminTestRunner {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
 //        FirefoxOptions options = new FirefoxOptions ();
-//        options.addArguments("start-maximized");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--disable-setuid-sandbox");
-//        options.addArguments("--headless");
+        options.addArguments("--headless");
+        //        options.addArguments("start-maximized");
+        //        options.addArguments("--no-sandbox");
+        //        options.addArguments("--disable-setuid-sandbox");
 //        options.addArguments("enable-automation");
 //        options.addArguments("--disable-extensions");
 //        options.addArguments("--disable-gpu");
