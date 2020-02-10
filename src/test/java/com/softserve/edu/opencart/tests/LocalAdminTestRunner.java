@@ -18,6 +18,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestResult;
 import org.testng.ITestContext;
 
@@ -41,28 +43,30 @@ public abstract class LocalAdminTestRunner {
     protected final String CUSTOMER_FIRSTNAME_ERROR = "First Name must be between 1 and 32 characters!";
     protected final String FIRST_NAME_AMEND = "Lv459-TAQC-Updated";
     protected final String CUSTOMER_UPDATED_MESSAGE = "Success: Your account has been successfully updated.";
-    private Map<Long, WebDriver> drivers; // multithread
+//    private Map<Long, WebDriver> drivers; // multithread
     private WebDriver driver; // singlethread
 
     @BeforeSuite
-    public void beforeSuit (){
-        drivers = new HashMap<>();
-    }
+//    public void beforeSuit (){
+//        drivers = new HashMap<>();
+//    }
 
     @AfterSuite
-    public void afterSuit(){
-        drivers=null;
-    }
+//    public void afterSuit(){
+//        drivers=null;
+//    }
 
     @BeforeClass
     public void beforeClass(ITestContext context) {
 
         // For singlethread driver
+        WebDriverManager.firefoxdriver().setup();
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
+//        ChromeOptions options = new ChromeOptions();
+        FirefoxOptions options = new FirefoxOptions ();
         options.addArguments("start-maximized");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-setuid-sandbox");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--disable-setuid-sandbox");
 //        options.addArguments("--headless");
 //        options.addArguments("enable-automation");
 //        options.addArguments("--disable-extensions");
@@ -71,7 +75,8 @@ public abstract class LocalAdminTestRunner {
 //        options.addArguments("--disable-dev-shm-usage"); //https://stackoverflow.com/a/50725918/1689770
 //        options.addArguments("--remote-debugging-port=9222");
 //        options.addArguments("--disable-browser-side-navigation"); //https://stackoverflow.com/a/49123152/1689770
-        driver = new ChromeDriver(options);
+        driver = new FirefoxDriver(options);
+//        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         // Multithread drivers
@@ -109,7 +114,8 @@ public abstract class LocalAdminTestRunner {
         if (!result.isSuccess()) {
             System.out.println("***Test " + result.getName() + " ERROR");
             // Take Screenshot, save sourceCode, save to log, prepare report, Return to
-            takePageSource(takeScreenShot());}
+//            takePageSource(takeScreenShot());
+            }
 
     }
 
@@ -127,18 +133,18 @@ public abstract class LocalAdminTestRunner {
 //        return new HomePage(getDriver()); // multithread driver
     }
 
-    protected WebDriver getDriver() {
-        WebDriver currentWebDriver = drivers.get(Thread.currentThread().getId());
-        if (currentWebDriver == null) {
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("start-maximized");
-            currentWebDriver = new ChromeDriver();
-            currentWebDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-            drivers.put(Thread.currentThread().getId(), currentWebDriver);
-        }
-        return currentWebDriver;
-    }
+//    protected WebDriver getDriver() {
+//        WebDriver currentWebDriver = drivers.get(Thread.currentThread().getId());
+//        if (currentWebDriver == null) {
+//            WebDriverManager.chromedriver().setup();
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("start-maximized");
+//            currentWebDriver = new ChromeDriver();
+//            currentWebDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+//            drivers.put(Thread.currentThread().getId(), currentWebDriver);
+//        }
+//        return currentWebDriver;
+//    }
 
     public void presentationSleep() {
         presentationSleep(1);
@@ -153,13 +159,13 @@ public abstract class LocalAdminTestRunner {
         }
     }
 
-    private String takeScreenShot() throws IOException {
-        String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
-//        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("./img/" + currentTime + "_screenshot.png"));
-        return "./img/" + currentTime + "_screenshot";
-    }
+//    private String takeScreenShot() throws IOException {
+//        String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
+////        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//        File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+//        FileUtils.copyFile(scrFile, new File("./img/" + currentTime + "_screenshot.png"));
+//        return "./img/" + currentTime + "_screenshot";
+//    }
 
     private void takePageSource(String fileName) {
 //        String pageSource = getDriver().getPageSource();
