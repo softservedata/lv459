@@ -1,5 +1,7 @@
 package com.softserve.edu.opencart.tests.currency;
 
+import com.softserve.edu.opencart.tests.AdminTestRunner;
+import com.softserve.edu.opencart.tests.LocalAdminSingleThreadRunner;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -10,7 +12,8 @@ import com.softserve.edu.opencart.data.ICurrency;
 
 
 
-public class CurrencyAdminTest extends AdminTestRunner {
+//public class CurrencyAdminTest extends AdminTestRunner {
+public class CurrencyAdminTest extends LocalAdminSingleThreadRunner {
     @DataProvider
     private Object[][] loginAdminData() {
         return new Object[][]{

@@ -12,6 +12,8 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 public class UpdateCustomersTest extends LocalAdminSingleThreadRunner {
 
     /**
@@ -42,17 +44,17 @@ public class UpdateCustomersTest extends LocalAdminSingleThreadRunner {
     }
 
     @Test(dataProvider = "getValidCustomer")
-    public void updateValidCustomerTest(IUser validCustomer) {
+    public void updateValidCustomerTest(IUser validCustomer) throws SQLException {
 
-        prerequisites(validCustomer);
+//        prerequisites(validCustomer); // by page object
+        prerequisitesJDBC(validCustomer); // by JDBC+ page object
 
         // Test started ...
-        MyAccountAmendedPage customerUpdated= loadMainPage()
+        MyAccountAmendedPage customerUpdated = loadMainPage()
                 .gotoLoginPage()
                 .successfulLogin(validCustomer)
                 .gotoEditAccountRight()
-                .changeFirstNameField(FIRST_NAME_AMEND)
-                ;
+                .changeFirstNameField(FIRST_NAME_AMEND);
 
 
         Assert.assertTrue(
@@ -68,7 +70,8 @@ public class UpdateCustomersTest extends LocalAdminSingleThreadRunner {
         // Test finished...
 
         // Clear base from test customer
-        afterRequisites(validCustomer);
+//        afterRequisites(validCustomer);
+        afterRequisitesJDBC(validCustomer);
     }
 
     /**
@@ -83,7 +86,7 @@ public class UpdateCustomersTest extends LocalAdminSingleThreadRunner {
                 .filterByEmail(customer.getEmail())
                 .getContainer()
                 .isCustomerNoResults()
-            ){
+        ) {
             AccountLogoutPage page = loadMainPage()
                     .gotoRegisterPage()
                     .fillValidCustomerDetails(customer)
@@ -93,11 +96,27 @@ public class UpdateCustomersTest extends LocalAdminSingleThreadRunner {
 
     }
 
-    private void afterRequisites (IUser customer){
+    private void prerequisitesJDBC(IUser customer) throws SQLException {
+        if (!JDBCprerequisitesUtil.prerequisitesFindUser(customer)) {
+            AccountLogoutPage page = loadMainPage()
+                    .gotoRegisterPage()
+                    .fillValidCustomerDetails(customer)
+                    .gotoHomePage()
+                    .logout();
+        }
+    }
+
+    private void afterRequisites(IUser customer) {
         CustomersPage page = loadAdminPage()
                 .successfulLogin(AdminRepo.get().validAdmin())
                 .gotoCustomersCustomersPage()
                 .deleteCustomer(customer.getEmail());
+
+    }
+    private void afterRequisitesJDBC (IUser customer) throws SQLException {
+        if (JDBCprerequisitesUtil.prerequisitesFindUser(customer)) {
+            JDBCprerequisitesUtil.prerequisitesDeleteUser(customer);
+        }
 
     }
 }

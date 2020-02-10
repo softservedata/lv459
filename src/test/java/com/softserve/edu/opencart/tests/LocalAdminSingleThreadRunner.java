@@ -16,24 +16,24 @@ public abstract class LocalAdminSingleThreadRunner extends LocalAdminRunner {
 
         // For single thread driver
 
-        //                WebDriverManager.firefoxdriver().setup();
-        //                FirefoxOptions options = new FirefoxOptions ();
-        //        driver = new FirefoxDriver(options);
-        //                        options.addArguments("start-maximized");
-        //                        options.addArguments("--headless");
+//        WebDriverManager.firefoxdriver().setup();
+//        FirefoxOptions options = new FirefoxOptions ();
+//        options.addArguments("start-maximized");
+//        options.addArguments("--headless");
+//        driver = new FirefoxDriver(options);
         //
         //
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+//        options.addArguments("--headless");
         driver = new ChromeDriver(options);
-        //        options.addArguments("start-maximized");
-        //        options.addArguments("--headless");
 
         //        options.addArguments("--no-sandbox");
+        //        options.addArguments("--disable-gpu");
         //        options.addArguments("--disable-setuid-sandbox");
         //        options.addArguments("enable-automation");
         //        options.addArguments("--disable-extensions");
-        //        options.addArguments("--disable-gpu");
         //        options.addArguments("--disable-infobars");
         //        options.addArguments("--disable-dev-shm-usage");
         //        options.addArguments("--remote-debugging-port=9222");

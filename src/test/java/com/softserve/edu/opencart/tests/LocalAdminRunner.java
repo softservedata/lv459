@@ -23,7 +23,7 @@ public abstract class LocalAdminRunner {
     protected final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
     //    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
     protected final String SERVER_URL =
-            ("http://172.16.0.131/opencart/upload/");
+            ("http://192.168.196.129/opencart/upload/");
     protected final String SERVER_ADMIN_URL = SERVER_URL + "admin/";
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
@@ -36,6 +36,7 @@ public abstract class LocalAdminRunner {
     protected final String FIRST_NAME_AMEND = "Lv459-TAQC-Updated";
     protected final String CUSTOMER_UPDATED_MESSAGE =
             "Success: Your account has been successfully updated.";
+    protected final String HRYVNIA = "hryvnia";
     protected WebDriver driver; // singlethread
     protected Map<Long, WebDriver> drivers; // multithread
 
@@ -79,19 +80,6 @@ public abstract class LocalAdminRunner {
         System.out.println("server url = " + SERVER_URL);
         driver.get(SERVER_URL); // single thread driver
         return new HomePage(driver); // single thread driver
-    }
-
-    public void presentationSleep() {
-        presentationSleep(1);
-    }
-
-    public void presentationSleep(Integer seconds) {
-        try {
-            Thread.sleep(seconds * ONE_SECOND_DELAY); // For Presentation ONLY
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 
 }

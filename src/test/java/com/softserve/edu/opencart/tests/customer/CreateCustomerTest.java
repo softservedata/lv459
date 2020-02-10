@@ -12,6 +12,8 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 public class CreateCustomerTest extends LocalAdminSingleThreadRunner {
 
     /**
@@ -49,9 +51,10 @@ public class CreateCustomerTest extends LocalAdminSingleThreadRunner {
      * @param validCustomer
      */
     @Test(dataProvider = "getValidCustomer")
-    public void createValidCustomerTest(IUser validCustomer) {
+    public void createValidCustomerTest(IUser validCustomer) throws SQLException {
 
 //        prerequisites(validCustomer);
+        prerequisitesDeleteByJDBC(validCustomer);
 
         // Test started ...
         CustomerCreatedPage customerCreated = loadMainPage()
@@ -64,12 +67,13 @@ public class CreateCustomerTest extends LocalAdminSingleThreadRunner {
 
         // Clear base from test customer
 //        prerequisites(validCustomer);
+        prerequisitesDeleteByJDBC(validCustomer);
     }
 
     //    @Test(dataProvider = "getCustomersFromCSV")
     public void createValidCustomersFromCSVTest(IUser validCustomer) {
 
-        prerequisites(validCustomer);
+        prerequisitesDeleteWithPageObject(validCustomer);
 
         // Test started ...
         CustomerCreatedPage customerCreated = loadMainPage()
@@ -81,7 +85,7 @@ public class CreateCustomerTest extends LocalAdminSingleThreadRunner {
         // Test finished...
 
         // Clear base from test customer
-        prerequisites(validCustomer);
+        prerequisitesDeleteWithPageObject(validCustomer);
     }
 
     @Test(dataProvider = "getInvalidCustomer")
@@ -106,7 +110,7 @@ public class CreateCustomerTest extends LocalAdminSingleThreadRunner {
     // from CSV
     //    @Test(dataProvider = "getCustomersFromCSV")
     public void createValidCustomerFromCSVFile(IUser validCustomer) {
-        prerequisites(validCustomer);
+        prerequisitesDeleteWithPageObject(validCustomer);
 
         // Test started ...
         CustomerCreatedPage customerCreated = loadMainPage()
@@ -124,7 +128,7 @@ public class CreateCustomerTest extends LocalAdminSingleThreadRunner {
         System.out.println(
                 "Customer " + validCustomer.getFirstName() + " is created.");
         // Clear base from test customer
-        prerequisites(validCustomer);
+        prerequisitesDeleteWithPageObject(validCustomer);
 
     }
 
@@ -133,7 +137,7 @@ public class CreateCustomerTest extends LocalAdminSingleThreadRunner {
      * deletes if present. In the end of test - also checks for customers
      * presence and deletes if any.
      */
-    private void prerequisites(IUser customer) {
+    private void prerequisitesDeleteWithPageObject(IUser customer) {
         String userEmail = customer.getEmail();
         CustomersPage page = loadAdminPage()
                 .successfulLogin(AdminRepo.get().validAdmin())
@@ -143,13 +147,21 @@ public class CreateCustomerTest extends LocalAdminSingleThreadRunner {
 
 
 
-    //    // TODO prerequisites with Hibernate and JDBC
+    //    // TODO prerequisites with Hibernate and JDBC -- JDBC done
     //        prerequisitesHibernate(customer);
     //    /**
     //     * Prerequisites - checks if customer is in the database already and
     //     * deletes if present. In the end of test - also checks for customers
     //     * presence and deletes if any. - by means of Hibernate
     //     */
+
+    private void prerequisitesDeleteByJDBC (IUser user) throws SQLException {
+        if (JDBCprerequisitesUtil.prerequisitesFindUser(user)) {
+            JDBCprerequisitesUtil.prerequisitesDeleteUser(user);
+        }
+    }
+
+    // HIBERNATE still TODO  :(
 //    //  private static SessionFactory sessionFactory;
 //
 //    //

@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.tests.currency;
+package com.softserve.edu.opencart.tests;
 
 import java.util.concurrent.TimeUnit;
 
