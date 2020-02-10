@@ -9,7 +9,7 @@ import com.softserve.edu.opencart.data.IAdmin;
 import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
 
-public class BlockUserTest extends LocalAdminTestRunner {
+public class BlockUserTest extends LocalAdminSingleThreadRunner {
     
     @DataProvider // (parallel = true)
     public Object[][] correctUsers() {

@@ -8,14 +8,14 @@ import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
 
 public class LoginTest extends LocalTestRunner {
-    
+
     @DataProvider // (parallel = true)
     public Object[][] correctCustomers() {
         return new Object[][] {
             { UserRepository.get().getCorrectUser() },
         };
     }
-    
+
     @DataProvider // (parallel = true)
     public Object[][] incorrectCustomers() {
         return new Object[][] {
@@ -35,7 +35,7 @@ public class LoginTest extends LocalTestRunner {
         .getEmailFieldText();
       Assert.assertEquals(email, validUser.getEmail());
     }
-    
+
     /**
      * This test try to login with incorrect credentials and verify error message.
      * @param invalidUser - user with incorrect credentials.

@@ -5,9 +5,9 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.opencart.data.AdminRepo;
 import com.softserve.edu.opencart.data.IAdmin;
-import com.softserve.edu.opencart.tests.LocalAdminTestRunner;
+import com.softserve.edu.opencart.tests.LocalAdminSingleThreadRunner;
 
-public class CategoriesAddingTest extends LocalAdminTestRunner {
+public class CategoriesAddingTest extends LocalAdminSingleThreadRunner {
 	
 	@DataProvider // (parallel = true)
     public Object[][] correctUsers() {

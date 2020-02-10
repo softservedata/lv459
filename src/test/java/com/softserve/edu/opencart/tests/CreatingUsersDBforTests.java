@@ -4,7 +4,7 @@ import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.account.AccountLogoutPage;
 
-public class CreatingUsersDBforTests extends LocalAdminTestRunner {
+public class CreatingUsersDBforTests extends LocalAdminSingleThreadRunner {
 
 
     //// ONLY FOR INITIATION OF DB

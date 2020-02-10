@@ -6,13 +6,13 @@ import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.admin.CustomersPage;
 import com.softserve.edu.opencart.pages.user.account.CustomerCreatedPage;
 import com.softserve.edu.opencart.pages.user.account.RegisterPage;
-import com.softserve.edu.opencart.tests.LocalAdminTestRunner;
+import com.softserve.edu.opencart.tests.LocalAdminSingleThreadRunner;
 import com.softserve.edu.opencart.tools.ListUtils;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class CreateCustomerTest extends LocalAdminTestRunner {
+public class CreateCustomerTest extends LocalAdminSingleThreadRunner {
 
     /**
      * Test by Serhii Perepeliuk.
