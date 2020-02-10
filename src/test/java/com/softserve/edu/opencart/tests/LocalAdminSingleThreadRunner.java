@@ -20,7 +20,7 @@ public abstract class LocalAdminSingleThreadRunner {
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
 //    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
-        private final String SERVER_URL = ("192.168.214.131/upload/opencart/");
+        private final String SERVER_URL = ("http://172.16.0.131/opencart/upload/");
     private final String SERVER_ADMIN_URL = SERVER_URL + "admin/";
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
@@ -101,6 +101,7 @@ public abstract class LocalAdminSingleThreadRunner {
     }
 
     public HomePage loadMainPage() {
+        System.out.println("server url = " + SERVER_URL);
         driver.get(SERVER_URL); // single thread driver
         return new HomePage(driver); // single thread driver
     }
