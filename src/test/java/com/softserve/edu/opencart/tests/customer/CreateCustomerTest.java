@@ -51,7 +51,7 @@ public class CreateCustomerTest extends LocalAdminTestRunner {
     @Test(dataProvider = "getValidCustomer")
     public void createValidCustomerTest(IUser validCustomer) {
 
-        prerequisites(validCustomer);
+//        prerequisites(validCustomer);
 
         // Test started ...
         CustomerCreatedPage customerCreated = loadMainPage()
@@ -63,7 +63,7 @@ public class CreateCustomerTest extends LocalAdminTestRunner {
         // Test finished...
 
         // Clear base from test customer
-        prerequisites(validCustomer);
+//        prerequisites(validCustomer);
     }
 
     //    @Test(dataProvider = "getCustomersFromCSV")
