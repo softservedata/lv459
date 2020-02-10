@@ -61,7 +61,7 @@ public abstract class LocalAdminTestRunner {
 
         // For singlethread driver
         WebDriverManager.firefoxdriver().setup();
-        WebDriverManager.chromedriver().setup();
+//        WebDriverManager.chromedriver().setup();
 //        ChromeOptions options = new ChromeOptions();
         FirefoxOptions options = new FirefoxOptions ();
         options.addArguments("start-maximized");
