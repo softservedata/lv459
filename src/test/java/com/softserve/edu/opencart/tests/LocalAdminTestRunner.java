@@ -60,10 +60,10 @@ public abstract class LocalAdminTestRunner {
     public void beforeClass(ITestContext context) {
 
         // For singlethread driver
-        WebDriverManager.firefoxdriver().setup();
-//        WebDriverManager.chromedriver().setup();
-//        ChromeOptions options = new ChromeOptions();
-        FirefoxOptions options = new FirefoxOptions ();
+//        WebDriverManager.firefoxdriver().setup();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+//        FirefoxOptions options = new FirefoxOptions ();
         options.addArguments("start-maximized");
 //        options.addArguments("--no-sandbox");
 //        options.addArguments("--disable-setuid-sandbox");
@@ -75,8 +75,8 @@ public abstract class LocalAdminTestRunner {
 //        options.addArguments("--disable-dev-shm-usage"); //https://stackoverflow.com/a/50725918/1689770
 //        options.addArguments("--remote-debugging-port=9222");
 //        options.addArguments("--disable-browser-side-navigation"); //https://stackoverflow.com/a/49123152/1689770
-        driver = new FirefoxDriver(options);
-//        driver = new ChromeDriver(options);
+//        driver = new FirefoxDriver(options);
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         // Multithread drivers
