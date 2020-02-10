@@ -121,8 +121,9 @@ public abstract class LocalAdminTestRunner {
     }
 
     public LoginPage loadAdminPage() {
-//        getDriver().get(SERVER_ADMIN_URL); // multithread driver
-        driver.get(SERVER_ADMIN_URL); // single thread driver
+    //        getDriver().get(SERVER_ADMIN_URL); // multithread driver
+    System.out.println("SERVER_ADMIN_URL: "+ SERVER_ADMIN_URL);
+    driver.get(SERVER_ADMIN_URL); // single thread driver
         return new LoginPage(driver); // single thread driver
 //        return new LoginPage(getDriver()); // multithread driver
     }
