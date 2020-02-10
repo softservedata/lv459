@@ -87,7 +87,7 @@ public class CreateCustomerTest extends LocalAdminTestRunner {
     @Test(dataProvider = "getInvalidCustomer")
     public void createInvalidCustomerTest(IUser invalidCustomer) {
 
-        prerequisites(invalidCustomer);
+//        prerequisites(invalidCustomer);
 
         // Test started ...
         RegisterPage customerNotCreated = loadMainPage()
@@ -100,7 +100,7 @@ public class CreateCustomerTest extends LocalAdminTestRunner {
         // Test finished...
 
         // Clear base from test customer.
-        prerequisites(invalidCustomer);
+//        prerequisites(invalidCustomer);
     }
 
     // from CSV
