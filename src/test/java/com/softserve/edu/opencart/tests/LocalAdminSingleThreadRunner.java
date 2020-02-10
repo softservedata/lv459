@@ -19,8 +19,8 @@ public abstract class LocalAdminSingleThreadRunner {
 
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
-    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
-    //    private final String SERVER_URL = ("192.168.214.131/upload/opencart");
+//    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
+        private final String SERVER_URL = ("192.168.214.131/upload/opencart/");
     private final String SERVER_ADMIN_URL = SERVER_URL + "admin/";
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
