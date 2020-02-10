@@ -5,8 +5,8 @@
     <test thread-count="1" name="Test speretc">
         <classes>
             <class name="com.softserve.edu.opencart.tests.customer.LoginTest"/>
-            <!--<class name="com.softserve.edu.opencart.tests.customer.CreateCustomerTest"/>-->
-            <!--<class name="com.softserve.edu.opencart.tests.customer.UpdateCustomersTest"/>-->
+            <class name="com.softserve.edu.opencart.tests.customer.CreateCustomerTest"/>
+            <class name="com.softserve.edu.opencart.tests.customer.UpdateCustomersTest"/>
             <!--<class name="com.softserve.edu.opencart.tests.currency.CurrencyAdminTest"/>-->
             <!--<class name="com.softserve.edu.opencart.tests.currency.CurrencyHomeTest"/>-->
             <!--<class name="com.softserve.edu.opencart.tests.admincatalog.CategoriesAddingTest"/>-->
