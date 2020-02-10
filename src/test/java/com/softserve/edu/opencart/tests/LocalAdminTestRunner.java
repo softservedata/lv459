@@ -67,7 +67,7 @@ public abstract class LocalAdminTestRunner {
         options.addArguments("start-maximized");
 //        options.addArguments("--no-sandbox");
 //        options.addArguments("--disable-setuid-sandbox");
-//        options.addArguments("--headless");
+        options.addArguments("--headless");
 //        options.addArguments("enable-automation");
 //        options.addArguments("--disable-extensions");
 //        options.addArguments("--disable-gpu");
