@@ -21,7 +21,7 @@ public class ChangeCooldownTimeTest {
         };
     }
 
-    //@Test(dataProvider = "user")
+    @Test(dataProvider = "user")
     public void checkCooldownTime(User admin) {
         guestService = new GuestService();
         Assert.assertEquals(guestService
