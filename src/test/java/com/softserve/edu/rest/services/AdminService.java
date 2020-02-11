@@ -16,6 +16,7 @@ public class AdminService extends UserService {
     public AdminService(LoginedUser loginedUser) {
         super(loginedUser);
         check();
+        cooldownResource = new CooldownTimeResource();
         //System.out.println(loginResource.toString());
     }
 

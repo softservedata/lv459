@@ -27,8 +27,6 @@ public class GuestService {
     protected ItemIndexResource itemIndexResource;
     protected CooldownTimeResource cooldownResource;
 
-
-    //	protected CooldownResource cooldownResource;
     private ApplicationResource applicationResource;
 
 
@@ -37,7 +35,6 @@ public class GuestService {
         tokenlifetimeResource = new TokenlifetimeResource();
 		cooldownResource = new CooldownTimeResource();
         applicationResource = new ApplicationResource();
-        loginResource = new LoginResource();
         loginUserResource = new LoginUserResource();
         loginAdminResource = new LoginAdminResource();
         lockUserResource = new LockUserResource();
