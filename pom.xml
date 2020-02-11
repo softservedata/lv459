@@ -232,7 +232,7 @@
                             </surefire.application.password>
 
                             <allure.results.directory>
-                                ${project.build.directory}/allure-results</allure.results.directory>
+                                ${project.build.directory}/target/allure-results</allure.results.directory>
                         </systemPropertyVariables>
 
 
