@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.runner;
 
 import com.softserve.edu.opencart.pages.admin.account.LoginPage;
 import com.softserve.edu.opencart.pages.user.HomePage;

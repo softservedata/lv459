@@ -12,7 +12,7 @@ import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListMessagePage;
-import com.softserve.edu.opencart.tests.LocalTestRunner;
+import com.softserve.edu.opencart.tests.runner.LocalTestRunner;
 
 /**
  * This class verify if button add to cart in Wish List works.

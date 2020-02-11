@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.opencart.data.AdminRepo;
 import com.softserve.edu.opencart.data.IAdmin;
-import com.softserve.edu.opencart.tests.LocalAdminSingleThreadRunner;
+import com.softserve.edu.opencart.tests.runner.LocalAdminSingleThreadRunner;
 
 public class CategoriesAddingTest extends LocalAdminSingleThreadRunner {
 	

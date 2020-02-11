@@ -11,7 +11,7 @@ import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.AlertMessageCommon;
-import com.softserve.edu.opencart.tests.LocalTestRunner;
+import com.softserve.edu.opencart.tests.runner.LocalTestRunner;
 
 public class AddToCartFromHomePageTest extends LocalTestRunner {
 

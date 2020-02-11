@@ -8,7 +8,7 @@ import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.account.MyAccountPage;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.EmptyWishListPage;
-import com.softserve.edu.opencart.tests.LocalTestRunner;
+import com.softserve.edu.opencart.tests.runner.LocalTestRunner;
 
 /**
  *  This class contains verify if  Wish List is empty by default.

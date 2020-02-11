@@ -11,7 +11,7 @@ import com.softserve.edu.opencart.data.MacBookInfoRepository;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.shop.shoppingcart.AlertMessagePage;
-import com.softserve.edu.opencart.tests.LocalTestRunner;
+import com.softserve.edu.opencart.tests.runner.LocalTestRunner;
 
 public class AddToCartMacBookTest extends LocalTestRunner {
 

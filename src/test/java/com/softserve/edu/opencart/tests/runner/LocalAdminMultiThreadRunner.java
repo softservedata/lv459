@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.runner;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;

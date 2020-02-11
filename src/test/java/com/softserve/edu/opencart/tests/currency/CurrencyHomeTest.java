@@ -3,7 +3,7 @@ package com.softserve.edu.opencart.tests.currency;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.softserve.edu.opencart.tests.LocalAdminSingleThreadRunner;
+import com.softserve.edu.opencart.tests.runner.LocalAdminSingleThreadRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
-import com.softserve.edu.opencart.tests.LocalTestRunner;
 
 //public class CurrencyHomeTest extends LocalTestRunner {
 public class CurrencyHomeTest extends LocalAdminSingleThreadRunner {

@@ -10,7 +10,7 @@ import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
-import com.softserve.edu.opencart.tests.LocalTestRunner;
+import com.softserve.edu.opencart.tests.runner.LocalTestRunner;
 
 /**
  * This class verify if button remove from Wish List works.

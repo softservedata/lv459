@@ -1,8 +1,9 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.customer;
 
 import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.account.AccountLogoutPage;
+import com.softserve.edu.opencart.tests.runner.LocalAdminSingleThreadRunner;
 
 public class CreatingUsersDBforTests extends LocalAdminSingleThreadRunner {
 

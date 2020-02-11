@@ -6,7 +6,7 @@ import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.admin.CustomersPage;
 import com.softserve.edu.opencart.pages.user.account.AccountLogoutPage;
 import com.softserve.edu.opencart.pages.user.account.MyAccountAmendedPage;
-import com.softserve.edu.opencart.tests.LocalAdminSingleThreadRunner;
+import com.softserve.edu.opencart.tests.runner.LocalAdminSingleThreadRunner;
 import com.softserve.edu.opencart.tools.ListUtils;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;

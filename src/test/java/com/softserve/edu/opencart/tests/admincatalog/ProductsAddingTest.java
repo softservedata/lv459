@@ -7,7 +7,7 @@ import com.softserve.edu.opencart.data.AdminRepo;
 import com.softserve.edu.opencart.data.IAdmin;
 import com.softserve.edu.opencart.data.IProduct;
 import com.softserve.edu.opencart.data.ProductRepository;
-import com.softserve.edu.opencart.tests.LocalAdminSingleThreadRunner;
+import com.softserve.edu.opencart.tests.runner.LocalAdminSingleThreadRunner;
 
 public class ProductsAddingTest extends LocalAdminSingleThreadRunner {
 	

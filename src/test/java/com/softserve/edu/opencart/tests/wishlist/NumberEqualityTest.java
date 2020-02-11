@@ -10,7 +10,7 @@ import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.user.shop.wishlist.WishListPage;
-import com.softserve.edu.opencart.tests.LocalTestRunner;
+import com.softserve.edu.opencart.tests.runner.LocalTestRunner;
 
 /**
  * This class contains test which verify whether the number

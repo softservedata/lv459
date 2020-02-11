@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.runner;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,9 +20,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public abstract class LocalTestRunner {
     
-    final int TWO_HUNDRED_AND_FIFTY_FIVE = 255;
-    final int SIXTY_FIVE_THOUSANDS_FIVE_HUNDRED_AND_THIRTY_SIX = 65536;
-    final String NUMBERS_AND_LETTERS = "0123456789abcdefghijklmnopqrstuvwxyz\\*;.,%$#\\\\'{}()\",";
+    public final int TWO_HUNDRED_AND_FIFTY_FIVE = 255;
+    public final int SIXTY_FIVE_THOUSANDS_FIVE_HUNDRED_AND_THIRTY_SIX = 65536;
+    public final String NUMBERS_AND_LETTERS = "0123456789abcdefghijklmnopqrstuvwxyz\\*;.,%$#\\\\'{}()\",";
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String SERVER_URL = "http://192.168.196.129/opencart/upload/";
     protected final String BLOCK_USER_ERROR_MESSAGE = "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.";

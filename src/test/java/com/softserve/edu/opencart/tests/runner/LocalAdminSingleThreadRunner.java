@@ -1,5 +1,6 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.runner;
 
+import com.softserve.edu.opencart.tests.runner.LocalAdminRunner;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
