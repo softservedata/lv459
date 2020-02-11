@@ -15,16 +15,11 @@ import com.softserve.edu.opencart.pages.user.HomePage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public abstract class AdminTestRunner {
+public abstract class AdminTestRunner extends Runner{
     
-    private final Long ONE_SECOND_DELAY = 1000L;
-    private final String SERVER_ADMIN_URL = System.getenv().get("OPENCART_URL") + "admin";
-    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
-    protected final String HRYVNIA = "hryvnia";
-    private static WebDriver driver;
 
     @BeforeClass
-    public static void beforeClass() {
+    public void beforeClass() {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -34,7 +29,7 @@ public abstract class AdminTestRunner {
     }
 
     @AfterClass
-    public static void afterClass() {
+    public void afterClass() {
         if (driver != null) {
             driver.quit();
         }

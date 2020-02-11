@@ -16,12 +16,9 @@ import com.softserve.edu.ukrNet.MailLoginPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public abstract class LocalEmailTestRunner {
+public abstract class LocalEmailTestRunner extends LocalAdminRunner {
 
-    private final String EMAIL_URL = "https://www.ukr.net/";
-    protected final String RESET_PASSWORD_MESSAGE = "Password reset";
-    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
-    private static WebDriver driver;
+
 
     @BeforeClass
     public void beforeClass() {
