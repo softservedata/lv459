@@ -177,7 +177,9 @@
                         <surefire.application.password>
                             ${application.password}
                         </surefire.application.password>
-                        <allure.results.directory>target/allure-results</allure.results.directory>
+                        <allure.results.directory>
+                            ${project.build.directory}/allure-results/
+                        </allure.results.directory>
                     </systemPropertyVariables>
                     <!-- <includes> -->
                     <!-- <include>**/*.java</include> -->
