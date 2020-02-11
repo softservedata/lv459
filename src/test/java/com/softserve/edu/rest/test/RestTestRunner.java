@@ -36,10 +36,10 @@ public abstract class RestTestRunner {
 	@AfterMethod
 	public void afterMethod(ITestResult result) throws IOException {
 		// TODO Logout
-//		loadApplication().resetServiceToInitialState();
-//		if (!result.isSuccess()) {
-//			System.out.println("***Test " + result.getName() + " ERROR");
-//		}
+		loadApplication().resetServiceToInitialState();
+		if (!result.isSuccess()) {
+			System.out.println("***Test " + result.getName() + " ERROR");
+		}
 	}
 
 	public GuestService loadApplication() {
