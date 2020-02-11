@@ -23,7 +23,7 @@ public class GuestService {
     protected LockAdminsResource lockAdminsResource;
     protected TokenlifetimeResource tokenlifetimeResource;
     protected UserResource userResource;
-    protected ItemResource itemResource;
+    protected ItemsResource itemsResource;
     protected ItemIndexResource itemIndexResource;
     protected CooldownTimeResource cooldownResource;
 
@@ -41,7 +41,7 @@ public class GuestService {
         lockUsersResource = new LockUsersResource();
         lockAdminsResource = new LockAdminsResource();
         userResource = new UserResource();
-        itemResource = new ItemResource();
+        itemsResource = new ItemsResource();
         itemIndexResource = new ItemIndexResource();
     }
 

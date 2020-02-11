@@ -35,8 +35,8 @@ public class CreateUpdateItemsTest extends RestTestRunner {
                 .addItem(copybook)
                 .getAllItems();
 
-        Assert.assertEquals(addItems.getUserItem(book), book.getItemText());
-        Assert.assertEquals(addItems.getUserItem(copybook), copybook.getItemText());
+        Assert.assertEquals(addItems.getUserItemByIndex(book), book.getItemText());
+        Assert.assertEquals(addItems.getUserItemByIndex(copybook), copybook.getItemText());
 
         // Updating items "book" to "book2" and "copybook" to "copybook2"
         AdminService updateItems = addItems
@@ -44,8 +44,8 @@ public class CreateUpdateItemsTest extends RestTestRunner {
                 .updateItem(copybook, copybook2)
                 .getAllItems();
 
-        Assert.assertEquals(updateItems.getUserItem(book2), book2.getItemText());
-        Assert.assertEquals(updateItems.getUserItem(copybook2), copybook2.getItemText());
+        Assert.assertEquals(updateItems.getUserItemByIndex(book2), book2.getItemText());
+        Assert.assertEquals(updateItems.getUserItemByIndex(copybook2), copybook2.getItemText());
 
         // Updating items "book2" and "copybook2"
         AdminService deleteItems = updateItems
@@ -53,8 +53,8 @@ public class CreateUpdateItemsTest extends RestTestRunner {
                 .deleteItem(copybook2)
                 .getAllItems();
 
-        Assert.assertEquals(deleteItems.getUserItem(book2), null);
-        Assert.assertEquals(deleteItems.getUserItem(copybook2), null);
+        Assert.assertEquals(deleteItems.getUserItemByIndex(book2), null);
+        Assert.assertEquals(deleteItems.getUserItemByIndex(copybook2), null);
 
         // Logout
         updateItems.logout();

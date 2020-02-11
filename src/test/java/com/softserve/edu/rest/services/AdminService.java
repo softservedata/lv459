@@ -7,17 +7,18 @@ import com.softserve.edu.rest.dto.LoginedUser;
 import com.softserve.edu.rest.dto.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
 import com.softserve.edu.rest.resources.CooldownTimeResource;
+import com.softserve.edu.rest.resources.ItemIndexUserNameResource;
 import com.softserve.edu.rest.tools.RegexUtils;
 import io.qameta.allure.Step;
 
 public class AdminService extends UserService {
     protected CooldownTimeResource cooldownResource;
+    protected ItemIndexUserNameResource itemIndexUserNameResource;
 
     public AdminService(LoginedUser loginedUser) {
         super(loginedUser);
         check();
         cooldownResource = new CooldownTimeResource();
-        //System.out.println(loginResource.toString());
     }
 
     private void check() {
@@ -226,16 +227,20 @@ public class AdminService extends UserService {
      * "Error create user"); logger.debug("creation of user DONE"); return this; }
      */
 
+    // Should be in User Service -- TODO move to user service
     public AdminService getAllItems() {
         RestParameters urlParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());
-        SimpleEntity simpleEntity = itemResource.httpGetAsEntity(null, urlParameters);
+        SimpleEntity simpleEntity = itemsResource
+                .httpGetAsEntity(null, urlParameters);
         System.out.println(simpleEntity);
         //checkEntity(simpleEntity, "false", "Error get all items");
         return this;
     }
 
-    public String getUserItem(Item item) {
+
+    // why here - TODO move to user service
+    public String getUserItemByIndex(Item item) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", getToken());
         RestParameters pathVariables = new RestParameters()
@@ -246,6 +251,21 @@ public class AdminService extends UserService {
         return simpleEntity.getContent();
     }
 
+    public String getUserItemByIndexAkaAdmin (Item item, User user) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", getToken());
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", item.getItemIndex())
+                .addParameter("name", user.getName());
+
+        SimpleEntity simpleEntity = itemIndexUserNameResource
+                .httpGetAsEntity(pathVariables, bodyParameters); // null pointer exception here!!!!
+
+        return simpleEntity.getContent();
+    }
+
+
+    // TODO why it is here???? move to userservice by loco
     public AdminService addItem(Item newItem) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken())
@@ -258,6 +278,7 @@ public class AdminService extends UserService {
         return this;
     }
 
+    // TODO why it is here????? by loco
     public AdminService updateItem(Item oldItem, Item newItem ) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken())
@@ -270,6 +291,7 @@ public class AdminService extends UserService {
         return this;
     }
 
+    // TODO why it is here????? by loco
     public AdminService deleteItem(Item item) {
         RestParameters urlParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());

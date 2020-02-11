@@ -29,6 +29,10 @@ public class AddItemTest extends RestTestRunner {
                 };
     }
 
+    /**
+     * Positive test for adding item via POST service
+     * @param user
+     */
     @Test(dataProvider = "correctAdmin")
     public void verifyPostAddItem(User user) {
         logger.info("AddItemPositiveTest AddItem START, user = " + user);
@@ -38,13 +42,16 @@ public class AddItemTest extends RestTestRunner {
 
         // prerequisites - run test as admin / run test as user?
         // login
-        UserService service = new GuestService().successfulUserLogin(user)
+        UserService service = new GuestService()
+                .successfulUserLogin(user)
                 .successfulAdminLogin(user);
         logger.info("We've got token = " + service.getToken());
 
         //
         // Steps
-        String result = service.postNewItemByIndex(item).getItemByIndex(item);
+        String result = service
+                .postNewItemByIndex(item)
+                .getItemByIndex(item);
 
         //
         // Check
@@ -57,6 +64,10 @@ public class AddItemTest extends RestTestRunner {
                 "AddItemPositiveTest DONE, user = " + user + "item = " + item);
     }
 
+    /**
+     * Positive test for updating item via POST service
+     * @param user
+     */
     @Test(dataProvider = "correctAdmin")
     public void verifyPostOverwriteExistingItem(User user) {
         logger.info("OverwriteItemByIndexPositiveTest AddItem START, user = " +
@@ -75,9 +86,9 @@ public class AddItemTest extends RestTestRunner {
         //
         // Steps
 
-        String result =
-                service.postOverwriteItemByIndex(initialItem, replacedItem)
-                        .getItemByIndex(initialItem);
+        String result =service
+                .postOverwriteItemByIndex(initialItem, replacedItem)
+                .getItemByIndex(initialItem);
 
         //
         // Check
@@ -97,6 +108,10 @@ public class AddItemTest extends RestTestRunner {
                 + replacedItem);
     }
 
+    /**
+     * Positive test for updating item via PUT service
+      * @param user
+     */
     @Test(dataProvider = "correctAdmin")
     public void verifyPutOverwriteExistingItem(User user) {
         logger.info(
@@ -116,8 +131,7 @@ public class AddItemTest extends RestTestRunner {
         //
         // Steps
 
-        String result =
-                service
+        String result = service
                         .postNewItemByIndex(initialItem)
                         .putOverwriteItemByIndex(initialItem, replacedItem)
                         .getItemByIndex(initialItem);
@@ -140,6 +154,10 @@ public class AddItemTest extends RestTestRunner {
                 + replacedItem);
     }
 
+    /**
+     * Positive test for deleting item via DELETE service
+     * @param user
+     */
     @Test(dataProvider = "correctAdmin")
     public void verifyDeleteItem(User user) {
         logger.info(
@@ -149,13 +167,16 @@ public class AddItemTest extends RestTestRunner {
         Item item = ItemRepository.getDefaultItemIndex0();
         // prerequisites - run test as admin / run test as user?
         // login
-        UserService service = new GuestService().successfulUserLogin(user)
+        UserService service = new GuestService()
+                .successfulUserLogin(user)
                 .successfulAdminLogin(user);
         logger.info("We've got token = " + service.getToken());
 
         //
         // Step
-        String result = service.postNewItemByIndex(item).deleteItemByIndex(item)
+        String result = service
+                .postNewItemByIndex(item)
+                .deleteItemByIndex(item)
                 .getItemByIndex(item);
 
         //
@@ -176,8 +197,7 @@ public class AddItemTest extends RestTestRunner {
         // login
         User vasya = UserRepository.getVasya();
         User dana = UserRepository.getDana();
-        AdminService service =
-                new GuestService()
+        AdminService service = new GuestService()
                         .successfulUserLogin(user)
                         .successfulAdminLogin(user)
                         .createUser(vasya)
@@ -188,28 +208,77 @@ public class AddItemTest extends RestTestRunner {
         // Login as Vasya and create item
         Item itemVasya = ItemRepository.getItemVasya();
 
-        UserService userServiceVasya =
-                loadApplication().successfulUserLogin(vasya)
-                        .postNewItemByIndex(itemVasya);
+        UserService userServiceVasya = loadApplication()
+                .successfulUserLogin(vasya)
+                .postNewItemByIndex(itemVasya);
 
         // Getting item
-        String resultVasya =
-                service.postNewItemByIndex(itemVasya).getItemByIndex(itemVasya);
+        String resultVasya = service
+                .postNewItemByIndex(itemVasya)
+                .getItemByIndex(itemVasya);
 
         Assert.assertEquals(resultVasya, itemVasya.getItemText());
 
         // Login as Dana and create item
         Item itemDana = ItemRepository.getItemDana();
 
-        UserService userServiceDana =
-                loadApplication().successfulUserLogin(dana)
+        UserService userServiceDana = loadApplication()
+                        .successfulUserLogin(dana)
                         .postNewItemByIndex(itemDana);
-        String resultDana =
-                service.postNewItemByIndex(itemDana).getItemByIndex(itemDana);
+        String resultDana = service
+                .postNewItemByIndex(itemDana)
+                .getItemByIndex(itemDana);
 
         Assert.assertEquals(resultDana, itemDana.getItemText());
 
-        //Assert than it is not possible to get smb else item.
+        //Assert that it is not possible to get smb else item.
         Assert.assertNotEquals(resultDana, itemVasya.getItemText());
+    }
+
+
+    public void getUserItemByIndex (){
+
+    }
+
+    //TODO - finish this test. till now it doesnt work. I'm getting null pointer exception.
+//    @Test(dataProvider = "correctAdmin")
+    public void gettingItemAsAdmin(User admin) {
+
+        //prerequisites
+        // create user and put user's Item
+        User dana = UserRepository.getDana();
+        Item itemDana = ItemRepository.getItemDana();
+        prerequisitesCreateUser(admin, dana);
+        prerequisitesCreateItem(dana, itemDana);
+
+
+        // Step: login as admin
+        // Step: get user's item by item index and user name
+        Object o = loadApplication()
+                .successfulUserLogin(admin)
+                .successfulAdminLogin(admin)
+//                .getUserItemByIndexAkaAdmin(itemDana, dana) // doesnt work - null pointer exception, I guess on stage forming url with two path variables
+                ;
+
+//        System.out.println("result of test Admin watch items of some user : " + result);
+//        Assert.assertEquals(result, itemDana.getItemText());
+
+    }
+
+    private void prerequisitesCreateUser(User admin, User user){
+
+        AdminService adminService = new GuestService()
+                .successfulUserLogin(admin)
+                .successfulAdminLogin(admin)
+                .createUser(user);
+    }
+
+    private void prerequisitesCreateItem (User user, Item item){
+        // login
+
+        UserService userService = new GuestService()
+                .successfulUserLogin(user)
+                .postNewItemByIndex(item);
+
     }
 }

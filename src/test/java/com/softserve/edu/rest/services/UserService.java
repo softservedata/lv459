@@ -41,6 +41,7 @@ public class UserService extends GuestService {
         return loginedUser.getToken();
     }
 
+    @Step ("Get user's item by index")
     public String getItemByIndex(Item item) {
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", getToken());
@@ -48,9 +49,7 @@ public class UserService extends GuestService {
                 .addParameter("index", item.getItemIndex());
 
         SimpleEntity simpleEntity = itemByIndexResource
-                .httpGetAsEntity(
-                        pathVariables,
-                                 bodyParameters);
+                .httpGetAsEntity(pathVariables,bodyParameters);
         logger.info("Answer from server on GET one item: " + simpleEntity.toString());
 
         return simpleEntity.getContent();
@@ -118,11 +117,6 @@ public class UserService extends GuestService {
         return this;
     }
 
-    //DELETE item .addText("URL=/item/{index}, method=DELETE deleteItem,
-    // PARAMETERS= token, index")
-
-    //PUT .addText("URL=/item/{index}, method=PUT updateItem, PARAMETERS=
-    // token, index, item")
 
     //Dana code
     //change user password
@@ -142,9 +136,9 @@ public class UserService extends GuestService {
     //is user created
     @Step("Check if user is created")
     public boolean isUserCreated(User user) {
-        RestParameters bodyParameters = new RestParameters()
+        RestParameters urlParameters = new RestParameters()
                 .addParameter("token", loginedUser.getToken());
-        SimpleEntity simpleEntity = userResource.httpGetAsEntity(null, bodyParameters);
+        SimpleEntity simpleEntity = userResource.httpGetAsEntity(null, urlParameters);
         return simpleEntity.getContent().contains(user.getName());
     }
 

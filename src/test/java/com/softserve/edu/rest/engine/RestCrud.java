@@ -46,7 +46,6 @@ public abstract class RestCrud {
         // TODO Develop Custom Exception
         String resourceName = this.getClass().getName();
         resourceName = resourceName.substring(resourceName.lastIndexOf(".") + 1);
-        System.out.println("resourceName = " + resourceName);
         throw new RuntimeException(String.format(NOT_SUPPORT_MESSAGE, message, resourceName));
     }
 
@@ -54,6 +53,7 @@ public abstract class RestCrud {
     {
         // if (restUrl.GetUrl(restUrlKeys).Length == 0)
     	String methodUri = getRestUrl().getUrl(restUrlKeys);
+
         if ((methodUri == null) || (methodUri.isEmpty()))
         {
             throwException(restUrlKeys.name());
@@ -62,8 +62,8 @@ public abstract class RestCrud {
 
     // Parameters - - - - - - - - - - - - - - - - - - - -
 
-	private String prepareUrlParameters(String urlTemplate, RestParameters urlParameters)
-    {
+	private String prepareUrlParameters(String urlTemplate, RestParameters urlParameters){
+
         if (urlParameters != null)
         {
             boolean isFirstParameter = true;
@@ -167,9 +167,7 @@ public abstract class RestCrud {
     }
 
     protected String httpGetAsText(RestParameters pathVariables, RestParameters urlParameters, RestUrl restUrl) {
-        String r = responseBodyAsText(httpGetAsResponse(pathVariables, urlParameters, restUrl));
-        System.out.println("From rest crud.class. 166 line: httpGetAsText = "  + r);
-    	return r;
+        return responseBodyAsText(httpGetAsResponse(pathVariables, urlParameters, restUrl));
     }
 
     protected String httpGetAsText(RestParameters pathVariables, RestParameters urlParameters) {
