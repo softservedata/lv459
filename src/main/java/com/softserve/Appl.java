@@ -1,8 +1,11 @@
 package com.softserve;
 
+import java.util.Calendar;
+
 public class Appl {
 	
 	public void w(A a) {
+		Calendar c;
 		System.out.println("w(A a)");
 	}
 
@@ -73,11 +76,12 @@ public class Appl {
 //		A.m2();
 //		B.m2();
 		//
+		*/
 		A c = new C();
 //		c.m2(); // Run m2 from B
 		c.m1();
-		*/
 		//
+		/*
 		Appl appl = new Appl();
 		//A a2 = new A(); // w(A a)
 		//A a2 = new B(); // w(A a)
@@ -87,5 +91,6 @@ public class Appl {
 		//appl.w(null); // w(B b)
 		//appl.w2(null); // w2(RuntimeException e); w2(IllegalArgumentException e)
 		appl.w3(null);
+		*/
 	}
 }

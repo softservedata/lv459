@@ -12,10 +12,10 @@ public class B extends A {
 	public void m1() {
 		System.out.println("class B: m1()");
 		//m1(); // Recursive 
-		//super.m1();
+		super.m1();
 	}
 	
-	public void m11() {
+	public void m11addition() {
 		System.out.println("class B: m11()");
 		super.m1();
 	}
@@ -32,5 +32,10 @@ public class B extends A {
 //	private void m3() { // Architecture Error
 //		System.out.println("class B: m3()");
 //	}
+	
+	public A getSuper() {
+		//return super;
+		return super.getThis();
+	}
 
 }

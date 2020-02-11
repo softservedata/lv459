@@ -2,7 +2,7 @@ package com;
 
 public class Box {
 
-	Object obj;
+	private Object obj;
 
 	public Object getObj() {
 		return obj;

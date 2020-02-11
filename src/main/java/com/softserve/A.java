@@ -20,7 +20,9 @@ public class A {
 		return k;
 	}
 
-	public void m1() {
+	//public void m1() {
+	//protected void m1() {
+	void m1() {
 		int temp; // undefined
 		i = i + 1;
 		System.out.println("class A: m1()");
@@ -44,6 +46,10 @@ public class A {
 
 	public void m3() {
 		System.out.println("class A: m3()");
+	}
+
+	public A getThis() {
+		return this;
 	}
 
 }

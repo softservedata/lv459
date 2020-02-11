@@ -6,11 +6,11 @@ public class BoxWrapper {
 
 	public BoxWrapper() {
 		box = new Box();
-		box.setObj("");
+		box.setObj(new String());
 	}
 	
 	public String getObj() {
-		return (String) box.getObj();
+		return (String) box.getObj(); // Code Ok.
 	}
 
 	public void setObj(String obj) {
