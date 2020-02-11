@@ -21,10 +21,10 @@ public abstract class Runner {
     protected Map<Long, WebDriver> drivers; // multithread
     protected final Long ONE_SECOND_DELAY = 1000L;
     protected final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
+    protected final String SERVER_ADMIN_URL = SERVER_URL + "admin/";
+    //    protected final String SERVER_URL = ("http://192.168.196.129/opencart/upload/");
     //    private final String SERVER_URL = System.getenv().get("OPENCART_URL");
     protected final String SERVER_URL = ("http://172.16.0.131/opencart/upload/");
-//    protected final String SERVER_URL = ("http://192.168.196.129/opencart/upload/");
-    protected final String SERVER_ADMIN_URL = SERVER_URL + "admin/";
     protected final String USER_ENABLED = "1";
     protected final String USER_DISABLED = "0";
     protected final String EXPECTED_ERROR_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
