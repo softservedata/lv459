@@ -1,13 +1,27 @@
 package com.softserve.edu.opencart.tests.runner;
 
-import com.softserve.edu.opencart.tests.runner.LocalAdminRunner;
+import com.softserve.edu.opencart.pages.admin.account.LoginPage;
+import com.softserve.edu.opencart.pages.user.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public abstract class LocalAdminSingleThreadRunner extends LocalAdminRunner {
@@ -50,5 +64,46 @@ public abstract class LocalAdminSingleThreadRunner extends LocalAdminRunner {
             driver.quit();
         }
     }
+
+    @AfterMethod
+    public void afterMethod(ITestResult result) throws IOException {
+        if (!result.isSuccess()) {
+            System.out.println("***Test " + result.getName() + " ERROR");
+            // Take Screenshot, save sourceCode, save to log, prepare report,
+            takePageSource(takeScreenShot());
+        }
+    }
+
+    private String takeScreenShot() throws IOException {
+        String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE); // for single thread
+        FileUtils.copyFile(scrFile, new File("./img/" + currentTime + "_screenshot.png"));
+        return "./img/" + currentTime + "_screenshot";
+    }
+
+    private void takePageSource(String fileName) {
+        String pageSource = driver.getPageSource();
+        Path path = Paths.get(fileName + ".txt");
+        byte[] strToBytes = pageSource.getBytes();
+        try {
+            Files.write(path, strToBytes, StandardOpenOption.CREATE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public LoginPage loadAdminPage() {
+        System.out.println("SERVER_ADMIN_URL: " + SERVER_ADMIN_URL);
+        driver.get(SERVER_ADMIN_URL); // single thread driver
+        return new LoginPage(driver); // single thread driver
+    }
+
+    public HomePage loadMainPage() {
+        System.out.println("server url = " + SERVER_URL);
+        driver.get(SERVER_URL); // single thread driver
+        return new HomePage(driver); // single thread driver
+    }
+
 
 }

@@ -65,7 +65,7 @@ public class CreateCustomerTest extends LocalAdminSingleThreadRunner {
                                   .equals(CUSTOMER_SUCCESSFULLY_CREATED_MESSAGE));
         // Test finished...
 
-        // Clear base from test customer
+        // Clearing base from test customer
 //        prerequisites(validCustomer);
         prerequisitesDeleteByJDBC(validCustomer);
     }
