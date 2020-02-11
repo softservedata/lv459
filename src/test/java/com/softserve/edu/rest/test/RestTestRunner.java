@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.testng.ITestContext;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -21,9 +22,9 @@ public abstract class RestTestRunner {
 		}
 	}
 
-//	@AfterClass(alwaysRun = true)
-//	public void afterClass() {
-//	}
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+	}
 
 	// @Before
 	@BeforeMethod
@@ -35,10 +36,10 @@ public abstract class RestTestRunner {
 	@AfterMethod
 	public void afterMethod(ITestResult result) throws IOException {
 		// TODO Logout
-//		loadApplication().resetServiceToInitialState();
-//		if (!result.isSuccess()) {
-//			System.out.println("***Test " + result.getName() + " ERROR");
-//		}
+		loadApplication().resetServiceToInitialState();
+		if (!result.isSuccess()) {
+			System.out.println("***Test " + result.getName() + " ERROR");
+		}
 	}
 
 	public GuestService loadApplication() {
