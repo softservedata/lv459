@@ -41,7 +41,7 @@ public abstract class LocalAdminSingleThreadRunner extends LocalAdminRunner {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         driver = new ChromeDriver(options);
 
         //        options.addArguments("--no-sandbox");

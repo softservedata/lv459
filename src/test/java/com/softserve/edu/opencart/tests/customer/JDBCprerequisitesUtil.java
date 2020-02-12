@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class JDBCprerequisitesUtil {
     private static Connection con = null;
-    private static String URL = "jdbc:mysql://192.168.196.129:3306/opencart";
+    private static String URL = "jdbc:mysql://172.16.0.131:3306/opencart";
 
     private static String username = "lv459";
     private static String password = "Lv459_Taqc";
