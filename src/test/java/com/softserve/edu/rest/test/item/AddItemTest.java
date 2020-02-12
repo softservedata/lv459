@@ -24,9 +24,19 @@ public class AddItemTest extends RestTestRunner {
     @DataProvider
     public Object[][] user() {
         return new Object[][]{
-                {UserRepository.getAdmin()},
-                {UserRepository.getVasya()},
-                {UserRepository.getDana()},
+                {UserRepository.getAdmin(), ItemRepository.getItemIndex1()},
+                {UserRepository.getVasya(), ItemRepository.getItemVasya()},
+                {UserRepository.getDana(), ItemRepository.getItemDana()},
+                };
+    }
+
+    @DataProvider
+    public Object[][] twoUsers() {
+        return new Object[][]{
+                {UserRepository.getAdmin(), ItemRepository.getItemIndex1(),
+                    UserRepository.getVasya(), ItemRepository.getItemVasya()},
+                {UserRepository.getAdmin(), ItemRepository.getItemIndex1(),
+                    UserRepository.getDana(), ItemRepository.getItemDana()},
                 };
     }
 
@@ -35,11 +45,9 @@ public class AddItemTest extends RestTestRunner {
      * @param user
      */
     @Test(dataProvider = "user") // - BUG HERE - run test as admin - OK / run test as user - FAILS
-    public void verifyPostAddItem(User user) {
+    public void verifyPostAddItem(User user, Item item) {
         logger.info("AddItemPositiveTest AddItem START, user = " + user);
         logger.debug("AddItemPositiveTest started!");
-
-        Item item = ItemRepository.getDefaultItemIndex0();
 
         // prerequisites - run test as admin / run test as user?
         // login
@@ -69,11 +77,11 @@ public class AddItemTest extends RestTestRunner {
      * @param user
      */
     @Test(dataProvider = "user") // - BUG HERE - run test as admin - OK / run test as user - FAILS
-    public void verifyPostOverwriteExistingItem(User user) {
+    public void verifyPostOverwriteExistingItem(User user, Item item) {
         logger.info("OverwriteItemByIndexPositiveTest AddItem START, user = " + user);
         logger.debug("OverwriteItemByIndexPositiveTest started!");
 
-        Item initialItem = ItemRepository.getDefaultItemIndex0();
+        Item initialItem = item;
 
         Item replacedItem = ItemRepository.getItemIndex1();
         // prerequisites - run test as admin / run test as user?
@@ -109,11 +117,11 @@ public class AddItemTest extends RestTestRunner {
       * @param user
      */
     @Test(dataProvider = "user") // - BUG HERE - run test as admin - OK / run test as user - FAILS
-    public void verifyPutOverwriteExistingItem(User user) {
+    public void verifyPutOverwriteExistingItem(User user, Item item) {
         logger.info("OverwriteItemByIndexPutPositiveTest AddItem START, user = " + user);
         logger.debug("OverwriteItemByIndexPutPositiveTest started!");
 
-        Item initialItem = ItemRepository.getDefaultItemIndex0();
+        Item initialItem = item;
 
         Item replacedItem = ItemRepository.getItemIndex1();
         // prerequisites - run test as admin / run test as user?
@@ -148,11 +156,9 @@ public class AddItemTest extends RestTestRunner {
      * @param user
      */
     @Test(dataProvider = "user")
-    public void verifyDeleteItem(User user) {
+    public void verifyDeleteItem(User user, Item item) {
         logger.info("DeleteItemByIndexPositiveTest AddItem START, user = " + user);
         logger.debug("DeleteItemByIndexPositiveTest started!");
-
-        Item item = ItemRepository.getDefaultItemIndex0();
         // prerequisites
         // login
         UserService service = new GuestService()
@@ -178,55 +184,54 @@ public class AddItemTest extends RestTestRunner {
                     "item = " + item);
     }
 
-    @Test(dataProvider = "user")
-    public void gettingStrangeUserItem(User user) {
+    @Test(dataProvider = "twoUsers")
+    public void gettingStrangeUserItem(User user1, Item item1, User user2, Item item2) {
         // prerequisites - login as admin and create two users
-        // login
-        User vasya = UserRepository.getVasya();
-        User dana = UserRepository.getDana();
 
         // Steps
         // Login as Vasya and create item
-        Item itemVasya = ItemRepository.getItemVasya();
 
         // Getting item
         String resultVasya = new GuestService()
-                .successfulUserLogin(vasya)
-                .postNewItemByIndex(itemVasya)
-                .getItemByIndex(itemVasya)
+                .successfulUserLogin(user1)
+                .postNewItemByIndex(item1)
+                .getItemByIndex(item1)
                 ;
 
-        Assert.assertEquals(resultVasya, itemVasya.getItemText());
+        Assert.assertEquals(resultVasya, item1.getItemText());
 
         // Login as Dana and create item
-        Item itemDana = ItemRepository.getItemDana();
-
         String resultDana =  loadApplication()
-                .successfulUserLogin(dana)
-                .postNewItemByIndex(itemDana)
-                .getItemByIndex(itemDana);
+                .successfulUserLogin(user2)
+                .postNewItemByIndex(item2)
+                .getItemByIndex(item2);
 
-        Assert.assertEquals(resultDana, itemDana.getItemText());
+        Assert.assertEquals(resultDana, item2.getItemText());
 
         //Assert that it is not possible to get smb else item.
-        Assert.assertNotEquals(resultDana, itemVasya.getItemText());
+        Assert.assertNotEquals(resultDana, item1.getItemText());
     }
 
+    @Test(dataProvider = "user")
+    public void getUserItemByIndex (User user, Item item){
+        String result = loadApplication()
+                .successfulUserLogin(user)
+                .postNewItemByIndex(item)
+                .getItemByIndex(item)
+                ;
 
-    public void getUserItemByIndex (){
+        Assert.assertEquals(result, item.getItemText());
 
     }
 
 //TODO - finish this test. till now it doesnt work. I'm getting null pointer exception.
 //    P.S. updated- doesn't work due to DEFECT in GET, POST, PUT maybe delete with not admin username!!!!
-//    @Test(dataProvider = "user")
-    public void gettingItemAsAdmin(User user) {
+    @Test(dataProvider = "user")
+    public void gettingItemAsAdmin(User user, Item item) {
 
         //prerequisites
         // create user and put user's Item
-        User dana = UserRepository.getDana();
-        Item itemDana = ItemRepository.getItemDana();
-        prerequisitesCreateItem(dana, itemDana);
+        prerequisitesCreateItem(user, item);
 
 
         // Step: login as admin
@@ -234,7 +239,7 @@ public class AddItemTest extends RestTestRunner {
         Object o = loadApplication()
                 .successfulUserLogin(user)
                 .successfulAdminLogin(user)
-//                .getUserItemByIndexAkaAdmin(itemDana, dana) // doesnt work - null pointer exception, I guess on stage forming url with two path variables
+                .getUserItemByIndexAkaAdmin(item, user) // doesn't work - null pointer exception, I guess on stage forming url with two path variables
                 ;
 
 //        System.out.println("result of test Admin watch items of some user : " + result);

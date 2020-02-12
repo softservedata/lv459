@@ -11,17 +11,17 @@ public final class UserRepository {
 
     public static User getAdmin() {
         return new User("admin", "qwerty", true)
-                .addItem(ItemRepository.getDefaultItemIndex0());
+                .addItem(ItemRepository.getDefaultItemIndex1());
     }
 
     public static User notExistingUser() {
         return new User("Anna", "ksjddlfkjddqwerty", false)
-                .addItem(ItemRepository.getDefaultItemIndex0());
+                .addItem(ItemRepository.getDefaultItemIndex1());
     }
 
     public static User someNotAdminUser() {
         return new User("user", "qwerty", false)
-                .addItem(ItemRepository.getDefaultItemIndex0());
+                .addItem(ItemRepository.getDefaultItemIndex1());
     }
 
     public static User getVasya() {
@@ -36,6 +36,6 @@ public final class UserRepository {
 
     public static User getNewAdmin() {
         return new User("adminNew", "qwerty", true)
-                .addItem(ItemRepository.getDefaultItemIndex0());
+                .addItem(ItemRepository.getDefaultItemIndex1());
     }
 }

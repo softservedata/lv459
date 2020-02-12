@@ -3,8 +3,8 @@ package com.softserve.edu.rest.data;
 public class ItemRepository {
 
     //TODO add this repo to USER
-    public static Item getDefaultItemIndex0() {
-        return new Item("0", "ItemWithIndex0");
+    public static Item getDefaultItemIndex1() {
+        return new Item("1", "ItemWithIndex1Default");
     }
 
     public static Item getItemIndex1() {
@@ -12,11 +12,11 @@ public class ItemRepository {
     }
 
     public static Item getItemDana() {
-        return new Item("1", "ItemDana");
+        return new Item("1", "ItemDanaIndex1");
     }
 
     public static Item getItemVasya() {
-        return new Item("1", "ItemVasya");
+        return new Item("1", "ItemVasyaIndex1");
     }
 
     public static Item getBook() {
