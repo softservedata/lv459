@@ -217,7 +217,8 @@ public class AddItemTest extends RestTestRunner {
 
     }
 
-    //TODO - finish this test. till now it doesnt work. I'm getting null pointer exception.
+//TODO - finish this test. till now it doesnt work. I'm getting null pointer exception.
+//    P.S. updated- doesn't work due to DEFECT in GET, POST, PUT maybe delete with not admin username!!!!
 //    @Test(dataProvider = "user")
     public void gettingItemAsAdmin(User user) {
 
