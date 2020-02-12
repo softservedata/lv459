@@ -11,11 +11,9 @@ import com.softserve.edu.rest.services.GuestService;
 import com.softserve.edu.rest.test.RestTestRunner;
 
 
-                    /**
-                     * Taliana's tests
-                     */
-
-
+/**
+ * Taliana's tests
+ */
 public class CreateLoginAdminTest extends RestTestRunner {
 
     protected GuestService guestService = guestService = loadApplication();
