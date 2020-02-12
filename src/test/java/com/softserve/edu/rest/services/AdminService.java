@@ -210,7 +210,7 @@ public class AdminService extends UserService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        logger.debug("Waint token life done");
+        logger.debug("Wait token life done");
         return this;
     }
 
@@ -227,29 +227,6 @@ public class AdminService extends UserService {
      * "Error create user"); logger.debug("creation of user DONE"); return this; }
      */
 
-    // Should be in User Service -- TODO move to user service
-    public AdminService getAllItems() {
-        RestParameters urlParameters = new RestParameters()
-                .addParameter("token", loginedUser.getToken());
-        SimpleEntity simpleEntity = itemsResource
-                .httpGetAsEntity(null, urlParameters);
-        System.out.println(simpleEntity);
-        //checkEntity(simpleEntity, "false", "Error get all items");
-        return this;
-    }
-
-
-    // why here - TODO move to user service
-    public String getUserItemByIndex(Item item) {
-        RestParameters bodyParameters = new RestParameters()
-                .addParameter("token", getToken());
-        RestParameters pathVariables = new RestParameters()
-                .addParameter("index", item.getItemIndex());
-
-        SimpleEntity simpleEntity = itemByIndexResource.httpGetAsEntity(pathVariables, bodyParameters);
-
-        return simpleEntity.getContent();
-    }
 
     public String getUserItemByIndexAkaAdmin (Item item, User user) {
         RestParameters bodyParameters = new RestParameters()
@@ -265,42 +242,5 @@ public class AdminService extends UserService {
     }
 
 
-    // TODO why it is here???? move to userservice by loco
-    public AdminService addItem(Item newItem) {
-        RestParameters bodyParameters = new RestParameters()
-                .addParameter("token", loginedUser.getToken())
-                .addParameter("item", newItem.getItemText());
-        RestParameters pathVariables = new RestParameters()
-                .addParameter("index", newItem.getItemIndex());
-        SimpleEntity simpleEntity = itemByIndexResource.httpPostAsEntity(pathVariables, null, bodyParameters);
-        System.out.println(simpleEntity);
-        checkEntity(simpleEntity, "false", "Error add item");
-        return this;
-    }
-
-    // TODO why it is here????? by loco
-    public AdminService updateItem(Item oldItem, Item newItem ) {
-        RestParameters bodyParameters = new RestParameters()
-                .addParameter("token", loginedUser.getToken())
-                .addParameter("item", newItem.getItemText());
-        RestParameters pathVariables = new RestParameters()
-                .addParameter("index", oldItem.getItemIndex());
-        SimpleEntity simpleEntity = itemByIndexResource.httpPutAsEntity(pathVariables, null, bodyParameters);
-        System.out.println(simpleEntity);
-        checkEntity(simpleEntity, "false", "Error update item");
-        return this;
-    }
-
-    // TODO why it is here????? by loco
-    public AdminService deleteItem(Item item) {
-        RestParameters urlParameters = new RestParameters()
-                .addParameter("token", loginedUser.getToken());
-        RestParameters pathVariables = new RestParameters()
-                .addParameter("index", item.getItemIndex());
-        SimpleEntity simpleEntity = itemByIndexResource.httpDeleteAsEntity(pathVariables, urlParameters, null);
-        System.out.println(simpleEntity);
-        checkEntity(simpleEntity, "false", "Error delete item");
-        return this;
-    }
 
 }

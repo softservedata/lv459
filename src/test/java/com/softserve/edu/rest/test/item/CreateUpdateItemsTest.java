@@ -4,7 +4,7 @@ import com.softserve.edu.rest.data.Item;
 import com.softserve.edu.rest.data.ItemRepository;
 import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.data.UserRepository;
-import com.softserve.edu.rest.services.AdminService;
+import com.softserve.edu.rest.services.UserService;
 import com.softserve.edu.rest.test.RestTestRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,19 +18,20 @@ public class CreateUpdateItemsTest extends RestTestRunner {
     @DataProvider
     public Object[][] correctUser() {
         return new Object[][]{
-                {UserRepository.getAdmin1(), ItemRepository.getBook(), ItemRepository.getCopybook(),
+                {UserRepository.getAdmin(), ItemRepository.getBook(), ItemRepository.getCopybook(),
                         ItemRepository.getBook2(), ItemRepository.getCopybook2()}
         };
     }
 
     @Test(dataProvider = "correctUser")
-    public void verifyIsItemAdded(User admin, Item book, Item copybook, Item book2, Item copybook2) {
+    public void verifyIsItemAdded(User user, Item book, Item copybook, Item book2, Item copybook2) {
         //
+
         // Step
         // Adding items "book" and "copybook"
-        AdminService addItems = loadApplication()
+        UserService addItems = loadApplication()
                 .resetServiceToInitialState()
-                .successfulAdminLogin(admin)
+                .successfulAdminLogin(user)
                 .addItem(book)
                 .addItem(copybook)
                 .getAllItems();
@@ -39,7 +40,7 @@ public class CreateUpdateItemsTest extends RestTestRunner {
         Assert.assertEquals(addItems.getUserItemByIndex(copybook), copybook.getItemText());
 
         // Updating items "book" to "book2" and "copybook" to "copybook2"
-        AdminService updateItems = addItems
+        UserService updateItems = addItems
                 .updateItem(book, book2)
                 .updateItem(copybook, copybook2)
                 .getAllItems();
@@ -48,7 +49,7 @@ public class CreateUpdateItemsTest extends RestTestRunner {
         Assert.assertEquals(updateItems.getUserItemByIndex(copybook2), copybook2.getItemText());
 
         // Updating items "book2" and "copybook2"
-        AdminService deleteItems = updateItems
+        UserService deleteItems = updateItems
                 .deleteItem(book2)
                 .deleteItem(copybook2)
                 .getAllItems();

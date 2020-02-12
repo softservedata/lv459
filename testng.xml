@@ -12,6 +12,7 @@
 			<class name="com.softserve.edu.rest.test.CheckUserTest" />
 			<class name="com.softserve.edu.rest.test.cooldown.ChangeCooldownTimeTest" />
 			<class name="com.softserve.edu.rest.test.cooldown.ChangeCooldownTimeWithNoRightsTest" />
+			<class name="com.softserve.edu.rest.test.cooldown.InvalidCooldownTimeTest" />
 			<class name="com.softserve.edu.rest.test.DashTest" />
 			<class name="com.softserve.edu.rest.test.LockAdminTest" />
 			<class name="com.softserve.edu.rest.test.LockUnlockUserTest" />

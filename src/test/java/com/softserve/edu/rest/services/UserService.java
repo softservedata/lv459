@@ -117,6 +117,63 @@ public class UserService extends GuestService {
         return this;
     }
 
+    public UserService getAllItems() {
+        RestParameters urlParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        SimpleEntity simpleEntity = itemsResource
+                .httpGetAsEntity(null, urlParameters);
+        System.out.println(simpleEntity);
+        //checkEntity(simpleEntity, "false", "Error get all items");
+        return this;
+    }
+
+
+    public String getUserItemByIndex(Item item) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", getToken());
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", item.getItemIndex());
+
+        SimpleEntity simpleEntity = itemByIndexResource.httpGetAsEntity(pathVariables, bodyParameters);
+
+        return simpleEntity.getContent();
+    }
+
+    public UserService addItem(Item newItem) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken())
+                .addParameter("item", newItem.getItemText());
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", newItem.getItemIndex());
+        SimpleEntity simpleEntity = itemByIndexResource.httpPostAsEntity(pathVariables, null, bodyParameters);
+        System.out.println(simpleEntity);
+        checkEntity(simpleEntity, "false", "Error add item");
+        return this;
+    }
+
+    public UserService updateItem(Item oldItem, Item newItem ) {
+        RestParameters bodyParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken())
+                .addParameter("item", newItem.getItemText());
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", oldItem.getItemIndex());
+        SimpleEntity simpleEntity = itemByIndexResource.httpPutAsEntity(pathVariables, null, bodyParameters);
+        System.out.println(simpleEntity);
+        checkEntity(simpleEntity, "false", "Error update item");
+        return this;
+    }
+
+    public UserService deleteItem(Item item) {
+        RestParameters urlParameters = new RestParameters()
+                .addParameter("token", loginedUser.getToken());
+        RestParameters pathVariables = new RestParameters()
+                .addParameter("index", item.getItemIndex());
+        SimpleEntity simpleEntity = itemByIndexResource.httpDeleteAsEntity(pathVariables, urlParameters, null);
+        System.out.println(simpleEntity);
+        checkEntity(simpleEntity, "false", "Error delete item");
+        return this;
+    }
+
 
     //Dana code
     //change user password

@@ -3,6 +3,9 @@ package com.softserve.edu.rest.test;
 import java.io.IOException;
 import java.util.Map;
 
+import com.softserve.edu.rest.data.User;
+import com.softserve.edu.rest.data.UserRepository;
+import com.softserve.edu.rest.services.AdminService;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -29,14 +32,20 @@ public abstract class RestTestRunner {
 	// @Before
 	@BeforeMethod
 	public void beforeMethod() {
-	    //loadApplication().resetServiceToInitialState();
+		loadApplication().resetServiceToInitialState();
+			AdminService adminService = new GuestService()
+					.successfulUserLogin(UserRepository.getAdmin())
+					.successfulAdminLogin(UserRepository.getAdmin())
+					.createUser(UserRepository.getDana())
+					.createUser(UserRepository.getVasya())
+					;
 	}
 
 	// @After
 	@AfterMethod
 	public void afterMethod(ITestResult result) throws IOException {
 		// TODO Logout
-		loadApplication().resetServiceToInitialState();
+//		loadApplication().resetServiceToInitialState();
 		if (!result.isSuccess()) {
 			System.out.println("***Test " + result.getName() + " ERROR");
 		}

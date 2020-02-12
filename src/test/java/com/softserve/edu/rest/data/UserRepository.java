@@ -25,22 +25,17 @@ public final class UserRepository {
     }
 
     public static User getVasya() {
-        return new User("Vasya", "qwerty", false).addItem(ItemRepository.getDefaultItemIndex0());
+        return new User("Vasya", "qwerty", true)
+                .addItem(ItemRepository.getItemVasya());
     }
 
     public static User getDana() {
         return new User("Dana", "qwerty", false)
-                .addItem(ItemRepository.getDefaultItemIndex0());
+                .addItem(ItemRepository.getItemDana());
     }
 
     public static User getNewAdmin() {
         return new User("adminNew", "qwerty", true)
                 .addItem(ItemRepository.getDefaultItemIndex0());
     }
-
-	public static User getAdmin1() {
-		return new User("admin", "qwerty", true);
-/*				.addItem(ItemRepository.getBook())
-				.addItem(ItemRepository.getCopybook());*/
-	}
 }
